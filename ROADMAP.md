@@ -14,7 +14,7 @@ brackets as `<topic>/plot_NN_<slug>.py`.
 - [x] Enable Zenodo for the repository, then add the **version DOI** of
       the release (never the concept DOI) to `CITATION.cff` as `doi:`.
 - [x] Add the Zenodo badge to the README in the
-      `https://zenodo.org/badge/<repo-id>.svg` form.
+      `https://zenodo.org/badge/DOI/<version-doi>.svg` form (update it each release).
 - [x] Add a Codecov token (repository secret `CODECOV_TOKEN`).
 
 ## Phase checklist

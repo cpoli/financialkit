@@ -2,7 +2,7 @@
 
 | | |
 |:--|:-:|
-| Package | [![PyPI version](https://img.shields.io/pypi/v/financialkit)](https://pypi.org/project/financialkit/) [![Python versions](https://img.shields.io/pypi/pyversions/financialkit)](https://pypi.org/project/financialkit/) [![DOI](https://zenodo.org/badge/1412776565.svg)](https://zenodo.org/badge/latestdoi/1412776565) |
+| Package | [![PyPI version](https://img.shields.io/pypi/v/financialkit)](https://pypi.org/project/financialkit/) [![Python versions](https://img.shields.io/pypi/pyversions/financialkit)](https://pypi.org/project/financialkit/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23279817.svg)](https://doi.org/10.5281/zenodo.23279817) |
 | Quality | [![License](https://img.shields.io/github/license/cpoli/financialkit)](https://github.com/cpoli/financialkit/blob/main/LICENSE) [![CI](https://github.com/cpoli/financialkit/actions/workflows/ci.yml/badge.svg)](https://github.com/cpoli/financialkit/actions/workflows/ci.yml) [![Coverage](https://img.shields.io/codecov/c/github/cpoli/financialkit)](https://codecov.io/gh/cpoli/financialkit) |
 | Documentation | [![Docs](https://img.shields.io/badge/docs-cpoli.github.io%2Ffinancialkit-blue)](https://cpoli.github.io/financialkit/) |
 | Code style | [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) |
