@@ -3,7 +3,7 @@ message: "If you use financialkit in your research, please cite it as below."
 title: "financialkit: a quantitative-finance toolkit"
 type: software
 version: 0.1.0
-date-released: "2026-10-09"
+date-released: "2026-10-10"
 license: MIT
 repository-code: "https://github.com/cpoli/financialkit"
 url: "https://cpoli.github.io/financialkit/"

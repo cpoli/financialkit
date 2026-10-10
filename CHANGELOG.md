@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-The first release, 0.1.0, will contain everything below.
+## [0.1.0] - 2026-10-10
+
+The first release.
 
 ### Added
 
@@ -93,4 +95,5 @@ The first release, 0.1.0, will contain everything below.
     Glosten-Milgrom, Hasbrouck's VAR, PIN and VPIN, square-root impact,
     Bertsimas-Lo and Almgren-Chriss execution, and Amihud illiquidity.
 
-[Unreleased]: https://github.com/cpoli/financialkit/commits/main
+[Unreleased]: https://github.com/cpoli/financialkit/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/cpoli/financialkit/releases/tag/v0.1.0
