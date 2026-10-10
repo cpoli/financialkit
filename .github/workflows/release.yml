@@ -1,0 +1,119 @@
+name: Release
+
+# Push a tag vX.Y.Z to release. The tag must match
+# `financialkit.__version__` (the version is dynamic, read from
+# financialkit/__init__.py), CITATION.cff's `version`, and a
+# "## [X.Y.Z] - date" section in CHANGELOG.md. The workflow then publishes
+# to PyPI, creates the GitHub Release with that CHANGELOG section as its
+# notes, and deploys the docs to gh-pages.
+#
+# One-time setup on the services:
+# - PyPI: project financialkit -> Publishing -> add a GitHub trusted
+#   publisher (owner cpoli, repository financialkit, workflow release.yml,
+#   environment pypi). No API token is stored in the repository.
+# - GitHub: the environment "pypi" in the repository settings.
+# - Zenodo: enable the repository at zenodo.org/account/settings/github;
+#   every GitHub Release is then archived with its own DOI.
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    name: Build distributions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build twine
+      - run: python -m build
+      - run: twine check --strict dist/*
+      # The built file names carry the version setuptools read from
+      # financialkit.__version__.
+      - name: Tag matches package version
+        run: |
+          version=${GITHUB_REF_NAME#v}
+          test -f "dist/financialkit-$version.tar.gz"
+          test -f "dist/financialkit-$version-py3-none-any.whl"
+      - name: Tag matches CITATION.cff
+        run: |
+          grep -qx "version: ${GITHUB_REF_NAME#v}" CITATION.cff
+      # Checked before publishing, so a missing section cannot leave a
+      # release on PyPI without its GitHub Release.
+      - name: Release notes from the CHANGELOG section
+        run: |
+          version=${GITHUB_REF_NAME#v}
+          awk -v v="$version" '
+            /^## / { if (found) exit; if (index($0, "## [" v "] ") == 1) { found = 1; next } }
+            found' CHANGELOG.md > notes.md
+          test -s notes.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: notes
+          path: notes.md
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/financialkit/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  github-release:
+    name: Create the GitHub Release
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: actions/download-artifact@v4
+        with:
+          name: notes
+      - run: >-
+          gh release create "$GITHUB_REF_NAME" dist/*
+          --repo "$GITHUB_REPOSITORY"
+          --title "financialkit ${GITHUB_REF_NAME#v}"
+          --notes-file notes.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  docs:
+    name: Deploy the docs
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[fast,docs]"
+      - run: cd docs && MPLBACKEND=Agg make html
+      - run: touch docs/build/html/.nojekyll
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ github.token }}
+          publish_dir: docs/build/html
+          commit_message: "Rebuild docs for ${{ github.ref_name }}"

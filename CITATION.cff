@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use financialkit in your research, please cite it as below."
+title: "financialkit: a quantitative-finance toolkit"
+type: software
+version: 0.1.0
+date-released: "2026-10-09"
+license: MIT
+repository-code: "https://github.com/cpoli/financialkit"
+url: "https://cpoli.github.io/financialkit/"
+authors:
+  - given-names: "Charles"
+    family-names: "Poli"
+    email: "cpoli374@gmail.com"
+keywords:
+  - finance
+  - quantitative-finance
+  - option-pricing
+  - fixed-income
+  - monte-carlo
+  - stochastic-volatility
+  - risk-management
+  - portfolio-optimization
+  - time-series

@@ -1,0 +1,144 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "financialkit"
+dynamic = ["version"]
+description = "Quantitative-finance toolkit: time value of money, fixed income, option pricing (closed form, trees, Monte Carlo, PDE, FFT), exotic options, stochastic volatility, interest-rate and credit models, portfolio optimization, asset pricing, risk, financial time series, and market microstructure -- built on numpy/scipy, hand-rolling algorithms only where no library equivalent exists."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Charles Poli", email = "cpoli374@gmail.com" }]
+maintainers = [{ name = "Charles Poli", email = "cpoli374@gmail.com" }]
+keywords = [
+    "finance",
+    "quantitative-finance",
+    "option-pricing",
+    "derivatives",
+    "fixed-income",
+    "monte-carlo",
+    "stochastic-volatility",
+    "interest-rates",
+    "credit-risk",
+    "portfolio-optimization",
+    "risk-management",
+    "time-series",
+    "market-microstructure",
+    "education",
+    "numerical-methods",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Typing :: Typed",
+    "Topic :: Education",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+# Numba JIT-compiles the integrators/monte_carlo/pde_methods/options-tree kernels;
+# without it they run as plain Python (same results, slower). See financialkit/_jit.py.
+fast = ["numba>=0.58"]
+test = ["pytest>=7.0", "pytest-cov", "hypothesis>=6.90", "pillow>=9.0"]
+docs = [
+    "sphinx>=7.0",
+    "pydata-sphinx-theme>=0.15",
+    "sphinx-autodoc-typehints>=1.25",
+    "myst-parser>=2.0",
+    "sphinx-gallery>=0.15",
+    "sphinx-design>=0.6",
+    "jupyterlite-sphinx>=0.17",
+    "jupyterlite-pyodide-kernel>=0.4",
+]
+dev = ["financialkit[fast,test,docs]", "ruff>=0.6", "mypy>=1.10", "pre-commit>=3.7"]
+
+[project.urls]
+Homepage = "https://github.com/cpoli/financialkit"
+Issues = "https://github.com/cpoli/financialkit/issues"
+Changelog = "https://github.com/cpoli/financialkit/blob/main/CHANGELOG.md"
+Documentation = "https://cpoli.github.io/financialkit/"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["financialkit*"]
+# Tests live beside each subpackage; they stay in the sdist but not the wheel.
+exclude = ["financialkit.tests", "financialkit.*.tests"]
+
+[tool.setuptools.dynamic]
+version = { attr = "financialkit.__version__" }
+
+[tool.setuptools.package-data]
+financialkit = ["py.typed"]
+
+# include-package-data (on by default) would otherwise re-add each
+# subpackage's tests/ directory as package data of its parent.
+[tool.setuptools.exclude-package-data]
+"*" = ["tests/*", "tests/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "financialkit/asset_pricing/tests",
+    "financialkit/credit/tests",
+    "financialkit/exotic_options/tests",
+    "financialkit/fixed_income/tests",
+    "financialkit/integrators/tests",
+    "financialkit/interest_rate_models/tests",
+    "financialkit/market_microstructure/tests",
+    "financialkit/monte_carlo/tests",
+    "financialkit/options/tests",
+    "financialkit/pde_methods/tests",
+    "financialkit/portfolio/tests",
+    "financialkit/risk/tests",
+    "financialkit/stochastic_volatility/tests",
+    "financialkit/tests",
+    "financialkit/time_series/tests",
+    "financialkit/time_value/tests",
+]
+
+[tool.ruff]
+line-length = 160
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = [
+    "E731", # lambda assignment: used deliberately for short closures (e.g. test-function factories)
+    "B023", # loop-variable closures: intentional in model-builder factory functions
+    "E741", # single-letter names (S, K, T, r, q, n, i): standard financial and mathematical notation throughout this package
+    "SIM108", # if/else vs ternary: kept as if/else for readability around multi-line mathematical expressions
+    "SIM300", # yoda-condition rewrites: not an improvement for pytest.approx(...) == value assertions
+    "UP045", # X | None vs Optional[X]: keep Optional[] for clarity, it's equally valid under `from __future__ import annotations`
+]
+
+[tool.ruff.lint.per-file-ignores]
+"financialkit/*/tests/*" = ["E501", "E402"] # E402: pytest.importorskip(...) before imports, for optional-dependency tests
+"docs/*" = ["E501", "I001", "E402"]
+"examples/*" = ["B018"] # a bare `anim` at the end of a cell displays the animation in Jupyter/JupyterLite
+
+[tool.ruff.format]
+line-ending = "lf"
+
+[tool.mypy]
+ignore_missing_imports = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+# Unannotated function bodies are not checked; see CONTRIBUTING.md.
+check_untyped_defs = false

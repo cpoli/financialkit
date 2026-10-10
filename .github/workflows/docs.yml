@@ -1,0 +1,23 @@
+name: Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    # sphinx-gallery re-executes every examples/*/plot_*.py, so this is the
+    # only check that catches a broken gallery example or a bad
+    # ".. minigallery::" path in docs/source/history/.
+    name: Build Sphinx docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[fast,docs]"
+      - run: cd docs && MPLBACKEND=Agg make html

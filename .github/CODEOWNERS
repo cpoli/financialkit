@@ -1,0 +1,6 @@
+# Breakthrough/history entries are curated, not a running list -- every
+# addition must tie to new models actually implemented in the same
+# PR (see "History entries" in CONTRIBUTING.md). Require review on any
+# PR that touches them so a batch of unrelated entries doesn't slip in
+# via an approval on the code changes alone.
+/docs/source/history/ @cpoli
