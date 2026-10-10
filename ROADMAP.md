@@ -10,7 +10,7 @@ brackets as `<topic>/plot_NN_<slug>.py`.
 
 - [x] Create the GitHub repository `cpoli/financialkit`, push, and enable
       Pages from `gh-pages` (the release workflow deploys there).
-- [ ] PyPI trusted publisher (see the header of `.github/workflows/release.yml`).
+- [x] PyPI trusted publisher (see the header of `.github/workflows/release.yml`).
 - [ ] Enable Zenodo for the repository, then add the **version DOI** of
       the release (never the concept DOI) to `CITATION.cff` as `doi:`.
 - [ ] Add the Zenodo badge to the README in the
