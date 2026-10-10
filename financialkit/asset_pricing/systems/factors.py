@@ -175,7 +175,7 @@ def apt_arbitrage_portfolio(expected_returns: ArrayLike, betas: ArrayLike) -> np
     --------
     >>> import numpy as np
     >>> w = apt_arbitrage_portfolio([0.05, 0.08, 0.13], [0.0, 1.0, 2.0])
-    >>> round(float(w.sum()), 12), round(float(w @ [0.0, 1.0, 2.0]), 12), round(float(w @ [0.05, 0.08, 0.13]) * 1e6)
+    >>> abs(round(float(w.sum()), 12)), abs(round(float(w @ [0.0, 1.0, 2.0]), 12)), round(float(w @ [0.05, 0.08, 0.13]) * 1e6)
     (0.0, 0.0, 67)
     """
     mu = np.asarray(expected_returns, dtype=np.float64)
