@@ -1,0 +1,511 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of ``financialkit.risk``:
+value at risk by historical, parametric, Cornish-Fisher, Monte Carlo,
+age-weighted and filtered historical methods; Roy's safety-first
+criterion; expected shortfall, coherence and Euler allocation; extreme
+value theory; VaR backtests; copulas and tail dependence; and drawdowns.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/risk/<section>/<script>.py``.
+
+Sections
+--------
+
+- **var** -- Cornish-Fisher, Roy's safety first, parametric (RiskMetrics)
+  VaR, Monte Carlo VaR, hybrid VaR and filtered historical simulation.
+- **expected_shortfall** -- the coherence axioms, Euler risk allocation
+  and the Acerbi-Tasche estimator.
+- **extreme_value** -- Fisher-Tippett block maxima and peaks over threshold.
+- **backtesting** -- Kupiec's test, the Basel traffic light and
+  Christoffersen's independence test.
+- **copulas** -- Sklar's theorem with the Gaussian copula, and the t
+  copula's tail dependence.
+- **drawdowns** -- maximum drawdown and the Calmar ratio.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Backtesting
+-----------
+
+Checking a VaR model against realised losses: the number of exceptions,
+the regulator's zones and whether exceptions cluster.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A 99% VaR should be exceeded on about 1% of days. Kupiec (1995) turned &quot;about&quot; into a likelihood-ratio test: with x exceptions in n days and \hat p = x/n,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/backtesting/images/thumb/sphx_glr_plot_01_kupiec_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/backtesting/plot_01_kupiec`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kupiec's proportion-of-failures test</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The 1996 Market Risk Amendment let banks set capital from their own 99%, ten-day VaR, typically historical simulation over at least a year of data, multiplied by at least 3. The multiplier grows with the number of exceptions in the last 250 days: green (0-4) keeps 3, yellow (5-9) adds 0.40 to 0.85, red (10 or more) adds 1. Here a historical VaR is run on a market whose volatility doubles halfway through.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/backtesting/images/thumb/sphx_glr_plot_02_basel_traffic_light_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/backtesting/plot_02_basel_traffic_light`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Basel historical VaR and the traffic light</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Kupiec&#x27;s test counts exceptions but ignores when they happen. A VaR that is right on average but slow to react produces exceptions in bunches, exactly when a bank can least afford them. Christoffersen (1998) fitted a two-state Markov chain to the hit sequence and tested whether a hit is more likely the day after a hit, \pi_{11} &gt; \pi_{01}; adding Kupiec&#x27;s statistic gives the conditional-coverage test, LR_{cc} = LR_{uc} + LR_{ind} \sim \chi^2_2.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/backtesting/images/thumb/sphx_glr_plot_03_christoffersen_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/backtesting/plot_03_christoffersen`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Christoffersen's independence test</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Copulas
+-------
+
+Dependence separated from the marginals, and the joint extremes that the
+Gaussian copula misses.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Sklar (1959) showed that every joint distribution is its marginals glued together by a copula C:">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/copulas/images/thumb/sphx_glr_plot_01_sklar_gaussian_copula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/copulas/plot_01_sklar_gaussian_copula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sklar's theorem and the Gaussian copula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Under a Gaussian copula, joint extremes become independent as one looks further into the tail: the coefficient of tail dependence is zero for any correlation below one. Markets do not behave that way; in a crash everything falls together. Demarta and McNeil (2005) studied the t copula, whose shared random scale makes extremes coincide with probability">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/copulas/images/thumb/sphx_glr_plot_02_t_copula_tail_dependence_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/copulas/plot_02_t_copula_tail_dependence`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Demarta-McNeil: the t copula and tail dependence</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Drawdowns
+---------
+
+The worst fall from a peak, and return measured against it.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A drawdown is the fall from the highest wealth reached so far. Terry Young (1991) proposed judging managed-futures funds by their compound annual return divided by their maximum drawdown, the Calmar ratio, because investors leave a fund after a deep drawdown long before its volatility looks alarming. Two strategies with the same mean and volatility can have very different drawdowns if their bad days cluster.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/drawdowns/images/thumb/sphx_glr_plot_01_calmar_drawdowns_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/drawdowns/plot_01_calmar_drawdowns`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Young's Calmar ratio and drawdowns</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Expected shortfall and coherence
+--------------------------------
+
+What makes a risk measure coherent, why VaR is not, and how expected
+shortfall is estimated and allocated to positions.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Artzner, Delbaen, Eber and Heath (1999) listed four properties a capital requirement should have: monotonicity, subadditivity, positive homogeneity and translation invariance. VaR fails subadditivity: two desks can each look safe while their merger needs capital. The classic counterexample is a pair of independent bonds that each default with 4% probability. At 95% neither default is in the tail, so each bond&#x27;s VaR is negative; together, a default happens with probability 7.8%, and the portfolio&#x27;s VaR is a loss.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/expected_shortfall/images/thumb/sphx_glr_plot_01_coherence_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/expected_shortfall/plot_01_coherence`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Artzner-Delbaen-Eber-Heath: coherent risk measures</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A bank&#x27;s capital is set for the whole portfolio, but desks must be charged for their share. Because VaR, ES and volatility are positively homogeneous in the position sizes, Euler&#x27;s theorem splits them exactly:">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/expected_shortfall/images/thumb/sphx_glr_plot_02_euler_allocation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/expected_shortfall/plot_02_euler_allocation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tasche: Euler risk allocation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="&quot;The average loss beyond VaR&quot; sounds like one number but is several when the distribution has atoms, as every sample does, and some versions are not coherent. Acerbi and Tasche (2002) gave the definition that is: average exactly the worst fraction p = 1 - \alpha of outcomes, charging only part of the atom at the quantile,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/expected_shortfall/images/thumb/sphx_glr_plot_03_acerbi_tasche_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/expected_shortfall/plot_03_acerbi_tasche`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Acerbi-Tasche expected shortfall</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Extreme value theory
+--------------------
+
+The laws of maxima and of exceedances over high thresholds, and the tail
+risk figures they extrapolate.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fisher and Tippett (1928) proved that the largest of n i.i.d. losses, once centred and scaled, can converge to only three limits: Fréchet for power-law tails, Gumbel for exponential-type tails and Weibull for bounded ones. They are the generalized extreme value law">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/extreme_value/images/thumb/sphx_glr_plot_01_fisher_tippett_gev_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/extreme_value/plot_01_fisher_tippett_gev`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fisher-Tippett: the three laws of the maximum</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pickands (1975) and Balkema and de Haan (1974) proved that the excess of a loss over a high threshold u is approximately generalized Pareto, whatever the parent distribution in the Fréchet, Gumbel or Weibull domain. Fitting that law to the few largest losses gives VaR and expected shortfall at levels the data barely reach:">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/extreme_value/images/thumb/sphx_glr_plot_02_peaks_over_threshold_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/extreme_value/plot_02_peaks_over_threshold`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Peaks over threshold: Pickands-Balkema-de Haan</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Value at risk
+-------------
+
+The loss that is exceeded with a given small probability, estimated in
+closed form, by expansion, by simulation and from weighted or filtered
+history.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Cornish and Fisher (1937) expanded the quantile of a nearly normal distribution in its cumulants. To second order, with skewness S and excess kurtosis K,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_01_cornish_fisher_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_01_cornish_fisher`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cornish-Fisher: VaR beyond the normal</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The same year as Markowitz, A. D. Roy (1952) asked which portfolio minimises the chance of disaster, P(R &lt; d). With only means and variances known, Chebyshev&#x27;s inequality bounds it by 1 / s^2, where s = (\mu - d)/\sigma, so the safest portfolio maximises s: the point where a line from (0, d) touches the efficient frontier. It is the first downside risk measure and an early form of the Sharpe ratio.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_02_roy_safety_first_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_02_roy_safety_first`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Roy's safety-first criterion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In October 1994 J.P. Morgan published RiskMetrics, its methodology and daily covariance data, free. A portfolio with money exposures w to factors with covariance \Sigma has, under joint normality,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_03_parametric_var_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_03_parametric_var`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">RiskMetrics: parametric (delta-normal) VaR</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Delta-normal VaR treats every position as linear in its risk factors. For options that is badly wrong: a short straddle has zero delta at the money, so its delta-normal VaR is zero, yet it loses heavily on a large move in either direction. Pritsker (1997) compared delta, delta-gamma and full-revaluation Monte Carlo VaR and found that only full revaluation is reliable for books with large gamma. The cost is repricing every position in every scenario.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_04_monte_carlo_var_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_04_monte_carlo_var`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pritsker: Monte Carlo VaR for option books</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Historical simulation gives every day in the window the same weight, so after a jump in volatility it takes months to notice and then drops the crisis days abruptly when they leave the window. Boudoukh, Richardson and Whitelaw (1998) weighted the outcome i days old by \lambda^i, combining RiskMetrics&#x27; exponential smoothing with historical simulation&#x27;s distribution-free tail: &quot;the best of both worlds&quot;.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_05_hybrid_var_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_05_hybrid_var`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boudoukh-Richardson-Whitelaw hybrid VaR</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Historical simulation keeps the empirical shape of the tail but not its current scale; a GARCH model tracks the scale but imposes a shape. Barone-Adesi, Giannopoulos and Vosper (1999) combined them: divide each past return by that day&#x27;s volatility to get standardized residuals z_t = r_t / \sigma_t, then rescale them by tomorrow&#x27;s forecast,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_06_filtered_historical_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_06_filtered_historical`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Barone-Adesi: filtered historical simulation</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/risk/backtesting/index.rst
+   /api/gallery/risk/copulas/index.rst
+   /api/gallery/risk/drawdowns/index.rst
+   /api/gallery/risk/expected_shortfall/index.rst
+   /api/gallery/risk/extreme_value/index.rst
+   /api/gallery/risk/var/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: risk_python.zip </api/gallery/risk/risk_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: risk_jupyter.zip </api/gallery/risk/risk_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Option Pricing &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/options_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Exotic Options" href="exotic_options_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Fixed Income" href="fixed_income_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Option Pricing</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-option-pricing">
+<h1>Breakthroughs in Option Pricing<a class="headerlink" href="#breakthroughs-in-option-pricing" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/options.html"><span class="doc">financialkit.options hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/options/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/options.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“The Black-Scholes formula is still around, even though it depends on
+at least 10 unrealistic assumptions.”
+– attributed to Fischer Black</p>
+</div></blockquote>
+<p>An option gives its holder the right, but not the obligation, to buy or
+sell at a fixed price. Options traded in Amsterdam in the seventeenth
+century and in London and Paris long before anyone could say what one
+was worth. The answer came in stages: a model of random prices in 1900,
+model-free relations in the late 1960s, the Black-Scholes replication
+argument in 1973, then the trees, approximations and inversions that
+turned one formula into a trading tool, and finally the smile that
+showed where the formula fails. This chronology traces the ideas behind
+<a class="reference internal" href="../api/options.html#module-financialkit.options" title="financialkit.options"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.options</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#bachelier-s-theory-of-speculation" id="id1">1900 – Bachelier’s Theory of Speculation</a></p></li>
+<li><p><a class="reference internal" href="#stoll-s-put-call-parity" id="id2">1969 – Stoll’s Put-Call Parity</a></p></li>
+<li><p><a class="reference internal" href="#the-black-scholes-formula" id="id3">1973 – The Black-Scholes Formula</a></p></li>
+<li><p><a class="reference internal" href="#merton-dividends-and-no-arbitrage-bounds" id="id4">1973 – Merton: Dividends and No-Arbitrage Bounds</a></p></li>
+<li><p><a class="reference internal" href="#delta-hedging-and-the-greeks" id="id5">1973 – Delta Hedging and the Greeks</a></p></li>
+<li><p><a class="reference internal" href="#black-s-model-for-futures-options" id="id6">1976 – Black’s Model for Futures Options</a></p></li>
+<li><p><a class="reference internal" href="#latane-and-rendleman-s-implied-volatility" id="id7">1976 – Latané and Rendleman’s Implied Volatility</a></p></li>
+<li><p><a class="reference internal" href="#breeden-litzenberger-state-prices-from-options" id="id8">1978 – Breeden-Litzenberger: State Prices from Options</a></p></li>
+<li><p><a class="reference internal" href="#the-cox-ross-rubinstein-binomial-tree" id="id9">1979 – The Cox-Ross-Rubinstein Binomial Tree</a></p></li>
+<li><p><a class="reference internal" href="#the-rendleman-bartter-tree" id="id10">1979 – The Rendleman-Bartter Tree</a></p></li>
+<li><p><a class="reference internal" href="#garman-kohlhagen-currency-options" id="id11">1983 – Garman-Kohlhagen Currency Options</a></p></li>
+<li><p><a class="reference internal" href="#boyle-s-trinomial-tree" id="id12">1986 – Boyle’s Trinomial Tree</a></p></li>
+<li><p><a class="reference internal" href="#the-barone-adesi-whaley-approximation" id="id13">1987 – The Barone-Adesi-Whaley Approximation</a></p></li>
+<li><p><a class="reference internal" href="#the-volatility-smile" id="id14">1987 – The Volatility Smile</a></p></li>
+<li><p><a class="reference internal" href="#brenner-and-subrahmanyam-s-at-the-money-formula" id="id15">1988 – Brenner and Subrahmanyam’s At-the-Money Formula</a></p></li>
+<li><p><a class="reference internal" href="#the-leisen-reimer-tree" id="id16">1996 – The Leisen-Reimer Tree</a></p></li>
+</ul>
+</nav>
+<section id="bachelier-s-theory-of-speculation">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1900 – Bachelier’s Theory of Speculation</a><a class="headerlink" href="#bachelier-s-theory-of-speculation" title="Link to this heading">#</a></h2>
+<p>Louis Bachelier’s doctoral thesis, defended at the Sorbonne under Henri
+Poincaré, modelled the price of French government rentes as a random
+walk whose continuous limit is what we now call Brownian motion, five
+years before Einstein’s paper on the subject. He derived the normal
+distribution of price changes, its spread growing with the square root
+of time, and priced the options traded on the Paris Bourse. The thesis
+was largely forgotten until Leonard Savage and Paul Samuelson
+rediscovered it in the 1950s. Its one flaw for stocks, that prices can
+go negative, is harmless for rates and spreads, where the normal model
+is still quoted today.</p>
+<div class="math notranslate nohighlight">
+\[c = e^{-rT}\left[(F - K) N(d) + \sigma_N\sqrt{T}\, n(d)\right],
+\qquad d = \frac{F - K}{\sigma_N\sqrt{T}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.closed_form.bachelier_price()</span></code>
+prices calls and puts in the normal model, with an absolute volatility.
+The example checks it against simulated arithmetic Brownian paths and
+shows the square-root-of-time law.</p>
+<p><em>References:</em> L. Bachelier, “Théorie de la spéculation,” <em>Annales
+scientifiques de l’École Normale Supérieure</em> 17 (1900) 21-86.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In his 1900 thesis Théorie de la spéculation Louis Bachelier modelled the price of a French government bond as a Brownian motion and priced options on it, five years before Einstein&#x27;s paper on Brownian motion. In his model price changes are normal with an absolute volatility \sigma_N, so an at-the-money option is worth \sigma_N\sqrt{T/(2\pi)}: the square-root-of-time law. Below, the formula is checked against simulated arithmetic Brownian paths and compared with Black-Scholes at a matched volatility."><img alt="" src="../_images/sphx_glr_plot_01_bachelier_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/closed_form/plot_01_bachelier.html"><span class="doc">Bachelier’s normal model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bachelier's normal model</div>
+</div></div></section>
+<section id="stoll-s-put-call-parity">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1969 – Stoll’s Put-Call Parity</a><a class="headerlink" href="#stoll-s-put-call-parity" title="Link to this heading">#</a></h2>
+<p>Hans Stoll observed that a long call and a short put with the same
+strike and maturity pay <span class="math notranslate nohighlight">\(S_T - K\)</span> in every state, which is a
+forward contract. Their prices must therefore differ by the value of
+that forward, whatever model drives the stock. The relation was known
+to traders, who used conversions and reversals to turn calls into puts,
+but Stoll’s paper made it the first piece of option theory that needs
+no assumption about the distribution of prices.</p>
+<div class="math notranslate nohighlight">
+\[c - p = S e^{-qT} - K e^{-rT}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.parity.put_call_parity()</span></code>
+gives one leg from the other, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">parity_residual()</span></code> measures the
+arbitrage profit in a mispriced pair. The example shows the residual
+vanishing for Black-Scholes prices and the riskless payoff of a reversal.</p>
+<p><em>References:</em> H. R. Stoll, “The Relationship Between Put and Call Option
+Prices,” <em>Journal of Finance</em> 24 (1969) 801-824.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Hans Stoll (1969) showed that a European call, a put and the stock are tied together with no model at all: buying a call and selling a put with the same strike and maturity replicates a forward, so"><img alt="" src="../_images/sphx_glr_plot_02_stoll_put_call_parity_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/closed_form/plot_02_stoll_put_call_parity.html"><span class="doc">Stoll’s put-call parity</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Stoll's put-call parity</div>
+</div></div></section>
+<section id="the-black-scholes-formula">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1973 – The Black-Scholes Formula</a><a class="headerlink" href="#the-black-scholes-formula" title="Link to this heading">#</a></h2>
+<p>Fischer Black and Myron Scholes assumed that the stock follows geometric
+Brownian motion and that trading is continuous and frictionless. A
+portfolio of the option and the right number of shares is then
+instantaneously riskless, so it must earn the risk-free rate. That
+yields a partial differential equation whose solution for a European
+call does not involve the stock’s expected return. The paper was
+rejected twice before the <em>Journal of Political Economy</em> published it,
+weeks after the Chicago Board Options Exchange opened. Scholes and
+Robert Merton received the 1997 Nobel prize in economics; Black had died
+in 1995.</p>
+<div class="math notranslate nohighlight">
+\[c = S N(d_1) - K e^{-rT} N(d_2), \qquad
+d_{1,2} = \frac{\ln(S/K) + (r \pm \sigma^2/2) T}{\sigma\sqrt{T}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.closed_form.black_scholes_price()</span></code>
+broadcasts over arrays of strikes, maturities and spots. The example
+checks it against a risk-neutral Monte Carlo over
+<a class="reference internal" href="../api/integrators.html#financialkit.integrators.gbm_paths" title="financialkit.integrators.gbm_paths"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.gbm_paths()</span></code></a>.</p>
+<p><em>References:</em> F. Black and M. Scholes, “The Pricing of Options and
+Corporate Liabilities,” <em>Journal of Political Economy</em> 81 (1973)
+637-654.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Myron Scholes (1973) showed that a continuously rebalanced position in the stock and a bond replicates a European option when the stock follows geometric Brownian motion, so the option price cannot depend on investors&#x27; expected return:"><img alt="" src="../_images/sphx_glr_plot_03_black_scholes_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/closed_form/plot_03_black_scholes.html"><span class="doc">The Black-Scholes formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Black-Scholes formula</div>
+</div></div></section>
+<section id="merton-dividends-and-no-arbitrage-bounds">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1973 – Merton: Dividends and No-Arbitrage Bounds</a><a class="headerlink" href="#merton-dividends-and-no-arbitrage-bounds" title="Link to this heading">#</a></h2>
+<p>Robert Merton’s <em>Theory of Rational Option Pricing</em>, published the same
+year, separated what follows from the absence of arbitrage alone from
+what needs a model. Among the model-free results are bounds on every
+European option price, and the fact that an American call on a
+non-dividend-paying stock should never be exercised early. Merton then
+rederived the Black-Scholes formula under weaker assumptions and
+extended it to a continuous dividend yield, stochastic interest rates
+and barrier options.</p>
+<div class="math notranslate nohighlight">
+\[\max(S e^{-qT} - K e^{-rT}, 0) \le c \le S e^{-qT}, \qquad
+c = S e^{-qT} N(d_1) - K e^{-rT} N(d_2)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.parity.no_arbitrage_bounds()</span></code>
+gives the bounds, and the <code class="docutils literal notranslate"><span class="pre">q</span></code> argument of
+<code class="xref py py-func docutils literal notranslate"><span class="pre">black_scholes_price()</span></code>
+is Merton’s dividend yield. The example reproduces Hull’s index option
+and shows the prices filling the region between the bounds.</p>
+<p><em>References:</em> R. C. Merton, “Theory of Rational Option Pricing,” <em>Bell
+Journal of Economics and Management Science</em> 4 (1973) 141-183.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Robert Merton&#x27;s Theory of Rational Option Pricing (1973) did two things at once. It derived, with no model, the bounds every European option price must respect,"><img alt="" src="../_images/sphx_glr_plot_04_merton_bounds_and_dividends_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/closed_form/plot_04_merton_bounds_and_dividends.html"><span class="doc">Merton: dividends and no-arbitrage bounds</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton: dividends and no-arbitrage bounds</div>
+</div></div></section>
+<section id="delta-hedging-and-the-greeks">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1973 – Delta Hedging and the Greeks</a><a class="headerlink" href="#delta-hedging-and-the-greeks" title="Link to this heading">#</a></h2>
+<p>The heart of the Black-Scholes argument is the hedge: hold
+<span class="math notranslate nohighlight">\(\Delta = \partial V/\partial S\)</span> shares against each option and
+the position is riskless over the next instant. Traders soon had Greek
+letters for the other partial derivatives: gamma for how quickly delta
+changes, theta for time decay, vega for volatility, rho for rates. The
+pricing equation ties them together, so time decay pays for gamma. In
+practice the hedge is rebalanced discretely, and Boyle and Emanuel
+(1980) showed that the hedging error then has a spread proportional to
+<span class="math notranslate nohighlight">\(1/\sqrt{n}\)</span> in the number of rebalances.</p>
+<div class="math notranslate nohighlight">
+\[\Theta + \tfrac12 \sigma^2 S^2 \Gamma + (r - q) S \Delta = r V\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.greeks.black_scholes_greeks()</span></code>
+returns all first-order Greeks plus vanna and volga, tested against
+<code class="xref py py-func docutils literal notranslate"><span class="pre">finite_difference_greeks()</span></code>.
+<code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.hedging.delta_hedge()</span></code> simulates a
+short option hedged at a chosen frequency. The examples check the
+Greeks and the PDE, then measure the hedging error.</p>
+<p><em>References:</em> F. Black and M. Scholes, <em>Journal of Political Economy</em> 81
+(1973) 637-654; P. P. Boyle and D. Emanuel, “Discretely Adjusted Option
+Hedges,” <em>Journal of Financial Economics</em> 8 (1980) 259-282.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The Black-Scholes argument hedges an option with \Delta = \partial V/\partial S shares; the other partial derivatives measure how that hedge and the option&#x27;s value respond to everything else. The Greeks, named by traders after the 1973 paper, satisfy the pricing PDE itself,"><img alt="" src="../_images/sphx_glr_plot_01_greeks_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/greeks/plot_01_greeks.html"><span class="doc">The Black-Scholes Greeks</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Black-Scholes Greeks</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Black and Scholes priced an option by showing that a dealer who sells it and holds \Delta shares, rebalancing continuously, carries no risk. Real hedges are rebalanced a finite number of times. The dealer&#x27;s terminal P&amp;L then has mean zero but a spread that shrinks like 1/\sqrt{n} in the number of rebalances (Boyle and Emanuel 1980), and the hedge works whatever the stock&#x27;s real-world drift."><img alt="" src="../_images/sphx_glr_plot_02_delta_hedging_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/greeks/plot_02_delta_hedging.html"><span class="doc">Delta hedging in discrete time</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Delta hedging in discrete time</div>
+</div></div></section>
+<section id="black-s-model-for-futures-options">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1976 – Black’s Model for Futures Options</a><a class="headerlink" href="#black-s-model-for-futures-options" title="Link to this heading">#</a></h2>
+<p>Fischer Black adapted the formula to commodity contracts. Entering a
+futures position costs nothing, so the futures price has zero drift
+under the risk-neutral measure, and the option formula keeps its shape
+with the futures price in place of the spot. Because it needs only a
+forward price and a discount factor, Black-76 became the market’s
+quoting convention for options on bonds, caps, floors and swaptions as
+well.</p>
+<div class="math notranslate nohighlight">
+\[c = e^{-rT}\left[F N(d_1) - K N(d_2)\right], \qquad
+d_{1,2} = \frac{\ln(F/K) \pm \sigma^2 T/2}{\sigma\sqrt{T}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.closed_form.black76_price()</span></code>
+is the only Black-76 implementation in financialkit; the
+Black-Scholes-Merton and Garman-Kohlhagen pricers call it on the
+forward. The example reproduces Hull’s futures put and the equivalence
+with Black-Scholes.</p>
+<p><em>References:</em> F. Black, “The Pricing of Commodity Contracts,” <em>Journal
+of Financial Economics</em> 3 (1976) 167-179.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Fischer Black (1976) priced options on commodity futures. A futures contract costs nothing to enter, so its risk-neutral drift is zero and the Black-Scholes argument gives"><img alt="" src="../_images/sphx_glr_plot_05_black76_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/closed_form/plot_05_black76.html"><span class="doc">Black-76: options on futures</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black-76: options on futures</div>
+</div></div></section>
+<section id="latane-and-rendleman-s-implied-volatility">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1976 – Latané and Rendleman’s Implied Volatility</a><a class="headerlink" href="#latane-and-rendleman-s-implied-volatility" title="Link to this heading">#</a></h2>
+<p>Every input to the Black-Scholes formula can be observed except the
+volatility. Henry Latané and Richard Rendleman inverted the formula,
+solving for the volatility that makes the model price equal the market
+price, and found that these implied standard deviations predicted
+future volatility better than historical estimates. Quoting options by
+implied volatility instead of price soon became standard, because it
+makes options with different strikes and maturities comparable.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\text{imp}}: \quad C_{\text{BS}}(S, K, T, r, \sigma_{\text{imp}}) = C_{\text{market}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.implied_vol.implied_volatility()</span></code>
+checks Merton’s bounds, then brackets the unique root for
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brentq.html#scipy.optimize.brentq" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.brentq()</span></code></a>. The example shows the monotone price
+curve and the error raised for an arbitrageable price.</p>
+<p><em>References:</em> H. A. Latané and R. J. Rendleman, “Standard Deviations of
+Stock Price Ratios Implied in Option Prices,” <em>Journal of Finance</em> 31
+(1976) 369-381.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Every input to Black-Scholes is observable except the volatility. Henry Latané and Richard Rendleman (1976) turned the formula around: given a market price, solve for the volatility that reproduces it. The price is strictly increasing in \sigma between Merton&#x27;s bounds, so the root is unique; it exists only for prices strictly inside them."><img alt="" src="../_images/sphx_glr_plot_01_implied_volatility_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/implied_vol/plot_01_implied_volatility.html"><span class="doc">Latané-Rendleman implied volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Latané-Rendleman implied volatility</div>
+</div></div></section>
+<section id="breeden-litzenberger-state-prices-from-options">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1978 – Breeden-Litzenberger: State Prices from Options</a><a class="headerlink" href="#breeden-litzenberger-state-prices-from-options" title="Link to this heading">#</a></h2>
+<p>Douglas Breeden and Robert Litzenberger noticed that a butterfly spread
+of calls around a strike pays off only if the stock ends near that
+strike. In the limit, its price is the Arrow-Debreu price of that
+state, so the second derivative of the call price in the strike is the
+discounted risk-neutral density. Option prices thus reveal the market’s
+entire distribution for the terminal price, not just a volatility.</p>
+<div class="math notranslate nohighlight">
+\[f(K) = e^{rT} \frac{\partial^2 c}{\partial K^2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.density.breeden_litzenberger_density()</span></code>
+takes the three-point second difference on any strictly increasing
+strike grid. The example recovers the lognormal from Black-Scholes
+prices and a bimodal density from a two-regime market.</p>
+<p><em>References:</em> D. T. Breeden and R. H. Litzenberger, “Prices of
+State-Contingent Claims Implicit in Option Prices,” <em>Journal of
+Business</em> 51 (1978) 621-651.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Douglas Breeden and Robert Litzenberger (1978) showed that the second strike derivative of the call price is the discounted risk-neutral density of the terminal price,"><img alt="" src="../_images/sphx_glr_plot_02_breeden_litzenberger_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/implied_vol/plot_02_breeden_litzenberger.html"><span class="doc">Breeden-Litzenberger risk-neutral density</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Breeden-Litzenberger risk-neutral density</div>
+</div></div></section>
+<section id="the-cox-ross-rubinstein-binomial-tree">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1979 – The Cox-Ross-Rubinstein Binomial Tree</a><a class="headerlink" href="#the-cox-ross-rubinstein-binomial-tree" title="Link to this heading">#</a></h2>
+<p>John Cox, Stephen Ross and Mark Rubinstein replaced continuous trading
+with a stock that moves up or down by a fixed factor in each period.
+One period at a time, a call is replicated by shares and a bond, which
+gives risk-neutral pricing with elementary algebra, and the
+Black-Scholes formula reappears as the number of periods grows. The
+tree did more than simplify the teaching: backward induction checks for
+early exercise at every node, so it prices American options, which no
+closed form did.</p>
+<div class="math notranslate nohighlight">
+\[u = e^{\sigma\sqrt{\Delta t}} = 1/d, \qquad
+p = \frac{e^{(r - q)\Delta t} - d}{u - d}, \qquad
+V_i = e^{-r\Delta t}\left[p V_{i+1}^{u} + (1 - p) V_{i+1}^{d}\right]\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/options.html#financialkit.options.CRRTree" title="financialkit.options.systems.trees.CRRTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.options.systems.trees.CRRTree</span></code></a>
+values European and American options and records the early-exercise
+boundary. The examples show the <span class="math notranslate nohighlight">\(1/n\)</span> convergence to
+Black-Scholes, reproduce Hull’s five-step American put, and plot the
+put’s exercise boundary.</p>
+<p><em>References:</em> J. C. Cox, S. A. Ross and M. Rubinstein, “Option Pricing:
+A Simplified Approach,” <em>Journal of Financial Economics</em> 7 (1979)
+229-263.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John Cox, Stephen Ross and Mark Rubinstein (1979) showed that the Black-Scholes price is the limit of a much simpler model: in each short period the stock moves up by u = e^{\sigma\sqrt{\Delta t}} or down by d = 1/u, and the option is replicated one step at a time. The risk-neutral probability p = (e^{r\Delta t} - d)/(u - d) falls out of the replication, and backward induction prices any payoff. The error shrinks like 1/n, oscillating as the strike moves between nodes."><img alt="" src="../_images/sphx_glr_plot_01_crr_convergence_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/trees/plot_01_crr_convergence.html"><span class="doc">Cox-Ross-Rubinstein: the binomial tree converges to Black-Scholes</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cox-Ross-Rubinstein: the binomial tree converges to Black-Scholes</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The binomial tree&#x27;s real advantage over a closed form is early exercise. At each node an American option is worth the larger of its continuation value and its immediate exercise value, so backward induction prices it as easily as a European option. For a put, early exercise is optimal once the stock falls below a critical price S^*(t) that rises towards the strike as expiry approaches."><img alt="" src="../_images/sphx_glr_plot_02_crr_american_put_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/trees/plot_02_crr_american_put.html"><span class="doc">Cox-Ross-Rubinstein: the American put and its exercise boundary</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cox-Ross-Rubinstein: the American put and its exercise boundary</div>
+</div></div></section>
+<section id="the-rendleman-bartter-tree">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1979 – The Rendleman-Bartter Tree</a><a class="headerlink" href="#the-rendleman-bartter-tree" title="Link to this heading">#</a></h2>
+<p>Richard Rendleman and Brit Bartter published a two-state option model
+independently, in the same year. They centred each step on the drift
+of the log price rather than on today’s price, so the up and down moves
+are nearly equally likely and the lattice drifts with the stock. Both
+trees match the first two moments of the log return in the limit and
+converge to Black-Scholes at the same rate; the two parametrizations
+are the prototypes of the many binomial schemes that followed.</p>
+<div class="math notranslate nohighlight">
+\[\ln u, \ln d = (r - q - \tfrac12\sigma^2)\Delta t \pm \sigma\sqrt{\Delta t}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/options.html#financialkit.options.RendlemanBartterTree" title="financialkit.options.systems.trees.RendlemanBartterTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.options.systems.trees.RendlemanBartterTree</span></code></a>
+shares the backward induction of the other binomial trees. The example
+compares its probabilities and node layout with CRR’s and plots both
+convergence curves.</p>
+<p><em>References:</em> R. J. Rendleman and B. J. Bartter, “Two-State Option
+Pricing,” <em>Journal of Finance</em> 34 (1979) 1093-1110.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Richard Rendleman and Brit Bartter (1979) published the two-state model in the same year as Cox, Ross and Rubinstein, but centred each step on the drift instead of on today&#x27;s price:"><img alt="" src="../_images/sphx_glr_plot_03_rendleman_bartter_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/trees/plot_03_rendleman_bartter.html"><span class="doc">The Rendleman-Bartter tree</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Rendleman-Bartter tree</div>
+</div></div></section>
+<section id="garman-kohlhagen-currency-options">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1983 – Garman-Kohlhagen Currency Options</a><a class="headerlink" href="#garman-kohlhagen-currency-options" title="Link to this heading">#</a></h2>
+<p>Exchange-traded currency options began on the Philadelphia Stock
+Exchange in December 1982. Mark Garman and Steven Kohlhagen priced them
+by treating a unit of foreign currency as an asset that pays the
+foreign interest rate continuously, just as Merton’s stock pays a
+dividend yield. The formula also makes the symmetry of FX options
+explicit: a call on one currency is a put on the other.</p>
+<div class="math notranslate nohighlight">
+\[c = S e^{-r_f T} N(d_1) - K e^{-r_d T} N(d_2)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.closed_form.garman_kohlhagen_price()</span></code>
+is Black-Scholes-Merton with <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">=</span> <span class="pre">r_f</span></code>. The example reproduces Haug’s
+currency call and checks the foreign-domestic symmetry.</p>
+<p><em>References:</em> M. B. Garman and S. W. Kohlhagen, “Foreign Currency Option
+Values,” <em>Journal of International Money and Finance</em> 2 (1983)
+231-237.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Mark Garman and Steven Kohlhagen (1983) noticed that a unit of foreign currency is an asset that pays the foreign interest rate r_f, just as a stock pays a dividend yield. Merton&#x27;s dividend formula then prices FX options:"><img alt="" src="../_images/sphx_glr_plot_06_garman_kohlhagen_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/closed_form/plot_06_garman_kohlhagen.html"><span class="doc">Garman-Kohlhagen currency options</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Garman-Kohlhagen currency options</div>
+</div></div></section>
+<section id="boyle-s-trinomial-tree">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">1986 – Boyle’s Trinomial Tree</a><a class="headerlink" href="#boyle-s-trinomial-tree" title="Link to this heading">#</a></h2>
+<p>Phelim Boyle, who had introduced Monte Carlo option pricing in 1977,
+added a third, unchanged branch to each step of the lattice. With
+three probabilities he could match the mean and variance of the next
+price exactly at every step, and a stretch parameter <span class="math notranslate nohighlight">\(\lambda\)</span>
+controlled how far apart the nodes were. The trinomial tree typically
+reaches a given accuracy with fewer steps, and it is the lattice that
+explicit finite-difference schemes for the Black-Scholes equation turn
+out to be.</p>
+<div class="math notranslate nohighlight">
+\[u = e^{\lambda\sigma\sqrt{\Delta t}}, \qquad
+p_u u + p_m + p_d u^{-1} = e^{(r - q)\Delta t}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/options.html#financialkit.options.TrinomialTree" title="financialkit.options.systems.trees.TrinomialTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.options.systems.trees.TrinomialTree</span></code></a>
+uses Boyle’s moment-matching probabilities. The example verifies the
+moments, compares convergence with CRR and varies the stretch.</p>
+<p><em>References:</em> P. P. Boyle, “Option Valuation Using a Three-Jump
+Process,” <em>International Options Journal</em> 3 (1986) 7-12.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Phelim Boyle (1986) added a third, flat branch to the binomial step. With u = e^{\lambda\sigma\sqrt{\Delta t}}, d = 1/u and a stretch \lambda &gt; 1, the three probabilities are chosen to match the risk-neutral mean and variance of the next price exactly. The extra branch makes the lattice smoother: for the same number of steps the trinomial tree is usually more accurate than the binomial one."><img alt="" src="../_images/sphx_glr_plot_04_boyle_trinomial_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/trees/plot_04_boyle_trinomial.html"><span class="doc">Boyle’s trinomial tree</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Boyle's trinomial tree</div>
+</div></div></section>
+<section id="the-barone-adesi-whaley-approximation">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">1987 – The Barone-Adesi-Whaley Approximation</a><a class="headerlink" href="#the-barone-adesi-whaley-approximation" title="Link to this heading">#</a></h2>
+<p>Trees price American options but are slow when a trader needs
+thousands of prices. Giovanni Barone-Adesi and Robert Whaley, following
+Lawrence MacMillan (1986), noted that the early-exercise premium itself
+solves the Black-Scholes equation. Neglecting one small term turns it
+into an ordinary differential equation with power-law solutions, and
+smooth pasting at a critical stock price fixes the remaining constant.
+The result needs a single scalar root search and is accurate to a few
+cents.</p>
+<div class="math notranslate nohighlight">
+\[P = p + A_1 \left(\frac{S}{S^{**}}\right)^{q_1} \quad (S &gt; S^{**}), \qquad
+P = K - S \quad (S \le S^{**})\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.american.barone_adesi_whaley()</span></code>
+finds the critical price with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brentq.html#scipy.optimize.brentq" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.brentq()</span></code></a> and returns
+it with the American and European values. The example compares speed
+and accuracy with a 2000-step tree.</p>
+<p><em>References:</em> G. Barone-Adesi and R. E. Whaley, “Efficient Analytic
+Approximation of American Option Values,” <em>Journal of Finance</em> 42
+(1987) 301-320; L. W. MacMillan, “Analytic Approximation for the
+American Put Option,” <em>Advances in Futures and Options Research</em> 1
+(1986) 119-139.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Giovanni Barone-Adesi and Robert Whaley (1987), building on MacMillan (1986), found an almost closed-form American price. The early-exercise premium solves the Black-Scholes PDE; dropping one small time-derivative term leaves an ordinary differential equation with power-law solutions, and smooth pasting at a critical price S^* pins down the coefficient. One scalar root replaces a whole lattice."><img alt="" src="../_images/sphx_glr_plot_05_barone_adesi_whaley_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/trees/plot_05_barone_adesi_whaley.html"><span class="doc">The Barone-Adesi-Whaley approximation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Barone-Adesi-Whaley approximation</div>
+</div></div></section>
+<section id="the-volatility-smile">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">1987 – The Volatility Smile</a><a class="headerlink" href="#the-volatility-smile" title="Link to this heading">#</a></h2>
+<p>Under Black-Scholes every option on the same stock and maturity has
+the same implied volatility. Before October 1987 index options came
+close to that. After the crash of 19 October, when the S&amp;P 500 fell
+by about 20% in a day, out-of-the-money puts became permanently
+expensive, and implied volatility has fallen steeply with the strike
+ever since. Mark Rubinstein documented the change and built implied
+trees to fit it. The smile is the market’s correction to the lognormal
+assumption: fat tails and a crash premium.</p>
+<div class="math notranslate nohighlight">
+\[K \mapsto \sigma_{\text{imp}}(K, T) \neq \text{constant}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.implied_vol.implied_vol_smile()</span></code>
+inverts a strip of prices into a
+<a class="reference internal" href="../api/options.html#financialkit.options.SmileResult" title="financialkit.options.core.base.SmileResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmileResult</span></code></a>. The example shows
+a flat smile from Black-Scholes prices, a symmetric smile from
+uncertain volatility, and a skew from a small probability of a crash.</p>
+<p><em>References:</em> M. Rubinstein, “Implied Binomial Trees,” <em>Journal of
+Finance</em> 49 (1994) 771-818.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Under Black-Scholes every strike has the same implied volatility. Before October 1987 index options roughly agreed; after the crash, low-strike puts became permanently more expensive, and implied volatility fell steeply with the strike (Rubinstein 1994). Inverting a strip of option prices strike by strike shows the market&#x27;s departure from the lognormal. Here the prices come from two simple arbitrage-free models: a mixture of volatilities (a symmetric smile) and a mixture of a normal regime with a crash regime (a skew)."><img alt="" src="../_images/sphx_glr_plot_03_volatility_smile_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/implied_vol/plot_03_volatility_smile.html"><span class="doc">The volatility smile</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The volatility smile</div>
+</div></div></section>
+<section id="brenner-and-subrahmanyam-s-at-the-money-formula">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">1988 – Brenner and Subrahmanyam’s At-the-Money Formula</a><a class="headerlink" href="#brenner-and-subrahmanyam-s-at-the-money-formula" title="Link to this heading">#</a></h2>
+<p>Menachem Brenner and Marti Subrahmanyam showed that for an option
+struck at the forward the Black-Scholes formula is almost linear in
+volatility. A first-order expansion gives an implied volatility from a
+single division, close enough for a trader on the floor and a good
+starting point for an exact solver. The relative error is about
+<span class="math notranslate nohighlight">\(-\sigma^2 T / 24\)</span>, so it is tiny for short, at-the-money
+options and grows away from the money.</p>
+<div class="math notranslate nohighlight">
+\[\sigma \approx \sqrt{\frac{2\pi}{T}}\, \frac{c}{S e^{-qT}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.systems.implied_vol.brenner_subrahmanyam_vol()</span></code>
+applies the formula. The example compares it with the exact inversion
+across volatilities, maturities and strikes.</p>
+<p><em>References:</em> M. Brenner and M. G. Subrahmanyam, “A Simple Formula to
+Compute the Implied Standard Deviation,” <em>Financial Analysts Journal</em>
+44(5) (1988) 80-83.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Menachem Brenner and Marti Subrahmanyam (1988) gave traders a pocket-calculator implied volatility. At the money forward,"><img alt="" src="../_images/sphx_glr_plot_04_brenner_subrahmanyam_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/implied_vol/plot_04_brenner_subrahmanyam.html"><span class="doc">The Brenner-Subrahmanyam approximation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Brenner-Subrahmanyam approximation</div>
+</div></div></section>
+<section id="the-leisen-reimer-tree">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">1996 – The Leisen-Reimer Tree</a><a class="headerlink" href="#the-leisen-reimer-tree" title="Link to this heading">#</a></h2>
+<p>The CRR price zigzags around Black-Scholes as the number of steps
+grows, because the strike moves between nodes. Dietmar Leisen and
+Matthias Reimer chose the tree’s probabilities instead of its jumps:
+they mapped Black-Scholes’s <span class="math notranslate nohighlight">\(d_1\)</span> and <span class="math notranslate nohighlight">\(d_2\)</span> onto the
+binomial distribution with the Peizer-Pratt normal approximation. The
+tree is then centred on the strike, the oscillation disappears, and
+European prices converge at order <span class="math notranslate nohighlight">\(1/n^2\)</span>, so a 51-step tree is
+more accurate than a CRR tree with thousands of steps.</p>
+<div class="math notranslate nohighlight">
+\[p = h(d_2), \quad p' = h(d_1), \quad
+u = e^{(r - q)\Delta t} \frac{p'}{p}, \quad
+d = \frac{e^{(r - q)\Delta t} - p u}{1 - p}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/options.html#financialkit.options.LeisenReimerTree" title="financialkit.options.systems.trees.LeisenReimerTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.options.systems.trees.LeisenReimerTree</span></code></a>
+uses Peizer-Pratt method 2 and rounds the step count up to an odd
+number. The example measures its second-order convergence and its
+smooth convergence for American puts.</p>
+<p><em>References:</em> D. P. J. Leisen and M. Reimer, “Binomial Models for Option
+Valuation – Examining and Improving Convergence,” <em>Applied Mathematical
+Finance</em> 3 (1996) 319-346.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Dietmar Leisen and Matthias Reimer (1996) removed the binomial tree&#x27;s oscillation. Instead of fixing u and d from the volatility, they choose the probabilities so that the tree&#x27;s cumulative binomial distribution reproduces Black-Scholes&#x27;s N(d_2) and N(d_1), using the Peizer-Pratt inversion of the normal onto the binomial. The tree is centred on the strike, and European prices converge smoothly at order 1/n^2."><img alt="" src="../_images/sphx_glr_plot_06_leisen_reimer_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/options/trees/plot_06_leisen_reimer.html"><span class="doc">The Leisen-Reimer tree</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Leisen-Reimer tree</div>
+</div></div></section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fixed_income_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Fixed Income</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exotic_options_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Exotic Options</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bachelier-s-theory-of-speculation">1900 – Bachelier’s Theory of Speculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stoll-s-put-call-parity">1969 – Stoll’s Put-Call Parity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-black-scholes-formula">1973 – The Black-Scholes Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merton-dividends-and-no-arbitrage-bounds">1973 – Merton: Dividends and No-Arbitrage Bounds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delta-hedging-and-the-greeks">1973 – Delta Hedging and the Greeks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-s-model-for-futures-options">1976 – Black’s Model for Futures Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latane-and-rendleman-s-implied-volatility">1976 – Latané and Rendleman’s Implied Volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breeden-litzenberger-state-prices-from-options">1978 – Breeden-Litzenberger: State Prices from Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cox-ross-rubinstein-binomial-tree">1979 – The Cox-Ross-Rubinstein Binomial Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rendleman-bartter-tree">1979 – The Rendleman-Bartter Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#garman-kohlhagen-currency-options">1983 – Garman-Kohlhagen Currency Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boyle-s-trinomial-tree">1986 – Boyle’s Trinomial Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-barone-adesi-whaley-approximation">1987 – The Barone-Adesi-Whaley Approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-volatility-smile">1987 – The Volatility Smile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brenner-and-subrahmanyam-s-at-the-money-formula">1988 – Brenner and Subrahmanyam’s At-the-Money Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-leisen-reimer-tree">1996 – The Leisen-Reimer Tree</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/options_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

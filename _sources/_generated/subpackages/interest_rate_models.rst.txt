@@ -1,0 +1,26 @@
+financialkit.interest_rate_models
+=================================
+
+Merton, Vasicek, CIR and affine short rates, Ho-Lee, Hull-White, G2++ and Black-Derman-Toy fitted to the curve, Jamshidian bond options and swaptions, Black caps and swaptions, and HJM.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/interest_rate_models_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/interest_rate_models/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/interest_rate_models
+      :link-type: doc
+
+      Every public class and function.
+

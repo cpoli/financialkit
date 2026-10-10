@@ -1,0 +1,88 @@
+
+
+.. _sphx_glr_api_gallery_pde_methods_stability:
+
+Stability
+---------
+
+When a scheme's errors grow without bound: the CFL time-step limit of the
+explicit scheme, von Neumann's Fourier analysis, and Rannacher's cure for
+Crank-Nicolson's undamped oscillations.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Courant, Friedrichs and Lewy (1928) proved that an explicit difference scheme cannot converge if its time step outruns the way information spreads across the grid. For the diffusion in the Black-Scholes equation the bound ties the time step to the square of the spot step: \Delta t \lesssim 1/(\sigma^2 M^2). explicit_stability computes the limit from the eigenvalues of the discrete operator; a step 3% below it gives the right price, a step 30% above it blows up from rounding errors near the top of the grid.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/stability/images/thumb/sphx_glr_plot_01_cfl_explicit_blowup_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/stability/plot_01_cfl_explicit_blowup`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Courant-Friedrichs-Lewy</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John von Neumann&#x27;s method, used at Los Alamos in the 1940s and published in 1950, inserts a single Fourier mode V_j^n = g^n e^{ij\xi} into a constant-coefficient scheme. The mode grows when its amplification factor has |g(\xi)| &gt; 1, so stability means |g| \le 1 for every \xi. For the theta-scheme in log-spot, g = (1 + (1-\theta)z)/(1 - \theta z) with z \approx -\sigma^2\Delta t/\Delta x^2 (1 - \cos\xi): von_neumann_amplification shows the explicit scheme failing above a diffusion number of one, Crank-Nicolson never growing but barely damping the highest modes, and the implicit scheme damping them all.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/stability/images/thumb/sphx_glr_plot_02_von_neumann_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/stability/plot_02_von_neumann`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Von Neumann stability analysis</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Crank-Nicolson is stable, but its amplification factor tends to -1 for the stiffest modes, so the high-frequency error excited by a payoff kink is never damped: it just flips sign every step. With large time steps the price looks fine while delta and gamma oscillate around the strike. Rolf Rannacher (1984) proposed starting with a few fully implicit steps, which damp those modes, before switching to Crank-Nicolson. CrankNicolson with rannacher_steps=2 replaces the first two steps by four implicit half steps.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/stability/images/thumb/sphx_glr_plot_03_rannacher_smoothing_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/stability/plot_03_rannacher_smoothing`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rannacher smoothing</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/pde_methods/stability/plot_01_cfl_explicit_blowup
+   /api/gallery/pde_methods/stability/plot_02_von_neumann
+   /api/gallery/pde_methods/stability/plot_03_rannacher_smoothing
+

@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_exotic_options_compound:
+
+Compound, forward-start and chooser options
+-------------------------------------------
+
+Options whose payoff is itself an option: Geske's options on options,
+Rubinstein's forward-start options and choosers.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Geske (1979) priced an option on an option. His motivation was corporate finance: if equity is a call on the firm&#x27;s assets, a stock option is a call on a call, and its implied volatility should rise as the stock falls and leverage grows. The compound call is exercised at T_1 only if the underlying option is worth more than the compound strike, which happens above a critical spot I, and the joint law of the price at T_1 and T_2 brings in the bivariate normal distribution with correlation \sqrt{T_1/T_2}.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/compound/images/thumb/sphx_glr_plot_01_geske_compound_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/compound/plot_01_geske_compound`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Geske compound options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A forward-start option is struck at \alpha S_t on a future date t, the way executive options are granted at the money. Mark Rubinstein (1990) noticed that on the start date it is worth S_t times the option on a unit spot, so today it is worth">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/compound/images/thumb/sphx_glr_plot_02_forward_start_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/compound/plot_02_forward_start`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rubinstein forward-start options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="&quot;Pay now, choose later&quot;: the holder of a simple chooser decides at a date t whether the option is a call or a put, both struck at K and expiring at T. Mark Rubinstein (1991) used put-call parity to write the choice as a call plus a put:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/compound/images/thumb/sphx_glr_plot_03_chooser_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/compound/plot_03_chooser`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rubinstein choosers</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/exotic_options/compound/plot_01_geske_compound
+   /api/gallery/exotic_options/compound/plot_02_forward_start
+   /api/gallery/exotic_options/compound/plot_03_chooser
+

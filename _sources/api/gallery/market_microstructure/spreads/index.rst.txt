@@ -1,0 +1,104 @@
+
+
+.. _sphx_glr_api_gallery_market_microstructure_spreads:
+
+Spreads
+-------
+
+The price of immediacy, measured from quotes, from trades, and from prices alone.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Harold Demsetz (1968) argued that a trader who wants to trade now pays the dealer the spread for standing ready, and that the spread shrinks as trading activity grows, because a busy dealer turns over inventory faster. Today the spread is measured three ways: the quoted spread on the screen, the effective spread actually paid relative to the midquote, and the realized spread the liquidity provider keeps once the price has moved; the difference is the price impact, lost to better-informed traders.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/spreads/images/thumb/sphx_glr_plot_01_demsetz_spreads_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/spreads/plot_01_demsetz_spreads`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Demsetz: the bid-ask spread as the price of immediacy</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Roll (1984) noticed that trades bouncing between bid and ask make successive price changes negatively correlated even when the underlying value is a random walk. With equally likely buys and sells, \operatorname{cov}(\Delta p_t, \Delta p_{t-1}) = -s^2/4, so the spread can be read off a price series with no quotes at all:">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/spreads/images/thumb/sphx_glr_plot_02_roll_estimator_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/spreads/plot_02_roll_estimator`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Roll's spread estimator</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Trade records do not say who initiated a trade. Charles Lee and Mark Ready (1991) signed trades above the midquote as buys and below it as sells, used the tick test for trades at the midquote, and compared each trade with the quote of five seconds earlier: on the NYSE the quote revision a trade caused was often time-stamped before the trade itself, so the contemporaneous quote had already moved toward the trade price.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/spreads/images/thumb/sphx_glr_plot_03_lee_ready_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/spreads/plot_03_lee_ready`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lee and Ready's trade classification</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Daily highs are usually buys at the ask and lows sells at the bid, so the high-low range contains the spread as well as volatility. Shane Corwin and Paul Schultz (2012) noticed that the volatility part of the squared range doubles over two days while the spread part does not, and solved for the spread from two one-day ranges and one two-day range. It needs only daily data, yet is far more precise than Roll&#x27;s estimator from daily closes.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/spreads/images/thumb/sphx_glr_plot_04_corwin_schultz_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/spreads/plot_04_corwin_schultz`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Corwin and Schultz's high-low spread estimator</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/market_microstructure/spreads/plot_01_demsetz_spreads
+   /api/gallery/market_microstructure/spreads/plot_02_roll_estimator
+   /api/gallery/market_microstructure/spreads/plot_03_lee_ready
+   /api/gallery/market_microstructure/spreads/plot_04_corwin_schultz
+

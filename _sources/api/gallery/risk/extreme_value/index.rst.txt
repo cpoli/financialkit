@@ -1,0 +1,69 @@
+
+
+.. _sphx_glr_api_gallery_risk_extreme_value:
+
+Extreme value theory
+--------------------
+
+The laws of maxima and of exceedances over high thresholds, and the tail
+risk figures they extrapolate.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fisher and Tippett (1928) proved that the largest of n i.i.d. losses, once centred and scaled, can converge to only three limits: Fréchet for power-law tails, Gumbel for exponential-type tails and Weibull for bounded ones. They are the generalized extreme value law">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/extreme_value/images/thumb/sphx_glr_plot_01_fisher_tippett_gev_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/extreme_value/plot_01_fisher_tippett_gev`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fisher-Tippett: the three laws of the maximum</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pickands (1975) and Balkema and de Haan (1974) proved that the excess of a loss over a high threshold u is approximately generalized Pareto, whatever the parent distribution in the Fréchet, Gumbel or Weibull domain. Fitting that law to the few largest losses gives VaR and expected shortfall at levels the data barely reach:">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/extreme_value/images/thumb/sphx_glr_plot_02_peaks_over_threshold_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/extreme_value/plot_02_peaks_over_threshold`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Peaks over threshold: Pickands-Balkema-de Haan</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/risk/extreme_value/plot_01_fisher_tippett_gev
+   /api/gallery/risk/extreme_value/plot_02_peaks_over_threshold
+

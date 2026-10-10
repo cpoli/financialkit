@@ -1,0 +1,50 @@
+
+
+.. _sphx_glr_api_gallery_credit_scoring:
+
+Scoring
+-------
+
+Telling failing firms from survivors with accounting ratios.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Altman (1968) fed five accounting ratios of 33 bankrupt and 33 surviving manufacturers into a linear discriminant analysis and found">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/scoring/images/thumb/sphx_glr_plot_01_altman_z_score_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/scoring/plot_01_altman_z_score`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Altman's Z-score</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/credit/scoring/plot_01_altman_z_score
+

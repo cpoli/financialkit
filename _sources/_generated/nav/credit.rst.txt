@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.credit hub </_generated/subpackages/credit>` · :doc:`History </history/credit_breakthroughs>` · :doc:`Examples </api/gallery/credit/index>` · :doc:`API reference </api/credit>`

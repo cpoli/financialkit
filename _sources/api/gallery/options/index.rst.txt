@@ -1,0 +1,478 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of ``financialkit.options``:
+the closed-form pricers from Bachelier to Garman-Kohlhagen, put-call
+parity and the no-arbitrage bounds, the Greeks and delta hedging,
+implied volatility, the smile and the risk-neutral density, and the
+binomial and trinomial trees with American early exercise.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/options/<section>/<script>.py``.
+
+Sections
+--------
+
+- **closed_form** -- Bachelier, Stoll's put-call parity, Black-Scholes,
+  Merton's dividends and bounds, Black-76 and Garman-Kohlhagen.
+- **greeks** -- the Black-Scholes Greeks and discrete delta hedging.
+- **implied_vol** -- implied volatility, the Breeden-Litzenberger density,
+  the volatility smile and the Brenner-Subrahmanyam approximation.
+- **trees** -- the Cox-Ross-Rubinstein, Rendleman-Bartter, Boyle
+  trinomial and Leisen-Reimer lattices, and the Barone-Adesi-Whaley
+  American approximation.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Closed-form pricers
+-------------------
+
+European option prices in closed form, from Bachelier's normal model to
+Black-Scholes-Merton and its forward, futures and currency variants, and
+the model-free relations every price must obey.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In his 1900 thesis Théorie de la spéculation Louis Bachelier modelled the price of a French government bond as a Brownian motion and priced options on it, five years before Einstein&#x27;s paper on Brownian motion. In his model price changes are normal with an absolute volatility \sigma_N, so an at-the-money option is worth \sigma_N\sqrt{T/(2\pi)}: the square-root-of-time law. Below, the formula is checked against simulated arithmetic Brownian paths and compared with Black-Scholes at a matched volatility.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/closed_form/images/thumb/sphx_glr_plot_01_bachelier_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/closed_form/plot_01_bachelier`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bachelier's normal model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Hans Stoll (1969) showed that a European call, a put and the stock are tied together with no model at all: buying a call and selling a put with the same strike and maturity replicates a forward, so">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/closed_form/images/thumb/sphx_glr_plot_02_stoll_put_call_parity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/closed_form/plot_02_stoll_put_call_parity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stoll's put-call parity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Myron Scholes (1973) showed that a continuously rebalanced position in the stock and a bond replicates a European option when the stock follows geometric Brownian motion, so the option price cannot depend on investors&#x27; expected return:">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/closed_form/images/thumb/sphx_glr_plot_03_black_scholes_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/closed_form/plot_03_black_scholes`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Black-Scholes formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Merton&#x27;s Theory of Rational Option Pricing (1973) did two things at once. It derived, with no model, the bounds every European option price must respect,">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/closed_form/images/thumb/sphx_glr_plot_04_merton_bounds_and_dividends_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/closed_form/plot_04_merton_bounds_and_dividends`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton: dividends and no-arbitrage bounds</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fischer Black (1976) priced options on commodity futures. A futures contract costs nothing to enter, so its risk-neutral drift is zero and the Black-Scholes argument gives">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/closed_form/images/thumb/sphx_glr_plot_05_black76_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/closed_form/plot_05_black76`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black-76: options on futures</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Mark Garman and Steven Kohlhagen (1983) noticed that a unit of foreign currency is an asset that pays the foreign interest rate r_f, just as a stock pays a dividend yield. Merton&#x27;s dividend formula then prices FX options:">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/closed_form/images/thumb/sphx_glr_plot_06_garman_kohlhagen_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/closed_form/plot_06_garman_kohlhagen`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Garman-Kohlhagen currency options</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Greeks and hedging
+------------------
+
+The sensitivities that the Black-Scholes argument hedges away, and what
+happens when the hedge is rebalanced only a finite number of times.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The Black-Scholes argument hedges an option with \Delta = \partial V/\partial S shares; the other partial derivatives measure how that hedge and the option&#x27;s value respond to everything else. The Greeks, named by traders after the 1973 paper, satisfy the pricing PDE itself,">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/greeks/images/thumb/sphx_glr_plot_01_greeks_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/greeks/plot_01_greeks`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Black-Scholes Greeks</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Black and Scholes priced an option by showing that a dealer who sells it and holds \Delta shares, rebalancing continuously, carries no risk. Real hedges are rebalanced a finite number of times. The dealer&#x27;s terminal P&amp;L then has mean zero but a spread that shrinks like 1/\sqrt{n} in the number of rebalances (Boyle and Emanuel 1980), and the hedge works whatever the stock&#x27;s real-world drift.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/greeks/images/thumb/sphx_glr_plot_02_delta_hedging_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/greeks/plot_02_delta_hedging`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Delta hedging in discrete time</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Implied volatility
+------------------
+
+Reading volatilities and distributions back out of option prices: the
+implied volatility, its at-the-money shortcut, the smile, and the
+risk-neutral density.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Every input to Black-Scholes is observable except the volatility. Henry Latané and Richard Rendleman (1976) turned the formula around: given a market price, solve for the volatility that reproduces it. The price is strictly increasing in \sigma between Merton&#x27;s bounds, so the root is unique; it exists only for prices strictly inside them.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/implied_vol/images/thumb/sphx_glr_plot_01_implied_volatility_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/implied_vol/plot_01_implied_volatility`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Latané-Rendleman implied volatility</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Douglas Breeden and Robert Litzenberger (1978) showed that the second strike derivative of the call price is the discounted risk-neutral density of the terminal price,">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/implied_vol/images/thumb/sphx_glr_plot_02_breeden_litzenberger_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/implied_vol/plot_02_breeden_litzenberger`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Breeden-Litzenberger risk-neutral density</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Under Black-Scholes every strike has the same implied volatility. Before October 1987 index options roughly agreed; after the crash, low-strike puts became permanently more expensive, and implied volatility fell steeply with the strike (Rubinstein 1994). Inverting a strip of option prices strike by strike shows the market&#x27;s departure from the lognormal. Here the prices come from two simple arbitrage-free models: a mixture of volatilities (a symmetric smile) and a mixture of a normal regime with a crash regime (a skew).">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/implied_vol/images/thumb/sphx_glr_plot_03_volatility_smile_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/implied_vol/plot_03_volatility_smile`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The volatility smile</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Menachem Brenner and Marti Subrahmanyam (1988) gave traders a pocket-calculator implied volatility. At the money forward,">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/implied_vol/images/thumb/sphx_glr_plot_04_brenner_subrahmanyam_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/implied_vol/plot_04_brenner_subrahmanyam`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Brenner-Subrahmanyam approximation</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Lattices and American options
+-----------------------------
+
+Binomial and trinomial trees, their convergence to Black-Scholes, early
+exercise of American options, and an analytic approximation to it.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Cox, Stephen Ross and Mark Rubinstein (1979) showed that the Black-Scholes price is the limit of a much simpler model: in each short period the stock moves up by u = e^{\sigma\sqrt{\Delta t}} or down by d = 1/u, and the option is replicated one step at a time. The risk-neutral probability p = (e^{r\Delta t} - d)/(u - d) falls out of the replication, and backward induction prices any payoff. The error shrinks like 1/n, oscillating as the strike moves between nodes.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_01_crr_convergence_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_01_crr_convergence`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox-Ross-Rubinstein: the binomial tree converges to Black-Scholes</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The binomial tree&#x27;s real advantage over a closed form is early exercise. At each node an American option is worth the larger of its continuation value and its immediate exercise value, so backward induction prices it as easily as a European option. For a put, early exercise is optimal once the stock falls below a critical price S^*(t) that rises towards the strike as expiry approaches.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_02_crr_american_put_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_02_crr_american_put`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox-Ross-Rubinstein: the American put and its exercise boundary</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Rendleman and Brit Bartter (1979) published the two-state model in the same year as Cox, Ross and Rubinstein, but centred each step on the drift instead of on today&#x27;s price:">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_03_rendleman_bartter_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_03_rendleman_bartter`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Rendleman-Bartter tree</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Phelim Boyle (1986) added a third, flat branch to the binomial step. With u = e^{\lambda\sigma\sqrt{\Delta t}}, d = 1/u and a stretch \lambda &gt; 1, the three probabilities are chosen to match the risk-neutral mean and variance of the next price exactly. The extra branch makes the lattice smoother: for the same number of steps the trinomial tree is usually more accurate than the binomial one.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_04_boyle_trinomial_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_04_boyle_trinomial`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boyle's trinomial tree</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Giovanni Barone-Adesi and Robert Whaley (1987), building on MacMillan (1986), found an almost closed-form American price. The early-exercise premium solves the Black-Scholes PDE; dropping one small time-derivative term leaves an ordinary differential equation with power-law solutions, and smooth pasting at a critical price S^* pins down the coefficient. One scalar root replaces a whole lattice.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_05_barone_adesi_whaley_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_05_barone_adesi_whaley`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Barone-Adesi-Whaley approximation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Dietmar Leisen and Matthias Reimer (1996) removed the binomial tree&#x27;s oscillation. Instead of fixing u and d from the volatility, they choose the probabilities so that the tree&#x27;s cumulative binomial distribution reproduces Black-Scholes&#x27;s N(d_2) and N(d_1), using the Peizer-Pratt inversion of the normal onto the binomial. The tree is centred on the strike, and European prices converge smoothly at order 1/n^2.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_06_leisen_reimer_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_06_leisen_reimer`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Leisen-Reimer tree</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/options/closed_form/index.rst
+   /api/gallery/options/greeks/index.rst
+   /api/gallery/options/implied_vol/index.rst
+   /api/gallery/options/trees/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: options_python.zip </api/gallery/options/options_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: options_jupyter.zip </api/gallery/options/options_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

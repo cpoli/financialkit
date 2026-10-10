@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_stochastic_volatility_fourier:
+
+Fourier pricing
+---------------
+
+Pricing from the characteristic function: Carr and Madan's FFT, Lewis's
+single integral and Fang and Oosterlee's COS expansion.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Carr and Madan (1999) noticed that the call price, as a function of the log strike k, is not integrable, but e^{\alpha k} C(k) is, and that its Fourier transform is a simple expression in the characteristic function. One fast Fourier transform then prices calls at thousands of strikes at once, for any model with a known characteristic function. The grids are linked: integration spacing \eta and strike spacing \lambda satisfy \lambda\eta = 2\pi/N.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/fourier/images/thumb/sphx_glr_plot_01_carr_madan_fft_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/fourier/plot_01_carr_madan_fft`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Carr and Madan's FFT</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Alan Lewis (2001) moved the Fourier inversion contour to \operatorname{Im} u = -\tfrac12, half way between the strips where the call and the put transforms live. There the price is one real integral,">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/fourier/images/thumb/sphx_glr_plot_02_lewis_formula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/fourier/plot_02_lewis_formula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lewis's single-integral formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fang and Oosterlee (2008) truncated the density of the log return to an interval [a, b] set by its cumulants and expanded it in a cosine series, whose coefficients are read directly off the characteristic function. The payoff&#x27;s cosine coefficients are closed form, so a price is a dot product of two short vectors. For smooth densities the error falls exponentially with the number of terms; for a density with a kink, like short-dated variance gamma, only algebraically.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/fourier/images/thumb/sphx_glr_plot_03_cos_method_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/fourier/plot_03_cos_method`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fang and Oosterlee's COS method</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/stochastic_volatility/fourier/plot_01_carr_madan_fft
+   /api/gallery/stochastic_volatility/fourier/plot_02_lewis_formula
+   /api/gallery/stochastic_volatility/fourier/plot_03_cos_method
+

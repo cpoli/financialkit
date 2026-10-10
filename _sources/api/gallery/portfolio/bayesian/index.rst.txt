@@ -1,0 +1,69 @@
+
+
+.. _sphx_glr_api_gallery_portfolio_bayesian:
+
+Estimation-aware optimization
+-----------------------------
+
+Taming the error in expected returns with a market prior or by
+resampling.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Robert Litterman (1992), at Goldman Sachs, started mean-variance optimization from the expected returns that make the market portfolio optimal, \Pi = \delta\Sigma w_{mkt}, rather than from historical averages. Investors&#x27; views then tilt those returns in proportion to their confidence. This reproduces He and Litterman&#x27;s (1999) seven-country example: the view that German equities will beat the rest of Europe by 5% moves weight into Germany, out of France and the UK, and leaves the other countries&#x27; weights alone.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/bayesian/images/thumb/sphx_glr_plot_01_black_litterman_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/bayesian/plot_01_black_litterman`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black-Litterman: equilibrium plus views</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Michaud (1998) called mean-variance optimizers &quot;estimation-error maximizers&quot;: they put the most weight on the assets whose expected returns were most overestimated. His remedy treats the estimates as one draw among many. Resample histories from them, compute each history&#x27;s frontier, and average the weights rank by rank along the frontier. The resampled portfolios are more diversified and change more gradually with risk than the classical corner solutions.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/bayesian/images/thumb/sphx_glr_plot_02_michaud_resampling_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/bayesian/plot_02_michaud_resampling`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Michaud's resampled efficiency</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/portfolio/bayesian/plot_01_black_litterman
+   /api/gallery/portfolio/bayesian/plot_02_michaud_resampling
+

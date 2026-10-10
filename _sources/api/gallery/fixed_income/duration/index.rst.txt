@@ -1,0 +1,122 @@
+
+
+.. _sphx_glr_api_gallery_fixed_income_duration:
+
+Duration and convexity
+----------------------
+
+From Macaulay's average time to payment to Ho's key rate durations.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Frederick Macaulay (1938) measured a bond&#x27;s &quot;length&quot; not by its maturity but by the present-value-weighted average time to its payments,">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/duration/images/thumb/sphx_glr_plot_01_macaulay_duration_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/duration/plot_01_macaulay_duration`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Macaulay duration</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Hicks (1939) found Macaulay&#x27;s average period again as the elasticity of a capital value with respect to the discount factor. Measured per unit of yield, that elasticity is modified duration,">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/duration/images/thumb/sphx_glr_plot_02_hicks_modified_duration_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/duration/plot_02_hicks_modified_duration`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hicks: duration as an elasticity (modified duration)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fisher and Weil (1971) computed Macaulay&#x27;s weights with each cash flow discounted on its own zero rate instead of the bond&#x27;s single yield,">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/duration/images/thumb/sphx_glr_plot_03_fisher_weil_duration_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/duration/plot_03_fisher_weil_duration`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fisher-Weil duration</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Duration is a tangent, but the price-yield curve bends. Bierwag, Kaufman and Toevs (1983) brought the second-order term into portfolio practice:">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/duration/images/thumb/sphx_glr_plot_04_convexity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/duration/plot_04_convexity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bierwag-Kaufman-Toevs: convexity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A single duration assumes the whole curve moves in parallel. Thomas Ho (1992) shocked the curve one key rate at a time, with triangular shapes that sum to a parallel shift, so a bond&#x27;s risk becomes a vector whose entries add up to its effective duration. Two portfolios with the same duration can have very different key rate profiles.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/duration/images/thumb/sphx_glr_plot_05_ho_key_rate_durations_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/duration/plot_05_ho_key_rate_durations`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ho's key rate durations</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/fixed_income/duration/plot_01_macaulay_duration
+   /api/gallery/fixed_income/duration/plot_02_hicks_modified_duration
+   /api/gallery/fixed_income/duration/plot_03_fisher_weil_duration
+   /api/gallery/fixed_income/duration/plot_04_convexity
+   /api/gallery/fixed_income/duration/plot_05_ho_key_rate_durations
+

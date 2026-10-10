@@ -1,0 +1,161 @@
+
+
+.. _sphx_glr_api_gallery_interest_rate_models_short_rate:
+
+Short-rate models
+-----------------
+
+Models of the instantaneous short rate that produce their own yield
+curve: Merton, Vasicek and Cox-Ingersoll-Ross, the affine family that
+contains them, and the two-factor G2++, all checked against Feynman-Kac
+Monte Carlo.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Feynman&#x27;s path integrals (1948) and Mark Kac&#x27;s proof (1949) tie a parabolic PDE to an expectation over Brownian paths. For a short-rate model the bond-pricing PDE \partial_t P + \mu\,\partial_r P + \tfrac12\sigma^2\partial_{rr} P = rP is solved by">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_01_feynman_kac_bond_price_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_01_feynman_kac_bond_price`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Feynman-Kac: bond prices by Monte Carlo</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Feller (1951) classified the boundaries of diffusions such as the square-root process">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_02_feller_condition_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_02_feller_condition`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Feller's boundary condition</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In Section 6 of &quot;Theory of Rational Option Pricing&quot; (1973), Robert Merton let the short rate follow an arithmetic Brownian motion, dr = \mu\,dt + \sigma\,dW, the first stochastic interest rate in continuous time. Bonds price in closed form,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_03_merton_short_rate_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_03_merton_short_rate`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's Gaussian short rate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Oldrich Vasicek (1977) derived the term structure from a short rate pulled back towards a long-run mean,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_04_vasicek_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_04_vasicek`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Vasicek's mean-reverting short rate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Cox, Jonathan Ingersoll and Stephen Ross (1985) derived the short rate from a general-equilibrium economy and found">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_05_cir_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_05_cir`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox-Ingersoll-Ross: the square-root short rate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Darrell Duffie and Rui Kan (1996) found the common structure behind Vasicek, CIR and their multi-factor extensions. If the state&#x27;s drift and variance are affine in the state,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_06_duffie_kan_affine_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_06_duffie_kan_affine`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Duffie-Kan: affine term structures</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In a one-factor model a single shock moves every yield, so the 1-year and 30-year rates are perfectly correlated, which the data flatly reject. Damiano Brigo and Fabio Mercurio&#x27;s G2++ (2001) adds a second Gaussian factor,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_07_g2pp_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_07_g2pp`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brigo-Mercurio G2++: two Gaussian factors</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/interest_rate_models/short_rate/plot_01_feynman_kac_bond_price
+   /api/gallery/interest_rate_models/short_rate/plot_02_feller_condition
+   /api/gallery/interest_rate_models/short_rate/plot_03_merton_short_rate
+   /api/gallery/interest_rate_models/short_rate/plot_04_vasicek
+   /api/gallery/interest_rate_models/short_rate/plot_05_cir
+   /api/gallery/interest_rate_models/short_rate/plot_06_duffie_kan_affine
+   /api/gallery/interest_rate_models/short_rate/plot_07_g2pp
+

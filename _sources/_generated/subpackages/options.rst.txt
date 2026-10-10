@@ -1,0 +1,26 @@
+financialkit.options
+====================
+
+Bachelier, Black-Scholes-Merton, Black-76 and Garman-Kohlhagen, parity and bounds, the Greeks and delta hedging, implied volatility and the smile, and binomial and trinomial trees.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/options_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/options/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/options
+      :link-type: doc
+
+      Every public class and function.
+

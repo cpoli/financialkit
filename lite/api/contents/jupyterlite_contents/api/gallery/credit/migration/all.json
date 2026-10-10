@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.861720Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.861720Z",
+      "mimetype": null,
+      "name": "plot_03_israel_rosenthal_wei.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/migration/plot_03_israel_rosenthal_wei.ipynb",
+      "size": 2969,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.861505Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.861505Z",
+      "mimetype": null,
+      "name": "plot_01_creditmetrics.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/migration/plot_01_creditmetrics.ipynb",
+      "size": 3863,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.861614Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.861614Z",
+      "mimetype": null,
+      "name": "plot_02_generator_matrix.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/migration/plot_02_generator_matrix.ipynb",
+      "size": 3703,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.211759Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.212329Z",
+  "mimetype": null,
+  "name": "migration",
+  "path": "jupyterlite_contents/api/gallery/credit/migration",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

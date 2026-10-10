@@ -1,0 +1,69 @@
+
+
+.. _sphx_glr_api_gallery_time_value_amortization:
+
+Amortization
+------------
+
+Level-payment loans that repay themselves, and the APR that the Truth
+in Lending Act made lenders disclose.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Before the 1930s a typical American home loan ran five to ten years, paid interest only, and ended in a balloon payment that had to be refinanced -- which became impossible in the Depression. The Home Owners&#x27; Loan Corporation (1933) and then the FHA (1934) replaced it with the long-term, level-payment, fully amortizing mortgage: each monthly payment covers the interest on the balance and repays a little principal, so the loan is gone at the last payment.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/amortization/images/thumb/sphx_glr_plot_01_amortizing_mortgage_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/amortization/plot_01_amortizing_mortgage`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The fully amortizing mortgage</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The U.S. Truth in Lending Act (1968) and its Regulation Z made lenders disclose an annual percentage rate computed one way for everyone: the nominal rate at which the payments are worth exactly the amount the borrower actually receives, after fees and points. The APR therefore rises above the note rate when fees are charged, and the faster the loan is repaid, the more the fees count. The APR is still a nominal rate; compounded monthly, the effective annual rate is higher again.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/amortization/images/thumb/sphx_glr_plot_02_truth_in_lending_apr_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/amortization/plot_02_truth_in_lending_apr`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Truth in Lending: APR and the effective rate</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_value/amortization/plot_01_amortizing_mortgage
+   /api/gallery/time_value/amortization/plot_02_truth_in_lending_apr
+

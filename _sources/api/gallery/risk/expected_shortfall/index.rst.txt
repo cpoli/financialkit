@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_risk_expected_shortfall:
+
+Expected shortfall and coherence
+--------------------------------
+
+What makes a risk measure coherent, why VaR is not, and how expected
+shortfall is estimated and allocated to positions.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Artzner, Delbaen, Eber and Heath (1999) listed four properties a capital requirement should have: monotonicity, subadditivity, positive homogeneity and translation invariance. VaR fails subadditivity: two desks can each look safe while their merger needs capital. The classic counterexample is a pair of independent bonds that each default with 4% probability. At 95% neither default is in the tail, so each bond&#x27;s VaR is negative; together, a default happens with probability 7.8%, and the portfolio&#x27;s VaR is a loss.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/expected_shortfall/images/thumb/sphx_glr_plot_01_coherence_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/expected_shortfall/plot_01_coherence`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Artzner-Delbaen-Eber-Heath: coherent risk measures</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A bank&#x27;s capital is set for the whole portfolio, but desks must be charged for their share. Because VaR, ES and volatility are positively homogeneous in the position sizes, Euler&#x27;s theorem splits them exactly:">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/expected_shortfall/images/thumb/sphx_glr_plot_02_euler_allocation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/expected_shortfall/plot_02_euler_allocation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tasche: Euler risk allocation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="&quot;The average loss beyond VaR&quot; sounds like one number but is several when the distribution has atoms, as every sample does, and some versions are not coherent. Acerbi and Tasche (2002) gave the definition that is: average exactly the worst fraction p = 1 - \alpha of outcomes, charging only part of the atom at the quantile,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/expected_shortfall/images/thumb/sphx_glr_plot_03_acerbi_tasche_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/expected_shortfall/plot_03_acerbi_tasche`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Acerbi-Tasche expected shortfall</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/risk/expected_shortfall/plot_01_coherence
+   /api/gallery/risk/expected_shortfall/plot_02_euler_allocation
+   /api/gallery/risk/expected_shortfall/plot_03_acerbi_tasche
+

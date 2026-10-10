@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.870575Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.870575Z",
+      "mimetype": null,
+      "name": "plot_01_garman_inventory.ipynb",
+      "path": "jupyterlite_contents/api/gallery/market_microstructure/dealers/plot_01_garman_inventory.ipynb",
+      "size": 3740,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.870779Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.870779Z",
+      "mimetype": null,
+      "name": "plot_03_avellaneda_stoikov.ipynb",
+      "path": "jupyterlite_contents/api/gallery/market_microstructure/dealers/plot_03_avellaneda_stoikov.ipynb",
+      "size": 3599,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.870681Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.870681Z",
+      "mimetype": null,
+      "name": "plot_02_ho_stoll.ipynb",
+      "path": "jupyterlite_contents/api/gallery/market_microstructure/dealers/plot_02_ho_stoll.ipynb",
+      "size": 3837,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.229986Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.230718Z",
+  "mimetype": null,
+  "name": "dealers",
+  "path": "jupyterlite_contents/api/gallery/market_microstructure/dealers",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

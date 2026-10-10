@@ -1,0 +1,86 @@
+
+
+.. _sphx_glr_api_gallery_market_microstructure_execution:
+
+Execution
+---------
+
+The cost of trading a large order, and how to schedule it.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A large order executed over a day moves the price by far less than proportionally to its size. Practitioners measured it in the 1980s and 1990s (Loeb, 1983; the BARRA market impact model of Torre, 1997): the impact of a metaorder of Q shares in a stock trading V shares a day with daily volatility \sigma is">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/execution/images/thumb/sphx_glr_plot_01_square_root_impact_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/execution/plot_01_square_root_impact`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The square-root impact law</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Dimitris Bertsimas and Andrew Lo (1998) treated buying \bar S shares over T periods as a dynamic program. If each purchase moves the price permanently by \theta per share, P_k = P_{k-1} + \theta S_k + \varepsilon_k, the best a risk-neutral trader can do is split the order evenly. If a serially correlated signal X_k also drives prices, the optimal order is linear in the remaining shares and the latest signal, and trading ahead of predicted rises pays.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/execution/images/thumb/sphx_glr_plot_02_bertsimas_lo_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/execution/plot_02_bertsimas_lo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bertsimas and Lo: optimal control of execution costs</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Almgren and Neil Chriss (2000) split impact into a permanent part \gamma and a temporary part \eta that punishes trading fast. Selling slowly is cheap in expectation but leaves the position exposed to volatility for longer. Minimising E + \lambda V gives">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/execution/images/thumb/sphx_glr_plot_03_almgren_chriss_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/execution/plot_03_almgren_chriss`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Almgren and Chriss: the efficient frontier of execution</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/market_microstructure/execution/plot_01_square_root_impact
+   /api/gallery/market_microstructure/execution/plot_02_bertsimas_lo
+   /api/gallery/market_microstructure/execution/plot_03_almgren_chriss
+

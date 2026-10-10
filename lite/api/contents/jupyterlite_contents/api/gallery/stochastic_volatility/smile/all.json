@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.884768Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.884768Z",
+      "mimetype": null,
+      "name": "plot_01_sabr.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/smile/plot_01_sabr.ipynb",
+      "size": 3352,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.884855Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.884855Z",
+      "mimetype": null,
+      "name": "plot_02_svi.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/smile/plot_02_svi.ipynb",
+      "size": 2748,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.884950Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.884950Z",
+      "mimetype": null,
+      "name": "plot_03_lee_moment_formula.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/smile/plot_03_lee_moment_formula.ipynb",
+      "size": 3335,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.262575Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.263052Z",
+  "mimetype": null,
+  "name": "smile",
+  "path": "jupyterlite_contents/api/gallery/stochastic_volatility/smile",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,122 @@
+
+
+.. _sphx_glr_api_gallery_credit_portfolio_loss:
+
+Portfolio losses
+----------------
+
+Correlated defaults, loss distributions, regulatory capital and tranches.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Vasicek (1987) let every loan default when its asset return \sqrt\rho M + \sqrt{1-\rho}\,\varepsilon_i falls below N^{-1}(p). Given the common factor M, defaults are independent, so in a large pool the default rate is the deterministic p(M), and its distribution is known in closed form. Correlation does not change the expected loss, only how it is spread out: at high correlation most years are quiet and a few are disasters.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_01_vasicek_lhp_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_01_vasicek_lhp`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Vasicek's large homogeneous portfolio</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Credit Suisse First Boston&#x27;s CreditRisk+ (1997) treated defaults like insurance claims: Poisson events with rates driven by a gamma-distributed sector factor, and exposures rounded to multiples of a loss unit. The default count is then negative binomial, and Panjer&#x27;s (1981) recursion produces the whole loss distribution exactly, without simulation. The factor&#x27;s volatility \sigma fattens the tail without changing the expected loss.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_02_creditrisk_plus_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_02_creditrisk_plus`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">CreditRisk+ and Panjer's recursion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Li (2000) took each name&#x27;s default-time distribution from its CDS curve and joined them with a Gaussian copula: correlated normals become uniforms, and each uniform is mapped through that name&#x27;s survival curve. The marginals stay exactly as the market implies; the copula correlation controls how often names default together, which is what a first-to-default basket or a CDO tranche is really priced on.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_03_li_gaussian_copula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_03_li_gaussian_copula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Li's Gaussian copula for default times</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The Basel Committee (2004) set bank capital for credit risk with Vasicek&#x27;s model: capital per unit of exposure is the 99.9% quantile of the large-pool loss rate, minus the expected loss already covered by provisions, times a maturity adjustment. The supervisory asset correlation falls from 24% to 12% as the PD rises. Gordy (2003) showed this is the only setting where each loan&#x27;s capital charge does not depend on the rest of the portfolio.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_04_basel_irb_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_04_basel_irb`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Basel II IRB formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A tranche of a synthetic CDO absorbs portfolio losses between its attachment and detachment points. Hull and White (2004) priced tranches in Li&#x27;s one-factor Gaussian copula by conditioning on the common factor: given it, defaults are independent and the pool loss is binomial, so the expected tranche loss at each date is one integral over the factor. Raising the correlation moves risk from the equity tranche, which loses less, to the senior tranches, which lose more.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_05_tranche_expected_loss_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_05_tranche_expected_loss`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hull and White: pricing CDO tranches without Monte Carlo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/credit/portfolio_loss/plot_01_vasicek_lhp
+   /api/gallery/credit/portfolio_loss/plot_02_creditrisk_plus
+   /api/gallery/credit/portfolio_loss/plot_03_li_gaussian_copula
+   /api/gallery/credit/portfolio_loss/plot_04_basel_irb
+   /api/gallery/credit/portfolio_loss/plot_05_tranche_expected_loss
+

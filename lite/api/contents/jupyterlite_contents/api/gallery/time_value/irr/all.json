@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.888592Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.888592Z",
+      "mimetype": null,
+      "name": "plot_03_baldwin_mirr.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/irr/plot_03_baldwin_mirr.ipynb",
+      "size": 3466,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.888479Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.888479Z",
+      "mimetype": null,
+      "name": "plot_02_lorie_savage_multiple_irr.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/irr/plot_02_lorie_savage_multiple_irr.ipynb",
+      "size": 3110,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.888369Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.888369Z",
+      "mimetype": null,
+      "name": "plot_01_internal_rate_of_return.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/irr/plot_01_internal_rate_of_return.ipynb",
+      "size": 2927,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.270255Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.270804Z",
+  "mimetype": null,
+  "name": "irr",
+  "path": "jupyterlite_contents/api/gallery/time_value/irr",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

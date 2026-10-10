@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.864689Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.864689Z",
+      "mimetype": null,
+      "name": "plot_03_quanto.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/multi_asset/plot_03_quanto.ipynb",
+      "size": 2874,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.864565Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.864565Z",
+      "mimetype": null,
+      "name": "plot_02_stulz_max_min.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/multi_asset/plot_02_stulz_max_min.ipynb",
+      "size": 3053,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.864471Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.864471Z",
+      "mimetype": null,
+      "name": "plot_01_margrabe.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/multi_asset/plot_01_margrabe.ipynb",
+      "size": 3537,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.219185Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.219758Z",
+  "mimetype": null,
+  "name": "multi_asset",
+  "path": "jupyterlite_contents/api/gallery/exotic_options/multi_asset",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

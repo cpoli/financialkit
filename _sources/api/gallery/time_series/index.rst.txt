@@ -1,0 +1,539 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of ``financialkit.time_series``:
+the stylized facts of returns, tests of the random walk, ARMA models and
+order selection, unit roots and cointegration, long memory, and
+conditional-volatility models. Each script illustrates one dated
+breakthrough from the :doc:`history page </history/time_series_breakthroughs>`.
+All data are synthetic and seeded; no market data is downloaded.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/time_series/<section>/<script>.py``.
+
+Sections
+--------
+
+- **linear_models** -- Yule's autoregression, Box-Jenkins ARMA and
+  Akaike's information criterion.
+- **long_memory** -- Hurst's rescaled range.
+- **efficiency** -- Kendall's serial correlations, Fama's runs test, the
+  Ljung-Box portmanteau test and Lo-MacKinlay variance ratios.
+- **stylized_facts** -- Mandelbrot's fat tails and the Hill tail index.
+- **unit_roots** -- the Dickey-Fuller test and Engle-Granger cointegration.
+- **volatility** -- Parkinson's range, ARCH, GARCH, EGARCH, GJR-GARCH,
+  RiskMetrics EWMA and realized volatility.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Market efficiency
+-----------------
+
+Testing the random walk: serial correlation, runs, portmanteau statistics and variance ratios.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Maurice Kendall (1953) set out to find the cycles in 22 British price series (wheat, cotton, share indices) at weekly intervals. He found none: the serial correlations of the price changes were indistinguishable from zero, and &quot;the series looks like a wandering one, almost as if once a week the Demon of Chance drew a random number&quot;. The levels, by contrast, are almost perfectly autocorrelated, which is what makes them look patterned to the eye.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/efficiency/images/thumb/sphx_glr_plot_01_kendall_autocorrelation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/efficiency/plot_01_kendall_autocorrelation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kendall: the random walk of prices</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Correlation coefficients can be dominated by a few large changes. In his 1965 thesis Eugene Fama added a distribution-free check on the 30 Dow Jones stocks: count the runs, the unbroken sequences of price changes with the same sign. Positive dependence produces long runs and too few of them; reversals produce too many. Under independence the number of runs is approximately normal with a known mean and variance, and Fama found the observed counts close to the expected ones.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/efficiency/images/thumb/sphx_glr_plot_02_fama_runs_test_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/efficiency/plot_02_fama_runs_test`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fama's runs test</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Checking twenty autocorrelations one at a time finds a &quot;significant&quot; one by chance about two times in three. Box and Pierce (1970) pooled them into a single statistic, Q = n\sum_{k \le h}\hat\rho_k^2 \sim \chi^2_h, and Greta Ljung and George Box (1978) fixed its poor small-sample behaviour by weighting each term,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/efficiency/images/thumb/sphx_glr_plot_03_ljung_box_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/efficiency/plot_03_ljung_box`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ljung-Box portmanteau test</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="If log prices follow a random walk, the variance of q-week returns is q times that of one-week returns. Andrew Lo and Craig MacKinlay (1988) turned this into a test,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/efficiency/images/thumb/sphx_glr_plot_04_lo_mackinlay_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/efficiency/plot_04_lo_mackinlay`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lo-MacKinlay variance ratio</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Linear models
+-------------
+
+From Yule's disturbed pendulum to Box-Jenkins ARMA and Akaike's criterion.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Schuster&#x27;s periodogram treated sunspot numbers as a sum of exact cycles plus measurement error. Udny Yule (1927) proposed instead a pendulum &quot;bombarded by peas&quot;: a damped oscillation kept alive by random shocks,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/linear_models/images/thumb/sphx_glr_plot_01_yule_autoregression_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/linear_models/plot_01_yule_autoregression`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Yule's autoregression</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="George Box and Gwilym Jenkins (1970) turned the mixed autoregressive moving-average model">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/linear_models/images/thumb/sphx_glr_plot_02_box_jenkins_arma_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/linear_models/plot_02_box_jenkins_arma`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Box-Jenkins ARMA</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Adding parameters always raises the likelihood, so the likelihood alone cannot choose a model&#x27;s order. Hirotugu Akaike (1974) showed that -2\ell + 2k estimates the expected Kullback-Leibler distance between the fitted model and the truth, so the order that minimizes it predicts best. Gideon Schwarz&#x27;s (1978) Bayesian criterion -2\ell + k\ln n penalizes more heavily and is consistent: it picks the true order with probability one as n \to \infty, while AIC keeps a small chance of overfitting.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/linear_models/images/thumb/sphx_glr_plot_03_akaike_order_selection_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/linear_models/plot_03_akaike_order_selection`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Akaike information criterion</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Long memory
+-----------
+
+Hurst's rescaled range and fractional Gaussian noise.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="To size the Aswan reservoirs, Harold Edwin Hurst (1951) studied the range of cumulative departures of the Nile&#x27;s annual flow from its mean: the storage a dam would need to deliver the average flow every year. Divided by the standard deviation, the range of independent inflows grows like n^{1/2}; Hurst found n^{0.73} for the Nile and many other records. Wet years cluster with wet years. Mandelbrot later linked the exponent H to fractional Brownian motion: H &gt; 1/2 means persistence, H &lt; 1/2 mean reversion, and in markets a reliable H \ne 1/2 would make returns predictable.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/long_memory/images/thumb/sphx_glr_plot_01_hurst_exponent_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/long_memory/plot_01_hurst_exponent`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hurst exponent</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Stylized facts
+--------------
+
+Fat tails and the tail index.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Benoit Mandelbrot (1963) plotted the frequency of large changes in cotton prices on doubly logarithmic paper and found straight lines: the tail probability P(|X| &gt; u) decays like a power u^{-\alpha}, not like the Gaussian e^{-u^2/2}. Five-sigma days, which a normal distribution makes once-in-several-millennia events, happen every few years. He proposed the stable (Lévy) laws, with \alpha \approx 1.7 for cotton; later work settled on tail indices between 3 and 5 for most returns, but the log-log plot remains the standard diagnostic.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/stylized_facts/images/thumb/sphx_glr_plot_01_mandelbrot_fat_tails_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/stylized_facts/plot_01_mandelbrot_fat_tails`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mandelbrot: fat tails</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="If the tail is a power law, P(X &gt; u) \approx C u^{-\alpha}, the log-excesses of the largest observations over a threshold are exponential with mean 1/\alpha. Bruce Hill (1975) turned this into the estimator">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/stylized_facts/images/thumb/sphx_glr_plot_02_hill_tail_index_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/stylized_facts/plot_02_hill_tail_index`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hill tail index</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Unit roots and cointegration
+----------------------------
+
+The Dickey-Fuller distribution and the Engle-Granger two-step test.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Is a series a random walk (\rho = 1) or does it revert to a mean (:math:`\rho &lt; 1`)? Regressing \Delta y_t on y_{t-1} and looking at the t-ratio of the slope seems natural, but under a unit root that ratio does not have a t distribution: it is skewed to the left, and more so when a constant or trend is included. David Dickey and Wayne Fuller (1979) tabulated its distribution by simulation. Their test, with lagged differences added (Said and Dickey 1984) and MacKinnon&#x27;s critical values, is still the first thing run on an interest rate, a price-dividend ratio or a pairs-trading spread.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/unit_roots/images/thumb/sphx_glr_plot_01_dickey_fuller_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/unit_roots/plot_01_dickey_fuller`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dickey-Fuller unit roots</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Granger and Newbold (1974) showed that regressing one random walk on an independent one gives &quot;significant&quot; slopes and high R^2 most of the time: a spurious regression. Yet some nonstationary series are tied together, such as spot and futures prices, or two share classes of the same company. Robert Engle and Clive Granger (1987) called them cointegrated: some combination y_t - b x_t is stationary. Their two-step test regresses y on x and runs a Dickey-Fuller test on the residuals, with critical values that allow for b having been fitted. It is the textbook basis of pairs trading.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/unit_roots/images/thumb/sphx_glr_plot_02_engle_granger_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/unit_roots/plot_02_engle_granger`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Engle-Granger cointegration</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Volatility
+----------
+
+Range-based and realized volatility, and the ARCH family of conditional-variance models.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A daily close-to-close return uses two prices out of the thousands traded that day. Michael Parkinson (1980) used two more, the high and the low: for Brownian motion with volatility \sigma,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_01_parkinson_range_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_01_parkinson_range`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Parkinson's range volatility</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Forecast errors for UK inflation were sometimes small and sometimes large, in clusters. Robert Engle (1982) let the conditional variance depend on the last squared shock,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_02_engle_arch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_02_engle_arch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Engle's ARCH</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pure ARCH models needed many lags to capture how slowly volatility decays. Tim Bollerslev (1986), Engle&#x27;s student, added the lagged variance itself,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_03_bollerslev_garch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_03_bollerslev_garch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bollerslev's GARCH</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="GARCH reacts to the size of yesterday&#x27;s shock but not its sign, and its coefficients must be kept positive. Daniel Nelson (1991) modelled the logarithm of the variance instead,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_04_nelson_egarch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_04_nelson_egarch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nelson's EGARCH</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lawrence Glosten, Ravi Jagannathan and David Runkle (1993) asked whether expected stock returns rise with volatility, and found that the answer depended on modelling volatility&#x27;s asymmetric response to news. Their GARCH variant adds one term for negative shocks,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_05_gjr_garch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_05_gjr_garch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Glosten-Jagannathan-Runkle</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1994 J.P. Morgan published RiskMetrics, a free methodology and data set for Value-at-Risk. Its volatility model was deliberately simple: an exponentially weighted moving average">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_06_riskmetrics_ewma_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_06_riskmetrics_ewma`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">RiskMetrics EWMA</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="GARCH models fit beautifully in-sample, yet regressions of squared daily returns on their variance forecasts gave R^2 of a few percent, and sceptics concluded the models were useless for forecasting. Torben Andersen and Tim Bollerslev (1998) showed that the fault lay with the yardstick. A squared return \sigma_t^2 z_t^2 is an unbiased but very noisy measure of the day&#x27;s variance, and even a perfect forecast explains only a small part of it. Summing squared five-minute returns (realized variance) measures the variance almost exactly, and against it the same forecasts explain many times more.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_07_realized_volatility_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_07_realized_volatility`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Andersen-Bollerslev realized volatility</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/time_series/efficiency/index.rst
+   /api/gallery/time_series/linear_models/index.rst
+   /api/gallery/time_series/long_memory/index.rst
+   /api/gallery/time_series/stylized_facts/index.rst
+   /api/gallery/time_series/unit_roots/index.rst
+   /api/gallery/time_series/volatility/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: time_series_python.zip </api/gallery/time_series/time_series_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: time_series_jupyter.zip </api/gallery/time_series/time_series_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.869080Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.869080Z",
+      "mimetype": null,
+      "name": "plot_04_black_swaption.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/options/plot_04_black_swaption.ipynb",
+      "size": 4826,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.868624Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.868624Z",
+      "mimetype": null,
+      "name": "plot_01_jamshidian_bond_option.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/options/plot_01_jamshidian_bond_option.ipynb",
+      "size": 4037,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.868729Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.868729Z",
+      "mimetype": null,
+      "name": "plot_02_jamshidian_swaption.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/options/plot_02_jamshidian_swaption.ipynb",
+      "size": 3835,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.868843Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.868843Z",
+      "mimetype": null,
+      "name": "plot_03_bgm_caps_floors.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/options/plot_03_bgm_caps_floors.ipynb",
+      "size": 4669,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.226878Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.227683Z",
+  "mimetype": null,
+  "name": "options",
+  "path": "jupyterlite_contents/api/gallery/interest_rate_models/options",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

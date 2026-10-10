@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878692Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878692Z",
+      "mimetype": null,
+      "name": "plot_02_ledoit_wolf.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/covariance/plot_02_ledoit_wolf.ipynb",
+      "size": 4195,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878589Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878589Z",
+      "mimetype": null,
+      "name": "plot_01_single_index.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/covariance/plot_01_single_index.ipynb",
+      "size": 3693,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.249639Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.249932Z",
+  "mimetype": null,
+  "name": "covariance",
+  "path": "jupyterlite_contents/api/gallery/portfolio/covariance",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,69 @@
+
+
+.. _sphx_glr_api_gallery_risk_copulas:
+
+Copulas
+-------
+
+Dependence separated from the marginals, and the joint extremes that the
+Gaussian copula misses.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Sklar (1959) showed that every joint distribution is its marginals glued together by a copula C:">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/copulas/images/thumb/sphx_glr_plot_01_sklar_gaussian_copula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/copulas/plot_01_sklar_gaussian_copula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sklar's theorem and the Gaussian copula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Under a Gaussian copula, joint extremes become independent as one looks further into the tail: the coefficient of tail dependence is zero for any correlation below one. Markets do not behave that way; in a crash everything falls together. Demarta and McNeil (2005) studied the t copula, whose shared random scale makes extremes coincide with probability">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/copulas/images/thumb/sphx_glr_plot_02_t_copula_tail_dependence_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/copulas/plot_02_t_copula_tail_dependence`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Demarta-McNeil: the t copula and tail dependence</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/risk/copulas/plot_01_sklar_gaussian_copula
+   /api/gallery/risk/copulas/plot_02_t_copula_tail_dependence
+

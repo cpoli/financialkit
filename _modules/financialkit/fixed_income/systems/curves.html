@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.fixed_income.systems.curves &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/fixed_income/systems/curves';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.fixed_income.systems.curves</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.fixed_income.systems.curves</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Building yield curves: forward rates, bootstrapping, splines, parametric fits and PCA.</span>
+
+<span class="sd">* :func:`forward_rates`: Lutz's (1940) forward rates implied by a zero curve.</span>
+<span class="sd">* :func:`bootstrap_zero_curve` / :func:`bootstrap_par_curve`: zero rates</span>
+<span class="sd">  stripped one bond at a time (hand-written; no library equivalent), with</span>
+<span class="sd">  each new node found by :func:`scipy.optimize.brentq` so that coupons</span>
+<span class="sd">  falling between nodes are discounted on the curve being built.</span>
+<span class="sd">* :func:`carleton_cooper_discount_factors`: Carleton and Cooper's (1976)</span>
+<span class="sd">  regression of bond prices on their cash flows for the discount factors</span>
+<span class="sd">  (:func:`numpy.linalg.lstsq`).</span>
+<span class="sd">* :func:`fit_mcculloch_spline`: McCulloch's (1971, 1975) spline discount</span>
+<span class="sd">  function, linear in its coefficients and so fitted by least squares.</span>
+<span class="sd">* :class:`NelsonSiegelCurve`, :class:`SvenssonCurve` and their fits</span>
+<span class="sd">  (:func:`scipy.optimize.least_squares`, started from a grid over the decay</span>
+<span class="sd">  parameters on which the betas are linear).</span>
+<span class="sd">* :func:`yield_curve_pca`: Litterman and Scheinkman's (1991) level, slope</span>
+<span class="sd">  and curvature as principal components (:func:`numpy.linalg.eigh`).</span>
+
+<span class="sd">References: F. A. Lutz, Quarterly Journal of Economics 55(1) (1940), 36-63;</span>
+<span class="sd">J. H. McCulloch, Journal of Business 44(1) (1971), 19-31, and Journal of</span>
+<span class="sd">Finance 30(3) (1975), 811-830; W. T. Carleton and I. A. Cooper, Journal of</span>
+<span class="sd">Finance 31(4) (1976), 1067-1083; C. R. Nelson and A. F. Siegel, Journal of</span>
+<span class="sd">Business 60(4) (1987), 473-489; R. Litterman and J. Scheinkman, Journal of</span>
+<span class="sd">Fixed Income 1(1) (1991), 54-61; L. E. O. Svensson, NBER Working Paper</span>
+<span class="sd">4871 (1994); J. C. Hull, *Options, Futures, and Other Derivatives*, 9th ed.</span>
+<span class="sd">(Pearson, 2015), Sec. 4.5-4.7.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">brentq</span><span class="p">,</span> <span class="n">least_squares</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_ATOL</span><span class="p">,</span> <span class="n">DEFAULT_MAX_ITER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.fixed_income.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CurveFitResult</span><span class="p">,</span> <span class="n">CurvePCAResult</span><span class="p">,</span> <span class="n">YieldCurve</span><span class="p">,</span> <span class="n">ZeroCurve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.fixed_income.systems.bonds</span><span class="w"> </span><span class="kn">import</span> <span class="n">bond_cash_flows</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"forward_rates"</span><span class="p">,</span>
+    <span class="s2">"bootstrap_zero_curve"</span><span class="p">,</span>
+    <span class="s2">"bootstrap_par_curve"</span><span class="p">,</span>
+    <span class="s2">"carleton_cooper_discount_factors"</span><span class="p">,</span>
+    <span class="s2">"SplineDiscountCurve"</span><span class="p">,</span>
+    <span class="s2">"fit_mcculloch_spline"</span><span class="p">,</span>
+    <span class="s2">"NelsonSiegelCurve"</span><span class="p">,</span>
+    <span class="s2">"SvenssonCurve"</span><span class="p">,</span>
+    <span class="s2">"fit_nelson_siegel"</span><span class="p">,</span>
+    <span class="s2">"fit_svensson"</span><span class="p">,</span>
+    <span class="s2">"yield_curve_pca"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="forward_rates">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.forward_rates">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward_rates</span><span class="p">(</span><span class="n">tenors</span><span class="p">,</span> <span class="n">zero_rates</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Lutz's forward rates for each period between consecutive tenors.</span>
+
+<span class="sd">    .. math:: f_{k} = \frac{r_k t_k - r_{k-1} t_{k-1}}{t_k - t_{k-1}}, \qquad t_0 = 0</span>
+
+<span class="sd">    The first period's forward is the first zero rate. Under the</span>
+<span class="sd">    expectations hypothesis these are the market's forecasts of future</span>
+<span class="sd">    short rates, and the zero rate is their time average.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tenors : array_like, shape (n,)</span>
+<span class="sd">        Strictly increasing positive maturities.</span>
+<span class="sd">    zero_rates : array_like, shape (n,)</span>
+<span class="sd">        Continuously compounded zero rates.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray, shape (n,)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Hull (9th ed., Table 4.5):</span>
+
+<span class="sd">    &gt;&gt;&gt; forward_rates([1, 2, 3, 4, 5], [0.03, 0.04, 0.046, 0.05, 0.053]).round(4).tolist()</span>
+<span class="sd">    [0.03, 0.05, 0.058, 0.062, 0.065]</span>
+<span class="sd">    """</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">tenors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">zero_rates</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">r</span><span class="o">.</span><span class="n">shape</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"tenors must be positive, strictly increasing and match zero_rates"</span><span class="p">)</span>
+    <span class="n">rt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">rt</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">t</span><span class="p">]))</span></div>
+
+
+
+<div class="viewcode-block" id="bootstrap_zero_curve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.bootstrap_zero_curve">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bootstrap_zero_curve</span><span class="p">(</span><span class="n">maturities</span><span class="p">,</span> <span class="n">coupon_rates</span><span class="p">,</span> <span class="n">prices</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">face</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ZeroCurve</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Strip a zero curve from coupon bond prices, shortest maturity first.</span>
+
+<span class="sd">    Each bond adds one node at its maturity. Its earlier cash flows are</span>
+<span class="sd">    discounted on the curve built so far, linearly interpolated in the zero</span>
+<span class="sd">    rate; when a coupon falls between the last known node and the new one,</span>
+<span class="sd">    its rate depends on the unknown node too, so the node is solved for with</span>
+<span class="sd">    :func:`scipy.optimize.brentq` rather than by back-substitution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    maturities : array_like, shape (n,)</span>
+<span class="sd">        Distinct bond maturities (years).</span>
+<span class="sd">    coupon_rates : array_like, shape (n,)</span>
+<span class="sd">        Annual coupon rates (0 for zero-coupon bonds).</span>
+<span class="sd">    prices : array_like, shape (n,)</span>
+<span class="sd">        Dirty prices per `face`.</span>
+<span class="sd">    freq : int</span>
+<span class="sd">        Coupon frequency.</span>
+<span class="sd">    face : float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ZeroCurve</span>
+<span class="sd">        Nodes at the bond maturities.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Hull (9th ed., Tables 4.3-4.4):</span>
+
+<span class="sd">    &gt;&gt;&gt; curve = bootstrap_zero_curve([0.25, 0.5, 1.0, 1.5, 2.0], [0, 0, 0, 0.08, 0.12], [97.5, 94.9, 90.0, 96.0, 101.6])</span>
+<span class="sd">    &gt;&gt;&gt; (100 * curve.rates).round(3).tolist()</span>
+<span class="sd">    [10.127, 10.469, 10.536, 10.681, 10.808]</span>
+<span class="sd">    """</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">maturities</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coupon_rates</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">order</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"maturities must be distinct"</span><span class="p">)</span>
+    <span class="n">node_t</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">node_r</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">order</span><span class="p">:</span>
+        <span class="n">cf</span> <span class="o">=</span> <span class="n">bond_cash_flows</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span> <span class="n">freq</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">mispricing</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">cf</span><span class="o">=</span><span class="n">cf</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">cf</span><span class="o">.</span><span class="n">present_value</span><span class="p">(</span><span class="n">ZeroCurve</span><span class="p">(</span><span class="n">node_t</span> <span class="o">+</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">])],</span> <span class="n">node_r</span> <span class="o">+</span> <span class="p">[</span><span class="n">r</span><span class="p">]))</span> <span class="o">-</span> <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+        <span class="n">node_r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">brentq</span><span class="p">(</span><span class="n">mispricing</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="n">DEFAULT_ATOL</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="n">DEFAULT_MAX_ITER</span><span class="p">)))</span>
+        <span class="n">node_t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">ZeroCurve</span><span class="p">(</span><span class="n">node_t</span><span class="p">,</span> <span class="n">node_r</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="bootstrap_par_curve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.bootstrap_par_curve">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bootstrap_par_curve</span><span class="p">(</span><span class="n">maturities</span><span class="p">,</span> <span class="n">par_rates</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ZeroCurve</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Zero curve from par yields (or swap rates): every bond prices at par.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    A flat 5% semiannual par curve is a flat zero curve at</span>
+<span class="sd">    :math:`2 \\ln 1.025`:</span>
+
+<span class="sd">    &gt;&gt;&gt; curve = bootstrap_par_curve([1, 2, 5, 10], [0.05] * 4)</span>
+<span class="sd">    &gt;&gt;&gt; bool(abs(curve.rates - 2 * np.log(1.025)).max() &lt; 1e-9)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">bootstrap_zero_curve</span><span class="p">(</span><span class="n">maturities</span><span class="p">,</span> <span class="n">par_rates</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">face</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="carleton_cooper_discount_factors">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.carleton_cooper_discount_factors">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">carleton_cooper_discount_factors</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">cash_flow_matrix</span><span class="p">,</span> <span class="n">prices</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CurveFitResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Discount factors by regressing bond prices on their cash flows.</span>
+
+<span class="sd">    Bond :math:`i` pays :math:`C_{ik}` at the common dates :math:`t_k`,</span>
+<span class="sd">    so :math:`P_i = \sum_k C_{ik} d_k`. With as many bonds as dates this is</span>
+<span class="sd">    a triangular system (bootstrapping); with more bonds it is solved in</span>
+<span class="sd">    the least-squares sense, which averages out pricing noise.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    times : array_like, shape (m,)</span>
+<span class="sd">        Payment dates shared by the bonds.</span>
+<span class="sd">    cash_flow_matrix : array_like, shape (n, m)</span>
+<span class="sd">        Row ``i`` holds bond ``i``'s payment on each date (0 where none).</span>
+<span class="sd">    prices : array_like, shape (n,)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CurveFitResult</span>
+<span class="sd">        ``params`` are the discount factors; ``curve`` the implied zero curve.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; res = carleton_cooper_discount_factors([1.0, 2.0], [[105.0, 0.0], [6.0, 106.0]], [100.0, 99.0])</span>
+<span class="sd">    &gt;&gt;&gt; res.params.round(6).tolist()</span>
+<span class="sd">    [0.952381, 0.880054]</span>
+<span class="sd">    """</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">cash_flow_matrix</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"cash_flow_matrix must have shape (len(prices), len(times))"</span><span class="p">)</span>
+    <span class="n">d</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CurveFitResult</span><span class="p">(</span><span class="n">curve</span><span class="o">=</span><span class="n">ZeroCurve</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span><span class="p">),</span> <span class="n">params</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">residuals</span><span class="o">=</span><span class="n">C</span> <span class="o">@</span> <span class="n">d</span> <span class="o">-</span> <span class="n">p</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"carleton_cooper"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SplineDiscountCurve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.SplineDiscountCurve">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SplineDiscountCurve</span><span class="p">(</span><span class="n">YieldCurve</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""McCulloch's spline discount function :math:`d(t) = 1 + \sum_j a_j g_j(t)`.</span>
+
+<span class="sd">    The basis is the truncated power basis of the given degree,</span>
+<span class="sd">    :math:`t, t^2, \dots, t^p` and :math:`(t - \kappa)_+^p` at each interior</span>
+<span class="sd">    knot :math:`\kappa`, so :math:`d(0) = 1` holds by construction.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    coefficients : array_like</span>
+<span class="sd">        The :math:`a_j`, polynomial terms first.</span>
+<span class="sd">    knots : array_like</span>
+<span class="sd">        Interior knots (years).</span>
+<span class="sd">    degree : int</span>
+<span class="sd">        2 (McCulloch, 1971) or 3 (McCulloch, 1975).</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coefficients</span><span class="p">,</span> <span class="n">knots</span><span class="p">,</span> <span class="n">degree</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">knots</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">knots</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"need degree + len(knots) coefficients"</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SplineDiscountCurve.basis">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.SplineDiscountCurve.basis">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">basis</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">knots</span><span class="p">,</span> <span class="n">degree</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Truncated power basis at `t`, shape ``t.shape + (degree + len(knots),)``."""</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="n">powers</span> <span class="o">=</span> <span class="n">t</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">degree</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">trunc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">knots</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">**</span> <span class="n">degree</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">powers</span><span class="p">,</span> <span class="n">trunc</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SplineDiscountCurve.discount">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.SplineDiscountCurve.discount">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">discount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">knots</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span></div>
+
+
+<div class="viewcode-block" id="SplineDiscountCurve.zero_rate">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.SplineDiscountCurve.zero_rate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="mf">1e-8</span><span class="p">)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">/</span> <span class="n">t</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="fit_mcculloch_spline">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.fit_mcculloch_spline">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_mcculloch_spline</span><span class="p">(</span><span class="n">bonds</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">prices</span><span class="p">,</span> <span class="n">knots</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">degree</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CurveFitResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Fit McCulloch's spline discount function to bond prices by linear least squares.</span>
+
+<span class="sd">    Because the discount function is linear in its coefficients, so is</span>
+<span class="sd">    every bond price: :math:`P_i - \\sum_k c_{ik} = \\sum_j a_j \\sum_k c_{ik} g_j(t_{ik})`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bonds : list of CashFlows</span>
+<span class="sd">    prices : array_like, shape (n,)</span>
+<span class="sd">        Dirty prices.</span>
+<span class="sd">    knots : array_like, optional</span>
+<span class="sd">        Interior knots. By default about :math:`\\sqrt{n} - 1` of them at</span>
+<span class="sd">        quantiles of the maturities, McCulloch's rule of thumb.</span>
+<span class="sd">    degree : int</span>
+<span class="sd">        Spline degree (2 or 3).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CurveFitResult</span>
+<span class="sd">        ``curve`` is a :class:`SplineDiscountCurve`; residuals are in price units.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from financialkit.fixed_income.core.base import FlatCurve</span>
+<span class="sd">    &gt;&gt;&gt; bonds = [bond_cash_flows(100.0, 0.05, T) for T in np.arange(1, 11)]</span>
+<span class="sd">    &gt;&gt;&gt; prices = [b.present_value(FlatCurve(0.04)) for b in bonds]</span>
+<span class="sd">    &gt;&gt;&gt; res = fit_mcculloch_spline(bonds, prices)</span>
+<span class="sd">    &gt;&gt;&gt; bool(abs(res.curve.zero_rate(5.0) - 0.04) &lt; 1e-4)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bonds</span><span class="p">)</span> <span class="o">!=</span> <span class="n">p</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"need one price per bond"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">knots</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">n_knots</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">size</span><span class="p">)))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">maturities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">])</span>
+        <span class="n">knots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">maturities</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_knots</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">n_knots</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">knots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">knots</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="o">.</span><span class="n">amounts</span> <span class="o">@</span> <span class="n">SplineDiscountCurve</span><span class="o">.</span><span class="n">basis</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">times</span><span class="p">,</span> <span class="n">knots</span><span class="p">,</span> <span class="n">degree</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">p</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="o">.</span><span class="n">amounts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">])</span>
+    <span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CurveFitResult</span><span class="p">(</span><span class="n">curve</span><span class="o">=</span><span class="n">SplineDiscountCurve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">knots</span><span class="p">,</span> <span class="n">degree</span><span class="p">),</span> <span class="n">params</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">residuals</span><span class="o">=</span><span class="n">X</span> <span class="o">@</span> <span class="n">a</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"mcculloch_spline"</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ns_slope</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""(1 - e^{-x}) / x, equal to 1 at x = 0."""</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">safe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="o">-</span><span class="n">safe</span><span class="p">)</span> <span class="o">/</span> <span class="n">safe</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ns_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Nelson-Siegel level, slope and curvature loadings at maturities `t`."""</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">/</span> <span class="n">tau</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="n">_ns_slope</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">slope</span><span class="p">,</span> <span class="n">slope</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="NelsonSiegelCurve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.NelsonSiegelCurve">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NelsonSiegelCurve</span><span class="p">(</span><span class="n">YieldCurve</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Nelson and Siegel's (1987) parsimonious yield curve.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       r(t) = \beta_0 + \beta_1 \frac{1 - e^{-t/\tau}}{t/\tau}</span>
+<span class="sd">              + \beta_2 \left(\frac{1 - e^{-t/\tau}}{t/\tau} - e^{-t/\tau}\right)</span>
+
+<span class="sd">    :math:`\beta_0` is the long rate, :math:`\beta_0 + \beta_1` the short</span>
+<span class="sd">    rate, :math:`\beta_2` a hump whose position :math:`\tau` sets.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; curve = NelsonSiegelCurve(0.05, -0.02, 0.01, 2.0)</span>
+<span class="sd">    &gt;&gt;&gt; round(float(curve.zero_rate(0.0)), 6), round(float(curve.zero_rate(1e6)), 6)</span>
+<span class="sd">    (0.03, 0.05)</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">beta1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">beta2</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tau</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tau</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"tau must be positive"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">beta0</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">beta1</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">beta2</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""ndarray: ``[beta0, beta1, beta2, tau]``."""</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">beta0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau</span><span class="p">])</span>
+
+<div class="viewcode-block" id="NelsonSiegelCurve.zero_rate">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.NelsonSiegelCurve.zero_rate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_ns_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau</span><span class="p">)</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">beta0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="NelsonSiegelCurve.instantaneous_forward">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.NelsonSiegelCurve.instantaneous_forward">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">instantaneous_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">""":math:`f(t) = \beta_0 + \beta_1 e^{-t/\tau} + \beta_2 (t/\tau) e^{-t/\tau}`, in closed form."""</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta0</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="SvenssonCurve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.SvenssonCurve">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SvenssonCurve</span><span class="p">(</span><span class="n">YieldCurve</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Svensson's (1994) extension of Nelson-Siegel with a second hump.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       r(t) = \text{NS}(t; \beta_0, \beta_1, \beta_2, \tau_1)</span>
+<span class="sd">              + \beta_3 \left(\frac{1 - e^{-t/\tau_2}}{t/\tau_2} - e^{-t/\tau_2}\right)</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">beta1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">beta2</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">beta3</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tau1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tau2</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tau1</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">tau2</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"tau1 and tau2 must be positive"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta3</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">beta0</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">beta1</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">beta2</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">beta3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tau1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tau1</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">tau2</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""ndarray: ``[beta0, beta1, beta2, beta3, tau1, tau2]``."""</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">beta0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta3</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau2</span><span class="p">])</span>
+
+<div class="viewcode-block" id="SvenssonCurve.zero_rate">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.SvenssonCurve.zero_rate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_sv_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau2</span><span class="p">)</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">beta0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta3</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="SvenssonCurve.instantaneous_forward">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.SvenssonCurve.instantaneous_forward">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">instantaneous_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">t</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau1</span><span class="p">,</span> <span class="n">t</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau2</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta0</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">beta1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta2</span> <span class="o">*</span> <span class="n">x1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta3</span> <span class="o">*</span> <span class="n">x2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x2</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_sv_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau1</span><span class="p">,</span> <span class="n">tau2</span><span class="p">):</span>
+    <span class="n">ns</span> <span class="o">=</span> <span class="n">_ns_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau1</span><span class="p">)</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">_ns_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau2</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">ns</span><span class="p">,</span> <span class="n">second</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_linear_betas</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">beta</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">beta</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">L</span> <span class="o">@</span> <span class="n">beta</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="fit_nelson_siegel">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.fit_nelson_siegel">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_nelson_siegel</span><span class="p">(</span><span class="n">tenors</span><span class="p">,</span> <span class="n">yields</span><span class="p">,</span> <span class="n">tau_grid</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CurveFitResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Fit a :class:`NelsonSiegelCurve` to zero yields.</span>
+
+<span class="sd">    For fixed :math:`\\tau` the betas are a linear least-squares problem,</span>
+<span class="sd">    so the best :math:`\\tau` on a grid gives the starting point and</span>
+<span class="sd">    :func:`scipy.optimize.least_squares` then refines all four parameters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tenors, yields : array_like, shape (n,)</span>
+<span class="sd">        Maturities and continuously compounded zero yields.</span>
+<span class="sd">    tau_grid : array_like, optional</span>
+<span class="sd">        Candidate decay parameters; default 60 points from 0.1 to 15 years.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CurveFitResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; t = np.array([0.25, 0.5, 1, 2, 3, 5, 7, 10, 20, 30])</span>
+<span class="sd">    &gt;&gt;&gt; res = fit_nelson_siegel(t, NelsonSiegelCurve(0.05, -0.02, 0.015, 1.8).zero_rate(t))</span>
+<span class="sd">    &gt;&gt;&gt; res.params.round(6).tolist()</span>
+<span class="sd">    [0.05, -0.02, 0.015, 1.8]</span>
+<span class="sd">    """</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">tenors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">yields</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="k">if</span> <span class="n">tau_grid</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">tau_grid</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">tau</span><span class="p">:</span> <span class="n">_linear_betas</span><span class="p">(</span><span class="n">_ns_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau</span><span class="p">),</span> <span class="n">y</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">beta</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_linear_betas</span><span class="p">(</span><span class="n">_ns_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">best</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">_ns_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">@</span> <span class="n">p</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="n">best</span><span class="p">),</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">[</span><span class="mf">1e-3</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">[</span><span class="mf">50.0</span><span class="p">]),</span>
+        <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span>
+        <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span>
+        <span class="n">gtol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">curve</span> <span class="o">=</span> <span class="n">NelsonSiegelCurve</span><span class="p">(</span><span class="o">*</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CurveFitResult</span><span class="p">(</span><span class="n">curve</span><span class="o">=</span><span class="n">curve</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">curve</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">residuals</span><span class="o">=</span><span class="n">curve</span><span class="o">.</span><span class="n">zero_rate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"nelson_siegel"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fit_svensson">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.fit_svensson">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fit_svensson</span><span class="p">(</span><span class="n">tenors</span><span class="p">,</span> <span class="n">yields</span><span class="p">,</span> <span class="n">tau_grid</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CurveFitResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Fit a :class:`SvenssonCurve` to zero yields.</span>
+
+<span class="sd">    The same two-stage scheme as :func:`fit_nelson_siegel`, with a grid</span>
+<span class="sd">    over pairs :math:`\\tau_1 &lt; \\tau_2` (which also keeps the two hump</span>
+<span class="sd">    terms identifiable).</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; t = np.array([0.25, 0.5, 1, 2, 3, 4, 5, 7, 10, 15, 20, 30])</span>
+<span class="sd">    &gt;&gt;&gt; true = SvenssonCurve(0.045, -0.015, -0.02, 0.03, 1.0, 6.0)</span>
+<span class="sd">    &gt;&gt;&gt; bool(fit_svensson(t, true.zero_rate(t)).rmse &lt; 1e-7)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">tenors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">yields</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span> <span class="k">if</span> <span class="n">tau_grid</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">tau_grid</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">grid</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">grid</span> <span class="k">if</span> <span class="n">b</span> <span class="o">&gt;</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">a</span><span class="p">]</span>
+    <span class="n">tau1</span><span class="p">,</span> <span class="n">tau2</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">pairs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">_linear_betas</span><span class="p">(</span><span class="n">_sv_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">),</span> <span class="n">y</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">beta</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_linear_betas</span><span class="p">(</span><span class="n">_sv_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tau1</span><span class="p">,</span> <span class="n">tau2</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">_sv_loadings</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">@</span> <span class="n">p</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">beta</span><span class="p">,</span> <span class="p">[</span><span class="n">tau1</span><span class="p">,</span> <span class="n">tau2</span><span class="p">]]),</span>
+        <span class="n">bounds</span><span class="o">=</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="p">[</span><span class="mf">50.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">]),</span>
+        <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span>
+        <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span>
+        <span class="n">gtol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">curve</span> <span class="o">=</span> <span class="n">SvenssonCurve</span><span class="p">(</span><span class="o">*</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CurveFitResult</span><span class="p">(</span><span class="n">curve</span><span class="o">=</span><span class="n">curve</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">curve</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">residuals</span><span class="o">=</span><span class="n">curve</span><span class="o">.</span><span class="n">zero_rate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">"svensson"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="yield_curve_pca">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.yield_curve_pca">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">yield_curve_pca</span><span class="p">(</span><span class="n">changes</span><span class="p">,</span> <span class="n">tenors</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CurvePCAResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Principal components of yield-curve changes: Litterman and Scheinkman's level, slope and curvature.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    changes : array_like, shape (n_obs, n_tenors)</span>
+<span class="sd">        Yield changes (one row per date, one column per maturity).</span>
+<span class="sd">    tenors : array_like, shape (n_tenors,), optional</span>
+<span class="sd">        Maturities of the columns (for plotting); default ``0, 1, ...``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CurvePCAResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from financialkit.fixed_income.utils.synthetic import simulate_yield_changes</span>
+<span class="sd">    &gt;&gt;&gt; tenors = np.array([0.5, 1, 2, 3, 5, 7, 10, 20, 30])</span>
+<span class="sd">    &gt;&gt;&gt; pca = yield_curve_pca(simulate_yield_changes(tenors, 2000, rng=0), tenors)</span>
+<span class="sd">    &gt;&gt;&gt; bool(pca.explained_variance_ratio[:3].sum() &gt; 0.95)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">changes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"changes must be 2-D (n_obs, n_tenors)"</span><span class="p">)</span>
+    <span class="n">Xc</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">Xc</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">w</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">order</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">V</span><span class="p">[:,</span> <span class="n">order</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">flip</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">flip</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">flip</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">[:,</span> <span class="n">k</span><span class="p">])),</span> <span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">flip</span><span class="p">:</span>
+            <span class="n">V</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">V</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">if</span> <span class="n">tenors</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">tenors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CurvePCAResult</span><span class="p">(</span><span class="n">tenors</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">eigenvalues</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">loadings</span><span class="o">=</span><span class="n">V</span><span class="p">,</span> <span class="n">scores</span><span class="o">=</span><span class="n">Xc</span> <span class="o">@</span> <span class="n">V</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

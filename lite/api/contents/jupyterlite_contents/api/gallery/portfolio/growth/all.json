@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878993Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878993Z",
+      "mimetype": null,
+      "name": "plot_03_cppi.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/growth/plot_03_cppi.ipynb",
+      "size": 4004,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878805Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878805Z",
+      "mimetype": null,
+      "name": "plot_01_kelly_criterion.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/growth/plot_01_kelly_criterion.ipynb",
+      "size": 3514,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878898Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878898Z",
+      "mimetype": null,
+      "name": "plot_02_merton_portfolio.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/growth/plot_02_merton_portfolio.ipynb",
+      "size": 3832,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.250179Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.250642Z",
+  "mimetype": null,
+  "name": "growth",
+  "path": "jupyterlite_contents/api/gallery/portfolio/growth",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

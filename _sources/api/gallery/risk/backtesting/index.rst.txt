@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_risk_backtesting:
+
+Backtesting
+-----------
+
+Checking a VaR model against realised losses: the number of exceptions,
+the regulator's zones and whether exceptions cluster.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A 99% VaR should be exceeded on about 1% of days. Kupiec (1995) turned &quot;about&quot; into a likelihood-ratio test: with x exceptions in n days and \hat p = x/n,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/backtesting/images/thumb/sphx_glr_plot_01_kupiec_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/backtesting/plot_01_kupiec`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kupiec's proportion-of-failures test</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The 1996 Market Risk Amendment let banks set capital from their own 99%, ten-day VaR, typically historical simulation over at least a year of data, multiplied by at least 3. The multiplier grows with the number of exceptions in the last 250 days: green (0-4) keeps 3, yellow (5-9) adds 0.40 to 0.85, red (10 or more) adds 1. Here a historical VaR is run on a market whose volatility doubles halfway through.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/backtesting/images/thumb/sphx_glr_plot_02_basel_traffic_light_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/backtesting/plot_02_basel_traffic_light`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Basel historical VaR and the traffic light</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Kupiec&#x27;s test counts exceptions but ignores when they happen. A VaR that is right on average but slow to react produces exceptions in bunches, exactly when a bank can least afford them. Christoffersen (1998) fitted a two-state Markov chain to the hit sequence and tested whether a hit is more likely the day after a hit, \pi_{11} &gt; \pi_{01}; adding Kupiec&#x27;s statistic gives the conditional-coverage test, LR_{cc} = LR_{uc} + LR_{ind} \sim \chi^2_2.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/backtesting/images/thumb/sphx_glr_plot_03_christoffersen_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/backtesting/plot_03_christoffersen`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Christoffersen's independence test</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/risk/backtesting/plot_01_kupiec
+   /api/gallery/risk/backtesting/plot_02_basel_traffic_light
+   /api/gallery/risk/backtesting/plot_03_christoffersen
+

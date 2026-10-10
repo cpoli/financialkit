@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/stochastic_volatility/index';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>This gallery walks through every public feature of
+<code class="docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility</span></code>: local volatility, stochastic
+volatility, jumps, Fourier pricing, smile parametrisations and Heston
+simulation. Each script illustrates one dated breakthrough from the
+<a class="reference internal" href="../../../history/stochastic_volatility_breakthroughs.html"><span class="doc">history page</span></a>.</p>
+<p>Each script in this gallery is self-contained and can be run directly with
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">examples/stochastic_volatility/&lt;section&gt;/&lt;script&gt;.py</span></code>.</p>
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>local_vol</strong> – Cox’s CEV model and Dupire’s local volatility.</p></li>
+<li><p><strong>jumps</strong> – Merton’s jump diffusion, the Madan-Seneta and
+Madan-Carr-Chang variance gamma, Bates and Kou.</p></li>
+<li><p><strong>heston</strong> – Hull and White’s mixing formula and the Heston model.</p></li>
+<li><p><strong>fourier</strong> – Carr-Madan’s FFT, Lewis’s single integral and the COS method.</p></li>
+<li><p><strong>smile</strong> – Hagan’s SABR, Gatheral’s SVI and Lee’s moment formula.</p></li>
+<li><p><strong>simulation</strong> – Andersen’s QE scheme and full-truncation Euler.</p></li>
+</ul>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div></section>
+<section id="fourier-pricing">
+<h2>Fourier pricing<a class="headerlink" href="#fourier-pricing" title="Link to this heading">#</a></h2>
+<p>Pricing from the characteristic function: Carr and Madan’s FFT, Lewis’s
+single integral and Fang and Oosterlee’s COS expansion.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Carr and Madan (1999) noticed that the call price, as a function of the log strike k, is not integrable, but e^{\alpha k} C(k) is, and that its Fourier transform is a simple expression in the characteristic function. One fast Fourier transform then prices calls at thousands of strikes at once, for any model with a known characteristic function. The grids are linked: integration spacing \eta and strike spacing \lambda satisfy \lambda\eta = 2\pi/N."><img alt="" src="../../../_images/sphx_glr_plot_01_carr_madan_fft_thumb.png" />
+<p><a class="reference internal" href="fourier/plot_01_carr_madan_fft.html"><span class="doc">Carr and Madan’s FFT</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Carr and Madan's FFT</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Alan Lewis (2001) moved the Fourier inversion contour to \operatorname{Im} u = -\tfrac12, half way between the strips where the call and the put transforms live. There the price is one real integral,"><img alt="" src="../../../_images/sphx_glr_plot_02_lewis_formula_thumb.png" />
+<p><a class="reference internal" href="fourier/plot_02_lewis_formula.html"><span class="doc">Lewis’s single-integral formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lewis's single-integral formula</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Fang and Oosterlee (2008) truncated the density of the log return to an interval [a, b] set by its cumulants and expanded it in a cosine series, whose coefficients are read directly off the characteristic function. The payoff&#x27;s cosine coefficients are closed form, so a price is a dot product of two short vectors. For smooth densities the error falls exponentially with the number of terms; for a density with a kink, like short-dated variance gamma, only algebraically."><img alt="" src="../../../_images/sphx_glr_plot_03_cos_method_thumb.png" />
+<p><a class="reference internal" href="fourier/plot_03_cos_method.html"><span class="doc">Fang and Oosterlee’s COS method</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fang and Oosterlee's COS method</div>
+</div></div></section>
+<section id="stochastic-volatility">
+<h2>Stochastic volatility<a class="headerlink" href="#stochastic-volatility" title="Link to this heading">#</a></h2>
+<p>Volatility with its own randomness: Hull and White’s mixing formula for
+uncorrelated variance, and Heston’s correlated square-root model.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Hull and White (1987) let the variance follow its own lognormal diffusion, dV = \xi V\,dW, independent of the stock. Conditional on the variance path the stock is lognormal with the path&#x27;s average variance \bar V, so the option price is the Black-Scholes price averaged over the distribution of \bar V: the mixing formula. They expanded it in a series in \xi^2 T; here it is also computed by simulating variance paths. Because the variance is uncorrelated with the stock the smile is symmetric, and the at-the-money price falls below Black-Scholes, which is concave in the variance there."><img alt="" src="../../../_images/sphx_glr_plot_01_hull_white_mixing_thumb.png" />
+<p><a class="reference internal" href="heston/plot_01_hull_white_mixing.html"><span class="doc">Hull and White’s stochastic volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hull and White's stochastic volatility</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Steven Heston (1993) gave the variance a mean-reverting square-root diffusion correlated with the stock,"><img alt="" src="../../../_images/sphx_glr_plot_02_heston_thumb.png" />
+<p><a class="reference internal" href="heston/plot_02_heston.html"><span class="doc">The Heston model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Heston model</div>
+</div></div></section>
+<section id="jumps">
+<h2>Jumps<a class="headerlink" href="#jumps" title="Link to this heading">#</a></h2>
+<p>Discontinuous prices: Merton’s jump diffusion, the variance gamma process
+in its symmetric and skewed forms, Bates’s jumps on top of Heston, and
+Kou’s double-exponential jumps.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1976) added Poisson jumps with lognormal sizes to geometric Brownian motion. If the jump risk is diversifiable it is not priced, and conditioning on the number of jumps turns the option into a Poisson mixture of Black-Scholes prices with adjusted rates and volatilities. Jumps fatten the tails of the return distribution, and because a few jumps matter far more over a week than over five years, they make short-dated smiles much steeper than long-dated ones."><img alt="" src="../../../_images/sphx_glr_plot_01_merton_jump_diffusion_thumb.png" />
+<p><a class="reference internal" href="jumps/plot_01_merton_jump_diffusion.html"><span class="doc">Merton’s jump diffusion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's jump diffusion</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Madan and Seneta (1990) ran a Brownian motion on a random business clock: gamma-distributed time G_t, with variance rate \nu. The result, \sigma W_{G_t}, is a pure-jump Lévy process with infinitely many small jumps, symmetric, and with tails heavier than the normal&#x27;s but lighter than a power law. The density is closed form in terms of a modified Bessel function. The clock&#x27;s variance \nu sets the excess kurtosis (3\nu/T)."><img alt="" src="../../../_images/sphx_glr_plot_02_madan_seneta_variance_gamma_thumb.png" />
+<p><a class="reference internal" href="jumps/plot_02_madan_seneta_variance_gamma.html"><span class="doc">Madan and Seneta’s variance gamma</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Madan and Seneta's variance gamma</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="David Bates (1996), studying Deutsche mark options, found that neither jumps nor stochastic volatility alone fit the smile at every maturity. Diffusive stochastic volatility needs time to build up a skew, so Heston&#x27;s short-dated smiles are too flat; jumps act at once but their effect washes out with maturity. Putting Merton&#x27;s lognormal jumps on top of Heston gives both: the characteristic function is simply the product of the two."><img alt="" src="../../../_images/sphx_glr_plot_03_bates_thumb.png" />
+<p><a class="reference internal" href="jumps/plot_03_bates.html"><span class="doc">Bates: jumps and stochastic volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bates: jumps and stochastic volatility</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Madan, Carr and Chang (1998) added a drift \theta in business time: X = \theta G_t + \sigma W_{G_t}. A negative \theta moves mass into the left tail, turning the symmetric Madan-Seneta smile into the equity skew with one extra parameter, and they priced options in closed form. Fang and Oosterlee (2008) later used one of their parameter sets as a benchmark; it is reproduced below."><img alt="" src="../../../_images/sphx_glr_plot_04_madan_carr_chang_thumb.png" />
+<p><a class="reference internal" href="jumps/plot_04_madan_carr_chang.html"><span class="doc">Madan, Carr and Chang’s skewed variance gamma</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Madan, Carr and Chang's skewed variance gamma</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Steven Kou (2002) took the log jump sizes to be exponential, with rate \eta_1 upward (probability p) and \eta_2 downward. The two exponential tails give the asymmetric, leptokurtic returns seen in data, and because the exponential distribution is memoryless the overshoot over a barrier is again exponential, which makes barrier and lookback options tractable. The tails also cap the moments, E[S_T^{s}] &lt; \infty only for -\eta_2 &lt; s &lt; \eta_1."><img alt="" src="../../../_images/sphx_glr_plot_05_kou_thumb.png" />
+<p><a class="reference internal" href="jumps/plot_05_kou.html"><span class="doc">Kou’s double-exponential jumps</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kou's double-exponential jumps</div>
+</div></div></section>
+<section id="local-volatility">
+<h2>Local volatility<a class="headerlink" href="#local-volatility" title="Link to this heading">#</a></h2>
+<p>Volatility as a function of the price level and time: Cox’s constant
+elasticity of variance and Dupire’s formula, which reads the local
+volatility off a surface of option prices.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In 1975 John Cox let the volatility depend on the price, dS = r S\,dt + \sigma S^{\beta}\,dW. The local volatility is \sigma S^{\beta - 1}: for \beta &lt; 1 it rises as the price falls, the leverage effect Fischer Black had just documented, and the implied volatility skews down in the strike. Schroder (1989) gave the prices in closed form with the noncentral chi-square distribution. Here the closed form is checked against an Euler simulation of the SDE and the skew is shown for several elasticities, each scaled to a 20% at-the-money local volatility."><img alt="" src="../../../_images/sphx_glr_plot_01_cox_cev_thumb.png" />
+<p><a class="reference internal" href="local_vol/plot_01_cox_cev.html"><span class="doc">Cox’s constant elasticity of variance</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cox's constant elasticity of variance</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In 1994 Bruno Dupire showed that a full surface of call prices C(K, T) pins down a unique local volatility \sigma(S, t) that reproduces it,"><img alt="" src="../../../_images/sphx_glr_plot_02_dupire_thumb.png" />
+<p><a class="reference internal" href="local_vol/plot_02_dupire.html"><span class="doc">Dupire’s local volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Dupire's local volatility</div>
+</div></div></section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<p>Monte Carlo for Heston when the variance can hit zero: Andersen’s
+quadratic-exponential scheme and the full-truncation Euler scheme.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Leif Andersen (2008) simulated the Heston variance by matching the mean and variance of its exact noncentral chi-square transition with something cheap to sample: a scaled squared Gaussian when the variance is well away from zero, and a point mass at zero plus an exponential tail when it is close, switching at \psi = s^2/m^2 = 1.5. The spot then takes a step that integrates the variance with the trapezoidal rule. On Andersen&#x27;s hardest test case (Feller condition badly violated, ten years) QE is nearly unbiased with a few steps per year, where Euler schemes are far off."><img alt="" src="../../../_images/sphx_glr_plot_01_andersen_qe_thumb.png" />
+<p><a class="reference internal" href="simulation/plot_01_andersen_qe.html"><span class="doc">Andersen’s quadratic-exponential scheme</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Andersen's quadratic-exponential scheme</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An Euler step for the square-root variance can go negative, and the repairs proposed in the literature differ in where they take the positive part: in the diffusion only (partial truncation, Deelstra and Delbaen 1998), as an absolute value in the diffusion (Higham and Mao 2005), or in both the drift and the diffusion while letting the variance itself go negative (full truncation). Lord, Koekkoek and van Dijk (2010) put them in one framework and found full truncation the least biased. All three schemes here run through financialkit.integrators.euler_maruyama with correlated increments."><img alt="" src="../../../_images/sphx_glr_plot_02_full_truncation_thumb.png" />
+<p><a class="reference internal" href="simulation/plot_02_full_truncation.html"><span class="doc">Lord, Koekkoek and van Dijk’s full truncation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lord, Koekkoek and van Dijk's full truncation</div>
+</div></div></section>
+<section id="smile-parametrisations">
+<h2>Smile parametrisations<a class="headerlink" href="#smile-parametrisations" title="Link to this heading">#</a></h2>
+<p>Shapes for the implied volatility smile: Hagan’s SABR formula, Gatheral’s
+SVI, and Lee’s bound on how steep the wings can be.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Hagan, Kumar, Lesniewski and Woodward (2002) observed that local volatility predicts the wrong dynamics: when the forward rises, a local volatility model moves the smile the wrong way. Their stochastic \alpha\beta\rho model, dF = \alpha F^\beta\,dW_1, d\alpha = \nu\alpha\,dW_2, has an asymptotic implied-volatility formula that became the market standard for swaption smiles. Each parameter has one job: \beta the backbone, \rho the skew, \nu the curvature. Here a smile is calibrated and each parameter varied in turn."><img alt="" src="../../../_images/sphx_glr_plot_01_sabr_thumb.png" />
+<p><a class="reference internal" href="smile/plot_01_sabr.html"><span class="doc">Hagan’s SABR model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hagan's SABR model</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Jim Gatheral presented the stochastic volatility inspired (SVI) parametrisation at Global Derivatives in 2004: the total implied variance w(k) = \sigma_{BS}^2 T in log-moneyness k,"><img alt="" src="../../../_images/sphx_glr_plot_02_svi_thumb.png" />
+<p><a class="reference internal" href="smile/plot_02_svi.html"><span class="doc">Gatheral’s SVI</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Gatheral's SVI</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Roger Lee (2004) proved that the total implied variance can grow at most linearly in the log strike, and that the slope is fixed by how many moments the price has. If \tilde p is the supremum of the p with E[S_T^{1+p}] &lt; \infty, then"><img alt="" src="../../../_images/sphx_glr_plot_03_lee_moment_formula_thumb.png" />
+<p><a class="reference internal" href="smile/plot_03_lee_moment_formula.html"><span class="doc">Lee’s moment formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lee's moment formula</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/1c0c33328c1a4330bd061566bf9d9fbe/stochastic_volatility_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">stochastic_volatility_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/1626e41f0d1ce40e3845c67880389950/stochastic_volatility_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">stochastic_volatility_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-pricing">Fourier pricing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-volatility">Stochastic volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jumps">Jumps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-volatility">Local volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smile-parametrisations">Smile parametrisations</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/api/gallery/stochastic_volatility/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

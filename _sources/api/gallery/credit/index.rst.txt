@@ -1,0 +1,507 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of ``financialkit.credit``:
+Altman's Z-score; Merton's structural model, Black-Cox first passage,
+Leland's endogenous default and the KMV distance to default; hazard
+rates and recovery conventions; CDS pricing and hazard bootstrapping;
+rating migration with CreditMetrics and generator matrices; and
+portfolio credit risk with Vasicek's large pool, CreditRisk+, Li's
+copula, the Basel IRB formula and CDO tranches.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/credit/<section>/<script>.py``.
+
+Sections
+--------
+
+- **scoring** -- Altman's Z-score.
+- **structural** -- Merton, Black-Cox, Leland and the distance to default.
+- **reduced_form** -- Jarrow-Turnbull hazard rates and Duffie-Singleton
+  recovery of market value.
+- **cds** -- the CDS par spread and the ISDA hazard bootstrap.
+- **migration** -- CreditMetrics, generator matrices and the
+  Israel-Rosenthal-Wei regularization.
+- **portfolio_loss** -- Vasicek's large pool, CreditRisk+, Li's Gaussian
+  copula, the Basel IRB formula and tranche expected losses.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Credit default swaps
+--------------------
+
+Pricing protection, and reading default probabilities off quotes.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A credit default swap exchanges a running premium for a payment of 1 - R at default. O&#x27;Kane and Turnbull (2003) wrote both legs as integrals over the default density and evaluated them on a grid with defaults at mid-step, including the premium accrued between the last payment date and default. The par spread equates the legs; for a flat hazard and a continuously paid premium it is exactly \lambda(1 - R).">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/cds/images/thumb/sphx_glr_plot_01_cds_par_spread_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/cds/plot_01_cds_par_spread`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">O'Kane and Turnbull: the CDS par spread</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Since the 2009 &quot;Big Bang&quot; CDS trade with a fixed coupon (100 or 500 bp) and an upfront payment, and the ISDA standard model converts between quotes by bootstrapping a piecewise-constant hazard curve: solve for the hazard on (0, T_1] that reprices the shortest CDS, freeze it, solve the next segment, and so on. The bootstrapped curve reprices every quote and gives survival probabilities at any date.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/cds/images/thumb/sphx_glr_plot_02_isda_hazard_bootstrap_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/cds/plot_02_isda_hazard_bootstrap`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The ISDA standard model: bootstrapping hazard rates</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Rating migration
+----------------
+
+Transition matrices in discrete and continuous time.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="J. P. Morgan&#x27;s CreditMetrics (1997) revalues a bond in every rating it could hold a year from now, weights the values with a rating transition matrix, and reads the credit VaR off the resulting distribution. For a portfolio, obligors migrate jointly: each one&#x27;s asset return is mapped to a rating through normal thresholds, and the asset returns are correlated. The Technical Document&#x27;s five-year BBB bond has mean value 107.09 and standard deviation 2.99.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/migration/images/thumb/sphx_glr_plot_01_creditmetrics_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/migration/plot_01_creditmetrics`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">CreditMetrics: credit VaR from rating migrations</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jarrow, Lando and Turnbull (1997) put rating migration in continuous time. A generator \Lambda, with non-negative off-diagonal intensities and rows summing to zero, gives the transition matrix for every horizon, P(t) = e^{\Lambda t}. Default probabilities by rating, and risky bond prices with recovery of treasury, follow for any maturity, including fractions of a year that an annual matrix cannot provide.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/migration/images/thumb/sphx_glr_plot_02_generator_matrix_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/migration/plot_02_generator_matrix`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jarrow, Lando and Turnbull: generator matrices</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Going from an annual transition matrix P to a generator is not as simple as \log P. Israel, Rosenthal and Wei (2001) showed that for empirical rating matrices the principal logarithm usually has negative off-diagonal entries, which would be negative migration intensities. Their fix: set those entries to zero and absorb the change in the diagonal. A weighted variant spreads it over the row instead. Both leave e^{G} within a few basis points of P.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/migration/images/thumb/sphx_glr_plot_03_israel_rosenthal_wei_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/migration/plot_03_israel_rosenthal_wei`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Israel, Rosenthal and Wei: finding a valid generator</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Portfolio losses
+----------------
+
+Correlated defaults, loss distributions, regulatory capital and tranches.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Vasicek (1987) let every loan default when its asset return \sqrt\rho M + \sqrt{1-\rho}\,\varepsilon_i falls below N^{-1}(p). Given the common factor M, defaults are independent, so in a large pool the default rate is the deterministic p(M), and its distribution is known in closed form. Correlation does not change the expected loss, only how it is spread out: at high correlation most years are quiet and a few are disasters.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_01_vasicek_lhp_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_01_vasicek_lhp`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Vasicek's large homogeneous portfolio</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Credit Suisse First Boston&#x27;s CreditRisk+ (1997) treated defaults like insurance claims: Poisson events with rates driven by a gamma-distributed sector factor, and exposures rounded to multiples of a loss unit. The default count is then negative binomial, and Panjer&#x27;s (1981) recursion produces the whole loss distribution exactly, without simulation. The factor&#x27;s volatility \sigma fattens the tail without changing the expected loss.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_02_creditrisk_plus_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_02_creditrisk_plus`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">CreditRisk+ and Panjer's recursion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Li (2000) took each name&#x27;s default-time distribution from its CDS curve and joined them with a Gaussian copula: correlated normals become uniforms, and each uniform is mapped through that name&#x27;s survival curve. The marginals stay exactly as the market implies; the copula correlation controls how often names default together, which is what a first-to-default basket or a CDO tranche is really priced on.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_03_li_gaussian_copula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_03_li_gaussian_copula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Li's Gaussian copula for default times</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The Basel Committee (2004) set bank capital for credit risk with Vasicek&#x27;s model: capital per unit of exposure is the 99.9% quantile of the large-pool loss rate, minus the expected loss already covered by provisions, times a maturity adjustment. The supervisory asset correlation falls from 24% to 12% as the PD rises. Gordy (2003) showed this is the only setting where each loan&#x27;s capital charge does not depend on the rest of the portfolio.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_04_basel_irb_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_04_basel_irb`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Basel II IRB formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A tranche of a synthetic CDO absorbs portfolio losses between its attachment and detachment points. Hull and White (2004) priced tranches in Li&#x27;s one-factor Gaussian copula by conditioning on the common factor: given it, defaults are independent and the pool loss is binomial, so the expected tranche loss at each date is one integral over the factor. Raising the correlation moves risk from the equity tranche, which loses less, to the senior tranches, which lose more.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/portfolio_loss/images/thumb/sphx_glr_plot_05_tranche_expected_loss_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/portfolio_loss/plot_05_tranche_expected_loss`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hull and White: pricing CDO tranches without Monte Carlo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Reduced-form models
+-------------------
+
+Default as the first jump of an intensity, and what is recovered.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jarrow and Turnbull (1995) modelled the timing of default rather than its cause: default is the first jump of a Poisson process with intensity \lambda(t), so the survival probability is Q(t) = e^{-\int_0^t \lambda}. A risky zero-coupon bond that recovers a fraction \delta of a riskless one is worth P(0,T)[\delta + (1-\delta)Q(T)], and its spread is close to \lambda(1 - \delta): the credit triangle.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/reduced_form/images/thumb/sphx_glr_plot_01_jarrow_turnbull_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/reduced_form/plot_01_jarrow_turnbull`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jarrow and Turnbull: hazard rates and survival curves</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Duffie and Singleton (1999) assumed that at default a bond loses a fraction L of its own market value. Then defaultable claims are priced like riskless ones discounted at r + \lambda L, so any short-rate machinery prices credit too. With a Cox-Ingersoll-Ross intensity the risky bond has the CIR closed form; here it is compared with a simulation, and the three recovery conventions are compared for a flat hazard.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/reduced_form/images/thumb/sphx_glr_plot_02_duffie_singleton_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/reduced_form/plot_02_duffie_singleton`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Duffie and Singleton: recovery of market value</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Scoring
+-------
+
+Telling failing firms from survivors with accounting ratios.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Altman (1968) fed five accounting ratios of 33 bankrupt and 33 surviving manufacturers into a linear discriminant analysis and found">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/scoring/images/thumb/sphx_glr_plot_01_altman_z_score_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/scoring/plot_01_altman_z_score`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Altman's Z-score</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Structural models
+-----------------
+
+Default as an option on the firm's assets: at maturity, at a barrier,
+or when shareholders choose.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Merton (1974) treated a firm&#x27;s equity as a European call on its assets V, struck at the face value D of its zero-coupon debt. Debt is then a riskless bond minus a put, the risk-neutral default probability is N(-d_2), and the credit spread follows from leverage and asset volatility alone. Hull&#x27;s Example 24.3 backs out the unobserved asset value and volatility from equity (3) and its volatility (80%).">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/structural/images/thumb/sphx_glr_plot_01_merton_structural_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/structural/plot_01_merton_structural`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's structural model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Black and Cox (1976) let safety covenants force default the first time the asset value touches a barrier, not only at maturity. The reflection principle gives the first-passage probability in closed form. Here it is checked against simulated asset paths (with a Brownian-bridge correction for crossings between grid points) and compared with Merton&#x27;s maturity-only default probability.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/structural/images/thumb/sphx_glr_plot_02_black_cox_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/structural/plot_02_black_cox`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black and Cox: default at the first passage</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Leland (1994) priced perpetual debt on a firm whose coupons are tax deductible and whose bankruptcy destroys half its assets. Shareholders keep paying coupons as long as equity is worth something and default at the asset level V_B where equity hits zero with zero slope. Firm value, unlevered assets plus tax shields minus expected bankruptcy costs, is maximised at a coupon that sets the optimal leverage; in Leland&#x27;s base case this is about 75% with a 75 bp spread.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/structural/images/thumb/sphx_glr_plot_03_leland_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/structural/plot_03_leland`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Leland's endogenous default and optimal leverage</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Moody&#x27;s KMV (Crosbie and Bohn 2003) turned Merton&#x27;s model into a default-prediction tool. Asset values are backed out from a daily equity series by iterating: guess the asset volatility, invert the equity call day by day, re-estimate the volatility from the implied asset returns, and repeat. The default point is short-term debt plus half the long-term debt, and the number of standard deviations between the assets and that point,">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/structural/images/thumb/sphx_glr_plot_04_distance_to_default_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/structural/plot_04_distance_to_default`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Crosbie and Bohn: the distance to default</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/credit/cds/index.rst
+   /api/gallery/credit/migration/index.rst
+   /api/gallery/credit/portfolio_loss/index.rst
+   /api/gallery/credit/reduced_form/index.rst
+   /api/gallery/credit/scoring/index.rst
+   /api/gallery/credit/structural/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: credit_python.zip </api/gallery/credit/credit_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: credit_jupyter.zip </api/gallery/credit/credit_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in PDE Methods &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/pde_methods_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Asset Pricing" href="asset_pricing_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Monte Carlo Methods" href="monte_carlo_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in PDE Methods</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-pde-methods">
+<h1>Breakthroughs in PDE Methods<a class="headerlink" href="#breakthroughs-in-pde-methods" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/pde_methods.html"><span class="doc">financialkit.pde_methods hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/pde_methods/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/pde_methods.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“The purpose of computing is insight, not numbers.”
+– Richard Hamming</p>
+</div></blockquote>
+<p>An option price is the solution of a parabolic partial differential
+equation, so every tool built for heat flow, groundwater and oil
+reservoirs applies to it. The schemes behind
+<a class="reference internal" href="../api/pde_methods.html#module-financialkit.pde_methods" title="financialkit.pde_methods"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.pde_methods</span></code></a> were invented by physicists and
+engineers between 1911 and 1955; finance adopted them in the 1970s, when
+Schwartz and Brennan priced warrants and American puts on a grid, and
+adapted them in the decades since to kinks in payoffs, knock-out
+barriers and early exercise. This chronology follows that path from
+stability and accuracy theory to the solvers in the code.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#richardson-extrapolation" id="id1">1911 – Richardson Extrapolation</a></p></li>
+<li><p><a class="reference internal" href="#courant-friedrichs-lewy" id="id2">1928 – Courant-Friedrichs-Lewy</a></p></li>
+<li><p><a class="reference internal" href="#crank-nicolson" id="id3">1947 – Crank-Nicolson</a></p></li>
+<li><p><a class="reference internal" href="#laasonen-s-implicit-scheme" id="id4">1949 – Laasonen’s Implicit Scheme</a></p></li>
+<li><p><a class="reference internal" href="#the-thomas-algorithm" id="id5">1949 – The Thomas Algorithm</a></p></li>
+<li><p><a class="reference internal" href="#von-neumann-stability-analysis" id="id6">1950 – Von Neumann Stability Analysis</a></p></li>
+<li><p><a class="reference internal" href="#peaceman-rachford-adi" id="id7">1955 – Peaceman-Rachford ADI</a></p></li>
+<li><p><a class="reference internal" href="#cryer-s-projected-sor" id="id8">1971 – Cryer’s Projected SOR</a></p></li>
+<li><p><a class="reference internal" href="#black-scholes-as-the-heat-equation" id="id9">1973 – Black-Scholes as the Heat Equation</a></p></li>
+<li><p><a class="reference internal" href="#schwartz-explicit-finite-differences" id="id10">1977 – Schwartz: Explicit Finite Differences</a></p></li>
+<li><p><a class="reference internal" href="#brennan-schwartz-american-put" id="id11">1977 – Brennan-Schwartz American Put</a></p></li>
+<li><p><a class="reference internal" href="#brennan-schwartz-explicit-schemes-are-trinomial-trees" id="id12">1978 – Brennan-Schwartz: Explicit Schemes Are Trinomial Trees</a></p></li>
+<li><p><a class="reference internal" href="#rannacher-smoothing" id="id13">1984 – Rannacher Smoothing</a></p></li>
+<li><p><a class="reference internal" href="#tavella-randall-non-uniform-grids" id="id14">2000 – Tavella-Randall Non-Uniform Grids</a></p></li>
+<li><p><a class="reference internal" href="#zvan-forsyth-vetzal-barrier-options" id="id15">2000 – Zvan-Forsyth-Vetzal Barrier Options</a></p></li>
+<li><p><a class="reference internal" href="#forsyth-vetzal-penalty-method" id="id16">2002 – Forsyth-Vetzal Penalty Method</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id17">See Also</a></p></li>
+</ul>
+</nav>
+<section id="richardson-extrapolation">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1911 – Richardson Extrapolation</a><a class="headerlink" href="#richardson-extrapolation" title="Link to this heading">#</a></h2>
+<p>Lewis Fry Richardson computed the stresses in a masonry dam by finite
+differences, by hand, and needed more accuracy than his coarse grids
+could give. He observed that when the error of a scheme behaves like a
+power of the step size, solutions on two grids determine both the
+unknown constant and the limit, a “deferred approach to the limit” that
+he and Gaunt developed further in 1927. Applied to option prices it turns
+two second-order solves into a fourth-order estimate, provided the error
+really is a clean power of the step, which a payoff kink can spoil.</p>
+<div class="math notranslate nohighlight">
+\[V_h = V + C h^p + o(h^p) \quad\Longrightarrow\quad
+V \approx V_{h/2} + \frac{V_{h/2} - V_h}{2^p - 1}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.accuracy.richardson_extrapolation()</span></code>
+extrapolates a sequence of refined approximations and estimates the
+observed order from three of them, returning a
+<a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.RichardsonResult" title="financialkit.pde_methods.core.base.RichardsonResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">RichardsonResult</span></code></a>. The example
+extrapolates Crank-Nicolson call prices and gains two digits.</p>
+<p><em>References:</em> L. F. Richardson, “The Approximate Arithmetical Solution
+by Finite Differences of Physical Problems Involving Differential
+Equations, with an Application to the Stresses in a Masonry Dam,”
+<em>Philosophical Transactions of the Royal Society A</em> 210 (1911) 307-357;
+L. F. Richardson and J. A. Gaunt, “The Deferred Approach to the Limit,”
+<em>Philosophical Transactions of the Royal Society A</em> 226 (1927) 299-361.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Lewis Fry Richardson (1911), computing stresses in masonry dams by finite differences, noticed that when the error behaves like C h^p, two solutions on grids h and h/2 determine both the constant and the limit: V \approx V_{h/2} + (V_{h/2} - V_h)/(2^p - 1). richardson_extrapolation applies this to Crank-Nicolson prices; three grids also confirm that the observed order is 2, which needs the strike on a node and Rannacher&#x27;s start so that the error is a clean power of h."><img alt="" src="../_images/sphx_glr_plot_01_richardson_extrapolation_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/accuracy/plot_01_richardson_extrapolation.html"><span class="doc">Richardson extrapolation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Richardson extrapolation</div>
+</div></div></section>
+<section id="courant-friedrichs-lewy">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1928 – Courant-Friedrichs-Lewy</a><a class="headerlink" href="#courant-friedrichs-lewy" title="Link to this heading">#</a></h2>
+<p>Richard Courant, Kurt Friedrichs and Hans Lewy studied difference
+approximations to the classical equations of mathematical physics and
+proved that an explicit scheme cannot converge if its time step lets
+the true solution’s domain of dependence escape the grid’s. For
+diffusion the condition is severe: the time step must shrink with the
+square of the space step. For the Black-Scholes equation on a uniform
+spot grid this means that refining from 100 to 200 spot intervals
+quadruples the number of explicit time steps.</p>
+<div class="math notranslate nohighlight">
+\[\Delta t \lesssim \frac{\Delta S^2}{\sigma^2 S_{\max}^2}
+= \frac{1}{\sigma^2 M^2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.stability.explicit_stability()</span></code>
+computes the largest stable explicit step from the eigenvalues of the
+discrete Black-Scholes operator, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">diffusion_number()</span></code>
+gives the log-spot version. The example prices a call just below the
+limit and watches the same scheme blow up just above it.</p>
+<p><em>References:</em> R. Courant, K. Friedrichs and H. Lewy, “Über die
+partiellen Differenzengleichungen der mathematischen Physik,”
+<em>Mathematische Annalen</em> 100 (1928) 32-74; English translation in <em>IBM
+Journal of Research and Development</em> 11 (1967) 215-234.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Courant, Friedrichs and Lewy (1928) proved that an explicit difference scheme cannot converge if its time step outruns the way information spreads across the grid. For the diffusion in the Black-Scholes equation the bound ties the time step to the square of the spot step: \Delta t \lesssim 1/(\sigma^2 M^2). explicit_stability computes the limit from the eigenvalues of the discrete operator; a step 3% below it gives the right price, a step 30% above it blows up from rounding errors near the top of the grid."><img alt="" src="../_images/sphx_glr_plot_01_cfl_explicit_blowup_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/stability/plot_01_cfl_explicit_blowup.html"><span class="doc">Courant-Friedrichs-Lewy</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Courant-Friedrichs-Lewy</div>
+</div></div></section>
+<section id="crank-nicolson">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1947 – Crank-Nicolson</a><a class="headerlink" href="#crank-nicolson" title="Link to this heading">#</a></h2>
+<p>John Crank and Phyllis Nicolson, computing the heating of cellulose,
+centred their difference scheme on the half time step by averaging the
+explicit and implicit space differences. The result is second-order
+accurate in time and stable for any step, which made it the standard
+method for diffusion problems and, three decades later, for option
+pricing. Its one weakness is that the stiffest modes are barely damped,
+which matters when the initial data has a kink.</p>
+<div class="math notranslate nohighlight">
+\[\Bigl(I - \tfrac{\Delta\tau}{2} A\Bigr) V^{n+1}
+= \Bigl(I + \tfrac{\Delta\tau}{2} A\Bigr) V^n\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.CrankNicolson" title="financialkit.pde_methods.systems.schemes.CrankNicolson"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.schemes.CrankNicolson</span></code></a>
+is the theta-scheme with <span class="math notranslate nohighlight">\(\theta = 1/2\)</span>, stepping with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">theta_march()</span></code> and returning
+an <a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.FDResult" title="financialkit.pde_methods.core.base.FDResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">FDResult</span></code></a> with the price,
+delta, gamma and value surface. The example shows its second-order
+convergence to Black-Scholes.</p>
+<p><em>References:</em> J. Crank and P. Nicolson, “A Practical Method for
+Numerical Evaluation of Solutions of Partial Differential Equations of
+the Heat-Conduction Type,” <em>Proceedings of the Cambridge Philosophical
+Society</em> 43 (1947) 50-67.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John Crank and Phyllis Nicolson (1947) averaged the explicit and implicit differences of the heat equation around the half step,"><img alt="" src="../_images/sphx_glr_plot_01_crank_nicolson_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/schemes/plot_01_crank_nicolson.html"><span class="doc">Crank-Nicolson</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Crank-Nicolson</div>
+</div></div></section>
+<section id="laasonen-s-implicit-scheme">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1949 – Laasonen’s Implicit Scheme</a><a class="headerlink" href="#laasonen-s-implicit-scheme" title="Link to this heading">#</a></h2>
+<p>Pentti Laasonen, in Helsinki, analysed the scheme that evaluates the
+space derivatives at the new time level, so that each step solves a
+linear system. He showed that it is stable whatever the time step, and
+it is also monotone: it never creates new oscillations, at the cost of
+first-order accuracy in time. It is the scheme of choice for the first
+steps after a non-smooth payoff and for problems where robustness
+matters more than accuracy.</p>
+<div class="math notranslate nohighlight">
+\[(I - \Delta\tau\, A) V^{n+1} = V^n\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.ImplicitScheme" title="financialkit.pde_methods.systems.schemes.ImplicitScheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.schemes.ImplicitScheme</span></code></a>
+is the theta-scheme with <span class="math notranslate nohighlight">\(\theta = 1\)</span>. The example takes time steps
+hundreds of times the explicit limit and shows the error halving with
+the step.</p>
+<p><em>References:</em> P. Laasonen, “Über eine Methode zur Lösung der
+Wärmeleitungsgleichung,” <em>Acta Mathematica</em> 81 (1949) 309-317.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Pentti Laasonen (1949) evaluated the space derivatives of the heat equation at the new time level, (I - \Delta\tau A) V^{n+1} = V^n. Every step is then a linear solve, but no step is too large: the scheme is stable and monotone for any \Delta\tau, at the price of first-order accuracy in time. ImplicitScheme shows both sides: a large step that would wreck the explicit scheme gives a sensible answer, and halving the step halves the error."><img alt="" src="../_images/sphx_glr_plot_02_laasonen_implicit_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/schemes/plot_02_laasonen_implicit.html"><span class="doc">Laasonen’s implicit scheme</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Laasonen's implicit scheme</div>
+</div></div></section>
+<section id="the-thomas-algorithm">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1949 – The Thomas Algorithm</a><a class="headerlink" href="#the-thomas-algorithm" title="Link to this heading">#</a></h2>
+<p>Llewellyn Thomas, at IBM’s Watson Laboratory at Columbia, wrote down the
+form of Gaussian elimination that solves a tridiagonal system in a
+number of operations proportional to its size: one forward sweep
+eliminates the sub-diagonal, one backward sweep substitutes. Every
+implicit step of a one-factor scheme, and every half step of an ADI
+scheme, is such a system, and diagonal dominance means no pivoting is
+needed.</p>
+<div class="math notranslate nohighlight">
+\[c_i' = \frac{c_i}{b_i - a_i c_{i-1}'}, \quad
+d_i' = \frac{d_i - a_i d_{i-1}'}{b_i - a_i c_{i-1}'}, \quad
+x_i = d_i' - c_i' x_{i+1}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.tridiagonal.thomas_solve()</span></code>
+runs the algorithm in an optional Numba kernel; the schemes use
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve_banded.html#scipy.linalg.solve_banded" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.linalg.solve_banded()</span></code></a> by default and accept
+<code class="docutils literal notranslate"><span class="pre">solver=&quot;thomas&quot;</span></code>. The example checks the two against each other and
+times Thomas against a dense solve.</p>
+<p><em>References:</em> L. H. Thomas, “Elliptic Problems in Linear Difference
+Equations over a Network,” Watson Scientific Computing Laboratory
+report, Columbia University (1949); G. H. Golub and C. F. Van Loan,
+<em>Matrix Computations</em>, 4th ed. (Johns Hopkins, 2013), Section 4.3.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Every implicit step in one space dimension is a tridiagonal system. Llewellyn Thomas (1949) wrote down the specialised Gaussian elimination that solves it in O(m) operations: one sweep removes the sub-diagonal, a second substitutes back. No pivoting is needed because the implicit Black-Scholes matrix is diagonally dominant. thomas_solve is that algorithm by hand; it agrees with scipy.linalg.solve_banded to rounding, and its cost grows linearly while a dense solve grows cubically."><img alt="" src="../_images/sphx_glr_plot_03_thomas_algorithm_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/schemes/plot_03_thomas_algorithm.html"><span class="doc">The Thomas algorithm</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Thomas algorithm</div>
+</div></div></section>
+<section id="von-neumann-stability-analysis">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1950 – Von Neumann Stability Analysis</a><a class="headerlink" href="#von-neumann-stability-analysis" title="Link to this heading">#</a></h2>
+<p>John von Neumann’s Fourier method, used at Los Alamos during the war and
+published with Charney and Fjørtoft in their numerical weather forecast,
+tests a linear constant-coefficient scheme one Fourier mode at a time.
+Each mode is multiplied by an amplification factor per step, and the
+scheme is stable when no factor exceeds one in modulus. The analysis
+explains at a glance why the explicit scheme fails above a diffusion
+number of one, why Crank-Nicolson never grows but barely damps the
+highest modes, and why the implicit scheme damps them all.</p>
+<div class="math notranslate nohighlight">
+\[g(\xi) = \frac{1 + (1 - \theta) z(\xi)}{1 - \theta z(\xi)}, \qquad
+z(\xi) = \Delta t\Bigl[\frac{\sigma^2}{\Delta x^2}(\cos\xi - 1)
++ i\frac{\nu}{\Delta x}\sin\xi - r\Bigr]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.stability.von_neumann_amplification()</span></code>
+evaluates the amplification factor of the log-spot theta-scheme over the
+phase angles and returns a
+<a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.VonNeumannResult" title="financialkit.pde_methods.core.base.VonNeumannResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">VonNeumannResult</span></code></a>. The example
+compares the explicit, Crank-Nicolson and implicit factors.</p>
+<p><em>References:</em> J. G. Charney, R. Fjørtoft and J. von Neumann, “Numerical
+Integration of the Barotropic Vorticity Equation,” <em>Tellus</em> 2 (1950)
+237-254; R. D. Richtmyer and K. W. Morton, <em>Difference Methods for
+Initial-Value Problems</em>, 2nd ed. (Wiley, 1967), Ch. 4.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John von Neumann&#x27;s method, used at Los Alamos in the 1940s and published in 1950, inserts a single Fourier mode V_j^n = g^n e^{ij\xi} into a constant-coefficient scheme. The mode grows when its amplification factor has |g(\xi)| &gt; 1, so stability means |g| \le 1 for every \xi. For the theta-scheme in log-spot, g = (1 + (1-\theta)z)/(1 - \theta z) with z \approx -\sigma^2\Delta t/\Delta x^2 (1 - \cos\xi): von_neumann_amplification shows the explicit scheme failing above a diffusion number of one, Crank-Nicolson never growing but barely damping the highest modes, and the implicit scheme damping them all."><img alt="" src="../_images/sphx_glr_plot_02_von_neumann_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/stability/plot_02_von_neumann.html"><span class="doc">Von Neumann stability analysis</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Von Neumann stability analysis</div>
+</div></div></section>
+<section id="peaceman-rachford-adi">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1955 – Peaceman-Rachford ADI</a><a class="headerlink" href="#peaceman-rachford-adi" title="Link to this heading">#</a></h2>
+<p>Donald Peaceman and Henry Rachford, at Humble Oil, needed to solve
+two-dimensional heat-flow problems for reservoir simulation on the
+computers of the day, where a fully implicit step was far too expensive.
+They alternated the implicit direction: half a step implicit in
+<span class="math notranslate nohighlight">\(x\)</span>, half a step implicit in <span class="math notranslate nohighlight">\(y\)</span>, each a set of independent
+tridiagonal solves. The scheme is unconditionally stable and second
+order, and its descendants (Douglas, Craig-Sneyd, Hundsdorfer-Verwer)
+price two-asset and stochastic-volatility options today.</p>
+<div class="math notranslate nohighlight">
+\[\Bigl(I - \tfrac{\Delta\tau}{2} A_1\Bigr) V^{*} = \Bigl(I + \tfrac{\Delta\tau}{2} A_2\Bigr) V^n, \qquad
+\Bigl(I - \tfrac{\Delta\tau}{2} A_2\Bigr) V^{n+1} = \Bigl(I + \tfrac{\Delta\tau}{2} A_1\Bigr) V^{*}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.PeacemanRachfordADI" title="financialkit.pde_methods.systems.adi.PeacemanRachfordADI"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.adi.PeacemanRachfordADI</span></code></a>
+prices a two-asset European payoff in log-spot coordinates, taking the
+correlation term explicitly, and returns an
+<a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.ADIResult" title="financialkit.pde_methods.core.base.ADIResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ADIResult</span></code></a>. The example
+prices Margrabe’s exchange option across correlations.</p>
+<p><em>References:</em> D. W. Peaceman and H. H. Rachford, “The Numerical Solution
+of Parabolic and Elliptic Differential Equations,” <em>Journal of the
+Society for Industrial and Applied Mathematics</em> 3 (1955) 28-41; K. J. in
+‘t Hout and S. Foulon, “ADI Finite Difference Schemes for Option Pricing
+in the Heston Model with Correlation,” <em>International Journal of
+Numerical Analysis and Modeling</em> 7 (2010) 303-320.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="With two assets every implicit step couples a whole plane of unknowns. Donald Peaceman and Henry Rachford (1955), modelling oil reservoirs, split each step into two half steps, each implicit in one direction only, so that a step is a set of independent tridiagonal solves. PeacemanRachfordADI prices Margrabe&#x27;s option to exchange one asset for another, whose exact value is Black-Scholes with the second asset as the strike and the volatility of the ratio, \sqrt{\sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2}."><img alt="" src="../_images/sphx_glr_plot_01_peaceman_rachford_adi_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/multi_factor/plot_01_peaceman_rachford_adi.html"><span class="doc">Peaceman-Rachford ADI</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Peaceman-Rachford ADI</div>
+</div></div></section>
+<section id="cryer-s-projected-sor">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1971 – Cryer’s Projected SOR</a><a class="headerlink" href="#cryer-s-projected-sor" title="Link to this heading">#</a></h2>
+<p>Colin Cryer studied the quadratic programs that arise from free-boundary
+problems and showed that successive over-relaxation, with each update
+projected back onto the constraint, converges to their solution. For an
+American option the constraint is that the value never falls below the
+payoff, and projected SOR became the textbook way to price early
+exercise on a grid. It is simple and general, but the number of sweeps
+grows as the grid is refined.</p>
+<div class="math notranslate nohighlight">
+\[x_i \leftarrow \max\Bigl(g_i,\ x_i + \omega\Bigl[\frac{b_i - a_i x_{i-1} - c_i x_{i+1}}{d_i} - x_i\Bigr]\Bigr)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.american.psor()</span></code>
+runs the projected sweeps in an optional Numba kernel and returns an
+<a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.LCPSolution" title="financialkit.pde_methods.core.base.LCPSolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">LCPSolution</span></code></a>; it is the
+default <code class="docutils literal notranslate"><span class="pre">american_method</span></code> of the theta-schemes. The example prices
+Hull’s American put, plots the exercise boundary and counts sweeps
+against the relaxation parameter.</p>
+<p><em>References:</em> C. W. Cryer, “The Solution of a Quadratic Programming
+Problem Using Systematic Overrelaxation,” <em>SIAM Journal on Control</em> 9
+(1971) 385-392; P. Wilmott, J. Dewynne and S. Howison, <em>Option Pricing:
+Mathematical Models and Computation</em> (Oxford Financial Press, 1993),
+Ch. 9.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An American option is either held, where it satisfies the Black-Scholes equation, or exercised, where it equals its payoff; each implicit step becomes a linear complementarity problem Ax \ge b,\ x \ge g,\ (Ax - b)^\top(x - g) = 0. Colin Cryer (1971) solved it by successive over-relaxation, projecting each update back onto x \ge g. psor does this inside CrankNicolson; the sweep count depends strongly on the relaxation parameter \omega."><img alt="" src="../_images/sphx_glr_plot_01_cryer_psor_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/american/plot_01_cryer_psor.html"><span class="doc">Cryer’s projected SOR</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cryer's projected SOR</div>
+</div></div></section>
+<section id="black-scholes-as-the-heat-equation">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1973 – Black-Scholes as the Heat Equation</a><a class="headerlink" href="#black-scholes-as-the-heat-equation" title="Link to this heading">#</a></h2>
+<p>Black and Scholes found their formula by changing variables until the
+pricing equation became the heat equation, whose solution by
+convolution with the Gaussian kernel was a century old. The same
+transformation is useful numerically: in <span class="math notranslate nohighlight">\(x = \ln(S/K)\)</span> and
+scaled time the equation has constant coefficients on a uniform grid,
+so the stability and accuracy theory of the heat equation applies
+verbatim.</p>
+<div class="math notranslate nohighlight">
+\[V(S, t) = K e^{\alpha x + \beta \tau} u(x, \tau), \quad
+x = \ln\frac{S}{K}, \quad \tau = \tfrac12\sigma^2 (T - t), \quad
+u_\tau = u_{xx}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.heat.heat_equation_price()</span></code>
+solves the heat equation for the transformed payoff by Crank-Nicolson and
+transforms back, returning a
+<a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.HeatEquationResult" title="financialkit.pde_methods.core.base.HeatEquationResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">HeatEquationResult</span></code></a>, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">heat_equation_exponents()</span></code>
+gives <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>. The example shows the payoff
+diffusing and the recovered prices.</p>
+<p><em>References:</em> F. Black and M. Scholes, “The Pricing of Options and
+Corporate Liabilities,” <em>Journal of Political Economy</em> 81 (1973)
+637-654; P. Wilmott, S. Howison and J. Dewynne, <em>The Mathematics of
+Financial Derivatives</em> (Cambridge University Press, 1995), Ch. 5.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Black and Scholes (1973) found their formula by changing variables until the pricing equation became the heat equation. With x = \ln(S/K) and \tau = \tfrac12\sigma^2(T - t), V = K e^{\alpha x + \beta\tau} u turns Black-Scholes into u_\tau = u_{xx}, whose initial condition is the transformed payoff. heat_equation_price solves the heat equation by Crank-Nicolson on a uniform grid, watches the payoff diffuse, and transforms back."><img alt="" src="../_images/sphx_glr_plot_04_heat_equation_transform_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/schemes/plot_04_heat_equation_transform.html"><span class="doc">Black-Scholes as the heat equation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black-Scholes as the heat equation</div>
+</div></div></section>
+<section id="schwartz-explicit-finite-differences">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1977 – Schwartz: Explicit Finite Differences</a><a class="headerlink" href="#schwartz-explicit-finite-differences" title="Link to this heading">#</a></h2>
+<p>Eduardo Schwartz valued warrants, whose dilution and dividends put them
+beyond the Black-Scholes formula, by discretising the pricing equation
+and stepping back from expiry. It was the first finite-difference
+valuation in finance. The explicit scheme needs no linear algebra, and
+its stability restriction was the price to pay for that simplicity.</p>
+<div class="math notranslate nohighlight">
+\[V_i^{n+1} = V_i^n + \Delta\tau\bigl(a_i V_{i-1}^n + b_i V_i^n + c_i V_{i+1}^n\bigr)\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.ExplicitScheme" title="financialkit.pde_methods.systems.schemes.ExplicitScheme"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.schemes.ExplicitScheme</span></code></a>
+is the theta-scheme with <span class="math notranslate nohighlight">\(\theta = 0\)</span>; its result carries the
+stability check in <code class="docutils literal notranslate"><span class="pre">FDResult.stability</span></code>. The example reproduces
+Hull’s Example 15.6 across the whole grid.</p>
+<p><em>References:</em> E. S. Schwartz, “The Valuation of Warrants: Implementing a
+New Approach,” <em>Journal of Financial Economics</em> 4 (1977) 79-93; Hull,
+<em>Options, Futures, and Other Derivatives</em>, 10th ed., Ch. 21.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Eduardo Schwartz (1977) valued warrants, which no formula covered, by replacing the derivatives in the Black-Scholes equation with differences and stepping back from expiry one explicit step at a time:"><img alt="" src="../_images/sphx_glr_plot_05_schwartz_explicit_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/schemes/plot_05_schwartz_explicit.html"><span class="doc">Schwartz: explicit finite differences</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Schwartz: explicit finite differences</div>
+</div></div></section>
+<section id="brennan-schwartz-american-put">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1977 – Brennan-Schwartz American Put</a><a class="headerlink" href="#brennan-schwartz-american-put" title="Link to this heading">#</a></h2>
+<p>Michael Brennan and Eduardo Schwartz priced the American put with an
+implicit scheme and noticed that, because a put is exercised on a single
+interval at the bottom of the grid, the complementarity problem at each
+step can be solved exactly in one pass: eliminate the tridiagonal system
+from the top of the grid down, then substitute back up from zero,
+replacing each value by the payoff whenever the payoff is larger. The
+algorithm is as cheap as one European step.</p>
+<div class="math notranslate nohighlight">
+\[x_0 = \max\Bigl(\frac{b_0'}{d_0'}, g_0\Bigr), \qquad
+x_i = \max\Bigl(\frac{b_i' - a_i x_{i-1}}{d_i'}, g_i\Bigr)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.american.brennan_schwartz()</span></code>
+runs the direct solve in an optional Numba kernel for exercise at either
+end of the grid, and the theta-schemes use it with
+<code class="docutils literal notranslate"><span class="pre">american_method=&quot;brennan_schwartz&quot;</span></code>. The example compares it with PSOR
+and plots the put and its exercise boundary for several maturities.</p>
+<p><em>References:</em> M. J. Brennan and E. S. Schwartz, “The Valuation of
+American Put Options,” <em>Journal of Finance</em> 32 (1977) 449-462; P. Jaillet,
+D. Lamberton and B. Lapeyre, “Variational Inequalities and the Pricing
+of American Options,” <em>Acta Applicandae Mathematicae</em> 21 (1990) 263-289.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Michael Brennan and Eduardo Schwartz (1977) priced the American put with an implicit scheme and a direct solve: eliminate the tridiagonal system starting from the top of the grid, then substitute back upward from S = 0, taking the larger of the computed value and the payoff at each node. Because the put is exercised on a single interval at the bottom of the grid, this one pass solves the complementarity problem exactly. brennan_schwartz matches PSOR to rounding at a fraction of the cost."><img alt="" src="../_images/sphx_glr_plot_02_brennan_schwartz_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/american/plot_02_brennan_schwartz.html"><span class="doc">Brennan-Schwartz American put</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Brennan-Schwartz American put</div>
+</div></div></section>
+<section id="brennan-schwartz-explicit-schemes-are-trinomial-trees">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">1978 – Brennan-Schwartz: Explicit Schemes Are Trinomial Trees</a><a class="headerlink" href="#brennan-schwartz-explicit-schemes-are-trinomial-trees" title="Link to this heading">#</a></h2>
+<p>A year after their American put, Brennan and Schwartz showed that the
+explicit scheme in log-price is a jump process: its three weights sum to
+one and match the mean and variance of the log-price increment, so the
+scheme is a trinomial lattice, and its stability condition is the
+requirement that the weights be probabilities. The observation joined
+the PDE and lattice traditions; Hull’s trinomial tree is the explicit
+scheme with <span class="math notranslate nohighlight">\(\Delta x = \sigma\sqrt{3\Delta t}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[p_{u,d} = \Delta t\Bigl(\frac{\sigma^2}{2\Delta x^2} \pm \frac{\nu}{2\Delta x}\Bigr), \quad
+p_m = 1 - \frac{\sigma^2 \Delta t}{\Delta x^2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.log_explicit.explicit_trinomial_probabilities()</span></code>
+returns the weights as
+<a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.TrinomialProbabilities" title="financialkit.pde_methods.core.base.TrinomialProbabilities"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrinomialProbabilities</span></code></a>, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">log_explicit_price()</span></code>
+runs the scheme on a grid wide enough that the spot never feels the
+boundaries. The example prices European and American puts and shows the
+middle weight turning negative at the stability limit.</p>
+<p><em>References:</em> M. J. Brennan and E. S. Schwartz, “Finite Difference
+Methods and Jump Processes Arising in the Pricing of Contingent Claims:
+A Synthesis,” <em>Journal of Financial and Quantitative Analysis</em> 13 (1978)
+461-474; Hull, <em>Options, Futures, and Other Derivatives</em>, 10th ed.,
+Ch. 21.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Brennan and Schwartz (1978) noticed that in x = \ln S the explicit scheme&#x27;s weights on the three neighbouring nodes sum to one and match the mean and variance of the log-price increment: the explicit scheme is a trinomial tree, and its stability condition is just the requirement that the weights be probabilities. With \Delta x = \sigma\sqrt{3\Delta t} the middle weight is 2/3, Hull&#x27;s standard tree. log_explicit_price runs the scheme, and explicit_trinomial_probabilities shows the weights turn negative exactly where the scheme becomes unstable."><img alt="" src="../_images/sphx_glr_plot_06_explicit_is_trinomial_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/schemes/plot_06_explicit_is_trinomial.html"><span class="doc">Brennan-Schwartz: explicit schemes are trinomial trees</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Brennan-Schwartz: explicit schemes are trinomial trees</div>
+</div></div></section>
+<section id="rannacher-smoothing">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">1984 – Rannacher Smoothing</a><a class="headerlink" href="#rannacher-smoothing" title="Link to this heading">#</a></h2>
+<p>Rolf Rannacher, analysing finite-element solutions of the heat equation
+with irregular initial data, showed that Crank-Nicolson loses its second
+order and leaves spurious oscillations when the data is rough, and that
+a few fully implicit steps at the start restore both. Giles and Carter
+later quantified the effect for the Greeks of vanilla and digital
+options, where the payoff kink or jump excites exactly the modes that
+Crank-Nicolson fails to damp.</p>
+<div class="math notranslate nohighlight">
+\[\text{first } k \text{ steps: } \Bigl(I - \tfrac{\Delta\tau}{2} A\Bigr) V^{n + 1/2} = V^{n}
+\text{ twice}, \quad \text{then Crank-Nicolson}\]</div>
+<p><em>Implementation:</em> the <code class="docutils literal notranslate"><span class="pre">rannacher_steps</span></code> option of
+<a class="reference internal" href="../api/pde_methods.html#financialkit.pde_methods.CrankNicolson" title="financialkit.pde_methods.systems.schemes.CrankNicolson"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.schemes.CrankNicolson</span></code></a> (handled
+in <code class="xref py py-func docutils literal notranslate"><span class="pre">theta_march()</span></code>) replaces
+each of the first steps by two implicit half steps. The example plots
+gamma with and without the smoothing.</p>
+<p><em>References:</em> R. Rannacher, “Finite Element Solution of Diffusion
+Problems with Irregular Data,” <em>Numerische Mathematik</em> 43 (1984) 309-327;
+M. B. Giles and R. Carter, “Convergence Analysis of Crank-Nicolson and
+Rannacher Time-Marching,” <em>Journal of Computational Finance</em> 9 (2006)
+89-112.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Crank-Nicolson is stable, but its amplification factor tends to -1 for the stiffest modes, so the high-frequency error excited by a payoff kink is never damped: it just flips sign every step. With large time steps the price looks fine while delta and gamma oscillate around the strike. Rolf Rannacher (1984) proposed starting with a few fully implicit steps, which damp those modes, before switching to Crank-Nicolson. CrankNicolson with rannacher_steps=2 replaces the first two steps by four implicit half steps."><img alt="" src="../_images/sphx_glr_plot_03_rannacher_smoothing_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/stability/plot_03_rannacher_smoothing.html"><span class="doc">Rannacher smoothing</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rannacher smoothing</div>
+</div></div></section>
+<section id="tavella-randall-non-uniform-grids">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">2000 – Tavella-Randall Non-Uniform Grids</a><a class="headerlink" href="#tavella-randall-non-uniform-grids" title="Link to this heading">#</a></h2>
+<p>Domingo Tavella and Curt Randall’s book on finite-difference pricing
+made the case for non-uniform grids generated by a smooth coordinate
+map. A hyperbolic sine concentrates nodes around the strike, where the
+payoff kink makes the solution curve, and spaces them out where the
+value is nearly linear; because the map is smooth, three-point
+differences keep their second order. The same accuracy then needs far
+fewer nodes.</p>
+<div class="math notranslate nohighlight">
+\[S(\xi) = K + \alpha \sinh\bigl(c_1 + \xi (c_2 - c_1)\bigr), \quad
+c_{1,2} = \operatorname{arsinh}\frac{S_{\min,\max} - K}{\alpha}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.grids.tavella_randall_grid()</span></code>
+builds the grid, <code class="xref py py-func docutils literal notranslate"><span class="pre">black_scholes_operator()</span></code>
+discretises on any grid, and <code class="docutils literal notranslate"><span class="pre">grid=&quot;tavella_randall&quot;</span></code> selects it in the
+theta-schemes. The example compares errors on uniform and sinh grids of
+the same size.</p>
+<p><em>References:</em> D. Tavella and C. Randall, <em>Pricing Financial Instruments:
+The Finite Difference Method</em> (Wiley, 2000), Ch. 5.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Away from the strike a vanilla option is almost linear, so a uniform grid spends most of its nodes where nothing happens. Tavella and Randall (2000) map a uniform coordinate through a hyperbolic sine to cluster the nodes around the strike, keeping the grid smooth so the three-point differences stay second order. tavella_randall_grid builds the grid, and grid=&quot;tavella_randall&quot; prices on it: the same accuracy with a fraction of the nodes."><img alt="" src="../_images/sphx_glr_plot_02_tavella_randall_grid_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/accuracy/plot_02_tavella_randall_grid.html"><span class="doc">Tavella-Randall non-uniform grids</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Tavella-Randall non-uniform grids</div>
+</div></div></section>
+<section id="zvan-forsyth-vetzal-barrier-options">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">2000 – Zvan-Forsyth-Vetzal Barrier Options</a><a class="headerlink" href="#zvan-forsyth-vetzal-barrier-options" title="Link to this heading">#</a></h2>
+<p>Robert Zvan, Peter Forsyth and Kenneth Vetzal showed that finite
+differences price barrier options well only with care: a grid node must
+sit on the barrier, so that the knock-out condition is imposed exactly,
+and the time stepping must cope with the discontinuity between the
+payoff and the boundary. A barrier that falls between nodes costs first
+order accuracy, and Crank-Nicolson without smoothing produces
+oscillating Greeks near it.</p>
+<div class="math notranslate nohighlight">
+\[V(H, t) = 0, \qquad V(S, T) = \max(S - K, 0) \ \text{for } S &gt; H\]</div>
+<p><em>Implementation:</em> <code class="xref py py-meth docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.schemes.ThetaScheme.price_barrier()</span></code>
+starts (or ends) the grid at the barrier for down-and-out and up-and-out
+options. The example checks a down-and-out call against the method of
+images and compares an aligned grid with a barrier half a node away.</p>
+<p><em>References:</em> R. Zvan, P. A. Forsyth and K. R. Vetzal, “PDE Methods for
+Pricing Barrier Options,” <em>Journal of Economic Dynamics and Control</em> 24
+(2000) 1563-1590; Hull, <em>Options, Futures, and Other Derivatives</em>,
+10th ed., Section 26.9.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A knock-out option is a boundary condition: the value is zero on the barrier. Zvan, Forsyth and Vetzal (2000) showed that finite differences price barriers accurately when a grid node sits exactly on the barrier and the solver handles the discontinuous data smoothly, rather than letting the barrier fall between nodes. price_barrier starts the grid at the barrier, and the result matches the method of images, C_{do}(S) = C(S) - (H/S)^{2\lambda - 2} C(H^2/S)."><img alt="" src="../_images/sphx_glr_plot_07_barrier_pde_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/schemes/plot_07_barrier_pde.html"><span class="doc">Zvan-Forsyth-Vetzal barrier options</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Zvan-Forsyth-Vetzal barrier options</div>
+</div></div></section>
+<section id="forsyth-vetzal-penalty-method">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">2002 – Forsyth-Vetzal Penalty Method</a><a class="headerlink" href="#forsyth-vetzal-penalty-method" title="Link to this heading">#</a></h2>
+<p>Peter Forsyth and Kenneth Vetzal replaced the American constraint by a
+penalty term that pushes the value up to the payoff wherever it falls
+below, and solved the resulting nonlinear equations by a Newton (policy)
+iteration. They proved that the iteration converges monotonically in a
+finite number of steps, typically two or three per time step regardless
+of the grid size, and that the penalised solution approaches the true
+one as the penalty grows. Unlike Brennan-Schwartz it needs no
+assumption about the shape of the exercise region.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\bigl(A + P(x^k)\bigr) x^{k+1} = b + P(x^k)\, g, \qquad
+P(x)_{ii} = \begin{cases} \rho &amp; x_i &lt; g_i \\ 0 &amp; \text{otherwise} \end{cases}\end{split}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.pde_methods.systems.american.penalty_solve()</span></code>
+iterates tridiagonal solves until the penalised set stops changing, and
+the theta-schemes use it with <code class="docutils literal notranslate"><span class="pre">american_method=&quot;penalty&quot;</span></code>. The example
+counts iterations per time step against PSOR as the grid is refined.</p>
+<p><em>References:</em> P. A. Forsyth and K. R. Vetzal, “Quadratic Convergence for
+Valuing American Options Using a Penalty Method,” <em>SIAM Journal on
+Scientific Computing</em> 23 (2002) 2095-2122.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Peter Forsyth and Kenneth Vetzal (2002) replaced the complementarity constraint by a penalty: on nodes where the value falls below the payoff, add \rho\,(g - x) with a large \rho. The resulting nonlinear system is solved by a Newton (policy) iteration that only changes which nodes are penalised, and converges in two or three tridiagonal solves per time step, independently of the grid size -- unlike PSOR, whose sweep count grows as the grid is refined. penalty_solve implements it."><img alt="" src="../_images/sphx_glr_plot_03_penalty_method_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/pde_methods/american/plot_03_penalty_method.html"><span class="doc">Forsyth-Vetzal penalty method</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Forsyth-Vetzal penalty method</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/pde_methods.html"><span class="doc">financialkit.pde_methods</span></a></p></li>
+<li><p><a class="reference internal" href="options_breakthroughs.html"><span class="doc">Breakthroughs in Option Pricing</span></a></p></li>
+<li><p><a class="reference internal" href="monte_carlo_breakthroughs.html"><span class="doc">Breakthroughs in Monte Carlo Methods</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="monte_carlo_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Monte Carlo Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="asset_pricing_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Asset Pricing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#richardson-extrapolation">1911 – Richardson Extrapolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#courant-friedrichs-lewy">1928 – Courant-Friedrichs-Lewy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crank-nicolson">1947 – Crank-Nicolson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laasonen-s-implicit-scheme">1949 – Laasonen’s Implicit Scheme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thomas-algorithm">1949 – The Thomas Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-stability-analysis">1950 – Von Neumann Stability Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peaceman-rachford-adi">1955 – Peaceman-Rachford ADI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cryer-s-projected-sor">1971 – Cryer’s Projected SOR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-scholes-as-the-heat-equation">1973 – Black-Scholes as the Heat Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schwartz-explicit-finite-differences">1977 – Schwartz: Explicit Finite Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brennan-schwartz-american-put">1977 – Brennan-Schwartz American Put</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brennan-schwartz-explicit-schemes-are-trinomial-trees">1978 – Brennan-Schwartz: Explicit Schemes Are Trinomial Trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rannacher-smoothing">1984 – Rannacher Smoothing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tavella-randall-non-uniform-grids">2000 – Tavella-Randall Non-Uniform Grids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zvan-forsyth-vetzal-barrier-options">2000 – Zvan-Forsyth-Vetzal Barrier Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forsyth-vetzal-penalty-method">2002 – Forsyth-Vetzal Penalty Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/pde_methods_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

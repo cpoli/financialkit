@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.886192Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.886192Z",
+      "mimetype": null,
+      "name": "plot_02_engle_granger.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/unit_roots/plot_02_engle_granger.ipynb",
+      "size": 4380,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.886071Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.886071Z",
+      "mimetype": null,
+      "name": "plot_01_dickey_fuller.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/unit_roots/plot_01_dickey_fuller.ipynb",
+      "size": 4312,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.265615Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.265973Z",
+  "mimetype": null,
+  "name": "unit_roots",
+  "path": "jupyterlite_contents/api/gallery/time_series/unit_roots",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

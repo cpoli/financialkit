@@ -1,0 +1,69 @@
+
+
+.. _sphx_glr_api_gallery_time_value_day_counts:
+
+Day counts
+----------
+
+Turning dates into year fractions: 30/360 accrued interest and ISDA's
+actual/actual conventions.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A bond buyer pays the seller the coupon interest earned since the last coupon date. The Securities Industry Association&#x27;s Standard Securities Calculation Methods (1993) codified how U.S. corporate and agency bonds count those days: every month has 30 days and the year 360, with rules for the 31st and for the end of February. The example is Hull&#x27;s: a 10% bond with coupons on March 1 and September 1, bought for settlement on July 3, 2018.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/day_counts/images/thumb/sphx_glr_plot_01_thirty_360_accrued_interest_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/day_counts/plot_01_thirty_360_accrued_interest`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">SIA 30/360 and accrued interest</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="When the euro replaced its legacy currencies, markets had to agree on how to count days. ISDA&#x27;s 1998 memo EMU and Market Conventions set the competing &quot;actual/actual&quot; methods side by side; under the ISDA variant, the days falling in each calendar year are divided by that year&#x27;s length, 365 or 366. Its example: November 1, 2003 to May 1, 2004 is 61/365 + 121/366 = 0.49772. This script compares that with the other conventions in DayCount.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/day_counts/images/thumb/sphx_glr_plot_02_isda_actual_actual_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/day_counts/plot_02_isda_actual_actual`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">ISDA's actual/actual and the day-count zoo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_value/day_counts/plot_01_thirty_360_accrued_interest
+   /api/gallery/time_value/day_counts/plot_02_isda_actual_actual
+

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.time_series.systems.unit_roots &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/time_series/systems/unit_roots';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.time_series.systems.unit_roots</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.time_series.systems.unit_roots</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Unit roots and cointegration: the augmented Dickey-Fuller and Engle-Granger tests.</span>
+
+<span class="sd">Dickey and Fuller (1979) showed that under a unit root the t-ratio of</span>
+<span class="sd">:math:`\\gamma` in :math:`\\Delta y_t = \\gamma y_{t-1} + e_t` does not</span>
+<span class="sd">have a t distribution, and tabulated its distribution by simulation; Said</span>
+<span class="sd">and Dickey (1984) added lagged differences to absorb serial correlation.</span>
+<span class="sd">Engle and Granger (1987) tested for cointegration by running the same test</span>
+<span class="sd">on the residuals of a levels regression, with critical values that depend</span>
+<span class="sd">on the number of variables. Critical values come from MacKinnon's (2010)</span>
+<span class="sd">response surfaces :math:`c(T) = \\beta_\\infty + \\beta_1/T + \\beta_2/T^2 + \\beta_3/T^3`.</span>
+<span class="sd">References: D. A. Dickey and W. A. Fuller, Journal of the American</span>
+<span class="sd">Statistical Association 74(366) (1979), 427-431; S. E. Said and D. A.</span>
+<span class="sd">Dickey, Biometrika 71(3) (1984), 599-607; R. F. Engle and C. W. J.</span>
+<span class="sd">Granger, "Co-Integration and Error Correction," Econometrica 55(2) (1987),</span>
+<span class="sd">251-276; J. G. MacKinnon, "Critical Values for Cointegration Tests,"</span>
+<span class="sd">Queen's Economics Department Working Paper 1227 (2010), Table 2.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.time_series.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CointegrationResult</span><span class="p">,</span> <span class="n">UnitRootResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.time_series.utils.numerics</span><span class="w"> </span><span class="kn">import</span> <span class="n">lag_matrix</span><span class="p">,</span> <span class="n">ols</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"mackinnon_critical_values"</span><span class="p">,</span> <span class="s2">"adf_test"</span><span class="p">,</span> <span class="s2">"engle_granger"</span><span class="p">]</span>
+
+<span class="c1"># MacKinnon (2010), Table 2: (beta_inf, beta_1, beta_2, beta_3) for the 1%, 5%</span>
+<span class="c1"># and 10% levels, by deterministic terms and number of variables N.</span>
+<span class="n">_MACKINNON_2010</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="o">...</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"n"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">2.56574</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.2358</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.627</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.94100</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2686</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.365</span><span class="p">,</span> <span class="mf">31.223</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.61682</span><span class="p">,</span> <span class="mf">0.2656</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.714</span><span class="p">,</span> <span class="mf">25.364</span><span class="p">)),</span>
+    <span class="p">},</span>
+    <span class="s2">"c"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">3.43035</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.5393</span><span class="p">,</span> <span class="o">-</span><span class="mf">16.786</span><span class="p">,</span> <span class="o">-</span><span class="mf">79.433</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.86154</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.8903</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.234</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.040</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.56677</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5384</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.809</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">3.89644</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.9519</span><span class="p">,</span> <span class="o">-</span><span class="mf">33.527</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.33613</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.1101</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.823</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.04445</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.2412</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.720</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">4.29374</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.4354</span><span class="p">,</span> <span class="o">-</span><span class="mf">33.195</span><span class="p">,</span> <span class="mf">47.433</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.74066</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.5632</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.852</span><span class="p">,</span> <span class="mf">27.982</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.45218</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.2143</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.718</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
+        <span class="mi">4</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">4.64332</span><span class="p">,</span> <span class="o">-</span><span class="mf">18.1031</span><span class="p">,</span> <span class="o">-</span><span class="mf">37.972</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">4.09600</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.2349</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.175</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.81020</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.3931</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.137</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
+    <span class="p">},</span>
+    <span class="s2">"ct"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">3.95877</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.0531</span><span class="p">,</span> <span class="o">-</span><span class="mf">28.428</span><span class="p">,</span> <span class="o">-</span><span class="mf">134.155</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.41049</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.3904</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.036</span><span class="p">,</span> <span class="o">-</span><span class="mf">45.374</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.12705</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5856</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.925</span><span class="p">,</span> <span class="o">-</span><span class="mf">22.380</span><span class="p">)),</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">4.32762</span><span class="p">,</span> <span class="o">-</span><span class="mf">15.4387</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.679</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.78057</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.5106</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.074</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.49631</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.0815</span><span class="p">,</span> <span class="o">-</span><span class="mf">7.538</span><span class="p">,</span> <span class="mf">21.892</span><span class="p">)),</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">4.66305</span><span class="p">,</span> <span class="o">-</span><span class="mf">18.7688</span><span class="p">,</span> <span class="o">-</span><span class="mf">49.793</span><span class="p">,</span> <span class="mf">104.244</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">4.11890</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.8922</span><span class="p">,</span> <span class="o">-</span><span class="mf">19.031</span><span class="p">,</span> <span class="mf">77.332</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.83511</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.0723</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.504</span><span class="p">,</span> <span class="mf">35.403</span><span class="p">)),</span>
+        <span class="mi">4</span><span class="p">:</span> <span class="p">((</span><span class="o">-</span><span class="mf">4.96940</span><span class="p">,</span> <span class="o">-</span><span class="mf">22.4694</span><span class="p">,</span> <span class="o">-</span><span class="mf">52.599</span><span class="p">,</span> <span class="mf">51.314</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">4.42871</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.5876</span><span class="p">,</span> <span class="o">-</span><span class="mf">18.228</span><span class="p">,</span> <span class="mf">39.647</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">4.14633</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.2500</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.873</span><span class="p">,</span> <span class="mf">54.109</span><span class="p">)),</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="mackinnon_critical_values">
+<a class="viewcode-back" href="../../../../api/time_series.html#financialkit.time_series.mackinnon_critical_values">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mackinnon_critical_values</span><span class="p">(</span><span class="n">nobs</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">regression</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"c"</span><span class="p">,</span> <span class="n">n_vars</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""MacKinnon (2010) finite-sample critical values of the Dickey-Fuller and Engle-Granger tests.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    nobs : int</span>
+<span class="sd">        Observations in the test regression.</span>
+<span class="sd">    regression : {"n", "c", "ct"}</span>
+<span class="sd">        No deterministic terms, a constant, or a constant and a linear trend.</span>
+<span class="sd">    n_vars : int</span>
+<span class="sd">        1 for a unit-root test; the number of variables in the</span>
+<span class="sd">        cointegrating regression (2 to 4) for Engle-Granger.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        ``{"1%": ..., "5%": ..., "10%": ...}``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; {k: round(v, 3) for k, v in mackinnon_critical_values(10**9).items()}</span>
+<span class="sd">    {'1%': -3.43, '5%': -2.862, '10%': -2.567}</span>
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">_MACKINNON_2010</span><span class="p">[</span><span class="n">regression</span><span class="p">][</span><span class="n">n_vars</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"supported: regression 'n' with n_vars=1, or 'c'/'ct' with n_vars in 1..4"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">nobs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">lvl</span><span class="p">:</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">/</span> <span class="n">T</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">/</span> <span class="n">T</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b3</span> <span class="o">/</span> <span class="n">T</span><span class="o">**</span><span class="mi">3</span> <span class="k">for</span> <span class="n">lvl</span><span class="p">,</span> <span class="p">(</span><span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="s2">"1%"</span><span class="p">,</span> <span class="s2">"5%"</span><span class="p">,</span> <span class="s2">"10%"</span><span class="p">),</span> <span class="n">rows</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_deterministic</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">regression</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">regression</span> <span class="o">==</span> <span class="s2">"n"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">regression</span> <span class="o">==</span> <span class="s2">"c"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">regression</span> <span class="o">==</span> <span class="s2">"ct"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"regression must be 'n', 'c' or 'ct'"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_adf_regression</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lags</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">regression</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">drop</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""ADF regression on ``t &gt;= drop + 1`` with `lags` lagged differences."""</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">X_lags</span> <span class="o">=</span> <span class="n">lag_matrix</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span> <span class="n">drop</span><span class="p">)[:,</span> <span class="p">:</span><span class="n">lags</span><span class="p">]</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">dy</span><span class="p">[</span><span class="n">drop</span><span class="p">:]</span>
+    <span class="n">ylag</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">drop</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">ylag</span><span class="p">,</span> <span class="n">X_lags</span><span class="p">,</span> <span class="n">_deterministic</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">regression</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">ols</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="adf_test">
+<a class="viewcode-back" href="../../../../api/time_series.html#financialkit.time_series.adf_test">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">adf_test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">lags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">regression</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"c"</span><span class="p">,</span> <span class="n">max_lags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">UnitRootResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Augmented Dickey-Fuller test of a unit root.</span>
+
+<span class="sd">    Regresses</span>
+
+<span class="sd">    .. math:: \\Delta y_t = \\text{det}_t + \\gamma y_{t-1} + \\sum_{i=1}^{k} \\delta_i \\Delta y_{t-i} + e_t</span>
+
+<span class="sd">    and compares the t-ratio of :math:`\\gamma` with MacKinnon's critical</span>
+<span class="sd">    values; the null :math:`\\gamma = 0` (a unit root) is rejected for</span>
+<span class="sd">    large negative values.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : array_like</span>
+<span class="sd">    lags : int, optional</span>
+<span class="sd">        Lagged differences :math:`k`. If omitted, chosen by AIC from</span>
+<span class="sd">        ``0..max_lags`` on a common sample, then the test is rerun on all</span>
+<span class="sd">        available data.</span>
+<span class="sd">    regression : {"n", "c", "ct"}</span>
+<span class="sd">    max_lags : int, optional</span>
+<span class="sd">        Defaults to Schwert's rule :math:`\\lfloor 12 (n/100)^{1/4} \\rfloor`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    UnitRootResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; rng = np.random.default_rng(0)</span>
+<span class="sd">    &gt;&gt;&gt; adf_test(np.cumsum(rng.standard_normal(500)), lags=0).rejects()</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; adf_test(rng.standard_normal(500), lags=0).rejects()</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span>
+    <span class="k">if</span> <span class="n">lags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_lags</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.25</span><span class="p">)</span> <span class="k">if</span> <span class="n">max_lags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">max_lags</span>
+        <span class="n">max_lags</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_lags</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">best_aic</span><span class="p">,</span> <span class="n">lags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_lags</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">_adf_regression</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">regression</span><span class="p">,</span> <span class="n">max_lags</span><span class="p">)</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">residuals</span><span class="o">.</span><span class="n">size</span>
+            <span class="n">aic</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">residuals</span> <span class="o">@</span> <span class="n">res</span><span class="o">.</span><span class="n">residuals</span> <span class="o">/</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">res</span><span class="o">.</span><span class="n">coef</span><span class="o">.</span><span class="n">size</span>
+            <span class="k">if</span> <span class="n">aic</span> <span class="o">&lt;</span> <span class="n">best_aic</span><span class="p">:</span>
+                <span class="n">best_aic</span><span class="p">,</span> <span class="n">lags</span> <span class="o">=</span> <span class="n">aic</span><span class="p">,</span> <span class="n">k</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">_adf_regression</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">lags</span><span class="p">,</span> <span class="n">regression</span><span class="p">,</span> <span class="n">lags</span><span class="p">)</span>
+    <span class="n">nobs</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">residuals</span><span class="o">.</span><span class="n">size</span>
+    <span class="k">return</span> <span class="n">UnitRootResult</span><span class="p">(</span>
+        <span class="n">statistic</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">t_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="n">critical_values</span><span class="o">=</span><span class="n">mackinnon_critical_values</span><span class="p">(</span><span class="n">nobs</span><span class="p">,</span> <span class="n">regression</span><span class="p">),</span>
+        <span class="n">lags</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">lags</span><span class="p">),</span>
+        <span class="n">nobs</span><span class="o">=</span><span class="n">nobs</span><span class="p">,</span>
+        <span class="n">regression</span><span class="o">=</span><span class="n">regression</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="engle_granger">
+<a class="viewcode-back" href="../../../../api/time_series.html#financialkit.time_series.engle_granger">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">engle_granger</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">trend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"c"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CointegrationResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Engle-Granger two-step test of cointegration between `y` and the columns of `x`.</span>
+
+<span class="sd">    Step 1 regresses :math:`y_t = a + b' x_t + u_t` by least squares, which</span>
+<span class="sd">    is super-consistent when the series are cointegrated. Step 2 runs a</span>
+<span class="sd">    Dickey-Fuller test without deterministic terms on :math:`\\hat u_t`.</span>
+<span class="sd">    Because :math:`b` was estimated to make :math:`\\hat u_t` look</span>
+<span class="sd">    stationary, the critical values are more negative than Dickey and</span>
+<span class="sd">    Fuller's and depend on the number of variables (MacKinnon 2010).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    y : array_like, shape (n,)</span>
+<span class="sd">    x : array_like, shape (n,) or (n, k)</span>
+<span class="sd">        One to three regressors.</span>
+<span class="sd">    lags : int or None</span>
+<span class="sd">        Lagged differences in step 2 (``None`` chooses by AIC).</span>
+<span class="sd">    trend : {"c", "ct"}</span>
+<span class="sd">        Deterministic terms of the step-1 regression.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CointegrationResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from financialkit.time_series.utils.synthetic import simulate_cointegrated_pair</span>
+<span class="sd">    &gt;&gt;&gt; y, x = simulate_cointegrated_pair(1000, beta=2.0, phi=0.8, rng=0)</span>
+<span class="sd">    &gt;&gt;&gt; res = engle_granger(y, x)</span>
+<span class="sd">    &gt;&gt;&gt; round(float(res.beta[0]), 1), res.rejects()</span>
+<span class="sd">    (2.0, True)</span>
+<span class="sd">    """</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">X</span>
+    <span class="n">det</span> <span class="o">=</span> <span class="n">_deterministic</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">trend</span><span class="p">)</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">det</span><span class="p">,</span> <span class="n">X</span><span class="p">]))</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">residuals</span>
+    <span class="n">adf</span> <span class="o">=</span> <span class="n">adf_test</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="n">lags</span><span class="p">,</span> <span class="n">regression</span><span class="o">=</span><span class="s2">"n"</span><span class="p">)</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">mackinnon_critical_values</span><span class="p">(</span><span class="n">adf</span><span class="o">.</span><span class="n">nobs</span><span class="p">,</span> <span class="n">trend</span><span class="p">,</span> <span class="n">n_vars</span><span class="o">=</span><span class="mi">1</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">CointegrationResult</span><span class="p">(</span>
+        <span class="n">statistic</span><span class="o">=</span><span class="n">adf</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span>
+        <span class="n">critical_values</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+        <span class="n">intercept</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">first</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="n">beta</span><span class="o">=</span><span class="n">first</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="n">det</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:],</span>
+        <span class="n">residuals</span><span class="o">=</span><span class="n">u</span><span class="p">,</span>
+        <span class="n">adf</span><span class="o">=</span><span class="n">adf</span><span class="p">,</span>
+        <span class="n">r_squared</span><span class="o">=</span><span class="n">first</span><span class="o">.</span><span class="n">r_squared</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

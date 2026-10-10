@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_api_gallery_portfolio_mean_variance:
+
+Mean-variance
+-------------
+
+Portfolios with the least variance for their mean, with and without
+short sales and a riskless asset, and the naive benchmark they struggle
+to beat out of sample.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Harry Markowitz (1952) argued that an investor should look at a portfolio&#x27;s expected return and its variance together, and hold only portfolios with the least variance for their mean. Diversification then has a precise meaning: combining imperfectly correlated assets moves the frontier to the left of every asset on its own. With short sales the frontier is a hyperbola; without them, every point is a quadratic program, solved here with scipy.optimize.minimize.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/mean_variance/images/thumb/sphx_glr_plot_01_markowitz_frontier_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/mean_variance/plot_01_markowitz_frontier`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Markowitz's mean-variance frontier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="James Tobin (1958) added a riskless asset to Markowitz&#x27;s problem. Combinations of cash and any risky portfolio lie on a straight line, and the steepest such line touches the frontier at the tangency portfolio. Every mean-variance investor holds that same mix of risky assets and differs only in how much cash goes with it: the risky choice separates from the attitude to risk. The line is the capital market line, and its slope is the highest attainable Sharpe ratio.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/mean_variance/images/thumb/sphx_glr_plot_02_tobin_tangency_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/mean_variance/plot_02_tobin_tangency`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tobin separation and the tangency portfolio</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1972) derived the unconstrained frontier in closed form. Four scalars,">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/mean_variance/images/thumb/sphx_glr_plot_03_merton_analytic_frontier_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/mean_variance/plot_03_merton_analytic_frontier`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's analytic frontier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="DeMiguel, Garlappi and Uppal (2009) re-estimated fourteen optimized portfolio rules on rolling windows and compared their out-of-sample Sharpe ratios with simply holding every asset equally. None beat 1/N reliably. Here the true model is known: ten assets with a genuinely better tangency portfolio. The sample mean-variance rule, the tangency portfolio of the estimated moments, still loses to 1/N unless its estimation window is very long, because errors in the estimated means swamp the gain from optimizing.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/mean_variance/images/thumb/sphx_glr_plot_04_one_over_n_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/mean_variance/plot_04_one_over_n`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DeMiguel-Garlappi-Uppal: optimal versus 1/N</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/portfolio/mean_variance/plot_01_markowitz_frontier
+   /api/gallery/portfolio/mean_variance/plot_02_tobin_tangency
+   /api/gallery/portfolio/mean_variance/plot_03_merton_analytic_frontier
+   /api/gallery/portfolio/mean_variance/plot_04_one_over_n
+

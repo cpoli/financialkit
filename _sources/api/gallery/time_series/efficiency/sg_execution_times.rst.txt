@@ -1,0 +1,46 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_time_series_efficiency_sg_execution_times:
+
+
+Computation times
+=================
+**00:01.599** total execution time for 4 files **from api/gallery/time_series/efficiency**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_04_lo_mackinlay.py` (``plot_04_lo_mackinlay.py``)
+     - 00:00.703
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_01_kendall_autocorrelation.py` (``plot_01_kendall_autocorrelation.py``)
+     - 00:00.554
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_03_ljung_box.py` (``plot_03_ljung_box.py``)
+     - 00:00.217
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_02_fama_runs_test.py` (``plot_02_fama_runs_test.py``)
+     - 00:00.125
+     - 0.0

@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.market_microstructure hub </_generated/subpackages/market_microstructure>` · :doc:`History </history/market_microstructure_breakthroughs>` · :doc:`Examples </api/gallery/market_microstructure/index>` · :doc:`API reference </api/market_microstructure>`

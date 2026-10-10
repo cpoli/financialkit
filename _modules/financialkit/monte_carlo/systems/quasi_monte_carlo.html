@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.monte_carlo.systems.quasi_monte_carlo &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/monte_carlo/systems/quasi_monte_carlo';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.monte_carlo.systems.quasi_monte_carlo</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.monte_carlo.systems.quasi_monte_carlo</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Quasi-Monte Carlo: low-discrepancy points, their error bound and randomization.</span>
+
+<span class="sd">* :func:`van_der_corput` and :func:`halton` -- Halton's (1960) radical</span>
+<span class="sd">  inverses in coprime bases.</span>
+<span class="sd">* :func:`star_discrepancy`, :func:`l2_star_discrepancy` and</span>
+<span class="sd">  :func:`koksma_hlawka_bound` -- the Koksma-Hlawka inequality (Koksma</span>
+<span class="sd">  1942, Hlawka 1961): integration error at most variation times star</span>
+<span class="sd">  discrepancy.</span>
+<span class="sd">* :func:`sobol` -- Sobol's (1967) digital :math:`(t, s)`-sequences</span>
+<span class="sd">  (:class:`scipy.stats.qmc.Sobol`).</span>
+<span class="sd">* :func:`randomized_qmc_estimate` -- Owen's (1995) scrambling, which</span>
+<span class="sd">  keeps the low discrepancy, makes every point uniform and gives error</span>
+<span class="sd">  bars from independent scramblings.</span>
+<span class="sd">* :func:`gbm_path_estimate` -- a discounted path-dependent payoff under</span>
+<span class="sd">  Black-Scholes by pseudo-random, plain Sobol or Brownian-bridge Sobol</span>
+<span class="sd">  increments: Paskov and Traub's (1995) high-dimensional finance</span>
+<span class="sd">  integrals and Caflisch, Morokoff and Owen's (1997) bridge ordering.</span>
+
+<span class="sd">References: J. H. Halton, "On the Efficiency of Certain Quasi-Random</span>
+<span class="sd">Sequences of Points in Evaluating Multi-Dimensional Integrals," *Numer.</span>
+<span class="sd">Math.* 2 (1960) 84-90; E. Hlawka, "Funktionen von beschränkter Variation</span>
+<span class="sd">in der Theorie der Gleichverteilung," *Ann. Mat. Pura Appl.* 54 (1961)</span>
+<span class="sd">325-333; I. M. Sobol, "On the Distribution of Points in a Cube and the</span>
+<span class="sd">Approximate Evaluation of Integrals," *USSR Comput. Math. Math. Phys.* 7</span>
+<span class="sd">(1967) 86-112; A. B. Owen, "Randomly Permuted (t, m, s)-Nets and (t,</span>
+<span class="sd">s)-Sequences," in *Monte Carlo and Quasi-Monte Carlo Methods in</span>
+<span class="sd">Scientific Computing* (Springer, 1995) 299-317; S. H. Paskov and J. F.</span>
+<span class="sd">Traub, "Faster Valuation of Financial Derivatives," *J. Portfolio</span>
+<span class="sd">Management* 22 (1995) 113-120; R. E. Caflisch, W. Morokoff and A. Owen,</span>
+<span class="sd">"Valuation of Mortgage-Backed Securities Using Brownian Bridges to</span>
+<span class="sd">Reduce Effective Dimension," *J. Computational Finance* 1 (1997) 27-46;</span>
+<span class="sd">Glasserman (2004), Chapter 5.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">qmc</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.integrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">RNGLike</span><span class="p">,</span> <span class="n">brownian_increments</span><span class="p">,</span> <span class="n">gbm_paths</span><span class="p">,</span> <span class="n">sobol_increments</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.monte_carlo.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">MonteCarloResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.monte_carlo.utils.numerics</span><span class="w"> </span><span class="kn">import</span> <span class="n">qmc_engine</span><span class="p">,</span> <span class="n">sample_mean</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"van_der_corput"</span><span class="p">,</span>
+    <span class="s2">"halton"</span><span class="p">,</span>
+    <span class="s2">"sobol"</span><span class="p">,</span>
+    <span class="s2">"star_discrepancy"</span><span class="p">,</span>
+    <span class="s2">"l2_star_discrepancy"</span><span class="p">,</span>
+    <span class="s2">"koksma_hlawka_bound"</span><span class="p">,</span>
+    <span class="s2">"randomized_qmc_estimate"</span><span class="p">,</span>
+    <span class="s2">"gbm_path_estimate"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="van_der_corput">
+<a class="viewcode-back" href="../../../../api/monte_carlo.html#financialkit.monte_carlo.van_der_corput">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">van_der_corput</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The radical-inverse (van der Corput) sequence in `base`.</span>
+
+<span class="sd">    The :math:`k`-th point mirrors the base-`b` digits of :math:`k` about</span>
+<span class="sd">    the radix point, :math:`k = \\sum_j a_j b^j \\mapsto \\sum_j a_j</span>
+<span class="sd">    b^{-j-1}`, so each new point falls in the largest gap left so far.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of points.</span>
+<span class="sd">    base : int</span>
+<span class="sd">        Integer base, at least 2.</span>
+<span class="sd">    start : int</span>
+<span class="sd">        Index of the first point; 1 skips the origin.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray, shape (n,)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; van_der_corput(7).tolist()</span>
+<span class="sd">    [0.5, 0.25, 0.75, 0.125, 0.625, 0.375, 0.875]</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">base</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"base must be at least 2, got </span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">base</span>
+    <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">k</span><span class="p">,</span> <span class="n">digit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divmod</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">digit</span> <span class="o">*</span> <span class="n">scale</span>
+        <span class="n">scale</span> <span class="o">/=</span> <span class="n">base</span>
+    <span class="k">return</span> <span class="n">x</span></div>
+
+
+
+<div class="viewcode-block" id="halton">
+<a class="viewcode-back" href="../../../../api/monte_carlo.html#financialkit.monte_carlo.halton">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">halton</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">scramble</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">rng</span><span class="p">:</span> <span class="n">RNGLike</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""``n`` points of the ``dim``-dimensional Halton sequence (Halton 1960).</span>
+
+<span class="sd">    Coordinate :math:`i` is the van der Corput sequence in the</span>
+<span class="sd">    :math:`i`-th prime. Unscrambled points start at index 0 (the origin),</span>
+<span class="sd">    as :class:`scipy.stats.qmc.Halton` does; neighbouring large primes</span>
+<span class="sd">    give visibly correlated projections, which scrambling removes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of points.</span>
+<span class="sd">    dim : int</span>
+<span class="sd">        Dimension.</span>
+<span class="sd">    scramble : bool</span>
+<span class="sd">        Apply scipy's random digit permutation.</span>
+<span class="sd">    rng : numpy.random.Generator or int, optional</span>
+<span class="sd">        Seeds the scrambling.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray, shape (n, dim)</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">qmc_engine</span><span class="p">(</span><span class="s2">"halton"</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">scramble</span><span class="p">,</span> <span class="n">rng</span><span class="p">)</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="sobol">
+<a class="viewcode-back" href="../../../../api/monte_carlo.html#financialkit.monte_carlo.sobol">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sobol</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">scramble</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">rng</span><span class="p">:</span> <span class="n">RNGLike</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""``n`` points of the ``dim``-dimensional Sobol sequence (Sobol 1967), via :class:`scipy.stats.qmc.Sobol`.</span>
+
+<span class="sd">    The first :math:`2^m` points form a :math:`(t, m, s)`-net: every</span>
+<span class="sd">    elementary box of volume :math:`2^{t-m}` holds exactly :math:`2^t` of</span>
+<span class="sd">    them. Use a power of two for `n` to keep that balance (scipy warns</span>
+<span class="sd">    otherwise).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Number of points.</span>
+<span class="sd">    dim : int</span>
+<span class="sd">        Dimension, at most 21201.</span>
+<span class="sd">    scramble : bool</span>
+<span class="sd">        Owen-scramble the digits (Owen 1995); unscrambled points start at</span>
+<span class="sd">        the origin.</span>
+<span class="sd">    rng : numpy.random.Generator or int, optional</span>
+<span class="sd">        Seeds the scrambling.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray, shape (n, dim)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    The first eight unscrambled points stratify each axis into eighths:</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; x = sobol(8, 2, scramble=False)</span>
+<span class="sd">    &gt;&gt;&gt; np.sort(np.floor(8 * x[:, 1])).tolist()</span>
+<span class="sd">    [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">qmc_engine</span><span class="p">(</span><span class="s2">"sobol"</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">scramble</span><span class="p">,</span> <span class="n">rng</span><span class="p">)</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="star_discrepancy">
+<a class="viewcode-back" href="../../../../api/monte_carlo.html#financialkit.monte_carlo.star_discrepancy">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">star_discrepancy</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Exact star discrepancy :math:`D_N^*` of a point set in one or two dimensions.</span>
+
+<span class="sd">    .. math:: D_N^* = \\sup_{a \\in [0,1]^d} \\left| \\frac{\\#\\{x_i \\in [0, a)\\}}{N} - \\prod_j a_j \\right|.</span>
+
+<span class="sd">    In one dimension :math:`D_N^* = \\frac{1}{2N} + \\max_i |x_{(i)} -</span>
+<span class="sd">    \\frac{2i - 1}{2N}|` (Niederreiter 1992, Thm. 2.6). In two the</span>
+<span class="sd">    supremum is attained on the grid of point coordinates (and 1), which</span>
+<span class="sd">    is searched with closed and open boxes in :math:`O(N^2)`; coordinates</span>
+<span class="sd">    are assumed distinct.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    points : array_like, shape (N,) or (N, d), d &lt;= 2</span>
+<span class="sd">        Points in :math:`[0, 1)^d`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; N = 10</span>
+<span class="sd">    &gt;&gt;&gt; round(star_discrepancy((2 * np.arange(1, N + 1) - 1) / (2 * N)), 12)</span>
+<span class="sd">    0.05</span>
+<span class="sd">    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">x</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">/</span> <span class="n">N</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">xs</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">N</span><span class="p">))))</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"exact star discrepancy is implemented for d &lt;= 2, got d = </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">; use l2_star_discrepancy"</span><span class="p">)</span>
+    <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">rx</span><span class="p">,</span> <span class="n">ry</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">rx</span><span class="p">[</span><span class="n">ox</span><span class="p">],</span> <span class="n">ry</span><span class="p">[</span><span class="n">oy</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">grid</span><span class="p">[</span><span class="n">rx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ry</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="c1"># counts[i, j] = #{rank_x &lt; i, rank_y &lt; j}: the open box [0, a_i) x [0, b_j).</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">ox</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">oy</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">vol</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">nxt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">closed_counts</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">nxt</span><span class="p">][:,</span> <span class="n">nxt</span><span class="p">]</span>  <span class="c1"># the closed box [0, a_i] x [0, b_j]</span>
+    <span class="n">open_counts</span> <span class="o">=</span> <span class="n">counts</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">vol</span> <span class="o">-</span> <span class="n">open_counts</span> <span class="o">/</span> <span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">closed_counts</span> <span class="o">/</span> <span class="n">N</span> <span class="o">-</span> <span class="n">vol</span><span class="p">)))</span></div>
+
+
+
+<div class="viewcode-block" id="l2_star_discrepancy">
+<a class="viewcode-back" href="../../../../api/monte_carlo.html#financialkit.monte_carlo.l2_star_discrepancy">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">l2_star_discrepancy</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The :math:`L^2`-star discrepancy, in any dimension (Warnock's formula, :func:`scipy.stats.qmc.discrepancy`).</span>
+
+<span class="sd">    The root-mean-square of the local discrepancy over anchored boxes; it</span>
+<span class="sd">    never exceeds :math:`D_N^*` and is cheap in high dimension.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    points : array_like, shape (N, d)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">qmc</span><span class="o">.</span><span class="n">discrepancy</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">x</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"L2-star"</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="koksma_hlawka_bound">
+<a class="viewcode-back" href="../../../../api/monte_carlo.html#financialkit.monte_carlo.koksma_hlawka_bound">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">koksma_hlawka_bound</span><span class="p">(</span><span class="n">points</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">variation</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Koksma-Hlawka bound :math:`V_{HK}(f)\\,D_N^*` on the error of the equal-weight rule at `points`.</span>
+
+<span class="sd">    .. math:: \\left| \\frac1N \\sum_i f(x_i) - \\int_{[0,1]^d} f \\right| \\le V_{HK}(f)\\,D_N^*(x_1, \\dots, x_N).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    points : array_like, shape (N,) or (N, d), d &lt;= 2</span>
+<span class="sd">        The integration nodes.</span>
+<span class="sd">    variation : float</span>
+<span class="sd">        Hardy-Krause variation of the integrand (for example 1 for a</span>
+<span class="sd">        monotone function on :math:`[0, 1]` with range of length 1, 3 for</span>
+<span class="sd">        :math:`f(x, y) = xy`).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">variation</span><span class="p">)</span> <span class="o">*</span> <span class="n">star_discrepancy</span><span class="p">(</span><span class="n">points</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="randomized_qmc_estimate">
+<a class="viewcode-back" href="../../../../api/monte_carlo.html#financialkit.monte_carlo.randomized_qmc_estimate">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">randomized_qmc_estimate</span><span class="p">(</span>
+    <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">ArrayLike</span><span class="p">],</span>
+    <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_replications</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">sequence</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"sobol"</span><span class="p">,</span>
+    <span class="n">rng</span><span class="p">:</span> <span class="n">RNGLike</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MonteCarloResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Randomized quasi-Monte Carlo estimate of :math:`\\int_{[0,1)^d} f(u)\\,du` (Owen 1995).</span>
+
+<span class="sd">    Each replication integrates over an independently scrambled Sobol or</span>
+<span class="sd">    Halton point set. Every scrambled point is uniform, so each</span>
+<span class="sd">    replication is unbiased and their spread is an honest standard error;</span>
+<span class="sd">    for smooth integrands Owen-scrambled nets reach</span>
+<span class="sd">    :math:`O(n^{-3/2})` root-mean-square error.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f : callable</span>
+<span class="sd">        Vectorised integrand of points of shape ``(n, dim)``.</span>
+<span class="sd">    n : int</span>
+<span class="sd">        Points per replication (a power of two for Sobol).</span>
+<span class="sd">    dim : int</span>
+<span class="sd">        Dimension.</span>
+<span class="sd">    n_replications : int</span>
+<span class="sd">        Independent scramblings.</span>
+<span class="sd">    sequence : {"sobol", "halton"}</span>
+<span class="sd">    rng : numpy.random.Generator or int, optional</span>
+<span class="sd">        Seeds the scramblings.</span>
+<span class="sd">    confidence : float</span>
+<span class="sd">        Coverage of the confidence interval.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    MonteCarloResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; res = randomized_qmc_estimate(lambda u: np.prod(2 * u, axis=1), 1024, dim=3, rng=0)</span>
+<span class="sd">    &gt;&gt;&gt; res.covers(1.0), res.std_error &lt; 1e-3</span>
+<span class="sd">    (True, True)</span>
+<span class="sd">    """</span>
+    <span class="n">gen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
+    <span class="n">est</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">qmc_engine</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">gen</span><span class="p">)</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))))))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n_replications</span><span class="p">))]</span>
+    <span class="k">return</span> <span class="n">sample_mean</span><span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"randomized </span><span class="si">{</span><span class="n">sequence</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">n_evaluations</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_replications</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="gbm_path_estimate">
+<a class="viewcode-back" href="../../../../api/monte_carlo.html#financialkit.monte_carlo.gbm_path_estimate">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">gbm_path_estimate</span><span class="p">(</span>
+    <span class="n">payoff</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">ArrayLike</span><span class="p">],</span>
+    <span class="n">S</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">n_steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_paths</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">sampler</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"pseudo"</span><span class="p">,</span>
+    <span class="n">q</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">n_replications</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">rng</span><span class="p">:</span> <span class="n">RNGLike</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MonteCarloResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Discounted path-dependent payoff under Black-Scholes, by pseudo- or quasi-random paths.</span>
+
+<span class="sd">    Paths are exact GBM on ``n_steps`` dates from</span>
+<span class="sd">    :func:`financialkit.integrators.gbm_paths`, so the integral has</span>
+<span class="sd">    dimension ``n_steps``. The increments come from</span>
+<span class="sd">    :func:`~financialkit.integrators.brownian_increments` (``"pseudo"``),</span>
+<span class="sd">    from scrambled Sobol points with coordinate ``i`` driving step ``i``</span>
+<span class="sd">    (``"sobol"``, Paskov-Traub 1995), or from the same points assembled by</span>
+<span class="sd">    Brownian bridge so the leading coordinates set the coarse shape</span>
+<span class="sd">    (``"bridge"``, Caflisch-Morokoff-Owen 1997). Every sampler is</span>
+<span class="sd">    replicated `n_replications` times with fresh seeds and the standard</span>
+<span class="sd">    error is taken across replications, so the three are compared on one</span>
+<span class="sd">    footing.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    payoff : callable</span>
+<span class="sd">        Undiscounted payoff of the price paths of shape</span>
+<span class="sd">        ``(n_paths, n_steps + 1)`` (column 0 is ``S``).</span>
+<span class="sd">    S, T, r, sigma : float</span>
+<span class="sd">        Spot, maturity, risk-free rate and volatility.</span>
+<span class="sd">    n_steps : int</span>
+<span class="sd">        Monitoring dates, the dimension of the integral.</span>
+<span class="sd">    n_paths : int</span>
+<span class="sd">        Paths per replication (a power of two for the Sobol samplers).</span>
+<span class="sd">    sampler : {"pseudo", "sobol", "bridge"}</span>
+<span class="sd">    q : float</span>
+<span class="sd">        Continuous dividend yield.</span>
+<span class="sd">    n_replications : int</span>
+<span class="sd">        Independent replications.</span>
+<span class="sd">    rng : numpy.random.Generator or int, optional</span>
+<span class="sd">        Generator or seed.</span>
+<span class="sd">    confidence : float</span>
+<span class="sd">        Coverage of the confidence interval.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    MonteCarloResult</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">sampler</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"pseudo"</span><span class="p">,</span> <span class="s2">"sobol"</span><span class="p">,</span> <span class="s2">"bridge"</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sampler must be 'pseudo', 'sobol' or 'bridge', got </span><span class="si">{</span><span class="n">sampler</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">gen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
+    <span class="n">est</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n_replications</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">sampler</span> <span class="o">==</span> <span class="s2">"pseudo"</span><span class="p">:</span>
+            <span class="n">dW</span> <span class="o">=</span> <span class="n">brownian_increments</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_paths</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">gen</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dW</span> <span class="o">=</span> <span class="n">sobol_increments</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_paths</span><span class="p">,</span> <span class="n">bridge</span><span class="o">=</span><span class="n">sampler</span> <span class="o">==</span> <span class="s2">"bridge"</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">gen</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">paths</span> <span class="o">=</span> <span class="n">gbm_paths</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_paths</span><span class="p">,</span> <span class="n">dW</span><span class="o">=</span><span class="n">dW</span><span class="p">)</span>
+        <span class="n">est</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">payoff</span><span class="p">(</span><span class="n">paths</span><span class="p">)))))</span>
+    <span class="k">return</span> <span class="n">sample_mean</span><span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="n">sampler</span><span class="p">,</span> <span class="n">n_evaluations</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">n_paths</span><span class="p">)</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_replications</span><span class="p">))</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

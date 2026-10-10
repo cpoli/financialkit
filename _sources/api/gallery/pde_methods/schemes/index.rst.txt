@@ -1,0 +1,161 @@
+
+
+.. _sphx_glr_api_gallery_pde_methods_schemes:
+
+Schemes
+-------
+
+The Black-Scholes equation on a grid: explicit, implicit and
+Crank-Nicolson time stepping, the tridiagonal solves they need, the
+transformation to the heat equation, the link to trinomial trees, and
+knock-out barriers.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Crank and Phyllis Nicolson (1947) averaged the explicit and implicit differences of the heat equation around the half step,">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_01_crank_nicolson_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_01_crank_nicolson`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Crank-Nicolson</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pentti Laasonen (1949) evaluated the space derivatives of the heat equation at the new time level, (I - \Delta\tau A) V^{n+1} = V^n. Every step is then a linear solve, but no step is too large: the scheme is stable and monotone for any \Delta\tau, at the price of first-order accuracy in time. ImplicitScheme shows both sides: a large step that would wreck the explicit scheme gives a sensible answer, and halving the step halves the error.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_02_laasonen_implicit_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_02_laasonen_implicit`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Laasonen's implicit scheme</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Every implicit step in one space dimension is a tridiagonal system. Llewellyn Thomas (1949) wrote down the specialised Gaussian elimination that solves it in O(m) operations: one sweep removes the sub-diagonal, a second substitutes back. No pivoting is needed because the implicit Black-Scholes matrix is diagonally dominant. thomas_solve is that algorithm by hand; it agrees with scipy.linalg.solve_banded to rounding, and its cost grows linearly while a dense solve grows cubically.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_03_thomas_algorithm_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_03_thomas_algorithm`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Thomas algorithm</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Black and Scholes (1973) found their formula by changing variables until the pricing equation became the heat equation. With x = \ln(S/K) and \tau = \tfrac12\sigma^2(T - t), V = K e^{\alpha x + \beta\tau} u turns Black-Scholes into u_\tau = u_{xx}, whose initial condition is the transformed payoff. heat_equation_price solves the heat equation by Crank-Nicolson on a uniform grid, watches the payoff diffuse, and transforms back.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_04_heat_equation_transform_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_04_heat_equation_transform`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black-Scholes as the heat equation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Eduardo Schwartz (1977) valued warrants, which no formula covered, by replacing the derivatives in the Black-Scholes equation with differences and stepping back from expiry one explicit step at a time:">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_05_schwartz_explicit_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_05_schwartz_explicit`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Schwartz: explicit finite differences</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Brennan and Schwartz (1978) noticed that in x = \ln S the explicit scheme&#x27;s weights on the three neighbouring nodes sum to one and match the mean and variance of the log-price increment: the explicit scheme is a trinomial tree, and its stability condition is just the requirement that the weights be probabilities. With \Delta x = \sigma\sqrt{3\Delta t} the middle weight is 2/3, Hull&#x27;s standard tree. log_explicit_price runs the scheme, and explicit_trinomial_probabilities shows the weights turn negative exactly where the scheme becomes unstable.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_06_explicit_is_trinomial_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_06_explicit_is_trinomial`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brennan-Schwartz: explicit schemes are trinomial trees</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A knock-out option is a boundary condition: the value is zero on the barrier. Zvan, Forsyth and Vetzal (2000) showed that finite differences price barriers accurately when a grid node sits exactly on the barrier and the solver handles the discontinuous data smoothly, rather than letting the barrier fall between nodes. price_barrier starts the grid at the barrier, and the result matches the method of images, C_{do}(S) = C(S) - (H/S)^{2\lambda - 2} C(H^2/S).">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_07_barrier_pde_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_07_barrier_pde`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Zvan-Forsyth-Vetzal barrier options</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/pde_methods/schemes/plot_01_crank_nicolson
+   /api/gallery/pde_methods/schemes/plot_02_laasonen_implicit
+   /api/gallery/pde_methods/schemes/plot_03_thomas_algorithm
+   /api/gallery/pde_methods/schemes/plot_04_heat_equation_transform
+   /api/gallery/pde_methods/schemes/plot_05_schwartz_explicit
+   /api/gallery/pde_methods/schemes/plot_06_explicit_is_trinomial
+   /api/gallery/pde_methods/schemes/plot_07_barrier_pde
+

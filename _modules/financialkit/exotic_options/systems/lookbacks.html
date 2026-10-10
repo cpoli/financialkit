@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.exotic_options.systems.lookbacks &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/exotic_options/systems/lookbacks';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.exotic_options.systems.lookbacks</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.exotic_options.systems.lookbacks</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Lookback options: the payoff depends on the maximum or minimum price over the option's life.</span>
+
+<span class="sd">* :func:`floating_lookback_price` -- Goldman, Sosin and Gatto (1979):</span>
+<span class="sd">  "buy at the low, sell at the high". The call pays</span>
+<span class="sd">  :math:`S_T - \\min_t S_t` and the put :math:`\\max_t S_t - S_T`.</span>
+<span class="sd">* :func:`fixed_lookback_price` -- Conze and Viswanathan (1991): a call on</span>
+<span class="sd">  the maximum, :math:`(\\max_t S_t - K)^+`, and a put on the minimum,</span>
+<span class="sd">  :math:`(K - \\min_t S_t)^+`.</span>
+<span class="sd">* :func:`lookback_option_mc` -- Monte Carlo with the extremum sampled</span>
+<span class="sd">  exactly from the Brownian bridge between grid points, or read off the</span>
+<span class="sd">  grid for a discretely monitored lookback.</span>
+
+<span class="sd">All four closed forms reduce to two building blocks: the value of</span>
+<span class="sd">:math:`\\max(M, \\max_t S_t) - M` and of :math:`m - \\min(m, \\min_t S_t)` for</span>
+<span class="sd">levels :math:`M \\ge S` and :math:`m \\le S`. Their :math:`\\sigma^2/(2b)`</span>
+<span class="sd">factor is singular at zero carry :math:`b = r - q`; there the limit is</span>
+<span class="sd">taken as the average of :math:`b = \\pm 10^{-5}`, accurate to</span>
+<span class="sd">:math:`10^{-10}`.</span>
+
+<span class="sd">References: M. B. Goldman, H. B. Sosin and M. A. Gatto, "Path Dependent</span>
+<span class="sd">Options: 'Buy at the Low, Sell at the High'," *J. Finance* 34 (1979)</span>
+<span class="sd">1111-1127; A. Conze and Viswanathan, "Path Dependent Options: The</span>
+<span class="sd">Case of Lookback Options," *J. Finance* 46 (1991) 1893-1907; E. G. Haug,</span>
+<span class="sd">*The Complete Guide to Option Pricing Formulas*, 2nd ed. (McGraw-Hill,</span>
+<span class="sd">2007), Sections 4.15.1-4.15.2.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.exotic_options.utils.numerics</span><span class="w"> </span><span class="kn">import</span> <span class="n">bridge_extremum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.integrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">RNGLike</span><span class="p">,</span> <span class="n">gbm_paths</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.monte_carlo</span><span class="w"> </span><span class="kn">import</span> <span class="n">MonteCarloResult</span><span class="p">,</span> <span class="n">sample_mean</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.options.utils.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">as_output</span><span class="p">,</span> <span class="n">option_sign</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"floating_lookback_price"</span><span class="p">,</span> <span class="s2">"fixed_lookback_price"</span><span class="p">,</span> <span class="s2">"lookback_option_mc"</span><span class="p">]</span>
+
+<span class="n">_ZERO_CARRY_STEP</span> <span class="o">=</span> <span class="mf">1e-5</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_blocks</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">upper</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Value of ``max(level, running max) - level`` (``upper``) or ``level - min(level, running min)``."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">at</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">d1</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">S</span> <span class="o">/</span> <span class="n">level</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span>
+        <span class="n">d2</span> <span class="o">=</span> <span class="n">d1</span> <span class="o">-</span> <span class="n">v</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">reflect</span> <span class="o">=</span> <span class="p">(</span><span class="n">S</span> <span class="o">/</span> <span class="n">level</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">upper</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span>
+                <span class="o">-</span> <span class="n">level</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d2</span><span class="p">)</span>
+                <span class="o">+</span> <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">reflect</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d1</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">d1</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">level</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d2</span><span class="p">)</span>
+            <span class="o">-</span> <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d1</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">reflect</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d1</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">d1</span><span class="p">))</span>
+        <span class="p">)</span>
+
+    <span class="n">small</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">_ZERO_CARRY_STEP</span>
+    <span class="n">safe_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">small</span><span class="p">,</span> <span class="n">_ZERO_CARRY_STEP</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">limit</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">at</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">_ZERO_CARRY_STEP</span><span class="p">))</span> <span class="o">+</span> <span class="n">at</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="n">_ZERO_CARRY_STEP</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">small</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">at</span><span class="p">(</span><span class="n">safe_b</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_inputs</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)))</span>
+
+
+<div class="viewcode-block" id="floating_lookback_price">
+<a class="viewcode-back" href="../../../../api/exotic_options.html#financialkit.exotic_options.floating_lookback_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">floating_lookback_price</span><span class="p">(</span>
+    <span class="n">S</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">,</span> <span class="n">S_extreme</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Goldman-Sosin-Gatto (1979) floating-strike lookback: :math:`S_T - \\min S` (call) or :math:`\\max S - S_T` (put).</span>
+
+<span class="sd">    With :math:`a_1 = [\\ln(S/S_{\\min}) + (b + \\sigma^2/2)T]/(\\sigma\\sqrt T)`,</span>
+<span class="sd">    :math:`a_2 = a_1 - \\sigma\\sqrt T` and :math:`b = r - q`, the call is</span>
+
+<span class="sd">    .. math:: c = S e^{(b-r)T} N(a_1) - S_{\\min} e^{-rT} N(a_2)</span>
+<span class="sd">              + S e^{-rT} \\frac{\\sigma^2}{2b}\\left[\\left(\\frac{S}{S_{\\min}}\\right)^{-2b/\\sigma^2}</span>
+<span class="sd">              N\\!\\left(-a_1 + \\frac{2b\\sqrt T}{\\sigma}\\right) - e^{bT} N(-a_1)\\right],</span>
+
+<span class="sd">    and the put is its mirror image in the maximum.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    S, T, r, sigma : array_like</span>
+<span class="sd">        Spot, remaining maturity, rate and volatility.</span>
+<span class="sd">    q : array_like</span>
+<span class="sd">        Continuous dividend yield.</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+<span class="sd">    S_extreme : array_like, optional</span>
+<span class="sd">        Minimum (call) or maximum (put) observed so far; defaults to `S`</span>
+<span class="sd">        for a newly written option.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Haug (2007), Section 4.15.1: S = 120, S_min = 100, T = 0.5, r = 10%,</span>
+<span class="sd">    b = 4%, sigma = 30%:</span>
+
+<span class="sd">    &gt;&gt;&gt; round(floating_lookback_price(120.0, 0.5, 0.10, 0.30, q=0.06, S_extreme=100.0), 3)</span>
+<span class="sd">    25.353</span>
+<span class="sd">    """</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">option_sign</span><span class="p">(</span><span class="n">option_type</span><span class="p">)</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">_inputs</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">S</span> <span class="k">if</span> <span class="n">S_extreme</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">S_extreme</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span>
+    <span class="k">if</span> <span class="n">phi</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">X</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">_blocks</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">_blocks</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">as_output</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fixed_lookback_price">
+<a class="viewcode-back" href="../../../../api/exotic_options.html#financialkit.exotic_options.fixed_lookback_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fixed_lookback_price</span><span class="p">(</span>
+    <span class="n">S</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">K</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">r</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">q</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">,</span>
+    <span class="n">S_extreme</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Conze-Viswanathan (1991) fixed-strike lookback: :math:`(\\max S - K)^+` (call) or :math:`(K - \\min S)^+` (put).</span>
+
+<span class="sd">    For the call with :math:`K \\ge S_{\\max}`,</span>
+
+<span class="sd">    .. math:: c = S e^{(b-r)T} N(d_1) - K e^{-rT} N(d_2)</span>
+<span class="sd">              + S e^{-rT} \\frac{\\sigma^2}{2b}\\left[-\\left(\\frac{S}{K}\\right)^{-2b/\\sigma^2}</span>
+<span class="sd">              N\\!\\left(d_1 - \\frac{2b\\sqrt T}{\\sigma}\\right) + e^{bT} N(d_1)\\right];</span>
+
+<span class="sd">    for :math:`K &lt; S_{\\max}` the call locks in :math:`e^{-rT}(S_{\\max} - K)`</span>
+<span class="sd">    and adds the same expression with :math:`S_{\\max}` in place of</span>
+<span class="sd">    :math:`K`. The put mirrors it in the minimum.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    S, K, T, r, sigma : array_like</span>
+<span class="sd">        Spot, strike, remaining maturity, rate and volatility.</span>
+<span class="sd">    q : array_like</span>
+<span class="sd">        Continuous dividend yield.</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+<span class="sd">    S_extreme : array_like, optional</span>
+<span class="sd">        Maximum (call) or minimum (put) observed so far; defaults to `S`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    A lookback call is worth more than the vanilla call:</span>
+
+<span class="sd">    &gt;&gt;&gt; from financialkit.options import black_scholes_price</span>
+<span class="sd">    &gt;&gt;&gt; bool(fixed_lookback_price(100.0, 100.0, 1.0, 0.05, 0.2) &gt; black_scholes_price(100.0, 100.0, 1.0, 0.05, 0.2))</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">option_sign</span><span class="p">(</span><span class="n">option_type</span><span class="p">)</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">_inputs</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">S</span> <span class="k">if</span> <span class="n">S_extreme</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">S_extreme</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span>
+    <span class="n">disc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">phi</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">disc</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">K</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">_blocks</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">X</span><span class="p">),</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">disc</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">K</span> <span class="o">-</span> <span class="n">X</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">_blocks</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">X</span><span class="p">),</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">as_output</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="lookback_option_mc">
+<a class="viewcode-back" href="../../../../api/exotic_options.html#financialkit.exotic_options.lookback_option_mc">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">lookback_option_mc</span><span class="p">(</span>
+    <span class="n">S</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">q</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">,</span>
+    <span class="n">K</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">n_paths</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100_000</span><span class="p">,</span>
+    <span class="n">continuous</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">rng</span><span class="p">:</span> <span class="n">RNGLike</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MonteCarloResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Monte Carlo price of a newly written lookback, floating (``K=None``) or fixed strike.</span>
+
+<span class="sd">    Paths come from :func:`financialkit.integrators.gbm_paths`. With</span>
+<span class="sd">    ``continuous=True`` the path extremum is sampled exactly from the</span>
+<span class="sd">    Brownian bridge in each step</span>
+<span class="sd">    (:func:`~financialkit.exotic_options.utils.numerics.bridge_extremum`), so</span>
+<span class="sd">    the estimator is unbiased for continuous monitoring at any step size;</span>
+<span class="sd">    with ``continuous=False`` it is the extremum over the grid dates,</span>
+<span class="sd">    which prices a discretely monitored lookback.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    S, T, r, sigma : float</span>
+<span class="sd">        Spot, maturity, rate and volatility.</span>
+<span class="sd">    q : float</span>
+<span class="sd">        Continuous dividend yield.</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+<span class="sd">    K : float, optional</span>
+<span class="sd">        Fixed strike; ``None`` for a floating-strike lookback.</span>
+<span class="sd">    n_steps : int</span>
+<span class="sd">        Time steps (monitoring dates when ``continuous=False``).</span>
+<span class="sd">    n_paths : int</span>
+<span class="sd">        Number of paths.</span>
+<span class="sd">    continuous : bool</span>
+<span class="sd">        Continuous monitoring through the bridge, or discrete.</span>
+<span class="sd">    rng : numpy.random.Generator or int, optional</span>
+<span class="sd">        Generator or seed.</span>
+<span class="sd">    confidence : float</span>
+<span class="sd">        Coverage of the confidence interval.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    MonteCarloResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; res = lookback_option_mc(100.0, 1.0, 0.05, 0.2, n_steps=10, n_paths=40_000, rng=0)</span>
+<span class="sd">    &gt;&gt;&gt; bool(abs(res.estimate - floating_lookback_price(100.0, 1.0, 0.05, 0.2)) &lt; 4 * res.std_error)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">option_sign</span><span class="p">(</span><span class="n">option_type</span><span class="p">)</span>
+    <span class="n">gen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">paths</span> <span class="o">=</span> <span class="n">gbm_paths</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_steps</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_paths</span><span class="p">),</span> <span class="n">rng</span><span class="o">=</span><span class="n">gen</span><span class="p">)</span>
+    <span class="c1"># the call needs the maximum for a fixed strike and the minimum for a floating one</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s2">"max"</span> <span class="k">if</span> <span class="p">(</span><span class="n">phi</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">K</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"min"</span>
+    <span class="k">if</span> <span class="n">continuous</span><span class="p">:</span>
+        <span class="n">extreme</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">bridge_extremum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">paths</span><span class="p">),</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">T</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_steps</span><span class="p">),</span> <span class="n">kind</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">gen</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">extreme</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">"max"</span> <span class="k">else</span> <span class="n">paths</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">S_T</span> <span class="o">=</span> <span class="n">paths</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">K</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">payoff</span> <span class="o">=</span> <span class="n">S_T</span> <span class="o">-</span> <span class="n">extreme</span> <span class="k">if</span> <span class="n">phi</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">extreme</span> <span class="o">-</span> <span class="n">S_T</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">payoff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">phi</span> <span class="o">*</span> <span class="p">(</span><span class="n">extreme</span> <span class="o">-</span> <span class="n">K</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sample_mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">payoff</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="s2">"continuous lookback"</span> <span class="k">if</span> <span class="n">continuous</span> <span class="k">else</span> <span class="s2">"discrete lookback"</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

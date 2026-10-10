@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.portfolio hub </_generated/subpackages/portfolio>` · :doc:`History </history/portfolio_breakthroughs>` · :doc:`Examples </api/gallery/portfolio/index>` · :doc:`API reference </api/portfolio>`

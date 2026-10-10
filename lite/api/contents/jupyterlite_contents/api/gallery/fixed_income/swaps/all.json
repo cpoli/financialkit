@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.867273Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.867273Z",
+      "mimetype": null,
+      "name": "plot_01_ibm_world_bank_currency_swap.ipynb",
+      "path": "jupyterlite_contents/api/gallery/fixed_income/swaps/plot_01_ibm_world_bank_currency_swap.ipynb",
+      "size": 2787,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.867394Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.867394Z",
+      "mimetype": null,
+      "name": "plot_02_interest_rate_swap.ipynb",
+      "path": "jupyterlite_contents/api/gallery/fixed_income/swaps/plot_02_interest_rate_swap.ipynb",
+      "size": 3436,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.224663Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.224939Z",
+  "mimetype": null,
+  "name": "swaps",
+  "path": "jupyterlite_contents/api/gallery/fixed_income/swaps",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

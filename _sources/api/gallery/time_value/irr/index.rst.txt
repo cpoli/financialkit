@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_time_value_irr:
+
+Internal rate of return
+-----------------------
+
+The rate that zeroes a project's NPV, the projects that have several,
+and Baldwin's modified IRR.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Irving Fisher&#x27;s The Theory of Interest (1930) defined the &quot;rate of return over cost&quot;: the discount rate at which an investment&#x27;s net present value is zero, now called the internal rate of return. For a conventional project (one outflow followed by inflows) the NPV falls steadily as the rate rises and crosses zero exactly once, so the IRR is well defined and accepting projects with IRR above the cost of capital is the same as accepting positive-NPV ones. financialkit brackets the crossing on a grid and polishes it with scipy.optimize.brentq.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/irr/images/thumb/sphx_glr_plot_01_internal_rate_of_return_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/irr/plot_01_internal_rate_of_return`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The internal rate of return</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In &quot;Three Problems in Rationing Capital&quot; (Journal of Business, 1955) James Lorie and Leonard Savage pointed out that the IRR can fail. Their example: replacing an oil-well pump with a bigger one costs 1,600 now, brings in 10,000 extra next year, and loses the 10,000 the old pump would have produced the year after. The NPV is zero at both 25% and 400%, and negative outside them. By Descartes&#x27; rule of signs a stream with k sign changes can have up to k IRRs; irr_all finds every one as a root of the NPV polynomial in 1/(1 + r), and irr warns when there is more than one.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/irr/images/thumb/sphx_glr_plot_02_lorie_savage_multiple_irr_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/irr/plot_02_lorie_savage_multiple_irr`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lorie and Savage: multiple IRRs</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Baldwin&#x27;s &quot;How to Assess Investment Proposals&quot; (Harvard Business Review, 1959) proposed a fix for the IRR&#x27;s two defects -- multiple roots and the implicit assumption that interim cash flows are reinvested at the IRR itself. Compound the inflows to the horizon at a realistic reinvestment rate, discount the outflows at the finance rate, and report the one rate that links them: \mathrm{MIRR} = (FV^+ / |PV^-|)^{1/n} - 1. It always exists and is unique.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/irr/images/thumb/sphx_glr_plot_03_baldwin_mirr_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/irr/plot_03_baldwin_mirr`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Baldwin's modified IRR</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_value/irr/plot_01_internal_rate_of_return
+   /api/gallery/time_value/irr/plot_02_lorie_savage_multiple_irr
+   /api/gallery/time_value/irr/plot_03_baldwin_mirr
+

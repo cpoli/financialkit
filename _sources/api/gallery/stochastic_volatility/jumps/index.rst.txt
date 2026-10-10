@@ -1,0 +1,124 @@
+
+
+.. _sphx_glr_api_gallery_stochastic_volatility_jumps:
+
+Jumps
+-----
+
+Discontinuous prices: Merton's jump diffusion, the variance gamma process
+in its symmetric and skewed forms, Bates's jumps on top of Heston, and
+Kou's double-exponential jumps.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1976) added Poisson jumps with lognormal sizes to geometric Brownian motion. If the jump risk is diversifiable it is not priced, and conditioning on the number of jumps turns the option into a Poisson mixture of Black-Scholes prices with adjusted rates and volatilities. Jumps fatten the tails of the return distribution, and because a few jumps matter far more over a week than over five years, they make short-dated smiles much steeper than long-dated ones.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_01_merton_jump_diffusion_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_01_merton_jump_diffusion`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's jump diffusion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Madan and Seneta (1990) ran a Brownian motion on a random business clock: gamma-distributed time G_t, with variance rate \nu. The result, \sigma W_{G_t}, is a pure-jump Lévy process with infinitely many small jumps, symmetric, and with tails heavier than the normal&#x27;s but lighter than a power law. The density is closed form in terms of a modified Bessel function. The clock&#x27;s variance \nu sets the excess kurtosis (3\nu/T).">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_02_madan_seneta_variance_gamma_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_02_madan_seneta_variance_gamma`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Madan and Seneta's variance gamma</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="David Bates (1996), studying Deutsche mark options, found that neither jumps nor stochastic volatility alone fit the smile at every maturity. Diffusive stochastic volatility needs time to build up a skew, so Heston&#x27;s short-dated smiles are too flat; jumps act at once but their effect washes out with maturity. Putting Merton&#x27;s lognormal jumps on top of Heston gives both: the characteristic function is simply the product of the two.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_03_bates_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_03_bates`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bates: jumps and stochastic volatility</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Madan, Carr and Chang (1998) added a drift \theta in business time: X = \theta G_t + \sigma W_{G_t}. A negative \theta moves mass into the left tail, turning the symmetric Madan-Seneta smile into the equity skew with one extra parameter, and they priced options in closed form. Fang and Oosterlee (2008) later used one of their parameter sets as a benchmark; it is reproduced below.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_04_madan_carr_chang_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_04_madan_carr_chang`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Madan, Carr and Chang's skewed variance gamma</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Steven Kou (2002) took the log jump sizes to be exponential, with rate \eta_1 upward (probability p) and \eta_2 downward. The two exponential tails give the asymmetric, leptokurtic returns seen in data, and because the exponential distribution is memoryless the overshoot over a barrier is again exponential, which makes barrier and lookback options tractable. The tails also cap the moments, E[S_T^{s}] &lt; \infty only for -\eta_2 &lt; s &lt; \eta_1.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_05_kou_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_05_kou`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kou's double-exponential jumps</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/stochastic_volatility/jumps/plot_01_merton_jump_diffusion
+   /api/gallery/stochastic_volatility/jumps/plot_02_madan_seneta_variance_gamma
+   /api/gallery/stochastic_volatility/jumps/plot_03_bates
+   /api/gallery/stochastic_volatility/jumps/plot_04_madan_carr_chang
+   /api/gallery/stochastic_volatility/jumps/plot_05_kou
+

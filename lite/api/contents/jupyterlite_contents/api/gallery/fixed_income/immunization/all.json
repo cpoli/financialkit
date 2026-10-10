@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.867167Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.867167Z",
+      "mimetype": null,
+      "name": "plot_02_fong_vasicek_m_squared.ipynb",
+      "path": "jupyterlite_contents/api/gallery/fixed_income/immunization/plot_02_fong_vasicek_m_squared.ipynb",
+      "size": 3337,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.867061Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.867061Z",
+      "mimetype": null,
+      "name": "plot_01_redington_immunization.ipynb",
+      "path": "jupyterlite_contents/api/gallery/fixed_income/immunization/plot_01_redington_immunization.ipynb",
+      "size": 2973,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.224172Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.224463Z",
+  "mimetype": null,
+  "name": "immunization",
+  "path": "jupyterlite_contents/api/gallery/fixed_income/immunization",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

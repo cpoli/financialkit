@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/risk/index';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>This gallery walks through every public feature of <code class="docutils literal notranslate"><span class="pre">financialkit.risk</span></code>:
+value at risk by historical, parametric, Cornish-Fisher, Monte Carlo,
+age-weighted and filtered historical methods; Roy’s safety-first
+criterion; expected shortfall, coherence and Euler allocation; extreme
+value theory; VaR backtests; copulas and tail dependence; and drawdowns.</p>
+<p>Each script in this gallery is self-contained and can be run directly with
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">examples/risk/&lt;section&gt;/&lt;script&gt;.py</span></code>.</p>
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>var</strong> – Cornish-Fisher, Roy’s safety first, parametric (RiskMetrics)
+VaR, Monte Carlo VaR, hybrid VaR and filtered historical simulation.</p></li>
+<li><p><strong>expected_shortfall</strong> – the coherence axioms, Euler risk allocation
+and the Acerbi-Tasche estimator.</p></li>
+<li><p><strong>extreme_value</strong> – Fisher-Tippett block maxima and peaks over threshold.</p></li>
+<li><p><strong>backtesting</strong> – Kupiec’s test, the Basel traffic light and
+Christoffersen’s independence test.</p></li>
+<li><p><strong>copulas</strong> – Sklar’s theorem with the Gaussian copula, and the t
+copula’s tail dependence.</p></li>
+<li><p><strong>drawdowns</strong> – maximum drawdown and the Calmar ratio.</p></li>
+</ul>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div></section>
+<section id="backtesting">
+<h2>Backtesting<a class="headerlink" href="#backtesting" title="Link to this heading">#</a></h2>
+<p>Checking a VaR model against realised losses: the number of exceptions,
+the regulator’s zones and whether exceptions cluster.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A 99% VaR should be exceeded on about 1% of days. Kupiec (1995) turned &quot;about&quot; into a likelihood-ratio test: with x exceptions in n days and \hat p = x/n,"><img alt="" src="../../../_images/sphx_glr_plot_01_kupiec_thumb.png" />
+<p><a class="reference internal" href="backtesting/plot_01_kupiec.html"><span class="doc">Kupiec’s proportion-of-failures test</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kupiec's proportion-of-failures test</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The 1996 Market Risk Amendment let banks set capital from their own 99%, ten-day VaR, typically historical simulation over at least a year of data, multiplied by at least 3. The multiplier grows with the number of exceptions in the last 250 days: green (0-4) keeps 3, yellow (5-9) adds 0.40 to 0.85, red (10 or more) adds 1. Here a historical VaR is run on a market whose volatility doubles halfway through."><img alt="" src="../../../_images/sphx_glr_plot_02_basel_traffic_light_thumb.png" />
+<p><a class="reference internal" href="backtesting/plot_02_basel_traffic_light.html"><span class="doc">Basel historical VaR and the traffic light</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Basel historical VaR and the traffic light</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Kupiec&#x27;s test counts exceptions but ignores when they happen. A VaR that is right on average but slow to react produces exceptions in bunches, exactly when a bank can least afford them. Christoffersen (1998) fitted a two-state Markov chain to the hit sequence and tested whether a hit is more likely the day after a hit, \pi_{11} &gt; \pi_{01}; adding Kupiec&#x27;s statistic gives the conditional-coverage test, LR_{cc} = LR_{uc} + LR_{ind} \sim \chi^2_2."><img alt="" src="../../../_images/sphx_glr_plot_03_christoffersen_thumb.png" />
+<p><a class="reference internal" href="backtesting/plot_03_christoffersen.html"><span class="doc">Christoffersen’s independence test</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Christoffersen's independence test</div>
+</div></div></section>
+<section id="copulas">
+<h2>Copulas<a class="headerlink" href="#copulas" title="Link to this heading">#</a></h2>
+<p>Dependence separated from the marginals, and the joint extremes that the
+Gaussian copula misses.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Sklar (1959) showed that every joint distribution is its marginals glued together by a copula C:"><img alt="" src="../../../_images/sphx_glr_plot_01_sklar_gaussian_copula_thumb.png" />
+<p><a class="reference internal" href="copulas/plot_01_sklar_gaussian_copula.html"><span class="doc">Sklar’s theorem and the Gaussian copula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sklar's theorem and the Gaussian copula</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Under a Gaussian copula, joint extremes become independent as one looks further into the tail: the coefficient of tail dependence is zero for any correlation below one. Markets do not behave that way; in a crash everything falls together. Demarta and McNeil (2005) studied the t copula, whose shared random scale makes extremes coincide with probability"><img alt="" src="../../../_images/sphx_glr_plot_02_t_copula_tail_dependence_thumb.png" />
+<p><a class="reference internal" href="copulas/plot_02_t_copula_tail_dependence.html"><span class="doc">Demarta-McNeil: the t copula and tail dependence</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Demarta-McNeil: the t copula and tail dependence</div>
+</div></div></section>
+<section id="drawdowns">
+<h2>Drawdowns<a class="headerlink" href="#drawdowns" title="Link to this heading">#</a></h2>
+<p>The worst fall from a peak, and return measured against it.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A drawdown is the fall from the highest wealth reached so far. Terry Young (1991) proposed judging managed-futures funds by their compound annual return divided by their maximum drawdown, the Calmar ratio, because investors leave a fund after a deep drawdown long before its volatility looks alarming. Two strategies with the same mean and volatility can have very different drawdowns if their bad days cluster."><img alt="" src="../../../_images/sphx_glr_plot_01_calmar_drawdowns_thumb.png" />
+<p><a class="reference internal" href="drawdowns/plot_01_calmar_drawdowns.html"><span class="doc">Young’s Calmar ratio and drawdowns</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Young's Calmar ratio and drawdowns</div>
+</div></div></section>
+<section id="expected-shortfall-and-coherence">
+<h2>Expected shortfall and coherence<a class="headerlink" href="#expected-shortfall-and-coherence" title="Link to this heading">#</a></h2>
+<p>What makes a risk measure coherent, why VaR is not, and how expected
+shortfall is estimated and allocated to positions.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Artzner, Delbaen, Eber and Heath (1999) listed four properties a capital requirement should have: monotonicity, subadditivity, positive homogeneity and translation invariance. VaR fails subadditivity: two desks can each look safe while their merger needs capital. The classic counterexample is a pair of independent bonds that each default with 4% probability. At 95% neither default is in the tail, so each bond&#x27;s VaR is negative; together, a default happens with probability 7.8%, and the portfolio&#x27;s VaR is a loss."><img alt="" src="../../../_images/sphx_glr_plot_01_coherence_thumb.png" />
+<p><a class="reference internal" href="expected_shortfall/plot_01_coherence.html"><span class="doc">Artzner-Delbaen-Eber-Heath: coherent risk measures</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Artzner-Delbaen-Eber-Heath: coherent risk measures</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A bank&#x27;s capital is set for the whole portfolio, but desks must be charged for their share. Because VaR, ES and volatility are positively homogeneous in the position sizes, Euler&#x27;s theorem splits them exactly:"><img alt="" src="../../../_images/sphx_glr_plot_02_euler_allocation_thumb.png" />
+<p><a class="reference internal" href="expected_shortfall/plot_02_euler_allocation.html"><span class="doc">Tasche: Euler risk allocation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Tasche: Euler risk allocation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="&quot;The average loss beyond VaR&quot; sounds like one number but is several when the distribution has atoms, as every sample does, and some versions are not coherent. Acerbi and Tasche (2002) gave the definition that is: average exactly the worst fraction p = 1 - \alpha of outcomes, charging only part of the atom at the quantile,"><img alt="" src="../../../_images/sphx_glr_plot_03_acerbi_tasche_thumb.png" />
+<p><a class="reference internal" href="expected_shortfall/plot_03_acerbi_tasche.html"><span class="doc">Acerbi-Tasche expected shortfall</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Acerbi-Tasche expected shortfall</div>
+</div></div></section>
+<section id="extreme-value-theory">
+<h2>Extreme value theory<a class="headerlink" href="#extreme-value-theory" title="Link to this heading">#</a></h2>
+<p>The laws of maxima and of exceedances over high thresholds, and the tail
+risk figures they extrapolate.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Fisher and Tippett (1928) proved that the largest of n i.i.d. losses, once centred and scaled, can converge to only three limits: Fréchet for power-law tails, Gumbel for exponential-type tails and Weibull for bounded ones. They are the generalized extreme value law"><img alt="" src="../../../_images/sphx_glr_plot_01_fisher_tippett_gev_thumb.png" />
+<p><a class="reference internal" href="extreme_value/plot_01_fisher_tippett_gev.html"><span class="doc">Fisher-Tippett: the three laws of the maximum</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fisher-Tippett: the three laws of the maximum</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Pickands (1975) and Balkema and de Haan (1974) proved that the excess of a loss over a high threshold u is approximately generalized Pareto, whatever the parent distribution in the Fréchet, Gumbel or Weibull domain. Fitting that law to the few largest losses gives VaR and expected shortfall at levels the data barely reach:"><img alt="" src="../../../_images/sphx_glr_plot_02_peaks_over_threshold_thumb.png" />
+<p><a class="reference internal" href="extreme_value/plot_02_peaks_over_threshold.html"><span class="doc">Peaks over threshold: Pickands-Balkema-de Haan</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Peaks over threshold: Pickands-Balkema-de Haan</div>
+</div></div></section>
+<section id="value-at-risk">
+<h2>Value at risk<a class="headerlink" href="#value-at-risk" title="Link to this heading">#</a></h2>
+<p>The loss that is exceeded with a given small probability, estimated in
+closed form, by expansion, by simulation and from weighted or filtered
+history.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Cornish and Fisher (1937) expanded the quantile of a nearly normal distribution in its cumulants. To second order, with skewness S and excess kurtosis K,"><img alt="" src="../../../_images/sphx_glr_plot_01_cornish_fisher_thumb.png" />
+<p><a class="reference internal" href="var/plot_01_cornish_fisher.html"><span class="doc">Cornish-Fisher: VaR beyond the normal</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cornish-Fisher: VaR beyond the normal</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The same year as Markowitz, A. D. Roy (1952) asked which portfolio minimises the chance of disaster, P(R &lt; d). With only means and variances known, Chebyshev&#x27;s inequality bounds it by 1 / s^2, where s = (\mu - d)/\sigma, so the safest portfolio maximises s: the point where a line from (0, d) touches the efficient frontier. It is the first downside risk measure and an early form of the Sharpe ratio."><img alt="" src="../../../_images/sphx_glr_plot_02_roy_safety_first_thumb.png" />
+<p><a class="reference internal" href="var/plot_02_roy_safety_first.html"><span class="doc">Roy’s safety-first criterion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Roy's safety-first criterion</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In October 1994 J.P. Morgan published RiskMetrics, its methodology and daily covariance data, free. A portfolio with money exposures w to factors with covariance \Sigma has, under joint normality,"><img alt="" src="../../../_images/sphx_glr_plot_03_parametric_var_thumb.png" />
+<p><a class="reference internal" href="var/plot_03_parametric_var.html"><span class="doc">RiskMetrics: parametric (delta-normal) VaR</span></a></p>
+  <div class="sphx-glr-thumbnail-title">RiskMetrics: parametric (delta-normal) VaR</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Delta-normal VaR treats every position as linear in its risk factors. For options that is badly wrong: a short straddle has zero delta at the money, so its delta-normal VaR is zero, yet it loses heavily on a large move in either direction. Pritsker (1997) compared delta, delta-gamma and full-revaluation Monte Carlo VaR and found that only full revaluation is reliable for books with large gamma. The cost is repricing every position in every scenario."><img alt="" src="../../../_images/sphx_glr_plot_04_monte_carlo_var_thumb.png" />
+<p><a class="reference internal" href="var/plot_04_monte_carlo_var.html"><span class="doc">Pritsker: Monte Carlo VaR for option books</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pritsker: Monte Carlo VaR for option books</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Historical simulation gives every day in the window the same weight, so after a jump in volatility it takes months to notice and then drops the crisis days abruptly when they leave the window. Boudoukh, Richardson and Whitelaw (1998) weighted the outcome i days old by \lambda^i, combining RiskMetrics&#x27; exponential smoothing with historical simulation&#x27;s distribution-free tail: &quot;the best of both worlds&quot;."><img alt="" src="../../../_images/sphx_glr_plot_05_hybrid_var_thumb.png" />
+<p><a class="reference internal" href="var/plot_05_hybrid_var.html"><span class="doc">Boudoukh-Richardson-Whitelaw hybrid VaR</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Boudoukh-Richardson-Whitelaw hybrid VaR</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Historical simulation keeps the empirical shape of the tail but not its current scale; a GARCH model tracks the scale but imposes a shape. Barone-Adesi, Giannopoulos and Vosper (1999) combined them: divide each past return by that day&#x27;s volatility to get standardized residuals z_t = r_t / \sigma_t, then rescale them by tomorrow&#x27;s forecast,"><img alt="" src="../../../_images/sphx_glr_plot_06_filtered_historical_thumb.png" />
+<p><a class="reference internal" href="var/plot_06_filtered_historical.html"><span class="doc">Barone-Adesi: filtered historical simulation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Barone-Adesi: filtered historical simulation</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/ae577978869f8e795a39df94683fc159/risk_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">risk_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/d341c11ff5c04411923938c0b3ff4bd8/risk_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">risk_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">Backtesting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copulas">Copulas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawdowns">Drawdowns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-shortfall-and-coherence">Expected shortfall and coherence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extreme-value-theory">Extreme value theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-at-risk">Value at risk</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/api/gallery/risk/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

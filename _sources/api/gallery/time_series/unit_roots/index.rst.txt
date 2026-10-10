@@ -1,0 +1,68 @@
+
+
+.. _sphx_glr_api_gallery_time_series_unit_roots:
+
+Unit roots and cointegration
+----------------------------
+
+The Dickey-Fuller distribution and the Engle-Granger two-step test.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Is a series a random walk (\rho = 1) or does it revert to a mean (:math:`\rho &lt; 1`)? Regressing \Delta y_t on y_{t-1} and looking at the t-ratio of the slope seems natural, but under a unit root that ratio does not have a t distribution: it is skewed to the left, and more so when a constant or trend is included. David Dickey and Wayne Fuller (1979) tabulated its distribution by simulation. Their test, with lagged differences added (Said and Dickey 1984) and MacKinnon&#x27;s critical values, is still the first thing run on an interest rate, a price-dividend ratio or a pairs-trading spread.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/unit_roots/images/thumb/sphx_glr_plot_01_dickey_fuller_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/unit_roots/plot_01_dickey_fuller`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dickey-Fuller unit roots</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Granger and Newbold (1974) showed that regressing one random walk on an independent one gives &quot;significant&quot; slopes and high R^2 most of the time: a spurious regression. Yet some nonstationary series are tied together, such as spot and futures prices, or two share classes of the same company. Robert Engle and Clive Granger (1987) called them cointegrated: some combination y_t - b x_t is stationary. Their two-step test regresses y on x and runs a Dickey-Fuller test on the residuals, with critical values that allow for b having been fitted. It is the textbook basis of pairs trading.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/unit_roots/images/thumb/sphx_glr_plot_02_engle_granger_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/unit_roots/plot_02_engle_granger`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Engle-Granger cointegration</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_series/unit_roots/plot_01_dickey_fuller
+   /api/gallery/time_series/unit_roots/plot_02_engle_granger
+

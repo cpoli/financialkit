@@ -1,0 +1,494 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of ``financialkit.time_value``:
+compounding and equivalent rates, present and net present value, annuities
+and perpetuities, the internal rate of return and its pitfalls, amortizing
+loans and the APR, and day-count conventions.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/time_value/<section>/<script>.py``.
+
+Sections
+--------
+
+- **present_value** -- Fibonacci's present value, Fisher's real rate and
+  Fisher's net present value.
+- **compounding** -- Pacioli's rule of 72, Witt's compound-interest tables
+  and Bernoulli's continuous compounding.
+- **annuities** -- De Witt's life annuities, the consol perpetuity and
+  Price's sinking fund.
+- **irr** -- the internal rate of return, Lorie and Savage's multiple IRRs
+  and Baldwin's modified IRR.
+- **amortization** -- the fully amortizing mortgage and the
+  Truth-in-Lending APR.
+- **day_counts** -- 30/360 accrued interest and the actual/actual family.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Amortization
+------------
+
+Level-payment loans that repay themselves, and the APR that the Truth
+in Lending Act made lenders disclose.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Before the 1930s a typical American home loan ran five to ten years, paid interest only, and ended in a balloon payment that had to be refinanced -- which became impossible in the Depression. The Home Owners&#x27; Loan Corporation (1933) and then the FHA (1934) replaced it with the long-term, level-payment, fully amortizing mortgage: each monthly payment covers the interest on the balance and repays a little principal, so the loan is gone at the last payment.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/amortization/images/thumb/sphx_glr_plot_01_amortizing_mortgage_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/amortization/plot_01_amortizing_mortgage`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The fully amortizing mortgage</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The U.S. Truth in Lending Act (1968) and its Regulation Z made lenders disclose an annual percentage rate computed one way for everyone: the nominal rate at which the payments are worth exactly the amount the borrower actually receives, after fees and points. The APR therefore rises above the note rate when fees are charged, and the faster the loan is repaid, the more the fees count. The APR is still a nominal rate; compounded monthly, the effective annual rate is higher again.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/amortization/images/thumb/sphx_glr_plot_02_truth_in_lending_apr_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/amortization/plot_02_truth_in_lending_apr`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Truth in Lending: APR and the effective rate</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Annuities
+---------
+
+Streams of level payments: De Witt's life annuities, the perpetual
+consol, and Price's sinking fund.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1671 Johan de Witt, Grand Pensionary of Holland, sent the States General his Waerdye van Lyf-renten, arguing that the life annuities the province sold at 14 years&#x27; purchase were too cheap. He valued an annuity as the sum of each payment, discounted at 4% and weighted by the chance that the buyer is still alive to receive it, under a simple mortality hypothesis: an equal chance of death in every half-year up to age 53, rising to 1.5, 2 and 3 times that in the bands 53-63, 63-73 and 73-80.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/annuities/images/thumb/sphx_glr_plot_01_de_witt_life_annuity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/annuities/plot_01_de_witt_life_annuity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">De Witt's life annuities</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1751 Henry Pelham consolidated several British government debts into a single issue of &quot;3 per cent consolidated annuities&quot;, which were never to be repaid: the holder received 3 a year per 100 of face value forever. A perpetuity paying P is worth P/i at yield i, so a consol&#x27;s price moves inversely with long-term rates and at a 3% yield it trades at par. This script prices consols across yields and compares them with long but finite annuities.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/annuities/images/thumb/sphx_glr_plot_02_consol_perpetuity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/annuities/plot_02_consol_perpetuity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Consols and the perpetuity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In An Appeal to the Public on the Subject of the National Debt (1772) Richard Price showed what compound interest could do for a nation in debt: a fixed sum set aside every year and left to accumulate at interest would grow to repay the debt. The level deposit that reaches a target F in n periods is F / s_{\overline{n}|}. Pitt&#x27;s sinking fund of 1786 put the idea into practice.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/annuities/images/thumb/sphx_glr_plot_03_price_sinking_fund_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/annuities/plot_03_price_sinking_fund`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Price's sinking fund</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Compounding
+-----------
+
+Interest on interest: Pacioli's rule of 72, Witt's compound-interest
+tables, and Bernoulli's limit of ever more frequent compounding.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Luca Pacioli&#x27;s Summa de arithmetica (1494) gives, without proof, a rule for how long money takes to double: divide 72 by the annual interest rate in percent. The exact doubling time with annual compounding is \ln 2 / \ln(1 + r), and since \ln(1 + r) \approx r - r^2/2 the best constant drifts upward with the rate; 72 is close to right near 8% and has many convenient divisors.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/compounding/images/thumb/sphx_glr_plot_01_pacioli_rule_of_72_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/compounding/plot_01_pacioli_rule_of_72`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pacioli's rule of 72</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Witt&#x27;s Arithmeticall Questions (London, 1613) was the first English book of compound-interest tables. For a given rate it listed, year by year, the amount of 1, the present value of 1, and the value of an annuity of 1, so that a clerk could price a loan or a lease with a look-up and a multiplication. This script prints such a table at 10% and uses it to price an annuity.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/compounding/images/thumb/sphx_glr_plot_02_witt_compound_interest_tables_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/compounding/plot_02_witt_compound_interest_tables`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Witt's compound-interest tables</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1683 Jacob Bernoulli asked what a sum lent at interest becomes if the interest is added not yearly but half-yearly, monthly, daily, at every instant. At 100% a year, 1 grows to (1 + 1/m)^m with m compounding periods, which increases with m but stays bounded; he showed the limit lies between 2.5 and 3. The limit is e, and continuous compounding, e^{rt}, is the convention financialkit uses by default.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/compounding/images/thumb/sphx_glr_plot_03_bernoulli_continuous_compounding_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/compounding/plot_03_bernoulli_continuous_compounding`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bernoulli and continuous compounding</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Day counts
+----------
+
+Turning dates into year fractions: 30/360 accrued interest and ISDA's
+actual/actual conventions.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A bond buyer pays the seller the coupon interest earned since the last coupon date. The Securities Industry Association&#x27;s Standard Securities Calculation Methods (1993) codified how U.S. corporate and agency bonds count those days: every month has 30 days and the year 360, with rules for the 31st and for the end of February. The example is Hull&#x27;s: a 10% bond with coupons on March 1 and September 1, bought for settlement on July 3, 2018.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/day_counts/images/thumb/sphx_glr_plot_01_thirty_360_accrued_interest_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/day_counts/plot_01_thirty_360_accrued_interest`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">SIA 30/360 and accrued interest</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="When the euro replaced its legacy currencies, markets had to agree on how to count days. ISDA&#x27;s 1998 memo EMU and Market Conventions set the competing &quot;actual/actual&quot; methods side by side; under the ISDA variant, the days falling in each calendar year are divided by that year&#x27;s length, 365 or 366. Its example: November 1, 2003 to May 1, 2004 is 61/365 + 121/366 = 0.49772. This script compares that with the other conventions in DayCount.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/day_counts/images/thumb/sphx_glr_plot_02_isda_actual_actual_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/day_counts/plot_02_isda_actual_actual`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">ISDA's actual/actual and the day-count zoo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Internal rate of return
+-----------------------
+
+The rate that zeroes a project's NPV, the projects that have several,
+and Baldwin's modified IRR.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Irving Fisher&#x27;s The Theory of Interest (1930) defined the &quot;rate of return over cost&quot;: the discount rate at which an investment&#x27;s net present value is zero, now called the internal rate of return. For a conventional project (one outflow followed by inflows) the NPV falls steadily as the rate rises and crosses zero exactly once, so the IRR is well defined and accepting projects with IRR above the cost of capital is the same as accepting positive-NPV ones. financialkit brackets the crossing on a grid and polishes it with scipy.optimize.brentq.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/irr/images/thumb/sphx_glr_plot_01_internal_rate_of_return_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/irr/plot_01_internal_rate_of_return`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The internal rate of return</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In &quot;Three Problems in Rationing Capital&quot; (Journal of Business, 1955) James Lorie and Leonard Savage pointed out that the IRR can fail. Their example: replacing an oil-well pump with a bigger one costs 1,600 now, brings in 10,000 extra next year, and loses the 10,000 the old pump would have produced the year after. The NPV is zero at both 25% and 400%, and negative outside them. By Descartes&#x27; rule of signs a stream with k sign changes can have up to k IRRs; irr_all finds every one as a root of the NPV polynomial in 1/(1 + r), and irr warns when there is more than one.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/irr/images/thumb/sphx_glr_plot_02_lorie_savage_multiple_irr_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/irr/plot_02_lorie_savage_multiple_irr`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lorie and Savage: multiple IRRs</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Baldwin&#x27;s &quot;How to Assess Investment Proposals&quot; (Harvard Business Review, 1959) proposed a fix for the IRR&#x27;s two defects -- multiple roots and the implicit assumption that interim cash flows are reinvested at the IRR itself. Compound the inflows to the horizon at a realistic reinvestment rate, discount the outflows at the finance rate, and report the one rate that links them: \mathrm{MIRR} = (FV^+ / |PV^-|)^{1/n} - 1. It always exists and is unique.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/irr/images/thumb/sphx_glr_plot_03_baldwin_mirr_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/irr/plot_03_baldwin_mirr`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Baldwin's modified IRR</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Present value
+-------------
+
+Discounting payments to one comparable number: Fibonacci's present
+value, Fisher's real and nominal rates, and Fisher's net present value.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Chapter 12 of Fibonacci&#x27;s Liber Abaci (1202) contains problems in which a sum is repaid in instalments at a fixed rate per period, and Fibonacci values each schedule by discounting every instalment back to the start (Goetzmann, 2005). The same idea in modern form: a lender is offered three ways to be repaid a loan of 100 bezants, and the one worth most today depends on the rate. Present value turns each schedule into a single number that can be compared.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/present_value/images/thumb/sphx_glr_plot_01_fibonacci_present_value_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/present_value/plot_01_fibonacci_present_value`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fibonacci's present value: comparing payment schedules</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In Appreciation and Interest (1896) Irving Fisher argued that lenders who foresee inflation demand compensation for it, so that a nominal rate i and a real rate r satisfy 1 + i = (1 + r)(1 + \pi). The familiar shortcut r \approx i - \pi is accurate only when inflation is low; this script compares the two across inflation rates, up to hyperinflation.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/present_value/images/thumb/sphx_glr_plot_02_fisher_real_rate_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/present_value/plot_02_fisher_real_rate`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fisher's real and nominal rates of interest</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In The Rate of Interest (1907) Fisher argued that, with access to a capital market, the owner of a firm should choose the income stream with the largest present value at the market rate, whatever their own taste for spending now or later. Net present value is that rule. Here two mutually exclusive projects cost the same; which one has the larger NPV depends on the discount rate, and the profiles cross at Fisher&#x27;s &quot;rate of return over cost&quot; between them.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/present_value/images/thumb/sphx_glr_plot_03_fisher_net_present_value_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/present_value/plot_03_fisher_net_present_value`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fisher's net present value: choosing between income streams</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/time_value/amortization/index.rst
+   /api/gallery/time_value/annuities/index.rst
+   /api/gallery/time_value/compounding/index.rst
+   /api/gallery/time_value/day_counts/index.rst
+   /api/gallery/time_value/irr/index.rst
+   /api/gallery/time_value/present_value/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: time_value_python.zip </api/gallery/time_value/time_value_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: time_value_jupyter.zip </api/gallery/time_value/time_value_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

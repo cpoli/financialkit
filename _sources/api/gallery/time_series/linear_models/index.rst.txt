@@ -1,0 +1,86 @@
+
+
+.. _sphx_glr_api_gallery_time_series_linear_models:
+
+Linear models
+-------------
+
+From Yule's disturbed pendulum to Box-Jenkins ARMA and Akaike's criterion.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Schuster&#x27;s periodogram treated sunspot numbers as a sum of exact cycles plus measurement error. Udny Yule (1927) proposed instead a pendulum &quot;bombarded by peas&quot;: a damped oscillation kept alive by random shocks,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/linear_models/images/thumb/sphx_glr_plot_01_yule_autoregression_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/linear_models/plot_01_yule_autoregression`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Yule's autoregression</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="George Box and Gwilym Jenkins (1970) turned the mixed autoregressive moving-average model">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/linear_models/images/thumb/sphx_glr_plot_02_box_jenkins_arma_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/linear_models/plot_02_box_jenkins_arma`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Box-Jenkins ARMA</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Adding parameters always raises the likelihood, so the likelihood alone cannot choose a model&#x27;s order. Hirotugu Akaike (1974) showed that -2\ell + 2k estimates the expected Kullback-Leibler distance between the fitted model and the truth, so the order that minimizes it predicts best. Gideon Schwarz&#x27;s (1978) Bayesian criterion -2\ell + k\ln n penalizes more heavily and is consistent: it picks the true order with probability one as n \to \infty, while AIC keeps a small chance of overfitting.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/linear_models/images/thumb/sphx_glr_plot_03_akaike_order_selection_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/linear_models/plot_03_akaike_order_selection`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Akaike information criterion</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_series/linear_models/plot_01_yule_autoregression
+   /api/gallery/time_series/linear_models/plot_02_box_jenkins_arma
+   /api/gallery/time_series/linear_models/plot_03_akaike_order_selection
+

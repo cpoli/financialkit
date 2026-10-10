@@ -1,0 +1,26 @@
+financialkit.pde_methods
+========================
+
+Explicit, implicit and Crank-Nicolson schemes with Rannacher smoothing, the Thomas algorithm, CFL and von Neumann stability, Richardson extrapolation and Tavella-Randall grids, the heat-equation transform and trinomial equivalence, barriers, American options by PSOR, Brennan-Schwartz and penalty, and Peaceman-Rachford ADI.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/pde_methods_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/pde_methods/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/pde_methods
+      :link-type: doc
+
+      Every public class and function.
+

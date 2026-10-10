@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.asset_pricing hub </_generated/subpackages/asset_pricing>` · :doc:`History </history/asset_pricing_breakthroughs>` · :doc:`Examples </api/gallery/asset_pricing/index>` · :doc:`API reference </api/asset_pricing>`

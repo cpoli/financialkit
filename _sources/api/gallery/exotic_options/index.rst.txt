@@ -1,0 +1,542 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of
+``financialkit.exotic_options``: barrier options from Merton's image
+formula to discrete monitoring, binary options, Asian options,
+lookbacks and variance swaps, compound, forward-start and chooser
+options, options on two assets, and American options by least-squares
+Monte Carlo. Each script illustrates one dated breakthrough from the
+:doc:`history page </history/exotic_options_breakthroughs>`.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/exotic_options/<section>/<script>.py``.
+
+Sections
+--------
+
+- **barriers** -- Merton's down-and-out call, the Reiner-Rubinstein
+  formulas, Ikeda-Kunitomo double barriers and the Broadie-Glasserman-Kou
+  correction for discrete monitoring.
+- **binaries** -- cash-or-nothing, asset-or-nothing, gap and one-touch
+  options.
+- **asian** -- Kemna-Vorst geometric averages and control variates, and
+  Turnbull-Wakeman moment matching.
+- **path_dependent** -- floating and fixed lookbacks and variance swaps.
+- **compound** -- Geske compound options, forward starts and choosers.
+- **multi_asset** -- Margrabe exchange options, Stulz options on the
+  maximum and minimum, and quantos.
+- **american** -- Longstaff-Schwartz least-squares Monte Carlo.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+American options by simulation
+------------------------------
+
+Longstaff and Schwartz's least-squares Monte Carlo for early exercise.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Monte Carlo simulates forward, but early exercise is decided backward: whether to exercise today depends on the value of waiting. Francis Longstaff and Eduardo Schwartz (2001) estimated that continuation value by regressing the discounted future cash flows of the in-the-money paths on a few functions of today&#x27;s price. Working back from expiry, each path is exercised where the payoff beats the fitted value. The method extends to many assets and path-dependent payoffs, where trees and PDEs give up.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/american/images/thumb/sphx_glr_plot_01_longstaff_schwartz_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/american/plot_01_longstaff_schwartz`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Longstaff-Schwartz least-squares Monte Carlo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Asian options
+-------------
+
+Options on an average price: the geometric closed form, the arithmetic
+average by Monte Carlo with the geometric control variate, and
+lognormal moment matching.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An average-rate option pays on the average price over its life, which makes it cheaper than a vanilla option and harder to manipulate at expiry. Angelien Kemna and Ton Vorst (1990) observed that a geometric average of lognormal prices is lognormal, with volatility \sigma/\sqrt3 under continuous averaging, so its option has a Black-Scholes formula. The arithmetic average traded in practice has none, but the geometric option is so tightly correlated with it that it makes a near-perfect Monte Carlo control variate.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/asian/images/thumb/sphx_glr_plot_01_kemna_vorst_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/asian/plot_01_kemna_vorst`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kemna-Vorst Asian options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Stuart Turnbull and Lee Wakeman (1991) priced the arithmetic average A as if it were lognormal with the right first two moments: Black&#x27;s formula on the forward E[A] with volatility">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/asian/images/thumb/sphx_glr_plot_02_turnbull_wakeman_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/asian/plot_02_turnbull_wakeman`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Turnbull-Wakeman Asian approximation</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Barrier options
+---------------
+
+Options that die or come alive when the price touches a level: Merton's
+image solution, the Reiner-Rubinstein family of closed forms, double
+barriers and the correction for barriers checked only at discrete dates.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In the paper that put the Black-Scholes model on a rigorous footing, Robert Merton (1973) also priced the first barrier option: a call that dies if the stock falls to H. The barrier is an absorbing boundary for the log-price, and the method of images from the heat equation cancels the probability of crossing it by subtracting a call started from the mirror image H^2/S of the spot:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/barriers/images/thumb/sphx_glr_plot_01_merton_down_and_out_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/barriers/plot_01_merton_down_and_out`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's down-and-out call</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Eric Reiner and Mark Rubinstein (1991) wrote down closed forms for all eight single-barrier options -- calls and puts, down and up, in and out -- each with a cash rebate. Every one is a sum of six building blocks A, \dots, F: the vanilla option, the vanilla struck at the barrier, their reflections through the barrier and the two rebates. Without rebates, a knock-in and a knock-out with the same terms add up to the vanilla option.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/barriers/images/thumb/sphx_glr_plot_02_reiner_rubinstein_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/barriers/plot_02_reiner_rubinstein`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reiner-Rubinstein barrier options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A double knock-out dies if the price leaves a corridor (L, U). Naoto Ikeda and Masaaki Kunitomo (1992) solved it, even for curved (exponential) barriers, with an infinite series of images reflected alternately through both boundaries. The terms decay like e^{-2n^2\ln^2(U/L)/\sigma^2T}, so two or three are plenty unless the corridor is very narrow. Unlike a vanilla call, a double knock-out call loses value as volatility rises: more paths hit a barrier.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/barriers/images/thumb/sphx_glr_plot_03_double_barrier_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/barriers/plot_03_double_barrier`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ikeda-Kunitomo double barriers</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Real barrier contracts check the price once a day, not continuously, and a path can slip through the barrier between two checks. Mark Broadie, Paul Glasserman and Steven Kou (1997) showed that the discretely monitored option is, to o(1/\sqrt m), the continuous one with the barrier shifted away from the spot:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/barriers/images/thumb/sphx_glr_plot_04_discrete_barrier_correction_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/barriers/plot_04_discrete_barrier_correction`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Broadie-Glasserman-Kou discrete barriers</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Binary options
+--------------
+
+All-or-nothing payoffs, the building blocks into which Reiner and
+Rubinstein decomposed vanilla and barrier options.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Mark Rubinstein and Eric Reiner&#x27;s &quot;Unscrambling the Binary Code&quot; (1991) priced the all-or-nothing payoffs and showed that every vanilla and barrier option is assembled from them. A cash-or-nothing call pays 1 if S_T &gt; K and is worth e^{-rT}N(d_2); an asset-or-nothing call pays the share and is worth Se^{-qT}N(d_1). A vanilla call is one asset-or-nothing call minus K cash-or-nothing calls. A gap option uses different trigger and payoff strikes and can be worth less than nothing, and a one-touch pays as soon as a barrier is hit.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/binaries/images/thumb/sphx_glr_plot_01_digital_options_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/binaries/plot_01_digital_options`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reiner-Rubinstein binary options</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Compound, forward-start and chooser options
+-------------------------------------------
+
+Options whose payoff is itself an option: Geske's options on options,
+Rubinstein's forward-start options and choosers.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Geske (1979) priced an option on an option. His motivation was corporate finance: if equity is a call on the firm&#x27;s assets, a stock option is a call on a call, and its implied volatility should rise as the stock falls and leverage grows. The compound call is exercised at T_1 only if the underlying option is worth more than the compound strike, which happens above a critical spot I, and the joint law of the price at T_1 and T_2 brings in the bivariate normal distribution with correlation \sqrt{T_1/T_2}.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/compound/images/thumb/sphx_glr_plot_01_geske_compound_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/compound/plot_01_geske_compound`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Geske compound options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A forward-start option is struck at \alpha S_t on a future date t, the way executive options are granted at the money. Mark Rubinstein (1990) noticed that on the start date it is worth S_t times the option on a unit spot, so today it is worth">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/compound/images/thumb/sphx_glr_plot_02_forward_start_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/compound/plot_02_forward_start`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rubinstein forward-start options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="&quot;Pay now, choose later&quot;: the holder of a simple chooser decides at a date t whether the option is a call or a put, both struck at K and expiring at T. Mark Rubinstein (1991) used put-call parity to write the choice as a call plus a put:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/compound/images/thumb/sphx_glr_plot_03_chooser_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/compound/plot_03_chooser`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rubinstein choosers</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Options on two assets
+---------------------
+
+Exchange options, options on the better or worse of two assets, and
+quantos paid in another currency.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Margrabe (1978) priced the right to exchange one asset for another, (S_1 - S_2)^+. Measured in units of the second asset, it is a call on the ratio S_1/S_2 struck at 1, so the interest rate drops out and only the volatility of the ratio, \sigma^2 = \sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2, matters. Change of numeraire, the idea behind this one-line proof, became one of the central tools of derivatives pricing.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/multi_asset/images/thumb/sphx_glr_plot_01_margrabe_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/multi_asset/plot_01_margrabe`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Margrabe exchange options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Rene Stulz (1982) priced calls and puts on the better or the worse of two assets, (\max(S_1, S_2) - K)^+ and (\min(S_1, S_2) - K)^+, the simplest &quot;rainbow&quot; options. The answer needs the bivariate normal distribution. Because \max + \min = S_1 + S_2, the two calls always add up to the two vanilla calls, and correlation moves value between them: diversification makes the maximum more valuable and the minimum less.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/multi_asset/images/thumb/sphx_glr_plot_02_stulz_max_min_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/multi_asset/plot_02_stulz_max_min`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stulz options on the maximum and minimum</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A quanto pays a foreign asset&#x27;s option payoff in domestic currency at a fixed exchange rate, so the investor keeps the asset&#x27;s risk without the currency&#x27;s. Eric Reiner (1992) showed that, under the domestic measure, the asset&#x27;s drift picks up a correction -\rho\sigma_S\sigma_X from its correlation with the exchange rate:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/multi_asset/images/thumb/sphx_glr_plot_03_quanto_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/multi_asset/plot_03_quanto`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reiner quantos</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Lookbacks and variance swaps
+----------------------------
+
+Payoffs on the extremes of the path, and on its realized variance:
+floating and fixed-strike lookbacks, and the replication of a variance
+swap by a strip of options.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="&quot;Buy at the low, sell at the high&quot;: Barry Goldman, Howard Sosin and Mary Ann Gatto (1979) priced the option whose strike is the lowest price over its life, S_T - \min_t S_t (or the highest, for the put). It is never out of the money, so it costs much more than a vanilla call. The joint law of a Brownian motion and its minimum gives the closed form; Monte Carlo can match it exactly only by sampling each step&#x27;s minimum from the Brownian bridge, because checking the price at discrete dates misses the true low.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/path_dependent/images/thumb/sphx_glr_plot_01_floating_lookback_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/path_dependent/plot_01_floating_lookback`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Goldman-Sosin-Gatto floating lookbacks</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Antoine Conze and Viswanathan (1991) priced the fixed-strike lookback: a call on the maximum, (\max_t S_t - K)^+, and a put on the minimum, (K - \min_t S_t)^+. Once the running maximum has passed the strike, the call has locked in \max - K and what remains is a call on any further rise; that is how a seasoned option is priced, with the maximum observed so far as an input.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/path_dependent/images/thumb/sphx_glr_plot_02_fixed_lookback_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/path_dependent/plot_02_fixed_lookback`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Conze-Viswanathan fixed lookbacks</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A variance swap pays the realized variance of the returns minus a fixed strike. Kresimir Demeterfi, Emanuel Derman, Michael Kamal and Joseph Zou (1999) showed how to replicate it, whatever the volatility process, with a static strip of out-of-the-money options weighted by 1/K^2 plus a delta hedge, which gives the fair strike from today&#x27;s option prices alone:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/path_dependent/images/thumb/sphx_glr_plot_03_variance_swap_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/path_dependent/plot_03_variance_swap`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Demeterfi-Derman-Kamal-Zou variance swaps</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/exotic_options/american/index.rst
+   /api/gallery/exotic_options/asian/index.rst
+   /api/gallery/exotic_options/barriers/index.rst
+   /api/gallery/exotic_options/binaries/index.rst
+   /api/gallery/exotic_options/compound/index.rst
+   /api/gallery/exotic_options/multi_asset/index.rst
+   /api/gallery/exotic_options/path_dependent/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: exotic_options_python.zip </api/gallery/exotic_options/exotic_options_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: exotic_options_jupyter.zip </api/gallery/exotic_options/exotic_options_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

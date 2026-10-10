@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.868378Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.868378Z",
+      "mimetype": null,
+      "name": "plot_01_hjm_drift_condition.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/hjm/plot_01_hjm_drift_condition.ipynb",
+      "size": 4478,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.226517Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.226591Z",
+  "mimetype": null,
+  "name": "hjm",
+  "path": "jupyterlite_contents/api/gallery/interest_rate_models/hjm",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

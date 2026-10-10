@@ -1,0 +1,120 @@
+.. rubric:: Foundations
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: financialkit.time_value
+      :link: /history/time_value_breakthroughs
+      :link-type: doc
+
+      Compounding and equivalent rates, present value and NPV, annuities, IRR and MIRR, amortization and the APR, and day-count conventions.
+
+   .. grid-item-card:: financialkit.fixed_income
+      :link: /history/fixed_income_breakthroughs
+      :link-type: doc
+
+      Bond prices and yields, STRIPS, Macaulay, modified, Fisher-Weil and key rate durations, convexity, bootstrapped, spline, Nelson-Siegel and Svensson curves, immunization, and swaps.
+
+
+.. rubric:: Derivatives
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: financialkit.options
+      :link: /history/options_breakthroughs
+      :link-type: doc
+
+      Bachelier, Black-Scholes-Merton, Black-76 and Garman-Kohlhagen, parity and bounds, the Greeks and delta hedging, implied volatility and the smile, and binomial and trinomial trees.
+
+   .. grid-item-card:: financialkit.exotic_options
+      :link: /history/exotic_options_breakthroughs
+      :link-type: doc
+
+      Merton, Reiner-Rubinstein, double and discretely monitored barriers, binaries and one-touches, Kemna-Vorst and Turnbull-Wakeman Asians, lookbacks, variance swaps, Geske compounds, forward starts and choosers, Margrabe, Stulz and quanto options, and Longstaff-Schwartz.
+
+   .. grid-item-card:: financialkit.stochastic_volatility
+      :link: /history/stochastic_volatility_breakthroughs
+      :link-type: doc
+
+      Cox's CEV and Dupire local volatility, Hull-White and Heston stochastic volatility, Merton, variance gamma, Kou and Bates jumps, Carr-Madan FFT, Lewis and COS pricing, SABR, SVI and Lee's moment formula, and full-truncation and QE simulation.
+
+
+.. rubric:: Numerical Methods
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: financialkit.monte_carlo
+      :link: /history/monte_carlo_breakthroughs
+      :link-type: doc
+
+      Crude Monte Carlo with error bars, stratification, importance sampling, antithetic, control and moment-matched variates, Latin hypercubes, Halton and Sobol QMC, likelihood-ratio and pathwise Greeks, and multilevel Monte Carlo.
+
+   .. grid-item-card:: financialkit.pde_methods
+      :link: /history/pde_methods_breakthroughs
+      :link-type: doc
+
+      Explicit, implicit and Crank-Nicolson schemes with Rannacher smoothing, the Thomas algorithm, CFL and von Neumann stability, Richardson extrapolation and Tavella-Randall grids, the heat-equation transform and trinomial equivalence, barriers, American options by PSOR, Brennan-Schwartz and penalty, and Peaceman-Rachford ADI.
+
+
+.. rubric:: Rates & Credit
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: financialkit.interest_rate_models
+      :link: /history/interest_rate_models_breakthroughs
+      :link-type: doc
+
+      Merton, Vasicek, CIR and affine short rates, Ho-Lee, Hull-White, G2++ and Black-Derman-Toy fitted to the curve, Jamshidian bond options and swaptions, Black caps and swaptions, and HJM.
+
+   .. grid-item-card:: financialkit.credit
+      :link: /history/credit_breakthroughs
+      :link-type: doc
+
+      Altman's Z-score, Merton, Black-Cox and Leland structural models and the KMV distance to default, hazard curves and recovery conventions, CDS pricing and bootstrapping, CreditMetrics and generator matrices, Vasicek's large pool, CreditRisk+, Li's copula, the Basel IRB formula and CDO tranches.
+
+
+.. rubric:: Portfolios & Asset Pricing
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: financialkit.asset_pricing
+      :link: /history/asset_pricing_breakthroughs
+      :link-type: doc
+
+      Williams's dividend discount model, Gordon growth, Modigliani-Miller and Shiller's variance bound, the CAPM, Jensen's alpha, the zero-beta CAPM and the GRS test, Fama-MacBeth, the APT, Fama-French and Carhart factors, Lucas's tree, the consumption CAPM and the equity premium puzzle, state prices and the Hansen-Jagannathan bound.
+
+   .. grid-item-card:: financialkit.portfolio
+      :link: /history/portfolio_breakthroughs
+      :link-type: doc
+
+      Markowitz, Tobin and Merton frontiers, Kelly, Merton's portfolio problem and CPPI, single-index and Ledoit-Wolf covariances, Black-Litterman and resampling, CVaR optimization, maximum diversification, risk parity and HRP, and the Sharpe, Sortino and information ratios.
+
+
+.. rubric:: Risk & Markets
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: financialkit.risk
+      :link: /history/risk_breakthroughs
+      :link-type: doc
+
+      Historical, parametric, Cornish-Fisher, Monte Carlo, hybrid and filtered VaR, safety first, expected shortfall and coherence, Euler allocation, extreme value theory, VaR backtests, copulas and tail dependence, and drawdowns.
+
+   .. grid-item-card:: financialkit.time_series
+      :link: /history/time_series_breakthroughs
+      :link-type: doc
+
+      Fat tails and the Hill index, random-walk tests (runs, Ljung-Box, variance ratios), Yule-Walker and ARMA with AIC, Dickey-Fuller and Engle-Granger, the Hurst exponent, ARCH, GARCH, EGARCH, GJR and EWMA, and range and realized volatility.
+
+   .. grid-item-card:: financialkit.market_microstructure
+      :link: /history/market_microstructure_breakthroughs
+      :link-type: doc
+
+      Quoted, effective and realized spreads, the Roll and Corwin-Schultz estimators, Lee-Ready classification, Garman, Ho-Stoll and Avellaneda-Stoikov dealers, Kyle and Glosten-Milgrom, Hasbrouck's VAR, PIN and VPIN, square-root impact, Bertsimas-Lo and Almgren-Chriss execution, and Amihud illiquidity.
+
+

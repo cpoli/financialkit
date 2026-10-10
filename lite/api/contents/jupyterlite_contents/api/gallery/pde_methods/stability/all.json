@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878237Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878237Z",
+      "mimetype": null,
+      "name": "plot_03_rannacher_smoothing.ipynb",
+      "path": "jupyterlite_contents/api/gallery/pde_methods/stability/plot_03_rannacher_smoothing.ipynb",
+      "size": 2944,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878037Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878037Z",
+      "mimetype": null,
+      "name": "plot_02_von_neumann.ipynb",
+      "path": "jupyterlite_contents/api/gallery/pde_methods/stability/plot_02_von_neumann.ipynb",
+      "size": 3395,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.877921Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.877921Z",
+      "mimetype": null,
+      "name": "plot_01_cfl_explicit_blowup.ipynb",
+      "path": "jupyterlite_contents/api/gallery/pde_methods/stability/plot_01_cfl_explicit_blowup.ipynb",
+      "size": 4057,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.248393Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.248914Z",
+  "mimetype": null,
+  "name": "stability",
+  "path": "jupyterlite_contents/api/gallery/pde_methods/stability",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

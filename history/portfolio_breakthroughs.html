@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Portfolio Theory &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/portfolio_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Risk Measurement" href="risk_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Asset Pricing" href="asset_pricing_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Portfolio Theory</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-portfolio-theory">
+<h1>Breakthroughs in Portfolio Theory<a class="headerlink" href="#breakthroughs-in-portfolio-theory" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/portfolio.html"><span class="doc">financialkit.portfolio hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/portfolio/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/portfolio.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“Diversification is the only free lunch in finance.”
+– attributed to Harry Markowitz</p>
+</div></blockquote>
+<p>Before 1952 investment advice meant picking good securities. Harry
+Markowitz turned it into a problem about the whole portfolio, its mean
+and its variance, and within two decades Tobin, Sharpe and Merton had
+turned that problem into a theory with closed-form answers. The answers
+proved fragile in practice, because they depend on expected returns and
+covariances that are hard to estimate, and much of the later history is
+about robustness: growth-optimal and insured strategies, shrinkage,
+Bayesian priors, resampling, and allocations that need no expected
+returns at all. This chronology traces the ideas behind
+<a class="reference internal" href="../api/portfolio.html#module-financialkit.portfolio" title="financialkit.portfolio"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.portfolio</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#markowitz-s-mean-variance-analysis" id="id1">1952 – Markowitz’s Mean-Variance Analysis</a></p></li>
+<li><p><a class="reference internal" href="#the-kelly-criterion" id="id2">1956 – The Kelly Criterion</a></p></li>
+<li><p><a class="reference internal" href="#tobin-s-separation-theorem" id="id3">1958 – Tobin’s Separation Theorem</a></p></li>
+<li><p><a class="reference internal" href="#sharpe-s-single-index-model" id="id4">1963 – Sharpe’s Single-Index Model</a></p></li>
+<li><p><a class="reference internal" href="#the-sharpe-ratio" id="id5">1966 – The Sharpe Ratio</a></p></li>
+<li><p><a class="reference internal" href="#merton-s-portfolio-problem" id="id6">1969 – Merton’s Portfolio Problem</a></p></li>
+<li><p><a class="reference internal" href="#merton-s-analytic-frontier" id="id7">1972 – Merton’s Analytic Frontier</a></p></li>
+<li><p><a class="reference internal" href="#black-and-jones-s-constant-proportion-portfolio-insurance" id="id8">1987 – Black and Jones’s Constant Proportion Portfolio Insurance</a></p></li>
+<li><p><a class="reference internal" href="#grinold-s-fundamental-law-of-active-management" id="id9">1989 – Grinold’s Fundamental Law of Active Management</a></p></li>
+<li><p><a class="reference internal" href="#black-and-litterman-s-global-portfolio-optimization" id="id10">1992 – Black and Litterman’s Global Portfolio Optimization</a></p></li>
+<li><p><a class="reference internal" href="#the-sortino-ratio" id="id11">1994 – The Sortino Ratio</a></p></li>
+<li><p><a class="reference internal" href="#michaud-s-resampled-efficiency" id="id12">1998 – Michaud’s Resampled Efficiency</a></p></li>
+<li><p><a class="reference internal" href="#rockafellar-and-uryasev-s-cvar-optimization" id="id13">2000 – Rockafellar and Uryasev’s CVaR Optimization</a></p></li>
+<li><p><a class="reference internal" href="#ledoit-and-wolf-s-shrinkage" id="id14">2004 – Ledoit and Wolf’s Shrinkage</a></p></li>
+<li><p><a class="reference internal" href="#choueifaty-and-coignard-s-most-diversified-portfolio" id="id15">2008 – Choueifaty and Coignard’s Most-Diversified Portfolio</a></p></li>
+<li><p><a class="reference internal" href="#demiguel-garlappi-and-uppal-optimal-versus-naive-diversification" id="id16">2009 – DeMiguel, Garlappi and Uppal: Optimal Versus Naive Diversification</a></p></li>
+<li><p><a class="reference internal" href="#maillard-roncalli-and-teiletche-s-risk-parity" id="id17">2010 – Maillard, Roncalli and Teiletche’s Risk Parity</a></p></li>
+<li><p><a class="reference internal" href="#lopez-de-prado-s-hierarchical-risk-parity" id="id18">2016 – Lopez de Prado’s Hierarchical Risk Parity</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id19">See Also</a></p></li>
+</ul>
+</nav>
+<section id="markowitz-s-mean-variance-analysis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1952 – Markowitz’s Mean-Variance Analysis</a><a class="headerlink" href="#markowitz-s-mean-variance-analysis" title="Link to this heading">#</a></h2>
+<p>Harry Markowitz, a graduate student at Chicago, argued that investors
+should care about the expected return of a portfolio and its variance,
+and that a portfolio is <em>efficient</em> if no other has a higher mean for
+the same variance. Because the variance of a sum depends on the
+covariances, diversification across imperfectly correlated assets
+lowers risk without lowering return. The efficient portfolios form a
+frontier, and choosing among them is a matter of taste.</p>
+<div class="math notranslate nohighlight">
+\[\min_w\; w'\Sigma w \quad\text{s.t.}\quad w'\mu = m,\; \mathbf 1'w = 1\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.mean_variance.efficient_frontier()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">efficient_portfolio()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">min_variance_portfolio()</span></code>,
+with long-only frontiers solved by <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a>
+(SLSQP). The example draws the frontier with and without short sales
+over a cloud of random portfolios and shows how the weights change
+along it.</p>
+<p><em>References:</em> H. Markowitz, “Portfolio Selection,” <em>J. Finance</em> 7 (1952)
+77-91.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Harry Markowitz (1952) argued that an investor should look at a portfolio&#x27;s expected return and its variance together, and hold only portfolios with the least variance for their mean. Diversification then has a precise meaning: combining imperfectly correlated assets moves the frontier to the left of every asset on its own. With short sales the frontier is a hyperbola; without them, every point is a quadratic program, solved here with scipy.optimize.minimize."><img alt="" src="../_images/sphx_glr_plot_01_markowitz_frontier_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/mean_variance/plot_01_markowitz_frontier.html"><span class="doc">Markowitz’s mean-variance frontier</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Markowitz's mean-variance frontier</div>
+</div></div></section>
+<section id="the-kelly-criterion">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1956 – The Kelly Criterion</a><a class="headerlink" href="#the-kelly-criterion" title="Link to this heading">#</a></h2>
+<p>John Kelly, an engineer at Bell Labs, reinterpreted Shannon’s
+information rate as the growth rate of a gambler’s capital. Betting the
+fraction <span class="math notranslate nohighlight">\(f\)</span> of wealth repeatedly, wealth grows like
+<span class="math notranslate nohighlight">\(e^{g(f)n}\)</span> with <span class="math notranslate nohighlight">\(g(f) = E\log(1 + fX)\)</span>, and the fraction
+that maximizes <span class="math notranslate nohighlight">\(g\)</span> eventually beats every other fixed-fraction
+strategy with probability one. Edward Thorp took it to the blackjack
+tables and then to Wall Street.</p>
+<div class="math notranslate nohighlight">
+\[f^* = \frac{p}{a} - \frac{1 - p}{b}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.growth.kelly_fraction()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">kelly_growth_rate()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">kelly_wealth_paths()</span></code> and,
+for lognormal assets, <code class="xref py py-func docutils literal notranslate"><span class="pre">kelly_portfolio()</span></code>.
+The example compares half, full and double Kelly on the same sequence of
+bets.</p>
+<p><em>References:</em> J. L. Kelly, Jr., “A New Interpretation of Information
+Rate,” <em>Bell System Tech. J.</em> 35 (1956) 917-926; E. O. Thorp, “Optimal
+Gambling Systems for Favorable Games,” <em>Rev. Int. Statist. Inst.</em> 37
+(1969) 273-293.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John Kelly (1956), at Bell Labs, asked how a gambler with a private wire should bet. Staking the fraction f of wealth on a bet won with probability p at odds b, wealth grows at the rate g(f) = p\log(1 + bf) + q\log(1 - f) per bet, maximized by f^* = p - q/b. The Kelly bettor eventually outgrows any other fixed-fraction strategy; betting more than twice Kelly makes growth negative even though every bet is favourable."><img alt="" src="../_images/sphx_glr_plot_01_kelly_criterion_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/growth/plot_01_kelly_criterion.html"><span class="doc">The Kelly criterion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Kelly criterion</div>
+</div></div></section>
+<section id="tobin-s-separation-theorem">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1958 – Tobin’s Separation Theorem</a><a class="headerlink" href="#tobin-s-separation-theorem" title="Link to this heading">#</a></h2>
+<p>James Tobin added a riskless asset to the mean-variance problem. Mixes
+of cash and a risky portfolio lie on a straight line, and the steepest
+line touches the frontier at a single tangency portfolio. Every investor
+should hold that same portfolio of risky assets, scaled up or down with
+cash according to risk aversion: the investment decision separates from
+the financing decision. The line became the capital market line of the
+CAPM.</p>
+<div class="math notranslate nohighlight">
+\[w^* = \frac{1}{\gamma}\Sigma^{-1}(\mu - r_f\mathbf 1),
+\qquad w_T = \frac{\Sigma^{-1}(\mu - r_f\mathbf 1)}{\mathbf 1'\Sigma^{-1}(\mu - r_f\mathbf 1)}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.mean_variance.tangency_portfolio()</span></code>
+(long-only through a quadratic program; unconstrained through
+<a class="reference internal" href="../api/risk.html#financialkit.risk.safety_first_portfolio" title="financialkit.risk.safety_first_portfolio"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.risk.safety_first_portfolio()</span></code></a>, the same computation)
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">two_fund_allocation()</span></code>.
+The example draws the capital market line and shows three investors
+holding the same risky mix.</p>
+<p><em>References:</em> J. Tobin, “Liquidity Preference as Behavior Towards
+Risk,” <em>Rev. Econ. Stud.</em> 25 (1958) 65-86.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="James Tobin (1958) added a riskless asset to Markowitz&#x27;s problem. Combinations of cash and any risky portfolio lie on a straight line, and the steepest such line touches the frontier at the tangency portfolio. Every mean-variance investor holds that same mix of risky assets and differs only in how much cash goes with it: the risky choice separates from the attitude to risk. The line is the capital market line, and its slope is the highest attainable Sharpe ratio."><img alt="" src="../_images/sphx_glr_plot_02_tobin_tangency_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/mean_variance/plot_02_tobin_tangency.html"><span class="doc">Tobin separation and the tangency portfolio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Tobin separation and the tangency portfolio</div>
+</div></div></section>
+<section id="sharpe-s-single-index-model">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1963 – Sharpe’s Single-Index Model</a><a class="headerlink" href="#sharpe-s-single-index-model" title="Link to this heading">#</a></h2>
+<p>Markowitz’s analysis needs every covariance, <span class="math notranslate nohighlight">\(d(d+1)/2\)</span> numbers
+for <span class="math notranslate nohighlight">\(d\)</span> securities, which was far beyond the computers and
+analysts of the day. William Sharpe assumed that securities are related
+only through a common index, so each needs just an intercept, a beta
+and a residual variance. The covariance matrix becomes a rank-one
+market term plus a diagonal, the optimization became cheap, and beta
+became the language of risk.</p>
+<div class="math notranslate nohighlight">
+\[\Sigma = \sigma_m^2 \beta\beta' + \operatorname{diag}(\sigma_{\varepsilon,1}^2, \dots, \sigma_{\varepsilon,d}^2)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.covariance.single_index_covariance()</span></code>,
+by least squares, returning a
+<a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.CovarianceResult" title="financialkit.portfolio.core.base.CovarianceResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">CovarianceResult</span></code></a> with the
+betas. The example compares its estimation error with the sample
+covariance’s as the history lengthens.</p>
+<p><em>References:</em> W. F. Sharpe, “A Simplified Model for Portfolio
+Analysis,” <em>Management Sci.</em> 9 (1963) 277-293.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Markowitz&#x27;s method needed every pairwise covariance, d(d+1)/2 numbers, which no 1960s computer (or analyst) could supply for hundreds of stocks. William Sharpe (1963) assumed that stocks move together only through a common market index, R_i = \alpha_i + \beta_i R_m + \varepsilon_i, so the covariance is \sigma_m^2\beta\beta&#x27; + \mathrm{diag}(\sigma_{\varepsilon}^2), with 3d + 1 parameters. The structure also filters noise: with short histories, the single-index estimate is closer to the truth than the sample covariance."><img alt="" src="../_images/sphx_glr_plot_01_single_index_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/covariance/plot_01_single_index.html"><span class="doc">Sharpe’s single-index model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sharpe's single-index model</div>
+</div></div></section>
+<section id="the-sharpe-ratio">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1966 – The Sharpe Ratio</a><a class="headerlink" href="#the-sharpe-ratio" title="Link to this heading">#</a></h2>
+<p>Sharpe ranked 34 mutual funds by their <em>reward-to-variability ratio</em>,
+mean excess return over standard deviation, the slope of the line from
+the riskless rate through each fund. By Tobin’s separation it is the
+right yardstick for a whole portfolio, since leverage changes the return
+but not the ratio. It is now the most quoted number in fund management,
+and Andrew Lo’s 2002 analysis of its sampling error shows how many years
+it takes to tell skill from luck.</p>
+<div class="math notranslate nohighlight">
+\[SR = \frac{E[R - r_f]}{\sigma(R - r_f)}, \qquad
+\operatorname{se}(\widehat{SR}) \approx \sqrt{\frac{1 + \tfrac12 SR^2}{n}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.performance.sharpe_ratio()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">sharpe_ratio_se()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">information_ratio()</span></code>.
+The example shows that leverage leaves the ratio unchanged and compares
+4000 estimates with Lo’s standard error.</p>
+<p><em>References:</em> W. F. Sharpe, “Mutual Fund Performance,” <em>J. Business</em> 39
+(1966) 119-138; A. W. Lo, “The Statistics of Sharpe Ratios,” <em>Financial
+Analysts J.</em> 58 (2002) 36-52.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="William Sharpe (1966) ranked 34 mutual funds by their reward-to-variability ratio, the mean excess return divided by its standard deviation. By Tobin&#x27;s separation it is the right yardstick for an investor&#x27;s whole portfolio: leverage changes the return but not the ratio. It is also an estimate, and Andrew Lo (2002) showed how noisy: with independent returns its standard error is \sqrt{(1 + SR^2/2)/n} per period, so years of data separate good managers from lucky ones only slowly."><img alt="" src="../_images/sphx_glr_plot_01_sharpe_ratio_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/performance/plot_01_sharpe_ratio.html"><span class="doc">The Sharpe ratio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Sharpe ratio</div>
+</div></div></section>
+<section id="merton-s-portfolio-problem">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1969 – Merton’s Portfolio Problem</a><a class="headerlink" href="#merton-s-portfolio-problem" title="Link to this heading">#</a></h2>
+<p>Robert Merton solved the lifetime consumption and investment problem in
+continuous time by stochastic dynamic programming. For an investor with
+constant relative risk aversion facing a lognormal stock, the answer is
+strikingly simple: keep a constant fraction of wealth in the stock,
+rebalancing continuously, and consume a constant fraction of wealth.
+The portfolio rule does not depend on the horizon or on wealth, and for
+logarithmic utility it is Kelly’s.</p>
+<div class="math notranslate nohighlight">
+\[\pi^* = \frac{\mu - r}{\gamma\sigma^2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.growth.merton_fraction()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">merton_certainty_equivalent()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">merton_consumption_rate()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">merton_wealth_paths()</span></code>,
+which simulates wealth exactly through
+<a class="reference internal" href="../api/integrators.html#financialkit.integrators.gbm_paths" title="financialkit.integrators.gbm_paths"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.gbm_paths()</span></code></a>. The example plots the
+certainty equivalent of every constant mix and confirms the optimum by
+Monte Carlo.</p>
+<p><em>References:</em> R. C. Merton, “Lifetime Portfolio Selection under
+Uncertainty: The Continuous-Time Case,” <em>Rev. Econ. Stat.</em> 51 (1969)
+247-257.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1969) solved the lifetime consumption and investment problem in continuous time. With a stock following geometric Brownian motion, a riskless rate r and constant relative risk aversion \gamma, the optimal policy is to keep the constant fraction"><img alt="" src="../_images/sphx_glr_plot_02_merton_portfolio_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/growth/plot_02_merton_portfolio.html"><span class="doc">Merton’s portfolio problem</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's portfolio problem</div>
+</div></div></section>
+<section id="merton-s-analytic-frontier">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1972 – Merton’s Analytic Frontier</a><a class="headerlink" href="#merton-s-analytic-frontier" title="Link to this heading">#</a></h2>
+<p>Merton derived the whole unconstrained frontier in closed form. Four
+scalars computed from the inverse covariance matrix determine it: the
+least variance is a quadratic in the target mean, so the frontier is a
+hyperbola in the mean-volatility plane, with the minimum-variance
+portfolio at its vertex. Every frontier portfolio is a combination of
+any two others, which is two-fund separation without a riskless asset.</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2(m) = \frac{Cm^2 - 2Am + B}{D},\quad
+A = \mathbf 1'\Sigma^{-1}\mu,\; B = \mu'\Sigma^{-1}\mu,\;
+C = \mathbf 1'\Sigma^{-1}\mathbf 1,\; D = BC - A^2\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.mean_variance.frontier_constants()</span></code>,
+returning a <a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.FrontierConstants" title="financialkit.portfolio.core.base.FrontierConstants"><code class="xref py py-class docutils literal notranslate"><span class="pre">FrontierConstants</span></code></a>
+with the vertex and asymptotes; the unconstrained
+<code class="xref py py-func docutils literal notranslate"><span class="pre">efficient_portfolio()</span></code>
+uses its closed-form weights. The example checks the hyperbola against
+a numerical optimizer.</p>
+<p><em>References:</em> R. C. Merton, “An Analytic Derivation of the Efficient
+Portfolio Frontier,” <em>J. Financial Quant. Anal.</em> 7 (1972) 1851-1872.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1972) derived the unconstrained frontier in closed form. Four scalars,"><img alt="" src="../_images/sphx_glr_plot_03_merton_analytic_frontier_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/mean_variance/plot_03_merton_analytic_frontier.html"><span class="doc">Merton’s analytic frontier</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's analytic frontier</div>
+</div></div></section>
+<section id="black-and-jones-s-constant-proportion-portfolio-insurance">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1987 – Black and Jones’s Constant Proportion Portfolio Insurance</a><a class="headerlink" href="#black-and-jones-s-constant-proportion-portfolio-insurance" title="Link to this heading">#</a></h2>
+<p>Option-based portfolio insurance needed a model and a maturity. Fischer
+Black and Robert Jones proposed a rule that needs neither: keep a
+multiple <span class="math notranslate nohighlight">\(m\)</span> of the cushion above a floor in stocks and the rest
+in bonds. The exposure falls with the market, so under continuous
+trading the floor is never breached, and Black and André Perold (1992)
+showed that the cushion is then a power of the stock price. The crash of
+October 1987, months after the paper, showed the catch: when prices gap,
+the floor can be breached.</p>
+<div class="math notranslate nohighlight">
+\[E_t = m\,(W_t - F_t), \qquad
+C_t = C_0 \left(\frac{S_t}{S_0}\right)^m e^{(1 - m)(r + \frac12 m\sigma^2)t}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.growth.cppi()</span></code>
+(discrete rebalancing, with an optional leverage cap) and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">cppi_continuous()</span></code>, with
+<a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.CPPIResult" title="financialkit.portfolio.core.base.CPPIResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">CPPIResult</span></code></a> recording gap-risk
+breaches. The example shows the convex payoff and how breaches grow with
+the multiplier and the rebalancing interval.</p>
+<p><em>References:</em> F. Black and R. Jones, “Simplifying Portfolio Insurance,”
+<em>J. Portfolio Mgmt.</em> 14 (1987) 48-51; F. Black and A. Perold, “Theory
+of Constant Proportion Portfolio Insurance,” <em>J. Econ. Dyn. Control</em> 16
+(1992) 403-426.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Robert Jones (1987) proposed a simple rule for protecting a floor: hold m times the cushion (wealth above the floor) in stocks and the rest in bonds. When stocks fall the cushion shrinks and so does the exposure, so under continuous trading wealth never touches the floor; Black and Perold (1992) showed the cushion is then a power m of the stock price. With discrete rebalancing, a fall of more than 1/m between trades breaks through the floor: gap risk."><img alt="" src="../_images/sphx_glr_plot_03_cppi_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/growth/plot_03_cppi.html"><span class="doc">Black and Jones’s constant proportion portfolio insurance</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black and Jones's constant proportion portfolio insurance</div>
+</div></div></section>
+<section id="grinold-s-fundamental-law-of-active-management">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1989 – Grinold’s Fundamental Law of Active Management</a><a class="headerlink" href="#grinold-s-fundamental-law-of-active-management" title="Link to this heading">#</a></h2>
+<p>Richard Grinold, at BARRA, asked where an active manager’s information
+ratio comes from. If each forecast correlates with the outcome by the
+information coefficient <span class="math notranslate nohighlight">\(IC\)</span> and the manager makes <span class="math notranslate nohighlight">\(BR\)</span>
+independent forecasts a year, the information ratio is approximately
+their product with a square root. A small edge applied broadly beats a
+large edge applied narrowly, which became the rationale for
+quantitative equity management.</p>
+<div class="math notranslate nohighlight">
+\[IR \approx IC\sqrt{BR}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.performance.fundamental_law()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_active_management()</span></code>,
+which simulates a manager with a given skill and breadth and returns an
+<a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.ActiveManagementResult" title="financialkit.portfolio.core.base.ActiveManagementResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActiveManagementResult</span></code></a>. The
+example checks the law across breadths and skills.</p>
+<p><em>References:</em> R. C. Grinold, “The Fundamental Law of Active
+Management,” <em>J. Portfolio Mgmt.</em> 15 (1989) 30-37.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Richard Grinold (1989) decomposed an active manager&#x27;s information ratio into skill and breadth:"><img alt="" src="../_images/sphx_glr_plot_02_fundamental_law_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/performance/plot_02_fundamental_law.html"><span class="doc">Grinold’s fundamental law of active management</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Grinold's fundamental law of active management</div>
+</div></div></section>
+<section id="black-and-litterman-s-global-portfolio-optimization">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1992 – Black and Litterman’s Global Portfolio Optimization</a><a class="headerlink" href="#black-and-litterman-s-global-portfolio-optimization" title="Link to this heading">#</a></h2>
+<p>Mean-variance weights swing wildly with small changes in expected
+returns, and historical averages give absurd portfolios. Fischer Black
+and Robert Litterman, at Goldman Sachs, began instead from the returns
+that make the market portfolio optimal, treated them as a Bayesian
+prior, and blended in the investor’s views with stated confidence. The
+resulting portfolio tilts away from market weights only in the
+directions the views name.</p>
+<div class="math notranslate nohighlight">
+\[\mu_{BL} = \left[(\tau\Sigma)^{-1} + P'\Omega^{-1}P\right]^{-1}
+           \left[(\tau\Sigma)^{-1}\Pi + P'\Omega^{-1}Q\right],
+\qquad \Pi = \delta\Sigma w_{mkt}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.bayesian.implied_equilibrium_returns()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">black_litterman()</span></code>,
+returning a <a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.BlackLittermanResult" title="financialkit.portfolio.core.base.BlackLittermanResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlackLittermanResult</span></code></a>.
+The example reproduces He and Litterman’s (1999) seven-country example
+to the published decimal.</p>
+<p><em>References:</em> F. Black and R. Litterman, “Global Portfolio
+Optimization,” <em>Financial Analysts J.</em> 48 (1992) 28-43; G. He and
+R. Litterman, “The Intuition Behind Black-Litterman Model Portfolios,”
+Goldman Sachs (1999).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Robert Litterman (1992), at Goldman Sachs, started mean-variance optimization from the expected returns that make the market portfolio optimal, \Pi = \delta\Sigma w_{mkt}, rather than from historical averages. Investors&#x27; views then tilt those returns in proportion to their confidence. This reproduces He and Litterman&#x27;s (1999) seven-country example: the view that German equities will beat the rest of Europe by 5% moves weight into Germany, out of France and the UK, and leaves the other countries&#x27; weights alone."><img alt="" src="../_images/sphx_glr_plot_01_black_litterman_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/bayesian/plot_01_black_litterman.html"><span class="doc">Black-Litterman: equilibrium plus views</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black-Litterman: equilibrium plus views</div>
+</div></div></section>
+<section id="the-sortino-ratio">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1994 – The Sortino Ratio</a><a class="headerlink" href="#the-sortino-ratio" title="Link to this heading">#</a></h2>
+<p>Investors fear losses, not volatility. Frank Sortino and Lee Price
+replaced the standard deviation in Sharpe’s ratio by the <em>downside
+deviation</em>, the root mean square shortfall below a minimum acceptable
+return, building on Peter Fishburn’s lower partial moments (1977). For
+symmetric returns the two ratios agree; for skewed strategies, such as
+selling options or following trends, they rank funds differently.</p>
+<div class="math notranslate nohighlight">
+\[\text{Sortino} = \frac{E[R] - \tau}{\sqrt{E[\min(R - \tau, 0)^2]}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.performance.sortino_ratio()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">downside_deviation()</span></code>.
+The example compares the Sharpe and Sortino ratios of symmetric,
+negatively skewed and positively skewed funds.</p>
+<p><em>References:</em> F. A. Sortino and L. N. Price, “Performance Measurement in
+a Downside Risk Framework,” <em>J. Investing</em> 3 (1994) 59-64; P. C.
+Fishburn, “Mean-Risk Analysis with Risk Associated with Below-Target
+Returns,” <em>Amer. Econ. Rev.</em> 67 (1977) 116-126.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Volatility penalizes a fund for its best months as much as for its worst. Frank Sortino and Lee Price (1994) measured risk instead by the downside deviation, the root mean square shortfall below a minimum acceptable return \tau,"><img alt="" src="../_images/sphx_glr_plot_03_sortino_ratio_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/performance/plot_03_sortino_ratio.html"><span class="doc">The Sortino ratio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Sortino ratio</div>
+</div></div></section>
+<section id="michaud-s-resampled-efficiency">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">1998 – Michaud’s Resampled Efficiency</a><a class="headerlink" href="#michaud-s-resampled-efficiency" title="Link to this heading">#</a></h2>
+<p>Richard Michaud called mean-variance optimizers “error maximizers”: they
+put the most weight on the assets whose returns were most overestimated.
+He proposed treating the estimates as one draw among many: resample
+histories from them, compute each history’s frontier, and average the
+weights rank by rank. The resampled frontier is more diversified and
+changes more smoothly with risk than the classical one.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.bayesian.resampled_frontier()</span></code>,
+returning a <a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.ResampledFrontierResult" title="financialkit.portfolio.core.base.ResampledFrontierResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResampledFrontierResult</span></code></a>
+with every resample’s frontier. The example compares the classical and
+resampled compositions and evaluates both under the true inputs.</p>
+<p><em>References:</em> R. O. Michaud, <em>Efficient Asset Management</em>, Harvard
+Business School Press (1998); R. O. Michaud, “The Markowitz Optimization
+Enigma: Is ‘Optimized’ Optimal?” <em>Financial Analysts J.</em> 45 (1989) 31-42.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Richard Michaud (1998) called mean-variance optimizers &quot;estimation-error maximizers&quot;: they put the most weight on the assets whose expected returns were most overestimated. His remedy treats the estimates as one draw among many. Resample histories from them, compute each history&#x27;s frontier, and average the weights rank by rank along the frontier. The resampled portfolios are more diversified and change more gradually with risk than the classical corner solutions."><img alt="" src="../_images/sphx_glr_plot_02_michaud_resampling_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/bayesian/plot_02_michaud_resampling.html"><span class="doc">Michaud’s resampled efficiency</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Michaud's resampled efficiency</div>
+</div></div></section>
+<section id="rockafellar-and-uryasev-s-cvar-optimization">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">2000 – Rockafellar and Uryasev’s CVaR Optimization</a><a class="headerlink" href="#rockafellar-and-uryasev-s-cvar-optimization" title="Link to this heading">#</a></h2>
+<p>Value at risk is not convex in the weights, so minimizing it is hard.
+R. Tyrrell Rockafellar and Stanislav Uryasev introduced an auxiliary
+function whose minimum over one extra variable is the conditional value
+at risk, and whose minimizer is the VaR. Over equally likely scenarios
+the whole problem becomes a linear program, so portfolios can be
+optimized for tail risk with any return distribution.</p>
+<div class="math notranslate nohighlight">
+\[\min_{w,\zeta}\; \zeta + \frac{1}{(1 - \alpha)n}\sum_{k=1}^n \left(-r_k'w - \zeta\right)^+\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.risk_based.cvar_optimization()</span></code>,
+by <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html#scipy.optimize.linprog" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.linprog()</span></code></a> (HiGHS), returning a
+<a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.CVaRResult" title="financialkit.portfolio.core.base.CVaRResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">CVaRResult</span></code></a>; the tests check
+its CVaR against <a class="reference internal" href="../api/risk.html#financialkit.risk.expected_shortfall" title="financialkit.risk.expected_shortfall"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.risk.expected_shortfall()</span></code></a>. The
+example contrasts minimum-CVaR and minimum-variance portfolios when one
+asset has crash risk.</p>
+<p><em>References:</em> R. T. Rockafellar and S. Uryasev, “Optimization of
+Conditional Value-at-Risk,” <em>J. Risk</em> 2 (2000) 21-41.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Value at risk is not convex in the portfolio weights, so minimizing it is hard. R. Tyrrell Rockafellar and Stanislav Uryasev (2000) showed that conditional value at risk (expected shortfall) is, and better: over a set of scenarios, minimizing it is a linear program,"><img alt="" src="../_images/sphx_glr_plot_01_cvar_optimization_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/risk_based/plot_01_cvar_optimization.html"><span class="doc">Rockafellar-Uryasev CVaR optimization</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rockafellar-Uryasev CVaR optimization</div>
+</div></div></section>
+<section id="ledoit-and-wolf-s-shrinkage">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">2004 – Ledoit and Wolf’s Shrinkage</a><a class="headerlink" href="#ledoit-and-wolf-s-shrinkage" title="Link to this heading">#</a></h2>
+<p>When the number of assets is comparable to the number of observations,
+the sample covariance matrix is badly conditioned: its smallest
+eigenvalues are far too small, and an optimizer exploits them. Olivier
+Ledoit and Michael Wolf shrank the sample matrix towards a structured
+target, a scaled identity or the constant-correlation matrix, with an
+intensity estimated from the data to minimize the expected squared
+error. The estimator is always well conditioned and became a standard
+default.</p>
+<div class="math notranslate nohighlight">
+\[\hat\Sigma = \delta F + (1 - \delta) S, \qquad
+\delta^* = \frac{\sum_{ij}\operatorname{Var}(s_{ij}) - \operatorname{Cov}(f_{ij}, s_{ij})}{\sum_{ij} E(f_{ij} - s_{ij})^2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.covariance.ledoit_wolf()</span></code>,
+hand-written for both targets, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">sample_covariance()</span></code>.
+The example compares eigenvalue spectra and the true risk of
+minimum-variance portfolios built from each estimate.</p>
+<p><em>References:</em> O. Ledoit and M. Wolf, “A Well-Conditioned Estimator for
+Large-Dimensional Covariance Matrices,” <em>J. Multivariate Anal.</em> 88
+(2004) 365-411; O. Ledoit and M. Wolf, “Honey, I Shrunk the Sample
+Covariance Matrix,” <em>J. Portfolio Mgmt.</em> 30 (2004) 110-119.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="When the number of assets is comparable to the number of observations, the sample covariance&#x27;s eigenvalues spread out far more than the true ones: the smallest are too small, so the minimum-variance optimizer loads up on spurious &quot;riskless&quot; combinations. Olivier Ledoit and Michael Wolf (2004) shrank the sample matrix towards a structured target, \delta F + (1 - \delta)S, with the intensity \delta estimated from the data to minimize the expected squared error. Their two targets are a scaled identity and the constant-correlation matrix."><img alt="" src="../_images/sphx_glr_plot_02_ledoit_wolf_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/covariance/plot_02_ledoit_wolf.html"><span class="doc">Ledoit-Wolf shrinkage</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ledoit-Wolf shrinkage</div>
+</div></div></section>
+<section id="choueifaty-and-coignard-s-most-diversified-portfolio">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">2008 – Choueifaty and Coignard’s Most-Diversified Portfolio</a><a class="headerlink" href="#choueifaty-and-coignard-s-most-diversified-portfolio" title="Link to this heading">#</a></h2>
+<p>Yves Choueifaty and Yves Coignard measured diversification by the ratio
+of a portfolio’s weighted average volatility to its actual volatility,
+and built the portfolio that maximizes it. It needs no expected
+returns, coincides with the tangency portfolio when expected returns are
+proportional to volatility, and has a striking property: every asset it
+holds has the same correlation with it.</p>
+<div class="math notranslate nohighlight">
+\[D(w) = \frac{w'\sigma}{\sqrt{w'\Sigma w}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.risk_based.most_diversified_portfolio()</span></code>
+(minimum variance on the correlation matrix, rescaled by volatilities),
+<code class="xref py py-func docutils literal notranslate"><span class="pre">diversification_ratio()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">inverse_volatility_portfolio()</span></code>.
+The example compares it with minimum variance and inverse volatility
+and checks the equal-correlation property.</p>
+<p><em>References:</em> Y. Choueifaty and Y. Coignard, “Toward Maximum
+Diversification,” <em>J. Portfolio Mgmt.</em> 35 (2008) 40-51.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Yves Choueifaty and Yves Coignard (2008) defined the diversification ratio of a long-only portfolio as its weighted average volatility over its actual volatility,"><img alt="" src="../_images/sphx_glr_plot_02_most_diversified_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/risk_based/plot_02_most_diversified.html"><span class="doc">Choueifaty’s most-diversified portfolio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Choueifaty's most-diversified portfolio</div>
+</div></div></section>
+<section id="demiguel-garlappi-and-uppal-optimal-versus-naive-diversification">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">2009 – DeMiguel, Garlappi and Uppal: Optimal Versus Naive Diversification</a><a class="headerlink" href="#demiguel-garlappi-and-uppal-optimal-versus-naive-diversification" title="Link to this heading">#</a></h2>
+<p>Victor DeMiguel, Lorenzo Garlappi and Raman Uppal ran fourteen optimized
+portfolio rules out of sample on seven datasets and compared them with
+dividing wealth equally. None beat 1/N consistently in Sharpe ratio or
+certainty equivalent. Their calculations showed that with 25 assets the
+sample mean-variance rule would need about 3000 months of data to win:
+estimation error, not theory, decides.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.out_of_sample.equal_weight()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">out_of_sample_returns()</span></code>,
+which rolls any rule through history and returns an
+<a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.OutOfSampleResult" title="financialkit.portfolio.core.base.OutOfSampleResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">OutOfSampleResult</span></code></a> with the
+Sharpe ratio and turnover. The example pits 1/N against estimated
+mean-variance and minimum-variance rules when the true optimum is known
+to be better.</p>
+<p><em>References:</em> V. DeMiguel, L. Garlappi and R. Uppal, “Optimal Versus
+Naive Diversification: How Inefficient is the 1/N Portfolio Strategy?”
+<em>Rev. Financial Stud.</em> 22 (2009) 1915-1953.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="DeMiguel, Garlappi and Uppal (2009) re-estimated fourteen optimized portfolio rules on rolling windows and compared their out-of-sample Sharpe ratios with simply holding every asset equally. None beat 1/N reliably. Here the true model is known: ten assets with a genuinely better tangency portfolio. The sample mean-variance rule, the tangency portfolio of the estimated moments, still loses to 1/N unless its estimation window is very long, because errors in the estimated means swamp the gain from optimizing."><img alt="" src="../_images/sphx_glr_plot_04_one_over_n_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/mean_variance/plot_04_one_over_n.html"><span class="doc">DeMiguel-Garlappi-Uppal: optimal versus 1/N</span></a></p>
+  <div class="sphx-glr-thumbnail-title">DeMiguel-Garlappi-Uppal: optimal versus 1/N</div>
+</div></div></section>
+<section id="maillard-roncalli-and-teiletche-s-risk-parity">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">2010 – Maillard, Roncalli and Teiletche’s Risk Parity</a><a class="headerlink" href="#maillard-roncalli-and-teiletche-s-risk-parity" title="Link to this heading">#</a></h2>
+<p>Risk parity funds had grown since Bridgewater’s All Weather fund (1996),
+but without a theory. Sébastien Maillard, Thierry Roncalli and Jérôme
+Teiletche characterized the equal risk contribution portfolio, in which
+every asset contributes the same share of the volatility: it exists, is
+unique, and its volatility lies between the minimum-variance and 1/N
+portfolios’. Florin Spinu (2013) recast it as a strictly convex program
+solved by Newton’s method.</p>
+<div class="math notranslate nohighlight">
+\[w_i \frac{(\Sigma w)_i}{\sqrt{w'\Sigma w}} = \frac{\sqrt{w'\Sigma w}}{d}
+\quad\text{for every } i\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.risk_based.risk_parity()</span></code>,
+with arbitrary risk budgets, by Spinu’s damped Newton iteration; the
+contributions are checked with <a class="reference internal" href="../api/risk.html#financialkit.risk.euler_allocation" title="financialkit.risk.euler_allocation"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.risk.euler_allocation()</span></code></a>.
+The example compares capital and risk shares with 1/N and minimum
+variance.</p>
+<p><em>References:</em> S. Maillard, T. Roncalli and J. Teiletche, “The
+Properties of Equally Weighted Risk Contribution Portfolios,” <em>J.
+Portfolio Mgmt.</em> 36 (2010) 60-70; F. Spinu, “An Algorithm for Computing
+Risk Parity Weights,” SSRN 2297383 (2013).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An equally weighted stock-bond portfolio takes nearly all its risk from the stocks. Sébastien Maillard, Thierry Roncalli and Jérôme Teiletche (2010) studied the equal risk contribution portfolio, in which each asset&#x27;s Euler contribution w_i(\Sigma w)_i/\sigma_p to the portfolio volatility is the same. It always exists and is unique, and its volatility lies between the minimum-variance and 1/N portfolios&#x27;. It is computed here from Spinu&#x27;s convex reformulation."><img alt="" src="../_images/sphx_glr_plot_03_risk_parity_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/risk_based/plot_03_risk_parity.html"><span class="doc">Maillard-Roncalli-Teiletche risk parity</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Maillard-Roncalli-Teiletche risk parity</div>
+</div></div></section>
+<section id="lopez-de-prado-s-hierarchical-risk-parity">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">2016 – Lopez de Prado’s Hierarchical Risk Parity</a><a class="headerlink" href="#lopez-de-prado-s-hierarchical-risk-parity" title="Link to this heading">#</a></h2>
+<p>Marcos Lopez de Prado argued that quadratic optimizers fail because they
+invert a noisy covariance matrix, treating every asset as a substitute
+for every other. His hierarchical risk parity clusters assets by
+correlation, reorders the matrix along the dendrogram, and allocates top
+down by inverse variance between ever smaller clusters. No matrix is
+inverted, so the weights are stable even when the covariance matrix is
+singular.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.portfolio.systems.risk_based.hierarchical_risk_parity()</span></code>,
+using <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html#scipy.cluster.hierarchy.linkage" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.cluster.hierarchy.linkage()</span></code></a> and returning an
+<a class="reference internal" href="../api/portfolio.html#financialkit.portfolio.HRPResult" title="financialkit.portfolio.core.base.HRPResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">HRPResult</span></code></a>. The example shows
+the dendrogram and quasi-diagonal matrix and compares the out-of-sample
+risk of HRP, minimum variance and 1/N.</p>
+<p><em>References:</em> M. Lopez de Prado, “Building Diversified Portfolios that
+Outperform Out of Sample,” <em>J. Portfolio Mgmt.</em> 42 (2016) 59-69.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Marcos Lopez de Prado (2016) observed that inverting a noisy covariance matrix, as every quadratic optimizer does, amplifies its errors. His hierarchical risk parity never inverts it: it clusters assets by the correlation distance \sqrt{(1-\rho_{ij})/2}, reorders them along the dendrogram so similar assets sit together, then splits capital top down between halves in inverse proportion to their variance. Its risk varies less from one estimation sample to the next than the minimum-variance portfolio&#x27;s, though with few observations per asset minimum variance can still be less risky on average."><img alt="" src="../_images/sphx_glr_plot_04_hierarchical_risk_parity_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/portfolio/risk_based/plot_04_hierarchical_risk_parity.html"><span class="doc">Lopez de Prado’s hierarchical risk parity</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lopez de Prado's hierarchical risk parity</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/portfolio.html"><span class="doc">financialkit.portfolio</span></a></p></li>
+<li><p><a class="reference internal" href="risk_breakthroughs.html"><span class="doc">Breakthroughs in Risk Measurement</span></a></p></li>
+<li><p><a class="reference internal" href="monte_carlo_breakthroughs.html"><span class="doc">Breakthroughs in Monte Carlo Methods</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="asset_pricing_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Asset Pricing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="risk_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Risk Measurement</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markowitz-s-mean-variance-analysis">1952 – Markowitz’s Mean-Variance Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-kelly-criterion">1956 – The Kelly Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tobin-s-separation-theorem">1958 – Tobin’s Separation Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharpe-s-single-index-model">1963 – Sharpe’s Single-Index Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sharpe-ratio">1966 – The Sharpe Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merton-s-portfolio-problem">1969 – Merton’s Portfolio Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merton-s-analytic-frontier">1972 – Merton’s Analytic Frontier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-and-jones-s-constant-proportion-portfolio-insurance">1987 – Black and Jones’s Constant Proportion Portfolio Insurance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grinold-s-fundamental-law-of-active-management">1989 – Grinold’s Fundamental Law of Active Management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-and-litterman-s-global-portfolio-optimization">1992 – Black and Litterman’s Global Portfolio Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sortino-ratio">1994 – The Sortino Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michaud-s-resampled-efficiency">1998 – Michaud’s Resampled Efficiency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rockafellar-and-uryasev-s-cvar-optimization">2000 – Rockafellar and Uryasev’s CVaR Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ledoit-and-wolf-s-shrinkage">2004 – Ledoit and Wolf’s Shrinkage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choueifaty-and-coignard-s-most-diversified-portfolio">2008 – Choueifaty and Coignard’s Most-Diversified Portfolio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demiguel-garlappi-and-uppal-optimal-versus-naive-diversification">2009 – DeMiguel, Garlappi and Uppal: Optimal Versus Naive Diversification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maillard-roncalli-and-teiletche-s-risk-parity">2010 – Maillard, Roncalli and Teiletche’s Risk Parity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lopez-de-prado-s-hierarchical-risk-parity">2016 – Lopez de Prado’s Hierarchical Risk Parity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/portfolio_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

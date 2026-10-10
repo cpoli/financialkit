@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863926Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863926Z",
+      "mimetype": null,
+      "name": "plot_01_digital_options.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/binaries/plot_01_digital_options.ipynb",
+      "size": 4320,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.217982Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.218069Z",
+  "mimetype": null,
+  "name": "binaries",
+  "path": "jupyterlite_contents/api/gallery/exotic_options/binaries",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.879616Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.879616Z",
+      "mimetype": null,
+      "name": "plot_04_one_over_n.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/mean_variance/plot_04_one_over_n.ipynb",
+      "size": 4584,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.879111Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.879111Z",
+      "mimetype": null,
+      "name": "plot_01_markowitz_frontier.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/mean_variance/plot_01_markowitz_frontier.ipynb",
+      "size": 3822,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.879509Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.879509Z",
+      "mimetype": null,
+      "name": "plot_03_merton_analytic_frontier.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/mean_variance/plot_03_merton_analytic_frontier.ipynb",
+      "size": 3787,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.879221Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.879221Z",
+      "mimetype": null,
+      "name": "plot_02_tobin_tangency.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/mean_variance/plot_02_tobin_tangency.ipynb",
+      "size": 4028,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.250844Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.251548Z",
+  "mimetype": null,
+  "name": "mean_variance",
+  "path": "jupyterlite_contents/api/gallery/portfolio/mean_variance",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

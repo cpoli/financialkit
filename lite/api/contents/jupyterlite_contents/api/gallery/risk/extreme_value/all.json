@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.882199Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.882199Z",
+      "mimetype": null,
+      "name": "plot_02_peaks_over_threshold.ipynb",
+      "path": "jupyterlite_contents/api/gallery/risk/extreme_value/plot_02_peaks_over_threshold.ipynb",
+      "size": 3534,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.882085Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.882085Z",
+      "mimetype": null,
+      "name": "plot_01_fisher_tippett_gev.ipynb",
+      "path": "jupyterlite_contents/api/gallery/risk/extreme_value/plot_01_fisher_tippett_gev.ipynb",
+      "size": 4207,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.256819Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.257279Z",
+  "mimetype": null,
+  "name": "extreme_value",
+  "path": "jupyterlite_contents/api/gallery/risk/extreme_value",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

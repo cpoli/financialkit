@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.880501Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.880501Z",
+      "mimetype": null,
+      "name": "plot_01_cvar_optimization.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/risk_based/plot_01_cvar_optimization.ipynb",
+      "size": 4003,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.880899Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.880899Z",
+      "mimetype": null,
+      "name": "plot_04_hierarchical_risk_parity.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/risk_based/plot_04_hierarchical_risk_parity.ipynb",
+      "size": 4308,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.880767Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.880767Z",
+      "mimetype": null,
+      "name": "plot_03_risk_parity.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/risk_based/plot_03_risk_parity.ipynb",
+      "size": 4674,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.880620Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.880620Z",
+      "mimetype": null,
+      "name": "plot_02_most_diversified.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/risk_based/plot_02_most_diversified.ipynb",
+      "size": 3939,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.252580Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.253556Z",
+  "mimetype": null,
+  "name": "risk_based",
+  "path": "jupyterlite_contents/api/gallery/portfolio/risk_based",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

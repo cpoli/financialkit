@@ -1,0 +1,141 @@
+
+
+.. _sphx_glr_api_gallery_options_trees:
+
+Lattices and American options
+-----------------------------
+
+Binomial and trinomial trees, their convergence to Black-Scholes, early
+exercise of American options, and an analytic approximation to it.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Cox, Stephen Ross and Mark Rubinstein (1979) showed that the Black-Scholes price is the limit of a much simpler model: in each short period the stock moves up by u = e^{\sigma\sqrt{\Delta t}} or down by d = 1/u, and the option is replicated one step at a time. The risk-neutral probability p = (e^{r\Delta t} - d)/(u - d) falls out of the replication, and backward induction prices any payoff. The error shrinks like 1/n, oscillating as the strike moves between nodes.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_01_crr_convergence_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_01_crr_convergence`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox-Ross-Rubinstein: the binomial tree converges to Black-Scholes</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The binomial tree&#x27;s real advantage over a closed form is early exercise. At each node an American option is worth the larger of its continuation value and its immediate exercise value, so backward induction prices it as easily as a European option. For a put, early exercise is optimal once the stock falls below a critical price S^*(t) that rises towards the strike as expiry approaches.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_02_crr_american_put_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_02_crr_american_put`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox-Ross-Rubinstein: the American put and its exercise boundary</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Rendleman and Brit Bartter (1979) published the two-state model in the same year as Cox, Ross and Rubinstein, but centred each step on the drift instead of on today&#x27;s price:">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_03_rendleman_bartter_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_03_rendleman_bartter`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Rendleman-Bartter tree</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Phelim Boyle (1986) added a third, flat branch to the binomial step. With u = e^{\lambda\sigma\sqrt{\Delta t}}, d = 1/u and a stretch \lambda &gt; 1, the three probabilities are chosen to match the risk-neutral mean and variance of the next price exactly. The extra branch makes the lattice smoother: for the same number of steps the trinomial tree is usually more accurate than the binomial one.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_04_boyle_trinomial_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_04_boyle_trinomial`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boyle's trinomial tree</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Giovanni Barone-Adesi and Robert Whaley (1987), building on MacMillan (1986), found an almost closed-form American price. The early-exercise premium solves the Black-Scholes PDE; dropping one small time-derivative term leaves an ordinary differential equation with power-law solutions, and smooth pasting at a critical price S^* pins down the coefficient. One scalar root replaces a whole lattice.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_05_barone_adesi_whaley_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_05_barone_adesi_whaley`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Barone-Adesi-Whaley approximation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Dietmar Leisen and Matthias Reimer (1996) removed the binomial tree&#x27;s oscillation. Instead of fixing u and d from the volatility, they choose the probabilities so that the tree&#x27;s cumulative binomial distribution reproduces Black-Scholes&#x27;s N(d_2) and N(d_1), using the Peizer-Pratt inversion of the normal onto the binomial. The tree is centred on the strike, and European prices converge smoothly at order 1/n^2.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/trees/images/thumb/sphx_glr_plot_06_leisen_reimer_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/trees/plot_06_leisen_reimer`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Leisen-Reimer tree</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/options/trees/plot_01_crr_convergence
+   /api/gallery/options/trees/plot_02_crr_american_put
+   /api/gallery/options/trees/plot_03_rendleman_bartter
+   /api/gallery/options/trees/plot_04_boyle_trinomial
+   /api/gallery/options/trees/plot_05_barone_adesi_whaley
+   /api/gallery/options/trees/plot_06_leisen_reimer
+

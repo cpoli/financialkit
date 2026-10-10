@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>financialkit.time_value &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/time_value';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="financialkit.fixed_income" href="fixed_income.html" />
+    <link rel="prev" title="financialkit.integrators" href="integrators.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="integrators.html">financialkit.integrators</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">financialkit.time_value</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income.html">financialkit.fixed_income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options.html">financialkit.options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options.html">financialkit.exotic_options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility.html">financialkit.stochastic_volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models.html">financialkit.interest_rate_models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit.html">financialkit.credit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo.html">financialkit.monte_carlo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods.html">financialkit.pde_methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing.html">financialkit.asset_pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">financialkit.portfolio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk.html">financialkit.risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series.html">financialkit.time_series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure.html">financialkit.market_microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.time_value</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="financialkit-time-value">
+<h1>financialkit.time_value<a class="headerlink" href="#financialkit-time-value" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/time_value.html"><span class="doc">financialkit.time_value hub</span></a> · <a class="reference internal" href="../history/time_value_breakthroughs.html"><span class="doc">History</span></a> · <a class="reference internal" href="gallery/time_value/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="#"><span class="doc">API reference</span></a></p>
+</div>
+<p>Compounding at any frequency and equivalent rates; the rule of 72 and
+compound-interest tables; present value, net present value and Fisher’s
+real rate; annuities, perpetuities, life annuities and sinking funds; the
+internal rate of return (<code class="docutils literal notranslate"><span class="pre">scipy.optimize.brentq</span></code>), every root of the
+NPV polynomial (<code class="docutils literal notranslate"><span class="pre">numpy.roots</span></code>) and the modified IRR; amortization
+schedules and the Truth-in-Lending APR; day counts, year fractions and
+accrued interest for every <code class="docutils literal notranslate"><span class="pre">DayCount</span></code> convention.</p>
+<p id="module-financialkit.time_value">financialkit.time_value: the time value of money.</p>
+<p>Compounding at any frequency and the equivalence of rates (continuous by
+default); Pacioli’s rule of 72 and Witt’s compound-interest tables;
+present value, Fisher’s net present value and real rate of interest;
+annuities, perpetuities, De Witt’s life annuities and Price’s sinking
+fund; the internal rate of return (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brentq.html#scipy.optimize.brentq" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.brentq()</span></code></a>), every
+root of the NPV polynomial (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.roots.html#numpy.roots" title="(in NumPy v2.5)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.roots()</span></code></a>) with a warning when
+there are several, and Baldwin’s modified IRR; level-payment
+amortization schedules and the Truth-in-Lending APR; day counts, year
+fractions and accrued interest for every
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DayCount</span></code> convention.</p>
+<p>The year-fraction functions here are the package’s single
+implementation; later domains import them rather than redefining them.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="financialkit.time_value.AmortizationSchedule">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">AmortizationSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">periods</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">principal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periods_per_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/core/base.html#AmortizationSchedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.AmortizationSchedule" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A level-payment loan schedule, one row per payment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>periods</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>payment</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a>)</p></li>
+<li><p><strong>interest</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>principal</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>balance</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>periods_per_year</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.AmortizationSchedule.balance">
+<span class="sig-name descname"><span class="pre">balance</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.AmortizationSchedule.balance" title="Link to this definition">#</a></dt>
+<dd><p>Outstanding balance after each payment (ends at zero).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.AmortizationSchedule.interest">
+<span class="sig-name descname"><span class="pre">interest</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.AmortizationSchedule.interest" title="Link to this definition">#</a></dt>
+<dd><p>Interest part of each payment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.AmortizationSchedule.payment">
+<span class="sig-name descname"><span class="pre">payment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><span class="pre">float</span></a></span><a class="headerlink" href="#financialkit.time_value.AmortizationSchedule.payment" title="Link to this definition">#</a></dt>
+<dd><p>The level payment per period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.AmortizationSchedule.periods">
+<span class="sig-name descname"><span class="pre">periods</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.AmortizationSchedule.periods" title="Link to this definition">#</a></dt>
+<dd><p>Payment numbers <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.AmortizationSchedule.periods_per_year">
+<span class="sig-name descname"><span class="pre">periods_per_year</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><span class="pre">int</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></span><a class="headerlink" href="#financialkit.time_value.AmortizationSchedule.periods_per_year" title="Link to this definition">#</a></dt>
+<dd><p>Payments per year.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.AmortizationSchedule.principal">
+<span class="sig-name descname"><span class="pre">principal</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.AmortizationSchedule.principal" title="Link to this definition">#</a></dt>
+<dd><p>Principal repaid by each payment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="financialkit.time_value.AmortizationSchedule.total_interest">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">total_interest</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><span class="pre">float</span></a></span><a class="headerlink" href="#financialkit.time_value.AmortizationSchedule.total_interest" title="Link to this definition">#</a></dt>
+<dd><p>Interest paid over the life of the loan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="financialkit.time_value.CompoundingTable">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">CompoundingTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periods</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annuity_present</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annuity_future</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/core/base.html#CompoundingTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.CompoundingTable" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A compound-interest table for one rate, in the layout of Witt (1613).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a>)</p></li>
+<li><p><strong>periods</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>amount</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>discount</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>annuity_present</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>annuity_future</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.CompoundingTable.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.CompoundingTable.amount" title="Link to this definition">#</a></dt>
+<dd><p>Accumulation factors <span class="math notranslate nohighlight">\((1 + i)^k\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.CompoundingTable.annuity_future">
+<span class="sig-name descname"><span class="pre">annuity_future</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.CompoundingTable.annuity_future" title="Link to this definition">#</a></dt>
+<dd><p>Accumulated value of 1 per period, <span class="math notranslate nohighlight">\(s_{\overline{k}|}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.CompoundingTable.annuity_present">
+<span class="sig-name descname"><span class="pre">annuity_present</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.CompoundingTable.annuity_present" title="Link to this definition">#</a></dt>
+<dd><p>Present value of 1 per period, <span class="math notranslate nohighlight">\(a_{\overline{k}|}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.CompoundingTable.discount">
+<span class="sig-name descname"><span class="pre">discount</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.CompoundingTable.discount" title="Link to this definition">#</a></dt>
+<dd><p>Discount factors <span class="math notranslate nohighlight">\(v^k = (1 + i)^{-k}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.CompoundingTable.periods">
+<span class="sig-name descname"><span class="pre">periods</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.CompoundingTable.periods" title="Link to this definition">#</a></dt>
+<dd><p>Period numbers <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.CompoundingTable.rate">
+<span class="sig-name descname"><span class="pre">rate</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><span class="pre">float</span></a></span><a class="headerlink" href="#financialkit.time_value.CompoundingTable.rate" title="Link to this definition">#</a></dt>
+<dd><p>Effective interest rate per period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="financialkit.time_value.MultipleIRRWarning">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">MultipleIRRWarning</span></span><a class="reference internal" href="../_modules/financialkit/time_value/core/base.html#MultipleIRRWarning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.MultipleIRRWarning" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/exceptions.html#UserWarning" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserWarning</span></code></a></p>
+<p>Raised when a cash-flow stream has more than one internal rate of return.</p>
+<p>By Descartes’ rule of signs a stream with more than one sign change can
+have several IRRs (Lorie and Savage, 1955), and then no single one of
+them is a meaningful rate of return.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="financialkit.time_value.NPVProfile">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">NPVProfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irrs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/core/base.html#NPVProfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.NPVProfile" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Net present value as a function of the discount rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rates</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>npv</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>irrs</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.NPVProfile.irrs">
+<span class="sig-name descname"><span class="pre">irrs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.NPVProfile.irrs" title="Link to this definition">#</a></dt>
+<dd><p>Every real internal rate of return (roots of the NPV), ascending.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.NPVProfile.npv">
+<span class="sig-name descname"><span class="pre">npv</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.NPVProfile.npv" title="Link to this definition">#</a></dt>
+<dd><p>Net present value at each rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (<a class="reference internal" href="time_series.html#financialkit.time_series.TailIndexResult.k" title="financialkit.time_series.TailIndexResult.k">k</a>,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.NPVProfile.rates">
+<span class="sig-name descname"><span class="pre">rates</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.NPVProfile.rates" title="Link to this definition">#</a></dt>
+<dd><p>Discount rates at which the NPV was evaluated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (<a class="reference internal" href="time_series.html#financialkit.time_series.TailIndexResult.k" title="financialkit.time_series.TailIndexResult.k">k</a>,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="financialkit.time_value.SinkingFundSchedule">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">SinkingFundSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">periods</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deposit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/core/base.html#SinkingFundSchedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.SinkingFundSchedule" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#object" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Level deposits accumulating at interest to repay a debt at maturity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>periods</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>deposit</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a>)</p></li>
+<li><p><strong>interest</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+<li><p><strong>balance</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><em>ndarray</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.SinkingFundSchedule.balance">
+<span class="sig-name descname"><span class="pre">balance</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.SinkingFundSchedule.balance" title="Link to this definition">#</a></dt>
+<dd><p>Fund balance after each deposit (ends at the target).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.SinkingFundSchedule.deposit">
+<span class="sig-name descname"><span class="pre">deposit</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><span class="pre">float</span></a></span><a class="headerlink" href="#financialkit.time_value.SinkingFundSchedule.deposit" title="Link to this definition">#</a></dt>
+<dd><p>The level deposit per period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.SinkingFundSchedule.interest">
+<span class="sig-name descname"><span class="pre">interest</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.SinkingFundSchedule.interest" title="Link to this definition">#</a></dt>
+<dd><p>Interest earned by the fund during each period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="financialkit.time_value.SinkingFundSchedule.periods">
+<span class="sig-name descname"><span class="pre">periods</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a></span><a class="headerlink" href="#financialkit.time_value.SinkingFundSchedule.periods" title="Link to this definition">#</a></dt>
+<dd><p>Deposit numbers <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.accrued_interest">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">accrued_interest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">face</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coupon_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_coupon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settlement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convention</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DayCount.THIRTY_360_US</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/day_counts.html#accrued_interest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.accrued_interest" title="Link to this definition">#</a></dt>
+<dd><p>Coupon interest accrued from the last coupon date to settlement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>face</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>coupon_rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Annual coupon rate.</p></li>
+<li><p><strong>last_coupon</strong> (<em>date-like</em><em> or </em><em>array-like</em><em> of </em><em>date-likes</em>)</p></li>
+<li><p><strong>settlement</strong> (<em>date-like</em><em> or </em><em>array-like</em><em> of </em><em>date-likes</em>)</p></li>
+<li><p><strong>convention</strong> (<em>DayCount</em><em> or </em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Hull (10th ed.), Sec. 6.1: a 10% corporate bond, coupons on March 1
+and September 1, settling July 3, 2018 (30/360).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">accrued_interest</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="s2">"2018-03-01"</span><span class="p">,</span> <span class="s2">"2018-07-03"</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">3.3889</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.amortization_schedule">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">amortization_schedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">principal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annual_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_payments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periods_per_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/amortization.html#amortization_schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.amortization_schedule" title="Link to this definition">#</a></dt>
+<dd><p>Split each level payment into interest and principal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>principal</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>)</p></li>
+<li><p><strong>annual_rate</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Nominal annual rate, compounded <cite>periods_per_year</cite> times a year.</p></li>
+<li><p><strong>n_payments</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>)</p></li>
+<li><p><strong>periods_per_year</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#financialkit.time_value.AmortizationSchedule" title="financialkit.time_value.core.base.AmortizationSchedule"><code class="xref py py-class docutils literal notranslate"><span class="pre">AmortizationSchedule</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>AmortizationSchedule</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">amortization_schedule</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">payment</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">interest</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">balance</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="mf">1e-9</span>
+<span class="go">(88.85, 10.0, True)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.annual_percentage_rate">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">annual_percentage_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount_financed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_payments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periods_per_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/amortization.html#annual_percentage_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.annual_percentage_rate" title="Link to this definition">#</a></dt>
+<dd><p>Truth-in-Lending APR of a level-payment loan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amount_financed</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Loan principal less prepaid finance charges (fees, points).</p></li>
+<li><p><strong>payment</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Level payment per period.</p></li>
+<li><p><strong>n_payments</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>)</p></li>
+<li><p><strong>periods_per_year</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – Nominal annual rate <code class="docutils literal notranslate"><span class="pre">periods_per_year</span> <span class="pre">*</span> <span class="pre">i</span></code>, where <code class="docutils literal notranslate"><span class="pre">i</span></code> solves
+<code class="docutils literal notranslate"><span class="pre">payment</span> <span class="pre">*</span> <span class="pre">a_n(i)</span> <span class="pre">==</span> <span class="pre">amount_financed</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>A 1,000 loan at 12% with a 20 fee deducted up front:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">payment</span> <span class="o">=</span> <span class="n">loan_payment</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">annual_percentage_rate</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">payment</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">0.12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">annual_percentage_rate</span><span class="p">(</span><span class="mf">980.0</span><span class="p">,</span> <span class="n">payment</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">0.1585</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.annuity_factor">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">annuity_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#annuity_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.annuity_factor" title="Link to this definition">#</a></dt>
+<dd><p>Present value of 1 per period for <cite>n</cite> periods, <span class="math notranslate nohighlight">\(a_{\overline{n}|}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Effective rate per period; zero is allowed (the factor is then <code class="docutils literal notranslate"><span class="pre">n</span></code>).</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>array-like</em>) – Number of payments.</p></li>
+<li><p><strong>due</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> for payments at the start of each period (annuity-due).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">annuity_factor</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">7.721735</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.annuity_future_value">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">annuity_future_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#annuity_future_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.annuity_future_value" title="Link to this definition">#</a></dt>
+<dd><p>Accumulated value after <cite>n</cite> level payments, <span class="math notranslate nohighlight">\(P s_{\overline{n}|}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>payment</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Effective rate per period.</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>due</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">annuity_future_value</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">1257.79</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.annuity_payment">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">annuity_payment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">present_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#annuity_payment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.annuity_payment" title="Link to this definition">#</a></dt>
+<dd><p>Level payment whose <cite>n</cite>-period annuity is worth <cite>present_value</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>present_value</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Effective rate per period.</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>due</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">annuity_payment</span><span class="p">(</span><span class="mf">10_000.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">888.49</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.annuity_present_value">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">annuity_present_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#annuity_present_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.annuity_present_value" title="Link to this definition">#</a></dt>
+<dd><p>Present value of <cite>n</cite> level payments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>payment</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Effective rate per period.</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>due</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>) – Payments at the start of each period.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">annuity_present_value</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">4212.36</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.compound_interest_table">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">compound_interest_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_periods</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/compounding.html#compound_interest_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.compound_interest_table" title="Link to this definition">#</a></dt>
+<dd><p>Build a compound-interest table for periods <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n_periods</span></code>.</p>
+<p>Witt (1613) printed, for each rate, the amount of 1, the present value
+of 1 and the values of an annuity of 1 per period; with them a clerk
+could price a loan, a lease or an annuity by look-up and multiplication.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Effective rate per period.</p></li>
+<li><p><strong>n_periods</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#financialkit.time_value.CompoundingTable" title="financialkit.time_value.core.base.CompoundingTable"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompoundingTable</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>CompoundingTable</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="n">compound_interest_table</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">table</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">table</span><span class="o">.</span><span class="n">annuity_present</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="go">([1.1, 1.21, 1.331], [0.9091, 1.7355, 2.4869])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.continuous_rate">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">continuous_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/compounding.html#continuous_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.continuous_rate" title="Link to this definition">#</a></dt>
+<dd><p>Restate a rate as its continuously compounded equivalent, <span class="math notranslate nohighlight">\(m \ln(1 + r/m)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Annual rate, compounded <code class="docutils literal notranslate"><span class="pre">compounding</span></code> times a year.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – <code class="docutils literal notranslate"><span class="pre">None</span></code> if <cite>rate</cite> is already continuous.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">continuous_rate</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">0.09531</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.day_count">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">day_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convention</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DayCount.ACT_365F</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/day_counts.html#day_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.day_count" title="Link to this definition">#</a></dt>
+<dd><p>Days between two dates under a day-count convention.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>date-like</em><em> or </em><em>array-like</em><em> of </em><em>date-likes</em>)</p></li>
+<li><p><strong>end</strong> (<em>date-like</em><em> or </em><em>array-like</em><em> of </em><em>date-likes</em>)</p></li>
+<li><p><strong>convention</strong> (<em>DayCount</em><em> or </em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a>) – One of <code class="xref py py-class docutils literal notranslate"><span class="pre">DayCount</span></code>; the <code class="docutils literal notranslate"><span class="pre">ACT</span></code>
+conventions count actual days.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>int or ndarray of int</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Hull (10th ed.), Sec. 6.1: March 1 to July 3, 2018.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">day_count</span><span class="p">(</span><span class="s2">"2018-03-01"</span><span class="p">,</span> <span class="s2">"2018-07-03"</span><span class="p">,</span> <span class="s2">"30/360 US"</span><span class="p">),</span> <span class="n">day_count</span><span class="p">(</span><span class="s2">"2018-03-01"</span><span class="p">,</span> <span class="s2">"2018-07-03"</span><span class="p">,</span> <span class="s2">"ACT/360"</span><span class="p">)</span>
+<span class="go">(122, 124)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.days_in_year">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">days_in_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/utils/dates.html#days_in_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.days_in_year" title="Link to this definition">#</a></dt>
+<dd><p>365 or 366 for each year.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>year</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>array-like</em><em> of </em><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray of int</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.de_witt_survival">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">de_witt_survival</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_hazard</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#de_witt_survival"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.de_witt_survival" title="Link to this definition">#</a></dt>
+<dd><p>Survival probabilities under De Witt’s (1671) mortality hypothesis.</p>
+<p>De Witt assumed that between ages 3 and 53 the chance of dying is the
+same in every half-year, and that it is 1.5, 2 and 3 times as large in
+the bands 53-63, 63-73 and 73-80, with no one living beyond 80. Here
+this is a piecewise-constant force of mortality <code class="docutils literal notranslate"><span class="pre">base_hazard</span> <span class="pre">*</span> <span class="pre">w</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>age</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Age of the annuitant today, at least 3.</p></li>
+<li><p><strong>times</strong> (<em>array-like</em>) – Years from today.</p></li>
+<li><p><strong>base_hazard</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Annual force of mortality in the youngest band.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> – Probability of being alive at each time.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">de_witt_survival</span><span class="p">(</span><span class="mf">70.0</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="go">[1.0, 0.8869, 0.7866, 0.0]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.discount_factor">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">discount_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/compounding.html#discount_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.discount_factor" title="Link to this definition">#</a></dt>
+<dd><p>Value today of 1 paid at time <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Annual rate.</p></li>
+<li><p><strong>t</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Time in years; broadcasts against <cite>rate</cite>.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Periods per year, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for continuous compounding.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">discount_factor</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">0.904837</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">discount_factor</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">compounding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">0.907029</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.doubling_time">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">doubling_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/compounding.html#doubling_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.doubling_time" title="Link to this definition">#</a></dt>
+<dd><p>Exact time, in years, for money to double at <cite>rate</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Positive annual rate.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">doubling_time</span><span class="p">(</span><span class="mf">0.06</span><span class="p">,</span> <span class="n">compounding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">11.8957</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.effective_annual_rate">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">effective_annual_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/compounding.html#effective_annual_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.effective_annual_rate" title="Link to this definition">#</a></dt>
+<dd><p>Annual effective rate, <span class="math notranslate nohighlight">\((1 + r/m)^m - 1\)</span>, equivalent to <cite>rate</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">effective_annual_rate</span><span class="p">(</span><span class="mf">0.12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">0.126825</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.equivalent_rate">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">equivalent_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_compounding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_compounding</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/compounding.html#equivalent_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.equivalent_rate" title="Link to this definition">#</a></dt>
+<dd><p>Convert a rate between compounding frequencies at equal growth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>from_compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Periods per year of the given and the requested rate (<code class="docutils literal notranslate"><span class="pre">None</span></code> is
+continuous).</p></li>
+<li><p><strong>to_compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Periods per year of the given and the requested rate (<code class="docutils literal notranslate"><span class="pre">None</span></code> is
+continuous).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Hull (10th ed.), Example 4.1: 10% compounded semiannually is 9.758%
+continuously compounded.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">equivalent_rate</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">0.09758</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.fisher_nominal_rate">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">fisher_nominal_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">real</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inflation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/present_value.html#fisher_nominal_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.fisher_nominal_rate" title="Link to this definition">#</a></dt>
+<dd><p>Nominal rate implied by a real rate and inflation, <span class="math notranslate nohighlight">\((1 + r)(1 + \pi) - 1\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>real</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>inflation</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">fisher_nominal_rate</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">0.0506</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.fisher_real_rate">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">fisher_real_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nominal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inflation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/present_value.html#fisher_real_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.fisher_real_rate" title="Link to this definition">#</a></dt>
+<dd><p>Real interest rate from a nominal rate and inflation (Fisher, 1896).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nominal</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Nominal rate per period.</p></li>
+<li><p><strong>inflation</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Inflation rate per period.</p></li>
+<li><p><strong>exact</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> for <span class="math notranslate nohighlight">\((1 + i)/(1 + \pi) - 1\)</span>, <code class="docutils literal notranslate"><span class="pre">False</span></code> for the
+first-order approximation <span class="math notranslate nohighlight">\(i - \pi\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">fisher_real_rate</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">),</span> <span class="mi">6</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">fisher_real_rate</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="n">exact</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">(0.037736, 0.04)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.future_value">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">future_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">present_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/compounding.html#future_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.future_value" title="Link to this definition">#</a></dt>
+<dd><p>Accumulated value at time <code class="docutils literal notranslate"><span class="pre">t</span></code> of <cite>present_value</cite> invested today.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>present_value</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Annual rate.</p></li>
+<li><p><strong>t</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Time in years.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Periods per year, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for continuous compounding.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Bernoulli’s question: 1 at 100% a year, compounded ever more often.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">future_value</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">365</span><span class="p">)]</span>
+<span class="go">[2.0, 2.613035, 2.714567]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">future_value</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">2.718282</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.irr">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">irr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cash_flows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bracket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-0.99,</span> <span class="pre">10.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/irr.html#irr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.irr" title="Link to this definition">#</a></dt>
+<dd><p>Internal rate of return: the <cite>rate</cite> at which <a class="reference internal" href="#financialkit.time_value.npv" title="financialkit.time_value.npv"><code class="xref py py-func docutils literal notranslate"><span class="pre">npv()</span></code></a> is zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cash_flows</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>)</p></li>
+<li><p><strong>times</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em><em>, </em><em>optional</em>) – Payment times; defaults to <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Compounding of the returned rate; default annual.</p></li>
+<li><p><strong>bracket</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>[<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</span>) – Search interval for the rate.</p></li>
+<li><p><strong>n_grid</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>) – Grid points used to bracket sign changes before root polishing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The lowest IRR in <cite>bracket</cite>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/builtins/exceptions.html#ValueError" title="(in Python v3.15)"><strong>ValueError</strong></a> – If the NPV does not change sign in <cite>bracket</cite>.</p>
+</dd>
+<dt class="field-odd">Warns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>MultipleIRRWarning</strong> – If the NPV has more than one root in <cite>bracket</cite>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">irr</span><span class="p">([</span><span class="o">-</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">]),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">0.130662</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.irr_all">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">irr_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cash_flows</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/irr.html#irr_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.irr_all" title="Link to this definition">#</a></dt>
+<dd><p>Every real IRR above -100% of cash flows at periods <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n</span></code>.</p>
+<p>With <span class="math notranslate nohighlight">\(x = 1/(1 + r)\)</span> the NPV is the polynomial
+<span class="math notranslate nohighlight">\(\sum_k c_k x^k\)</span>; its positive real roots give the IRRs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cash_flows</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n + 1</em><em>,</em><em>)</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray</em> – IRRs per period, ascending (empty if there is none).</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Lorie and Savage’s oil pump (1955): 25% and 400%.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">irr_all</span><span class="p">([</span><span class="o">-</span><span class="mi">1600</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="o">-</span><span class="mi">10000</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="go">[0.25, 4.0]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.is_leap_year">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">is_leap_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/utils/dates.html#is_leap_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.is_leap_year" title="Link to this definition">#</a></dt>
+<dd><p>Gregorian leap-year test, vectorised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>year</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>array-like</em><em> of </em><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>ndarray of bool</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.life_annuity_value">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">life_annuity_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">survival</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#life_annuity_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.life_annuity_value" title="Link to this definition">#</a></dt>
+<dd><p>Expected present value of a life annuity, <span class="math notranslate nohighlight">\(P \sum_k {}_k p_x v^k\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>payment</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a>) – Payment per period while the annuitant lives.</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Effective rate per period.</p></li>
+<li><p><strong>survival</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>) – <code class="docutils literal notranslate"><span class="pre">survival[k</span> <span class="pre">-</span> <span class="pre">1]</span></code> is the probability of being alive at period
+<code class="docutils literal notranslate"><span class="pre">k</span></code> (or at <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">-</span> <span class="pre">1</span></code> if <cite>due</cite>), e.g. from <a class="reference internal" href="#financialkit.time_value.de_witt_survival" title="financialkit.time_value.de_witt_survival"><code class="xref py py-func docutils literal notranslate"><span class="pre">de_witt_survival()</span></code></a>.</p></li>
+<li><p><strong>due</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>With certain survival the life annuity is an annuity-certain:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">life_annuity_value</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> <span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="n">annuity_factor</span><span class="p">(</span><span class="mf">0.04</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.loan_payment">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">loan_payment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">principal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annual_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_payments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periods_per_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/amortization.html#loan_payment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.loan_payment" title="Link to this definition">#</a></dt>
+<dd><p>Level payment of a fully amortizing loan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>principal</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>annual_rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Nominal annual rate, compounded <cite>periods_per_year</cite> times a year.</p></li>
+<li><p><strong>n_payments</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>array-like</em>)</p></li>
+<li><p><strong>periods_per_year</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>A 30-year, 200,000 mortgage at 6%:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">loan_payment</span><span class="p">(</span><span class="mf">200_000.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mi">360</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">1199.1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.mirr">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">mirr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cash_flows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">finance_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reinvest_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/irr.html#mirr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.mirr" title="Link to this definition">#</a></dt>
+<dd><p>Baldwin’s modified internal rate of return.</p>
+<p>Inflows are compounded to the horizon at <cite>reinvest_rate</cite>, outflows are
+discounted to today at <cite>finance_rate</cite>, and the MIRR is the single rate
+linking the two: <span class="math notranslate nohighlight">\((FV^+ / |PV^-|)^{1/n} - 1\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cash_flows</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n + 1</em><em>,</em><em>)</em>) – Cash flows at periods <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">...,</span> <span class="pre">n</span></code>, with at least one of each sign.</p></li>
+<li><p><strong>finance_rate</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Rate paid on the money invested (outflows).</p></li>
+<li><p><strong>reinvest_rate</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Rate earned on reinvested inflows.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">mirr</span><span class="p">([</span><span class="o">-</span><span class="mi">1600</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="o">-</span><span class="mi">10000</span><span class="p">],</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">0.05599</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.npv">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">npv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cash_flows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/present_value.html#npv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.npv" title="Link to this definition">#</a></dt>
+<dd><p>Fisher’s net present value of a project, outflows negative.</p>
+<p>Unlike <a class="reference internal" href="#financialkit.time_value.present_value" title="financialkit.time_value.present_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">present_value()</span></code></a> the defaults follow capital budgeting:
+cash flows at the end of periods <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code> and an annually
+compounded <cite>rate</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Discount rate (the opportunity cost of capital).</p></li>
+<li><p><strong>cash_flows</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>) – <code class="docutils literal notranslate"><span class="pre">cash_flows[0]</span></code> is usually the (negative) initial investment.</p></li>
+<li><p><strong>times</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em><em>, </em><em>optional</em>) – Payment times; defaults to <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Periods per year of <cite>rate</cite>; default 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Brealey-Myers-Allen (13th ed.), Sec. 2.1: an office block costing
+370,000 that sells for 420,000 in a year, at 5%:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">npv</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">370_000</span><span class="p">,</span> <span class="mi">420_000</span><span class="p">]))</span>
+<span class="go">30000</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.npv_profile">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">npv_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cash_flows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/irr.html#npv_profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.npv_profile" title="Link to this definition">#</a></dt>
+<dd><p>NPV across a range of discount rates, with every IRR marked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cash_flows</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n + 1</em><em>,</em><em>)</em>) – Cash flows at periods <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">...,</span> <span class="pre">n</span></code>.</p></li>
+<li><p><strong>rates</strong> (<em>array-like</em>) – Annually compounded discount rates.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#financialkit.time_value.NPVProfile" title="financialkit.time_value.core.base.NPVProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">NPVProfile</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>NPVProfile</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">profile</span> <span class="o">=</span> <span class="n">npv_profile</span><span class="p">([</span><span class="o">-</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">profile</span><span class="o">.</span><span class="n">npv</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="go">[20.0, 4.13, -8.33]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.perpetuity_present_value">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">perpetuity_present_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">growth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#perpetuity_present_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.perpetuity_present_value" title="Link to this definition">#</a></dt>
+<dd><p>Value of a payment that continues forever, <span class="math notranslate nohighlight">\(P / (i - g)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>payment</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – First payment, made one period from now (or now if <cite>due</cite>).</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Effective rate per period, greater than <cite>growth</cite>.</p></li>
+<li><p><strong>growth</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Growth rate of the payments per period.</p></li>
+<li><p><strong>due</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>A 3% consol paying 3 a year, when long yields are 4%:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">perpetuity_present_value</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">75.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.plot_amortization">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">plot_amortization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/visualizers/plots.html#plot_amortization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.plot_amortization" title="Link to this definition">#</a></dt>
+<dd><p>Stacked interest and principal per payment, with the balance on a twin axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schedule</strong> (<a class="reference internal" href="#financialkit.time_value.AmortizationSchedule" title="financialkit.time_value.AmortizationSchedule"><em>AmortizationSchedule</em></a>) – From <code class="xref py py-func docutils literal notranslate"><span class="pre">amortization_schedule()</span></code>.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em>, </em><em>optional</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>matplotlib.axes.Axes</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.plot_cash_flows">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">plot_cash_flows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cash_flows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Cash</span> <span class="pre">flows'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/visualizers/plots.html#plot_cash_flows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.plot_cash_flows" title="Link to this definition">#</a></dt>
+<dd><p>Bar timeline of a cash-flow stream, inflows up and outflows down.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cash_flows</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>)</p></li>
+<li><p><strong>times</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em><em>, </em><em>optional</em>) – Defaults to <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em>, </em><em>optional</em>) – Axes to draw on; a new figure is created if omitted.</p></li>
+<li><p><strong>title</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>matplotlib.axes.Axes</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.plot_compounding_growth">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">plot_compounding_growth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compoundings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">4,</span> <span class="pre">12,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/visualizers/plots.html#plot_compounding_growth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.plot_compounding_growth" title="Link to this definition">#</a></dt>
+<dd><p>Growth of 1 at <cite>rate</cite> under several compounding frequencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Annual rate.</p></li>
+<li><p><strong>T</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Horizon in years.</p></li>
+<li><p><strong>compoundings</strong> (<em>sequence</em><em> of </em><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>None</em>) – Periods per year; <code class="docutils literal notranslate"><span class="pre">None</span></code> is continuous.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em>, </em><em>optional</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>matplotlib.axes.Axes</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.plot_npv_profile">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">plot_npv_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/visualizers/plots.html#plot_npv_profile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.plot_npv_profile" title="Link to this definition">#</a></dt>
+<dd><p>NPV against the discount rate, with each IRR marked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profile</strong> (<a class="reference internal" href="#financialkit.time_value.NPVProfile" title="financialkit.time_value.NPVProfile"><em>NPVProfile</em></a>) – From <code class="xref py py-func docutils literal notranslate"><span class="pre">npv_profile()</span></code>.</p></li>
+<li><p><strong>ax</strong> (<em>matplotlib.axes.Axes</em><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>label</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>matplotlib.axes.Axes</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.present_value">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">present_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cash_flows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/present_value.html#present_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.present_value" title="Link to this definition">#</a></dt>
+<dd><p>Discounted value today of payments <code class="docutils literal notranslate"><span class="pre">cash_flows</span></code> made at <code class="docutils literal notranslate"><span class="pre">times</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cash_flows</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>)</p></li>
+<li><p><strong>times</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>) – Payment times in years.</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Annual discount rate; an array gives one present value per rate.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Periods per year, or <code class="docutils literal notranslate"><span class="pre">None</span></code> (default) for continuous compounding.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em> – Same shape as <cite>rate</cite>.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">present_value</span><span class="p">([</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="mf">0.10</span><span class="p">,</span> <span class="n">compounding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">173.5537</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.rule_of_72">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">rule_of_72</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/compounding.html#rule_of_72"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.rule_of_72" title="Link to this definition">#</a></dt>
+<dd><p>Pacioli’s rule: money doubles in about <code class="docutils literal notranslate"><span class="pre">72</span> <span class="pre">/</span> <span class="pre">(100</span> <span class="pre">*</span> <span class="pre">rate)</span></code> years.</p>
+<p>The rule approximates the exact annual-compounding doubling time
+<span class="math notranslate nohighlight">\(\ln 2 / \ln(1 + r)\)</span>; 72 rather than <span class="math notranslate nohighlight">\(100 \ln 2 \approx
+69.3\)</span> corrects for the curvature of <span class="math notranslate nohighlight">\(\ln(1 + r)\)</span> near 8%, and
+72 has many divisors. Use <code class="docutils literal notranslate"><span class="pre">numerator=69.3</span></code> for continuous
+compounding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Annual rate as a decimal.</p></li>
+<li><p><strong>numerator</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – The rule’s constant.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rule_of_72</span><span class="p">(</span><span class="mf">0.06</span><span class="p">)</span>
+<span class="go">12.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.sign_changes">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">sign_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cash_flows</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/utils/cash_flows.html#sign_changes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.sign_changes" title="Link to this definition">#</a></dt>
+<dd><p>Number of sign changes in a cash-flow stream, ignoring zeros.</p>
+<p>By Descartes’ rule of signs this bounds the number of positive roots
+of the NPV polynomial in the discount factor, i.e. the number of
+internal rates of return above -100%.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cash_flows</strong> (<em>array-like</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sign_changes</span><span class="p">([</span><span class="o">-</span><span class="mi">1600</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="o">-</span><span class="mi">10000</span><span class="p">])</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.sinking_fund_payment">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">sinking_fund_payment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#sinking_fund_payment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.sinking_fund_payment" title="Link to this definition">#</a></dt>
+<dd><p>Level deposit that accumulates to <cite>target</cite> after <cite>n</cite> periods (Price, 1772).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Amount to accumulate, e.g. the face value of a debt.</p></li>
+<li><p><strong>rate</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array-like</em>) – Effective rate earned by the fund per period.</p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><em>int</em></a><em> or </em><em>array-like</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">sinking_fund_payment</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">79.5046</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.sinking_fund_schedule">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">sinking_fund_schedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/annuities.html#sinking_fund_schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.sinking_fund_schedule" title="Link to this definition">#</a></dt>
+<dd><p>Period-by-period growth of a sinking fund.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>)</p></li>
+<li><p><strong>rate</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Effective rate per period.</p></li>
+<li><p><strong>n</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#financialkit.time_value.SinkingFundSchedule" title="financialkit.time_value.core.base.SinkingFundSchedule"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinkingFundSchedule</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>SinkingFundSchedule</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">sinking_fund_schedule</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">balance</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">6</span><span class="p">)</span>
+<span class="go">1000.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="financialkit.time_value.year_fraction">
+<span class="sig-prename descclassname"><span class="pre">financialkit.time_value.</span></span><span class="sig-name descname"><span class="pre">year_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convention</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DayCount.ACT_365F</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/financialkit/time_value/systems/day_counts.html#year_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#financialkit.time_value.year_fraction" title="Link to this definition">#</a></dt>
+<dd><p>Year fraction between two dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>date-like</em><em> or </em><em>array-like</em><em> of </em><em>date-likes</em>)</p></li>
+<li><p><strong>end</strong> (<em>date-like</em><em> or </em><em>array-like</em><em> of </em><em>date-likes</em>)</p></li>
+<li><p><strong>convention</strong> (<em>DayCount</em><em> or </em><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.15)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float or ndarray</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>ISDA (1998), Sec. 3, Example 1: November 1, 2003 to May 1, 2004 is
+61/365 + 121/366 under actual/actual ISDA.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">year_fraction</span><span class="p">(</span><span class="s2">"2003-11-01"</span><span class="p">,</span> <span class="s2">"2004-05-01"</span><span class="p">,</span> <span class="s2">"ACT/ACT ISDA"</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">0.49772</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="integrators.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">financialkit.integrators</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fixed_income.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">financialkit.fixed_income</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.AmortizationSchedule"><code class="docutils literal notranslate"><span class="pre">AmortizationSchedule</span></code></a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.AmortizationSchedule.balance"><code class="docutils literal notranslate"><span class="pre">AmortizationSchedule.balance</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.AmortizationSchedule.interest"><code class="docutils literal notranslate"><span class="pre">AmortizationSchedule.interest</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.AmortizationSchedule.payment"><code class="docutils literal notranslate"><span class="pre">AmortizationSchedule.payment</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.AmortizationSchedule.periods"><code class="docutils literal notranslate"><span class="pre">AmortizationSchedule.periods</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.AmortizationSchedule.periods_per_year"><code class="docutils literal notranslate"><span class="pre">AmortizationSchedule.periods_per_year</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.AmortizationSchedule.principal"><code class="docutils literal notranslate"><span class="pre">AmortizationSchedule.principal</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.AmortizationSchedule.total_interest"><code class="docutils literal notranslate"><span class="pre">AmortizationSchedule.total_interest</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.CompoundingTable"><code class="docutils literal notranslate"><span class="pre">CompoundingTable</span></code></a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.CompoundingTable.amount"><code class="docutils literal notranslate"><span class="pre">CompoundingTable.amount</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.CompoundingTable.annuity_future"><code class="docutils literal notranslate"><span class="pre">CompoundingTable.annuity_future</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.CompoundingTable.annuity_present"><code class="docutils literal notranslate"><span class="pre">CompoundingTable.annuity_present</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.CompoundingTable.discount"><code class="docutils literal notranslate"><span class="pre">CompoundingTable.discount</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.CompoundingTable.periods"><code class="docutils literal notranslate"><span class="pre">CompoundingTable.periods</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.CompoundingTable.rate"><code class="docutils literal notranslate"><span class="pre">CompoundingTable.rate</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.MultipleIRRWarning"><code class="docutils literal notranslate"><span class="pre">MultipleIRRWarning</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.NPVProfile"><code class="docutils literal notranslate"><span class="pre">NPVProfile</span></code></a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.NPVProfile.irrs"><code class="docutils literal notranslate"><span class="pre">NPVProfile.irrs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.NPVProfile.npv"><code class="docutils literal notranslate"><span class="pre">NPVProfile.npv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.NPVProfile.rates"><code class="docutils literal notranslate"><span class="pre">NPVProfile.rates</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.SinkingFundSchedule"><code class="docutils literal notranslate"><span class="pre">SinkingFundSchedule</span></code></a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.SinkingFundSchedule.balance"><code class="docutils literal notranslate"><span class="pre">SinkingFundSchedule.balance</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.SinkingFundSchedule.deposit"><code class="docutils literal notranslate"><span class="pre">SinkingFundSchedule.deposit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.SinkingFundSchedule.interest"><code class="docutils literal notranslate"><span class="pre">SinkingFundSchedule.interest</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.SinkingFundSchedule.periods"><code class="docutils literal notranslate"><span class="pre">SinkingFundSchedule.periods</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.accrued_interest"><code class="docutils literal notranslate"><span class="pre">accrued_interest()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.amortization_schedule"><code class="docutils literal notranslate"><span class="pre">amortization_schedule()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.annual_percentage_rate"><code class="docutils literal notranslate"><span class="pre">annual_percentage_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.annuity_factor"><code class="docutils literal notranslate"><span class="pre">annuity_factor()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.annuity_future_value"><code class="docutils literal notranslate"><span class="pre">annuity_future_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.annuity_payment"><code class="docutils literal notranslate"><span class="pre">annuity_payment()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.annuity_present_value"><code class="docutils literal notranslate"><span class="pre">annuity_present_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.compound_interest_table"><code class="docutils literal notranslate"><span class="pre">compound_interest_table()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.continuous_rate"><code class="docutils literal notranslate"><span class="pre">continuous_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.day_count"><code class="docutils literal notranslate"><span class="pre">day_count()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.days_in_year"><code class="docutils literal notranslate"><span class="pre">days_in_year()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.de_witt_survival"><code class="docutils literal notranslate"><span class="pre">de_witt_survival()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.discount_factor"><code class="docutils literal notranslate"><span class="pre">discount_factor()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.doubling_time"><code class="docutils literal notranslate"><span class="pre">doubling_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.effective_annual_rate"><code class="docutils literal notranslate"><span class="pre">effective_annual_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.equivalent_rate"><code class="docutils literal notranslate"><span class="pre">equivalent_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.fisher_nominal_rate"><code class="docutils literal notranslate"><span class="pre">fisher_nominal_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.fisher_real_rate"><code class="docutils literal notranslate"><span class="pre">fisher_real_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.future_value"><code class="docutils literal notranslate"><span class="pre">future_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.irr"><code class="docutils literal notranslate"><span class="pre">irr()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.irr_all"><code class="docutils literal notranslate"><span class="pre">irr_all()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.is_leap_year"><code class="docutils literal notranslate"><span class="pre">is_leap_year()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.life_annuity_value"><code class="docutils literal notranslate"><span class="pre">life_annuity_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.loan_payment"><code class="docutils literal notranslate"><span class="pre">loan_payment()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.mirr"><code class="docutils literal notranslate"><span class="pre">mirr()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.npv"><code class="docutils literal notranslate"><span class="pre">npv()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.npv_profile"><code class="docutils literal notranslate"><span class="pre">npv_profile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.perpetuity_present_value"><code class="docutils literal notranslate"><span class="pre">perpetuity_present_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.plot_amortization"><code class="docutils literal notranslate"><span class="pre">plot_amortization()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.plot_cash_flows"><code class="docutils literal notranslate"><span class="pre">plot_cash_flows()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.plot_compounding_growth"><code class="docutils literal notranslate"><span class="pre">plot_compounding_growth()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.plot_npv_profile"><code class="docutils literal notranslate"><span class="pre">plot_npv_profile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.present_value"><code class="docutils literal notranslate"><span class="pre">present_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.rule_of_72"><code class="docutils literal notranslate"><span class="pre">rule_of_72()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.sign_changes"><code class="docutils literal notranslate"><span class="pre">sign_changes()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.sinking_fund_payment"><code class="docutils literal notranslate"><span class="pre">sinking_fund_payment()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.sinking_fund_schedule"><code class="docutils literal notranslate"><span class="pre">sinking_fund_schedule()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financialkit.time_value.year_fraction"><code class="docutils literal notranslate"><span class="pre">year_fraction()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/time_value.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

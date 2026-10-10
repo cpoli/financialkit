@@ -1,0 +1,142 @@
+
+
+.. _sphx_glr_api_gallery_monte_carlo_quasi_monte_carlo:
+
+Quasi-Monte Carlo
+-----------------
+
+Low-discrepancy points instead of random ones: Halton and Sobol
+sequences, the Koksma-Hlawka error bound, randomized QMC with error bars,
+and high-dimensional path integrals with and without the Brownian bridge.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Johannes van der Corput (1935) built a one-dimensional sequence that fills the unit interval evenly by reflecting the binary digits of k about the radix point: 1/2, 1/4, 3/4, 1/8, 5/8, ... John Halton (1960) took one such radical-inverse sequence per coordinate, in distinct prime bases, to fill the d-dimensional cube. The points are deterministic, yet integrate far better than random ones in low dimension, with an error close to (\log n)^d / n.">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/quasi_monte_carlo/images/thumb/sphx_glr_plot_01_halton_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/quasi_monte_carlo/plot_01_halton`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Halton sequences</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jurjen Koksma (1942) in one dimension and Edmund Hlawka (1961) in many bounded the error of an equal-weight rule by a product of two numbers, one about the integrand and one about the points:">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/quasi_monte_carlo/images/thumb/sphx_glr_plot_02_koksma_hlawka_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/quasi_monte_carlo/plot_02_koksma_hlawka`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Koksma-Hlawka and discrepancy</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ilya Sobol (1967) constructed sequences in base 2 whose leading points form (t, m, s)-nets: every dyadic box of volume 2^{t - m} holds exactly 2^t of the first 2^m points. With well-chosen direction numbers (Joe and Kuo&#x27;s, which scipy.stats.qmc.Sobol uses) they stay balanced in thousands of dimensions and are the workhorse of quasi-Monte Carlo in finance.">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/quasi_monte_carlo/images/thumb/sphx_glr_plot_03_sobol_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/quasi_monte_carlo/plot_03_sobol`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sobol sequences</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A deterministic point set gives one number and no error bar. Art Owen (1995) randomly permuted the digits of a net, nested so that the result is still a net: every scrambled point is uniform on the cube, so the estimate is unbiased, independent scramblings give an honest standard error, and for smooth integrands the root-mean-square error falls like N^{-3/2}, faster than the unscrambled sequence&#x27;s N^{-1}.">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/quasi_monte_carlo/images/thumb/sphx_glr_plot_04_owen_scrambling_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/quasi_monte_carlo/plot_04_owen_scrambling`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Owen scrambling: randomized QMC</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Theory said quasi-Monte Carlo should lose its edge beyond a dozen dimensions, since (\log N)^d / N only beats N^{-1/2} for astronomically large N. Spassimir Paskov and Joseph Traub (1995) priced a Goldman Sachs collateralized mortgage obligation, a 360-dimensional integral, and found Sobol points beat Monte Carlo anyway. The explanation, later formalized as effective dimension: financial integrands depend mostly on a few coordinates and their low-order interactions.">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/quasi_monte_carlo/images/thumb/sphx_glr_plot_05_paskov_traub_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/quasi_monte_carlo/plot_05_paskov_traub`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Paskov-Traub: QMC in high dimension</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Quasi-random points are best distributed in their first coordinates. If those coordinates drive the first time steps, the coarse shape of each path is left to the poorly distributed later ones. Russel Caflisch and Bradley Moskowitz (1995), and Caflisch, Morokoff and Owen (1997) for mortgage-backed securities, reordered the construction: the first coordinate sets W(T), the second W(T/2) given the ends, and so on by bisection,">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/quasi_monte_carlo/images/thumb/sphx_glr_plot_06_brownian_bridge_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/quasi_monte_carlo/plot_06_brownian_bridge`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Caflisch-Moskowitz Brownian bridge</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/monte_carlo/quasi_monte_carlo/plot_01_halton
+   /api/gallery/monte_carlo/quasi_monte_carlo/plot_02_koksma_hlawka
+   /api/gallery/monte_carlo/quasi_monte_carlo/plot_03_sobol
+   /api/gallery/monte_carlo/quasi_monte_carlo/plot_04_owen_scrambling
+   /api/gallery/monte_carlo/quasi_monte_carlo/plot_05_paskov_traub
+   /api/gallery/monte_carlo/quasi_monte_carlo/plot_06_brownian_bridge
+

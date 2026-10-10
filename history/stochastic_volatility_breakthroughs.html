@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Stochastic Volatility &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/stochastic_volatility_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Interest-Rate Models" href="interest_rate_models_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Exotic Options" href="exotic_options_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Stochastic Volatility</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-stochastic-volatility">
+<h1>Breakthroughs in Stochastic Volatility<a class="headerlink" href="#breakthroughs-in-stochastic-volatility" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/stochastic_volatility.html"><span class="doc">financialkit.stochastic_volatility hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/stochastic_volatility/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/stochastic_volatility.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“The implied volatility surface is the wrong number to put in the
+wrong formula to get the right price.”
+– attributed to Riccardo Rebonato</p>
+</div></blockquote>
+<p>Black and Scholes assumed one constant volatility, and option markets
+have disagreed ever since. Implied volatilities vary with the strike
+(the smile, and since 1987 the skew) and with the maturity, and the
+returns underneath them have fat tails, jumps and volatility that comes
+in clusters. Three families of models grew out of this: local
+volatility, which makes volatility a function of price and time;
+stochastic volatility, which gives it its own random dynamics; and
+jumps, which let prices move discontinuously. Their practical success
+depended on two further ideas: pricing through the characteristic
+function by Fourier inversion, and compact parametrisations of the
+smile itself. This chronology traces the ideas behind
+<a class="reference internal" href="../api/stochastic_volatility.html#module-financialkit.stochastic_volatility" title="financialkit.stochastic_volatility"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cox-s-constant-elasticity-of-variance" id="id1">1975 – Cox’s Constant Elasticity of Variance</a></p></li>
+<li><p><a class="reference internal" href="#merton-s-jump-diffusion" id="id2">1976 – Merton’s Jump Diffusion</a></p></li>
+<li><p><a class="reference internal" href="#hull-and-white-s-stochastic-volatility" id="id3">1987 – Hull and White’s Stochastic Volatility</a></p></li>
+<li><p><a class="reference internal" href="#madan-and-seneta-s-variance-gamma" id="id4">1990 – Madan and Seneta’s Variance Gamma</a></p></li>
+<li><p><a class="reference internal" href="#heston-s-square-root-stochastic-volatility" id="id5">1993 – Heston’s Square-Root Stochastic Volatility</a></p></li>
+<li><p><a class="reference internal" href="#dupire-s-local-volatility" id="id6">1994 – Dupire’s Local Volatility</a></p></li>
+<li><p><a class="reference internal" href="#bates-jumps-with-stochastic-volatility" id="id7">1996 – Bates: Jumps with Stochastic Volatility</a></p></li>
+<li><p><a class="reference internal" href="#madan-carr-and-chang-s-skewed-variance-gamma" id="id8">1998 – Madan, Carr and Chang’s Skewed Variance Gamma</a></p></li>
+<li><p><a class="reference internal" href="#carr-and-madan-s-fft" id="id9">1999 – Carr and Madan’s FFT</a></p></li>
+<li><p><a class="reference internal" href="#lewis-s-single-integral-formula" id="id10">2001 – Lewis’s Single-Integral Formula</a></p></li>
+<li><p><a class="reference internal" href="#hagan-s-sabr-model" id="id11">2002 – Hagan’s SABR Model</a></p></li>
+<li><p><a class="reference internal" href="#kou-s-double-exponential-jumps" id="id12">2002 – Kou’s Double-Exponential Jumps</a></p></li>
+<li><p><a class="reference internal" href="#gatheral-s-svi" id="id13">2004 – Gatheral’s SVI</a></p></li>
+<li><p><a class="reference internal" href="#lee-s-moment-formula" id="id14">2004 – Lee’s Moment Formula</a></p></li>
+<li><p><a class="reference internal" href="#andersen-s-quadratic-exponential-scheme" id="id15">2008 – Andersen’s Quadratic-Exponential Scheme</a></p></li>
+<li><p><a class="reference internal" href="#fang-and-oosterlee-s-cos-method" id="id16">2008 – Fang and Oosterlee’s COS Method</a></p></li>
+<li><p><a class="reference internal" href="#lord-koekkoek-and-van-dijk-s-full-truncation" id="id17">2010 – Lord, Koekkoek and van Dijk’s Full Truncation</a></p></li>
+</ul>
+</nav>
+<section id="cox-s-constant-elasticity-of-variance">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1975 – Cox’s Constant Elasticity of Variance</a><a class="headerlink" href="#cox-s-constant-elasticity-of-variance" title="Link to this heading">#</a></h2>
+<p>John Cox, in a Stanford working paper that circulated for twenty years
+before it was published, let the instantaneous variance of returns be
+a power of the price. With an elasticity <span class="math notranslate nohighlight">\(\beta &lt; 1\)</span> volatility
+rises as the price falls, the leverage effect Fischer Black had just
+reported: a falling share price raises a firm’s debt-to-equity ratio and
+with it the risk of its equity. The model produces a downward skew in
+implied volatility from one extra parameter, and Mark Schroder (1989)
+expressed its option prices through the noncentral chi-square
+distribution.</p>
+<div class="math notranslate nohighlight">
+\[dS = r S\,dt + \sigma S^{\beta}\,dW, \qquad
+\sigma_{\mathrm{loc}}(S) = \sigma S^{\beta - 1}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.local_vol.cev_price()</span></code>
+implements Schroder’s formula for <span class="math notranslate nohighlight">\(\beta\)</span> below and above 1, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">cev_local_vol()</span></code>
+gives the local volatility. The example checks the formula against an
+Euler simulation and plots the skew for several elasticities.</p>
+<p><em>References:</em> J. C. Cox, “Notes on Option Pricing I: Constant Elasticity
+of Variance Diffusions,” Stanford University working paper (1975),
+reprinted in <em>Journal of Portfolio Management</em> 23 (1996) 15-17;
+M. Schroder, “Computing the Constant Elasticity of Variance Option
+Pricing Formula,” <em>Journal of Finance</em> 44 (1989) 211-219.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In 1975 John Cox let the volatility depend on the price, dS = r S\,dt + \sigma S^{\beta}\,dW. The local volatility is \sigma S^{\beta - 1}: for \beta &lt; 1 it rises as the price falls, the leverage effect Fischer Black had just documented, and the implied volatility skews down in the strike. Schroder (1989) gave the prices in closed form with the noncentral chi-square distribution. Here the closed form is checked against an Euler simulation of the SDE and the skew is shown for several elasticities, each scaled to a 20% at-the-money local volatility."><img alt="" src="../_images/sphx_glr_plot_01_cox_cev_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/local_vol/plot_01_cox_cev.html"><span class="doc">Cox’s constant elasticity of variance</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cox's constant elasticity of variance</div>
+</div></div></section>
+<section id="merton-s-jump-diffusion">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1976 – Merton’s Jump Diffusion</a><a class="headerlink" href="#merton-s-jump-diffusion" title="Link to this heading">#</a></h2>
+<p>Robert Merton added a Poisson stream of jumps with lognormal sizes to
+geometric Brownian motion. A jump cannot be hedged by trading the stock
+continuously, so Black and Scholes’s replication argument breaks down;
+Merton assumed that jump risk is diversifiable across the market and
+therefore unpriced. Conditioning on the number of jumps then turns the
+option price into a Poisson-weighted sum of Black-Scholes prices. Jumps
+give fat-tailed returns and steep short-dated smiles that flatten with
+maturity.</p>
+<div class="math notranslate nohighlight">
+\[C = \sum_{n \ge 0} \frac{e^{-\lambda' T}(\lambda' T)^n}{n!}\,
+C_{BS}\!\left(\sigma_n^2 = \sigma^2 + \frac{n\delta^2}{T},\;
+r_n = r - \lambda\bar k + \frac{n \ln(1 + \bar k)}{T}\right)\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/stochastic_volatility.html#financialkit.stochastic_volatility.MertonJumpModel" title="financialkit.stochastic_volatility.systems.jumps.MertonJumpModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.jumps.MertonJumpModel</span></code></a>
+gives the characteristic function and samples terminal returns, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">merton_jump_price()</span></code>
+sums the series. The example compares the series with simulation, shows
+the fat left tail and plots smiles at three maturities.</p>
+<p><em>References:</em> R. C. Merton, “Option Pricing When Underlying Stock
+Returns Are Discontinuous,” <em>Journal of Financial Economics</em> 3 (1976)
+125-144.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1976) added Poisson jumps with lognormal sizes to geometric Brownian motion. If the jump risk is diversifiable it is not priced, and conditioning on the number of jumps turns the option into a Poisson mixture of Black-Scholes prices with adjusted rates and volatilities. Jumps fatten the tails of the return distribution, and because a few jumps matter far more over a week than over five years, they make short-dated smiles much steeper than long-dated ones."><img alt="" src="../_images/sphx_glr_plot_01_merton_jump_diffusion_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/jumps/plot_01_merton_jump_diffusion.html"><span class="doc">Merton’s jump diffusion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's jump diffusion</div>
+</div></div></section>
+<section id="hull-and-white-s-stochastic-volatility">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1987 – Hull and White’s Stochastic Volatility</a><a class="headerlink" href="#hull-and-white-s-stochastic-volatility" title="Link to this heading">#</a></h2>
+<p>John Hull and Alan White gave the variance its own diffusion. When the
+variance is independent of the stock, the stock is lognormal
+conditional on the variance path, with the path’s average variance; the
+option price is therefore the Black-Scholes price averaged over the
+distribution of that average, the <em>mixing</em> formula. Hull and White
+expanded it in a series for lognormal variance. The model explained why
+deep in- and out-of-the-money options trade above their Black-Scholes
+values while at-the-money options trade slightly below.</p>
+<div class="math notranslate nohighlight">
+\[f = \int C_{BS}(\bar V)\, h(\bar V \mid V_0)\, d\bar V, \qquad
+\bar V = \frac1T \int_0^T V_t\, dt\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.heston.hull_white_price()</span></code>
+sums the series to third order, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">hull_white_mixing_mc()</span></code>
+computes the mixing integral by simulating variance paths with
+<a class="reference internal" href="../api/integrators.html#financialkit.integrators.gbm_paths" title="financialkit.integrators.gbm_paths"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.gbm_paths()</span></code></a>. The example shows where the
+series holds and the symmetric smile.</p>
+<p><em>References:</em> J. Hull and A. White, “The Pricing of Options on Assets
+with Stochastic Volatilities,” <em>Journal of Finance</em> 42 (1987) 281-300.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Hull and White (1987) let the variance follow its own lognormal diffusion, dV = \xi V\,dW, independent of the stock. Conditional on the variance path the stock is lognormal with the path&#x27;s average variance \bar V, so the option price is the Black-Scholes price averaged over the distribution of \bar V: the mixing formula. They expanded it in a series in \xi^2 T; here it is also computed by simulating variance paths. Because the variance is uncorrelated with the stock the smile is symmetric, and the at-the-money price falls below Black-Scholes, which is concave in the variance there."><img alt="" src="../_images/sphx_glr_plot_01_hull_white_mixing_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/heston/plot_01_hull_white_mixing.html"><span class="doc">Hull and White’s stochastic volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hull and White's stochastic volatility</div>
+</div></div></section>
+<section id="madan-and-seneta-s-variance-gamma">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1990 – Madan and Seneta’s Variance Gamma</a><a class="headerlink" href="#madan-and-seneta-s-variance-gamma" title="Link to this heading">#</a></h2>
+<p>Dilip Madan and Eugene Seneta ran a Brownian motion on a random clock:
+business time advances by independent gamma-distributed increments, so
+markets are calm on some days and frantic on others. The resulting
+variance gamma process is a pure-jump Lévy process with infinitely many
+small jumps and no diffusion at all. Its returns are symmetric and
+leptokurtic, with semi-heavy tails, and its density is a closed form in
+the modified Bessel function. It was one of the first Lévy models fitted
+to stock returns.</p>
+<div class="math notranslate nohighlight">
+\[X_t = \sigma W_{G_t}, \qquad G_t \sim \Gamma\!\left(\frac{t}{\nu}, \nu\right), \qquad
+E\!\left[e^{iuX_t}\right] = \left(1 + \tfrac12\sigma^2\nu u^2\right)^{-t/\nu}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/stochastic_volatility.html#financialkit.stochastic_volatility.VarianceGammaModel" title="financialkit.stochastic_volatility.systems.jumps.VarianceGammaModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.jumps.VarianceGammaModel</span></code></a>
+with <code class="docutils literal notranslate"><span class="pre">theta</span> <span class="pre">=</span> <span class="pre">0</span></code> gives the characteristic function, the Bessel-function
+density and sampling by subordination. The example plots the densities
+for several clock variances, checks the kurtosis of simulated draws and
+shows the symmetric smile.</p>
+<p><em>References:</em> D. B. Madan and E. Seneta, “The Variance Gamma (V.G.)
+Model for Share Market Returns,” <em>Journal of Business</em> 63 (1990)
+511-524.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Madan and Seneta (1990) ran a Brownian motion on a random business clock: gamma-distributed time G_t, with variance rate \nu. The result, \sigma W_{G_t}, is a pure-jump Lévy process with infinitely many small jumps, symmetric, and with tails heavier than the normal&#x27;s but lighter than a power law. The density is closed form in terms of a modified Bessel function. The clock&#x27;s variance \nu sets the excess kurtosis (3\nu/T)."><img alt="" src="../_images/sphx_glr_plot_02_madan_seneta_variance_gamma_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/jumps/plot_02_madan_seneta_variance_gamma.html"><span class="doc">Madan and Seneta’s variance gamma</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Madan and Seneta's variance gamma</div>
+</div></div></section>
+<section id="heston-s-square-root-stochastic-volatility">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1993 – Heston’s Square-Root Stochastic Volatility</a><a class="headerlink" href="#heston-s-square-root-stochastic-volatility" title="Link to this heading">#</a></h2>
+<p>Steven Heston chose a variance process that mean-reverts and stays
+positive, the square-root diffusion of Cox, Ingersoll and Ross,
+correlated with the stock. Because the model is affine, its
+characteristic function solves Riccati equations in closed form. Heston
+wrote the call as the stock times one exercise probability minus the
+discounted strike times another, each recovered from the characteristic
+function by one Fourier integral. Negative correlation produces the
+equity skew and the volatility of variance produces its curvature,
+which made Heston’s the reference stochastic volatility model.</p>
+<div class="math notranslate nohighlight">
+\[dv = \kappa(\theta - v)\,dt + \xi\sqrt{v}\,dW_2, \qquad
+C = S P_1 - K e^{-rT} P_2, \qquad
+P_j = \frac12 + \frac1\pi \int_0^\infty \operatorname{Re}\!\left[\frac{e^{-iu\ln K} f_j(u)}{iu}\right] du\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/stochastic_volatility.html#financialkit.stochastic_volatility.HestonModel" title="financialkit.stochastic_volatility.systems.heston.HestonModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.heston.HestonModel</span></code></a>
+uses the “little trap” form of the characteristic function, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">heston_price()</span></code>
+implements the two-probability formula, which reproduces Andersen’s
+reference prices. The example simulates paths and shows how the
+correlation and the volatility of variance shape the smile.</p>
+<p><em>References:</em> S. L. Heston, “A Closed-Form Solution for Options with
+Stochastic Volatility with Applications to Bond and Currency Options,”
+<em>Review of Financial Studies</em> 6 (1993) 327-343; H. Albrecher, P. Mayer,
+W. Schoutens and J. Tistaert, “The Little Heston Trap,” <em>Wilmott
+Magazine</em> (January 2007) 83-92.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Steven Heston (1993) gave the variance a mean-reverting square-root diffusion correlated with the stock,"><img alt="" src="../_images/sphx_glr_plot_02_heston_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/heston/plot_02_heston.html"><span class="doc">The Heston model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Heston model</div>
+</div></div></section>
+<section id="dupire-s-local-volatility">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1994 – Dupire’s Local Volatility</a><a class="headerlink" href="#dupire-s-local-volatility" title="Link to this heading">#</a></h2>
+<p>Bruno Dupire, and independently Emanuel Derman and Iraj Kani with
+implied trees, showed that the whole surface of European option prices
+determines a unique diffusion whose volatility depends only on the
+price and time, and that reproduces every one of those prices. The
+local volatility is read off the surface with the forward equation for
+call prices. It became the standard way to price exotics consistently
+with the vanillas, although its smile dynamics are wrong: it predicts
+that the smile moves the opposite way to the spot.</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2(K, T) = \frac{\partial_T C + (r - q) K\,\partial_K C + q C}{\tfrac12 K^2\,\partial_{KK} C}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.local_vol.dupire_local_vol()</span></code>
+applies the formula to a price grid by finite differences, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">local_vol_paths()</span></code>
+simulates the result through <a class="reference internal" href="../api/integrators.html#financialkit.integrators.euler_maruyama" title="financialkit.integrators.euler_maruyama"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.euler_maruyama()</span></code></a>.
+The example recovers the CEV local volatility from CEV prices and
+reprices the options by simulation.</p>
+<p><em>References:</em> B. Dupire, “Pricing with a Smile,” <em>Risk</em> 7(1) (1994)
+18-20; E. Derman and I. Kani, “Riding on a Smile,” <em>Risk</em> 7(2) (1994)
+32-39.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In 1994 Bruno Dupire showed that a full surface of call prices C(K, T) pins down a unique local volatility \sigma(S, t) that reproduces it,"><img alt="" src="../_images/sphx_glr_plot_02_dupire_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/local_vol/plot_02_dupire.html"><span class="doc">Dupire’s local volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Dupire's local volatility</div>
+</div></div></section>
+<section id="bates-jumps-with-stochastic-volatility">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1996 – Bates: Jumps with Stochastic Volatility</a><a class="headerlink" href="#bates-jumps-with-stochastic-volatility" title="Link to this heading">#</a></h2>
+<p>David Bates, studying Deutsche mark currency options around the 1987
+crash, found that stochastic volatility could fit long-dated smiles but
+not short-dated ones, which need jumps. Adding Merton’s lognormal jumps
+to Heston’s model gave both: the jumps steepen the short end and the
+stochastic variance the long end. Because the two components are
+independent, the characteristic function is simply the product of the
+two, and Fourier pricing carries over unchanged.</p>
+<div class="math notranslate nohighlight">
+\[\phi_{\mathrm{Bates}}(u) = \phi_{\mathrm{Heston}}(u)\,
+\exp\!\left(\lambda T\left[e^{iu\mu_J - \delta^2 u^2/2} - 1 - iu\bar k\right]\right)\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/stochastic_volatility.html#financialkit.stochastic_volatility.BatesModel" title="financialkit.stochastic_volatility.systems.jumps.BatesModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.jumps.BatesModel</span></code></a>
+multiplies the Heston and Merton characteristic functions. The example
+compares Heston and Bates smiles at three maturities.</p>
+<p><em>References:</em> D. S. Bates, “Jumps and Stochastic Volatility: Exchange
+Rate Processes Implicit in Deutsche Mark Options,” <em>Review of Financial
+Studies</em> 9 (1996) 69-107.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="David Bates (1996), studying Deutsche mark options, found that neither jumps nor stochastic volatility alone fit the smile at every maturity. Diffusive stochastic volatility needs time to build up a skew, so Heston&#x27;s short-dated smiles are too flat; jumps act at once but their effect washes out with maturity. Putting Merton&#x27;s lognormal jumps on top of Heston gives both: the characteristic function is simply the product of the two."><img alt="" src="../_images/sphx_glr_plot_03_bates_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/jumps/plot_03_bates.html"><span class="doc">Bates: jumps and stochastic volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bates: jumps and stochastic volatility</div>
+</div></div></section>
+<section id="madan-carr-and-chang-s-skewed-variance-gamma">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1998 – Madan, Carr and Chang’s Skewed Variance Gamma</a><a class="headerlink" href="#madan-carr-and-chang-s-skewed-variance-gamma" title="Link to this heading">#</a></h2>
+<p>Madan, Carr and Chang gave the variance gamma process a drift
+<span class="math notranslate nohighlight">\(\theta\)</span> in business time. A negative drift puts more mass in the
+left tail, so the symmetric Madan-Seneta smile becomes a skew, and the
+process has three parameters that control volatility, skewness and
+kurtosis almost separately. They priced European options in closed
+form and showed that the skewed model fits S&amp;P 500 options far better
+than Black-Scholes. Fang and Oosterlee later used one of their
+parameter sets as a benchmark for Fourier methods.</p>
+<div class="math notranslate nohighlight">
+\[X_t = \theta G_t + \sigma W_{G_t}, \qquad
+E\!\left[e^{iuX_t}\right] = \left(1 - iu\theta\nu + \tfrac12\sigma^2\nu u^2\right)^{-t/\nu}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/stochastic_volatility.html#financialkit.stochastic_volatility.VarianceGammaModel" title="financialkit.stochastic_volatility.systems.jumps.VarianceGammaModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.jumps.VarianceGammaModel</span></code></a>
+takes the drift <code class="docutils literal notranslate"><span class="pre">theta</span></code>, includes the martingale correction and gives
+the critical moments of the price. The example reproduces Fang and
+Oosterlee’s reference prices and shows how <span class="math notranslate nohighlight">\(\theta\)</span> skews the
+density and the smile.</p>
+<p><em>References:</em> D. B. Madan, P. P. Carr and E. C. Chang, “The Variance
+Gamma Process and Option Pricing,” <em>European Finance Review</em> 2 (1998)
+79-105.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Madan, Carr and Chang (1998) added a drift \theta in business time: X = \theta G_t + \sigma W_{G_t}. A negative \theta moves mass into the left tail, turning the symmetric Madan-Seneta smile into the equity skew with one extra parameter, and they priced options in closed form. Fang and Oosterlee (2008) later used one of their parameter sets as a benchmark; it is reproduced below."><img alt="" src="../_images/sphx_glr_plot_04_madan_carr_chang_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/jumps/plot_04_madan_carr_chang.html"><span class="doc">Madan, Carr and Chang’s skewed variance gamma</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Madan, Carr and Chang's skewed variance gamma</div>
+</div></div></section>
+<section id="carr-and-madan-s-fft">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1999 – Carr and Madan’s FFT</a><a class="headerlink" href="#carr-and-madan-s-fft" title="Link to this heading">#</a></h2>
+<p>Peter Carr and Dilip Madan observed that the call price, as a function
+of the log strike, is not square integrable, but that damping it by
+<span class="math notranslate nohighlight">\(e^{\alpha k}\)</span> makes it so, and that the Fourier transform of the
+damped price is a simple expression in the characteristic function of
+the log price. A single fast Fourier transform then gives call prices
+at thousands of strikes at once, for any model with a known
+characteristic function. It turned Heston, variance gamma and the other
+Lévy models into practical tools for calibration.</p>
+<div class="math notranslate nohighlight">
+\[C(k) = \frac{e^{-\alpha k}}{\pi} \int_0^\infty e^{-ivk}
+\frac{e^{-rT}\phi_{\ln S_T}(v - (\alpha + 1)i)}{\alpha^2 + \alpha - v^2 + i(2\alpha + 1)v}\, dv\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.fourier.carr_madan_fft()</span></code>
+evaluates the integral with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.fft.html#scipy.fft.fft" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.fft.fft()</span></code></a> and Simpson weights,
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">carr_madan_price()</span></code>
+interpolates the grid. The example checks the grid against
+Black-Scholes and scans the damping exponent.</p>
+<p><em>References:</em> P. Carr and D. B. Madan, “Option Valuation Using the Fast
+Fourier Transform,” <em>Journal of Computational Finance</em> 2(4) (1999)
+61-73.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Carr and Madan (1999) noticed that the call price, as a function of the log strike k, is not integrable, but e^{\alpha k} C(k) is, and that its Fourier transform is a simple expression in the characteristic function. One fast Fourier transform then prices calls at thousands of strikes at once, for any model with a known characteristic function. The grids are linked: integration spacing \eta and strike spacing \lambda satisfy \lambda\eta = 2\pi/N."><img alt="" src="../_images/sphx_glr_plot_01_carr_madan_fft_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/fourier/plot_01_carr_madan_fft.html"><span class="doc">Carr and Madan’s FFT</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Carr and Madan's FFT</div>
+</div></div></section>
+<section id="lewis-s-single-integral-formula">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">2001 – Lewis’s Single-Integral Formula</a><a class="headerlink" href="#lewis-s-single-integral-formula" title="Link to this heading">#</a></h2>
+<p>Alan Lewis treated the option payoff and the characteristic function as
+generalised Fourier transforms, each living on its own strip of the
+complex plane. Moving the inversion contour to
+<span class="math notranslate nohighlight">\(\operatorname{Im} u = -\tfrac12\)</span>, between the call and the put
+strips, gives a single real integral whose integrand decays like
+<span class="math notranslate nohighlight">\(u^{-2}\)</span> for any model. The formula needs no damping parameter and
+is robust for pure-jump models, where Heston’s two integrals converge
+slowly.</p>
+<div class="math notranslate nohighlight">
+\[C = S e^{-qT} - \frac{\sqrt{FK}\,e^{-rT}}{\pi} \int_0^\infty
+\operatorname{Re}\!\left[e^{iu\ln(F/K)}\phi\!\left(u - \tfrac i2\right)\right] \frac{du}{u^2 + \tfrac14}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.fourier.lewis_price()</span></code>
+evaluates the integral with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html#scipy.integrate.quad" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.integrate.quad()</span></code></a>. The example
+compares its integrand and prices with Heston’s formula, for Heston and
+for variance gamma.</p>
+<p><em>References:</em> A. L. Lewis, “A Simple Option Formula for General
+Jump-Diffusion and Other Exponential Lévy Processes,” working paper
+(2001); A. L. Lewis, <em>Option Valuation under Stochastic Volatility</em>
+(Finance Press, 2000).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Alan Lewis (2001) moved the Fourier inversion contour to \operatorname{Im} u = -\tfrac12, half way between the strips where the call and the put transforms live. There the price is one real integral,"><img alt="" src="../_images/sphx_glr_plot_02_lewis_formula_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/fourier/plot_02_lewis_formula.html"><span class="doc">Lewis’s single-integral formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lewis's single-integral formula</div>
+</div></div></section>
+<section id="hagan-s-sabr-model">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">2002 – Hagan’s SABR Model</a><a class="headerlink" href="#hagan-s-sabr-model" title="Link to this heading">#</a></h2>
+<p>Patrick Hagan, Deep Kumar, Andrew Lesniewski and Diana Woodward showed
+that local volatility predicts the wrong dynamics for the smile and
+proposed the stochastic <span class="math notranslate nohighlight">\(\alpha\beta\rho\)</span> model instead, together
+with a singular-perturbation formula for its Black implied volatility.
+The formula is explicit, fast and accurate for the strikes that matter,
+and each parameter has one job: <span class="math notranslate nohighlight">\(\beta\)</span> the backbone,
+<span class="math notranslate nohighlight">\(\rho\)</span> the skew, <span class="math notranslate nohighlight">\(\nu\)</span> the curvature. SABR became the market
+standard for interest-rate smiles.</p>
+<div class="math notranslate nohighlight">
+\[dF = \alpha F^{\beta}\,dW_1, \qquad d\alpha = \nu\alpha\,dW_2, \qquad
+\sigma_B(F) = \frac{\alpha}{F^{1-\beta}}\left[1 + \left(\frac{(1-\beta)^2\alpha^2}{24F^{2-2\beta}}
++ \frac{\rho\beta\nu\alpha}{4F^{1-\beta}} + \frac{2 - 3\rho^2}{24}\nu^2\right)T\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.smile.sabr_implied_vol()</span></code>
+implements Hagan’s formula, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">sabr_calibrate()</span></code>
+fits it with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html#scipy.optimize.least_squares" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.least_squares()</span></code></a>. The example calibrates
+a noisy smile and varies each parameter.</p>
+<p><em>References:</em> P. S. Hagan, D. Kumar, A. S. Lesniewski and D. E. Woodward,
+“Managing Smile Risk,” <em>Wilmott Magazine</em> (September 2002) 84-108.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Hagan, Kumar, Lesniewski and Woodward (2002) observed that local volatility predicts the wrong dynamics: when the forward rises, a local volatility model moves the smile the wrong way. Their stochastic \alpha\beta\rho model, dF = \alpha F^\beta\,dW_1, d\alpha = \nu\alpha\,dW_2, has an asymptotic implied-volatility formula that became the market standard for swaption smiles. Each parameter has one job: \beta the backbone, \rho the skew, \nu the curvature. Here a smile is calibrated and each parameter varied in turn."><img alt="" src="../_images/sphx_glr_plot_01_sabr_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/smile/plot_01_sabr.html"><span class="doc">Hagan’s SABR model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hagan's SABR model</div>
+</div></div></section>
+<section id="kou-s-double-exponential-jumps">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">2002 – Kou’s Double-Exponential Jumps</a><a class="headerlink" href="#kou-s-double-exponential-jumps" title="Link to this heading">#</a></h2>
+<p>Steven Kou replaced Merton’s normal jump sizes with an asymmetric
+double exponential: upward jumps at one rate, downward at another. The
+model reproduces both the asymmetric fat tails of returns and the
+smile, and because the exponential distribution is memoryless, the
+overshoot of a barrier is again exponential, so barrier, lookback and
+American options have analytic solutions. The exponential tails also
+cap the moments of the price, which ties the model to Lee’s wing
+formula two years later.</p>
+<div class="math notranslate nohighlight">
+\[f_Y(y) = p\,\eta_1 e^{-\eta_1 y}\,\mathbf 1_{y \ge 0} + (1 - p)\,\eta_2 e^{\eta_2 y}\,\mathbf 1_{y &lt; 0}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/stochastic_volatility.html#financialkit.stochastic_volatility.KouModel" title="financialkit.stochastic_volatility.systems.jumps.KouModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.jumps.KouModel</span></code></a>
+gives the characteristic function, the critical moments and sampling by
+gamma-distributed jump totals. The example reproduces Kou’s published
+price and compares exponential with Gaussian jump tails.</p>
+<p><em>References:</em> S. G. Kou, “A Jump-Diffusion Model for Option Pricing,”
+<em>Management Science</em> 48 (2002) 1086-1101.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Steven Kou (2002) took the log jump sizes to be exponential, with rate \eta_1 upward (probability p) and \eta_2 downward. The two exponential tails give the asymmetric, leptokurtic returns seen in data, and because the exponential distribution is memoryless the overshoot over a barrier is again exponential, which makes barrier and lookback options tractable. The tails also cap the moments, E[S_T^{s}] &lt; \infty only for -\eta_2 &lt; s &lt; \eta_1."><img alt="" src="../_images/sphx_glr_plot_05_kou_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/jumps/plot_05_kou.html"><span class="doc">Kou’s double-exponential jumps</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kou's double-exponential jumps</div>
+</div></div></section>
+<section id="gatheral-s-svi">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">2004 – Gatheral’s SVI</a><a class="headerlink" href="#gatheral-s-svi" title="Link to this heading">#</a></h2>
+<p>Jim Gatheral, presenting Merrill Lynch’s practice at the Global
+Derivatives conference in Madrid, introduced the stochastic volatility
+inspired parametrisation of total implied variance. It is a hyperbola
+in log-moneyness, whose asymptotes are the straight wings that Lee’s
+theorem requires, and it is the large-maturity limit of Heston’s
+implied variance. Five parameters fit equity smiles closely, and later
+work with Antoine Jacquier gave conditions under which an SVI surface is
+free of static arbitrage.</p>
+<div class="math notranslate nohighlight">
+\[w(k) = a + b\left[\rho(k - m) + \sqrt{(k - m)^2 + \sigma^2}\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.smile.svi_total_variance()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">svi_fit()</span></code>
+evaluate and fit raw SVI, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">durrleman_g()</span></code>
+checks for butterfly arbitrage. The example fits SVI to Heston smiles at
+three maturities.</p>
+<p><em>References:</em> J. Gatheral, “A Parsimonious Arbitrage-Free Implied
+Volatility Parameterization with Application to the Valuation of
+Volatility Derivatives,” Global Derivatives &amp; Risk Management, Madrid
+(2004); J. Gatheral and A. Jacquier, “Arbitrage-Free SVI Volatility
+Surfaces,” <em>Quantitative Finance</em> 14 (2014) 59-71.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jim Gatheral presented the stochastic volatility inspired (SVI) parametrisation at Global Derivatives in 2004: the total implied variance w(k) = \sigma_{BS}^2 T in log-moneyness k,"><img alt="" src="../_images/sphx_glr_plot_02_svi_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/smile/plot_02_svi.html"><span class="doc">Gatheral’s SVI</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Gatheral's SVI</div>
+</div></div></section>
+<section id="lee-s-moment-formula">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">2004 – Lee’s Moment Formula</a><a class="headerlink" href="#lee-s-moment-formula" title="Link to this heading">#</a></h2>
+<p>Roger Lee proved, without assuming any model, that total implied
+variance grows at most linearly in the log strike, with a slope no
+greater than 2, and that the exact slope is determined by the number of
+finite moments of the price. Heavy right tails, with few finite moments,
+give steep right wings. The result constrains every smile
+parametrisation and extrapolation, and it reads a model’s tail
+behaviour straight off its smile.</p>
+<div class="math notranslate nohighlight">
+\[\limsup_{k \to \infty} \frac{\sigma_{BS}^2(k)\,T}{k} = 2 - 4\left(\sqrt{\tilde p^2 + \tilde p} - \tilde p\right), \qquad
+\tilde p = \sup\{p : E[S_T^{1+p}] &lt; \infty\}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.smile.lee_wing_slope()</span></code>
+evaluates the formula, and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">KouModel.critical_moments</span></code>
+and <code class="xref py py-meth docutils literal notranslate"><span class="pre">VarianceGammaModel.critical_moments</span></code>
+supply the moments. The example shows Kou smiles approaching Lee’s
+bounds in both wings.</p>
+<p><em>References:</em> R. W. Lee, “The Moment Formula for Implied Volatility at
+Extreme Strikes,” <em>Mathematical Finance</em> 14 (2004) 469-480.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Roger Lee (2004) proved that the total implied variance can grow at most linearly in the log strike, and that the slope is fixed by how many moments the price has. If \tilde p is the supremum of the p with E[S_T^{1+p}] &lt; \infty, then"><img alt="" src="../_images/sphx_glr_plot_03_lee_moment_formula_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/smile/plot_03_lee_moment_formula.html"><span class="doc">Lee’s moment formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lee's moment formula</div>
+</div></div></section>
+<section id="andersen-s-quadratic-exponential-scheme">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">2008 – Andersen’s Quadratic-Exponential Scheme</a><a class="headerlink" href="#andersen-s-quadratic-exponential-scheme" title="Link to this heading">#</a></h2>
+<p>Leif Andersen addressed the practical problem of simulating Heston when
+the Feller condition fails, as it does in most calibrations, so that
+the variance often reaches zero. Rather than discretising the SDE, he
+matched the first two moments of the exact noncentral chi-square
+transition with a scaled squared Gaussian when the variance is large
+and with a point mass at zero plus an exponential tail when it is
+small. Combined with a careful step for the stock, the scheme is nearly
+unbiased at a few steps per year on test cases where Euler schemes are
+badly biased.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}v_{t+\Delta} = \begin{cases} a(b + Z)^2, &amp; \psi \le \psi_c \\
+0 \text{ w.p. } p, \text{ else } \mathrm{Exp}(\beta), &amp; \psi &gt; \psi_c \end{cases}, \qquad
+\psi = \frac{\operatorname{Var}[v_{t+\Delta}]}{E[v_{t+\Delta}]^2}\end{split}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.simulation.heston_paths()</span></code>
+with <code class="docutils literal notranslate"><span class="pre">scheme=&quot;qe&quot;</span></code> implements the scheme, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">heston_mc_price()</span></code>
+prices with it. The example measures its bias against full truncation on
+Andersen’s Case I and shows the atom at zero.</p>
+<p><em>References:</em> L. Andersen, “Simple and Efficient Simulation of the Heston
+Stochastic Volatility Model,” <em>Journal of Computational Finance</em> 11(3)
+(2008) 1-42.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Leif Andersen (2008) simulated the Heston variance by matching the mean and variance of its exact noncentral chi-square transition with something cheap to sample: a scaled squared Gaussian when the variance is well away from zero, and a point mass at zero plus an exponential tail when it is close, switching at \psi = s^2/m^2 = 1.5. The spot then takes a step that integrates the variance with the trapezoidal rule. On Andersen&#x27;s hardest test case (Feller condition badly violated, ten years) QE is nearly unbiased with a few steps per year, where Euler schemes are far off."><img alt="" src="../_images/sphx_glr_plot_01_andersen_qe_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/simulation/plot_01_andersen_qe.html"><span class="doc">Andersen’s quadratic-exponential scheme</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Andersen's quadratic-exponential scheme</div>
+</div></div></section>
+<section id="fang-and-oosterlee-s-cos-method">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">2008 – Fang and Oosterlee’s COS Method</a><a class="headerlink" href="#fang-and-oosterlee-s-cos-method" title="Link to this heading">#</a></h2>
+<p>Fang Fang and Kees Oosterlee truncated the density of the log return to
+an interval set by its cumulants and expanded it in a Fourier cosine
+series. The series coefficients come straight from the characteristic
+function, and the payoff’s coefficients are closed form, so a price is
+a short dot product. For smooth densities the error falls exponentially
+with the number of terms, which made COS faster than the FFT for most
+models, and it extends to Bermudan and barrier options.</p>
+<div class="math notranslate nohighlight">
+\[V = e^{-rT} \sum_{k=0}^{N-1}{}' \operatorname{Re}\!\left[\phi\!\left(\frac{k\pi}{b - a}\right) e^{-ik\pi a/(b - a)}\right] V_k\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.fourier.cos_price()</span></code>
+prices puts by the series and calls by parity, with the truncation
+interval from <code class="xref py py-func docutils literal notranslate"><span class="pre">truncation_range()</span></code>,
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">cos_density()</span></code>
+recovers densities. The example shows exponential convergence for
+Heston and slower convergence for short-dated variance gamma.</p>
+<p><em>References:</em> F. Fang and C. W. Oosterlee, “A Novel Pricing Method for
+European Options Based on Fourier-Cosine Series Expansions,” <em>SIAM
+Journal on Scientific Computing</em> 31 (2008) 826-848.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Fang and Oosterlee (2008) truncated the density of the log return to an interval [a, b] set by its cumulants and expanded it in a cosine series, whose coefficients are read directly off the characteristic function. The payoff&#x27;s cosine coefficients are closed form, so a price is a dot product of two short vectors. For smooth densities the error falls exponentially with the number of terms; for a density with a kink, like short-dated variance gamma, only algebraically."><img alt="" src="../_images/sphx_glr_plot_03_cos_method_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/fourier/plot_03_cos_method.html"><span class="doc">Fang and Oosterlee’s COS method</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fang and Oosterlee's COS method</div>
+</div></div></section>
+<section id="lord-koekkoek-and-van-dijk-s-full-truncation">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">2010 – Lord, Koekkoek and van Dijk’s Full Truncation</a><a class="headerlink" href="#lord-koekkoek-and-van-dijk-s-full-truncation" title="Link to this heading">#</a></h2>
+<p>An Euler step can push the square-root variance below zero, and the
+literature had proposed several repairs: absorbing at zero, reflecting,
+taking absolute values, or truncating in the diffusion only. Roger Lord,
+Remmert Koekkoek and Dick van Dijk put them all in one framework and
+proposed <em>full truncation</em>: let the variance go negative but use its
+positive part in both the drift and the diffusion. It had the smallest
+bias of the Euler schemes in their tests and remains the default simple
+scheme.</p>
+<div class="math notranslate nohighlight">
+\[v_{t+\Delta} = v_t + \kappa(\theta - v_t^+)\,\Delta + \xi\sqrt{v_t^+}\,\Delta W\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility.systems.simulation.heston_paths()</span></code>
+with <code class="docutils literal notranslate"><span class="pre">scheme=&quot;full_truncation&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;partial_truncation&quot;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&quot;higham_mao&quot;</span></code> runs the Euler schemes through
+<a class="reference internal" href="../api/integrators.html#financialkit.integrators.euler_maruyama" title="financialkit.integrators.euler_maruyama"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.euler_maruyama()</span></code></a> with correlated increments.
+The example compares their biases on Andersen’s Case I.</p>
+<p><em>References:</em> R. Lord, R. Koekkoek and D. van Dijk, “A Comparison of
+Biased Simulation Schemes for Stochastic Volatility Models,”
+<em>Quantitative Finance</em> 10 (2010) 177-194.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An Euler step for the square-root variance can go negative, and the repairs proposed in the literature differ in where they take the positive part: in the diffusion only (partial truncation, Deelstra and Delbaen 1998), as an absolute value in the diffusion (Higham and Mao 2005), or in both the drift and the diffusion while letting the variance itself go negative (full truncation). Lord, Koekkoek and van Dijk (2010) put them in one framework and found full truncation the least biased. All three schemes here run through financialkit.integrators.euler_maruyama with correlated increments."><img alt="" src="../_images/sphx_glr_plot_02_full_truncation_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/stochastic_volatility/simulation/plot_02_full_truncation.html"><span class="doc">Lord, Koekkoek and van Dijk’s full truncation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lord, Koekkoek and van Dijk's full truncation</div>
+</div></div></section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="exotic_options_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Exotic Options</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="interest_rate_models_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Interest-Rate Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cox-s-constant-elasticity-of-variance">1975 – Cox’s Constant Elasticity of Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merton-s-jump-diffusion">1976 – Merton’s Jump Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hull-and-white-s-stochastic-volatility">1987 – Hull and White’s Stochastic Volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#madan-and-seneta-s-variance-gamma">1990 – Madan and Seneta’s Variance Gamma</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heston-s-square-root-stochastic-volatility">1993 – Heston’s Square-Root Stochastic Volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dupire-s-local-volatility">1994 – Dupire’s Local Volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bates-jumps-with-stochastic-volatility">1996 – Bates: Jumps with Stochastic Volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#madan-carr-and-chang-s-skewed-variance-gamma">1998 – Madan, Carr and Chang’s Skewed Variance Gamma</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carr-and-madan-s-fft">1999 – Carr and Madan’s FFT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lewis-s-single-integral-formula">2001 – Lewis’s Single-Integral Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hagan-s-sabr-model">2002 – Hagan’s SABR Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kou-s-double-exponential-jumps">2002 – Kou’s Double-Exponential Jumps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gatheral-s-svi">2004 – Gatheral’s SVI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lee-s-moment-formula">2004 – Lee’s Moment Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#andersen-s-quadratic-exponential-scheme">2008 – Andersen’s Quadratic-Exponential Scheme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fang-and-oosterlee-s-cos-method">2008 – Fang and Oosterlee’s COS Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lord-koekkoek-and-van-dijk-s-full-truncation">2010 – Lord, Koekkoek and van Dijk’s Full Truncation</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/stochastic_volatility_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.monte_carlo hub </_generated/subpackages/monte_carlo>` · :doc:`History </history/monte_carlo_breakthroughs>` · :doc:`Examples </api/gallery/monte_carlo/index>` · :doc:`API reference </api/monte_carlo>`

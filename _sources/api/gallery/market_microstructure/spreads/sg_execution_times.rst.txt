@@ -1,0 +1,46 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_market_microstructure_spreads_sg_execution_times:
+
+
+Computation times
+=================
+**00:00.329** total execution time for 4 files **from api/gallery/market_microstructure/spreads**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_02_roll_estimator.py` (``plot_02_roll_estimator.py``)
+     - 00:00.174
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_01_demsetz_spreads.py` (``plot_01_demsetz_spreads.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_04_corwin_schultz.py` (``plot_04_corwin_schultz.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_03_lee_ready.py` (``plot_03_lee_ready.py``)
+     - 00:00.028
+     - 0.0

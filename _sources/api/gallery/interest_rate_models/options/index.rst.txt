@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_api_gallery_interest_rate_models_options:
+
+Rate options
+------------
+
+Options on bonds, caps, floors and swaptions: Jamshidian's closed form
+and decomposition in Gaussian short-rate models, and Black's formula in
+the LIBOR and swap market models.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Farshid Jamshidian (1989) priced a European option on a zero-coupon bond in Vasicek&#x27;s model in closed form. Under the measure that uses the option-expiry bond as numeraire, the forward bond price P(0, S)/P(0, T) is a lognormal martingale, so">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/options/images/thumb/sphx_glr_plot_01_jamshidian_bond_option_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/options/plot_01_jamshidian_bond_option`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jamshidian: an exact bond option formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An option on a coupon bond is not a portfolio of options on its coupons, in general. Jamshidian (1989) noticed that in a one-factor model it is: every zero-coupon bond price falls with the short rate, so the bond is above its strike exactly when the short rate is below a critical r^, and then each zero is above K_i = P(T, t_i; r^). Hence">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/options/images/thumb/sphx_glr_plot_02_jamshidian_swaption_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/options/plot_02_jamshidian_swaption`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jamshidian's decomposition: swaptions in one-factor models</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Traders priced each caplet with Black&#x27;s formula on its forward LIBOR rate long before anyone could say which model justified it. Alan Brace, Dariusz Gatarek and Marek Musiela (1997), with Miltersen, Sandmann and Sondermann, built that model: under the measure that uses the payment bond as numeraire, the simple forward rate F_k = [P(0, t_k)/P(0, t_{k+1}) - 1]/\tau is a martingale, and if it is lognormal">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/options/images/thumb/sphx_glr_plot_03_bgm_caps_floors_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/options/plot_03_bgm_caps_floors`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brace-Gatarek-Musiela: caps and floors by Black's formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jamshidian (1997) showed that the market&#x27;s way of quoting swaptions is also exact in a model of its own. Under the measure that uses the swap&#x27;s fixed-leg annuity A = \sum_i \tau_i P(0, t_i) as numeraire, the forward swap rate S = [P(0, T_0) - P(0, T_n)]/A is a martingale, and if it is lognormal a payer swaption is">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/options/images/thumb/sphx_glr_plot_04_black_swaption_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/options/plot_04_black_swaption`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jamshidian's swap market model: Black swaptions</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/interest_rate_models/options/plot_01_jamshidian_bond_option
+   /api/gallery/interest_rate_models/options/plot_02_jamshidian_swaption
+   /api/gallery/interest_rate_models/options/plot_03_bgm_caps_floors
+   /api/gallery/interest_rate_models/options/plot_04_black_swaption
+

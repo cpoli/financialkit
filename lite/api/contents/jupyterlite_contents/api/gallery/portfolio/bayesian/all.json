@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878481Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878481Z",
+      "mimetype": null,
+      "name": "plot_02_michaud_resampling.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/bayesian/plot_02_michaud_resampling.ipynb",
+      "size": 3984,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.878358Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.878358Z",
+      "mimetype": null,
+      "name": "plot_01_black_litterman.ipynb",
+      "path": "jupyterlite_contents/api/gallery/portfolio/bayesian/plot_01_black_litterman.ipynb",
+      "size": 4949,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.249139Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.249470Z",
+  "mimetype": null,
+  "name": "bayesian",
+  "path": "jupyterlite_contents/api/gallery/portfolio/bayesian",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

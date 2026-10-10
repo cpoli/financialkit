@@ -1,0 +1,529 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of ``financialkit.portfolio``:
+Markowitz's frontier, Tobin's tangency portfolio, Merton's analytic
+frontier and the 1/N benchmark; Kelly betting, Merton's portfolio problem
+and CPPI; single-index and Ledoit-Wolf covariance estimates; the Sharpe
+and Sortino ratios and Grinold's fundamental law; Black-Litterman and
+Michaud resampling; and CVaR optimization, maximum diversification, risk
+parity and hierarchical risk parity.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/portfolio/<section>/<script>.py``.
+
+Sections
+--------
+
+- **mean_variance** -- the Markowitz frontier, Tobin separation, Merton's
+  closed form and DeMiguel-Garlappi-Uppal's 1/N.
+- **growth** -- the Kelly criterion, Merton's portfolio problem and CPPI.
+- **covariance** -- Sharpe's single-index model and Ledoit-Wolf shrinkage.
+- **performance** -- the Sharpe ratio, Grinold's fundamental law and the
+  Sortino ratio.
+- **bayesian** -- Black-Litterman and Michaud's resampled frontier.
+- **risk_based** -- CVaR optimization, the most-diversified portfolio,
+  risk parity and hierarchical risk parity.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Estimation-aware optimization
+-----------------------------
+
+Taming the error in expected returns with a market prior or by
+resampling.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Robert Litterman (1992), at Goldman Sachs, started mean-variance optimization from the expected returns that make the market portfolio optimal, \Pi = \delta\Sigma w_{mkt}, rather than from historical averages. Investors&#x27; views then tilt those returns in proportion to their confidence. This reproduces He and Litterman&#x27;s (1999) seven-country example: the view that German equities will beat the rest of Europe by 5% moves weight into Germany, out of France and the UK, and leaves the other countries&#x27; weights alone.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/bayesian/images/thumb/sphx_glr_plot_01_black_litterman_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/bayesian/plot_01_black_litterman`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black-Litterman: equilibrium plus views</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Michaud (1998) called mean-variance optimizers &quot;estimation-error maximizers&quot;: they put the most weight on the assets whose expected returns were most overestimated. His remedy treats the estimates as one draw among many. Resample histories from them, compute each history&#x27;s frontier, and average the weights rank by rank along the frontier. The resampled portfolios are more diversified and change more gradually with risk than the classical corner solutions.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/bayesian/images/thumb/sphx_glr_plot_02_michaud_resampling_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/bayesian/plot_02_michaud_resampling`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Michaud's resampled efficiency</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Covariance estimation
+---------------------
+
+Structured and shrunk estimates of the covariance matrix, the input that
+mean-variance optimizers are most sensitive to after the means.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Markowitz&#x27;s method needed every pairwise covariance, d(d+1)/2 numbers, which no 1960s computer (or analyst) could supply for hundreds of stocks. William Sharpe (1963) assumed that stocks move together only through a common market index, R_i = \alpha_i + \beta_i R_m + \varepsilon_i, so the covariance is \sigma_m^2\beta\beta&#x27; + \mathrm{diag}(\sigma_{\varepsilon}^2), with 3d + 1 parameters. The structure also filters noise: with short histories, the single-index estimate is closer to the truth than the sample covariance.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/covariance/images/thumb/sphx_glr_plot_01_single_index_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/covariance/plot_01_single_index`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sharpe's single-index model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="When the number of assets is comparable to the number of observations, the sample covariance&#x27;s eigenvalues spread out far more than the true ones: the smallest are too small, so the minimum-variance optimizer loads up on spurious &quot;riskless&quot; combinations. Olivier Ledoit and Michael Wolf (2004) shrank the sample matrix towards a structured target, \delta F + (1 - \delta)S, with the intensity \delta estimated from the data to minimize the expected squared error. Their two targets are a scaled identity and the constant-correlation matrix.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/covariance/images/thumb/sphx_glr_plot_02_ledoit_wolf_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/covariance/plot_02_ledoit_wolf`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ledoit-Wolf shrinkage</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Growth and dynamic strategies
+-----------------------------
+
+Maximizing the long-run growth of wealth, the continuous-time
+consumption and investment problem, and portfolio insurance.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Kelly (1956), at Bell Labs, asked how a gambler with a private wire should bet. Staking the fraction f of wealth on a bet won with probability p at odds b, wealth grows at the rate g(f) = p\log(1 + bf) + q\log(1 - f) per bet, maximized by f^* = p - q/b. The Kelly bettor eventually outgrows any other fixed-fraction strategy; betting more than twice Kelly makes growth negative even though every bet is favourable.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/growth/images/thumb/sphx_glr_plot_01_kelly_criterion_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/growth/plot_01_kelly_criterion`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Kelly criterion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1969) solved the lifetime consumption and investment problem in continuous time. With a stock following geometric Brownian motion, a riskless rate r and constant relative risk aversion \gamma, the optimal policy is to keep the constant fraction">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/growth/images/thumb/sphx_glr_plot_02_merton_portfolio_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/growth/plot_02_merton_portfolio`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's portfolio problem</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Robert Jones (1987) proposed a simple rule for protecting a floor: hold m times the cushion (wealth above the floor) in stocks and the rest in bonds. When stocks fall the cushion shrinks and so does the exposure, so under continuous trading wealth never touches the floor; Black and Perold (1992) showed the cushion is then a power m of the stock price. With discrete rebalancing, a fall of more than 1/m between trades breaks through the floor: gap risk.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/growth/images/thumb/sphx_glr_plot_03_cppi_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/growth/plot_03_cppi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black and Jones's constant proportion portfolio insurance</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Mean-variance
+-------------
+
+Portfolios with the least variance for their mean, with and without
+short sales and a riskless asset, and the naive benchmark they struggle
+to beat out of sample.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Harry Markowitz (1952) argued that an investor should look at a portfolio&#x27;s expected return and its variance together, and hold only portfolios with the least variance for their mean. Diversification then has a precise meaning: combining imperfectly correlated assets moves the frontier to the left of every asset on its own. With short sales the frontier is a hyperbola; without them, every point is a quadratic program, solved here with scipy.optimize.minimize.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/mean_variance/images/thumb/sphx_glr_plot_01_markowitz_frontier_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/mean_variance/plot_01_markowitz_frontier`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Markowitz's mean-variance frontier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="James Tobin (1958) added a riskless asset to Markowitz&#x27;s problem. Combinations of cash and any risky portfolio lie on a straight line, and the steepest such line touches the frontier at the tangency portfolio. Every mean-variance investor holds that same mix of risky assets and differs only in how much cash goes with it: the risky choice separates from the attitude to risk. The line is the capital market line, and its slope is the highest attainable Sharpe ratio.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/mean_variance/images/thumb/sphx_glr_plot_02_tobin_tangency_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/mean_variance/plot_02_tobin_tangency`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tobin separation and the tangency portfolio</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1972) derived the unconstrained frontier in closed form. Four scalars,">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/mean_variance/images/thumb/sphx_glr_plot_03_merton_analytic_frontier_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/mean_variance/plot_03_merton_analytic_frontier`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's analytic frontier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="DeMiguel, Garlappi and Uppal (2009) re-estimated fourteen optimized portfolio rules on rolling windows and compared their out-of-sample Sharpe ratios with simply holding every asset equally. None beat 1/N reliably. Here the true model is known: ten assets with a genuinely better tangency portfolio. The sample mean-variance rule, the tangency portfolio of the estimated moments, still loses to 1/N unless its estimation window is very long, because errors in the estimated means swamp the gain from optimizing.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/mean_variance/images/thumb/sphx_glr_plot_04_one_over_n_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/mean_variance/plot_04_one_over_n`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">DeMiguel-Garlappi-Uppal: optimal versus 1/N</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Performance measurement
+-----------------------
+
+Return per unit of risk, its sampling error, and where skill comes from.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Sharpe (1966) ranked 34 mutual funds by their reward-to-variability ratio, the mean excess return divided by its standard deviation. By Tobin&#x27;s separation it is the right yardstick for an investor&#x27;s whole portfolio: leverage changes the return but not the ratio. It is also an estimate, and Andrew Lo (2002) showed how noisy: with independent returns its standard error is \sqrt{(1 + SR^2/2)/n} per period, so years of data separate good managers from lucky ones only slowly.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/performance/images/thumb/sphx_glr_plot_01_sharpe_ratio_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/performance/plot_01_sharpe_ratio`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Sharpe ratio</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Grinold (1989) decomposed an active manager&#x27;s information ratio into skill and breadth:">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/performance/images/thumb/sphx_glr_plot_02_fundamental_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/performance/plot_02_fundamental_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Grinold's fundamental law of active management</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Volatility penalizes a fund for its best months as much as for its worst. Frank Sortino and Lee Price (1994) measured risk instead by the downside deviation, the root mean square shortfall below a minimum acceptable return \tau,">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/performance/images/thumb/sphx_glr_plot_03_sortino_ratio_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/performance/plot_03_sortino_ratio`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Sortino ratio</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Risk-based allocation
+---------------------
+
+Portfolios built from risk alone: tail risk, diversification and equal
+risk contributions.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Value at risk is not convex in the portfolio weights, so minimizing it is hard. R. Tyrrell Rockafellar and Stanislav Uryasev (2000) showed that conditional value at risk (expected shortfall) is, and better: over a set of scenarios, minimizing it is a linear program,">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/risk_based/images/thumb/sphx_glr_plot_01_cvar_optimization_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/risk_based/plot_01_cvar_optimization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rockafellar-Uryasev CVaR optimization</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Yves Choueifaty and Yves Coignard (2008) defined the diversification ratio of a long-only portfolio as its weighted average volatility over its actual volatility,">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/risk_based/images/thumb/sphx_glr_plot_02_most_diversified_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/risk_based/plot_02_most_diversified`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Choueifaty's most-diversified portfolio</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An equally weighted stock-bond portfolio takes nearly all its risk from the stocks. Sébastien Maillard, Thierry Roncalli and Jérôme Teiletche (2010) studied the equal risk contribution portfolio, in which each asset&#x27;s Euler contribution w_i(\Sigma w)_i/\sigma_p to the portfolio volatility is the same. It always exists and is unique, and its volatility lies between the minimum-variance and 1/N portfolios&#x27;. It is computed here from Spinu&#x27;s convex reformulation.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/risk_based/images/thumb/sphx_glr_plot_03_risk_parity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/risk_based/plot_03_risk_parity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Maillard-Roncalli-Teiletche risk parity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Marcos Lopez de Prado (2016) observed that inverting a noisy covariance matrix, as every quadratic optimizer does, amplifies its errors. His hierarchical risk parity never inverts it: it clusters assets by the correlation distance \sqrt{(1-\rho_{ij})/2}, reorders them along the dendrogram so similar assets sit together, then splits capital top down between halves in inverse proportion to their variance. Its risk varies less from one estimation sample to the next than the minimum-variance portfolio&#x27;s, though with few observations per asset minimum variance can still be less risky on average.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/risk_based/images/thumb/sphx_glr_plot_04_hierarchical_risk_parity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/risk_based/plot_04_hierarchical_risk_parity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lopez de Prado's hierarchical risk parity</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/portfolio/bayesian/index.rst
+   /api/gallery/portfolio/covariance/index.rst
+   /api/gallery/portfolio/growth/index.rst
+   /api/gallery/portfolio/mean_variance/index.rst
+   /api/gallery/portfolio/performance/index.rst
+   /api/gallery/portfolio/risk_based/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: portfolio_python.zip </api/gallery/portfolio/portfolio_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: portfolio_jupyter.zip </api/gallery/portfolio/portfolio_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

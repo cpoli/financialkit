@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.883533Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.883533Z",
+      "mimetype": null,
+      "name": "plot_02_heston.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/heston/plot_02_heston.ipynb",
+      "size": 2961,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.883327Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.883327Z",
+      "mimetype": null,
+      "name": "plot_01_hull_white_mixing.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/heston/plot_01_hull_white_mixing.ipynb",
+      "size": 3447,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.260077Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.260334Z",
+  "mimetype": null,
+  "name": "heston",
+  "path": "jupyterlite_contents/api/gallery/stochastic_volatility/heston",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

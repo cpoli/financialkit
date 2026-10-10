@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.871792Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.871792Z",
+      "mimetype": null,
+      "name": "plot_01_amihud.ipynb",
+      "path": "jupyterlite_contents/api/gallery/market_microstructure/liquidity/plot_01_amihud.ipynb",
+      "size": 2977,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.233685Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.233770Z",
+  "mimetype": null,
+  "name": "liquidity",
+  "path": "jupyterlite_contents/api/gallery/market_microstructure/liquidity",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.risk hub </_generated/subpackages/risk>` · :doc:`History </history/risk_breakthroughs>` · :doc:`Examples </api/gallery/risk/index>` · :doc:`API reference </api/risk>`

@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_api_gallery_exotic_options_barriers:
+
+Barrier options
+---------------
+
+Options that die or come alive when the price touches a level: Merton's
+image solution, the Reiner-Rubinstein family of closed forms, double
+barriers and the correction for barriers checked only at discrete dates.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In the paper that put the Black-Scholes model on a rigorous footing, Robert Merton (1973) also priced the first barrier option: a call that dies if the stock falls to H. The barrier is an absorbing boundary for the log-price, and the method of images from the heat equation cancels the probability of crossing it by subtracting a call started from the mirror image H^2/S of the spot:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/barriers/images/thumb/sphx_glr_plot_01_merton_down_and_out_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/barriers/plot_01_merton_down_and_out`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's down-and-out call</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Eric Reiner and Mark Rubinstein (1991) wrote down closed forms for all eight single-barrier options -- calls and puts, down and up, in and out -- each with a cash rebate. Every one is a sum of six building blocks A, \dots, F: the vanilla option, the vanilla struck at the barrier, their reflections through the barrier and the two rebates. Without rebates, a knock-in and a knock-out with the same terms add up to the vanilla option.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/barriers/images/thumb/sphx_glr_plot_02_reiner_rubinstein_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/barriers/plot_02_reiner_rubinstein`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reiner-Rubinstein barrier options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A double knock-out dies if the price leaves a corridor (L, U). Naoto Ikeda and Masaaki Kunitomo (1992) solved it, even for curved (exponential) barriers, with an infinite series of images reflected alternately through both boundaries. The terms decay like e^{-2n^2\ln^2(U/L)/\sigma^2T}, so two or three are plenty unless the corridor is very narrow. Unlike a vanilla call, a double knock-out call loses value as volatility rises: more paths hit a barrier.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/barriers/images/thumb/sphx_glr_plot_03_double_barrier_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/barriers/plot_03_double_barrier`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ikeda-Kunitomo double barriers</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Real barrier contracts check the price once a day, not continuously, and a path can slip through the barrier between two checks. Mark Broadie, Paul Glasserman and Steven Kou (1997) showed that the discretely monitored option is, to o(1/\sqrt m), the continuous one with the barrier shifted away from the spot:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/barriers/images/thumb/sphx_glr_plot_04_discrete_barrier_correction_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/barriers/plot_04_discrete_barrier_correction`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Broadie-Glasserman-Kou discrete barriers</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/exotic_options/barriers/plot_01_merton_down_and_out
+   /api/gallery/exotic_options/barriers/plot_02_reiner_rubinstein
+   /api/gallery/exotic_options/barriers/plot_03_double_barrier
+   /api/gallery/exotic_options/barriers/plot_04_discrete_barrier_correction
+

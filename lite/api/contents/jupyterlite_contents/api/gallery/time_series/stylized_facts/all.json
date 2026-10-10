@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.885968Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.885968Z",
+      "mimetype": null,
+      "name": "plot_02_hill_tail_index.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/stylized_facts/plot_02_hill_tail_index.ipynb",
+      "size": 3726,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.885846Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.885846Z",
+      "mimetype": null,
+      "name": "plot_01_mandelbrot_fat_tails.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/stylized_facts/plot_01_mandelbrot_fat_tails.ipynb",
+      "size": 4105,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.265082Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.265423Z",
+  "mimetype": null,
+  "name": "stylized_facts",
+  "path": "jupyterlite_contents/api/gallery/time_series/stylized_facts",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

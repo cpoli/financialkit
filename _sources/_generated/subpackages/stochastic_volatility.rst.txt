@@ -1,0 +1,26 @@
+financialkit.stochastic_volatility
+==================================
+
+Cox's CEV and Dupire local volatility, Hull-White and Heston stochastic volatility, Merton, variance gamma, Kou and Bates jumps, Carr-Madan FFT, Lewis and COS pricing, SABR, SVI and Lee's moment formula, and full-truncation and QE simulation.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/stochastic_volatility_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/stochastic_volatility/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/stochastic_volatility
+      :link-type: doc
+
+      Every public class and function.
+

@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_api_gallery_options_implied_vol:
+
+Implied volatility
+------------------
+
+Reading volatilities and distributions back out of option prices: the
+implied volatility, its at-the-money shortcut, the smile, and the
+risk-neutral density.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Every input to Black-Scholes is observable except the volatility. Henry Latané and Richard Rendleman (1976) turned the formula around: given a market price, solve for the volatility that reproduces it. The price is strictly increasing in \sigma between Merton&#x27;s bounds, so the root is unique; it exists only for prices strictly inside them.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/implied_vol/images/thumb/sphx_glr_plot_01_implied_volatility_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/implied_vol/plot_01_implied_volatility`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Latané-Rendleman implied volatility</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Douglas Breeden and Robert Litzenberger (1978) showed that the second strike derivative of the call price is the discounted risk-neutral density of the terminal price,">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/implied_vol/images/thumb/sphx_glr_plot_02_breeden_litzenberger_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/implied_vol/plot_02_breeden_litzenberger`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Breeden-Litzenberger risk-neutral density</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Under Black-Scholes every strike has the same implied volatility. Before October 1987 index options roughly agreed; after the crash, low-strike puts became permanently more expensive, and implied volatility fell steeply with the strike (Rubinstein 1994). Inverting a strip of option prices strike by strike shows the market&#x27;s departure from the lognormal. Here the prices come from two simple arbitrage-free models: a mixture of volatilities (a symmetric smile) and a mixture of a normal regime with a crash regime (a skew).">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/implied_vol/images/thumb/sphx_glr_plot_03_volatility_smile_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/implied_vol/plot_03_volatility_smile`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The volatility smile</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Menachem Brenner and Marti Subrahmanyam (1988) gave traders a pocket-calculator implied volatility. At the money forward,">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/implied_vol/images/thumb/sphx_glr_plot_04_brenner_subrahmanyam_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/implied_vol/plot_04_brenner_subrahmanyam`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Brenner-Subrahmanyam approximation</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/options/implied_vol/plot_01_implied_volatility
+   /api/gallery/options/implied_vol/plot_02_breeden_litzenberger
+   /api/gallery/options/implied_vol/plot_03_volatility_smile
+   /api/gallery/options/implied_vol/plot_04_brenner_subrahmanyam
+

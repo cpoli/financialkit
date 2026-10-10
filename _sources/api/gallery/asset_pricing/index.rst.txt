@@ -1,0 +1,490 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of
+``financialkit.asset_pricing``: equity valuation by discounted
+dividends, Modigliani-Miller and Shiller's variance bound; the CAPM,
+Jensen's alpha, the zero-beta CAPM and the GRS test; factor regressions,
+Fama-MacBeth, the APT, Fama-French and Carhart factors; consumption-based
+pricing and the equity premium puzzle; and the stochastic discount
+factor.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/asset_pricing/<section>/<script>.py``.
+
+Sections
+--------
+
+- **valuation** -- Williams's dividend discount model, Modigliani-Miller,
+  Gordon growth and Shiller's excess volatility.
+- **capm** -- the security market line, Jensen's alpha, Black's zero-beta
+  CAPM and the Gibbons-Ross-Shanken test.
+- **factors** -- Fama-MacBeth regressions, Ross's APT, the Fama-French
+  three factors and Carhart's momentum.
+- **consumption** -- Lucas's tree, Breeden's consumption CAPM and the
+  equity premium puzzle.
+- **sdf** -- Harrison-Kreps state prices and the Hansen-Jagannathan bound.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+The CAPM
+--------
+
+The security market line, performance measurement with Jensen's alpha,
+the zero-beta CAPM without a riskless asset, and the exact test of
+whether a portfolio is mean-variance efficient.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Sharpe (1964), with Lintner and Mossin, asked what prices must be if every investor follows Markowitz. With a riskless asset everyone holds the same tangency portfolio, so in equilibrium it is the market portfolio, and each asset&#x27;s expected return is set by its beta on the market alone:">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/capm/images/thumb/sphx_glr_plot_01_security_market_line_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/capm/plot_01_security_market_line`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sharpe's CAPM and the security market line</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Michael Jensen (1968) measured a mutual fund&#x27;s skill as the intercept of its excess return regressed on the market&#x27;s,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/capm/images/thumb/sphx_glr_plot_02_jensen_alpha_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/capm/plot_02_jensen_alpha`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jensen's alpha</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Sharpe&#x27;s CAPM assumes unlimited riskless borrowing. Fischer Black (1972) dropped it: every frontier portfolio m still prices all assets linearly, with the expected return of z, the minimum-variance portfolio uncorrelated with m, in place of the riskless rate,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/capm/images/thumb/sphx_glr_plot_03_zero_beta_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/capm/plot_03_zero_beta`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black's zero-beta CAPM</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Testing the CAPM means asking whether the market portfolio is mean-variance efficient, that is whether the time-series alphas of a set of test assets are jointly zero. Michael Gibbons, Stephen Ross and Jay Shanken (1989) gave the exact finite-sample distribution under normal errors:">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/capm/images/thumb/sphx_glr_plot_04_grs_test_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/capm/plot_04_grs_test`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Gibbons-Ross-Shanken test</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Consumption-based pricing
+-------------------------
+
+Asset prices from a representative agent's Euler equation: Lucas's
+tree, the consumption CAPM and the equity premium puzzle.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Lucas (1978) priced assets in the simplest economy that has them: a representative agent with power utility owns a tree whose fruit is the only consumption good. Prices must make the agent content to hold the tree and eat its dividend, which gives the Euler equation">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/consumption/images/thumb/sphx_glr_plot_01_lucas_tree_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/consumption/plot_01_lucas_tree`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lucas's tree</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Merton&#x27;s intertemporal CAPM needs a beta for every state variable that shifts investment opportunities. Douglas Breeden (1979) showed that they all collapse into one: since optimal consumption already responds to every state variable, an asset&#x27;s risk premium is proportional to its covariance with aggregate consumption growth,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/consumption/images/thumb/sphx_glr_plot_02_breeden_ccapm_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/consumption/plot_02_breeden_ccapm`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Breeden's consumption CAPM</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Rajnish Mehra and Edward Prescott (1985) calibrated a two-state version of Lucas&#x27;s economy to US consumption growth from 1889 to 1978 (mean 1.8%, standard deviation 3.6%, autocorrelation -0.14). Over the same period stocks earned 6.98% a year and short-term bills 0.80%: a premium of 6.18%. Searching over every time preference \beta &lt; 1 and risk aversion \gamma \le 10, they could produce a premium of at most 0.35% while keeping the riskless rate below 4%. Consumption is simply too smooth for stocks to be that risky to a power-utility agent.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/consumption/images/thumb/sphx_glr_plot_03_equity_premium_puzzle_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/consumption/plot_03_equity_premium_puzzle`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The equity premium puzzle</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Factor models
+-------------
+
+Estimating risk premia from the cross-section, the arbitrage argument
+for linear pricing, and factors built by sorting stocks on size, value
+and momentum.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Eugene Fama and James MacBeth (1973) estimated risk premia with a cross-sectional regression each month,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/factors/images/thumb/sphx_glr_plot_01_fama_macbeth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/factors/plot_01_fama_macbeth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fama-MacBeth regressions</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Stephen Ross (1976) derived linear pricing without an equilibrium model. If returns follow a factor model r_i = E[r_i] + \beta_i&#x27; f + \varepsilon_i with diversifiable \varepsilon_i, then any asset off the plane E[r_i] = r_f + \beta_i&#x27;\lambda can be combined with others into a portfolio with no cost and no factor risk that still earns a positive expected return. In a large market its idiosyncratic risk diversifies away, and the portfolio becomes an arbitrage. The pricing errors therefore have to be small for all but finitely many assets.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/factors/images/thumb/sphx_glr_plot_02_ross_apt_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/factors/plot_02_ross_apt`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ross's arbitrage pricing theory</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The CAPM fails on portfolios sorted by size and book-to-market: small stocks and value stocks earn more than their market betas justify. Eugene Fama and Kenneth French (1993) added two long-short factors built from the same sorts, SMB (small minus big) and HML (high minus low book-to-market),">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/factors/images/thumb/sphx_glr_plot_03_fama_french_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/factors/plot_03_fama_french`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fama-French three factors</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jegadeesh and Titman (1993) found that stocks with the highest returns over the past year keep outperforming for months, which the Fama-French factors cannot explain. Mark Carhart (1997) added a fourth factor, UMD (up minus down), long last year&#x27;s winners and short its losers, skipping the most recent month. With it, most of the apparent persistence in mutual fund performance disappeared: winning funds had simply held winning stocks.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/factors/images/thumb/sphx_glr_plot_04_carhart_momentum_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/factors/plot_04_carhart_momentum`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Carhart's momentum factor</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+The stochastic discount factor
+------------------------------
+
+No arbitrage as the existence of positive state prices, and the
+volatility a discount factor needs to price the assets.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Michael Harrison and David Kreps (1979) proved the fundamental theorem of asset pricing: a market has no arbitrage if and only if some strictly positive linear rule prices every traded payoff. With finitely many states it is a vector of state prices q_s &gt; 0 with p = X&#x27;q; divided by the physical probabilities it is the stochastic discount factor m_s = q_s / \pi_s, so that p = E[m x]; normalised, it is the risk-neutral measure. In a complete market the state prices are unique. In an incomplete one, a new claim has an interval of arbitrage-free prices.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/sdf/images/thumb/sphx_glr_plot_01_harrison_kreps_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/sdf/plot_01_harrison_kreps`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Harrison-Kreps: state prices and the stochastic discount factor</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lars Peter Hansen and Ravi Jagannathan (1991) asked what asset returns alone reveal about the stochastic discount factor. Any m that prices the returns, E[m R] = 1, must satisfy">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/sdf/images/thumb/sphx_glr_plot_02_hansen_jagannathan_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/sdf/plot_02_hansen_jagannathan`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Hansen-Jagannathan bound</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Valuation
+---------
+
+What a share is worth: the present value of its dividends, the effect
+of leverage on the cost of capital, and whether prices move more than
+dividends justify.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Burr Williams (1938) defined the investment value of a stock as the present value of all the dividends it will ever pay,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/valuation/images/thumb/sphx_glr_plot_01_williams_ddm_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/valuation/plot_01_williams_ddm`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Williams's dividend discount model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Franco Modigliani and Merton Miller (1958) showed that, without taxes or frictions, a firm&#x27;s value does not depend on how it is financed (Proposition I). Debt is cheaper than equity, but borrowing makes the remaining equity riskier, and its required return rises exactly enough to keep the weighted average cost of capital constant (Proposition II):">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/valuation/images/thumb/sphx_glr_plot_02_modigliani_miller_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/valuation/plot_02_modigliani_miller`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Modigliani-Miller</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Myron Gordon (1959) summed Williams&#x27;s series for dividends that grow at a constant rate, P_0 = D_1 / (r - g), and connected the growth rate to the firm&#x27;s investment: a firm that retains a share b of its earnings and earns ROE on them grows at g = b \cdot ROE. Read backwards, the model gives the market&#x27;s cost of equity as the dividend yield plus growth.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/valuation/images/thumb/sphx_glr_plot_03_gordon_growth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/valuation/plot_03_gordon_growth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gordon growth</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="If a price is the rational forecast of discounted future dividends, p_t = E_t[p^_t], then the ex-post rational price p^_t computed from the dividends actually paid equals the price plus an unforecastable error. An optimal forecast varies less than the thing it forecasts, so \sigma(p) \le \sigma(p^*). Robert Shiller (1981) found US stock prices five to thirteen times too volatile for this bound.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/valuation/images/thumb/sphx_glr_plot_04_shiller_excess_volatility_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/valuation/plot_04_shiller_excess_volatility`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Shiller's excess volatility</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/asset_pricing/capm/index.rst
+   /api/gallery/asset_pricing/consumption/index.rst
+   /api/gallery/asset_pricing/factors/index.rst
+   /api/gallery/asset_pricing/sdf/index.rst
+   /api/gallery/asset_pricing/valuation/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: asset_pricing_python.zip </api/gallery/asset_pricing/asset_pricing_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: asset_pricing_jupyter.zip </api/gallery/asset_pricing/asset_pricing_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.861395Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.861395Z",
+      "mimetype": null,
+      "name": "plot_02_isda_hazard_bootstrap.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/cds/plot_02_isda_hazard_bootstrap.ipynb",
+      "size": 3831,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.861288Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.861288Z",
+      "mimetype": null,
+      "name": "plot_01_cds_par_spread.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/cds/plot_01_cds_par_spread.ipynb",
+      "size": 3577,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.211084Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.211400Z",
+  "mimetype": null,
+  "name": "cds",
+  "path": "jupyterlite_contents/api/gallery/credit/cds",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

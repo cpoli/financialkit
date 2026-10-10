@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863198Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863198Z",
+      "mimetype": null,
+      "name": "plot_01_longstaff_schwartz.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/american/plot_01_longstaff_schwartz.ipynb",
+      "size": 4023,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.216186Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.216253Z",
+  "mimetype": null,
+  "name": "american",
+  "path": "jupyterlite_contents/api/gallery/exotic_options/american",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

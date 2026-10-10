@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863395Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863395Z",
+      "mimetype": null,
+      "name": "plot_02_turnbull_wakeman.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/asian/plot_02_turnbull_wakeman.ipynb",
+      "size": 3178,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863303Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863303Z",
+      "mimetype": null,
+      "name": "plot_01_kemna_vorst.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/asian/plot_01_kemna_vorst.ipynb",
+      "size": 3894,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.216442Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.216742Z",
+  "mimetype": null,
+  "name": "asian",
+  "path": "jupyterlite_contents/api/gallery/exotic_options/asian",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.portfolio.systems.risk_based &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/portfolio/systems/risk_based';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.portfolio.systems.risk_based</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.portfolio.systems.risk_based</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Risk-based allocation: CVaR optimization, maximum diversification, risk parity and HRP.</span>
+
+<span class="sd">These rules need no expected returns, or treat them only as a</span>
+<span class="sd">constraint. Rockafellar and Uryasev showed that minimizing conditional</span>
+<span class="sd">value at risk over scenarios is a linear program,</span>
+
+<span class="sd">.. math::</span>
+
+<span class="sd">   \\min_{w,\\,\\zeta,\\,u}\\; \\zeta + \\frac{1}{(1-\\alpha) n}\\sum_k u_k,</span>
+<span class="sd">   \\qquad u_k \\ge -r_k'w - \\zeta,\\; u_k \\ge 0,</span>
+
+<span class="sd">whose optimal :math:`\\zeta` is the value at risk. Choueifaty and Coignard</span>
+<span class="sd">maximize the diversification ratio</span>
+<span class="sd">:math:`D(w) = w'\\sigma / \\sqrt{w'\\Sigma w}`. Maillard, Roncalli and</span>
+<span class="sd">Teiletche characterized the equal risk contribution portfolio, in which</span>
+<span class="sd">every asset's Euler contribution :math:`w_i(\\Sigma w)_i` to the variance</span>
+<span class="sd">is the same, computed here through Spinu's (2013) convex program. Lopez</span>
+<span class="sd">de Prado's hierarchical risk parity clusters the correlation matrix,</span>
+<span class="sd">orders assets by the dendrogram and splits weight top-down by inverse</span>
+<span class="sd">cluster variance, never inverting the covariance matrix.</span>
+
+<span class="sd">References: R. T. Rockafellar and S. Uryasev, "Optimization of</span>
+<span class="sd">Conditional Value-at-Risk," *J. Risk* 2 (2000) 21-41; Y. Choueifaty and</span>
+<span class="sd">Y. Coignard, "Toward Maximum Diversification," *J. Portfolio Mgmt.* 35</span>
+<span class="sd">(2008) 40-51; S. Maillard, T. Roncalli and J. Teiletche, "The</span>
+<span class="sd">Properties of Equally Weighted Risk Contribution Portfolios," *J.</span>
+<span class="sd">Portfolio Mgmt.* 36 (2010) 60-70; F. Spinu, "An Algorithm for Computing</span>
+<span class="sd">Risk Parity Weights," SSRN 2297383 (2013); M. Lopez de Prado, "Building</span>
+<span class="sd">Diversified Portfolios that Outperform Out of Sample," *J. Portfolio</span>
+<span class="sd">Mgmt.* 42 (2016) 59-69.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">hierarchy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">squareform</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_ATOL</span><span class="p">,</span> <span class="n">DEFAULT_MAX_ITER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.portfolio.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CVaRResult</span><span class="p">,</span> <span class="n">HRPResult</span><span class="p">,</span> <span class="n">PortfolioResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.portfolio.systems.mean_variance</span><span class="w"> </span><span class="kn">import</span> <span class="n">min_variance_portfolio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.portfolio.utils.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">as_mean_cov</span><span class="p">,</span> <span class="n">portfolio_moments</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.risk.utils.tail</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_alpha</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"cvar_optimization"</span><span class="p">,</span>
+    <span class="s2">"diversification_ratio"</span><span class="p">,</span>
+    <span class="s2">"most_diversified_portfolio"</span><span class="p">,</span>
+    <span class="s2">"inverse_volatility_portfolio"</span><span class="p">,</span>
+    <span class="s2">"risk_parity"</span><span class="p">,</span>
+    <span class="s2">"hierarchical_risk_parity"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="cvar_optimization">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.cvar_optimization">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cvar_optimization</span><span class="p">(</span>
+    <span class="n">scenarios</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">target_return</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">long_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CVaRResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Rockafellar-Uryasev minimum-CVaR portfolio by linear programming.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    scenarios : array_like, shape (n, d)</span>
+<span class="sd">        Equally likely joint return scenarios.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Confidence level.</span>
+<span class="sd">    target_return : float, optional</span>
+<span class="sd">        Lower bound on the mean scenario return.</span>
+<span class="sd">    long_only : bool</span>
+<span class="sd">        Exclude short sales (otherwise weights lie in ``[-1, 2]``, keeping</span>
+<span class="sd">        the program bounded).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CVaRResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Two scenarios, one asset safe in each: hedging both equally removes all loss.</span>
+
+<span class="sd">    &gt;&gt;&gt; res = cvar_optimization([[0.1, -0.1], [-0.1, 0.1]], alpha=0.5)</span>
+<span class="sd">    &gt;&gt;&gt; np.round(res.weights, 6), round(res.cvar, 6) + 0.0</span>
+<span class="sd">    (array([0.5, 0.5]), 0.0)</span>
+<span class="sd">    """</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">scenarios</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">check_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="c1"># Variables: w (d), zeta (1), u (n).</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">((</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="p">))])</span>
+    <span class="n">A_ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="o">-</span><span class="n">R</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span>
+    <span class="n">b_ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">target_return</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">A_ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">A_ub</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="o">-</span><span class="n">R</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)])])</span>
+        <span class="n">b_ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b_ub</span><span class="p">,</span> <span class="o">-</span><span class="n">target_return</span><span class="p">)</span>
+    <span class="n">A_eq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)])[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">wb</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">if</span> <span class="n">long_only</span> <span class="k">else</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">linprog</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A_ub</span><span class="o">=</span><span class="n">A_ub</span><span class="p">,</span> <span class="n">b_ub</span><span class="o">=</span><span class="n">b_ub</span><span class="p">,</span> <span class="n">A_eq</span><span class="o">=</span><span class="n">A_eq</span><span class="p">,</span> <span class="n">b_eq</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[</span><span class="n">wb</span><span class="p">]</span> <span class="o">*</span> <span class="n">d</span> <span class="o">+</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[(</span><span class="mf">0.0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"highs"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">res</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"CVaR linear program failed: </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[:</span><span class="n">d</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">CVaRResult</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">d</span><span class="p">]),</span> <span class="n">cvar</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">fun</span><span class="p">),</span> <span class="n">expected_return</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">@</span> <span class="n">w</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="diversification_ratio">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.diversification_ratio">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">diversification_ratio</span><span class="p">(</span><span class="n">weights</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Choueifaty and Coignard's ratio of weighted average volatility to portfolio volatility.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    weights : array_like, shape (d,)</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        At least one for long-only weights; ``sqrt(d)`` for ``d``</span>
+<span class="sd">        uncorrelated equal-volatility assets held equally.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; diversification_ratio([0.25] * 4, np.eye(4))</span>
+<span class="sd">    2.0</span>
+<span class="sd">    """</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">C</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">C</span> <span class="o">@</span> <span class="n">w</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="most_diversified_portfolio">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.most_diversified_portfolio">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">most_diversified_portfolio</span><span class="p">(</span><span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">long_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PortfolioResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The portfolio with the largest diversification ratio.</span>
+
+<span class="sd">    Maximizing :math:`D(w)` is the minimum-variance problem on the</span>
+<span class="sd">    correlation matrix followed by dividing each weight by the asset's</span>
+<span class="sd">    volatility and renormalizing (Choueifaty and Coignard 2008); the</span>
+<span class="sd">    unconstrained answer is :math:`w \\propto \\Sigma^{-1}\\sigma`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    mu : array_like, shape (d,), optional</span>
+<span class="sd">        Used only to report the mean.</span>
+<span class="sd">    long_only : bool</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    PortfolioResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Uncorrelated assets: weights proportional to inverse volatility.</span>
+
+<span class="sd">    &gt;&gt;&gt; np.round(most_diversified_portfolio(np.diag([0.01, 0.04])).weights, 6)</span>
+<span class="sd">    array([0.666667, 0.333333])</span>
+<span class="sd">    """</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">min_variance_portfolio</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">),</span> <span class="n">long_only</span><span class="o">=</span><span class="n">long_only</span><span class="p">)</span><span class="o">.</span><span class="n">weights</span> <span class="o">/</span> <span class="n">s</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">vol</span> <span class="o">=</span> <span class="n">portfolio_moments</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">PortfolioResult</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">expected_return</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">volatility</span><span class="o">=</span><span class="n">vol</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"most_diversified"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="inverse_volatility_portfolio">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.inverse_volatility_portfolio">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">inverse_volatility_portfolio</span><span class="p">(</span><span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PortfolioResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Weights proportional to :math:`1/\\sigma_i`, the naive risk parity rule.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    mu : array_like, shape (d,), optional</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    PortfolioResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; np.round(inverse_volatility_portfolio(np.diag([0.01, 0.04])).weights, 6)</span>
+<span class="sd">    array([0.666667, 0.333333])</span>
+<span class="sd">    """</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">vol</span> <span class="o">=</span> <span class="n">portfolio_moments</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">PortfolioResult</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">expected_return</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">volatility</span><span class="o">=</span><span class="n">vol</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"inverse_volatility"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="risk_parity">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.risk_parity">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">risk_parity</span><span class="p">(</span><span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">budgets</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PortfolioResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Equal (or budgeted) risk contribution portfolio.</span>
+
+<span class="sd">    Solves Spinu's strictly convex program</span>
+<span class="sd">    :math:`\\min_{y &gt; 0} \\tfrac12 y'\\Sigma y - \\sum_i b_i \\log y_i`,</span>
+<span class="sd">    whose first-order condition :math:`y_i(\\Sigma y)_i = b_i` makes each</span>
+<span class="sd">    risk contribution proportional to its budget, by his damped Newton</span>
+<span class="sd">    iteration (hand-written: SciPy's trust-region methods stall on this</span>
+<span class="sd">    problem at rounding level), then normalizes :math:`w = y / \\mathbf 1'y`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    budgets : array_like, shape (d,), optional</span>
+<span class="sd">        Positive risk budgets; equal by default.</span>
+<span class="sd">    mu : array_like, shape (d,), optional</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    PortfolioResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With two assets, risk parity is inverse volatility whatever the correlation.</span>
+
+<span class="sd">    &gt;&gt;&gt; cov = np.array([[0.04, 0.018], [0.018, 0.09]])</span>
+<span class="sd">    &gt;&gt;&gt; np.round(risk_parity(cov).weights, 6)</span>
+<span class="sd">    array([0.6, 0.4])</span>
+<span class="sd">    """</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span> <span class="k">if</span> <span class="n">budgets</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">budgets</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"risk budgets must be positive"</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">/</span> <span class="n">b</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="c1"># Spinu's damped Newton method: the objective is self-concordant, so the</span>
+    <span class="c1"># damped step 1 / (1 + lambda) keeps y positive and converges globally,</span>
+    <span class="c1"># and the full Newton step converges quadratically once the Newton</span>
+    <span class="c1"># decrement lambda is below (3 - sqrt 5) / 2.</span>
+    <span class="n">Cs</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Cs</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span> <span class="o">@</span> <span class="n">Cs</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">DEFAULT_MAX_ITER</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">Cs</span> <span class="o">@</span> <span class="n">y</span> <span class="o">-</span> <span class="n">b</span> <span class="o">/</span> <span class="n">y</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Cs</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">g</span><span class="p">)</span>
+        <span class="n">lam</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span> <span class="o">@</span> <span class="n">step</span><span class="p">))</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">step</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">lam</span><span class="p">)</span> <span class="k">if</span> <span class="n">lam</span> <span class="o">&gt;</span> <span class="mf">0.95</span> <span class="o">*</span> <span class="p">(</span><span class="mf">3.0</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">5.0</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="k">else</span> <span class="n">step</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lam</span> <span class="o">&lt;</span> <span class="n">DEFAULT_ATOL</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"risk parity did not converge"</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">vol</span> <span class="o">=</span> <span class="n">portfolio_moments</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">PortfolioResult</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">expected_return</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">volatility</span><span class="o">=</span><span class="n">vol</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"risk_parity"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="hierarchical_risk_parity">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.hierarchical_risk_parity">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hierarchical_risk_parity</span><span class="p">(</span><span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"single"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HRPResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Lopez de Prado's hierarchical risk parity.</span>
+
+<span class="sd">    1. Cluster the assets with :func:`scipy.cluster.hierarchy.linkage` on</span>
+<span class="sd">       the distance :math:`\\sqrt{(1 - \\rho_{ij})/2}`.</span>
+<span class="sd">    2. Reorder them by the dendrogram's leaves (quasi-diagonalization).</span>
+<span class="sd">    3. Bisect the ordered list recursively, splitting each parent's weight</span>
+<span class="sd">       between its halves in inverse proportion to the variance of each</span>
+<span class="sd">       half's inverse-variance portfolio.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    method : str</span>
+<span class="sd">        Linkage method (``"single"`` in the original paper).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    HRPResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With a diagonal covariance, HRP reduces to inverse-variance weights.</span>
+
+<span class="sd">    &gt;&gt;&gt; res = hierarchical_risk_parity(np.diag([0.01, 0.04, 0.04, 0.16]))</span>
+<span class="sd">    &gt;&gt;&gt; np.round(res.weights * 25, 6)</span>
+<span class="sd">    array([16.,  4.,  4.,  1.])</span>
+<span class="sd">    """</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">),</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">((</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">rho</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">checks</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">leaves_list</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">cluster_var</span><span class="p">(</span><span class="n">idx</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx</span><span class="p">)]</span>
+        <span class="n">ivp</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sub</span><span class="p">)</span>
+        <span class="n">ivp</span> <span class="o">/=</span> <span class="n">ivp</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">ivp</span> <span class="o">@</span> <span class="n">sub</span> <span class="o">@</span> <span class="n">ivp</span><span class="p">)</span>
+
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">order</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">items</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">items</span><span class="p">[:</span> <span class="n">items</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span><span class="p">],</span> <span class="n">items</span><span class="p">[</span><span class="n">items</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">2</span> <span class="p">:]</span>
+        <span class="n">vl</span><span class="p">,</span> <span class="n">vr</span> <span class="o">=</span> <span class="n">cluster_var</span><span class="p">(</span><span class="n">left</span><span class="p">),</span> <span class="n">cluster_var</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">vl</span> <span class="o">/</span> <span class="p">(</span><span class="n">vl</span> <span class="o">+</span> <span class="n">vr</span><span class="p">)</span>
+        <span class="n">w</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">*=</span> <span class="n">a</span>
+        <span class="n">w</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">a</span>
+        <span class="n">stack</span> <span class="o">+=</span> <span class="p">[</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">HRPResult</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="n">link</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

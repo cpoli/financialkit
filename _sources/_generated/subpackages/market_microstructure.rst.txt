@@ -1,0 +1,26 @@
+financialkit.market_microstructure
+==================================
+
+Quoted, effective and realized spreads, the Roll and Corwin-Schultz estimators, Lee-Ready classification, Garman, Ho-Stoll and Avellaneda-Stoikov dealers, Kyle and Glosten-Milgrom, Hasbrouck's VAR, PIN and VPIN, square-root impact, Bertsimas-Lo and Almgren-Chriss execution, and Amihud illiquidity.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/market_microstructure_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/market_microstructure/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/market_microstructure
+      :link-type: doc
+
+      Every public class and function.
+

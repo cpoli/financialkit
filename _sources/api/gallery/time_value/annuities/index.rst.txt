@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_time_value_annuities:
+
+Annuities
+---------
+
+Streams of level payments: De Witt's life annuities, the perpetual
+consol, and Price's sinking fund.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1671 Johan de Witt, Grand Pensionary of Holland, sent the States General his Waerdye van Lyf-renten, arguing that the life annuities the province sold at 14 years&#x27; purchase were too cheap. He valued an annuity as the sum of each payment, discounted at 4% and weighted by the chance that the buyer is still alive to receive it, under a simple mortality hypothesis: an equal chance of death in every half-year up to age 53, rising to 1.5, 2 and 3 times that in the bands 53-63, 63-73 and 73-80.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/annuities/images/thumb/sphx_glr_plot_01_de_witt_life_annuity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/annuities/plot_01_de_witt_life_annuity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">De Witt's life annuities</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1751 Henry Pelham consolidated several British government debts into a single issue of &quot;3 per cent consolidated annuities&quot;, which were never to be repaid: the holder received 3 a year per 100 of face value forever. A perpetuity paying P is worth P/i at yield i, so a consol&#x27;s price moves inversely with long-term rates and at a 3% yield it trades at par. This script prices consols across yields and compares them with long but finite annuities.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/annuities/images/thumb/sphx_glr_plot_02_consol_perpetuity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/annuities/plot_02_consol_perpetuity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Consols and the perpetuity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In An Appeal to the Public on the Subject of the National Debt (1772) Richard Price showed what compound interest could do for a nation in debt: a fixed sum set aside every year and left to accumulate at interest would grow to repay the debt. The level deposit that reaches a target F in n periods is F / s_{\overline{n}|}. Pitt&#x27;s sinking fund of 1786 put the idea into practice.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/annuities/images/thumb/sphx_glr_plot_03_price_sinking_fund_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/annuities/plot_03_price_sinking_fund`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Price's sinking fund</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_value/annuities/plot_01_de_witt_life_annuity
+   /api/gallery/time_value/annuities/plot_02_consol_perpetuity
+   /api/gallery/time_value/annuities/plot_03_price_sinking_fund
+

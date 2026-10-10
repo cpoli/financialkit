@@ -1,0 +1,51 @@
+
+
+.. _sphx_glr_api_gallery_monte_carlo_multilevel:
+
+Multilevel Monte Carlo
+----------------------
+
+Giles's telescoping sum over Euler discretisations of increasing
+resolution, and its cost against standard Monte Carlo.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pricing with a discretised SDE has two errors: the bias of the time step and the statistical error. Balancing them with Euler&#x27;s scheme costs O(\varepsilon^{-3}). Michael Giles (2008), borrowing the idea of multigrid (and of Heinrich&#x27;s multilevel integration), wrote the finest approximation as a telescoping sum,">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/multilevel/images/thumb/sphx_glr_plot_01_giles_mlmc_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/multilevel/plot_01_giles_mlmc`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Giles multilevel Monte Carlo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/monte_carlo/multilevel/plot_01_giles_mlmc
+

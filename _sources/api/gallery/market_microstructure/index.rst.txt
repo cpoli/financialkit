@@ -1,0 +1,463 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of
+``financialkit.market_microstructure``: spread measures and estimators,
+trade classification, dealer and market-making models, asymmetric
+information and informed-trading measures, optimal execution and
+illiquidity.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/market_microstructure/<section>/<script>.py``.
+
+Sections
+--------
+
+- **spreads** -- Demsetz's spreads, Roll's estimator, Lee-Ready trade
+  classification and the Corwin-Schultz high-low estimator.
+- **dealers** -- Garman's Poisson dealer, Ho-Stoll inventory quotes and
+  Avellaneda-Stoikov market making.
+- **information** -- Kyle's insider, Glosten-Milgrom, Hasbrouck's
+  trade-impact VAR, PIN and VPIN.
+- **execution** -- the square-root impact law, Bertsimas-Lo and
+  Almgren-Chriss.
+- **liquidity** -- Amihud's illiquidity ratio.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Dealers
+-------
+
+Market makers who manage order flow, inventory and risk.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Mark Garman (1976) started market microstructure by modelling orders as Poisson streams: buyers arrive at rate \lambda_a(a), falling with the ask, and sellers at \lambda_b(b), rising with the bid. A monopolist dealer holding stock and cash fails when either runs out. The stock follows a gambler&#x27;s-ruin walk, so the probability of eventually running out of shares is (\lambda_a/\lambda_b)^{I_0} when sellers outnumber buyers, and one otherwise. Keeping both stock and cash growing requires \lambda_b &gt; \lambda_a and a\lambda_a &gt; b\lambda_b, hence a &gt; b: the dealer must set a spread.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/dealers/images/thumb/sphx_glr_plot_01_garman_inventory_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/dealers/plot_01_garman_inventory`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Garman's order-flow dealer</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Thomas Ho and Hans Stoll (1981) gave the dealer risk aversion. Holding inventory exposes it to price moves, so a dealer who is long lowers both quotes, making a sale to it less attractive and a purchase from it more so, until the inventory returns to zero. With order arrivals \lambda = \alpha - \beta\delta on each side, the spread itself, \alpha/\beta, does not depend on the inventory: only its position does.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/dealers/images/thumb/sphx_glr_plot_02_ho_stoll_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/dealers/plot_02_ho_stoll`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ho and Stoll: the dealer's inventory problem</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Marco Avellaneda and Sasha Stoikov (2008) let a market maker quote around a Brownian mid price s, with fills arriving at rate A e^{-k\delta} at distance \delta. A trader with exponential utility first computes the reservation price r = s - q\gamma\sigma^2(T - t), the mid price adjusted for its inventory q, and then quotes a spread \gamma\sigma^2(T-t) + \frac{2}{\gamma}\ln(1 + \gamma/k) around it. The example reproduces the comparison of their Table 1: the inventory strategy gives up a little expected profit for a much smaller variance.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/dealers/images/thumb/sphx_glr_plot_03_avellaneda_stoikov_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/dealers/plot_03_avellaneda_stoikov`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Avellaneda and Stoikov: market making in a limit order book</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Execution
+---------
+
+The cost of trading a large order, and how to schedule it.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A large order executed over a day moves the price by far less than proportionally to its size. Practitioners measured it in the 1980s and 1990s (Loeb, 1983; the BARRA market impact model of Torre, 1997): the impact of a metaorder of Q shares in a stock trading V shares a day with daily volatility \sigma is">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/execution/images/thumb/sphx_glr_plot_01_square_root_impact_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/execution/plot_01_square_root_impact`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The square-root impact law</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Dimitris Bertsimas and Andrew Lo (1998) treated buying \bar S shares over T periods as a dynamic program. If each purchase moves the price permanently by \theta per share, P_k = P_{k-1} + \theta S_k + \varepsilon_k, the best a risk-neutral trader can do is split the order evenly. If a serially correlated signal X_k also drives prices, the optimal order is linear in the remaining shares and the latest signal, and trading ahead of predicted rises pays.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/execution/images/thumb/sphx_glr_plot_02_bertsimas_lo_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/execution/plot_02_bertsimas_lo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bertsimas and Lo: optimal control of execution costs</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Almgren and Neil Chriss (2000) split impact into a permanent part \gamma and a temporary part \eta that punishes trading fast. Selling slowly is cheap in expectation but leaves the position exposed to volatility for longer. Minimising E + \lambda V gives">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/execution/images/thumb/sphx_glr_plot_03_almgren_chriss_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/execution/plot_03_almgren_chriss`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Almgren and Chriss: the efficient frontier of execution</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Information
+-----------
+
+How informed traders move prices, and how to measure their presence.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Albert Kyle (1985) placed an insider who knows the liquidation value v \sim N(p_0, \sigma_v^2) in a market with noise traders whose orders u \sim N(0, \sigma_u^2) camouflage it. A competitive market maker sees only the total flow y = x + u and sets p = E[v \mid y] = p_0 + \lambda y. In equilibrium">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/information/images/thumb/sphx_glr_plot_01_kyle_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/information/plot_01_kyle`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kyle's insider and the price impact lambda</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lawrence Glosten and Paul Milgrom (1985) explained the spread with no inventory and no costs. A competitive dealer trades one unit at a time with traders who are informed with probability \alpha. Since a buy is more likely to come from someone who knows the value is high, the dealer sets the ask to E[V \mid \text{buy}] and the bid to E[V \mid \text{sell}], losing to the informed exactly what it gains from the uninformed. Each trade updates the dealer&#x27;s belief by Bayes&#x27; rule, so prices are a martingale that converges to the truth.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/information/images/thumb/sphx_glr_plot_02_glosten_milgrom_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/information/plot_02_glosten_milgrom`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Glosten and Milgrom: a spread from adverse selection alone</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Joel Hasbrouck (1991) measured the information in trades with a vector autoregression of quote revisions r_t and signed trades x_t. Order flow is persistent and quotes also react to inventory, so a trade&#x27;s immediate price effect overstates what it reveals. The cumulative impulse response of the quote to an unexpected trade separates the two: it settles at the permanent impact, the information content, after the transitory part has decayed.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/information/images/thumb/sphx_glr_plot_03_hasbrouck_var_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/information/plot_03_hasbrouck_var`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hasbrouck's trade-impact VAR</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Easley, Kiefer, O&#x27;Hara and Paperman (1996) turned the Glosten-Milgrom logic into an estimator that needs only daily counts of buys and sells. On a day with private news (probability \alpha), informed traders add rate \mu to one side; otherwise only uninformed buys and sells arrive, at rates \varepsilon_b, \varepsilon_s. The fitted mixture gives the share of trades that are informed, \mathrm{PIN} = \alpha\mu / (\alpha\mu + \varepsilon_b + \varepsilon_s). Their finding: thinly traded stocks have a higher PIN, which explains their wider spreads.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/information/images/thumb/sphx_glr_plot_04_pin_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/information/plot_04_pin`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Easley, Kiefer, O'Hara and Paperman: the probability of informed trading</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="High-frequency markets have too many trades and too few days for the PIN likelihood. Easley, López de Prado and O&#x27;Hara (2012) measured order imbalance in volume time instead: cut the trading record into buckets of equal volume, split each one-minute bar&#x27;s volume into buys and sells by bulk volume classification, V^B = V\Phi(\Delta P/\sigma_{\Delta P}), and average |V^B - V^S|/V over the last 50 buckets. Their VPIN rose for hours before the flash crash of 6 May 2010.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/information/images/thumb/sphx_glr_plot_05_vpin_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/information/plot_05_vpin`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">VPIN: flow toxicity in volume time</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Liquidity
+---------
+
+Illiquidity measured from daily returns and volume.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Yakov Amihud (2002) proposed a liquidity measure that needs only daily returns and dollar volume: the average of |r_d| / \mathrm{DVol}_d, the price move per dollar traded. It approximates Kyle&#x27;s lambda, which needs signed order flow, and Amihud found that stocks with a higher ratio earn higher expected returns, an illiquidity premium.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/liquidity/images/thumb/sphx_glr_plot_01_amihud_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/liquidity/plot_01_amihud`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Amihud's illiquidity ratio</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Spreads
+-------
+
+The price of immediacy, measured from quotes, from trades, and from prices alone.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Harold Demsetz (1968) argued that a trader who wants to trade now pays the dealer the spread for standing ready, and that the spread shrinks as trading activity grows, because a busy dealer turns over inventory faster. Today the spread is measured three ways: the quoted spread on the screen, the effective spread actually paid relative to the midquote, and the realized spread the liquidity provider keeps once the price has moved; the difference is the price impact, lost to better-informed traders.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/spreads/images/thumb/sphx_glr_plot_01_demsetz_spreads_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/spreads/plot_01_demsetz_spreads`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Demsetz: the bid-ask spread as the price of immediacy</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Roll (1984) noticed that trades bouncing between bid and ask make successive price changes negatively correlated even when the underlying value is a random walk. With equally likely buys and sells, \operatorname{cov}(\Delta p_t, \Delta p_{t-1}) = -s^2/4, so the spread can be read off a price series with no quotes at all:">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/spreads/images/thumb/sphx_glr_plot_02_roll_estimator_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/spreads/plot_02_roll_estimator`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Roll's spread estimator</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Trade records do not say who initiated a trade. Charles Lee and Mark Ready (1991) signed trades above the midquote as buys and below it as sells, used the tick test for trades at the midquote, and compared each trade with the quote of five seconds earlier: on the NYSE the quote revision a trade caused was often time-stamped before the trade itself, so the contemporaneous quote had already moved toward the trade price.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/spreads/images/thumb/sphx_glr_plot_03_lee_ready_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/spreads/plot_03_lee_ready`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lee and Ready's trade classification</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Daily highs are usually buys at the ask and lows sells at the bid, so the high-low range contains the spread as well as volatility. Shane Corwin and Paul Schultz (2012) noticed that the volatility part of the squared range doubles over two days while the spread part does not, and solved for the spread from two one-day ranges and one two-day range. It needs only daily data, yet is far more precise than Roll&#x27;s estimator from daily closes.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/spreads/images/thumb/sphx_glr_plot_04_corwin_schultz_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/spreads/plot_04_corwin_schultz`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Corwin and Schultz's high-low spread estimator</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/market_microstructure/dealers/index.rst
+   /api/gallery/market_microstructure/execution/index.rst
+   /api/gallery/market_microstructure/information/index.rst
+   /api/gallery/market_microstructure/liquidity/index.rst
+   /api/gallery/market_microstructure/spreads/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: market_microstructure_python.zip </api/gallery/market_microstructure/market_microstructure_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: market_microstructure_jupyter.zip </api/gallery/market_microstructure/market_microstructure_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

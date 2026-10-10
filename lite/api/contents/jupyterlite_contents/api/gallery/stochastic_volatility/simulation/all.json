@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.884666Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.884666Z",
+      "mimetype": null,
+      "name": "plot_02_full_truncation.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/simulation/plot_02_full_truncation.ipynb",
+      "size": 3493,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.884555Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.884555Z",
+      "mimetype": null,
+      "name": "plot_01_andersen_qe.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/simulation/plot_01_andersen_qe.ipynb",
+      "size": 3698,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.262118Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.262386Z",
+  "mimetype": null,
+  "name": "simulation",
+  "path": "jupyterlite_contents/api/gallery/stochastic_volatility/simulation",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.872998Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.872998Z",
+      "mimetype": null,
+      "name": "plot_01_giles_mlmc.ipynb",
+      "path": "jupyterlite_contents/api/gallery/monte_carlo/multilevel/plot_01_giles_mlmc.ipynb",
+      "size": 3743,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.236510Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.236598Z",
+  "mimetype": null,
+  "name": "multilevel",
+  "path": "jupyterlite_contents/api/gallery/monte_carlo/multilevel",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

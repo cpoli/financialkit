@@ -1,0 +1,51 @@
+
+
+.. _sphx_glr_api_gallery_pde_methods_multi_factor:
+
+Multi-factor
+------------
+
+Two state variables without a two-dimensional linear solve: the
+alternating-direction implicit scheme.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="With two assets every implicit step couples a whole plane of unknowns. Donald Peaceman and Henry Rachford (1955), modelling oil reservoirs, split each step into two half steps, each implicit in one direction only, so that a step is a set of independent tridiagonal solves. PeacemanRachfordADI prices Margrabe&#x27;s option to exchange one asset for another, whose exact value is Black-Scholes with the second asset as the strike and the volatility of the ratio, \sqrt{\sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2}.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/multi_factor/images/thumb/sphx_glr_plot_01_peaceman_rachford_adi_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/multi_factor/plot_01_peaceman_rachford_adi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Peaceman-Rachford ADI</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/pde_methods/multi_factor/plot_01_peaceman_rachford_adi
+

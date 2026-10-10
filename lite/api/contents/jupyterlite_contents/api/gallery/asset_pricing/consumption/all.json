@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.859859Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.859859Z",
+      "mimetype": null,
+      "name": "plot_01_lucas_tree.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/consumption/plot_01_lucas_tree.ipynb",
+      "size": 3413,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.860052Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.860052Z",
+      "mimetype": null,
+      "name": "plot_03_equity_premium_puzzle.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/consumption/plot_03_equity_premium_puzzle.ipynb",
+      "size": 3654,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.859952Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.859952Z",
+      "mimetype": null,
+      "name": "plot_02_breeden_ccapm.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/consumption/plot_02_breeden_ccapm.ipynb",
+      "size": 2731,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.206864Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.207425Z",
+  "mimetype": null,
+  "name": "consumption",
+  "path": "jupyterlite_contents/api/gallery/asset_pricing/consumption",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

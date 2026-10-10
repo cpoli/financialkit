@@ -1,0 +1,68 @@
+
+
+.. _sphx_glr_api_gallery_fixed_income_bonds:
+
+Bonds
+-----
+
+Pricing a bond off a single yield and off a curve of zero-coupon prices.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Sidney Homer and Martin Leibowitz&#x27;s Inside the Yield Book (1972) taught a generation of bond traders to think in yield to maturity: the single rate that discounts a bond&#x27;s cash flows to its price. The script inverts prices for yields, shows a bond pulled to par as it ages at a constant yield, and separates the dirty price, which drops by a coupon on each payment date, from the quoted clean price.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/bonds/images/thumb/sphx_glr_plot_01_yield_to_maturity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/bonds/plot_01_yield_to_maturity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Inside the Yield Book: yield to maturity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In February 1985 the US Treasury&#x27;s STRIPS program (Separate Trading of Registered Interest and Principal of Securities) let dealers split a note into one zero-coupon security per payment date. A coupon bond is then exactly a portfolio of zeros. If the strips are worth more than the bond, dealers buy bonds and strip them. If they are worth less, dealers buy strips and reconstitute the bond. Either trade pulls the two prices back together.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/bonds/images/thumb/sphx_glr_plot_02_strips_zero_coupon_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/bonds/plot_02_strips_zero_coupon`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">STRIPS: a bond as a portfolio of zeros</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/fixed_income/bonds/plot_01_yield_to_maturity
+   /api/gallery/fixed_income/bonds/plot_02_strips_zero_coupon
+

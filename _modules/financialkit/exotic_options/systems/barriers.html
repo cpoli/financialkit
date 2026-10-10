@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.exotic_options.systems.barriers &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/exotic_options/systems/barriers';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.exotic_options.systems.barriers</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.exotic_options.systems.barriers</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Barrier options: knock-outs and knock-ins, single and double, continuous and discrete.</span>
+
+<span class="sd">* :func:`merton_down_and_out_call` -- Merton (1973): a down-and-out call</span>
+<span class="sd">  is the call minus the reflected call, by the method of images.</span>
+<span class="sd">* :func:`barrier_price` -- Reiner and Rubinstein (1991): closed forms for</span>
+<span class="sd">  all eight single-barrier calls and puts, with a cash rebate.</span>
+<span class="sd">* :func:`double_barrier_price` -- Ikeda and Kunitomo (1992): knock-out</span>
+<span class="sd">  and knock-in calls and puts between two flat barriers, as a rapidly</span>
+<span class="sd">  converging series of images.</span>
+<span class="sd">* :func:`discrete_barrier_price` -- Broadie, Glasserman and Kou (1997):</span>
+<span class="sd">  a barrier monitored at :math:`m` dates is priced by the continuous</span>
+<span class="sd">  formula with the barrier shifted away from the spot by</span>
+<span class="sd">  :math:`e^{\\beta\\sigma\\sqrt{T/m}}`, :math:`\\beta = -\\zeta(1/2)/\\sqrt{2\\pi}`.</span>
+<span class="sd">* :func:`barrier_option_mc` -- Monte Carlo with discrete monitoring, or</span>
+<span class="sd">  with the Brownian-bridge crossing probability for unbiased continuous</span>
+<span class="sd">  monitoring.</span>
+
+<span class="sd">References: R. C. Merton, "Theory of Rational Option Pricing," *Bell J.</span>
+<span class="sd">Econ. Manag. Sci.* 4 (1973) 141-183, Section 8; E. Reiner and M.</span>
+<span class="sd">Rubinstein, "Breaking Down the Barriers," *Risk* 4(8) (1991) 28-35; N.</span>
+<span class="sd">Ikeda and M. Kunitomo, "Pricing Options with Curved Boundaries,"</span>
+<span class="sd">*Mathematical Finance* 2 (1992) 275-298; M. Broadie, P. Glasserman and</span>
+<span class="sd">S. Kou, "A Continuity Correction for Discrete Barrier Options,"</span>
+<span class="sd">*Mathematical Finance* 7 (1997) 325-349; E. G. Haug, *The Complete Guide</span>
+<span class="sd">to Option Pricing Formulas*, 2nd ed. (McGraw-Hill, 2007), Section 4.17.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.exotic_options.utils.numerics</span><span class="w"> </span><span class="kn">import</span> <span class="n">barrier_crossing_probability</span><span class="p">,</span> <span class="n">parse_barrier_type</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.integrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">RNGLike</span><span class="p">,</span> <span class="n">gbm_paths</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.monte_carlo</span><span class="w"> </span><span class="kn">import</span> <span class="n">MonteCarloResult</span><span class="p">,</span> <span class="n">sample_mean</span><span class="p">,</span> <span class="n">vanilla_payoff</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.options</span><span class="w"> </span><span class="kn">import</span> <span class="n">black_scholes_price</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.options.utils.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">as_output</span><span class="p">,</span> <span class="n">option_sign</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"BGK_BETA"</span><span class="p">,</span>
+    <span class="s2">"merton_down_and_out_call"</span><span class="p">,</span>
+    <span class="s2">"barrier_price"</span><span class="p">,</span>
+    <span class="s2">"double_barrier_price"</span><span class="p">,</span>
+    <span class="s2">"discrete_barrier_price"</span><span class="p">,</span>
+    <span class="s2">"barrier_option_mc"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">BGK_BETA</span> <span class="o">=</span> <span class="mf">0.5825971579390106</span>
+<span class="sd">"""float: Broadie-Glasserman-Kou's constant :math:`\\beta = -\\zeta(1/2)/\\sqrt{2\\pi}`."""</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_arrays</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)))</span>
+
+
+<div class="viewcode-block" id="merton_down_and_out_call">
+<a class="viewcode-back" href="../../../../api/exotic_options.html#financialkit.exotic_options.merton_down_and_out_call">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">merton_down_and_out_call</span><span class="p">(</span><span class="n">S</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">K</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">H</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Merton's (1973) down-and-out call with the barrier at or below the strike.</span>
+
+<span class="sd">    The barrier is an absorbing boundary for the log-price, and the</span>
+<span class="sd">    method of images subtracts a call started from the reflected spot</span>
+<span class="sd">    :math:`H^2 / S`:</span>
+
+<span class="sd">    .. math:: C_{do} = c(S, K) - \\left(\\frac{H}{S}\\right)^{2b/\\sigma^2 - 1} c\\!\\left(\\frac{H^2}{S}, K\\right),</span>
+<span class="sd">              \\qquad b = r - q,</span>
+
+<span class="sd">    with :math:`c` the Black-Scholes-Merton call. It is zero once</span>
+<span class="sd">    :math:`S \\le H`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    S, K, H, T, r, sigma : array_like</span>
+<span class="sd">        Spot, strike, barrier (``H &lt;= K``), maturity, rate and volatility.</span>
+<span class="sd">    q : array_like</span>
+<span class="sd">        Continuous dividend yield.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    A barrier far below the spot hardly matters:</span>
+
+<span class="sd">    &gt;&gt;&gt; from financialkit.options import black_scholes_price</span>
+<span class="sd">    &gt;&gt;&gt; bool(abs(merton_down_and_out_call(100.0, 100.0, 50.0, 1.0, 0.05, 0.2) - black_scholes_price(100.0, 100.0, 1.0, 0.05, 0.2)) &lt; 1e-6)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">_arrays</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">H</span> <span class="o">&gt;</span> <span class="n">K</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"merton_down_and_out_call needs H &lt;= K; use barrier_price for H &gt; K"</span><span class="p">)</span>
+    <span class="n">alive</span> <span class="o">=</span> <span class="n">S</span> <span class="o">&gt;</span> <span class="n">H</span>
+    <span class="n">Ss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">alive</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="p">(</span><span class="n">H</span> <span class="o">/</span> <span class="n">Ss</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">black_scholes_price</span><span class="p">(</span><span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">Ss</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">as_output</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">alive</span><span class="p">,</span> <span class="n">black_scholes_price</span><span class="p">(</span><span class="n">Ss</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span> <span class="o">-</span> <span class="n">image</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="barrier_price">
+<a class="viewcode-back" href="../../../../api/exotic_options.html#financialkit.exotic_options.barrier_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">barrier_price</span><span class="p">(</span>
+    <span class="n">S</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">K</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">H</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">r</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">q</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">,</span>
+    <span class="n">barrier_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"down-and-out"</span><span class="p">,</span>
+    <span class="n">rebate</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Reiner-Rubinstein (1991) price of a continuously monitored single-barrier option.</span>
+
+<span class="sd">    With :math:`b = r - q`, :math:`\\mu = (b - \\sigma^2/2)/\\sigma^2` and</span>
+<span class="sd">    :math:`\\lambda = \\sqrt{\\mu^2 + 2r/\\sigma^2}`, every one of the eight</span>
+<span class="sd">    calls and puts is a sum of the building blocks :math:`A, \\dots, F` of</span>
+<span class="sd">    Haug (2007, Sec. 4.17.1): :math:`A` is the vanilla option, :math:`B`</span>
+<span class="sd">    the vanilla struck at the barrier, :math:`C` and :math:`D` their</span>
+<span class="sd">    reflections through the barrier, :math:`E` a knock-in's rebate paid at</span>
+<span class="sd">    expiry if the barrier is never hit and :math:`F` a knock-out's rebate</span>
+<span class="sd">    paid when it is hit. For example, for :math:`K &gt; H`,</span>
+
+<span class="sd">    .. math:: C_{do} = A - C + F, \\qquad C_{di} = C + E.</span>
+
+<span class="sd">    In-out parity holds when the rebate is zero:</span>
+<span class="sd">    ``knock-in + knock-out = vanilla``. If the spot is already through</span>
+<span class="sd">    the barrier, a knock-out is worth its rebate and a knock-in the</span>
+<span class="sd">    vanilla option.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    S, K, H, T, r, sigma : array_like</span>
+<span class="sd">        Spot, strike, barrier, maturity, rate and volatility.</span>
+<span class="sd">    q : array_like</span>
+<span class="sd">        Continuous dividend yield.</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+<span class="sd">    barrier_type : {"down-and-out", "down-and-in", "up-and-out", "up-and-in"}</span>
+<span class="sd">    rebate : array_like</span>
+<span class="sd">        Cash paid when a knock-out is knocked out, or at expiry when a</span>
+<span class="sd">        knock-in never knocks in.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Haug (2007), Table 4-13: S = 100, H = 95, rebate 3, T = 0.5, r = 8%,</span>
+<span class="sd">    b = 4%, sigma = 25%:</span>
+
+<span class="sd">    &gt;&gt;&gt; round(barrier_price(100.0, 90.0, 95.0, 0.5, 0.08, 0.25, q=0.04, barrier_type="down-and-out", rebate=3.0), 4)</span>
+<span class="sd">    9.0246</span>
+<span class="sd">    """</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">option_sign</span><span class="p">(</span><span class="n">option_type</span><span class="p">)</span>
+    <span class="n">is_down</span><span class="p">,</span> <span class="n">is_out</span> <span class="o">=</span> <span class="n">parse_barrier_type</span><span class="p">(</span><span class="n">barrier_type</span><span class="p">)</span>
+    <span class="n">eta</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="k">if</span> <span class="n">is_down</span> <span class="k">else</span> <span class="o">-</span><span class="mf">1.0</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">_arrays</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">rebate</span><span class="p">)</span>
+    <span class="n">knocked</span> <span class="o">=</span> <span class="n">S</span> <span class="o">&lt;=</span> <span class="n">H</span> <span class="k">if</span> <span class="n">is_down</span> <span class="k">else</span> <span class="n">S</span> <span class="o">&gt;=</span> <span class="n">H</span>
+    <span class="n">Ss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">knocked</span><span class="p">,</span> <span class="n">H</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-9</span> <span class="o">*</span> <span class="n">eta</span><span class="p">),</span> <span class="n">S</span><span class="p">)</span>  <span class="c1"># any live spot; the result is overwritten below</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Ss</span> <span class="o">/</span> <span class="n">K</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Ss</span> <span class="o">/</span> <span class="n">H</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ss</span> <span class="o">*</span> <span class="n">K</span><span class="p">))</span> <span class="o">/</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">H</span> <span class="o">/</span> <span class="n">Ss</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">H</span> <span class="o">/</span> <span class="n">Ss</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span> <span class="o">+</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">v</span>
+    <span class="n">fS</span><span class="p">,</span> <span class="n">fK</span><span class="p">,</span> <span class="n">hs</span> <span class="o">=</span> <span class="n">Ss</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">),</span> <span class="n">K</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">),</span> <span class="n">H</span> <span class="o">/</span> <span class="n">Ss</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">fS</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">phi</span> <span class="o">*</span> <span class="n">x1</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">fK</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">phi</span> <span class="o">*</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">fS</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">phi</span> <span class="o">*</span> <span class="n">x2</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">fK</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">phi</span> <span class="o">*</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">fS</span> <span class="o">*</span> <span class="n">hs</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">mu</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">y1</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">fK</span> <span class="o">*</span> <span class="n">hs</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">fS</span> <span class="o">*</span> <span class="n">hs</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">mu</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">y2</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">*</span> <span class="n">fK</span> <span class="o">*</span> <span class="n">hs</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">x2</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span> <span class="o">-</span> <span class="n">hs</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">v</span><span class="p">))</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">hs</span> <span class="o">**</span> <span class="p">(</span><span class="n">mu</span> <span class="o">+</span> <span class="n">lam</span><span class="p">)</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">hs</span> <span class="o">**</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="n">lam</span><span class="p">)</span> <span class="o">*</span> <span class="n">N</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">z</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">lam</span> <span class="o">*</span> <span class="n">v</span><span class="p">))</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="n">K</span> <span class="o">&gt;</span> <span class="n">H</span>
+    <span class="c1"># (strike above barrier, strike at or below barrier) for each of the eight options</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span> <span class="p">(</span><span class="n">C</span> <span class="o">+</span> <span class="n">E</span><span class="p">,</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span> <span class="o">+</span> <span class="n">D</span> <span class="o">+</span> <span class="n">E</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">E</span><span class="p">,</span> <span class="n">B</span> <span class="o">-</span> <span class="n">C</span> <span class="o">+</span> <span class="n">D</span> <span class="o">+</span> <span class="n">E</span><span class="p">),</span>
+        <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span> <span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">C</span> <span class="o">+</span> <span class="n">D</span> <span class="o">+</span> <span class="n">E</span><span class="p">,</span> <span class="n">A</span> <span class="o">+</span> <span class="n">E</span><span class="p">),</span>
+        <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span> <span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">B</span> <span class="o">+</span> <span class="n">D</span> <span class="o">+</span> <span class="n">E</span><span class="p">,</span> <span class="n">C</span> <span class="o">+</span> <span class="n">E</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span> <span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">C</span> <span class="o">+</span> <span class="n">F</span><span class="p">,</span> <span class="n">B</span> <span class="o">-</span> <span class="n">D</span> <span class="o">+</span> <span class="n">F</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span> <span class="o">-</span> <span class="n">D</span> <span class="o">+</span> <span class="n">F</span><span class="p">),</span>
+        <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span> <span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span> <span class="o">-</span> <span class="n">D</span> <span class="o">+</span> <span class="n">F</span><span class="p">,</span> <span class="n">F</span><span class="p">),</span>
+        <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span> <span class="p">(</span><span class="n">B</span> <span class="o">-</span> <span class="n">D</span> <span class="o">+</span> <span class="n">F</span><span class="p">,</span> <span class="n">A</span> <span class="o">-</span> <span class="n">C</span> <span class="o">+</span> <span class="n">F</span><span class="p">),</span>
+    <span class="p">}</span>
+    <span class="n">above</span><span class="p">,</span> <span class="n">below</span> <span class="o">=</span> <span class="n">table</span><span class="p">[(</span><span class="n">phi</span><span class="p">,</span> <span class="n">is_down</span><span class="p">,</span> <span class="n">is_out</span><span class="p">)]</span>
+    <span class="n">live</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">high</span><span class="p">,</span> <span class="n">above</span><span class="p">,</span> <span class="n">below</span><span class="p">)</span>
+    <span class="n">dead</span> <span class="o">=</span> <span class="n">R</span> <span class="k">if</span> <span class="n">is_out</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">black_scholes_price</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">option_type</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">as_output</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">knocked</span><span class="p">,</span> <span class="n">dead</span><span class="p">,</span> <span class="n">live</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="double_barrier_price">
+<a class="viewcode-back" href="../../../../api/exotic_options.html#financialkit.exotic_options.double_barrier_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">double_barrier_price</span><span class="p">(</span>
+    <span class="n">S</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">K</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">L</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">U</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">r</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">q</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">,</span>
+    <span class="n">knock</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"out"</span><span class="p">,</span>
+    <span class="n">n_terms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Ikeda-Kunitomo (1992) double-barrier option with flat barriers :math:`L &lt; S &lt; U`.</span>
+
+<span class="sd">    The knock-out call is a series of images reflected alternately</span>
+<span class="sd">    through both barriers (Haug 2007, Sec. 4.17.3, with zero curvature):</span>
+
+<span class="sd">    .. math:: c = S e^{(b - r)T} \\sum_{n=-N}^{N} \\left[\\left(\\tfrac{U^n}{L^n}\\right)^{\\mu}</span>
+<span class="sd">              (N(d_1) - N(d_2)) - \\left(\\tfrac{L^{n+1}}{U^n S}\\right)^{\\mu} (N(d_3) - N(d_4))\\right]</span>
+<span class="sd">              - K e^{-rT} \\sum_{n=-N}^{N} [\\dots]_{\\mu - 2,\\; d_i - \\sigma\\sqrt T},</span>
+
+<span class="sd">    with :math:`\\mu = 2b/\\sigma^2 + 1`. The terms decay like</span>
+<span class="sd">    :math:`e^{-2n^2 \\ln^2(U/L)/\\sigma^2 T}`, so a handful suffice. The</span>
+<span class="sd">    knock-in is the vanilla option minus the knock-out.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    S, K, L, U, T, r, sigma : array_like</span>
+<span class="sd">        Spot, strike, lower and upper barriers, maturity, rate and volatility.</span>
+<span class="sd">    q : array_like</span>
+<span class="sd">        Continuous dividend yield.</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+<span class="sd">    knock : {"out", "in"}</span>
+<span class="sd">    n_terms : int</span>
+<span class="sd">        The series runs over :math:`n = -N, \\dots, N`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Far-away barriers leave the vanilla option:</span>
+
+<span class="sd">    &gt;&gt;&gt; from financialkit.options import black_scholes_price</span>
+<span class="sd">    &gt;&gt;&gt; bool(abs(double_barrier_price(100.0, 100.0, 20.0, 500.0, 0.5, 0.05, 0.2) - black_scholes_price(100.0, 100.0, 0.5, 0.05, 0.2)) &lt; 1e-8)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">knock</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"out"</span><span class="p">,</span> <span class="s2">"in"</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"knock must be 'out' or 'in', got </span><span class="si">{</span><span class="n">knock</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">option_sign</span><span class="p">(</span><span class="n">option_type</span><span class="p">)</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">_arrays</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">L</span> <span class="o">&gt;=</span> <span class="n">U</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"need L &lt; U"</span><span class="p">)</span>
+    <span class="n">alive</span> <span class="o">=</span> <span class="p">(</span><span class="n">S</span> <span class="o">&gt;</span> <span class="n">L</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">S</span> <span class="o">&lt;</span> <span class="n">U</span><span class="p">)</span>
+    <span class="n">Ss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">alive</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span> <span class="o">*</span> <span class="n">U</span><span class="p">))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">1.0</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">n_terms</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_terms</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">*</span> <span class="n">S</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+    <span class="n">drift</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span>
+    <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span> <span class="k">if</span> <span class="n">phi</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>  <span class="c1"># the payoff is non-zero for lo &lt; S_T &lt; hi</span>
+    <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">L</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">d</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">drift</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span>
+
+    <span class="n">UL</span> <span class="o">=</span> <span class="p">(</span><span class="n">U</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">**</span> <span class="n">n</span>
+    <span class="n">refl</span> <span class="o">=</span> <span class="n">L</span> <span class="o">**</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">U</span><span class="o">**</span><span class="n">n</span> <span class="o">*</span> <span class="n">Ss</span><span class="p">)</span>
+    <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">d</span><span class="p">(</span><span class="n">Ss</span> <span class="o">*</span> <span class="n">UL</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">lo</span><span class="p">),</span> <span class="n">d</span><span class="p">(</span><span class="n">Ss</span> <span class="o">*</span> <span class="n">UL</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">hi</span><span class="p">)</span>
+    <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span> <span class="o">=</span> <span class="n">d</span><span class="p">(</span><span class="n">L</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">lo</span> <span class="o">*</span> <span class="n">Ss</span> <span class="o">*</span> <span class="n">U</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">))),</span> <span class="n">d</span><span class="p">(</span><span class="n">L</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">hi</span> <span class="o">*</span> <span class="n">Ss</span> <span class="o">*</span> <span class="n">U</span> <span class="o">**</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">)))</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span>
+    <span class="n">asset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">UL</span><span class="o">**</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">d1</span><span class="p">)</span> <span class="o">-</span> <span class="n">N</span><span class="p">(</span><span class="n">d2</span><span class="p">))</span> <span class="o">-</span> <span class="n">refl</span><span class="o">**</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">d3</span><span class="p">)</span> <span class="o">-</span> <span class="n">N</span><span class="p">(</span><span class="n">d4</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">cash</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">UL</span> <span class="o">**</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">d1</span> <span class="o">-</span> <span class="n">v</span><span class="p">)</span> <span class="o">-</span> <span class="n">N</span><span class="p">(</span><span class="n">d2</span> <span class="o">-</span> <span class="n">v</span><span class="p">))</span> <span class="o">-</span> <span class="n">refl</span> <span class="o">**</span> <span class="p">(</span><span class="n">mu</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">d3</span> <span class="o">-</span> <span class="n">v</span><span class="p">)</span> <span class="o">-</span> <span class="n">N</span><span class="p">(</span><span class="n">d4</span> <span class="o">-</span> <span class="n">v</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">phi</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ss</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">asset</span> <span class="o">-</span> <span class="n">K</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">cash</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">alive</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lo</span> <span class="o">&lt;</span> <span class="n">hi</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">knock</span> <span class="o">==</span> <span class="s2">"in"</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">black_scholes_price</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">option_type</span><span class="p">))</span> <span class="o">-</span> <span class="n">out</span>
+    <span class="k">return</span> <span class="n">as_output</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="discrete_barrier_price">
+<a class="viewcode-back" href="../../../../api/exotic_options.html#financialkit.exotic_options.discrete_barrier_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">discrete_barrier_price</span><span class="p">(</span>
+    <span class="n">S</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">K</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">H</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">r</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">q</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">,</span>
+    <span class="n">barrier_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"down-and-out"</span><span class="p">,</span>
+    <span class="n">n_monitor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">252</span><span class="p">,</span>
+    <span class="n">rebate</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Broadie-Glasserman-Kou (1997) price of a barrier monitored at `n_monitor` equally spaced dates.</span>
+
+<span class="sd">    A path can cross a discretely monitored barrier between two dates</span>
+<span class="sd">    without being caught, so the option behaves like a continuously</span>
+<span class="sd">    monitored one with the barrier moved away from the spot:</span>
+
+<span class="sd">    .. math:: H \\to H e^{\\pm \\beta \\sigma \\sqrt{\\Delta t}}, \\qquad</span>
+<span class="sd">              \\beta = -\\zeta(1/2)/\\sqrt{2\\pi} \\approx 0.5826,</span>
+
+<span class="sd">    with ``+`` for an up barrier and ``-`` for a down barrier. The error</span>
+<span class="sd">    is :math:`o(1/\\sqrt{m})`, against :math:`O(1/\\sqrt{m})` for ignoring</span>
+<span class="sd">    the difference.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    S, K, H, T, r, sigma : array_like</span>
+<span class="sd">        Spot, strike, barrier, maturity, rate and volatility.</span>
+<span class="sd">    q : array_like</span>
+<span class="sd">        Continuous dividend yield.</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+<span class="sd">    barrier_type : {"down-and-out", "down-and-in", "up-and-out", "up-and-in"}</span>
+<span class="sd">    n_monitor : int</span>
+<span class="sd">        Number of monitoring dates :math:`m`, the last at expiry.</span>
+<span class="sd">    rebate : array_like</span>
+<span class="sd">        Cash rebate, as in :func:`barrier_price`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Daily monitoring is worth more to the holder of a knock-out than</span>
+<span class="sd">    continuous monitoring:</span>
+
+<span class="sd">    &gt;&gt;&gt; args = (100.0, 100.0, 85.0, 1.0, 0.05, 0.3)</span>
+<span class="sd">    &gt;&gt;&gt; bool(discrete_barrier_price(*args, n_monitor=252) &gt; barrier_price(*args))</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">is_down</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_barrier_type</span><span class="p">(</span><span class="n">barrier_type</span><span class="p">)</span>
+    <span class="n">H</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">sigma</span><span class="p">))</span>
+    <span class="n">shift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="o">-</span><span class="mf">1.0</span> <span class="k">if</span> <span class="n">is_down</span> <span class="k">else</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">BGK_BETA</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_monitor</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">barrier_price</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">H</span> <span class="o">*</span> <span class="n">shift</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">option_type</span><span class="p">,</span> <span class="n">barrier_type</span><span class="p">,</span> <span class="n">rebate</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="barrier_option_mc">
+<a class="viewcode-back" href="../../../../api/exotic_options.html#financialkit.exotic_options.barrier_option_mc">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">barrier_option_mc</span><span class="p">(</span>
+    <span class="n">S</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">K</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">H</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">q</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">,</span>
+    <span class="n">barrier_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"down-and-out"</span><span class="p">,</span>
+    <span class="n">n_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">n_paths</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100_000</span><span class="p">,</span>
+    <span class="n">continuous</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">rng</span><span class="p">:</span> <span class="n">RNGLike</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MonteCarloResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Monte Carlo price of a single-barrier option without rebate.</span>
+
+<span class="sd">    Paths come from :func:`financialkit.integrators.gbm_paths`. With</span>
+<span class="sd">    ``continuous=False`` the barrier is checked only at the `n_steps`</span>
+<span class="sd">    grid dates, which prices a discretely monitored option exactly. With</span>
+<span class="sd">    ``continuous=True`` each step's Brownian-bridge crossing probability</span>
+<span class="sd">    :math:`p_i` (:func:`~financialkit.exotic_options.utils.numerics.barrier_crossing_probability`)</span>
+<span class="sd">    weights the payoff by the survival probability :math:`\\prod_i (1 - p_i)`,</span>
+<span class="sd">    which prices continuous monitoring without discretisation bias</span>
+<span class="sd">    (Glasserman 2004, Sec. 6.4).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    S, K, H, T, r, sigma : float</span>
+<span class="sd">        Spot, strike, barrier, maturity, rate and volatility.</span>
+<span class="sd">    q : float</span>
+<span class="sd">        Continuous dividend yield.</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+<span class="sd">    barrier_type : {"down-and-out", "down-and-in", "up-and-out", "up-and-in"}</span>
+<span class="sd">    n_steps : int</span>
+<span class="sd">        Time steps (monitoring dates when ``continuous=False``).</span>
+<span class="sd">    n_paths : int</span>
+<span class="sd">        Number of paths.</span>
+<span class="sd">    continuous : bool</span>
+<span class="sd">        Continuous monitoring through the bridge correction, or discrete.</span>
+<span class="sd">    rng : numpy.random.Generator or int, optional</span>
+<span class="sd">        Generator or seed.</span>
+<span class="sd">    confidence : float</span>
+<span class="sd">        Coverage of the confidence interval.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    MonteCarloResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; res = barrier_option_mc(100.0, 100.0, 90.0, 1.0, 0.05, 0.2, n_steps=20, n_paths=40_000, rng=0)</span>
+<span class="sd">    &gt;&gt;&gt; bool(abs(res.estimate - barrier_price(100.0, 100.0, 90.0, 1.0, 0.05, 0.2)) &lt; 4 * res.std_error)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">is_down</span><span class="p">,</span> <span class="n">is_out</span> <span class="o">=</span> <span class="n">parse_barrier_type</span><span class="p">(</span><span class="n">barrier_type</span><span class="p">)</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">paths</span> <span class="o">=</span> <span class="n">gbm_paths</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_steps</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_paths</span><span class="p">),</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">continuous</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">barrier_crossing_probability</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">paths</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">paths</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+        <span class="n">survive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">monitored</span> <span class="o">=</span> <span class="n">paths</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="n">survive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">monitored</span> <span class="o">&gt;</span> <span class="n">H</span> <span class="k">if</span> <span class="n">is_down</span> <span class="k">else</span> <span class="n">monitored</span> <span class="o">&lt;</span> <span class="n">H</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">survive</span> <span class="k">if</span> <span class="n">is_out</span> <span class="k">else</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">survive</span>
+    <span class="n">payoff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">vanilla_payoff</span><span class="p">(</span><span class="n">paths</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">K</span><span class="p">,</span> <span class="n">option_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">weight</span>
+    <span class="k">return</span> <span class="n">sample_mean</span><span class="p">(</span><span class="n">payoff</span><span class="p">,</span> <span class="n">confidence</span><span class="p">,</span> <span class="s2">"continuous barrier"</span> <span class="k">if</span> <span class="n">continuous</span> <span class="k">else</span> <span class="s2">"discrete barrier"</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

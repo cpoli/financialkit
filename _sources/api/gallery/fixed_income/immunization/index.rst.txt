@@ -1,0 +1,68 @@
+
+
+.. _sphx_glr_api_gallery_fixed_income_immunization:
+
+Immunization
+------------
+
+Protecting a surplus against parallel and non-parallel rate moves.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Frank Redington (1952), an actuary, asked how a life office could hold assets so that a change in interest rates leaves its surplus unharmed. His answer has three conditions: match the present values, match the durations, and make the assets more convex than the liabilities. Then the surplus has a local minimum at today&#x27;s rates. Assets that straddle the liabilities satisfy the third condition. Assets bunched inside them do not.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/immunization/images/thumb/sphx_glr_plot_01_redington_immunization_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/immunization/plot_01_redington_immunization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Redington immunization</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Redington&#x27;s conditions protect against parallel shifts only. Fong and Vasicek (1984) showed that when the forward curve twists with slope at most K, a duration-matched portfolio loses at most">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/immunization/images/thumb/sphx_glr_plot_02_fong_vasicek_m_squared_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/immunization/plot_02_fong_vasicek_m_squared`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fong-Vasicek M-squared</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/fixed_income/immunization/plot_01_redington_immunization
+   /api/gallery/fixed_income/immunization/plot_02_fong_vasicek_m_squared
+

@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.877151Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.877151Z",
+      "mimetype": null,
+      "name": "plot_01_peaceman_rachford_adi.ipynb",
+      "path": "jupyterlite_contents/api/gallery/pde_methods/multi_factor/plot_01_peaceman_rachford_adi.ipynb",
+      "size": 3175,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.246565Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.246629Z",
+  "mimetype": null,
+  "name": "multi_factor",
+  "path": "jupyterlite_contents/api/gallery/pde_methods/multi_factor",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

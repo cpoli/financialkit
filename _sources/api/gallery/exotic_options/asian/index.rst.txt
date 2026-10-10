@@ -1,0 +1,70 @@
+
+
+.. _sphx_glr_api_gallery_exotic_options_asian:
+
+Asian options
+-------------
+
+Options on an average price: the geometric closed form, the arithmetic
+average by Monte Carlo with the geometric control variate, and
+lognormal moment matching.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An average-rate option pays on the average price over its life, which makes it cheaper than a vanilla option and harder to manipulate at expiry. Angelien Kemna and Ton Vorst (1990) observed that a geometric average of lognormal prices is lognormal, with volatility \sigma/\sqrt3 under continuous averaging, so its option has a Black-Scholes formula. The arithmetic average traded in practice has none, but the geometric option is so tightly correlated with it that it makes a near-perfect Monte Carlo control variate.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/asian/images/thumb/sphx_glr_plot_01_kemna_vorst_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/asian/plot_01_kemna_vorst`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kemna-Vorst Asian options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Stuart Turnbull and Lee Wakeman (1991) priced the arithmetic average A as if it were lognormal with the right first two moments: Black&#x27;s formula on the forward E[A] with volatility">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/asian/images/thumb/sphx_glr_plot_02_turnbull_wakeman_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/asian/plot_02_turnbull_wakeman`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Turnbull-Wakeman Asian approximation</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/exotic_options/asian/plot_01_kemna_vorst
+   /api/gallery/exotic_options/asian/plot_02_turnbull_wakeman
+

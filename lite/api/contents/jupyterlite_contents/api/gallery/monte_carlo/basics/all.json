@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.872658Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.872658Z",
+      "mimetype": null,
+      "name": "plot_03_boyle_option_pricing.ipynb",
+      "path": "jupyterlite_contents/api/gallery/monte_carlo/basics/plot_03_boyle_option_pricing.ipynb",
+      "size": 3839,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.872559Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.872559Z",
+      "mimetype": null,
+      "name": "plot_02_box_muller.ipynb",
+      "path": "jupyterlite_contents/api/gallery/monte_carlo/basics/plot_02_box_muller.ipynb",
+      "size": 3206,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.872442Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.872442Z",
+      "mimetype": null,
+      "name": "plot_01_crude_monte_carlo.ipynb",
+      "path": "jupyterlite_contents/api/gallery/monte_carlo/basics/plot_01_crude_monte_carlo.ipynb",
+      "size": 4134,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.235226Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.235785Z",
+  "mimetype": null,
+  "name": "basics",
+  "path": "jupyterlite_contents/api/gallery/monte_carlo/basics",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

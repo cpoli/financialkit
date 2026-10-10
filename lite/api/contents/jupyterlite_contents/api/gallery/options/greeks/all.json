@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.875376Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.875376Z",
+      "mimetype": null,
+      "name": "plot_02_delta_hedging.ipynb",
+      "path": "jupyterlite_contents/api/gallery/options/greeks/plot_02_delta_hedging.ipynb",
+      "size": 3505,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.875274Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.875274Z",
+      "mimetype": null,
+      "name": "plot_01_greeks.ipynb",
+      "path": "jupyterlite_contents/api/gallery/options/greeks/plot_01_greeks.ipynb",
+      "size": 3483,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.242290Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.242598Z",
+  "mimetype": null,
+  "name": "greeks",
+  "path": "jupyterlite_contents/api/gallery/options/greeks",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

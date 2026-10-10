@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.881133Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.881133Z",
+      "mimetype": null,
+      "name": "plot_02_basel_traffic_light.ipynb",
+      "path": "jupyterlite_contents/api/gallery/risk/backtesting/plot_02_basel_traffic_light.ipynb",
+      "size": 3189,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.881025Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.881025Z",
+      "mimetype": null,
+      "name": "plot_01_kupiec.ipynb",
+      "path": "jupyterlite_contents/api/gallery/risk/backtesting/plot_01_kupiec.ipynb",
+      "size": 3451,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.881254Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.881254Z",
+      "mimetype": null,
+      "name": "plot_03_christoffersen.ipynb",
+      "path": "jupyterlite_contents/api/gallery/risk/backtesting/plot_03_christoffersen.ipynb",
+      "size": 4498,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.253920Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.254610Z",
+  "mimetype": null,
+  "name": "backtesting",
+  "path": "jupyterlite_contents/api/gallery/risk/backtesting",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

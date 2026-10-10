@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.time_series hub </_generated/subpackages/time_series>` · :doc:`History </history/time_series_breakthroughs>` · :doc:`Examples </api/gallery/time_series/index>` · :doc:`API reference </api/time_series>`

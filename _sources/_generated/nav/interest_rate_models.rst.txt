@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.interest_rate_models hub </_generated/subpackages/interest_rate_models>` · :doc:`History </history/interest_rate_models_breakthroughs>` · :doc:`Examples </api/gallery/interest_rate_models/index>` · :doc:`API reference </api/interest_rate_models>`

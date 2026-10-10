@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_exotic_options_multi_asset:
+
+Options on two assets
+---------------------
+
+Exchange options, options on the better or worse of two assets, and
+quantos paid in another currency.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Margrabe (1978) priced the right to exchange one asset for another, (S_1 - S_2)^+. Measured in units of the second asset, it is a call on the ratio S_1/S_2 struck at 1, so the interest rate drops out and only the volatility of the ratio, \sigma^2 = \sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2, matters. Change of numeraire, the idea behind this one-line proof, became one of the central tools of derivatives pricing.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/multi_asset/images/thumb/sphx_glr_plot_01_margrabe_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/multi_asset/plot_01_margrabe`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Margrabe exchange options</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Rene Stulz (1982) priced calls and puts on the better or the worse of two assets, (\max(S_1, S_2) - K)^+ and (\min(S_1, S_2) - K)^+, the simplest &quot;rainbow&quot; options. The answer needs the bivariate normal distribution. Because \max + \min = S_1 + S_2, the two calls always add up to the two vanilla calls, and correlation moves value between them: diversification makes the maximum more valuable and the minimum less.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/multi_asset/images/thumb/sphx_glr_plot_02_stulz_max_min_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/multi_asset/plot_02_stulz_max_min`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stulz options on the maximum and minimum</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A quanto pays a foreign asset&#x27;s option payoff in domestic currency at a fixed exchange rate, so the investor keeps the asset&#x27;s risk without the currency&#x27;s. Eric Reiner (1992) showed that, under the domestic measure, the asset&#x27;s drift picks up a correction -\rho\sigma_S\sigma_X from its correlation with the exchange rate:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/multi_asset/images/thumb/sphx_glr_plot_03_quanto_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/multi_asset/plot_03_quanto`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reiner quantos</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/exotic_options/multi_asset/plot_01_margrabe
+   /api/gallery/exotic_options/multi_asset/plot_02_stulz_max_min
+   /api/gallery/exotic_options/multi_asset/plot_03_quanto
+

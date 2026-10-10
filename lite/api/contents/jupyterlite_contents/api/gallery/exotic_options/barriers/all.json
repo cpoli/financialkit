@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863801Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863801Z",
+      "mimetype": null,
+      "name": "plot_04_discrete_barrier_correction.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/barriers/plot_04_discrete_barrier_correction.ipynb",
+      "size": 3103,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863702Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863702Z",
+      "mimetype": null,
+      "name": "plot_03_double_barrier.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/barriers/plot_03_double_barrier.ipynb",
+      "size": 3349,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863498Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863498Z",
+      "mimetype": null,
+      "name": "plot_01_merton_down_and_out.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/barriers/plot_01_merton_down_and_out.ipynb",
+      "size": 3755,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863600Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863600Z",
+      "mimetype": null,
+      "name": "plot_02_reiner_rubinstein.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/barriers/plot_02_reiner_rubinstein.ipynb",
+      "size": 3687,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.216934Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.217772Z",
+  "mimetype": null,
+  "name": "barriers",
+  "path": "jupyterlite_contents/api/gallery/exotic_options/barriers",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

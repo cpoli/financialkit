@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.887473Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.887473Z",
+      "mimetype": null,
+      "name": "plot_01_de_witt_life_annuity.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/annuities/plot_01_de_witt_life_annuity.ipynb",
+      "size": 3438,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.887672Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.887672Z",
+      "mimetype": null,
+      "name": "plot_03_price_sinking_fund.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/annuities/plot_03_price_sinking_fund.ipynb",
+      "size": 3076,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.887577Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.887577Z",
+      "mimetype": null,
+      "name": "plot_02_consol_perpetuity.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/annuities/plot_02_consol_perpetuity.ipynb",
+      "size": 3121,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.268487Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.268942Z",
+  "mimetype": null,
+  "name": "annuities",
+  "path": "jupyterlite_contents/api/gallery/time_value/annuities",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,141 @@
+
+
+.. _sphx_glr_api_gallery_fixed_income_curves:
+
+Yield curves
+------------
+
+Forward rates, bootstrapped, spline and parametric curves, and the factors
+that move them.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Friedrich Lutz (1940) read the term structure as a sequence of expected future short rates. The forward rate for the period from t_1 to t_2 is what the zero curve locks in today,">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/curves/images/thumb/sphx_glr_plot_01_lutz_forward_rates_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/curves/plot_01_lutz_forward_rates`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lutz: forward rates</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Huston McCulloch (1971) fitted the discount function itself with a spline, d(t) = 1 + \sum_j a_j g_j(t). Because every bond price is linear in d, it is also linear in the coefficients, so the fit is ordinary least squares on a cross-section of bond prices. His 1971 paper used quadratic splines; the cubic version (1975) gives smooth forward rates.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/curves/images/thumb/sphx_glr_plot_02_mcculloch_spline_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/curves/plot_02_mcculloch_spline`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">McCulloch's spline discount function</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="With bonds that pay on common dates, Carleton and Cooper (1976) noted that prices are linear in the discount factors, P = C d. Solving that system one bond at a time, shortest first, is bootstrapping: each bond adds one zero rate at its maturity. With more bonds than dates the same system is solved by least squares.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/curves/images/thumb/sphx_glr_plot_03_bootstrapping_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/curves/plot_03_bootstrapping`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Carleton-Cooper bootstrapping</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Nelson and Siegel (1987) described the whole yield curve with four numbers:">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/curves/images/thumb/sphx_glr_plot_04_nelson_siegel_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/curves/plot_04_nelson_siegel`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nelson-Siegel</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Litterman and Scheinkman (1991) ran a principal component analysis of Treasury returns and found that three factors explain almost all of the variation. They named them level, steepness (slope) and curvature. The script repeats the analysis on synthetic daily yield changes and shows the three loadings and their shares of variance.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/curves/images/thumb/sphx_glr_plot_05_litterman_scheinkman_pca_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/curves/plot_05_litterman_scheinkman_pca`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Litterman-Scheinkman: level, slope, curvature</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lars Svensson (1994) added a second hump term to Nelson-Siegel, with its own decay \tau_2, to fit forward curves that bend twice. He built it to estimate forward rates at the Swedish Riksbank, and central banks still publish curves fitted with it. On such a curve, Nelson-Siegel misses the second bend and Svensson does not.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/curves/images/thumb/sphx_glr_plot_06_svensson_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/curves/plot_06_svensson`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Svensson</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/fixed_income/curves/plot_01_lutz_forward_rates
+   /api/gallery/fixed_income/curves/plot_02_mcculloch_spline
+   /api/gallery/fixed_income/curves/plot_03_bootstrapping
+   /api/gallery/fixed_income/curves/plot_04_nelson_siegel
+   /api/gallery/fixed_income/curves/plot_05_litterman_scheinkman_pca
+   /api/gallery/fixed_income/curves/plot_06_svensson
+

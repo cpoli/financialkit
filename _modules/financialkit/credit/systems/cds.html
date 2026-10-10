@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.credit.systems.cds &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/credit/systems/cds';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.credit.systems.cds</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.credit.systems.cds</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Credit default swaps: O'Kane and Turnbull's legs, the par spread, and the ISDA hazard bootstrap.</span>
+
+<span class="sd">A CDS protection buyer pays a spread :math:`s` on the notional until</span>
+<span class="sd">maturity or default, and receives :math:`1 - R` at default. With a</span>
+<span class="sd">survival curve :math:`Q` and discount factors :math:`Z`, O'Kane and</span>
+<span class="sd">Turnbull (2003) write the two legs as</span>
+
+<span class="sd">.. math::</span>
+
+<span class="sd">   \\text{Protection} = (1 - R) \\int_0^T Z(u)\\,(-dQ(u)), \\qquad</span>
+<span class="sd">   \\text{RPV01} = \\sum_i \\Delta_i Z(t_i) Q(t_i)</span>
+<span class="sd">   + \\int_0^T (u - t_{i(u)-1}) Z(u)\\,(-dQ(u)),</span>
+
+<span class="sd">the second integral being the premium accrued at default, and</span>
+<span class="sd">approximate both integrals on a grid with defaults at mid-step. The par</span>
+<span class="sd">spread is :math:`\\text{Protection} / \\text{RPV01}`; for a flat hazard</span>
+<span class="sd">and continuous premium it is exactly :math:`\\lambda (1 - R)`.</span>
+
+<span class="sd">Since the 2009 "Big Bang", contracts trade with a fixed coupon (100 or</span>
+<span class="sd">500 bp) plus an upfront payment, and the ISDA standard model bootstraps</span>
+<span class="sd">a piecewise-constant hazard curve from a term structure of quotes,</span>
+<span class="sd">solving one maturity at a time. Here the riskless curve is flat and</span>
+<span class="sd">payments fall on an even grid; the ISDA model's day counts and IMM</span>
+<span class="sd">dates are not modelled.</span>
+
+<span class="sd">References: D. O'Kane and S. Turnbull, *Valuation of Credit Default</span>
+<span class="sd">Swaps*, Lehman Brothers Fixed Income Quantitative Credit Research</span>
+<span class="sd">(2003); ISDA, *CDS Standard Model* (2009); J. C. Hull, *Options,</span>
+<span class="sd">Futures, and Other Derivatives*, 10th ed. (2018), Section 25.2.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.credit.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CDSResult</span><span class="p">,</span> <span class="n">SurvivalCurve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.credit.systems.hazard</span><span class="w"> </span><span class="kn">import</span> <span class="n">HazardCurve</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"cds_legs"</span><span class="p">,</span> <span class="s2">"cds_par_spread"</span><span class="p">,</span> <span class="s2">"cds_upfront"</span><span class="p">,</span> <span class="s2">"upfront_to_spread"</span><span class="p">,</span> <span class="s2">"bootstrap_hazard_curve"</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_payment_times</span><span class="p">(</span><span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">maturity</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">-</span> <span class="mf">1e-9</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">maturity</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">frequency</span>
+
+
+<div class="viewcode-block" id="cds_legs">
+<a class="viewcode-back" href="../../../../api/credit.html#financialkit.credit.cds_legs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cds_legs</span><span class="p">(</span><span class="n">curve</span><span class="p">:</span> <span class="n">SurvivalCurve</span><span class="p">,</span> <span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">recovery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">52</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CDSResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Value both legs of a CDS per unit notional, starting today.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    curve : SurvivalCurve</span>
+<span class="sd">        Risk-neutral survival curve of the reference entity.</span>
+<span class="sd">    maturity : float</span>
+<span class="sd">        Years to maturity.</span>
+<span class="sd">    r : float</span>
+<span class="sd">        Flat continuously compounded risk-free rate.</span>
+<span class="sd">    recovery : float</span>
+<span class="sd">        Recovery rate :math:`R`.</span>
+<span class="sd">    frequency : int</span>
+<span class="sd">        Premium payments per year (4 for the standard quarterly schedule).</span>
+<span class="sd">    steps_per_year : int</span>
+<span class="sd">        Grid for the default integrals; each premium period gets at least one step.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CDSResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Hull's (10th ed., Section 25.2) setting: hazard 2%, recovery 40%,</span>
+<span class="sd">    rate 5%, annual payments, defaults half-way through each year.</span>
+
+<span class="sd">    &gt;&gt;&gt; res = cds_legs(HazardCurve.flat(0.02), 5.0, 0.05, 0.4, frequency=1, steps_per_year=1)</span>
+<span class="sd">    &gt;&gt;&gt; round(res.rpv01 - res.accrued_on_default, 4), round(res.protection_leg, 4)</span>
+<span class="sd">    (4.0728, 0.0506)</span>
+<span class="sd">    &gt;&gt;&gt; round(1e4 * res.par_spread, 1)</span>
+<span class="sd">    123.0</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">maturity</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"maturity must be positive"</span><span class="p">)</span>
+    <span class="n">pay</span> <span class="o">=</span> <span class="n">_payment_times</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">frequency</span><span class="p">)</span>
+    <span class="n">starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">pay</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="n">accrual</span> <span class="o">=</span> <span class="n">pay</span> <span class="o">-</span> <span class="n">starts</span>
+    <span class="n">premium</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">accrual</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">pay</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">curve</span><span class="o">.</span><span class="n">survival</span><span class="p">(</span><span class="n">pay</span><span class="p">))))</span>
+    <span class="n">accrued</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">protection</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">starts</span><span class="p">,</span> <span class="n">pay</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">steps_per_year</span> <span class="o">-</span> <span class="mf">1e-9</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">dq</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">curve</span><span class="o">.</span><span class="n">survival</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">mid</span><span class="p">)</span>
+        <span class="n">accrued</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">mid</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span> <span class="o">*</span> <span class="n">dq</span><span class="p">))</span>
+        <span class="n">protection</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">z</span> <span class="o">*</span> <span class="n">dq</span><span class="p">))</span>
+    <span class="n">protection</span> <span class="o">*=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">recovery</span>
+    <span class="n">rpv01</span> <span class="o">=</span> <span class="n">premium</span> <span class="o">+</span> <span class="n">accrued</span>
+    <span class="k">return</span> <span class="n">CDSResult</span><span class="p">(</span><span class="n">par_spread</span><span class="o">=</span><span class="n">protection</span> <span class="o">/</span> <span class="n">rpv01</span><span class="p">,</span> <span class="n">protection_leg</span><span class="o">=</span><span class="n">protection</span><span class="p">,</span> <span class="n">rpv01</span><span class="o">=</span><span class="n">rpv01</span><span class="p">,</span> <span class="n">accrued_on_default</span><span class="o">=</span><span class="n">accrued</span><span class="p">,</span> <span class="n">payment_times</span><span class="o">=</span><span class="n">pay</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="cds_par_spread">
+<a class="viewcode-back" href="../../../../api/credit.html#financialkit.credit.cds_par_spread">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cds_par_spread</span><span class="p">(</span><span class="n">curve</span><span class="p">:</span> <span class="n">SurvivalCurve</span><span class="p">,</span> <span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">recovery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">52</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Par spread of a CDS, ``protection_leg / rpv01``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    curve, maturity, r, recovery, frequency, steps_per_year</span>
+<span class="sd">        As in :func:`cds_legs`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    The credit triangle :math:`s = \\lambda(1 - R)` is the continuous-premium limit:</span>
+
+<span class="sd">    &gt;&gt;&gt; round(1e4 * cds_par_spread(HazardCurve.flat(0.02), 5.0, 0.05, 0.4, frequency=365, steps_per_year=365), 1)</span>
+<span class="sd">    120.0</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">cds_legs</span><span class="p">(</span><span class="n">curve</span><span class="p">,</span> <span class="n">maturity</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">recovery</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">)</span><span class="o">.</span><span class="n">par_spread</span></div>
+
+
+
+<div class="viewcode-block" id="cds_upfront">
+<a class="viewcode-back" href="../../../../api/credit.html#financialkit.credit.cds_upfront">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cds_upfront</span><span class="p">(</span><span class="n">curve</span><span class="p">:</span> <span class="n">SurvivalCurve</span><span class="p">,</span> <span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">coupon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">recovery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">52</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Upfront paid by the protection buyer of a fixed-coupon CDS, per unit notional.</span>
+
+<span class="sd">    ``protection_leg - coupon * rpv01``; negative when the buyer is paid.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    curve, maturity, r, recovery, frequency, steps_per_year</span>
+<span class="sd">        As in :func:`cds_legs`.</span>
+<span class="sd">    coupon : float</span>
+<span class="sd">        Standard running coupon, e.g. ``0.01`` or ``0.05``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">cds_legs</span><span class="p">(</span><span class="n">curve</span><span class="p">,</span> <span class="n">maturity</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">recovery</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">)</span><span class="o">.</span><span class="n">mtm</span><span class="p">(</span><span class="n">coupon</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="upfront_to_spread">
+<a class="viewcode-back" href="../../../../api/credit.html#financialkit.credit.upfront_to_spread">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">upfront_to_spread</span><span class="p">(</span><span class="n">upfront</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">coupon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">recovery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">52</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""ISDA quote conversion: the flat-hazard par spread equivalent to an upfront.</span>
+
+<span class="sd">    Finds the flat hazard rate that reproduces ``upfront`` at ``coupon``</span>
+<span class="sd">    and returns that curve's par spread.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    upfront : float</span>
+<span class="sd">        Upfront per unit notional.</span>
+<span class="sd">    coupon, maturity, r, recovery, frequency, steps_per_year</span>
+<span class="sd">        As in :func:`cds_upfront`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cds_upfront</span><span class="p">(</span><span class="n">HazardCurve</span><span class="o">.</span><span class="n">flat</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="n">maturity</span><span class="p">,</span> <span class="n">coupon</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">recovery</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">)</span> <span class="o">-</span> <span class="n">upfront</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-14</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cds_par_spread</span><span class="p">(</span><span class="n">HazardCurve</span><span class="o">.</span><span class="n">flat</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="n">maturity</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">recovery</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="bootstrap_hazard_curve">
+<a class="viewcode-back" href="../../../../api/credit.html#financialkit.credit.bootstrap_hazard_curve">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bootstrap_hazard_curve</span><span class="p">(</span>
+    <span class="n">maturities</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">spreads</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">recovery</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">frequency</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">52</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HazardCurve</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Bootstrap a piecewise-constant hazard curve from CDS par spreads.</span>
+
+<span class="sd">    Solves the maturities in increasing order with</span>
+<span class="sd">    :func:`scipy.optimize.brentq`, each new hazard segment chosen so the</span>
+<span class="sd">    CDS to that maturity reprices at its quote while the earlier segments</span>
+<span class="sd">    stay fixed, as in the ISDA standard model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    maturities : array_like, shape (n,)</span>
+<span class="sd">        Increasing CDS maturities, e.g. ``[1, 3, 5, 7, 10]``.</span>
+<span class="sd">    spreads : array_like, shape (n,)</span>
+<span class="sd">        Par spreads.</span>
+<span class="sd">    r, recovery, frequency, steps_per_year</span>
+<span class="sd">        As in :func:`cds_legs`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    HazardCurve</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; c = bootstrap_hazard_curve([1, 3, 5], [0.006, 0.009, 0.012], 0.03)</span>
+<span class="sd">    &gt;&gt;&gt; [round(1e4 * cds_par_spread(c, T, 0.03), 6) for T in (1, 3, 5)]</span>
+<span class="sd">    [60.0, 90.0, 120.0]</span>
+<span class="sd">    """</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">maturities</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">spreads</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span> <span class="ow">or</span> <span class="n">T</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"maturities and spreads must be 1-d arrays of the same length"</span><span class="p">)</span>
+    <span class="n">hazards</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">):</span>
+            <span class="n">curve</span> <span class="o">=</span> <span class="n">HazardCurve</span><span class="p">(</span><span class="n">T</span><span class="p">[:</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">*</span><span class="n">hazards</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">cds_legs</span><span class="p">(</span><span class="n">curve</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">recovery</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">steps_per_year</span><span class="p">)</span><span class="o">.</span><span class="n">mtm</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"spread </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">T</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">y is too low: it implies a negative hazard rate"</span><span class="p">)</span>
+        <span class="n">hazards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">optimize</span><span class="o">.</span><span class="n">brentq</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">HazardCurve</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">hazards</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

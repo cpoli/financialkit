@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/portfolio/index';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>This gallery walks through every public feature of <code class="docutils literal notranslate"><span class="pre">financialkit.portfolio</span></code>:
+Markowitz’s frontier, Tobin’s tangency portfolio, Merton’s analytic
+frontier and the 1/N benchmark; Kelly betting, Merton’s portfolio problem
+and CPPI; single-index and Ledoit-Wolf covariance estimates; the Sharpe
+and Sortino ratios and Grinold’s fundamental law; Black-Litterman and
+Michaud resampling; and CVaR optimization, maximum diversification, risk
+parity and hierarchical risk parity.</p>
+<p>Each script in this gallery is self-contained and can be run directly with
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">examples/portfolio/&lt;section&gt;/&lt;script&gt;.py</span></code>.</p>
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>mean_variance</strong> – the Markowitz frontier, Tobin separation, Merton’s
+closed form and DeMiguel-Garlappi-Uppal’s 1/N.</p></li>
+<li><p><strong>growth</strong> – the Kelly criterion, Merton’s portfolio problem and CPPI.</p></li>
+<li><p><strong>covariance</strong> – Sharpe’s single-index model and Ledoit-Wolf shrinkage.</p></li>
+<li><p><strong>performance</strong> – the Sharpe ratio, Grinold’s fundamental law and the
+Sortino ratio.</p></li>
+<li><p><strong>bayesian</strong> – Black-Litterman and Michaud’s resampled frontier.</p></li>
+<li><p><strong>risk_based</strong> – CVaR optimization, the most-diversified portfolio,
+risk parity and hierarchical risk parity.</p></li>
+</ul>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div></section>
+<section id="estimation-aware-optimization">
+<h2>Estimation-aware optimization<a class="headerlink" href="#estimation-aware-optimization" title="Link to this heading">#</a></h2>
+<p>Taming the error in expected returns with a market prior or by
+resampling.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Robert Litterman (1992), at Goldman Sachs, started mean-variance optimization from the expected returns that make the market portfolio optimal, \Pi = \delta\Sigma w_{mkt}, rather than from historical averages. Investors&#x27; views then tilt those returns in proportion to their confidence. This reproduces He and Litterman&#x27;s (1999) seven-country example: the view that German equities will beat the rest of Europe by 5% moves weight into Germany, out of France and the UK, and leaves the other countries&#x27; weights alone."><img alt="" src="../../../_images/sphx_glr_plot_01_black_litterman_thumb.png" />
+<p><a class="reference internal" href="bayesian/plot_01_black_litterman.html"><span class="doc">Black-Litterman: equilibrium plus views</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black-Litterman: equilibrium plus views</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Richard Michaud (1998) called mean-variance optimizers &quot;estimation-error maximizers&quot;: they put the most weight on the assets whose expected returns were most overestimated. His remedy treats the estimates as one draw among many. Resample histories from them, compute each history&#x27;s frontier, and average the weights rank by rank along the frontier. The resampled portfolios are more diversified and change more gradually with risk than the classical corner solutions."><img alt="" src="../../../_images/sphx_glr_plot_02_michaud_resampling_thumb.png" />
+<p><a class="reference internal" href="bayesian/plot_02_michaud_resampling.html"><span class="doc">Michaud’s resampled efficiency</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Michaud's resampled efficiency</div>
+</div></div></section>
+<section id="covariance-estimation">
+<h2>Covariance estimation<a class="headerlink" href="#covariance-estimation" title="Link to this heading">#</a></h2>
+<p>Structured and shrunk estimates of the covariance matrix, the input that
+mean-variance optimizers are most sensitive to after the means.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Markowitz&#x27;s method needed every pairwise covariance, d(d+1)/2 numbers, which no 1960s computer (or analyst) could supply for hundreds of stocks. William Sharpe (1963) assumed that stocks move together only through a common market index, R_i = \alpha_i + \beta_i R_m + \varepsilon_i, so the covariance is \sigma_m^2\beta\beta&#x27; + \mathrm{diag}(\sigma_{\varepsilon}^2), with 3d + 1 parameters. The structure also filters noise: with short histories, the single-index estimate is closer to the truth than the sample covariance."><img alt="" src="../../../_images/sphx_glr_plot_01_single_index_thumb.png" />
+<p><a class="reference internal" href="covariance/plot_01_single_index.html"><span class="doc">Sharpe’s single-index model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sharpe's single-index model</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="When the number of assets is comparable to the number of observations, the sample covariance&#x27;s eigenvalues spread out far more than the true ones: the smallest are too small, so the minimum-variance optimizer loads up on spurious &quot;riskless&quot; combinations. Olivier Ledoit and Michael Wolf (2004) shrank the sample matrix towards a structured target, \delta F + (1 - \delta)S, with the intensity \delta estimated from the data to minimize the expected squared error. Their two targets are a scaled identity and the constant-correlation matrix."><img alt="" src="../../../_images/sphx_glr_plot_02_ledoit_wolf_thumb.png" />
+<p><a class="reference internal" href="covariance/plot_02_ledoit_wolf.html"><span class="doc">Ledoit-Wolf shrinkage</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ledoit-Wolf shrinkage</div>
+</div></div></section>
+<section id="growth-and-dynamic-strategies">
+<h2>Growth and dynamic strategies<a class="headerlink" href="#growth-and-dynamic-strategies" title="Link to this heading">#</a></h2>
+<p>Maximizing the long-run growth of wealth, the continuous-time
+consumption and investment problem, and portfolio insurance.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John Kelly (1956), at Bell Labs, asked how a gambler with a private wire should bet. Staking the fraction f of wealth on a bet won with probability p at odds b, wealth grows at the rate g(f) = p\log(1 + bf) + q\log(1 - f) per bet, maximized by f^* = p - q/b. The Kelly bettor eventually outgrows any other fixed-fraction strategy; betting more than twice Kelly makes growth negative even though every bet is favourable."><img alt="" src="../../../_images/sphx_glr_plot_01_kelly_criterion_thumb.png" />
+<p><a class="reference internal" href="growth/plot_01_kelly_criterion.html"><span class="doc">The Kelly criterion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Kelly criterion</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1969) solved the lifetime consumption and investment problem in continuous time. With a stock following geometric Brownian motion, a riskless rate r and constant relative risk aversion \gamma, the optimal policy is to keep the constant fraction"><img alt="" src="../../../_images/sphx_glr_plot_02_merton_portfolio_thumb.png" />
+<p><a class="reference internal" href="growth/plot_02_merton_portfolio.html"><span class="doc">Merton’s portfolio problem</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's portfolio problem</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Robert Jones (1987) proposed a simple rule for protecting a floor: hold m times the cushion (wealth above the floor) in stocks and the rest in bonds. When stocks fall the cushion shrinks and so does the exposure, so under continuous trading wealth never touches the floor; Black and Perold (1992) showed the cushion is then a power m of the stock price. With discrete rebalancing, a fall of more than 1/m between trades breaks through the floor: gap risk."><img alt="" src="../../../_images/sphx_glr_plot_03_cppi_thumb.png" />
+<p><a class="reference internal" href="growth/plot_03_cppi.html"><span class="doc">Black and Jones’s constant proportion portfolio insurance</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black and Jones's constant proportion portfolio insurance</div>
+</div></div></section>
+<section id="mean-variance">
+<h2>Mean-variance<a class="headerlink" href="#mean-variance" title="Link to this heading">#</a></h2>
+<p>Portfolios with the least variance for their mean, with and without
+short sales and a riskless asset, and the naive benchmark they struggle
+to beat out of sample.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Harry Markowitz (1952) argued that an investor should look at a portfolio&#x27;s expected return and its variance together, and hold only portfolios with the least variance for their mean. Diversification then has a precise meaning: combining imperfectly correlated assets moves the frontier to the left of every asset on its own. With short sales the frontier is a hyperbola; without them, every point is a quadratic program, solved here with scipy.optimize.minimize."><img alt="" src="../../../_images/sphx_glr_plot_01_markowitz_frontier_thumb.png" />
+<p><a class="reference internal" href="mean_variance/plot_01_markowitz_frontier.html"><span class="doc">Markowitz’s mean-variance frontier</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Markowitz's mean-variance frontier</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="James Tobin (1958) added a riskless asset to Markowitz&#x27;s problem. Combinations of cash and any risky portfolio lie on a straight line, and the steepest such line touches the frontier at the tangency portfolio. Every mean-variance investor holds that same mix of risky assets and differs only in how much cash goes with it: the risky choice separates from the attitude to risk. The line is the capital market line, and its slope is the highest attainable Sharpe ratio."><img alt="" src="../../../_images/sphx_glr_plot_02_tobin_tangency_thumb.png" />
+<p><a class="reference internal" href="mean_variance/plot_02_tobin_tangency.html"><span class="doc">Tobin separation and the tangency portfolio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Tobin separation and the tangency portfolio</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1972) derived the unconstrained frontier in closed form. Four scalars,"><img alt="" src="../../../_images/sphx_glr_plot_03_merton_analytic_frontier_thumb.png" />
+<p><a class="reference internal" href="mean_variance/plot_03_merton_analytic_frontier.html"><span class="doc">Merton’s analytic frontier</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's analytic frontier</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="DeMiguel, Garlappi and Uppal (2009) re-estimated fourteen optimized portfolio rules on rolling windows and compared their out-of-sample Sharpe ratios with simply holding every asset equally. None beat 1/N reliably. Here the true model is known: ten assets with a genuinely better tangency portfolio. The sample mean-variance rule, the tangency portfolio of the estimated moments, still loses to 1/N unless its estimation window is very long, because errors in the estimated means swamp the gain from optimizing."><img alt="" src="../../../_images/sphx_glr_plot_04_one_over_n_thumb.png" />
+<p><a class="reference internal" href="mean_variance/plot_04_one_over_n.html"><span class="doc">DeMiguel-Garlappi-Uppal: optimal versus 1/N</span></a></p>
+  <div class="sphx-glr-thumbnail-title">DeMiguel-Garlappi-Uppal: optimal versus 1/N</div>
+</div></div></section>
+<section id="performance-measurement">
+<h2>Performance measurement<a class="headerlink" href="#performance-measurement" title="Link to this heading">#</a></h2>
+<p>Return per unit of risk, its sampling error, and where skill comes from.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="William Sharpe (1966) ranked 34 mutual funds by their reward-to-variability ratio, the mean excess return divided by its standard deviation. By Tobin&#x27;s separation it is the right yardstick for an investor&#x27;s whole portfolio: leverage changes the return but not the ratio. It is also an estimate, and Andrew Lo (2002) showed how noisy: with independent returns its standard error is \sqrt{(1 + SR^2/2)/n} per period, so years of data separate good managers from lucky ones only slowly."><img alt="" src="../../../_images/sphx_glr_plot_01_sharpe_ratio_thumb.png" />
+<p><a class="reference internal" href="performance/plot_01_sharpe_ratio.html"><span class="doc">The Sharpe ratio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Sharpe ratio</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Richard Grinold (1989) decomposed an active manager&#x27;s information ratio into skill and breadth:"><img alt="" src="../../../_images/sphx_glr_plot_02_fundamental_law_thumb.png" />
+<p><a class="reference internal" href="performance/plot_02_fundamental_law.html"><span class="doc">Grinold’s fundamental law of active management</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Grinold's fundamental law of active management</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Volatility penalizes a fund for its best months as much as for its worst. Frank Sortino and Lee Price (1994) measured risk instead by the downside deviation, the root mean square shortfall below a minimum acceptable return \tau,"><img alt="" src="../../../_images/sphx_glr_plot_03_sortino_ratio_thumb.png" />
+<p><a class="reference internal" href="performance/plot_03_sortino_ratio.html"><span class="doc">The Sortino ratio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Sortino ratio</div>
+</div></div></section>
+<section id="risk-based-allocation">
+<h2>Risk-based allocation<a class="headerlink" href="#risk-based-allocation" title="Link to this heading">#</a></h2>
+<p>Portfolios built from risk alone: tail risk, diversification and equal
+risk contributions.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Value at risk is not convex in the portfolio weights, so minimizing it is hard. R. Tyrrell Rockafellar and Stanislav Uryasev (2000) showed that conditional value at risk (expected shortfall) is, and better: over a set of scenarios, minimizing it is a linear program,"><img alt="" src="../../../_images/sphx_glr_plot_01_cvar_optimization_thumb.png" />
+<p><a class="reference internal" href="risk_based/plot_01_cvar_optimization.html"><span class="doc">Rockafellar-Uryasev CVaR optimization</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rockafellar-Uryasev CVaR optimization</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Yves Choueifaty and Yves Coignard (2008) defined the diversification ratio of a long-only portfolio as its weighted average volatility over its actual volatility,"><img alt="" src="../../../_images/sphx_glr_plot_02_most_diversified_thumb.png" />
+<p><a class="reference internal" href="risk_based/plot_02_most_diversified.html"><span class="doc">Choueifaty’s most-diversified portfolio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Choueifaty's most-diversified portfolio</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An equally weighted stock-bond portfolio takes nearly all its risk from the stocks. Sébastien Maillard, Thierry Roncalli and Jérôme Teiletche (2010) studied the equal risk contribution portfolio, in which each asset&#x27;s Euler contribution w_i(\Sigma w)_i/\sigma_p to the portfolio volatility is the same. It always exists and is unique, and its volatility lies between the minimum-variance and 1/N portfolios&#x27;. It is computed here from Spinu&#x27;s convex reformulation."><img alt="" src="../../../_images/sphx_glr_plot_03_risk_parity_thumb.png" />
+<p><a class="reference internal" href="risk_based/plot_03_risk_parity.html"><span class="doc">Maillard-Roncalli-Teiletche risk parity</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Maillard-Roncalli-Teiletche risk parity</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Marcos Lopez de Prado (2016) observed that inverting a noisy covariance matrix, as every quadratic optimizer does, amplifies its errors. His hierarchical risk parity never inverts it: it clusters assets by the correlation distance \sqrt{(1-\rho_{ij})/2}, reorders them along the dendrogram so similar assets sit together, then splits capital top down between halves in inverse proportion to their variance. Its risk varies less from one estimation sample to the next than the minimum-variance portfolio&#x27;s, though with few observations per asset minimum variance can still be less risky on average."><img alt="" src="../../../_images/sphx_glr_plot_04_hierarchical_risk_parity_thumb.png" />
+<p><a class="reference internal" href="risk_based/plot_04_hierarchical_risk_parity.html"><span class="doc">Lopez de Prado’s hierarchical risk parity</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lopez de Prado's hierarchical risk parity</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/6d2c60ae890c664c84ad28768b5bf678/portfolio_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">portfolio_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/c1d8b69ab6c9dc4d5b24d6bbcd2b8676/portfolio_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">portfolio_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-aware-optimization">Estimation-aware optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-estimation">Covariance estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-and-dynamic-strategies">Growth and dynamic strategies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-variance">Mean-variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-measurement">Performance measurement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-based-allocation">Risk-based allocation</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/api/gallery/portfolio/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

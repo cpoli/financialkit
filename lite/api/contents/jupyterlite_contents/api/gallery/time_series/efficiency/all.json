@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.885152Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.885152Z",
+      "mimetype": null,
+      "name": "plot_02_fama_runs_test.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/efficiency/plot_02_fama_runs_test.ipynb",
+      "size": 3583,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.885051Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.885051Z",
+      "mimetype": null,
+      "name": "plot_01_kendall_autocorrelation.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/efficiency/plot_01_kendall_autocorrelation.ipynb",
+      "size": 3266,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.885344Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.885344Z",
+      "mimetype": null,
+      "name": "plot_04_lo_mackinlay.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/efficiency/plot_04_lo_mackinlay.ipynb",
+      "size": 4066,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.885253Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.885253Z",
+      "mimetype": null,
+      "name": "plot_03_ljung_box.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/efficiency/plot_03_ljung_box.ipynb",
+      "size": 3734,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.263261Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.263922Z",
+  "mimetype": null,
+  "name": "efficiency",
+  "path": "jupyterlite_contents/api/gallery/time_series/efficiency",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

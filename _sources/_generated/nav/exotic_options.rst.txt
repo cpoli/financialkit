@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.exotic_options hub </_generated/subpackages/exotic_options>` · :doc:`History </history/exotic_options_breakthroughs>` · :doc:`Examples </api/gallery/exotic_options/index>` · :doc:`API reference </api/exotic_options>`

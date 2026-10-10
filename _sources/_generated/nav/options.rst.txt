@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.options hub </_generated/subpackages/options>` · :doc:`History </history/options_breakthroughs>` · :doc:`Examples </api/gallery/options/index>` · :doc:`API reference </api/options>`

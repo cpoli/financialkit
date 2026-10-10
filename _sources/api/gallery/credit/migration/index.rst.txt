@@ -1,0 +1,86 @@
+
+
+.. _sphx_glr_api_gallery_credit_migration:
+
+Rating migration
+----------------
+
+Transition matrices in discrete and continuous time.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="J. P. Morgan&#x27;s CreditMetrics (1997) revalues a bond in every rating it could hold a year from now, weights the values with a rating transition matrix, and reads the credit VaR off the resulting distribution. For a portfolio, obligors migrate jointly: each one&#x27;s asset return is mapped to a rating through normal thresholds, and the asset returns are correlated. The Technical Document&#x27;s five-year BBB bond has mean value 107.09 and standard deviation 2.99.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/migration/images/thumb/sphx_glr_plot_01_creditmetrics_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/migration/plot_01_creditmetrics`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">CreditMetrics: credit VaR from rating migrations</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jarrow, Lando and Turnbull (1997) put rating migration in continuous time. A generator \Lambda, with non-negative off-diagonal intensities and rows summing to zero, gives the transition matrix for every horizon, P(t) = e^{\Lambda t}. Default probabilities by rating, and risky bond prices with recovery of treasury, follow for any maturity, including fractions of a year that an annual matrix cannot provide.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/migration/images/thumb/sphx_glr_plot_02_generator_matrix_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/migration/plot_02_generator_matrix`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jarrow, Lando and Turnbull: generator matrices</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Going from an annual transition matrix P to a generator is not as simple as \log P. Israel, Rosenthal and Wei (2001) showed that for empirical rating matrices the principal logarithm usually has negative off-diagonal entries, which would be negative migration intensities. Their fix: set those entries to zero and absorb the change in the diagonal. A weighted variant spreads it over the row instead. Both leave e^{G} within a few basis points of P.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/migration/images/thumb/sphx_glr_plot_03_israel_rosenthal_wei_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/migration/plot_03_israel_rosenthal_wei`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Israel, Rosenthal and Wei: finding a valid generator</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/credit/migration/plot_01_creditmetrics
+   /api/gallery/credit/migration/plot_02_generator_matrix
+   /api/gallery/credit/migration/plot_03_israel_rosenthal_wei
+

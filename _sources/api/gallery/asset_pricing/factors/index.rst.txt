@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_api_gallery_asset_pricing_factors:
+
+Factor models
+-------------
+
+Estimating risk premia from the cross-section, the arbitrage argument
+for linear pricing, and factors built by sorting stocks on size, value
+and momentum.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Eugene Fama and James MacBeth (1973) estimated risk premia with a cross-sectional regression each month,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/factors/images/thumb/sphx_glr_plot_01_fama_macbeth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/factors/plot_01_fama_macbeth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fama-MacBeth regressions</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Stephen Ross (1976) derived linear pricing without an equilibrium model. If returns follow a factor model r_i = E[r_i] + \beta_i&#x27; f + \varepsilon_i with diversifiable \varepsilon_i, then any asset off the plane E[r_i] = r_f + \beta_i&#x27;\lambda can be combined with others into a portfolio with no cost and no factor risk that still earns a positive expected return. In a large market its idiosyncratic risk diversifies away, and the portfolio becomes an arbitrage. The pricing errors therefore have to be small for all but finitely many assets.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/factors/images/thumb/sphx_glr_plot_02_ross_apt_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/factors/plot_02_ross_apt`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ross's arbitrage pricing theory</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The CAPM fails on portfolios sorted by size and book-to-market: small stocks and value stocks earn more than their market betas justify. Eugene Fama and Kenneth French (1993) added two long-short factors built from the same sorts, SMB (small minus big) and HML (high minus low book-to-market),">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/factors/images/thumb/sphx_glr_plot_03_fama_french_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/factors/plot_03_fama_french`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fama-French three factors</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jegadeesh and Titman (1993) found that stocks with the highest returns over the past year keep outperforming for months, which the Fama-French factors cannot explain. Mark Carhart (1997) added a fourth factor, UMD (up minus down), long last year&#x27;s winners and short its losers, skipping the most recent month. With it, most of the apparent persistence in mutual fund performance disappeared: winning funds had simply held winning stocks.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/factors/images/thumb/sphx_glr_plot_04_carhart_momentum_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/factors/plot_04_carhart_momentum`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Carhart's momentum factor</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/asset_pricing/factors/plot_01_fama_macbeth
+   /api/gallery/asset_pricing/factors/plot_02_ross_apt
+   /api/gallery/asset_pricing/factors/plot_03_fama_french
+   /api/gallery/asset_pricing/factors/plot_04_carhart_momentum
+

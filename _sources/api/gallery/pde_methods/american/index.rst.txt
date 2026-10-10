@@ -1,0 +1,88 @@
+
+
+.. _sphx_glr_api_gallery_pde_methods_american:
+
+American options
+----------------
+
+Early exercise turns each implicit step into a linear complementarity
+problem: projected SOR, the Brennan-Schwartz direct solve and the
+penalty method.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An American option is either held, where it satisfies the Black-Scholes equation, or exercised, where it equals its payoff; each implicit step becomes a linear complementarity problem Ax \ge b,\ x \ge g,\ (Ax - b)^\top(x - g) = 0. Colin Cryer (1971) solved it by successive over-relaxation, projecting each update back onto x \ge g. psor does this inside CrankNicolson; the sweep count depends strongly on the relaxation parameter \omega.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/american/images/thumb/sphx_glr_plot_01_cryer_psor_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/american/plot_01_cryer_psor`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cryer's projected SOR</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Michael Brennan and Eduardo Schwartz (1977) priced the American put with an implicit scheme and a direct solve: eliminate the tridiagonal system starting from the top of the grid, then substitute back upward from S = 0, taking the larger of the computed value and the payoff at each node. Because the put is exercised on a single interval at the bottom of the grid, this one pass solves the complementarity problem exactly. brennan_schwartz matches PSOR to rounding at a fraction of the cost.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/american/images/thumb/sphx_glr_plot_02_brennan_schwartz_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/american/plot_02_brennan_schwartz`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brennan-Schwartz American put</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Peter Forsyth and Kenneth Vetzal (2002) replaced the complementarity constraint by a penalty: on nodes where the value falls below the payoff, add \rho\,(g - x) with a large \rho. The resulting nonlinear system is solved by a Newton (policy) iteration that only changes which nodes are penalised, and converges in two or three tridiagonal solves per time step, independently of the grid size -- unlike PSOR, whose sweep count grows as the grid is refined. penalty_solve implements it.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/american/images/thumb/sphx_glr_plot_03_penalty_method_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/american/plot_03_penalty_method`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Forsyth-Vetzal penalty method</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/pde_methods/american/plot_01_cryer_psor
+   /api/gallery/pde_methods/american/plot_02_brennan_schwartz
+   /api/gallery/pde_methods/american/plot_03_penalty_method
+

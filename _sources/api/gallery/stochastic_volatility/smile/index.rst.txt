@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_stochastic_volatility_smile:
+
+Smile parametrisations
+----------------------
+
+Shapes for the implied volatility smile: Hagan's SABR formula, Gatheral's
+SVI, and Lee's bound on how steep the wings can be.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Hagan, Kumar, Lesniewski and Woodward (2002) observed that local volatility predicts the wrong dynamics: when the forward rises, a local volatility model moves the smile the wrong way. Their stochastic \alpha\beta\rho model, dF = \alpha F^\beta\,dW_1, d\alpha = \nu\alpha\,dW_2, has an asymptotic implied-volatility formula that became the market standard for swaption smiles. Each parameter has one job: \beta the backbone, \rho the skew, \nu the curvature. Here a smile is calibrated and each parameter varied in turn.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/smile/images/thumb/sphx_glr_plot_01_sabr_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/smile/plot_01_sabr`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hagan's SABR model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jim Gatheral presented the stochastic volatility inspired (SVI) parametrisation at Global Derivatives in 2004: the total implied variance w(k) = \sigma_{BS}^2 T in log-moneyness k,">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/smile/images/thumb/sphx_glr_plot_02_svi_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/smile/plot_02_svi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gatheral's SVI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Roger Lee (2004) proved that the total implied variance can grow at most linearly in the log strike, and that the slope is fixed by how many moments the price has. If \tilde p is the supremum of the p with E[S_T^{1+p}] &lt; \infty, then">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/smile/images/thumb/sphx_glr_plot_03_lee_moment_formula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/smile/plot_03_lee_moment_formula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lee's moment formula</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/stochastic_volatility/smile/plot_01_sabr
+   /api/gallery/stochastic_volatility/smile/plot_02_svi
+   /api/gallery/stochastic_volatility/smile/plot_03_lee_moment_formula
+

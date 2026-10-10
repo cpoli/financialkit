@@ -1,0 +1,88 @@
+
+
+.. _sphx_glr_api_gallery_monte_carlo_basics:
+
+Crude Monte Carlo
+-----------------
+
+Expectations as sample means with standard errors and confidence
+intervals, normal variates from uniforms, and option prices by
+simulation.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Stanislaw Ulam, convalescing in 1946 and playing solitaire, wondered whether it was quicker to estimate his chance of winning by playing many games than by combinatorics. With John von Neumann and Nicholas Metropolis he turned the idea into a method for the neutron-diffusion problems at Los Alamos, and Metropolis and Ulam named it in 1949. An integral is an expectation, so">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/basics/images/thumb/sphx_glr_plot_01_crude_monte_carlo_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/basics/plot_01_crude_monte_carlo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Metropolis-Ulam: the Monte Carlo method</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Every Black-Scholes simulation needs normal random numbers, and a computer produces uniforms. George Box and Mervin Muller (1958) gave an exact transform: if u_1, u_2 are independent uniforms,">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/basics/images/thumb/sphx_glr_plot_02_box_muller_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/basics/plot_02_box_muller`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Box-Muller normal variates</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Phelim Boyle (1977) observed that risk-neutral valuation turns an option price into an expectation, and so into a simulation:">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/basics/images/thumb/sphx_glr_plot_03_boyle_option_pricing_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/basics/plot_03_boyle_option_pricing`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boyle: options by Monte Carlo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/monte_carlo/basics/plot_01_crude_monte_carlo
+   /api/gallery/monte_carlo/basics/plot_02_box_muller
+   /api/gallery/monte_carlo/basics/plot_03_boyle_option_pricing
+

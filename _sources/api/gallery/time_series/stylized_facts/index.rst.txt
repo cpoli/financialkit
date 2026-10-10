@@ -1,0 +1,68 @@
+
+
+.. _sphx_glr_api_gallery_time_series_stylized_facts:
+
+Stylized facts
+--------------
+
+Fat tails and the tail index.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Benoit Mandelbrot (1963) plotted the frequency of large changes in cotton prices on doubly logarithmic paper and found straight lines: the tail probability P(|X| &gt; u) decays like a power u^{-\alpha}, not like the Gaussian e^{-u^2/2}. Five-sigma days, which a normal distribution makes once-in-several-millennia events, happen every few years. He proposed the stable (Lévy) laws, with \alpha \approx 1.7 for cotton; later work settled on tail indices between 3 and 5 for most returns, but the log-log plot remains the standard diagnostic.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/stylized_facts/images/thumb/sphx_glr_plot_01_mandelbrot_fat_tails_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/stylized_facts/plot_01_mandelbrot_fat_tails`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mandelbrot: fat tails</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="If the tail is a power law, P(X &gt; u) \approx C u^{-\alpha}, the log-excesses of the largest observations over a threshold are exponential with mean 1/\alpha. Bruce Hill (1975) turned this into the estimator">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/stylized_facts/images/thumb/sphx_glr_plot_02_hill_tail_index_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/stylized_facts/plot_02_hill_tail_index`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hill tail index</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_series/stylized_facts/plot_01_mandelbrot_fat_tails
+   /api/gallery/time_series/stylized_facts/plot_02_hill_tail_index
+

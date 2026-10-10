@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>numba.core.decorators &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/numba/core/decorators';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">numba.core.decorators</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for numba.core.decorators</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""</span>
+<span class="sd">Define @jit and related decorators.</span>
+<span class="sd">"""</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">types</span><span class="w"> </span><span class="kn">import</span> <span class="n">MappingProxyType</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba.core.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeprecationError</span><span class="p">,</span> <span class="n">NumbaDeprecationWarning</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba.stencils.stencil</span><span class="w"> </span><span class="kn">import</span> <span class="n">stencil</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">extending</span><span class="p">,</span> <span class="n">sigutils</span><span class="p">,</span> <span class="n">registry</span>
+
+<span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># Decorators</span>
+
+<span class="n">_msg_deprecated_signature_arg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"Deprecated keyword argument `</span><span class="si">{0}</span><span class="s2">`. "</span>
+                                 <span class="s2">"Signatures should be passed as the first "</span>
+                                 <span class="s2">"positional argument."</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">jit</span><span class="p">(</span><span class="n">signature_or_function</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">locals</span><span class="o">=</span><span class="n">MappingProxyType</span><span class="p">({}),</span> <span class="n">cache</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">pipeline_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">boundscheck</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    This decorator is used to compile a Python function into native code.</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    -----</span>
+<span class="sd">    signature_or_function:</span>
+<span class="sd">        The (optional) signature or list of signatures to be compiled.</span>
+<span class="sd">        If not passed, required signatures will be compiled when the</span>
+<span class="sd">        decorated function is called, depending on the argument values.</span>
+<span class="sd">        As a convenience, you can directly pass the function to be compiled</span>
+<span class="sd">        instead.</span>
+
+<span class="sd">    locals: dict</span>
+<span class="sd">        Mapping of local variable names to Numba types. Used to override the</span>
+<span class="sd">        types deduced by Numba's type inference engine.</span>
+
+<span class="sd">    pipeline_class: type numba.compiler.CompilerBase</span>
+<span class="sd">            The compiler pipeline type for customizing the compilation stages.</span>
+
+<span class="sd">    options:</span>
+<span class="sd">        For a cpu target, valid options are:</span>
+<span class="sd">            nopython: bool</span>
+<span class="sd">                Set to True to disable the use of PyObjects and Python API</span>
+<span class="sd">                calls. The default behavior is to allow the use of PyObjects</span>
+<span class="sd">                and Python API. Default value is True.</span>
+
+<span class="sd">            forceobj: bool</span>
+<span class="sd">                Set to True to force the use of PyObjects for every value.</span>
+<span class="sd">                Default value is False.</span>
+
+<span class="sd">            looplift: bool</span>
+<span class="sd">                Set to True to enable jitting loops in nopython mode while</span>
+<span class="sd">                leaving surrounding code in object mode. This allows functions</span>
+<span class="sd">                to allocate NumPy arrays and use Python objects, while the</span>
+<span class="sd">                tight loops in the function can still be compiled in nopython</span>
+<span class="sd">                mode. Any arrays that the tight loop uses should be created</span>
+<span class="sd">                before the loop is entered. Default value is True.</span>
+
+<span class="sd">            error_model: str</span>
+<span class="sd">                The error-model affects divide-by-zero behavior.</span>
+<span class="sd">                Valid values are 'python' and 'numpy'. The 'python' model</span>
+<span class="sd">                raises exception.  The 'numpy' model sets the result to</span>
+<span class="sd">                *+/-inf* or *nan*. Default value is 'python'.</span>
+
+<span class="sd">            inline: str or callable</span>
+<span class="sd">                The inline option will determine whether a function is inlined</span>
+<span class="sd">                at into its caller if called. String options are 'never'</span>
+<span class="sd">                (default) which will never inline, and 'always', which will</span>
+<span class="sd">                always inline. If a callable is provided it will be called with</span>
+<span class="sd">                the call expression node that is requesting inlining, the</span>
+<span class="sd">                caller's IR and callee's IR as arguments, it is expected to</span>
+<span class="sd">                return Truthy as to whether to inline.</span>
+<span class="sd">                NOTE: This inlining is performed at the Numba IR level and is in</span>
+<span class="sd">                no way related to LLVM inlining.</span>
+
+<span class="sd">            boundscheck: bool or None</span>
+<span class="sd">                Set to True to enable bounds checking for array indices. Out</span>
+<span class="sd">                of bounds accesses will raise IndexError. The default is to</span>
+<span class="sd">                not do bounds checking. If False, bounds checking is disabled,</span>
+<span class="sd">                out of bounds accesses can produce garbage results or segfaults.</span>
+<span class="sd">                However, enabling bounds checking will slow down typical</span>
+<span class="sd">                functions, so it is recommended to only use this flag for</span>
+<span class="sd">                debugging. You can also set the NUMBA_BOUNDSCHECK environment</span>
+<span class="sd">                variable to 0 or 1 to globally override this flag. The default</span>
+<span class="sd">                value is None, which under normal execution equates to False,</span>
+<span class="sd">                but if debug is set to True then bounds checking will be</span>
+<span class="sd">                enabled.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A callable usable as a compiled function.  Actual compiling will be</span>
+<span class="sd">    done lazily if no explicit signatures are passed.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    The function can be used in the following ways:</span>
+
+<span class="sd">    1) jit(signatures, **targetoptions) -&gt; jit(function)</span>
+
+<span class="sd">        Equivalent to:</span>
+
+<span class="sd">            d = dispatcher(function, targetoptions)</span>
+<span class="sd">            for signature in signatures:</span>
+<span class="sd">                d.compile(signature)</span>
+
+<span class="sd">        Create a dispatcher object for a python function.  Then, compile</span>
+<span class="sd">        the function with the given signature(s).</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            @jit("int32(int32, int32)")</span>
+<span class="sd">            def foo(x, y):</span>
+<span class="sd">                return x + y</span>
+
+<span class="sd">            @jit(["int32(int32, int32)", "float32(float32, float32)"])</span>
+<span class="sd">            def bar(x, y):</span>
+<span class="sd">                return x + y</span>
+
+<span class="sd">    2) jit(function, **targetoptions) -&gt; dispatcher</span>
+
+<span class="sd">        Create a dispatcher function object that specializes at call site.</span>
+
+<span class="sd">        Examples:</span>
+
+<span class="sd">            @jit</span>
+<span class="sd">            def foo(x, y):</span>
+<span class="sd">                return x + y</span>
+
+<span class="sd">            @jit(nopython=True)</span>
+<span class="sd">            def bar(x, y):</span>
+<span class="sd">                return x + y</span>
+
+<span class="sd">    """</span>
+    <span class="nb">locals</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">locals</span><span class="p">)</span>
+    <span class="n">forceobj</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'forceobj'</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">'argtypes'</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">DeprecationError</span><span class="p">(</span><span class="n">_msg_deprecated_signature_arg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">'argtypes'</span><span class="p">))</span>
+    <span class="k">if</span> <span class="s1">'restype'</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">DeprecationError</span><span class="p">(</span><span class="n">_msg_deprecated_signature_arg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">'restype'</span><span class="p">))</span>
+    <span class="n">nopython</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'nopython'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nopython</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">nopython</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">bool</span><span class="p">,</span> <span class="s2">"nopython option must be a bool"</span>
+    <span class="k">if</span> <span class="n">nopython</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">forceobj</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Only one of 'nopython' or 'forceobj' can be True."</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">'_target'</span><span class="p">,</span> <span class="s1">'cpu'</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">nopython</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"The keyword argument 'nopython=False' was supplied. From "</span>
+               <span class="s2">"Numba 0.59.0 the default is True and supplying this argument "</span>
+               <span class="s2">"has no effect."</span><span class="p">)</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">NumbaDeprecationWarning</span><span class="p">)</span>
+    <span class="c1"># nopython is True by default since 0.59.0, but if `forceobj` is set</span>
+    <span class="c1"># `nopython` needs to set to False so that things like typing of args in the</span>
+    <span class="c1"># dispatcher layer continues to work.</span>
+    <span class="k">if</span> <span class="n">forceobj</span><span class="p">:</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">'nopython'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">'nopython'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">options</span><span class="p">[</span><span class="s1">'boundscheck'</span><span class="p">]</span> <span class="o">=</span> <span class="n">boundscheck</span>
+
+    <span class="c1"># Handle signature</span>
+    <span class="k">if</span> <span class="n">signature_or_function</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># No signature, no function</span>
+        <span class="n">pyfunc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">sigs</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">signature_or_function</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="c1"># A list of signatures is passed</span>
+        <span class="n">pyfunc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">sigs</span> <span class="o">=</span> <span class="n">signature_or_function</span>
+    <span class="k">elif</span> <span class="n">sigutils</span><span class="o">.</span><span class="n">is_signature</span><span class="p">(</span><span class="n">signature_or_function</span><span class="p">):</span>
+        <span class="c1"># A single signature is passed</span>
+        <span class="n">pyfunc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">sigs</span> <span class="o">=</span> <span class="p">[</span><span class="n">signature_or_function</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># A function is passed</span>
+        <span class="n">pyfunc</span> <span class="o">=</span> <span class="n">signature_or_function</span>
+        <span class="n">sigs</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">dispatcher_args</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">pipeline_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dispatcher_args</span><span class="p">[</span><span class="s1">'pipeline_class'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pipeline_class</span>
+    <span class="n">wrapper</span> <span class="o">=</span> <span class="n">_jit</span><span class="p">(</span><span class="n">sigs</span><span class="p">,</span> <span class="nb">locals</span><span class="o">=</span><span class="nb">locals</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
+                   <span class="n">targetoptions</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="o">**</span><span class="n">dispatcher_args</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pyfunc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wrapper</span><span class="p">(</span><span class="n">pyfunc</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_jit</span><span class="p">(</span><span class="n">sigs</span><span class="p">,</span> <span class="nb">locals</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="n">targetoptions</span><span class="p">,</span> <span class="o">**</span><span class="n">dispatcher_args</span><span class="p">):</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">numba.core.target_extension</span><span class="w"> </span><span class="kn">import</span> <span class="n">resolve_dispatcher_from_str</span>
+    <span class="n">dispatcher</span> <span class="o">=</span> <span class="n">resolve_dispatcher_from_str</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">extending</span><span class="o">.</span><span class="n">is_jitted</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">"A jit decorator was called on an already jitted function "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2">.  If trying to access the original python "</span>
+                <span class="sa">f</span><span class="s2">"function, use the </span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2">.py_func attribute."</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">"The decorated object is not a function (got type "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="si">}</span><span class="s2">)."</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">ENABLE_CUDASIM</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">==</span> <span class="s1">'cuda'</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">cuda</span>
+            <span class="k">return</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">DISABLE_JIT</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">target</span> <span class="o">==</span> <span class="s1">'npyufunc'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func</span>
+        <span class="n">disp</span> <span class="o">=</span> <span class="n">dispatcher</span><span class="p">(</span><span class="n">py_func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="nb">locals</span><span class="o">=</span><span class="nb">locals</span><span class="p">,</span>
+                          <span class="n">targetoptions</span><span class="o">=</span><span class="n">targetoptions</span><span class="p">,</span>
+                          <span class="o">**</span><span class="n">dispatcher_args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="n">disp</span><span class="o">.</span><span class="n">enable_caching</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">sigs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Register the Dispatcher to the type inference mechanism,</span>
+            <span class="c1"># even though the decorator hasn't returned yet.</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">numba.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">typeinfer</span>
+            <span class="k">with</span> <span class="n">typeinfer</span><span class="o">.</span><span class="n">register_dispatcher</span><span class="p">(</span><span class="n">disp</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">sigs</span><span class="p">:</span>
+                    <span class="n">disp</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+                <span class="n">disp</span><span class="o">.</span><span class="n">disable_compile</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">disp</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<div class="viewcode-block" id="njit">
+<a class="viewcode-back" href="../../../api/integrators.html#financialkit.integrators.njit">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">njit</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kws</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Legacy decorator that is equivalent to the preferred API: jit().</span>
+
+<span class="sd">    See documentation for jit function/decorator for full description.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="s1">'nopython'</span> <span class="ow">in</span> <span class="n">kws</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">'nopython is set for njit and is ignored'</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">'forceobj'</span> <span class="ow">in</span> <span class="n">kws</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">'forceobj is set for njit and is ignored'</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">kws</span><span class="p">[</span><span class="s1">'forceobj'</span><span class="p">]</span>
+    <span class="n">kws</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'nopython'</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">jit</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kws</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cfunc</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="nb">locals</span><span class="o">=</span><span class="n">MappingProxyType</span><span class="p">({}),</span> <span class="n">cache</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pipeline_class</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    This decorator is used to compile a Python function into a C callback</span>
+<span class="sd">    usable with foreign C libraries.</span>
+
+<span class="sd">    Usage::</span>
+<span class="sd">        @cfunc("float64(float64, float64)", nopython=True, cache=True)</span>
+<span class="sd">        def add(a, b):</span>
+<span class="sd">            return a + b</span>
+
+<span class="sd">    """</span>
+    <span class="nb">locals</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">locals</span><span class="p">)</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">sigutils</span><span class="o">.</span><span class="n">normalize_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">numba.core.ccallback</span><span class="w"> </span><span class="kn">import</span> <span class="n">CFunc</span>
+        <span class="n">additional_args</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">pipeline_class</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">additional_args</span><span class="p">[</span><span class="s1">'pipeline_class'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pipeline_class</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">CFunc</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">sig</span><span class="p">,</span> <span class="nb">locals</span><span class="o">=</span><span class="nb">locals</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="o">**</span><span class="n">additional_args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">enable_caching</span><span class="p">()</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">jit_module</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">""" Automatically ``jit``-wraps functions defined in a Python module</span>
+
+<span class="sd">    Note that ``jit_module`` should only be called at the end of the module to</span>
+<span class="sd">    be jitted. In addition, only functions which are defined in the module</span>
+<span class="sd">    ``jit_module`` is called from are considered for automatic jit-wrapping.</span>
+<span class="sd">    See the Numba documentation for more information about what can/cannot be</span>
+<span class="sd">    jitted.</span>
+
+<span class="sd">    :param kwargs: Keyword arguments to pass to ``jit`` such as ``nopython``</span>
+<span class="sd">                   or ``error_model``.</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># Get the module jit_module is being called from</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmodule</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># Replace functions in module with jit-wrapped versions</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">and</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmodule</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="n">module</span><span class="p">:</span>
+            <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"Auto decorating function </span><span class="si">{}</span><span class="s2"> from module </span><span class="si">{}</span><span class="s2"> with jit "</span>
+                          <span class="s2">"and options: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+            <span class="n">module</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">jit</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

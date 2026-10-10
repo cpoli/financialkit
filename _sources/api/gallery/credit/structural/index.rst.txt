@@ -1,0 +1,105 @@
+
+
+.. _sphx_glr_api_gallery_credit_structural:
+
+Structural models
+-----------------
+
+Default as an option on the firm's assets: at maturity, at a barrier,
+or when shareholders choose.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Merton (1974) treated a firm&#x27;s equity as a European call on its assets V, struck at the face value D of its zero-coupon debt. Debt is then a riskless bond minus a put, the risk-neutral default probability is N(-d_2), and the credit spread follows from leverage and asset volatility alone. Hull&#x27;s Example 24.3 backs out the unobserved asset value and volatility from equity (3) and its volatility (80%).">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/structural/images/thumb/sphx_glr_plot_01_merton_structural_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/structural/plot_01_merton_structural`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's structural model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Black and Cox (1976) let safety covenants force default the first time the asset value touches a barrier, not only at maturity. The reflection principle gives the first-passage probability in closed form. Here it is checked against simulated asset paths (with a Brownian-bridge correction for crossings between grid points) and compared with Merton&#x27;s maturity-only default probability.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/structural/images/thumb/sphx_glr_plot_02_black_cox_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/structural/plot_02_black_cox`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black and Cox: default at the first passage</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Leland (1994) priced perpetual debt on a firm whose coupons are tax deductible and whose bankruptcy destroys half its assets. Shareholders keep paying coupons as long as equity is worth something and default at the asset level V_B where equity hits zero with zero slope. Firm value, unlevered assets plus tax shields minus expected bankruptcy costs, is maximised at a coupon that sets the optimal leverage; in Leland&#x27;s base case this is about 75% with a 75 bp spread.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/structural/images/thumb/sphx_glr_plot_03_leland_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/structural/plot_03_leland`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Leland's endogenous default and optimal leverage</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Moody&#x27;s KMV (Crosbie and Bohn 2003) turned Merton&#x27;s model into a default-prediction tool. Asset values are backed out from a daily equity series by iterating: guess the asset volatility, invert the equity call day by day, re-estimate the volatility from the implied asset returns, and repeat. The default point is short-term debt plus half the long-term debt, and the number of standard deviations between the assets and that point,">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/structural/images/thumb/sphx_glr_plot_04_distance_to_default_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/structural/plot_04_distance_to_default`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Crosbie and Bohn: the distance to default</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/credit/structural/plot_01_merton_structural
+   /api/gallery/credit/structural/plot_02_black_cox
+   /api/gallery/credit/structural/plot_03_leland
+   /api/gallery/credit/structural/plot_04_distance_to_default
+

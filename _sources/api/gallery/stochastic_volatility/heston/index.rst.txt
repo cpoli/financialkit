@@ -1,0 +1,69 @@
+
+
+.. _sphx_glr_api_gallery_stochastic_volatility_heston:
+
+Stochastic volatility
+---------------------
+
+Volatility with its own randomness: Hull and White's mixing formula for
+uncorrelated variance, and Heston's correlated square-root model.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Hull and White (1987) let the variance follow its own lognormal diffusion, dV = \xi V\,dW, independent of the stock. Conditional on the variance path the stock is lognormal with the path&#x27;s average variance \bar V, so the option price is the Black-Scholes price averaged over the distribution of \bar V: the mixing formula. They expanded it in a series in \xi^2 T; here it is also computed by simulating variance paths. Because the variance is uncorrelated with the stock the smile is symmetric, and the at-the-money price falls below Black-Scholes, which is concave in the variance there.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/heston/images/thumb/sphx_glr_plot_01_hull_white_mixing_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/heston/plot_01_hull_white_mixing`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hull and White's stochastic volatility</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Steven Heston (1993) gave the variance a mean-reverting square-root diffusion correlated with the stock,">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/heston/images/thumb/sphx_glr_plot_02_heston_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/heston/plot_02_heston`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Heston model</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/stochastic_volatility/heston/plot_01_hull_white_mixing
+   /api/gallery/stochastic_volatility/heston/plot_02_heston
+

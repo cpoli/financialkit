@@ -1,0 +1,510 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of
+``financialkit.stochastic_volatility``: local volatility, stochastic
+volatility, jumps, Fourier pricing, smile parametrisations and Heston
+simulation. Each script illustrates one dated breakthrough from the
+:doc:`history page </history/stochastic_volatility_breakthroughs>`.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/stochastic_volatility/<section>/<script>.py``.
+
+Sections
+--------
+
+- **local_vol** -- Cox's CEV model and Dupire's local volatility.
+- **jumps** -- Merton's jump diffusion, the Madan-Seneta and
+  Madan-Carr-Chang variance gamma, Bates and Kou.
+- **heston** -- Hull and White's mixing formula and the Heston model.
+- **fourier** -- Carr-Madan's FFT, Lewis's single integral and the COS method.
+- **smile** -- Hagan's SABR, Gatheral's SVI and Lee's moment formula.
+- **simulation** -- Andersen's QE scheme and full-truncation Euler.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Fourier pricing
+---------------
+
+Pricing from the characteristic function: Carr and Madan's FFT, Lewis's
+single integral and Fang and Oosterlee's COS expansion.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Carr and Madan (1999) noticed that the call price, as a function of the log strike k, is not integrable, but e^{\alpha k} C(k) is, and that its Fourier transform is a simple expression in the characteristic function. One fast Fourier transform then prices calls at thousands of strikes at once, for any model with a known characteristic function. The grids are linked: integration spacing \eta and strike spacing \lambda satisfy \lambda\eta = 2\pi/N.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/fourier/images/thumb/sphx_glr_plot_01_carr_madan_fft_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/fourier/plot_01_carr_madan_fft`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Carr and Madan's FFT</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Alan Lewis (2001) moved the Fourier inversion contour to \operatorname{Im} u = -\tfrac12, half way between the strips where the call and the put transforms live. There the price is one real integral,">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/fourier/images/thumb/sphx_glr_plot_02_lewis_formula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/fourier/plot_02_lewis_formula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lewis's single-integral formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fang and Oosterlee (2008) truncated the density of the log return to an interval [a, b] set by its cumulants and expanded it in a cosine series, whose coefficients are read directly off the characteristic function. The payoff&#x27;s cosine coefficients are closed form, so a price is a dot product of two short vectors. For smooth densities the error falls exponentially with the number of terms; for a density with a kink, like short-dated variance gamma, only algebraically.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/fourier/images/thumb/sphx_glr_plot_03_cos_method_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/fourier/plot_03_cos_method`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fang and Oosterlee's COS method</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Stochastic volatility
+---------------------
+
+Volatility with its own randomness: Hull and White's mixing formula for
+uncorrelated variance, and Heston's correlated square-root model.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Hull and White (1987) let the variance follow its own lognormal diffusion, dV = \xi V\,dW, independent of the stock. Conditional on the variance path the stock is lognormal with the path&#x27;s average variance \bar V, so the option price is the Black-Scholes price averaged over the distribution of \bar V: the mixing formula. They expanded it in a series in \xi^2 T; here it is also computed by simulating variance paths. Because the variance is uncorrelated with the stock the smile is symmetric, and the at-the-money price falls below Black-Scholes, which is concave in the variance there.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/heston/images/thumb/sphx_glr_plot_01_hull_white_mixing_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/heston/plot_01_hull_white_mixing`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hull and White's stochastic volatility</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Steven Heston (1993) gave the variance a mean-reverting square-root diffusion correlated with the stock,">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/heston/images/thumb/sphx_glr_plot_02_heston_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/heston/plot_02_heston`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Heston model</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Jumps
+-----
+
+Discontinuous prices: Merton's jump diffusion, the variance gamma process
+in its symmetric and skewed forms, Bates's jumps on top of Heston, and
+Kou's double-exponential jumps.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1976) added Poisson jumps with lognormal sizes to geometric Brownian motion. If the jump risk is diversifiable it is not priced, and conditioning on the number of jumps turns the option into a Poisson mixture of Black-Scholes prices with adjusted rates and volatilities. Jumps fatten the tails of the return distribution, and because a few jumps matter far more over a week than over five years, they make short-dated smiles much steeper than long-dated ones.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_01_merton_jump_diffusion_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_01_merton_jump_diffusion`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's jump diffusion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Madan and Seneta (1990) ran a Brownian motion on a random business clock: gamma-distributed time G_t, with variance rate \nu. The result, \sigma W_{G_t}, is a pure-jump Lévy process with infinitely many small jumps, symmetric, and with tails heavier than the normal&#x27;s but lighter than a power law. The density is closed form in terms of a modified Bessel function. The clock&#x27;s variance \nu sets the excess kurtosis (3\nu/T).">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_02_madan_seneta_variance_gamma_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_02_madan_seneta_variance_gamma`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Madan and Seneta's variance gamma</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="David Bates (1996), studying Deutsche mark options, found that neither jumps nor stochastic volatility alone fit the smile at every maturity. Diffusive stochastic volatility needs time to build up a skew, so Heston&#x27;s short-dated smiles are too flat; jumps act at once but their effect washes out with maturity. Putting Merton&#x27;s lognormal jumps on top of Heston gives both: the characteristic function is simply the product of the two.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_03_bates_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_03_bates`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bates: jumps and stochastic volatility</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Madan, Carr and Chang (1998) added a drift \theta in business time: X = \theta G_t + \sigma W_{G_t}. A negative \theta moves mass into the left tail, turning the symmetric Madan-Seneta smile into the equity skew with one extra parameter, and they priced options in closed form. Fang and Oosterlee (2008) later used one of their parameter sets as a benchmark; it is reproduced below.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_04_madan_carr_chang_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_04_madan_carr_chang`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Madan, Carr and Chang's skewed variance gamma</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Steven Kou (2002) took the log jump sizes to be exponential, with rate \eta_1 upward (probability p) and \eta_2 downward. The two exponential tails give the asymmetric, leptokurtic returns seen in data, and because the exponential distribution is memoryless the overshoot over a barrier is again exponential, which makes barrier and lookback options tractable. The tails also cap the moments, E[S_T^{s}] &lt; \infty only for -\eta_2 &lt; s &lt; \eta_1.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/jumps/images/thumb/sphx_glr_plot_05_kou_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/jumps/plot_05_kou`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kou's double-exponential jumps</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Local volatility
+----------------
+
+Volatility as a function of the price level and time: Cox's constant
+elasticity of variance and Dupire's formula, which reads the local
+volatility off a surface of option prices.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1975 John Cox let the volatility depend on the price, dS = r S\,dt + \sigma S^{\beta}\,dW. The local volatility is \sigma S^{\beta - 1}: for \beta &lt; 1 it rises as the price falls, the leverage effect Fischer Black had just documented, and the implied volatility skews down in the strike. Schroder (1989) gave the prices in closed form with the noncentral chi-square distribution. Here the closed form is checked against an Euler simulation of the SDE and the skew is shown for several elasticities, each scaled to a 20% at-the-money local volatility.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/local_vol/images/thumb/sphx_glr_plot_01_cox_cev_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/local_vol/plot_01_cox_cev`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox's constant elasticity of variance</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1994 Bruno Dupire showed that a full surface of call prices C(K, T) pins down a unique local volatility \sigma(S, t) that reproduces it,">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/local_vol/images/thumb/sphx_glr_plot_02_dupire_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/local_vol/plot_02_dupire`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dupire's local volatility</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Simulation
+----------
+
+Monte Carlo for Heston when the variance can hit zero: Andersen's
+quadratic-exponential scheme and the full-truncation Euler scheme.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Leif Andersen (2008) simulated the Heston variance by matching the mean and variance of its exact noncentral chi-square transition with something cheap to sample: a scaled squared Gaussian when the variance is well away from zero, and a point mass at zero plus an exponential tail when it is close, switching at \psi = s^2/m^2 = 1.5. The spot then takes a step that integrates the variance with the trapezoidal rule. On Andersen&#x27;s hardest test case (Feller condition badly violated, ten years) QE is nearly unbiased with a few steps per year, where Euler schemes are far off.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/simulation/images/thumb/sphx_glr_plot_01_andersen_qe_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/simulation/plot_01_andersen_qe`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Andersen's quadratic-exponential scheme</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An Euler step for the square-root variance can go negative, and the repairs proposed in the literature differ in where they take the positive part: in the diffusion only (partial truncation, Deelstra and Delbaen 1998), as an absolute value in the diffusion (Higham and Mao 2005), or in both the drift and the diffusion while letting the variance itself go negative (full truncation). Lord, Koekkoek and van Dijk (2010) put them in one framework and found full truncation the least biased. All three schemes here run through financialkit.integrators.euler_maruyama with correlated increments.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/simulation/images/thumb/sphx_glr_plot_02_full_truncation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/simulation/plot_02_full_truncation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lord, Koekkoek and van Dijk's full truncation</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Smile parametrisations
+----------------------
+
+Shapes for the implied volatility smile: Hagan's SABR formula, Gatheral's
+SVI, and Lee's bound on how steep the wings can be.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Hagan, Kumar, Lesniewski and Woodward (2002) observed that local volatility predicts the wrong dynamics: when the forward rises, a local volatility model moves the smile the wrong way. Their stochastic \alpha\beta\rho model, dF = \alpha F^\beta\,dW_1, d\alpha = \nu\alpha\,dW_2, has an asymptotic implied-volatility formula that became the market standard for swaption smiles. Each parameter has one job: \beta the backbone, \rho the skew, \nu the curvature. Here a smile is calibrated and each parameter varied in turn.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/smile/images/thumb/sphx_glr_plot_01_sabr_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/smile/plot_01_sabr`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hagan's SABR model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jim Gatheral presented the stochastic volatility inspired (SVI) parametrisation at Global Derivatives in 2004: the total implied variance w(k) = \sigma_{BS}^2 T in log-moneyness k,">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/smile/images/thumb/sphx_glr_plot_02_svi_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/smile/plot_02_svi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gatheral's SVI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Roger Lee (2004) proved that the total implied variance can grow at most linearly in the log strike, and that the slope is fixed by how many moments the price has. If \tilde p is the supremum of the p with E[S_T^{1+p}] &lt; \infty, then">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/smile/images/thumb/sphx_glr_plot_03_lee_moment_formula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/smile/plot_03_lee_moment_formula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lee's moment formula</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/stochastic_volatility/fourier/index.rst
+   /api/gallery/stochastic_volatility/heston/index.rst
+   /api/gallery/stochastic_volatility/jumps/index.rst
+   /api/gallery/stochastic_volatility/local_vol/index.rst
+   /api/gallery/stochastic_volatility/simulation/index.rst
+   /api/gallery/stochastic_volatility/smile/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: stochastic_volatility_python.zip </api/gallery/stochastic_volatility/stochastic_volatility_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: stochastic_volatility_jupyter.zip </api/gallery/stochastic_volatility/stochastic_volatility_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

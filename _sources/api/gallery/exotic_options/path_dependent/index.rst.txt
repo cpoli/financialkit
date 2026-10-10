@@ -1,0 +1,88 @@
+
+
+.. _sphx_glr_api_gallery_exotic_options_path_dependent:
+
+Lookbacks and variance swaps
+----------------------------
+
+Payoffs on the extremes of the path, and on its realized variance:
+floating and fixed-strike lookbacks, and the replication of a variance
+swap by a strip of options.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="&quot;Buy at the low, sell at the high&quot;: Barry Goldman, Howard Sosin and Mary Ann Gatto (1979) priced the option whose strike is the lowest price over its life, S_T - \min_t S_t (or the highest, for the put). It is never out of the money, so it costs much more than a vanilla call. The joint law of a Brownian motion and its minimum gives the closed form; Monte Carlo can match it exactly only by sampling each step&#x27;s minimum from the Brownian bridge, because checking the price at discrete dates misses the true low.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/path_dependent/images/thumb/sphx_glr_plot_01_floating_lookback_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/path_dependent/plot_01_floating_lookback`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Goldman-Sosin-Gatto floating lookbacks</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Antoine Conze and Viswanathan (1991) priced the fixed-strike lookback: a call on the maximum, (\max_t S_t - K)^+, and a put on the minimum, (K - \min_t S_t)^+. Once the running maximum has passed the strike, the call has locked in \max - K and what remains is a call on any further rise; that is how a seasoned option is priced, with the maximum observed so far as an input.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/path_dependent/images/thumb/sphx_glr_plot_02_fixed_lookback_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/path_dependent/plot_02_fixed_lookback`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Conze-Viswanathan fixed lookbacks</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A variance swap pays the realized variance of the returns minus a fixed strike. Kresimir Demeterfi, Emanuel Derman, Michael Kamal and Joseph Zou (1999) showed how to replicate it, whatever the volatility process, with a static strip of out-of-the-money options weighted by 1/K^2 plus a delta hedge, which gives the fair strike from today&#x27;s option prices alone:">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/path_dependent/images/thumb/sphx_glr_plot_03_variance_swap_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/path_dependent/plot_03_variance_swap`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Demeterfi-Derman-Kamal-Zou variance swaps</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/exotic_options/path_dependent/plot_01_floating_lookback
+   /api/gallery/exotic_options/path_dependent/plot_02_fixed_lookback
+   /api/gallery/exotic_options/path_dependent/plot_03_variance_swap
+

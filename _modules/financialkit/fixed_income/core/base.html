@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.fixed_income.core.base &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/fixed_income/core/base';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.fixed_income.core.base</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.fixed_income.core.base</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Abstract base classes and result containers for financialkit.fixed_income.</span>
+
+<span class="sd">Every term structure in this domain is a :class:`YieldCurve`: a function</span>
+<span class="sd">from maturity (years) to a continuously compounded zero rate, from which</span>
+<span class="sd">discount factors, Lutz forward rates and par yields follow by the same</span>
+<span class="sd">formulas whatever the curve's construction. Concrete curves are an</span>
+<span class="sd">interpolated :class:`ZeroCurve` (bootstrapping), a :class:`FlatCurve`, and</span>
+<span class="sd">the parametric and spline curves in</span>
+<span class="sd">:mod:`financialkit.fixed_income.systems.curves`. Bonds, swaps and</span>
+<span class="sd">liabilities are :class:`CashFlows`, and every risk measure returns a small</span>
+<span class="sd">dataclass rather than a bare tuple, so the visualizers have a stable</span>
+<span class="sd">interface.</span>
+
+<span class="sd">Functions that take a ``curve`` also accept a plain float, read as a flat</span>
+<span class="sd">continuously compounded rate (see :func:`as_curve`).</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"YieldCurve"</span><span class="p">,</span>
+    <span class="s2">"FlatCurve"</span><span class="p">,</span>
+    <span class="s2">"ZeroCurve"</span><span class="p">,</span>
+    <span class="s2">"ShiftedCurve"</span><span class="p">,</span>
+    <span class="s2">"CurveLike"</span><span class="p">,</span>
+    <span class="s2">"as_curve"</span><span class="p">,</span>
+    <span class="s2">"coupon_times"</span><span class="p">,</span>
+    <span class="s2">"CashFlows"</span><span class="p">,</span>
+    <span class="s2">"BondRisk"</span><span class="p">,</span>
+    <span class="s2">"CurveFitResult"</span><span class="p">,</span>
+    <span class="s2">"CurvePCAResult"</span><span class="p">,</span>
+    <span class="s2">"KeyRateDurationResult"</span><span class="p">,</span>
+    <span class="s2">"ImmunizationResult"</span><span class="p">,</span>
+    <span class="s2">"SwapValuation"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="YieldCurve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.YieldCurve">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">YieldCurve</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""A term structure of continuously compounded zero rates.</span>
+
+<span class="sd">    Subclasses implement :meth:`zero_rate`; discount factors, forward rates</span>
+<span class="sd">    and par yields are derived here, so every curve answers them the same way.</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="YieldCurve.zero_rate">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.YieldCurve.zero_rate">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Continuously compounded zero rate for maturity `t` (years); broadcasts."""</span></div>
+
+
+<div class="viewcode-block" id="YieldCurve.discount">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.YieldCurve.discount">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">discount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Discount factor :math:`P(0, t) = e^{-r(t) t}`; broadcasts."""</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">zero_rate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="YieldCurve.forward_rate">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.YieldCurve.forward_rate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""Continuously compounded forward rate between `t1` and `t2` (Lutz, 1940).</span>
+
+<span class="sd">        .. math:: f(t_1, t_2) = \frac{r(t_2) t_2 - r(t_1) t_1}{t_2 - t_1}</span>
+<span class="sd">        """</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">t2</span> <span class="o">&lt;=</span> <span class="n">t1</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"t2 must exceed t1"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">zero_rate</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">*</span> <span class="n">t2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">zero_rate</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">*</span> <span class="n">t1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="YieldCurve.instantaneous_forward">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.YieldCurve.instantaneous_forward">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">instantaneous_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""Instantaneous forward rate :math:`f(t) = \partial_t [r(t) t]`, by central differences."""</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">lo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">h</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">hi</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">h</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">zero_rate</span><span class="p">(</span><span class="n">hi</span><span class="p">)</span> <span class="o">*</span> <span class="n">hi</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">zero_rate</span><span class="p">(</span><span class="n">lo</span><span class="p">)</span> <span class="o">*</span> <span class="n">lo</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="YieldCurve.par_yield">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.YieldCurve.par_yield">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">par_yield</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maturity</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">"""Coupon rate that prices a bond (or the fixed leg of a swap) at par.</span>
+
+<span class="sd">        .. math:: c = m \, \frac{1 - P(0, T)}{\sum_i P(0, t_i)}</span>
+
+<span class="sd">        with coupons at ``T, T - 1/m, ...`` down to the first date after 0.</span>
+<span class="sd">        """</span>
+        <span class="n">maturity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">maturity</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">T</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">maturity</span><span class="p">):</span>
+            <span class="n">times</span> <span class="o">=</span> <span class="n">coupon_times</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">freq</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="n">T</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="n">times</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">out</span> <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="YieldCurve.shifted">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.YieldCurve.shifted">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">shifted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ShiftedCurve</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""This curve with `delta` added to every zero rate (a float, or a callable of `t`)."""</span>
+        <span class="k">return</span> <span class="n">ShiftedCurve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="coupon_times">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.coupon_times">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">coupon_times</span><span class="p">(</span><span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Coupon dates ``maturity - k / freq &gt; 0``, ascending; the first period may be short.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; coupon_times(1.25, 2).tolist()</span>
+<span class="sd">    [0.25, 0.75, 1.25]</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">maturity</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"maturity must be positive"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">freq</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"freq must be a positive integer"</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">maturity</span> <span class="o">*</span> <span class="n">freq</span> <span class="o">-</span> <span class="mf">1e-9</span><span class="p">))</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">maturity</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">freq</span>
+    <span class="k">return</span> <span class="n">times</span><span class="p">[</span><span class="n">times</span> <span class="o">&gt;</span> <span class="mf">1e-12</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="FlatCurve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.FlatCurve">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FlatCurve</span><span class="p">(</span><span class="n">YieldCurve</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""The same continuously compounded rate at every maturity."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FlatCurve.zero_rate">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.FlatCurve.zero_rate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"FlatCurve(rate=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="si">!r}</span><span class="s2">)"</span></div>
+
+
+
+<div class="viewcode-block" id="ZeroCurve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.ZeroCurve">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ZeroCurve</span><span class="p">(</span><span class="n">YieldCurve</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Zero rates at node maturities, linearly interpolated and flat beyond the ends.</span>
+
+<span class="sd">    Linear interpolation in the zero rate is the convention of Hull's</span>
+<span class="sd">    bootstrapping examples (*Options, Futures, and Other Derivatives*, 9th</span>
+<span class="sd">    ed., Sec. 4.5), and is what</span>
+<span class="sd">    :func:`~financialkit.fixed_income.systems.curves.bootstrap_zero_curve`</span>
+<span class="sd">    solves under.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tenors : array_like, shape (n,)</span>
+<span class="sd">        Strictly increasing positive maturities in years.</span>
+<span class="sd">    rates : array_like, shape (n,)</span>
+<span class="sd">        Continuously compounded zero rates at `tenors`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; curve = ZeroCurve([1.0, 2.0], [0.03, 0.04])</span>
+<span class="sd">    &gt;&gt;&gt; round(float(curve.zero_rate(1.5)), 6)</span>
+<span class="sd">    0.035</span>
+<span class="sd">    &gt;&gt;&gt; round(float(curve.forward_rate(1.0, 2.0)), 6)</span>
+<span class="sd">    0.05</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tenors</span><span class="p">,</span> <span class="n">rates</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tenors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">tenors</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">rates</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tenors</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">tenors</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rates</span><span class="o">.</span><span class="n">shape</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">tenors</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"tenors and rates must be 1-D arrays of the same nonzero length"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tenors</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tenors</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"tenors must be positive and strictly increasing"</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ZeroCurve.zero_rate">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.ZeroCurve.zero_rate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">tenors</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rates</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"ZeroCurve(tenors=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tenors</span><span class="si">!r}</span><span class="s2">, rates=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rates</span><span class="si">!r}</span><span class="s2">)"</span></div>
+
+
+
+<div class="viewcode-block" id="ShiftedCurve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.ShiftedCurve">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ShiftedCurve</span><span class="p">(</span><span class="n">YieldCurve</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""A base curve plus a spread on its zero rates: a parallel shift (float) or a shaped shock (callable)."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">YieldCurve</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">base</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span>
+
+<div class="viewcode-block" id="ShiftedCurve.zero_rate">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.ShiftedCurve.zero_rate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">zero_rate</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span></div>
+</div>
+
+
+
+<span class="n">CurveLike</span> <span class="o">=</span> <span class="n">YieldCurve</span> <span class="o">|</span> <span class="nb">float</span>
+
+
+<div class="viewcode-block" id="as_curve">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.as_curve">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">as_curve</span><span class="p">(</span><span class="n">curve</span><span class="p">:</span> <span class="n">CurveLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">YieldCurve</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return `curve` itself, or a :class:`FlatCurve` if it is a number."""</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">curve</span><span class="p">,</span> <span class="n">YieldCurve</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">curve</span>
+    <span class="k">return</span> <span class="n">FlatCurve</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">curve</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="CashFlows">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.CashFlows">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CashFlows</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A stream of fixed amounts paid at times (years from today)."""</span>
+
+    <span class="n">times</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n,): Payment times, ascending."""</span>
+
+    <span class="n">amounts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n,): Payment amounts."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amounts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amounts</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"times and amounts must have the same shape"</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CashFlows.present_value">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.CashFlows.present_value">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">present_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">curve</span><span class="p">:</span> <span class="n">CurveLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Sum of the amounts discounted on `curve`."""</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amounts</span> <span class="o">*</span> <span class="n">as_curve</span><span class="p">(</span><span class="n">curve</span><span class="p">)</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)))</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">CashFlows</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CashFlows</span><span class="p">:</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">times</span><span class="p">])</span>
+        <span class="n">amounts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">amounts</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">amounts</span><span class="p">])</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"stable"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">CashFlows</span><span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="n">order</span><span class="p">],</span> <span class="n">amounts</span><span class="p">[</span><span class="n">order</span><span class="p">])</span>
+
+<div class="viewcode-block" id="CashFlows.scaled">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.CashFlows.scaled">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scaled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CashFlows</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""The same dates with every amount multiplied by `factor`."""</span>
+        <span class="k">return</span> <span class="n">CashFlows</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">amounts</span> <span class="o">*</span> <span class="n">factor</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="BondRisk">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.BondRisk">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BondRisk</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Price and first/second-order yield sensitivities of a cash-flow stream."""</span>
+
+    <span class="n">price</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: Present value at the given yield."""</span>
+
+    <span class="n">macaulay_duration</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: Present-value-weighted average time to payment."""</span>
+
+    <span class="n">modified_duration</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: :math:`-\\frac{1}{P}\\frac{dP}{dy}`; equals Macaulay under continuous compounding."""</span>
+
+    <span class="n">convexity</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: :math:`\\frac{1}{P}\\frac{d^2P}{dy^2}`."""</span>
+
+    <span class="n">yield_</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="w">    </span><span class="sd">"""float: The yield the measures were computed at."""</span>
+
+    <span class="n">compounding</span><span class="p">:</span> <span class="nb">object</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">"""int or None: Compounding frequency of the yield (``None`` = continuous)."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dollar_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""float: :math:`-dP/dy = D_{mod} P`."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">modified_duration</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dv01</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""float: Price change for a one-basis-point fall in yield."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dollar_duration</span> <span class="o">*</span> <span class="mf">1e-4</span>
+
+<div class="viewcode-block" id="BondRisk.price_change">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.BondRisk.price_change">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">price_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Duration (``order=1``) or duration-plus-convexity (``order=2``) estimate of the price change for a yield move `dy`."""</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dy</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">rel</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">modified_duration</span> <span class="o">*</span> <span class="n">dy</span>
+        <span class="k">if</span> <span class="n">order</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">rel</span> <span class="o">=</span> <span class="n">rel</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">convexity</span> <span class="o">*</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">rel</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="CurveFitResult">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.CurveFitResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CurveFitResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A fitted term structure and its goodness of fit."""</span>
+
+    <span class="n">curve</span><span class="p">:</span> <span class="n">YieldCurve</span>
+<span class="w">    </span><span class="sd">"""YieldCurve: The fitted curve."""</span>
+
+    <span class="n">params</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray: Fitted parameters, in the model's documented order."""</span>
+
+    <span class="n">residuals</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray: Fitted minus observed values (yields or prices)."""</span>
+
+    <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="w">    </span><span class="sd">"""str: ``"nelson_siegel"``, ``"svensson"`` or ``"mcculloch_spline"``."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rmse</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""float: Root-mean-square residual."""</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">residuals</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span></div>
+
+
+
+<div class="viewcode-block" id="CurvePCAResult">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.CurvePCAResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CurvePCAResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Principal components of yield-curve changes (Litterman-Scheinkman)."""</span>
+
+    <span class="n">tenors</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n,): Maturities of the yield columns."""</span>
+
+    <span class="n">eigenvalues</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n,): Component variances, descending."""</span>
+
+    <span class="n">loadings</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n, n): Unit eigenvectors as columns, ``loadings[:, k]`` pairs with ``eigenvalues[k]``.</span>
+<span class="sd">    Signs are fixed so the first component loads positively on average and the second rises with maturity."""</span>
+
+    <span class="n">scores</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_obs, n): The centred changes projected on the components."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">explained_variance_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""ndarray: Share of total variance carried by each component."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">eigenvalues</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="KeyRateDurationResult">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.KeyRateDurationResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KeyRateDurationResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Ho's key rate durations of a cash-flow stream."""</span>
+
+    <span class="n">key_tenors</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (k,): Key maturities."""</span>
+
+    <span class="n">durations</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (k,): Duration with respect to each key rate."""</span>
+
+    <span class="n">parallel_duration</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: Effective duration under a parallel shift; equals ``durations.sum()`` to first order."""</span>
+
+    <span class="n">price</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: Present value on the unshocked curve."""</span></div>
+
+
+
+<div class="viewcode-block" id="ImmunizationResult">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.ImmunizationResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ImmunizationResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Asset holdings that immunize a liability stream against parallel shifts (Redington)."""</span>
+
+    <span class="n">holdings</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_assets,): Units of each asset held."""</span>
+
+    <span class="n">assets</span><span class="p">:</span> <span class="nb">list</span>
+<span class="w">    </span><span class="sd">"""list of CashFlows: Each asset's cash flows per unit."""</span>
+
+    <span class="n">liabilities</span><span class="p">:</span> <span class="n">CashFlows</span>
+<span class="w">    </span><span class="sd">"""CashFlows: The liability stream."""</span>
+
+    <span class="n">curve</span><span class="p">:</span> <span class="n">YieldCurve</span>
+<span class="w">    </span><span class="sd">"""YieldCurve: The curve the match was made on."""</span>
+
+    <span class="n">pv_assets</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="w">    </span><span class="sd">"""float: Present value of the asset portfolio."""</span>
+
+    <span class="n">pv_liabilities</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="w">    </span><span class="sd">"""float: Present value of the liabilities."""</span>
+
+    <span class="n">duration_assets</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="w">    </span><span class="sd">"""float: Fisher-Weil duration of the asset portfolio."""</span>
+
+    <span class="n">duration_liabilities</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="w">    </span><span class="sd">"""float: Fisher-Weil duration of the liabilities."""</span>
+
+    <span class="n">convexity_assets</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="w">    </span><span class="sd">"""float: Convexity of the asset portfolio."""</span>
+
+    <span class="n">convexity_liabilities</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="w">    </span><span class="sd">"""float: Convexity of the liabilities."""</span>
+
+    <span class="n">extra</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">"""dict: Free-form diagnostics."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">portfolio</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CashFlows</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""CashFlows: The combined asset portfolio."""</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">CashFlows</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">holdings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">assets</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">out</span> <span class="o">+</span> <span class="n">a</span><span class="o">.</span><span class="n">scaled</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">redington_satisfied</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""bool: Asset convexity exceeds liability convexity, so the surplus has a local minimum at zero shift."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">convexity_assets</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">convexity_liabilities</span>
+
+<div class="viewcode-block" id="ImmunizationResult.surplus">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.ImmunizationResult.surplus">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">surplus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shifts</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Asset minus liability value after parallel shifts `shifts` of the curve."""</span>
+        <span class="n">shifts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">shifts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+        <span class="n">port</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">portfolio</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">port</span><span class="o">.</span><span class="n">present_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curve</span><span class="o">.</span><span class="n">shifted</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">liabilities</span><span class="o">.</span><span class="n">present_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">curve</span><span class="o">.</span><span class="n">shifted</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shifts</span><span class="p">])</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="SwapValuation">
+<a class="viewcode-back" href="../../../../api/fixed_income.html#financialkit.fixed_income.SwapValuation">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SwapValuation</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Value of a swap as the difference of two bonds: the leg received less the leg paid."""</span>
+
+    <span class="n">value</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: ``receive_leg - pay_leg``, in the valuation currency."""</span>
+
+    <span class="n">receive_leg</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: Present value of the leg received."""</span>
+
+    <span class="n">pay_leg</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: Present value of the leg paid."""</span>
+
+    <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="w">    </span><span class="sd">"""str: ``"pay_fixed"``, ``"receive_fixed"``, ``"receive_foreign"`` or ``"pay_foreign"``."""</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

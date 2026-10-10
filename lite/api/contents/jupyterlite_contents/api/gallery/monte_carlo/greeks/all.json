@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.872873Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.872873Z",
+      "mimetype": null,
+      "name": "plot_02_pathwise.ipynb",
+      "path": "jupyterlite_contents/api/gallery/monte_carlo/greeks/plot_02_pathwise.ipynb",
+      "size": 4309,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.872751Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.872751Z",
+      "mimetype": null,
+      "name": "plot_01_likelihood_ratio.ipynb",
+      "path": "jupyterlite_contents/api/gallery/monte_carlo/greeks/plot_01_likelihood_ratio.ipynb",
+      "size": 3879,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.235981Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.236253Z",
+  "mimetype": null,
+  "name": "greeks",
+  "path": "jupyterlite_contents/api/gallery/monte_carlo/greeks",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

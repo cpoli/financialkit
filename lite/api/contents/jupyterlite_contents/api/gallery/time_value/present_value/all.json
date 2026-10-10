@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.888805Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.888805Z",
+      "mimetype": null,
+      "name": "plot_02_fisher_real_rate.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/present_value/plot_02_fisher_real_rate.ipynb",
+      "size": 3155,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.888706Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.888706Z",
+      "mimetype": null,
+      "name": "plot_01_fibonacci_present_value.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/present_value/plot_01_fibonacci_present_value.ipynb",
+      "size": 3362,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.888912Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.888912Z",
+      "mimetype": null,
+      "name": "plot_03_fisher_net_present_value.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/present_value/plot_03_fisher_net_present_value.ipynb",
+      "size": 3080,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.270989Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.271542Z",
+  "mimetype": null,
+  "name": "present_value",
+  "path": "jupyterlite_contents/api/gallery/time_value/present_value",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Interest-Rate Models &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/interest_rate_models_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Credit Risk" href="credit_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Stochastic Volatility" href="stochastic_volatility_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Interest-Rate Models</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-interest-rate-models">
+<h1>Breakthroughs in Interest-Rate Models<a class="headerlink" href="#breakthroughs-in-interest-rate-models" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/interest_rate_models.html"><span class="doc">financialkit.interest_rate_models hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/interest_rate_models/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/interest_rate_models.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“All models are wrong, but some are useful.”
+– George E. P. Box</p>
+</div></blockquote>
+<p>A bond is a bet on the path of interest rates, and a bond option is a
+bet on its volatility. Pricing them took three ideas. The first was to
+model the instantaneous short rate as a diffusion and read bond prices
+off it, as Merton, Vasicek and Cox, Ingersoll and Ross did in the
+1970s and 1980s. The second, from Ho and Lee in 1986, was to take
+today’s curve as an input instead of an output, which Hull and White,
+Black, Derman and Toy, and finally Heath, Jarrow and Morton turned into
+a general no-arbitrage framework. The third was to model the rates the
+market actually quotes, LIBOR and swap rates, so that the traders’
+Black formulas became exact. This chronology traces the ideas behind
+<a class="reference internal" href="../api/interest_rate_models.html#module-financialkit.interest_rate_models" title="financialkit.interest_rate_models"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.interest_rate_models</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#feynman-kac-bond-prices-by-monte-carlo" id="id1">1949 – Feynman-Kac: Bond Prices by Monte Carlo</a></p></li>
+<li><p><a class="reference internal" href="#feller-s-boundary-condition" id="id2">1951 – Feller’s Boundary Condition</a></p></li>
+<li><p><a class="reference internal" href="#merton-s-gaussian-short-rate" id="id3">1973 – Merton’s Gaussian Short Rate</a></p></li>
+<li><p><a class="reference internal" href="#vasicek-s-mean-reverting-rate" id="id4">1977 – Vasicek’s Mean-Reverting Rate</a></p></li>
+<li><p><a class="reference internal" href="#the-cox-ingersoll-ross-model" id="id5">1985 – The Cox-Ingersoll-Ross Model</a></p></li>
+<li><p><a class="reference internal" href="#the-ho-lee-model" id="id6">1986 – The Ho-Lee Model</a></p></li>
+<li><p><a class="reference internal" href="#jamshidian-s-bond-option-formula" id="id7">1989 – Jamshidian’s Bond Option Formula</a></p></li>
+<li><p><a class="reference internal" href="#jamshidian-s-decomposition-swaptions" id="id8">1989 – Jamshidian’s Decomposition: Swaptions</a></p></li>
+<li><p><a class="reference internal" href="#the-hull-white-model" id="id9">1990 – The Hull-White Model</a></p></li>
+<li><p><a class="reference internal" href="#the-black-derman-toy-tree" id="id10">1990 – The Black-Derman-Toy Tree</a></p></li>
+<li><p><a class="reference internal" href="#the-futures-convexity-adjustment" id="id11">1990 – The Futures Convexity Adjustment</a></p></li>
+<li><p><a class="reference internal" href="#the-heath-jarrow-morton-drift-condition" id="id12">1992 – The Heath-Jarrow-Morton Drift Condition</a></p></li>
+<li><p><a class="reference internal" href="#duffie-kan-affine-term-structures" id="id13">1996 – Duffie-Kan Affine Term Structures</a></p></li>
+<li><p><a class="reference internal" href="#bgm-caps-and-floors-by-black-s-formula" id="id14">1997 – BGM: Caps and Floors by Black’s Formula</a></p></li>
+<li><p><a class="reference internal" href="#jamshidian-s-swap-market-model" id="id15">1997 – Jamshidian’s Swap Market Model</a></p></li>
+<li><p><a class="reference internal" href="#brigo-mercurio-g2" id="id16">2001 – Brigo-Mercurio G2++</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id17">See Also</a></p></li>
+</ul>
+</nav>
+<section id="feynman-kac-bond-prices-by-monte-carlo">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1949 – Feynman-Kac: Bond Prices by Monte Carlo</a><a class="headerlink" href="#feynman-kac-bond-prices-by-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Richard Feynman’s path-integral formulation of quantum mechanics (1948)
+wrote the solution of a Schrödinger-type equation as an average over
+paths. Mark Kac, who heard Feynman lecture at Cornell, proved the
+rigorous version for the heat equation with a potential: the solution of
+a parabolic PDE with a killing term is an expectation over Brownian
+paths of an exponential of an integral. In finance the killing term is
+the short rate, and the formula says that a bond is the risk-neutral
+average of its pathwise discount factor. It is the bridge between the
+PDE and simulation views of every model in this domain.</p>
+<div class="math notranslate nohighlight">
+\[P(0, T) = E^Q\left[\exp\left(-\int_0^T r(s)\,ds\right)\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.short_rate.monte_carlo_bond_prices()</span></code>
+simulates any <a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.ShortRateModel" title="financialkit.interest_rate_models.core.base.ShortRateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShortRateModel</span></code></a>
+through <a class="reference internal" href="../api/integrators.html#module-financialkit.integrators" title="financialkit.integrators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.integrators</span></code></a>, discounts each path with the
+trapezoidal rule, and reports the prices with their standard errors next
+to the model’s closed form. The example shows the paths, the discount
+factors and the <span class="math notranslate nohighlight">\(1/\sqrt{n}\)</span> error.</p>
+<p><em>References:</em> M. Kac, “On Distributions of Certain Wiener Functionals,”
+<em>Transactions of the American Mathematical Society</em> 65 (1949) 1-13; R. P.
+Feynman, “Space-Time Approach to Non-Relativistic Quantum Mechanics,”
+<em>Reviews of Modern Physics</em> 20 (1948) 367-387.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Richard Feynman&#x27;s path integrals (1948) and Mark Kac&#x27;s proof (1949) tie a parabolic PDE to an expectation over Brownian paths. For a short-rate model the bond-pricing PDE \partial_t P + \mu\,\partial_r P + \tfrac12\sigma^2\partial_{rr} P = rP is solved by"><img alt="" src="../_images/sphx_glr_plot_01_feynman_kac_bond_price_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/short_rate/plot_01_feynman_kac_bond_price.html"><span class="doc">Feynman-Kac: bond prices by Monte Carlo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Feynman-Kac: bond prices by Monte Carlo</div>
+</div></div></section>
+<section id="feller-s-boundary-condition">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1951 – Feller’s Boundary Condition</a><a class="headerlink" href="#feller-s-boundary-condition" title="Link to this heading">#</a></h2>
+<p>William Feller studied diffusions whose volatility vanishes at a
+boundary, the square-root process among them, as models of population
+growth. He showed that whether the process can reach zero depends on a
+single ratio of drift to noise: when <span class="math notranslate nohighlight">\(2\kappa\theta \ge \sigma^2\)</span>
+the mean reversion near zero always wins and zero is never reached;
+below it the process touches zero and is reflected. Thirty years later
+the condition decided whether the CIR rate could hit zero, and later
+still whether the Heston variance could.</p>
+<div class="math notranslate nohighlight">
+\[dr = \kappa(\theta - r)\,dt + \sigma\sqrt{r}\,dW, \qquad 2\kappa\theta \ge \sigma^2\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.short_rate.feller_condition()</span></code>
+returns the ratio, and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">CIRModel.stationary_shape_scale</span></code>
+the gamma law it shapes. The example samples exact CIR paths on both
+sides of the condition and plots the stationary densities.</p>
+<p><em>References:</em> W. Feller, “Two Singular Diffusion Problems,” <em>Annals of
+Mathematics</em> 54(1) (1951) 173-182.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="William Feller (1951) classified the boundaries of diffusions such as the square-root process"><img alt="" src="../_images/sphx_glr_plot_02_feller_condition_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/short_rate/plot_02_feller_condition.html"><span class="doc">Feller’s boundary condition</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Feller's boundary condition</div>
+</div></div></section>
+<section id="merton-s-gaussian-short-rate">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1973 – Merton’s Gaussian Short Rate</a><a class="headerlink" href="#merton-s-gaussian-short-rate" title="Link to this heading">#</a></h2>
+<p>In the same paper that extended Black-Scholes to dividends and
+barriers, Robert Merton priced options when the interest rate itself is
+random. He let the short rate follow an arithmetic Brownian motion,
+which gave the first closed-form bond prices in a continuous-time
+stochastic-rate model. The model also showed its own flaw: with no
+mean reversion the variance of the rate grows without bound, rates go
+negative with rising probability, and long yields fall to minus
+infinity through a cubic convexity term.</p>
+<div class="math notranslate nohighlight">
+\[dr = \mu\,dt + \sigma\,dW, \qquad
+P(0, T) = \exp\left(-r_0 T - \tfrac12\mu T^2 + \tfrac16\sigma^2 T^3\right)\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.MertonShortRateModel" title="financialkit.interest_rate_models.systems.short_rate.MertonShortRateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.short_rate.MertonShortRateModel</span></code></a>
+prices bonds and bond options and simulates the rate. The example shows
+the collapsing long yields and the growing probability of negative
+rates.</p>
+<p><em>References:</em> R. C. Merton, “Theory of Rational Option Pricing,” <em>Bell
+Journal of Economics and Management Science</em> 4(1) (1973) 141-183,
+Section 6.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In Section 6 of &quot;Theory of Rational Option Pricing&quot; (1973), Robert Merton let the short rate follow an arithmetic Brownian motion, dr = \mu\,dt + \sigma\,dW, the first stochastic interest rate in continuous time. Bonds price in closed form,"><img alt="" src="../_images/sphx_glr_plot_03_merton_short_rate_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/short_rate/plot_03_merton_short_rate.html"><span class="doc">Merton’s Gaussian short rate</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's Gaussian short rate</div>
+</div></div></section>
+<section id="vasicek-s-mean-reverting-rate">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1977 – Vasicek’s Mean-Reverting Rate</a><a class="headerlink" href="#vasicek-s-mean-reverting-rate" title="Link to this heading">#</a></h2>
+<p>Oldrich Vasicek, then at Wells Fargo, derived the general bond-pricing
+equation for any diffusive short rate, with a market price of risk that
+must be the same for every bond, and solved it for an Ornstein-Uhlenbeck
+rate. Mean reversion keeps the rate’s variance bounded and gives the
+curve its three classic shapes, upward sloping, humped or inverted,
+depending on where today’s rate stands against the long-run level. It
+was the first equilibrium term-structure model, and its affine
+bond-price formula became the template for everything that followed.</p>
+<div class="math notranslate nohighlight">
+\[dr = \kappa(\theta - r)\,dt + \sigma\,dW, \qquad
+P(t, T) = A(\tau)\,e^{-B(\tau)\,r}, \quad B(\tau) = \frac{1 - e^{-\kappa\tau}}{\kappa}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.VasicekModel" title="financialkit.interest_rate_models.systems.short_rate.VasicekModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.short_rate.VasicekModel</span></code></a>
+gives bond prices at any date and state, the long yield, and exact
+paths from <a class="reference internal" href="../api/integrators.html#financialkit.integrators.ou_paths" title="financialkit.integrators.ou_paths"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.ou_paths()</span></code></a>. The example draws
+the three curve shapes and checks twenty maturities against simulation.</p>
+<p><em>References:</em> O. Vasicek, “An Equilibrium Characterization of the Term
+Structure,” <em>Journal of Financial Economics</em> 5(2) (1977) 177-188.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Oldrich Vasicek (1977) derived the term structure from a short rate pulled back towards a long-run mean,"><img alt="" src="../_images/sphx_glr_plot_04_vasicek_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/short_rate/plot_04_vasicek.html"><span class="doc">Vasicek’s mean-reverting short rate</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Vasicek's mean-reverting short rate</div>
+</div></div></section>
+<section id="the-cox-ingersoll-ross-model">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1985 – The Cox-Ingersoll-Ross Model</a><a class="headerlink" href="#the-cox-ingersoll-ross-model" title="Link to this heading">#</a></h2>
+<p>John Cox, Jonathan Ingersoll and Stephen Ross derived the short rate
+from a general-equilibrium economy, with investors’ preferences and
+production opportunities, rather than assuming it. The result was a
+square-root diffusion whose volatility falls with the rate, which keeps
+rates positive under Feller’s condition. Bond prices remain
+exponential-affine, and the transition density is a noncentral
+chi-square, so the model can be simulated exactly. The paper (in
+circulation since 1977) set the standard for deriving asset prices from
+first principles.</p>
+<div class="math notranslate nohighlight">
+\[dr = \kappa(\theta - r)\,dt + \sigma\sqrt{r}\,dW, \qquad
+B(\tau) = \frac{2(e^{\gamma\tau} - 1)}{(\gamma + \kappa)(e^{\gamma\tau} - 1) + 2\gamma}, \quad
+\gamma = \sqrt{\kappa^2 + 2\sigma^2}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.CIRModel" title="financialkit.interest_rate_models.systems.short_rate.CIRModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.short_rate.CIRModel</span></code></a>
+prices bonds and simulates either exactly (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ncx2.html#scipy.stats.ncx2" title="(in SciPy v1.18.0)"><code class="xref py py-data docutils literal notranslate"><span class="pre">scipy.stats.ncx2</span></code></a>) or
+by full-truncation Euler. The example compares its rate distribution
+with a Gaussian model’s and checks both schemes against the closed form.</p>
+<p><em>References:</em> J. C. Cox, J. E. Ingersoll and S. A. Ross, “A Theory of
+the Term Structure of Interest Rates,” <em>Econometrica</em> 53(2) (1985)
+385-407.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John Cox, Jonathan Ingersoll and Stephen Ross (1985) derived the short rate from a general-equilibrium economy and found"><img alt="" src="../_images/sphx_glr_plot_05_cir_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/short_rate/plot_05_cir.html"><span class="doc">Cox-Ingersoll-Ross: the square-root short rate</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cox-Ingersoll-Ross: the square-root short rate</div>
+</div></div></section>
+<section id="the-ho-lee-model">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1986 – The Ho-Lee Model</a><a class="headerlink" href="#the-ho-lee-model" title="Link to this heading">#</a></h2>
+<p>Thomas Ho and Sang-Bin Lee reversed the logic of equilibrium models.
+Instead of producing a curve that never matches the market, their model
+took today’s discount curve as an input and evolved it on a binomial
+tree with drift chosen so that every bond is repriced. Derivatives were
+then priced relative to the bonds that hedge them, as Black-Scholes
+prices options relative to the stock. In continuous time the model is
+Merton’s Gaussian rate with a time-dependent drift.</p>
+<div class="math notranslate nohighlight">
+\[dr = \theta(t)\,dt + \sigma\,dW, \qquad \theta(t) = \partial_t f(0, t) + \sigma^2 t\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.HoLeeModel" title="financialkit.interest_rate_models.systems.curve_fitted.HoLeeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.curve_fitted.HoLeeModel</span></code></a>
+takes a <a class="reference internal" href="../api/fixed_income.html#financialkit.fixed_income.YieldCurve" title="financialkit.fixed_income.core.base.YieldCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">YieldCurve</span></code></a> and
+gives <span class="math notranslate nohighlight">\(\theta(t)\)</span>, bond prices at any date and exact paths. The
+example fits a humped Nelson-Siegel curve that no Vasicek curve can
+match and reprices it by simulation.</p>
+<p><em>References:</em> T. S. Y. Ho and S.-B. Lee, “Term Structure Movements and
+Pricing Interest Rate Contingent Claims,” <em>Journal of Finance</em> 41(5)
+(1986) 1011-1029.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Thomas Ho and Sang-Bin Lee (1986) turned the problem around. Instead of deriving a curve from a short-rate model, they took today&#x27;s curve as given and made the model fit it: a binomial tree of whole discount curves whose drift is chosen to reprice every bond. Its continuous-time limit is Merton&#x27;s Gaussian rate with a time-dependent drift,"><img alt="" src="../_images/sphx_glr_plot_01_ho_lee_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/curve_fitted/plot_01_ho_lee.html"><span class="doc">Ho-Lee: the first arbitrage-free term-structure model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ho-Lee: the first arbitrage-free term-structure model</div>
+</div></div></section>
+<section id="jamshidian-s-bond-option-formula">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1989 – Jamshidian’s Bond Option Formula</a><a class="headerlink" href="#jamshidian-s-bond-option-formula" title="Link to this heading">#</a></h2>
+<p>Farshid Jamshidian, at Merrill Lynch, priced a European option on a
+zero-coupon bond in Vasicek’s model in closed form. The key step was a
+change of numeraire: measured in units of the bond that matures at the
+option’s expiry, the forward price of the underlying bond is a
+lognormal martingale, and the option is Black’s formula on that
+forward. The same argument works in every Gaussian model; only the
+bond’s total volatility changes.</p>
+<div class="math notranslate nohighlight">
+\[c = P(0, S) N(h) - K P(0, T) N(h - \sigma_P), \qquad
+h = \frac{1}{\sigma_P}\ln\frac{P(0, S)}{K P(0, T)} + \frac{\sigma_P}{2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.bond_options.zero_coupon_bond_option()</span></code>
+calls <a class="reference internal" href="../api/options.html#financialkit.options.black76_price" title="financialkit.options.black76_price"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.black76_price()</span></code></a> with the model’s
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">bond_option_volatility()</span></code>.
+The example checks it against Monte Carlo and compares Vasicek,
+Hull-White, Ho-Lee and G2++.</p>
+<p><em>References:</em> F. Jamshidian, “An Exact Bond Option Formula,” <em>Journal of
+Finance</em> 44(1) (1989) 205-209.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Farshid Jamshidian (1989) priced a European option on a zero-coupon bond in Vasicek&#x27;s model in closed form. Under the measure that uses the option-expiry bond as numeraire, the forward bond price P(0, S)/P(0, T) is a lognormal martingale, so"><img alt="" src="../_images/sphx_glr_plot_01_jamshidian_bond_option_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/options/plot_01_jamshidian_bond_option.html"><span class="doc">Jamshidian: an exact bond option formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Jamshidian: an exact bond option formula</div>
+</div></div></section>
+<section id="jamshidian-s-decomposition-swaptions">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1989 – Jamshidian’s Decomposition: Swaptions</a><a class="headerlink" href="#jamshidian-s-decomposition-swaptions" title="Link to this heading">#</a></h2>
+<p>The same paper contained a second idea. An option on a coupon bond is
+not, in general, a portfolio of options on its coupons. But in a
+one-factor model every zero-coupon price falls with the short rate, so
+the coupon bond ends above its strike exactly when the short rate ends
+below a critical level <span class="math notranslate nohighlight">\(r^*\)</span>, and at that level each zero has a
+natural strike. The coupon bond option splits into zero-coupon options,
+and since a swaption is an option on a coupon bond, swaptions acquired
+a closed form in Vasicek, Ho-Lee and Hull-White.</p>
+<div class="math notranslate nohighlight">
+\[\max\left(\sum_i c_i P(T, t_i) - K, 0\right) = \sum_i c_i \max\left(P(T, t_i) - P(T, t_i; r^*), 0\right)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.bond_options.coupon_bond_option()</span></code>
+finds <span class="math notranslate nohighlight">\(r^*\)</span> with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brentq.html#scipy.optimize.brentq" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.brentq()</span></code></a> and returns a
+<a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.JamshidianResult" title="financialkit.interest_rate_models.core.base.JamshidianResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">JamshidianResult</span></code></a>;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">jamshidian_swaption()</span></code>
+prices payer and receiver swaptions. The example shows the
+decomposition and checks it against Monte Carlo across strikes.</p>
+<p><em>References:</em> F. Jamshidian, “An Exact Bond Option Formula,” <em>Journal of
+Finance</em> 44(1) (1989) 205-209.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An option on a coupon bond is not a portfolio of options on its coupons, in general. Jamshidian (1989) noticed that in a one-factor model it is: every zero-coupon bond price falls with the short rate, so the bond is above its strike exactly when the short rate is below a critical r^, and then each zero is above K_i = P(T, t_i; r^). Hence"><img alt="" src="../_images/sphx_glr_plot_02_jamshidian_swaption_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/options/plot_02_jamshidian_swaption.html"><span class="doc">Jamshidian’s decomposition: swaptions in one-factor models</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Jamshidian's decomposition: swaptions in one-factor models</div>
+</div></div></section>
+<section id="the-hull-white-model">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1990 – The Hull-White Model</a><a class="headerlink" href="#the-hull-white-model" title="Link to this heading">#</a></h2>
+<p>John Hull and Alan White extended Vasicek’s model the way Ho and Lee
+had extended Merton’s: a time-dependent drift fits today’s curve, while
+mean reversion keeps rates bounded and makes long yields less volatile
+than short ones, as they are in the market. Bonds, bond options, caps
+and swaptions all keep closed forms, and the model’s trinomial tree
+handles American and Bermudan features. It became the industry’s
+default one-factor model.</p>
+<div class="math notranslate nohighlight">
+\[dr = (\theta(t) - a r)\,dt + \sigma\,dW, \qquad
+\theta(t) = \partial_t f(0, t) + a f(0, t) + \frac{\sigma^2}{2a}(1 - e^{-2at})\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.HullWhiteModel" title="financialkit.interest_rate_models.systems.curve_fitted.HullWhiteModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.curve_fitted.HullWhiteModel</span></code></a>
+writes the rate as an exact Ornstein-Uhlenbeck deviation from a
+deterministic shift, so simulation has no discretisation bias. The
+example contrasts its rate paths and yield volatilities with Ho-Lee’s.</p>
+<p><em>References:</em> J. Hull and A. White, “Pricing Interest-Rate-Derivative
+Securities,” <em>Review of Financial Studies</em> 3(4) (1990) 573-592.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John Hull and Alan White (1990) combined Vasicek&#x27;s mean reversion with Ho and Lee&#x27;s curve fitting,"><img alt="" src="../_images/sphx_glr_plot_02_hull_white_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/curve_fitted/plot_02_hull_white.html"><span class="doc">Hull-White: extended Vasicek</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hull-White: extended Vasicek</div>
+</div></div></section>
+<section id="the-black-derman-toy-tree">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1990 – The Black-Derman-Toy Tree</a><a class="headerlink" href="#the-black-derman-toy-tree" title="Link to this heading">#</a></h2>
+<p>Fischer Black, Emanuel Derman and William Toy built Goldman Sachs’s
+bond-option model as a binomial tree of lognormal short rates. Rates
+cannot go negative, the tree is fitted level by level to the market
+curve, and volatility can vary with time. Pricing is backward induction,
+so American and callable features cost nothing extra. Calibration by
+forward induction through Arrow-Debreu prices, made systematic by
+Jamshidian in 1991, needs one root-finding per level.</p>
+<div class="math notranslate nohighlight">
+\[r_{i,j} = U_i\, e^{\sigma_i\sqrt{\Delta t}\,(2j - i)}, \qquad
+\sum_j Q_{i,j}\, e^{-r_{i,j}\Delta t} = P(0, t_{i+1})\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.curve_fitted.black_derman_toy_tree()</span></code>
+calibrates the tree with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brentq.html#scipy.optimize.brentq" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.brentq()</span></code></a> and returns a
+<a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.RateTree" title="financialkit.interest_rate_models.core.base.RateTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">RateTree</span></code></a>, which
+prices zero-coupon bonds and European or American bond options. The
+example draws a small tree, reprices the curve to machine precision and
+values American puts.</p>
+<p><em>References:</em> F. Black, E. Derman and W. Toy, “A One-Factor Model of
+Interest Rates and Its Application to Treasury Bond Options,” <em>Financial
+Analysts Journal</em> 46(1) (1990) 33-39; F. Jamshidian, “Forward Induction
+and Construction of Yield Curve Diffusion Models,” <em>Journal of Fixed
+Income</em> 1(1) (1991) 62-74.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Fischer Black, Emanuel Derman and William Toy (1990), at Goldman Sachs, built a binomial tree of short rates that is lognormal, so rates stay positive, and fitted to the market curve level by level. At step i the rates are r_{i,j} = U_i e^{\sigma_i\sqrt{\Delta t}\,(2j - i)} with probability 1/2 on each branch, and the median U_i is solved so that the tree reprices the bond maturing one step later, using Arrow-Debreu prices carried forward through the tree. Options, including American ones, are then priced by backward induction."><img alt="" src="../_images/sphx_glr_plot_03_black_derman_toy_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/curve_fitted/plot_03_black_derman_toy.html"><span class="doc">Black-Derman-Toy: a lognormal rate tree</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black-Derman-Toy: a lognormal rate tree</div>
+</div></div></section>
+<section id="the-futures-convexity-adjustment">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1990 – The Futures Convexity Adjustment</a><a class="headerlink" href="#the-futures-convexity-adjustment" title="Link to this heading">#</a></h2>
+<p>A Eurodollar futures contract is marked to market every day; a forward
+rate agreement pays only at the end. Daily settlement means futures
+gains are reinvested when rates are high and losses financed when they
+are low, so the futures rate is the risk-neutral expectation of the
+future rate, which exceeds the forward rate. Ho-Lee and Hull-White gave
+the gap in closed form, and it became a standard step in building swap
+curves from futures quotes.</p>
+<div class="math notranslate nohighlight">
+\[\text{futures rate} - \text{forward rate} = \tfrac12\sigma^2 t_1 t_2 \quad \text{(Ho-Lee)}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.curve_fitted.futures_convexity_adjustment()</span></code>
+gives the Ho-Lee and Hull-White adjustments. The example reproduces
+Hull’s 47.5 basis points and recovers the adjustment as the simulated
+expectation of the future rate.</p>
+<p><em>References:</em> J. Hull and A. White, “Pricing Interest-Rate-Derivative
+Securities,” <em>Review of Financial Studies</em> 3(4) (1990) 573-592; J. C.
+Hull, <em>Options, Futures, and Other Derivatives</em>, 10th ed. (Pearson,
+2018), Section 6.3.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A Eurodollar futures contract is settled every day, a forward rate agreement only at the end. Gains on the futures are reinvested when rates are high and financed when they are low, so the futures rate is the risk-neutral expectation of the future rate and exceeds the forward rate. With the Ho-Lee and Hull-White models (1990) the gap has a closed form; under Ho-Lee"><img alt="" src="../_images/sphx_glr_plot_04_futures_convexity_adjustment_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/curve_fitted/plot_04_futures_convexity_adjustment.html"><span class="doc">The futures convexity adjustment</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The futures convexity adjustment</div>
+</div></div></section>
+<section id="the-heath-jarrow-morton-drift-condition">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">1992 – The Heath-Jarrow-Morton Drift Condition</a><a class="headerlink" href="#the-heath-jarrow-morton-drift-condition" title="Link to this heading">#</a></h2>
+<p>David Heath, Robert Jarrow and Andrew Morton stopped modelling the short
+rate and modelled the whole forward curve, started from today’s market.
+Their theorem says that once the volatility of forward rates is chosen,
+the risk-neutral drift is determined: there is exactly one drift that
+makes discounted bonds martingales. Every arbitrage-free short-rate
+model is a special case, and the framework made multi-factor and
+market models possible.</p>
+<div class="math notranslate nohighlight">
+\[df(t, T) = \alpha(t, T)\,dt + \sigma(t, T)\,dW, \qquad
+\alpha(t, T) = \sigma(t, T)\int_t^T \sigma(t, u)\,du\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.hjm.hjm_drift()</span></code>
+computes the drift for any volatility by quadrature, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_hjm()</span></code>
+evolves forward curves through
+<a class="reference internal" href="../api/integrators.html#financialkit.integrators.euler_maruyama" title="financialkit.integrators.euler_maruyama"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.euler_maruyama()</span></code></a>, with or without the
+drift. The example shows that without it the simulated bonds no longer
+match the curve they started from.</p>
+<p><em>References:</em> D. Heath, R. Jarrow and A. Morton, “Bond Pricing and the
+Term Structure of Interest Rates: A New Methodology for Contingent
+Claims Valuation,” <em>Econometrica</em> 60(1) (1992) 77-105.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="David Heath, Robert Jarrow and Andrew Morton (1992) modelled the whole forward curve at once,"><img alt="" src="../_images/sphx_glr_plot_01_hjm_drift_condition_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/hjm/plot_01_hjm_drift_condition.html"><span class="doc">Heath-Jarrow-Morton: the drift condition</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Heath-Jarrow-Morton: the drift condition</div>
+</div></div></section>
+<section id="duffie-kan-affine-term-structures">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">1996 – Duffie-Kan Affine Term Structures</a><a class="headerlink" href="#duffie-kan-affine-term-structures" title="Link to this heading">#</a></h2>
+<p>Darrell Duffie and Rui Kan characterised the models in which bond
+yields are affine in the state variables: those whose drift and
+variance are themselves affine. Vasicek and CIR are one-dimensional
+cases, and any number of Gaussian and square-root factors can be mixed.
+Bond prices reduce to Riccati ordinary differential equations, which
+turned term-structure estimation into a tractable econometric problem
+and led to Dai and Singleton’s classification of affine models.</p>
+<div class="math notranslate nohighlight">
+\[P(t, T) = e^{A(\tau) + B(\tau)\cdot X_t}, \qquad
+B' = -\delta_1 + K_1^\top B + \tfrac12\sum_k \sigma_k^2 B_k^2 \beta_k\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.AffineModel" title="financialkit.interest_rate_models.systems.affine.AffineModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.affine.AffineModel</span></code></a>
+solves the Riccati ODEs with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html#scipy.integrate.solve_ivp" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp()</span></code></a> for any
+dimension and simulates the factors. The example recovers Vasicek and
+CIR to eleven digits and prices a two-factor model with no closed form.</p>
+<p><em>References:</em> D. Duffie and R. Kan, “A Yield-Factor Model of Interest
+Rates,” <em>Mathematical Finance</em> 6(4) (1996) 379-406.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Darrell Duffie and Rui Kan (1996) found the common structure behind Vasicek, CIR and their multi-factor extensions. If the state&#x27;s drift and variance are affine in the state,"><img alt="" src="../_images/sphx_glr_plot_06_duffie_kan_affine_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/short_rate/plot_06_duffie_kan_affine.html"><span class="doc">Duffie-Kan: affine term structures</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Duffie-Kan: affine term structures</div>
+</div></div></section>
+<section id="bgm-caps-and-floors-by-black-s-formula">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">1997 – BGM: Caps and Floors by Black’s Formula</a><a class="headerlink" href="#bgm-caps-and-floors-by-black-s-formula" title="Link to this heading">#</a></h2>
+<p>Traders had priced each caplet with Black’s formula on its forward
+LIBOR rate since the 1980s, with no model to say why. Alan Brace,
+Dariusz Gatarek and Marek Musiela (and independently Miltersen,
+Sandmann and Sondermann) built one: under the measure that uses the
+caplet’s payment bond as numeraire, the simple forward rate is a
+martingale, and if it is lognormal the market formula is exact. The
+LIBOR market model became the standard for exotic rate derivatives.</p>
+<div class="math notranslate nohighlight">
+\[\text{caplet}_k = \tau_k P(0, t_{k+1})\,[F_k N(d_1) - K N(d_2)], \qquad
+F_k = \frac{1}{\tau_k}\left(\frac{P(0, t_k)}{P(0, t_{k+1})} - 1\right)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.bond_options.cap_floor_price()</span></code>
+prices caps and floors caplet by caplet with
+<a class="reference internal" href="../api/options.html#financialkit.options.black76_price" title="financialkit.options.black76_price"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.black76_price()</span></code></a>, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">model_cap_floor_price()</span></code>
+prices them in a Gaussian model as bond options. The example shows a
+caplet strip, cap-floor parity, and the Black volatilities Hull-White
+implies.</p>
+<p><em>References:</em> A. Brace, D. Gatarek and M. Musiela, “The Market Model of
+Interest Rate Dynamics,” <em>Mathematical Finance</em> 7(2) (1997) 127-155;
+K. R. Miltersen, K. Sandmann and D. Sondermann, <em>Journal of Finance</em>
+52(1) (1997) 409-430.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Traders priced each caplet with Black&#x27;s formula on its forward LIBOR rate long before anyone could say which model justified it. Alan Brace, Dariusz Gatarek and Marek Musiela (1997), with Miltersen, Sandmann and Sondermann, built that model: under the measure that uses the payment bond as numeraire, the simple forward rate F_k = [P(0, t_k)/P(0, t_{k+1}) - 1]/\tau is a martingale, and if it is lognormal"><img alt="" src="../_images/sphx_glr_plot_03_bgm_caps_floors_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/options/plot_03_bgm_caps_floors.html"><span class="doc">Brace-Gatarek-Musiela: caps and floors by Black’s formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Brace-Gatarek-Musiela: caps and floors by Black's formula</div>
+</div></div></section>
+<section id="jamshidian-s-swap-market-model">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">1997 – Jamshidian’s Swap Market Model</a><a class="headerlink" href="#jamshidian-s-swap-market-model" title="Link to this heading">#</a></h2>
+<p>Swaptions were also quoted through Black’s formula, applied to the
+forward swap rate. Jamshidian showed that this too is exact in a model
+of its own: with the fixed leg’s annuity as numeraire, the forward swap
+rate is a martingale, and a lognormal one gives the market formula
+times the annuity. The swap and LIBOR market models cannot both be
+lognormal at once, but each prices its own instruments exactly, and the
+pair clarified which numeraire belongs to which product.</p>
+<div class="math notranslate nohighlight">
+\[V_{\text{payer}} = A\,[S N(d_1) - K N(d_2)], \qquad
+A = \sum_i \tau_i P(0, t_i), \quad S = \frac{P(0, T_0) - P(0, T_n)}{A}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.bond_options.black_swaption_price()</span></code>,
+with <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_swap_rate()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">forward_swap_annuity()</span></code>.
+The example reproduces Hull’s 2.07, verifies payer-receiver parity, and
+shows the Black smile a Hull-White model produces.</p>
+<p><em>References:</em> F. Jamshidian, “LIBOR and Swap Market Models and
+Measures,” <em>Finance and Stochastics</em> 1(4) (1997) 293-330.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jamshidian (1997) showed that the market&#x27;s way of quoting swaptions is also exact in a model of its own. Under the measure that uses the swap&#x27;s fixed-leg annuity A = \sum_i \tau_i P(0, t_i) as numeraire, the forward swap rate S = [P(0, T_0) - P(0, T_n)]/A is a martingale, and if it is lognormal a payer swaption is"><img alt="" src="../_images/sphx_glr_plot_04_black_swaption_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/options/plot_04_black_swaption.html"><span class="doc">Jamshidian’s swap market model: Black swaptions</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Jamshidian's swap market model: Black swaptions</div>
+</div></div></section>
+<section id="brigo-mercurio-g2">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">2001 – Brigo-Mercurio G2++</a><a class="headerlink" href="#brigo-mercurio-g2" title="Link to this heading">#</a></h2>
+<p>In any one-factor model a single shock moves the whole curve, so the
+1-year and 30-year yields are perfectly correlated, which the data
+reject. Damiano Brigo and Fabio Mercurio’s G2++ adds a second Gaussian
+factor, correlated with the first, and fits the initial curve with a
+deterministic shift. Everything stays in closed form, and a fast factor
+negatively correlated with a slow one decorrelates the two ends of the
+curve. The model is equivalent to Hull and White’s two-factor model of
+1994 in a more tractable parameterisation.</p>
+<div class="math notranslate nohighlight">
+\[r = x + y + \varphi(t), \qquad dx = -a x\,dt + \sigma\,dW_1, \quad
+dy = -b y\,dt + \eta\,dW_2, \quad dW_1\,dW_2 = \rho\,dt\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/interest_rate_models.html#financialkit.interest_rate_models.G2PlusPlusModel" title="financialkit.interest_rate_models.systems.two_factor.G2PlusPlusModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.interest_rate_models.systems.two_factor.G2PlusPlusModel</span></code></a>
+gives bond prices, bond-option volatilities, the yield correlation
+structure and simulated factors on correlated increments. The example
+maps the correlation between maturities and checks the fitted curve by
+simulation.</p>
+<p><em>References:</em> D. Brigo and F. Mercurio, <em>Interest Rate Models – Theory
+and Practice</em> (Springer, 2001; 2nd ed. 2006), Chapter 4.2; J. Hull and
+A. White, “Numerical Procedures for Implementing Term Structure Models
+II: Two-Factor Models,” <em>Journal of Derivatives</em> 2(2) (1994) 37-48.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In a one-factor model a single shock moves every yield, so the 1-year and 30-year rates are perfectly correlated, which the data flatly reject. Damiano Brigo and Fabio Mercurio&#x27;s G2++ (2001) adds a second Gaussian factor,"><img alt="" src="../_images/sphx_glr_plot_07_g2pp_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/interest_rate_models/short_rate/plot_07_g2pp.html"><span class="doc">Brigo-Mercurio G2++: two Gaussian factors</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Brigo-Mercurio G2++: two Gaussian factors</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/interest_rate_models.html"><span class="doc">financialkit.interest_rate_models</span></a></p></li>
+<li><p><a class="reference internal" href="fixed_income_breakthroughs.html"><span class="doc">Breakthroughs in Fixed Income</span></a></p></li>
+<li><p><a class="reference internal" href="options_breakthroughs.html"><span class="doc">Breakthroughs in Option Pricing</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="stochastic_volatility_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Stochastic Volatility</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="credit_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Credit Risk</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feynman-kac-bond-prices-by-monte-carlo">1949 – Feynman-Kac: Bond Prices by Monte Carlo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feller-s-boundary-condition">1951 – Feller’s Boundary Condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merton-s-gaussian-short-rate">1973 – Merton’s Gaussian Short Rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vasicek-s-mean-reverting-rate">1977 – Vasicek’s Mean-Reverting Rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cox-ingersoll-ross-model">1985 – The Cox-Ingersoll-Ross Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ho-lee-model">1986 – The Ho-Lee Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jamshidian-s-bond-option-formula">1989 – Jamshidian’s Bond Option Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jamshidian-s-decomposition-swaptions">1989 – Jamshidian’s Decomposition: Swaptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hull-white-model">1990 – The Hull-White Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-black-derman-toy-tree">1990 – The Black-Derman-Toy Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-futures-convexity-adjustment">1990 – The Futures Convexity Adjustment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-heath-jarrow-morton-drift-condition">1992 – The Heath-Jarrow-Morton Drift Condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duffie-kan-affine-term-structures">1996 – Duffie-Kan Affine Term Structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bgm-caps-and-floors-by-black-s-formula">1997 – BGM: Caps and Floors by Black’s Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jamshidian-s-swap-market-model">1997 – Jamshidian’s Swap Market Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brigo-mercurio-g2">2001 – Brigo-Mercurio G2++</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/interest_rate_models_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

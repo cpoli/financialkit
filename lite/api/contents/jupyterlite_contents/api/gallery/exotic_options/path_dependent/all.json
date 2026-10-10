@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.864873Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.864873Z",
+      "mimetype": null,
+      "name": "plot_01_floating_lookback.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/path_dependent/plot_01_floating_lookback.ipynb",
+      "size": 3732,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.865050Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.865050Z",
+      "mimetype": null,
+      "name": "plot_02_fixed_lookback.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/path_dependent/plot_02_fixed_lookback.ipynb",
+      "size": 3749,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.865212Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.865212Z",
+      "mimetype": null,
+      "name": "plot_03_variance_swap.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/path_dependent/plot_03_variance_swap.ipynb",
+      "size": 3910,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.219938Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.220433Z",
+  "mimetype": null,
+  "name": "path_dependent",
+  "path": "jupyterlite_contents/api/gallery/exotic_options/path_dependent",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

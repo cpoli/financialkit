@@ -1,0 +1,26 @@
+financialkit.fixed_income
+=========================
+
+Bond prices and yields, STRIPS, Macaulay, modified, Fisher-Weil and key rate durations, convexity, bootstrapped, spline, Nelson-Siegel and Svensson curves, immunization, and swaps.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/fixed_income_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/fixed_income/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/fixed_income
+      :link-type: doc
+
+      Every public class and function.
+

@@ -1,0 +1,68 @@
+
+
+.. _sphx_glr_api_gallery_credit_cds:
+
+Credit default swaps
+--------------------
+
+Pricing protection, and reading default probabilities off quotes.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A credit default swap exchanges a running premium for a payment of 1 - R at default. O&#x27;Kane and Turnbull (2003) wrote both legs as integrals over the default density and evaluated them on a grid with defaults at mid-step, including the premium accrued between the last payment date and default. The par spread equates the legs; for a flat hazard and a continuously paid premium it is exactly \lambda(1 - R).">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/cds/images/thumb/sphx_glr_plot_01_cds_par_spread_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/cds/plot_01_cds_par_spread`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">O'Kane and Turnbull: the CDS par spread</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Since the 2009 &quot;Big Bang&quot; CDS trade with a fixed coupon (100 or 500 bp) and an upfront payment, and the ISDA standard model converts between quotes by bootstrapping a piecewise-constant hazard curve: solve for the hazard on (0, T_1] that reprices the shortest CDS, freeze it, solve the next segment, and so on. The bootstrapped curve reprices every quote and gives survival probabilities at any date.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/cds/images/thumb/sphx_glr_plot_02_isda_hazard_bootstrap_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/cds/plot_02_isda_hazard_bootstrap`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The ISDA standard model: bootstrapping hazard rates</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/credit/cds/plot_01_cds_par_spread
+   /api/gallery/credit/cds/plot_02_isda_hazard_bootstrap
+

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.portfolio.systems.mean_variance &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/portfolio/systems/mean_variance';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.portfolio.systems.mean_variance</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.portfolio.systems.mean_variance</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Mean-variance portfolio selection: Markowitz (1952), Tobin (1958) and Merton (1972).</span>
+
+<span class="sd">Markowitz proposed that an investor care about the mean and variance of</span>
+<span class="sd">a portfolio's return and hold only *efficient* portfolios, those with</span>
+<span class="sd">the least variance for their mean. Tobin added a riskless asset: every</span>
+<span class="sd">investor then holds the same tangency portfolio of risky assets, mixed</span>
+<span class="sd">with cash according to taste. Merton derived the whole unconstrained</span>
+<span class="sd">frontier in closed form from four scalars. With short sales excluded,</span>
+<span class="sd">there is no closed form and each point is a quadratic program, solved</span>
+<span class="sd">here with :func:`scipy.optimize.minimize` (SLSQP).</span>
+
+<span class="sd">References: H. Markowitz, "Portfolio Selection," *J. Finance* 7 (1952)</span>
+<span class="sd">77-91; J. Tobin, "Liquidity Preference as Behavior Towards Risk," *Rev.</span>
+<span class="sd">Econ. Stud.* 25 (1958) 65-86; R. C. Merton, "An Analytic Derivation of</span>
+<span class="sd">the Efficient Portfolio Frontier," *J. Financial Quant. Anal.* 7 (1972)</span>
+<span class="sd">1851-1872.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.portfolio.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrontierConstants</span><span class="p">,</span> <span class="n">FrontierResult</span><span class="p">,</span> <span class="n">PortfolioResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.portfolio.utils.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">as_mean_cov</span><span class="p">,</span> <span class="n">portfolio_moments</span><span class="p">,</span> <span class="n">solve_qp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.risk.systems.safety_first</span><span class="w"> </span><span class="kn">import</span> <span class="n">safety_first_portfolio</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"frontier_constants"</span><span class="p">,</span>
+    <span class="s2">"min_variance_portfolio"</span><span class="p">,</span>
+    <span class="s2">"efficient_portfolio"</span><span class="p">,</span>
+    <span class="s2">"efficient_frontier"</span><span class="p">,</span>
+    <span class="s2">"tangency_portfolio"</span><span class="p">,</span>
+    <span class="s2">"two_fund_allocation"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_result</span><span class="p">(</span><span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">cov</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PortfolioResult</span><span class="p">:</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">vol</span> <span class="o">=</span> <span class="n">portfolio_moments</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">PortfolioResult</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">expected_return</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">volatility</span><span class="o">=</span><span class="n">vol</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="frontier_constants">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.frontier_constants">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">frontier_constants</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FrontierConstants</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Merton's constants :math:`A, B, C, D` of the unconstrained frontier.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mu : array_like, shape (d,)</span>
+<span class="sd">        Expected returns; not all equal.</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">        Positive definite covariance.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    FrontierConstants</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; fc = frontier_constants([0.1, 0.2], [[0.04, 0.0], [0.0, 0.09]])</span>
+<span class="sd">    &gt;&gt;&gt; round(fc.gmv_return, 4), round(fc.gmv_volatility, 4)</span>
+<span class="sd">    (0.1308, 0.1664)</span>
+<span class="sd">    """</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">ones</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">Cc</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ones</span> <span class="o">@</span> <span class="n">x</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">m</span> <span class="o">@</span> <span class="n">x</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">ones</span> <span class="o">@</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">Cc</span> <span class="o">-</span> <span class="n">A</span> <span class="o">*</span> <span class="n">A</span>
+    <span class="k">if</span> <span class="n">D</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"the frontier is degenerate: all expected returns are equal"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">FrontierConstants</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">Cc</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="n">D</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="min_variance_portfolio">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.min_variance_portfolio">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">min_variance_portfolio</span><span class="p">(</span><span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArrayLike</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">long_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PortfolioResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The global minimum-variance portfolio.</span>
+
+<span class="sd">    Unconstrained, :math:`w = \\Sigma^{-1}\\mathbf 1 / \\mathbf 1'\\Sigma^{-1}\\mathbf 1`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    mu : array_like, shape (d,), optional</span>
+<span class="sd">        Expected returns, used only to report the portfolio's mean.</span>
+<span class="sd">    long_only : bool</span>
+<span class="sd">        Exclude short sales.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    PortfolioResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With uncorrelated assets the weights are proportional to inverse variances.</span>
+
+<span class="sd">    &gt;&gt;&gt; res = min_variance_portfolio([[0.04, 0.0], [0.0, 0.01]])</span>
+<span class="sd">    &gt;&gt;&gt; res.weights, round(res.volatility, 4)</span>
+<span class="sd">    (array([0.2, 0.8]), 0.0894)</span>
+<span class="sd">    """</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">long_only</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">solve_qp</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">_result</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">"min_variance"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="efficient_portfolio">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.efficient_portfolio">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">efficient_portfolio</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">target_return</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">long_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PortfolioResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The least-variance portfolio with a given expected return.</span>
+
+<span class="sd">    Unconstrained, Merton's closed form</span>
+<span class="sd">    :math:`w = \\Sigma^{-1}[(C m - A)\\mu + (B - A m)\\mathbf 1] / D`;</span>
+<span class="sd">    long-only, a quadratic program.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mu : array_like, shape (d,)</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    target_return : float</span>
+<span class="sd">        Required mean return; long-only it must lie within ``[min(mu), max(mu)]``.</span>
+<span class="sd">    long_only : bool</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    PortfolioResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; res = efficient_portfolio([0.1, 0.2], [[0.04, 0.0], [0.0, 0.09]], 0.15)</span>
+<span class="sd">    &gt;&gt;&gt; res.weights</span>
+<span class="sd">    array([0.5, 0.5])</span>
+<span class="sd">    """</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">long_only</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1e-12</span> <span class="o">&lt;=</span> <span class="n">target_return</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"a long-only target return must lie between the smallest and largest expected return"</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">solve_qp</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">m</span><span class="p">]),</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">target_return</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fc</span> <span class="o">=</span> <span class="n">frontier_constants</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">C</span> <span class="o">*</span> <span class="n">target_return</span> <span class="o">-</span> <span class="n">fc</span><span class="o">.</span><span class="n">A</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">B</span> <span class="o">-</span> <span class="n">fc</span><span class="o">.</span><span class="n">A</span> <span class="o">*</span> <span class="n">target_return</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> <span class="o">/</span> <span class="n">fc</span><span class="o">.</span><span class="n">D</span>
+    <span class="k">return</span> <span class="n">_result</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">"efficient"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="efficient_frontier">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.efficient_frontier">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">efficient_frontier</span><span class="p">(</span>
+    <span class="n">mu</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">n_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">long_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">max_return</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FrontierResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Efficient portfolios from the minimum-variance portfolio upwards.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mu : array_like, shape (d,)</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    n_points : int</span>
+<span class="sd">        Number of target returns, equally spaced.</span>
+<span class="sd">    long_only : bool</span>
+<span class="sd">        Exclude short sales; the frontier then ends at the asset with the</span>
+<span class="sd">        highest expected return.</span>
+<span class="sd">    max_return : float, optional</span>
+<span class="sd">        Highest target. Defaults to ``max(mu)`` long-only and to</span>
+<span class="sd">        ``1.5 * max(mu)`` otherwise.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    FrontierResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; fr = efficient_frontier([0.05, 0.1, 0.15], [[0.01, 0, 0], [0, 0.04, 0], [0, 0, 0.09]], 5)</span>
+<span class="sd">    &gt;&gt;&gt; bool(np.all(np.diff(fr.volatilities) &gt; 0))</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="n">gmv</span> <span class="o">=</span> <span class="n">min_variance_portfolio</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">long_only</span><span class="p">)</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="n">max_return</span> <span class="k">if</span> <span class="n">max_return</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">if</span> <span class="n">long_only</span> <span class="k">else</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">gmv</span><span class="o">.</span><span class="n">expected_return</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_points</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+        <span class="n">W</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">gmv</span><span class="o">.</span><span class="n">weights</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">efficient_portfolio</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">long_only</span><span class="p">)</span><span class="o">.</span><span class="n">weights</span>
+    <span class="n">vols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">"ij,jk,ik-&gt;i"</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">FrontierResult</span><span class="p">(</span><span class="n">returns</span><span class="o">=</span><span class="n">W</span> <span class="o">@</span> <span class="n">m</span><span class="p">,</span> <span class="n">volatilities</span><span class="o">=</span><span class="n">vols</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">W</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">C</span><span class="p">,</span> <span class="n">long_only</span><span class="o">=</span><span class="n">long_only</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="tangency_portfolio">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.tangency_portfolio">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">tangency_portfolio</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">rf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">long_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PortfolioResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Tobin's tangency portfolio, the fully invested maximum-Sharpe portfolio.</span>
+
+<span class="sd">    Unconstrained, :math:`w \\propto \\Sigma^{-1}(\\mu - r_f\\mathbf 1)`, the</span>
+<span class="sd">    same computation as Roy's safety-first portfolio with the disaster</span>
+<span class="sd">    level set to the riskless rate, so it calls</span>
+<span class="sd">    :func:`financialkit.risk.safety_first_portfolio`. Long-only, it</span>
+<span class="sd">    solves :math:`\\min y'\\Sigma y` subject to :math:`(\\mu - r_f)'y = 1`,</span>
+<span class="sd">    :math:`y \\ge 0`, and rescales :math:`y` to sum to one.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mu : array_like, shape (d,)</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    rf : float</span>
+<span class="sd">        Riskless rate, below the minimum-variance portfolio's mean.</span>
+<span class="sd">    long_only : bool</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    PortfolioResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; res = tangency_portfolio([0.1, 0.2], [[0.04, 0.0], [0.0, 0.09]], rf=0.02)</span>
+<span class="sd">    &gt;&gt;&gt; np.round(res.weights, 4), round(res.sharpe_ratio(0.02), 4)</span>
+<span class="sd">    (array([0.5, 0.5]), 0.7211)</span>
+<span class="sd">    """</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">long_only</span><span class="p">:</span>
+        <span class="n">ex</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="n">rf</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">ex</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"no asset earns more than the riskless rate"</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">ex</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">solve_qp</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">ex</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">),</span> <span class="n">x0</span><span class="o">=</span><span class="n">pos</span> <span class="o">/</span> <span class="p">(</span><span class="n">pos</span> <span class="o">@</span> <span class="n">ex</span><span class="p">))</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">safety_first_portfolio</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">rf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_result</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">"tangency"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="two_fund_allocation">
+<a class="viewcode-back" href="../../../../api/portfolio.html#financialkit.portfolio.two_fund_allocation">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">two_fund_allocation</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">rf</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">risk_aversion</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PortfolioResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Tobin's optimal mix of risky assets and cash for a mean-variance investor.</span>
+
+<span class="sd">    Maximizing :math:`w'(\\mu - r_f) - \\tfrac{\\gamma}{2} w'\\Sigma w` gives</span>
+<span class="sd">    :math:`w = \\Sigma^{-1}(\\mu - r_f\\mathbf 1)/\\gamma`: the tangency</span>
+<span class="sd">    portfolio scaled by the investor's risk aversion, with</span>
+<span class="sd">    :math:`1 - \\mathbf 1'w` in cash. Separation means the risky mix does</span>
+<span class="sd">    not depend on :math:`\\gamma`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mu : array_like, shape (d,)</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">    rf : float</span>
+<span class="sd">        Riskless rate.</span>
+<span class="sd">    risk_aversion : float</span>
+<span class="sd">        Coefficient :math:`\\gamma &gt; 0`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    PortfolioResult</span>
+<span class="sd">        Risky weights (not summing to one); ``expected_return`` includes</span>
+<span class="sd">        the riskless rate earned on the cash.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; res = two_fund_allocation([0.1, 0.2], [[0.04, 0.0], [0.0, 0.09]], 0.02, 5.0)</span>
+<span class="sd">    &gt;&gt;&gt; np.round(res.weights, 4), round(float(1 - res.weights.sum()), 4)</span>
+<span class="sd">    (array([0.4, 0.4]), 0.2)</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">risk_aversion</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"risk_aversion must be positive, got </span><span class="si">{</span><span class="n">risk_aversion</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">as_mean_cov</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">cov</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">m</span> <span class="o">-</span> <span class="n">rf</span><span class="p">)</span> <span class="o">/</span> <span class="n">risk_aversion</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">vol</span> <span class="o">=</span> <span class="n">portfolio_moments</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">PortfolioResult</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">expected_return</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">rf</span> <span class="o">+</span> <span class="n">w</span> <span class="o">@</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">rf</span><span class="p">)),</span> <span class="n">volatility</span><span class="o">=</span><span class="n">vol</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"two_fund"</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

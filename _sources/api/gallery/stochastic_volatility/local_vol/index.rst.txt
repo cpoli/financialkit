@@ -1,0 +1,70 @@
+
+
+.. _sphx_glr_api_gallery_stochastic_volatility_local_vol:
+
+Local volatility
+----------------
+
+Volatility as a function of the price level and time: Cox's constant
+elasticity of variance and Dupire's formula, which reads the local
+volatility off a surface of option prices.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1975 John Cox let the volatility depend on the price, dS = r S\,dt + \sigma S^{\beta}\,dW. The local volatility is \sigma S^{\beta - 1}: for \beta &lt; 1 it rises as the price falls, the leverage effect Fischer Black had just documented, and the implied volatility skews down in the strike. Schroder (1989) gave the prices in closed form with the noncentral chi-square distribution. Here the closed form is checked against an Euler simulation of the SDE and the skew is shown for several elasticities, each scaled to a 20% at-the-money local volatility.">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/local_vol/images/thumb/sphx_glr_plot_01_cox_cev_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/local_vol/plot_01_cox_cev`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox's constant elasticity of variance</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1994 Bruno Dupire showed that a full surface of call prices C(K, T) pins down a unique local volatility \sigma(S, t) that reproduces it,">
+
+.. only:: html
+
+  .. image:: /api/gallery/stochastic_volatility/local_vol/images/thumb/sphx_glr_plot_02_dupire_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/stochastic_volatility/local_vol/plot_02_dupire`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dupire's local volatility</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/stochastic_volatility/local_vol/plot_01_cox_cev
+   /api/gallery/stochastic_volatility/local_vol/plot_02_dupire
+

@@ -1,0 +1,26 @@
+financialkit.portfolio
+======================
+
+Markowitz, Tobin and Merton frontiers, Kelly, Merton's portfolio problem and CPPI, single-index and Ledoit-Wolf covariances, Black-Litterman and resampling, CVaR optimization, maximum diversification, risk parity and HRP, and the Sharpe, Sortino and information ratios.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/portfolio_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/portfolio/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/portfolio
+      :link-type: doc
+
+      Every public class and function.
+

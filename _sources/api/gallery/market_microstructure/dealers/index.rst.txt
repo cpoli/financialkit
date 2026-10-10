@@ -1,0 +1,86 @@
+
+
+.. _sphx_glr_api_gallery_market_microstructure_dealers:
+
+Dealers
+-------
+
+Market makers who manage order flow, inventory and risk.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Mark Garman (1976) started market microstructure by modelling orders as Poisson streams: buyers arrive at rate \lambda_a(a), falling with the ask, and sellers at \lambda_b(b), rising with the bid. A monopolist dealer holding stock and cash fails when either runs out. The stock follows a gambler&#x27;s-ruin walk, so the probability of eventually running out of shares is (\lambda_a/\lambda_b)^{I_0} when sellers outnumber buyers, and one otherwise. Keeping both stock and cash growing requires \lambda_b &gt; \lambda_a and a\lambda_a &gt; b\lambda_b, hence a &gt; b: the dealer must set a spread.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/dealers/images/thumb/sphx_glr_plot_01_garman_inventory_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/dealers/plot_01_garman_inventory`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Garman's order-flow dealer</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Thomas Ho and Hans Stoll (1981) gave the dealer risk aversion. Holding inventory exposes it to price moves, so a dealer who is long lowers both quotes, making a sale to it less attractive and a purchase from it more so, until the inventory returns to zero. With order arrivals \lambda = \alpha - \beta\delta on each side, the spread itself, \alpha/\beta, does not depend on the inventory: only its position does.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/dealers/images/thumb/sphx_glr_plot_02_ho_stoll_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/dealers/plot_02_ho_stoll`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ho and Stoll: the dealer's inventory problem</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Marco Avellaneda and Sasha Stoikov (2008) let a market maker quote around a Brownian mid price s, with fills arriving at rate A e^{-k\delta} at distance \delta. A trader with exponential utility first computes the reservation price r = s - q\gamma\sigma^2(T - t), the mid price adjusted for its inventory q, and then quotes a spread \gamma\sigma^2(T-t) + \frac{2}{\gamma}\ln(1 + \gamma/k) around it. The example reproduces the comparison of their Table 1: the inventory strategy gives up a little expected profit for a much smaller variance.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/dealers/images/thumb/sphx_glr_plot_03_avellaneda_stoikov_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/dealers/plot_03_avellaneda_stoikov`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Avellaneda and Stoikov: market making in a limit order book</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/market_microstructure/dealers/plot_01_garman_inventory
+   /api/gallery/market_microstructure/dealers/plot_02_ho_stoll
+   /api/gallery/market_microstructure/dealers/plot_03_avellaneda_stoikov
+

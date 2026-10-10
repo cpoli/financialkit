@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Exotic Options &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/exotic_options_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Stochastic Volatility" href="stochastic_volatility_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Option Pricing" href="options_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Exotic Options</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-exotic-options">
+<h1>Breakthroughs in Exotic Options<a class="headerlink" href="#breakthroughs-in-exotic-options" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/exotic_options.html"><span class="doc">financialkit.exotic_options hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/exotic_options/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/exotic_options.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“In physics you’re playing against God; in finance you’re playing
+against God’s creatures.”
+– attributed to Emanuel Derman</p>
+</div></blockquote>
+<p>The Black-Scholes argument prices any payoff that a dynamic hedge can
+replicate, and within months of its publication Merton had used it on a
+contract nobody traded yet: a call that dies at a barrier. Through the
+1980s the over-the-counter market caught up with the theory. Banks sold
+options on averages to commodity users, options on the better of two
+assets to fund managers and options paid in another currency to
+investors who wanted foreign stocks without foreign exchange risk. Most
+of the closed forms were collected, and many were found, by Mark
+Rubinstein and Eric Reiner in a run of short articles in <em>Risk</em> in 1991.
+The later breakthroughs are numerical: correcting continuous formulas
+for discrete monitoring, replicating volatility itself, and pricing
+early exercise by simulation. This chronology traces the ideas behind
+<a class="reference internal" href="../api/exotic_options.html#module-financialkit.exotic_options" title="financialkit.exotic_options"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.exotic_options</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#merton-s-down-and-out-call" id="id1">1973 – Merton’s Down-and-Out Call</a></p></li>
+<li><p><a class="reference internal" href="#margrabe-s-exchange-option" id="id2">1978 – Margrabe’s Exchange Option</a></p></li>
+<li><p><a class="reference internal" href="#goldman-sosin-gatto-floating-lookbacks" id="id3">1979 – Goldman-Sosin-Gatto Floating Lookbacks</a></p></li>
+<li><p><a class="reference internal" href="#geske-s-compound-options" id="id4">1979 – Geske’s Compound Options</a></p></li>
+<li><p><a class="reference internal" href="#stulz-options-on-the-maximum-and-the-minimum" id="id5">1982 – Stulz: Options on the Maximum and the Minimum</a></p></li>
+<li><p><a class="reference internal" href="#kemna-vorst-asian-options" id="id6">1990 – Kemna-Vorst Asian Options</a></p></li>
+<li><p><a class="reference internal" href="#rubinstein-s-forward-start-options" id="id7">1990 – Rubinstein’s Forward-Start Options</a></p></li>
+<li><p><a class="reference internal" href="#reiner-rubinstein-barrier-options" id="id8">1991 – Reiner-Rubinstein Barrier Options</a></p></li>
+<li><p><a class="reference internal" href="#reiner-rubinstein-binary-options" id="id9">1991 – Reiner-Rubinstein Binary Options</a></p></li>
+<li><p><a class="reference internal" href="#rubinstein-s-chooser-options" id="id10">1991 – Rubinstein’s Chooser Options</a></p></li>
+<li><p><a class="reference internal" href="#conze-viswanathan-fixed-lookbacks" id="id11">1991 – Conze-Viswanathan Fixed Lookbacks</a></p></li>
+<li><p><a class="reference internal" href="#turnbull-wakeman-asian-approximation" id="id12">1991 – Turnbull-Wakeman Asian Approximation</a></p></li>
+<li><p><a class="reference internal" href="#ikeda-kunitomo-double-barriers" id="id13">1992 – Ikeda-Kunitomo Double Barriers</a></p></li>
+<li><p><a class="reference internal" href="#reiner-s-quantos" id="id14">1992 – Reiner’s Quantos</a></p></li>
+<li><p><a class="reference internal" href="#broadie-glasserman-kou-discrete-barriers" id="id15">1997 – Broadie-Glasserman-Kou Discrete Barriers</a></p></li>
+<li><p><a class="reference internal" href="#demeterfi-derman-kamal-zou-variance-swaps" id="id16">1999 – Demeterfi-Derman-Kamal-Zou Variance Swaps</a></p></li>
+<li><p><a class="reference internal" href="#longstaff-schwartz-least-squares-monte-carlo" id="id17">2001 – Longstaff-Schwartz Least-Squares Monte Carlo</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id18">See Also</a></p></li>
+</ul>
+</nav>
+<section id="merton-s-down-and-out-call">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1973 – Merton’s Down-and-Out Call</a><a class="headerlink" href="#merton-s-down-and-out-call" title="Link to this heading">#</a></h2>
+<p>In “Theory of Rational Option Pricing” Robert Merton put the
+Black-Scholes model on an arbitrage footing and, almost in passing,
+priced the first exotic option: a call that is cancelled if the stock
+falls to a level <span class="math notranslate nohighlight">\(H\)</span> below the strike. The barrier is an absorbing
+boundary for the log-price, and the method of images from the heat
+equation removes the paths that touch it: subtract the value of a call
+started from the reflected spot <span class="math notranslate nohighlight">\(H^2/S\)</span>, scaled to make the price
+vanish on the barrier.</p>
+<div class="math notranslate nohighlight">
+\[C_{do}(S) = c(S, K) - \left(\frac{H}{S}\right)^{2b/\sigma^2 - 1} c\!\left(\frac{H^2}{S}, K\right),
+\qquad b = r - q\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.barriers.merton_down_and_out_call()</span></code>
+evaluates the image formula with
+<a class="reference internal" href="../api/options.html#financialkit.options.black_scholes_price" title="financialkit.options.black_scholes_price"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.black_scholes_price()</span></code></a>. The example compares
+it with the vanilla call for several barriers and checks it against
+bridge-corrected Monte Carlo
+(<code class="xref py py-func docutils literal notranslate"><span class="pre">barrier_option_mc()</span></code>).</p>
+<p><em>References:</em> R. C. Merton, “Theory of Rational Option Pricing,” <em>Bell
+Journal of Economics and Management Science</em> 4 (1973) 141-183, Section 8.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In the paper that put the Black-Scholes model on a rigorous footing, Robert Merton (1973) also priced the first barrier option: a call that dies if the stock falls to H. The barrier is an absorbing boundary for the log-price, and the method of images from the heat equation cancels the probability of crossing it by subtracting a call started from the mirror image H^2/S of the spot:"><img alt="" src="../_images/sphx_glr_plot_01_merton_down_and_out_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/barriers/plot_01_merton_down_and_out.html"><span class="doc">Merton’s down-and-out call</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's down-and-out call</div>
+</div></div></section>
+<section id="margrabe-s-exchange-option">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1978 – Margrabe’s Exchange Option</a><a class="headerlink" href="#margrabe-s-exchange-option" title="Link to this heading">#</a></h2>
+<p>William Margrabe priced the right to exchange one risky asset for
+another at maturity. Measured in units of the asset given up, the payoff
+is a call on the ratio of the two prices struck at one; the ratio is
+lognormal with volatility
+<span class="math notranslate nohighlight">\(\sigma^2 = \sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2\)</span>, and the
+interest rate disappears from the answer. The proof by change of
+numeraire, one of the first, became a standard tool, and the formula
+prices spread options, outperformance options and the switching
+options embedded in many contracts.</p>
+<div class="math notranslate nohighlight">
+\[V = S_1 e^{-q_1 T} N(d_1) - S_2 e^{-q_2 T} N(d_2), \qquad
+d_{1,2} = \frac{\ln(S_1 e^{-q_1 T}/S_2 e^{-q_2 T}) \pm \tfrac12\sigma^2 T}{\sigma\sqrt T}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.multi_asset.margrabe_price()</span></code>
+calls <a class="reference internal" href="../api/options.html#financialkit.options.black_scholes_price" title="financialkit.options.black_scholes_price"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.black_scholes_price()</span></code></a> with the second
+asset as strike and a zero rate. The example plots the price against the
+correlation, with correlated Monte Carlo from
+<a class="reference internal" href="../api/integrators.html#financialkit.integrators.correlated_increments" title="financialkit.integrators.correlated_increments"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.correlated_increments()</span></code></a>.</p>
+<p><em>References:</em> W. Margrabe, “The Value of an Option to Exchange One Asset
+for Another,” <em>Journal of Finance</em> 33 (1978) 177-186.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="William Margrabe (1978) priced the right to exchange one asset for another, (S_1 - S_2)^+. Measured in units of the second asset, it is a call on the ratio S_1/S_2 struck at 1, so the interest rate drops out and only the volatility of the ratio, \sigma^2 = \sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2, matters. Change of numeraire, the idea behind this one-line proof, became one of the central tools of derivatives pricing."><img alt="" src="../_images/sphx_glr_plot_01_margrabe_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/multi_asset/plot_01_margrabe.html"><span class="doc">Margrabe exchange options</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Margrabe exchange options</div>
+</div></div></section>
+<section id="goldman-sosin-gatto-floating-lookbacks">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1979 – Goldman-Sosin-Gatto Floating Lookbacks</a><a class="headerlink" href="#goldman-sosin-gatto-floating-lookbacks" title="Link to this heading">#</a></h2>
+<p>“Path Dependent Options: Buy at the Low, Sell at the High” by Barry
+Goldman, Howard Sosin and Mary Ann Gatto priced the option that lets its
+holder buy at the lowest price of the option’s life, <span class="math notranslate nohighlight">\(S_T - \min_t S_t\)</span>,
+or sell at the highest. It is never out of the money. The joint law of a
+Brownian motion with drift and its running minimum, from the reflection
+principle, gives the closed form.</p>
+<div class="math notranslate nohighlight">
+\[c = S e^{(b-r)T} N(a_1) - S_{\min} e^{-rT} N(a_2)
+  + S e^{-rT}\frac{\sigma^2}{2b}\left[\left(\frac{S}{S_{\min}}\right)^{-2b/\sigma^2}
+    N\!\left(-a_1 + \frac{2b\sqrt T}{\sigma}\right) - e^{bT} N(-a_1)\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.lookbacks.floating_lookback_price()</span></code>
+prices new and seasoned floating lookbacks, taking the zero-carry limit
+where the formula is singular, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">lookback_option_mc()</span></code>
+simulates them with each step’s extremum drawn exactly from the Brownian
+bridge (<code class="xref py py-func docutils literal notranslate"><span class="pre">bridge_extremum()</span></code>).
+The example contrasts this with the biased minimum over a grid.</p>
+<p><em>References:</em> M. B. Goldman, H. B. Sosin and M. A. Gatto, “Path Dependent
+Options: ‘Buy at the Low, Sell at the High’,” <em>Journal of Finance</em> 34
+(1979) 1111-1127.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="&quot;Buy at the low, sell at the high&quot;: Barry Goldman, Howard Sosin and Mary Ann Gatto (1979) priced the option whose strike is the lowest price over its life, S_T - \min_t S_t (or the highest, for the put). It is never out of the money, so it costs much more than a vanilla call. The joint law of a Brownian motion and its minimum gives the closed form; Monte Carlo can match it exactly only by sampling each step&#x27;s minimum from the Brownian bridge, because checking the price at discrete dates misses the true low."><img alt="" src="../_images/sphx_glr_plot_01_floating_lookback_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/path_dependent/plot_01_floating_lookback.html"><span class="doc">Goldman-Sosin-Gatto floating lookbacks</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Goldman-Sosin-Gatto floating lookbacks</div>
+</div></div></section>
+<section id="geske-s-compound-options">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1979 – Geske’s Compound Options</a><a class="headerlink" href="#geske-s-compound-options" title="Link to this heading">#</a></h2>
+<p>Robert Geske priced an option on an option. His motivation was corporate
+finance: if a levered firm’s equity is a call on its assets, then a
+stock option is a call on a call, and its Black-Scholes volatility
+should change with the stock price. The compound call is exercised at
+<span class="math notranslate nohighlight">\(T_1\)</span> when the underlying option is worth more than its strike,
+which happens above a critical spot <span class="math notranslate nohighlight">\(I\)</span>, and the joint law of the
+price at the two expiries brings in the bivariate normal distribution
+with correlation <span class="math notranslate nohighlight">\(\sqrt{T_1/T_2}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[C = S e^{-qT_2} M(z_1, y_1; \rho) - K_2 e^{-rT_2} M(z_2, y_2; \rho) - K_1 e^{-rT_1} N(y_2),
+\qquad \rho = \sqrt{T_1/T_2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.compound.compound_option_price()</span></code>
+prices all four combinations of calls and puts, finding the critical
+spot with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brentq.html#scipy.optimize.brentq" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.brentq()</span></code></a>
+(<code class="xref py py-func docutils literal notranslate"><span class="pre">critical_price()</span></code>)
+and the bivariate normal exactly from Owen’s T function
+(<code class="xref py py-func docutils literal notranslate"><span class="pre">bivariate_normal_cdf()</span></code>).
+The example plots the four options and checks compound put-call parity.</p>
+<p><em>References:</em> R. Geske, “The Valuation of Compound Options,” <em>Journal of
+Financial Economics</em> 7 (1979) 63-81.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Robert Geske (1979) priced an option on an option. His motivation was corporate finance: if equity is a call on the firm&#x27;s assets, a stock option is a call on a call, and its implied volatility should rise as the stock falls and leverage grows. The compound call is exercised at T_1 only if the underlying option is worth more than the compound strike, which happens above a critical spot I, and the joint law of the price at T_1 and T_2 brings in the bivariate normal distribution with correlation \sqrt{T_1/T_2}."><img alt="" src="../_images/sphx_glr_plot_01_geske_compound_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/compound/plot_01_geske_compound.html"><span class="doc">Geske compound options</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Geske compound options</div>
+</div></div></section>
+<section id="stulz-options-on-the-maximum-and-the-minimum">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1982 – Stulz: Options on the Maximum and the Minimum</a><a class="headerlink" href="#stulz-options-on-the-maximum-and-the-minimum" title="Link to this heading">#</a></h2>
+<p>Rene Stulz priced European calls and puts on the larger or the smaller
+of two lognormal assets, the first “rainbow” options. The answer is a
+combination of bivariate normal probabilities. Because the maximum and
+the minimum add up to the two assets, a call on the maximum and a call
+on the minimum together are worth the two vanilla calls, and the
+correlation only moves value between them: the less correlated the
+assets, the more the maximum is worth.</p>
+<div class="math notranslate nohighlight">
+\[c_{\min} = S_1 e^{-q_1 T} M(y_1, -d; -\rho_1) + S_2 e^{-q_2 T} M(y_2, d - \sigma\sqrt T; -\rho_2)
+- K e^{-rT} M(y_1 - \sigma_1\sqrt T, y_2 - \sigma_2\sqrt T; \rho)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.multi_asset.stulz_price()</span></code>
+prices calls and puts on the maximum and the minimum, the puts by parity
+with the zero-strike call, a Margrabe option. The example shows the
+calls against the correlation and the puts against the strike.</p>
+<p><em>References:</em> R. M. Stulz, “Options on the Minimum or the Maximum of Two
+Risky Assets: Analysis and Applications,” <em>Journal of Financial
+Economics</em> 10 (1982) 161-185.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Rene Stulz (1982) priced calls and puts on the better or the worse of two assets, (\max(S_1, S_2) - K)^+ and (\min(S_1, S_2) - K)^+, the simplest &quot;rainbow&quot; options. The answer needs the bivariate normal distribution. Because \max + \min = S_1 + S_2, the two calls always add up to the two vanilla calls, and correlation moves value between them: diversification makes the maximum more valuable and the minimum less."><img alt="" src="../_images/sphx_glr_plot_02_stulz_max_min_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/multi_asset/plot_02_stulz_max_min.html"><span class="doc">Stulz options on the maximum and minimum</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Stulz options on the maximum and minimum</div>
+</div></div></section>
+<section id="kemna-vorst-asian-options">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1990 – Kemna-Vorst Asian Options</a><a class="headerlink" href="#kemna-vorst-asian-options" title="Link to this heading">#</a></h2>
+<p>Average-rate options suit firms that buy or sell a commodity steadily
+and are harder to manipulate at expiry. Angelien Kemna and Ton Vorst
+noticed that the geometric average of lognormal prices is itself
+lognormal, with volatility <span class="math notranslate nohighlight">\(\sigma/\sqrt3\)</span> under continuous
+averaging, so its option has a Black-Scholes formula. The arithmetic
+average that contracts use has no closed form, but its option is so
+tightly correlated with the geometric one that the latter makes an
+almost perfect Monte Carlo control variate.</p>
+<div class="math notranslate nohighlight">
+\[\ln G \sim N\!\left(\ln S + \left(b - \tfrac{\sigma^2}{2}\right)\tfrac{T}{2},\; \tfrac{\sigma^2 T}{3}\right),
+\qquad \hat\mu = \bar Y_{\text{arith}} - \beta(\bar Y_{\text{geo}} - V_{\text{geo}})\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.asian.geometric_asian_price()</span></code>
+prices continuous and discrete geometric averages, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">arithmetic_asian_mc()</span></code>
+simulates the arithmetic average with the geometric control through
+<a class="reference internal" href="../api/monte_carlo.html#financialkit.monte_carlo.control_variate_estimate" title="financialkit.monte_carlo.control_variate_estimate"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.control_variate_estimate()</span></code></a>. The example
+shows the two payoffs on common paths and the resulting variance
+reduction.</p>
+<p><em>References:</em> A. G. Z. Kemna and A. C. F. Vorst, “A Pricing Method for
+Options Based on Average Asset Values,” <em>Journal of Banking and
+Finance</em> 14 (1990) 113-129.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="An average-rate option pays on the average price over its life, which makes it cheaper than a vanilla option and harder to manipulate at expiry. Angelien Kemna and Ton Vorst (1990) observed that a geometric average of lognormal prices is lognormal, with volatility \sigma/\sqrt3 under continuous averaging, so its option has a Black-Scholes formula. The arithmetic average traded in practice has none, but the geometric option is so tightly correlated with it that it makes a near-perfect Monte Carlo control variate."><img alt="" src="../_images/sphx_glr_plot_01_kemna_vorst_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/asian/plot_01_kemna_vorst.html"><span class="doc">Kemna-Vorst Asian options</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kemna-Vorst Asian options</div>
+</div></div></section>
+<section id="rubinstein-s-forward-start-options">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1990 – Rubinstein’s Forward-Start Options</a><a class="headerlink" href="#rubinstein-s-forward-start-options" title="Link to this heading">#</a></h2>
+<p>A forward-start option is struck at a fixed fraction <span class="math notranslate nohighlight">\(\alpha\)</span> of
+the price on a future date <span class="math notranslate nohighlight">\(t\)</span>, the way executive options are
+granted at the money. Mark Rubinstein observed that on the start date it
+is worth the price times an option on a unit spot, so today it is worth
+<span class="math notranslate nohighlight">\(S e^{-qt}\)</span> times that option, whatever happens before
+<span class="math notranslate nohighlight">\(t\)</span>. Its value is linear in the spot, it has no gamma until it
+starts, and a chain of them is a cliquet.</p>
+<div class="math notranslate nohighlight">
+\[V = S e^{-qt}\,\mathrm{BS}(1, \alpha, T - t, r, q, \sigma)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.compound.forward_start_price()</span></code>.
+The example plots the value against the start date with Monte Carlo
+checks and contrasts its linear profile with a vanilla call.</p>
+<p><em>References:</em> M. Rubinstein, “Exotic Options,” Finance working paper
+220, University of California, Berkeley (1990); E. G. Haug, <em>The
+Complete Guide to Option Pricing Formulas</em>, 2nd ed. (McGraw-Hill, 2007),
+Section 4.3.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A forward-start option is struck at \alpha S_t on a future date t, the way executive options are granted at the money. Mark Rubinstein (1990) noticed that on the start date it is worth S_t times the option on a unit spot, so today it is worth"><img alt="" src="../_images/sphx_glr_plot_02_forward_start_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/compound/plot_02_forward_start.html"><span class="doc">Rubinstein forward-start options</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rubinstein forward-start options</div>
+</div></div></section>
+<section id="reiner-rubinstein-barrier-options">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1991 – Reiner-Rubinstein Barrier Options</a><a class="headerlink" href="#reiner-rubinstein-barrier-options" title="Link to this heading">#</a></h2>
+<p>“Breaking Down the Barriers” by Eric Reiner and Mark Rubinstein gave
+closed forms for all eight single-barrier options – calls and puts,
+down and up, in and out – with a cash rebate paid at the hit for
+knock-outs or at expiry for knock-ins that never knock in. Each is a
+sum of six building blocks: the vanilla option, the vanilla struck at
+the barrier, their reflections and the two rebates. Without rebates a
+knock-in and the matching knock-out add up to the vanilla option, so
+barriers are a cheap way to buy only the scenarios one believes in.</p>
+<div class="math notranslate nohighlight">
+\[C_{do} = A - C + F, \quad C_{di} = C + E \quad (K &gt; H), \qquad
+V_{\text{in}} + V_{\text{out}} = V_{\text{vanilla}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.barriers.barrier_price()</span></code>
+implements all eight options with rebates, vectorised over spots and
+strikes. The example reproduces Haug’s Table 4-13 and plots in-out
+parity for down and up barriers.</p>
+<p><em>References:</em> E. Reiner and M. Rubinstein, “Breaking Down the Barriers,”
+<em>Risk</em> 4(8) (1991) 28-35; Haug (2007), Section 4.17.1.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Eric Reiner and Mark Rubinstein (1991) wrote down closed forms for all eight single-barrier options -- calls and puts, down and up, in and out -- each with a cash rebate. Every one is a sum of six building blocks A, \dots, F: the vanilla option, the vanilla struck at the barrier, their reflections through the barrier and the two rebates. Without rebates, a knock-in and a knock-out with the same terms add up to the vanilla option."><img alt="" src="../_images/sphx_glr_plot_02_reiner_rubinstein_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/barriers/plot_02_reiner_rubinstein.html"><span class="doc">Reiner-Rubinstein barrier options</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Reiner-Rubinstein barrier options</div>
+</div></div></section>
+<section id="reiner-rubinstein-binary-options">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1991 – Reiner-Rubinstein Binary Options</a><a class="headerlink" href="#reiner-rubinstein-binary-options" title="Link to this heading">#</a></h2>
+<p>In “Unscrambling the Binary Code” Mark Rubinstein and Eric Reiner priced
+the all-or-nothing payoffs – cash-or-nothing, asset-or-nothing, gap and
+one-touch options – and showed that vanilla and barrier options
+decompose into them. The two terms of the Black-Scholes formula are
+exactly an asset-or-nothing call and <span class="math notranslate nohighlight">\(K\)</span> cash-or-nothing calls; a
+knock-out’s rebate is a one-touch.</p>
+<div class="math notranslate nohighlight">
+\[c = \underbrace{S e^{-qT} N(d_1)}_{\text{asset-or-nothing}}
+  - K \underbrace{e^{-rT} N(d_2)}_{\text{cash-or-nothing}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.binaries.cash_or_nothing_price()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">asset_or_nothing_price()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">gap_option_price()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">one_touch_price()</span></code>. The
+example builds a call from two digitals, shows the digital’s delta
+spiking at the strike near expiry, and compares a one-touch with the
+digital that pays at expiry.</p>
+<p><em>References:</em> M. Rubinstein and E. Reiner, “Unscrambling the Binary
+Code,” <em>Risk</em> 4(9) (1991) 75-83; Haug (2007), Section 4.19.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Mark Rubinstein and Eric Reiner&#x27;s &quot;Unscrambling the Binary Code&quot; (1991) priced the all-or-nothing payoffs and showed that every vanilla and barrier option is assembled from them. A cash-or-nothing call pays 1 if S_T &gt; K and is worth e^{-rT}N(d_2); an asset-or-nothing call pays the share and is worth Se^{-qT}N(d_1). A vanilla call is one asset-or-nothing call minus K cash-or-nothing calls. A gap option uses different trigger and payoff strikes and can be worth less than nothing, and a one-touch pays as soon as a barrier is hit."><img alt="" src="../_images/sphx_glr_plot_01_digital_options_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/binaries/plot_01_digital_options.html"><span class="doc">Reiner-Rubinstein binary options</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Reiner-Rubinstein binary options</div>
+</div></div></section>
+<section id="rubinstein-s-chooser-options">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1991 – Rubinstein’s Chooser Options</a><a class="headerlink" href="#rubinstein-s-chooser-options" title="Link to this heading">#</a></h2>
+<p>The holder of a simple chooser decides on a fixed date <span class="math notranslate nohighlight">\(t\)</span> whether
+the option is a call or a put, both with strike <span class="math notranslate nohighlight">\(K\)</span> and expiry
+<span class="math notranslate nohighlight">\(T\)</span>. Put-call parity turns the choice into a call plus a put: at
+<span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\max(c, p) = c + (p - c)^+\)</span>, and <span class="math notranslate nohighlight">\(p - c\)</span> is the
+payoff of a forward. A chooser is worth the better option if the choice
+is made today and a straddle if it is made at expiry, which is the
+hedge a trader expecting a large move of unknown sign would buy.</p>
+<div class="math notranslate nohighlight">
+\[V = c(S, K, T) + e^{-q(T-t)}\, p\big(S, K e^{-(r-q)(T-t)}, t\big)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.compound.chooser_price()</span></code>.
+The example plots the value against the choice date between its two
+limits and checks the decision rule by Monte Carlo.</p>
+<p><em>References:</em> M. Rubinstein, “Options for the Undecided,” <em>Risk</em> 4(4)
+(1991) 43; Haug (2007), Section 4.4.1.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="&quot;Pay now, choose later&quot;: the holder of a simple chooser decides at a date t whether the option is a call or a put, both struck at K and expiring at T. Mark Rubinstein (1991) used put-call parity to write the choice as a call plus a put:"><img alt="" src="../_images/sphx_glr_plot_03_chooser_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/compound/plot_03_chooser.html"><span class="doc">Rubinstein choosers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rubinstein choosers</div>
+</div></div></section>
+<section id="conze-viswanathan-fixed-lookbacks">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1991 – Conze-Viswanathan Fixed Lookbacks</a><a class="headerlink" href="#conze-viswanathan-fixed-lookbacks" title="Link to this heading">#</a></h2>
+<p>Antoine Conze and Viswanathan priced the fixed-strike lookback, a call
+on the maximum <span class="math notranslate nohighlight">\((\max_t S_t - K)^+\)</span> and a put on the minimum,
+together with seasoned options whose running extreme is already known.
+Once the maximum has passed the strike, the call has locked in
+<span class="math notranslate nohighlight">\(\max - K\)</span> and what remains is the value of further rises, so the
+same formula serves with <span class="math notranslate nohighlight">\(S_{\max}\)</span> in place of <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[c = e^{-rT}(S_{\max} - K)^+ + S e^{(b-r)T}N(e_1) - M e^{-rT}N(e_2)
+  + S e^{-rT}\frac{\sigma^2}{2b}\left[-\left(\frac{S}{M}\right)^{-2b/\sigma^2}
+    N\!\left(e_1 - \frac{2b\sqrt T}{\sigma}\right) + e^{bT}N(e_1)\right],
+\quad M = \max(K, S_{\max})\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.lookbacks.fixed_lookback_price()</span></code>.
+The example prices new lookbacks across strikes against Monte Carlo and
+shows a seasoned call locking in its running maximum.</p>
+<p><em>References:</em> A. Conze and Viswanathan, “Path Dependent Options: The
+Case of Lookback Options,” <em>Journal of Finance</em> 46 (1991) 1893-1907;
+Haug (2007), Section 4.15.2.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Antoine Conze and Viswanathan (1991) priced the fixed-strike lookback: a call on the maximum, (\max_t S_t - K)^+, and a put on the minimum, (K - \min_t S_t)^+. Once the running maximum has passed the strike, the call has locked in \max - K and what remains is a call on any further rise; that is how a seasoned option is priced, with the maximum observed so far as an input."><img alt="" src="../_images/sphx_glr_plot_02_fixed_lookback_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/path_dependent/plot_02_fixed_lookback.html"><span class="doc">Conze-Viswanathan fixed lookbacks</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Conze-Viswanathan fixed lookbacks</div>
+</div></div></section>
+<section id="turnbull-wakeman-asian-approximation">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">1991 – Turnbull-Wakeman Asian Approximation</a><a class="headerlink" href="#turnbull-wakeman-asian-approximation" title="Link to this heading">#</a></h2>
+<p>Stuart Turnbull and Lee Wakeman priced the arithmetic Asian option as
+if the average were lognormal with its exact first two moments. The
+moments are elementary integrals of <span class="math notranslate nohighlight">\(E[S_t]\)</span> and
+<span class="math notranslate nohighlight">\(E[S_t S_u]\)</span>, and the option is Black’s formula on the mean of the
+average with the matched volatility. The approximation is excellent at
+moderate volatility and overprices as the average’s distribution grows
+more skewed than a lognormal. Edmond Levy’s 1992 version uses the exact
+discrete-fixing moments.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_A^2 = \frac{1}{T}\ln\frac{E[A^2]}{E[A]^2}, \qquad
+V = e^{-rT}\left[E[A] N(d_1) - K N(d_2)\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.asian.turnbull_wakeman_price()</span></code>
+handles continuous averaging (the second moment by Gauss-Legendre
+quadrature, which stays accurate where the closed form cancels) and
+discrete fixings (Levy’s sums, in linear time). The example measures
+the approximation error against controlled Monte Carlo as volatility
+grows.</p>
+<p><em>References:</em> S. M. Turnbull and L. M. Wakeman, “A Quick Algorithm for
+Pricing European Average Options,” <em>Journal of Financial and
+Quantitative Analysis</em> 26 (1991) 377-389; E. Levy, “Pricing European
+Average Rate Currency Options,” <em>Journal of International Money and
+Finance</em> 11 (1992) 474-491.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Stuart Turnbull and Lee Wakeman (1991) priced the arithmetic average A as if it were lognormal with the right first two moments: Black&#x27;s formula on the forward E[A] with volatility"><img alt="" src="../_images/sphx_glr_plot_02_turnbull_wakeman_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/asian/plot_02_turnbull_wakeman.html"><span class="doc">Turnbull-Wakeman Asian approximation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Turnbull-Wakeman Asian approximation</div>
+</div></div></section>
+<section id="ikeda-kunitomo-double-barriers">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">1992 – Ikeda-Kunitomo Double Barriers</a><a class="headerlink" href="#ikeda-kunitomo-double-barriers" title="Link to this heading">#</a></h2>
+<p>Naoto Ikeda and Masaaki Kunitomo priced options that knock out if the
+price leaves a corridor, even with exponentially curved boundaries. The
+transition density of Brownian motion killed at two barriers is an
+infinite series of images reflected alternately through both, and the
+option is a sum of Black-Scholes-like terms. The terms die off like
+<span class="math notranslate nohighlight">\(e^{-2n^2 \ln^2(U/L)/\sigma^2 T}\)</span>, so a few suffice unless the
+corridor is narrow. A double knock-out call loses value as volatility
+rises.</p>
+<div class="math notranslate nohighlight">
+\[c = S e^{(b-r)T}\sum_{n=-\infty}^{\infty}\left[\left(\tfrac{U^n}{L^n}\right)^{\mu}(N(d_1) - N(d_2))
+  - \left(\tfrac{L^{n+1}}{U^n S}\right)^{\mu}(N(d_3) - N(d_4))\right] - K e^{-rT}\sum_{n}[\dots]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.barriers.double_barrier_price()</span></code>
+prices knock-out and knock-in calls and puts with flat barriers and a
+configurable number of terms. The example draws knocked-out paths,
+plots the value across the corridor for several volatilities and
+measures how fast the series converges.</p>
+<p><em>References:</em> N. Ikeda and M. Kunitomo, “Pricing Options with Curved
+Boundaries,” <em>Mathematical Finance</em> 2 (1992) 275-298; Haug (2007),
+Section 4.17.3.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A double knock-out dies if the price leaves a corridor (L, U). Naoto Ikeda and Masaaki Kunitomo (1992) solved it, even for curved (exponential) barriers, with an infinite series of images reflected alternately through both boundaries. The terms decay like e^{-2n^2\ln^2(U/L)/\sigma^2T}, so two or three are plenty unless the corridor is very narrow. Unlike a vanilla call, a double knock-out call loses value as volatility rises: more paths hit a barrier."><img alt="" src="../_images/sphx_glr_plot_03_double_barrier_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/barriers/plot_03_double_barrier.html"><span class="doc">Ikeda-Kunitomo double barriers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ikeda-Kunitomo double barriers</div>
+</div></div></section>
+<section id="reiner-s-quantos">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">1992 – Reiner’s Quantos</a><a class="headerlink" href="#reiner-s-quantos" title="Link to this heading">#</a></h2>
+<p>A quanto pays a foreign asset’s payoff in domestic currency at a rate
+fixed in advance, so an investor can hold the Nikkei without holding
+the yen. Eric Reiner showed that under the domestic risk-neutral measure
+the foreign asset’s drift picks up the covariance with the exchange
+rate, <span class="math notranslate nohighlight">\(-\rho\sigma_S\sigma_X\)</span>, and the quanto is Black’s formula on
+the adjusted forward, discounted at the domestic rate. The correlation,
+not the level of the exchange rate, is what the seller is exposed to.</p>
+<div class="math notranslate nohighlight">
+\[V = \bar X e^{-r_d T}\left[\hat F N(d_1) - K N(d_2)\right], \qquad
+\hat F = S e^{(r_f - q - \rho\sigma_S\sigma_X)T}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.multi_asset.quanto_price()</span></code>
+calls <a class="reference internal" href="../api/options.html#financialkit.options.black76_price" title="financialkit.options.black76_price"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.options.black76_price()</span></code></a> on the adjusted forward.
+The example plots quanto calls and puts against the correlation and
+checks them with a Monte Carlo under the foreign measure.</p>
+<p><em>References:</em> E. Reiner, “Quanto Mechanics,” <em>Risk</em> 5(3) (1992) 59-63;
+Haug (2007), Section 5.16.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A quanto pays a foreign asset&#x27;s option payoff in domestic currency at a fixed exchange rate, so the investor keeps the asset&#x27;s risk without the currency&#x27;s. Eric Reiner (1992) showed that, under the domestic measure, the asset&#x27;s drift picks up a correction -\rho\sigma_S\sigma_X from its correlation with the exchange rate:"><img alt="" src="../_images/sphx_glr_plot_03_quanto_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/multi_asset/plot_03_quanto.html"><span class="doc">Reiner quantos</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Reiner quantos</div>
+</div></div></section>
+<section id="broadie-glasserman-kou-discrete-barriers">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">1997 – Broadie-Glasserman-Kou Discrete Barriers</a><a class="headerlink" href="#broadie-glasserman-kou-discrete-barriers" title="Link to this heading">#</a></h2>
+<p>Barrier contracts check the price at the daily close, not continuously,
+and the continuous formulas overstate the chance of knocking out. Mark
+Broadie, Paul Glasserman and Steven Kou proved that a barrier monitored
+<span class="math notranslate nohighlight">\(m\)</span> times behaves like a continuous one moved away from the spot
+by <span class="math notranslate nohighlight">\(e^{\beta\sigma\sqrt{T/m}}\)</span>, where
+<span class="math notranslate nohighlight">\(\beta = -\zeta(1/2)/\sqrt{2\pi} \approx 0.5826\)</span> comes from the
+expected overshoot of a Gaussian random walk. The correction removes
+the <span class="math notranslate nohighlight">\(O(1/\sqrt m)\)</span> error at no cost.</p>
+<div class="math notranslate nohighlight">
+\[V_m(H) = V\!\left(H e^{\pm\beta\sigma\sqrt{T/m}}\right) + o(1/\sqrt m)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.barriers.discrete_barrier_price()</span></code>
+applies the shift to <code class="xref py py-func docutils literal notranslate"><span class="pre">barrier_price()</span></code>,
+and <code class="xref py py-data docutils literal notranslate"><span class="pre">BGK_BETA</span></code> holds
+the constant. The example compares discretely monitored Monte Carlo
+with the shifted and the unshifted formulas from weekly to daily
+monitoring.</p>
+<p><em>References:</em> M. Broadie, P. Glasserman and S. Kou, “A Continuity
+Correction for Discrete Barrier Options,” <em>Mathematical Finance</em> 7
+(1997) 325-349.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Real barrier contracts check the price once a day, not continuously, and a path can slip through the barrier between two checks. Mark Broadie, Paul Glasserman and Steven Kou (1997) showed that the discretely monitored option is, to o(1/\sqrt m), the continuous one with the barrier shifted away from the spot:"><img alt="" src="../_images/sphx_glr_plot_04_discrete_barrier_correction_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/barriers/plot_04_discrete_barrier_correction.html"><span class="doc">Broadie-Glasserman-Kou discrete barriers</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Broadie-Glasserman-Kou discrete barriers</div>
+</div></div></section>
+<section id="demeterfi-derman-kamal-zou-variance-swaps">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">1999 – Demeterfi-Derman-Kamal-Zou Variance Swaps</a><a class="headerlink" href="#demeterfi-derman-kamal-zou-variance-swaps" title="Link to this heading">#</a></h2>
+<p>A variance swap pays realized variance against a fixed strike, a pure
+bet on volatility. Kresimir Demeterfi, Emanuel Derman, Michael Kamal and
+Joseph Zou showed that, for any continuous price process, it is
+replicated by a delta-hedged log contract, and the log contract by a
+static strip of out-of-the-money puts and calls weighted by
+<span class="math notranslate nohighlight">\(1/K^2\)</span>. The fair strike is then read off today’s option prices,
+with no model of volatility at all. Discretised, the same sum became
+the CBOE’s VIX index in 2003.</p>
+<div class="math notranslate nohighlight">
+\[K_{\mathrm{var}} = \frac{2e^{rT}}{T}\left[\int_0^{F}\frac{P(K)}{K^2}\,dK + \int_F^{\infty}\frac{C(K)}{K^2}\,dK\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.variance_swaps.variance_swap_strike()</span></code>
+discretises the strip as in the VIX calculation and returns a
+<a class="reference internal" href="../api/exotic_options.html#financialkit.exotic_options.VarianceSwapResult" title="financialkit.exotic_options.core.base.VarianceSwapResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarianceSwapResult</span></code></a> with
+each option’s weight, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">realized_variance()</span></code>
+computes the floating leg. The example shows the strip under a skew,
+which lifts the fair strike above the at-the-money volatility, and
+compares realized variance under Black-Scholes with the strike.</p>
+<p><em>References:</em> K. Demeterfi, E. Derman, M. Kamal and J. Zou, “A Guide to
+Volatility and Variance Swaps,” <em>Journal of Derivatives</em> 6(4) (1999)
+9-32; Cboe, <em>VIX White Paper</em> (2003).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A variance swap pays the realized variance of the returns minus a fixed strike. Kresimir Demeterfi, Emanuel Derman, Michael Kamal and Joseph Zou (1999) showed how to replicate it, whatever the volatility process, with a static strip of out-of-the-money options weighted by 1/K^2 plus a delta hedge, which gives the fair strike from today&#x27;s option prices alone:"><img alt="" src="../_images/sphx_glr_plot_03_variance_swap_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/path_dependent/plot_03_variance_swap.html"><span class="doc">Demeterfi-Derman-Kamal-Zou variance swaps</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Demeterfi-Derman-Kamal-Zou variance swaps</div>
+</div></div></section>
+<section id="longstaff-schwartz-least-squares-monte-carlo">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">2001 – Longstaff-Schwartz Least-Squares Monte Carlo</a><a class="headerlink" href="#longstaff-schwartz-least-squares-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Simulation runs forward in time, but early exercise is decided backward,
+and for twenty years American options seemed out of Monte Carlo’s
+reach. Francis Longstaff and Eduardo Schwartz estimated the value of
+continuing by regressing the realized discounted cash flows of the
+in-the-money paths on a few functions of the current price, and
+exercised each path where the payoff beats the fit. The method extends
+to many assets and to path-dependent payoffs, where trees and PDEs
+break down, and is now the standard way to price callable and
+Bermudan products by simulation.</p>
+<div class="math notranslate nohighlight">
+\[\hat C(S_{t_i}) = \sum_{k} \beta_k \psi_k(S_{t_i}), \qquad
+\beta = \arg\min \sum_{\text{ITM paths}} \left(e^{-r\Delta t} Y_{t_{i+1}} - \sum_k \beta_k\psi_k(S_{t_i})\right)^2\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.exotic_options.systems.american.longstaff_schwartz()</span></code>
+hand-writes the backward regression with weighted Laguerre or monomial
+regressors (<code class="xref py py-func docutils literal notranslate"><span class="pre">regression_basis()</span></code>)
+on paths from <a class="reference internal" href="../api/integrators.html#financialkit.integrators.gbm_paths" title="financialkit.integrators.gbm_paths"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.gbm_paths()</span></code></a>, and returns a
+<a class="reference internal" href="../api/exotic_options.html#financialkit.exotic_options.LongstaffSchwartzResult" title="financialkit.exotic_options.core.base.LongstaffSchwartzResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongstaffSchwartzResult</span></code></a>
+with the exercise boundary. The example shows one regression step and
+compares the price and boundary with a binomial tree.</p>
+<p><em>References:</em> F. A. Longstaff and E. S. Schwartz, “Valuing American
+Options by Simulation: A Simple Least-Squares Approach,” <em>Review of
+Financial Studies</em> 14 (2001) 113-147; P. Glasserman, <em>Monte Carlo
+Methods in Financial Engineering</em> (Springer, 2004), Section 8.6.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Monte Carlo simulates forward, but early exercise is decided backward: whether to exercise today depends on the value of waiting. Francis Longstaff and Eduardo Schwartz (2001) estimated that continuation value by regressing the discounted future cash flows of the in-the-money paths on a few functions of today&#x27;s price. Working back from expiry, each path is exercised where the payoff beats the fitted value. The method extends to many assets and path-dependent payoffs, where trees and PDEs give up."><img alt="" src="../_images/sphx_glr_plot_01_longstaff_schwartz_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/exotic_options/american/plot_01_longstaff_schwartz.html"><span class="doc">Longstaff-Schwartz least-squares Monte Carlo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Longstaff-Schwartz least-squares Monte Carlo</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/exotic_options.html"><span class="doc">financialkit.exotic_options</span></a></p></li>
+<li><p><a class="reference internal" href="options_breakthroughs.html"><span class="doc">Breakthroughs in Option Pricing</span></a></p></li>
+<li><p><a class="reference internal" href="monte_carlo_breakthroughs.html"><span class="doc">Breakthroughs in Monte Carlo Methods</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="options_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Option Pricing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="stochastic_volatility_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Stochastic Volatility</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merton-s-down-and-out-call">1973 – Merton’s Down-and-Out Call</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margrabe-s-exchange-option">1978 – Margrabe’s Exchange Option</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goldman-sosin-gatto-floating-lookbacks">1979 – Goldman-Sosin-Gatto Floating Lookbacks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geske-s-compound-options">1979 – Geske’s Compound Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stulz-options-on-the-maximum-and-the-minimum">1982 – Stulz: Options on the Maximum and the Minimum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kemna-vorst-asian-options">1990 – Kemna-Vorst Asian Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubinstein-s-forward-start-options">1990 – Rubinstein’s Forward-Start Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reiner-rubinstein-barrier-options">1991 – Reiner-Rubinstein Barrier Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reiner-rubinstein-binary-options">1991 – Reiner-Rubinstein Binary Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubinstein-s-chooser-options">1991 – Rubinstein’s Chooser Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conze-viswanathan-fixed-lookbacks">1991 – Conze-Viswanathan Fixed Lookbacks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turnbull-wakeman-asian-approximation">1991 – Turnbull-Wakeman Asian Approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ikeda-kunitomo-double-barriers">1992 – Ikeda-Kunitomo Double Barriers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reiner-s-quantos">1992 – Reiner’s Quantos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadie-glasserman-kou-discrete-barriers">1997 – Broadie-Glasserman-Kou Discrete Barriers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demeterfi-derman-kamal-zou-variance-swaps">1999 – Demeterfi-Derman-Kamal-Zou Variance Swaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#longstaff-schwartz-least-squares-monte-carlo">2001 – Longstaff-Schwartz Least-Squares Monte Carlo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/exotic_options_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

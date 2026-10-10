@@ -1,0 +1,68 @@
+
+
+.. _sphx_glr_api_gallery_fixed_income_swaps:
+
+Swaps
+-----
+
+Swaps valued as the difference between two bonds.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In August 1981 Salomon Brothers arranged for the World Bank to take over IBM&#x27;s Swiss franc and Deutsche mark debt payments, while IBM took over dollar payments from the World Bank. Each side got the currency it wanted without issuing new debt. A fixed-for-fixed currency swap is a long bond in one currency and a short bond in the other, so its value moves with the exchange rate and with both yield curves.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/swaps/images/thumb/sphx_glr_plot_01_ibm_world_bank_currency_swap_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/swaps/plot_01_ibm_world_bank_currency_swap`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The IBM-World Bank currency swap</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The single-currency swap followed within a year of the IBM-World Bank deal. One side pays a fixed rate and the other pays a floating rate on the same notional. The floating leg is worth par on every reset date, so the swap is worth a floating-rate note minus a fixed-coupon bond. The par swap rate is the coupon that makes the two equal.">
+
+.. only:: html
+
+  .. image:: /api/gallery/fixed_income/swaps/images/thumb/sphx_glr_plot_02_interest_rate_swap_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/fixed_income/swaps/plot_02_interest_rate_swap`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The plain-vanilla interest-rate swap</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/fixed_income/swaps/plot_01_ibm_world_bank_currency_swap
+   /api/gallery/fixed_income/swaps/plot_02_interest_rate_swap
+

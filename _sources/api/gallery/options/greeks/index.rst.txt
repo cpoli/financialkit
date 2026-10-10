@@ -1,0 +1,69 @@
+
+
+.. _sphx_glr_api_gallery_options_greeks:
+
+Greeks and hedging
+------------------
+
+The sensitivities that the Black-Scholes argument hedges away, and what
+happens when the hedge is rebalanced only a finite number of times.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The Black-Scholes argument hedges an option with \Delta = \partial V/\partial S shares; the other partial derivatives measure how that hedge and the option&#x27;s value respond to everything else. The Greeks, named by traders after the 1973 paper, satisfy the pricing PDE itself,">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/greeks/images/thumb/sphx_glr_plot_01_greeks_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/greeks/plot_01_greeks`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Black-Scholes Greeks</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Black and Scholes priced an option by showing that a dealer who sells it and holds \Delta shares, rebalancing continuously, carries no risk. Real hedges are rebalanced a finite number of times. The dealer&#x27;s terminal P&amp;L then has mean zero but a spread that shrinks like 1/\sqrt{n} in the number of rebalances (Boyle and Emanuel 1980), and the hedge works whatever the stock&#x27;s real-world drift.">
+
+.. only:: html
+
+  .. image:: /api/gallery/options/greeks/images/thumb/sphx_glr_plot_02_delta_hedging_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/options/greeks/plot_02_delta_hedging`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Delta hedging in discrete time</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/options/greeks/plot_01_greeks
+   /api/gallery/options/greeks/plot_02_delta_hedging
+

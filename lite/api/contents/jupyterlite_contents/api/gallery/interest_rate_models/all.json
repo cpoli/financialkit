@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:59.226878Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:59.227683Z",
+      "mimetype": null,
+      "name": "options",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/options",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:59.227957Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:59.229636Z",
+      "mimetype": null,
+      "name": "short_rate",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/short_rate",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:59.226517Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:59.226591Z",
+      "mimetype": null,
+      "name": "hjm",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/hjm",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:59.225157Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:59.226159Z",
+      "mimetype": null,
+      "name": "curve_fitted",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/curve_fitted",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.225126Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.227958Z",
+  "mimetype": null,
+  "name": "interest_rate_models",
+  "path": "jupyterlite_contents/api/gallery/interest_rate_models",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

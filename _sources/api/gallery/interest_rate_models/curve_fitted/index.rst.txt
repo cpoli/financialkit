@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_api_gallery_interest_rate_models_curve_fitted:
+
+Curve-fitted models
+-------------------
+
+Arbitrage-free models that take today's yield curve as an input: Ho-Lee,
+Hull-White and the Black-Derman-Toy tree, and the convexity gap between
+futures and forward rates that they predict.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Thomas Ho and Sang-Bin Lee (1986) turned the problem around. Instead of deriving a curve from a short-rate model, they took today&#x27;s curve as given and made the model fit it: a binomial tree of whole discount curves whose drift is chosen to reprice every bond. Its continuous-time limit is Merton&#x27;s Gaussian rate with a time-dependent drift,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/curve_fitted/images/thumb/sphx_glr_plot_01_ho_lee_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/curve_fitted/plot_01_ho_lee`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ho-Lee: the first arbitrage-free term-structure model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Hull and Alan White (1990) combined Vasicek&#x27;s mean reversion with Ho and Lee&#x27;s curve fitting,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/curve_fitted/images/thumb/sphx_glr_plot_02_hull_white_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/curve_fitted/plot_02_hull_white`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hull-White: extended Vasicek</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fischer Black, Emanuel Derman and William Toy (1990), at Goldman Sachs, built a binomial tree of short rates that is lognormal, so rates stay positive, and fitted to the market curve level by level. At step i the rates are r_{i,j} = U_i e^{\sigma_i\sqrt{\Delta t}\,(2j - i)} with probability 1/2 on each branch, and the median U_i is solved so that the tree reprices the bond maturing one step later, using Arrow-Debreu prices carried forward through the tree. Options, including American ones, are then priced by backward induction.">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/curve_fitted/images/thumb/sphx_glr_plot_03_black_derman_toy_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/curve_fitted/plot_03_black_derman_toy`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black-Derman-Toy: a lognormal rate tree</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A Eurodollar futures contract is settled every day, a forward rate agreement only at the end. Gains on the futures are reinvested when rates are high and financed when they are low, so the futures rate is the risk-neutral expectation of the future rate and exceeds the forward rate. With the Ho-Lee and Hull-White models (1990) the gap has a closed form; under Ho-Lee">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/curve_fitted/images/thumb/sphx_glr_plot_04_futures_convexity_adjustment_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/curve_fitted/plot_04_futures_convexity_adjustment`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The futures convexity adjustment</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/interest_rate_models/curve_fitted/plot_01_ho_lee
+   /api/gallery/interest_rate_models/curve_fitted/plot_02_hull_white
+   /api/gallery/interest_rate_models/curve_fitted/plot_03_black_derman_toy
+   /api/gallery/interest_rate_models/curve_fitted/plot_04_futures_convexity_adjustment
+

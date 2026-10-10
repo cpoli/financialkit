@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.867897Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.867897Z",
+      "mimetype": null,
+      "name": "plot_03_black_derman_toy.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/curve_fitted/plot_03_black_derman_toy.ipynb",
+      "size": 4282,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.867528Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.867528Z",
+      "mimetype": null,
+      "name": "plot_01_ho_lee.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/curve_fitted/plot_01_ho_lee.ipynb",
+      "size": 4304,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.868125Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.868125Z",
+      "mimetype": null,
+      "name": "plot_04_futures_convexity_adjustment.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/curve_fitted/plot_04_futures_convexity_adjustment.ipynb",
+      "size": 4428,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.867785Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.867785Z",
+      "mimetype": null,
+      "name": "plot_02_hull_white.ipynb",
+      "path": "jupyterlite_contents/api/gallery/interest_rate_models/curve_fitted/plot_02_hull_white.ipynb",
+      "size": 4002,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.225157Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.226159Z",
+  "mimetype": null,
+  "name": "curve_fitted",
+  "path": "jupyterlite_contents/api/gallery/interest_rate_models/curve_fitted",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

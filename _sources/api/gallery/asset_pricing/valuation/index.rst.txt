@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_api_gallery_asset_pricing_valuation:
+
+Valuation
+---------
+
+What a share is worth: the present value of its dividends, the effect
+of leverage on the cost of capital, and whether prices move more than
+dividends justify.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Burr Williams (1938) defined the investment value of a stock as the present value of all the dividends it will ever pay,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/valuation/images/thumb/sphx_glr_plot_01_williams_ddm_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/valuation/plot_01_williams_ddm`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Williams's dividend discount model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Franco Modigliani and Merton Miller (1958) showed that, without taxes or frictions, a firm&#x27;s value does not depend on how it is financed (Proposition I). Debt is cheaper than equity, but borrowing makes the remaining equity riskier, and its required return rises exactly enough to keep the weighted average cost of capital constant (Proposition II):">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/valuation/images/thumb/sphx_glr_plot_02_modigliani_miller_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/valuation/plot_02_modigliani_miller`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Modigliani-Miller</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Myron Gordon (1959) summed Williams&#x27;s series for dividends that grow at a constant rate, P_0 = D_1 / (r - g), and connected the growth rate to the firm&#x27;s investment: a firm that retains a share b of its earnings and earns ROE on them grows at g = b \cdot ROE. Read backwards, the model gives the market&#x27;s cost of equity as the dividend yield plus growth.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/valuation/images/thumb/sphx_glr_plot_03_gordon_growth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/valuation/plot_03_gordon_growth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gordon growth</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="If a price is the rational forecast of discounted future dividends, p_t = E_t[p^_t], then the ex-post rational price p^_t computed from the dividends actually paid equals the price plus an unforecastable error. An optimal forecast varies less than the thing it forecasts, so \sigma(p) \le \sigma(p^*). Robert Shiller (1981) found US stock prices five to thirteen times too volatile for this bound.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/valuation/images/thumb/sphx_glr_plot_04_shiller_excess_volatility_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/valuation/plot_04_shiller_excess_volatility`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Shiller's excess volatility</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/asset_pricing/valuation/plot_01_williams_ddm
+   /api/gallery/asset_pricing/valuation/plot_02_modigliani_miller
+   /api/gallery/asset_pricing/valuation/plot_03_gordon_growth
+   /api/gallery/asset_pricing/valuation/plot_04_shiller_excess_volatility
+

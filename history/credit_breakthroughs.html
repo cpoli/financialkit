@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Credit Risk &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/credit_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Monte Carlo Methods" href="monte_carlo_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Interest-Rate Models" href="interest_rate_models_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Credit Risk</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-credit-risk">
+<h1>Breakthroughs in Credit Risk<a class="headerlink" href="#breakthroughs-in-credit-risk" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/credit.html"><span class="doc">financialkit.credit hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/credit/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/credit.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“Credit is a system whereby a person who can’t pay gets another
+person who can’t pay to guarantee that he can pay.”
+– Charles Dickens, <em>Little Dorrit</em> (1857)</p>
+</div></blockquote>
+<p>For most of the twentieth century credit analysis meant reading
+financial statements and assigning a letter grade. In under four
+decades it became quantitative: statistics on accounting ratios, option
+pricing applied to the firm, Poisson processes for the timing of
+default, Markov chains for ratings, and factor models and copulas for
+whole portfolios, culminating in the formula that sets bank capital
+worldwide and the CDS conventions that still govern the market. This
+chronology traces the ideas behind <a class="reference internal" href="../api/credit.html#module-financialkit.credit" title="financialkit.credit"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.credit</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#altman-s-z-score" id="id1">1968 – Altman’s Z-Score</a></p></li>
+<li><p><a class="reference internal" href="#merton-s-structural-model" id="id2">1974 – Merton’s Structural Model</a></p></li>
+<li><p><a class="reference internal" href="#black-and-cox-first-passage" id="id3">1976 – Black and Cox: First Passage</a></p></li>
+<li><p><a class="reference internal" href="#vasicek-s-large-homogeneous-portfolio" id="id4">1987 – Vasicek’s Large Homogeneous Portfolio</a></p></li>
+<li><p><a class="reference internal" href="#leland-s-endogenous-default" id="id5">1994 – Leland’s Endogenous Default</a></p></li>
+<li><p><a class="reference internal" href="#jarrow-and-turnbull-hazard-rates" id="id6">1995 – Jarrow and Turnbull: Hazard Rates</a></p></li>
+<li><p><a class="reference internal" href="#creditmetrics" id="id7">1997 – CreditMetrics</a></p></li>
+<li><p><a class="reference internal" href="#jarrow-lando-and-turnbull-generator-matrices" id="id8">1997 – Jarrow, Lando and Turnbull: Generator Matrices</a></p></li>
+<li><p><a class="reference internal" href="#creditrisk-and-panjer-s-recursion" id="id9">1997 – CreditRisk+ and Panjer’s Recursion</a></p></li>
+<li><p><a class="reference internal" href="#duffie-and-singleton-recovery-of-market-value" id="id10">1999 – Duffie and Singleton: Recovery of Market Value</a></p></li>
+<li><p><a class="reference internal" href="#li-s-gaussian-copula" id="id11">2000 – Li’s Gaussian Copula</a></p></li>
+<li><p><a class="reference internal" href="#israel-rosenthal-and-wei-finding-generators" id="id12">2001 – Israel, Rosenthal and Wei: Finding Generators</a></p></li>
+<li><p><a class="reference internal" href="#crosbie-and-bohn-distance-to-default" id="id13">2003 – Crosbie and Bohn: Distance to Default</a></p></li>
+<li><p><a class="reference internal" href="#o-kane-and-turnbull-the-cds-par-spread" id="id14">2003 – O’Kane and Turnbull: The CDS Par Spread</a></p></li>
+<li><p><a class="reference internal" href="#the-basel-ii-irb-formula" id="id15">2004 – The Basel II IRB Formula</a></p></li>
+<li><p><a class="reference internal" href="#hull-and-white-tranches-without-monte-carlo" id="id16">2004 – Hull and White: Tranches Without Monte Carlo</a></p></li>
+<li><p><a class="reference internal" href="#the-isda-standard-model-hazard-bootstrapping" id="id17">2009 – The ISDA Standard Model: Hazard Bootstrapping</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id18">See Also</a></p></li>
+</ul>
+</nav>
+<section id="altman-s-z-score">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1968 – Altman’s Z-Score</a><a class="headerlink" href="#altman-s-z-score" title="Link to this heading">#</a></h2>
+<p>Edward Altman applied Fisher’s linear discriminant analysis to 22
+accounting ratios of 66 US manufacturers, half of which had gone
+bankrupt, and kept the five that separated them best: liquidity,
+accumulated profitability, operating profitability, market leverage and
+asset turnover. The weighted sum classified 95% of his sample correctly
+a year before failure, and its thresholds of 1.81 and 2.99 are still
+quoted.</p>
+<div class="math notranslate nohighlight">
+\[Z = 1.2 X_1 + 1.4 X_2 + 3.3 X_3 + 0.6 X_4 + 1.0 X_5\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.scoring.altman_z_score()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">altman_zone()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">linear_discriminant()</span></code>. The
+example scores synthetic healthy and failing firms and re-estimates the
+discriminant direction.</p>
+<p><em>References:</em> E. I. Altman, “Financial Ratios, Discriminant Analysis and
+the Prediction of Corporate Bankruptcy,” <em>J. Finance</em> 23 (1968) 589-609.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Altman (1968) fed five accounting ratios of 33 bankrupt and 33 surviving manufacturers into a linear discriminant analysis and found"><img alt="" src="../_images/sphx_glr_plot_01_altman_z_score_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/scoring/plot_01_altman_z_score.html"><span class="doc">Altman’s Z-score</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Altman's Z-score</div>
+</div></div></section>
+<section id="merton-s-structural-model">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1974 – Merton’s Structural Model</a><a class="headerlink" href="#merton-s-structural-model" title="Link to this heading">#</a></h2>
+<p>Robert Merton observed that the shareholders of a firm with zero-coupon
+debt hold a call option on its assets: at maturity they repay the debt
+if the assets are worth more, and hand over the firm otherwise. The
+Black-Scholes formula then values equity, debt and the credit spread
+from leverage and asset volatility alone, and the risk-neutral default
+probability is <span class="math notranslate nohighlight">\(N(-d_2)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[E = V N(d_1) - D e^{-rT} N(d_2), \qquad D_{\text{market}} = V - E\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.structural.merton_model()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">merton_calibrate()</span></code>,
+which recovers asset value and volatility from equity and its
+volatility (Hull’s Example 24.3). The example plots the payoffs and the
+term structure of Merton spreads.</p>
+<p><em>References:</em> R. C. Merton, “On the Pricing of Corporate Debt: The Risk
+Structure of Interest Rates,” <em>J. Finance</em> 29 (1974) 449-470.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Merton (1974) treated a firm&#x27;s equity as a European call on its assets V, struck at the face value D of its zero-coupon debt. Debt is then a riskless bond minus a put, the risk-neutral default probability is N(-d_2), and the credit spread follows from leverage and asset volatility alone. Hull&#x27;s Example 24.3 backs out the unobserved asset value and volatility from equity (3) and its volatility (80%)."><img alt="" src="../_images/sphx_glr_plot_01_merton_structural_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/structural/plot_01_merton_structural.html"><span class="doc">Merton’s structural model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's structural model</div>
+</div></div></section>
+<section id="black-and-cox-first-passage">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1976 – Black and Cox: First Passage</a><a class="headerlink" href="#black-and-cox-first-passage" title="Link to this heading">#</a></h2>
+<p>Fischer Black and John Cox let bond covenants trigger default the first
+time the assets fall to a barrier, at any date before maturity. Via the
+reflection principle for Brownian motion the default probability is
+again in closed form, and it is always at least the probability of
+ending below the barrier that Merton’s model uses.</p>
+<div class="math notranslate nohighlight">
+\[Q(t) = N\left(\frac{h + m t}{\sigma\sqrt t}\right) - e^{-2 m h/\sigma^2} N\left(\frac{-h + m t}{\sigma\sqrt t}\right)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.first_passage.black_cox_survival()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">black_cox_default_probability()</span></code>
+and the Brownian-bridge Monte Carlo check
+<code class="xref py py-func docutils literal notranslate"><span class="pre">first_passage_crossing_probability()</span></code>.
+The example compares the closed form with simulated asset paths and with
+Merton.</p>
+<p><em>References:</em> F. Black and J. C. Cox, “Valuing Corporate Securities:
+Some Effects of Bond Indenture Provisions,” <em>J. Finance</em> 31 (1976)
+351-367.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Black and Cox (1976) let safety covenants force default the first time the asset value touches a barrier, not only at maturity. The reflection principle gives the first-passage probability in closed form. Here it is checked against simulated asset paths (with a Brownian-bridge correction for crossings between grid points) and compared with Merton&#x27;s maturity-only default probability."><img alt="" src="../_images/sphx_glr_plot_02_black_cox_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/structural/plot_02_black_cox.html"><span class="doc">Black and Cox: default at the first passage</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black and Cox: default at the first passage</div>
+</div></div></section>
+<section id="vasicek-s-large-homogeneous-portfolio">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1987 – Vasicek’s Large Homogeneous Portfolio</a><a class="headerlink" href="#vasicek-s-large-homogeneous-portfolio" title="Link to this heading">#</a></h2>
+<p>Oldrich Vasicek, at KMV, put Merton’s model into a portfolio. When every
+loan’s asset return loads on one common factor, defaults are
+independent given the factor, and in a large pool the default rate
+converges to a deterministic function of it. Its distribution has a
+closed form whose quantiles give the capital a lender needs, and the
+same formula sits inside the Basel II rules.</p>
+<div class="math notranslate nohighlight">
+\[P(L \le x) = N\left(\frac{\sqrt{1-\rho}\, N^{-1}(x) - N^{-1}(p)}{\sqrt\rho}\right)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.vasicek.vasicek_cdf()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">vasicek_pdf()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">vasicek_quantile()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_one_factor_defaults()</span></code>.
+The example shows the density for several correlations and finite pools
+converging to the limit.</p>
+<p><em>References:</em> O. Vasicek, “Probability of Loss on Loan Portfolio” (KMV,
+1987); O. Vasicek, “The Distribution of Loan Portfolio Value,” <em>Risk</em> 15
+(2002) 160-162.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Vasicek (1987) let every loan default when its asset return \sqrt\rho M + \sqrt{1-\rho}\,\varepsilon_i falls below N^{-1}(p). Given the common factor M, defaults are independent, so in a large pool the default rate is the deterministic p(M), and its distribution is known in closed form. Correlation does not change the expected loss, only how it is spread out: at high correlation most years are quiet and a few are disasters."><img alt="" src="../_images/sphx_glr_plot_01_vasicek_lhp_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/portfolio_loss/plot_01_vasicek_lhp.html"><span class="doc">Vasicek’s large homogeneous portfolio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Vasicek's large homogeneous portfolio</div>
+</div></div></section>
+<section id="leland-s-endogenous-default">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1994 – Leland’s Endogenous Default</a><a class="headerlink" href="#leland-s-endogenous-default" title="Link to this heading">#</a></h2>
+<p>Hayne Leland priced perpetual debt when coupons are tax deductible and
+bankruptcy destroys part of the firm. Shareholders choose when to stop
+paying, so the default barrier is set by smooth pasting rather than by
+a covenant. Firm value trades the tax shield against expected
+bankruptcy costs, and its maximum gives an optimal leverage, about 75%
+with a 75 bp spread in Leland’s base case.</p>
+<div class="math notranslate nohighlight">
+\[V_B = \frac{(1 - \tau) C}{r + \sigma^2/2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.leland.leland_model()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">leland_optimal_coupon()</span></code>.
+The example shows smooth pasting at the endogenous barrier and the
+capital-structure trade-off.</p>
+<p><em>References:</em> H. E. Leland, “Corporate Debt Value, Bond Covenants, and
+Optimal Capital Structure,” <em>J. Finance</em> 49 (1994) 1213-1252.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Leland (1994) priced perpetual debt on a firm whose coupons are tax deductible and whose bankruptcy destroys half its assets. Shareholders keep paying coupons as long as equity is worth something and default at the asset level V_B where equity hits zero with zero slope. Firm value, unlevered assets plus tax shields minus expected bankruptcy costs, is maximised at a coupon that sets the optimal leverage; in Leland&#x27;s base case this is about 75% with a 75 bp spread."><img alt="" src="../_images/sphx_glr_plot_03_leland_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/structural/plot_03_leland.html"><span class="doc">Leland’s endogenous default and optimal leverage</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Leland's endogenous default and optimal leverage</div>
+</div></div></section>
+<section id="jarrow-and-turnbull-hazard-rates">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1995 – Jarrow and Turnbull: Hazard Rates</a><a class="headerlink" href="#jarrow-and-turnbull-hazard-rates" title="Link to this heading">#</a></h2>
+<p>Robert Jarrow and Stuart Turnbull stopped asking why firms default and
+modelled only when: default is the first jump of a Poisson process.
+Survival probabilities are exponentials of the integrated intensity,
+risky bonds are priced like riskless ones with a survival factor, and
+spreads, hazard rates and recovery are linked by the credit triangle.
+These reduced-form models became the language of credit derivatives.</p>
+<div class="math notranslate nohighlight">
+\[Q(t) = e^{-\int_0^t \lambda(s)\,ds}, \qquad P^d(0, T) = P(0, T)[\delta + (1 - \delta) Q(T)]\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/credit.html#financialkit.credit.HazardCurve" title="financialkit.credit.systems.hazard.HazardCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.credit.systems.hazard.HazardCurve</span></code></a>
+(piecewise-constant intensity, survival, density and sampling of
+default times) and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">jarrow_turnbull_zero()</span></code>. The
+example simulates default times and compares bond spreads with the
+credit triangle.</p>
+<p><em>References:</em> R. A. Jarrow and S. M. Turnbull, “Pricing Derivatives on
+Financial Securities Subject to Credit Risk,” <em>J. Finance</em> 50 (1995)
+53-85.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jarrow and Turnbull (1995) modelled the timing of default rather than its cause: default is the first jump of a Poisson process with intensity \lambda(t), so the survival probability is Q(t) = e^{-\int_0^t \lambda}. A risky zero-coupon bond that recovers a fraction \delta of a riskless one is worth P(0,T)[\delta + (1-\delta)Q(T)], and its spread is close to \lambda(1 - \delta): the credit triangle."><img alt="" src="../_images/sphx_glr_plot_01_jarrow_turnbull_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/reduced_form/plot_01_jarrow_turnbull.html"><span class="doc">Jarrow and Turnbull: hazard rates and survival curves</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Jarrow and Turnbull: hazard rates and survival curves</div>
+</div></div></section>
+<section id="creditmetrics">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1997 – CreditMetrics</a><a class="headerlink" href="#creditmetrics" title="Link to this heading">#</a></h2>
+<p>J. P. Morgan’s CreditMetrics did for credit what RiskMetrics had done
+for market risk. A bond is revalued in every rating it could migrate to
+over a year, the values are weighted with a rating agency’s transition
+matrix, and credit VaR is read from the distribution. Joint migrations
+come from correlated asset returns mapped to ratings by normal
+thresholds. The Technical Document’s five-year BBB bond has mean value
+107.09 and standard deviation 2.99.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.migration.creditmetrics_bond()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">migration_thresholds()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">joint_migration_probabilities()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">creditmetrics_portfolio()</span></code>,
+with the published matrix in
+<code class="xref py py-func docutils literal notranslate"><span class="pre">creditmetrics_matrix()</span></code>. The
+example reproduces the BBB bond and simulates a correlated portfolio.</p>
+<p><em>References:</em> J. P. Morgan, <em>CreditMetrics – Technical Document</em> (1997).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="J. P. Morgan&#x27;s CreditMetrics (1997) revalues a bond in every rating it could hold a year from now, weights the values with a rating transition matrix, and reads the credit VaR off the resulting distribution. For a portfolio, obligors migrate jointly: each one&#x27;s asset return is mapped to a rating through normal thresholds, and the asset returns are correlated. The Technical Document&#x27;s five-year BBB bond has mean value 107.09 and standard deviation 2.99."><img alt="" src="../_images/sphx_glr_plot_01_creditmetrics_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/migration/plot_01_creditmetrics.html"><span class="doc">CreditMetrics: credit VaR from rating migrations</span></a></p>
+  <div class="sphx-glr-thumbnail-title">CreditMetrics: credit VaR from rating migrations</div>
+</div></div></section>
+<section id="jarrow-lando-and-turnbull-generator-matrices">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1997 – Jarrow, Lando and Turnbull: Generator Matrices</a><a class="headerlink" href="#jarrow-lando-and-turnbull-generator-matrices" title="Link to this heading">#</a></h2>
+<p>Robert Jarrow, David Lando and Stuart Turnbull moved rating migration
+to continuous time. A generator matrix of migration intensities gives
+the transition matrix for any horizon through the matrix exponential,
+so default probabilities and credit spreads exist for every maturity
+and every rating, and a risk-premium adjustment links historical and
+pricing measures.</p>
+<div class="math notranslate nohighlight">
+\[P(t) = e^{\Lambda t}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.migration.transition_from_generator()</span></code>
+(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.expm.html#scipy.linalg.expm" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.linalg.expm()</span></code></a>) and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">jlt_risky_zero()</span></code>. The
+example plots default-probability term structures and spreads by rating.</p>
+<p><em>References:</em> R. A. Jarrow, D. Lando and S. M. Turnbull, “A Markov Model
+for the Term Structure of Credit Risk Spreads,” <em>Rev. Financial Stud.</em>
+10 (1997) 481-523.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jarrow, Lando and Turnbull (1997) put rating migration in continuous time. A generator \Lambda, with non-negative off-diagonal intensities and rows summing to zero, gives the transition matrix for every horizon, P(t) = e^{\Lambda t}. Default probabilities by rating, and risky bond prices with recovery of treasury, follow for any maturity, including fractions of a year that an annual matrix cannot provide."><img alt="" src="../_images/sphx_glr_plot_02_generator_matrix_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/migration/plot_02_generator_matrix.html"><span class="doc">Jarrow, Lando and Turnbull: generator matrices</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Jarrow, Lando and Turnbull: generator matrices</div>
+</div></div></section>
+<section id="creditrisk-and-panjer-s-recursion">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1997 – CreditRisk+ and Panjer’s Recursion</a><a class="headerlink" href="#creditrisk-and-panjer-s-recursion" title="Link to this heading">#</a></h2>
+<p>Credit Suisse First Boston brought actuarial science to loan portfolios.
+Defaults are Poisson events whose rates share a gamma-distributed sector
+factor, exposures are banded into integer loss units, and the loss
+distribution follows exactly from Panjer’s 1981 recursion for compound
+distributions, with no simulation at all.</p>
+<div class="math notranslate nohighlight">
+\[f_n = \frac{1}{1 - a s_0} \sum_{j=1}^{n} \left(a + \frac{b j}{n}\right) s_j f_{n-j}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.creditrisk_plus.creditrisk_plus()</span></code>
+on top of <code class="xref py py-func docutils literal notranslate"><span class="pre">panjer_recursion()</span></code>.
+The example shows how sector volatility fattens the tail.</p>
+<p><em>References:</em> Credit Suisse First Boston, <em>CreditRisk+: A Credit Risk
+Management Framework</em> (1997); H. H. Panjer, “Recursive Evaluation of a
+Family of Compound Distributions,” <em>ASTIN Bull.</em> 12 (1981) 22-26.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Credit Suisse First Boston&#x27;s CreditRisk+ (1997) treated defaults like insurance claims: Poisson events with rates driven by a gamma-distributed sector factor, and exposures rounded to multiples of a loss unit. The default count is then negative binomial, and Panjer&#x27;s (1981) recursion produces the whole loss distribution exactly, without simulation. The factor&#x27;s volatility \sigma fattens the tail without changing the expected loss."><img alt="" src="../_images/sphx_glr_plot_02_creditrisk_plus_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/portfolio_loss/plot_02_creditrisk_plus.html"><span class="doc">CreditRisk+ and Panjer’s recursion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">CreditRisk+ and Panjer's recursion</div>
+</div></div></section>
+<section id="duffie-and-singleton-recovery-of-market-value">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1999 – Duffie and Singleton: Recovery of Market Value</a><a class="headerlink" href="#duffie-and-singleton-recovery-of-market-value" title="Link to this heading">#</a></h2>
+<p>Darrell Duffie and Kenneth Singleton assumed that a defaulting claim
+loses a fraction of its own market value. Defaultable claims are then
+priced exactly like riskless ones under the default-adjusted short rate
+<span class="math notranslate nohighlight">\(r + \lambda L\)</span>, so affine term-structure models price credit too,
+including stochastic intensities.</p>
+<div class="math notranslate nohighlight">
+\[P^d(0, T) = E\left[e^{-\int_0^T (r_s + \lambda_s L)\,ds}\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.recovery.risky_zero_coupon()</span></code>
+(market value, treasury and face-value recovery) and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">duffie_singleton_cir_zero()</span></code>.
+The example compares the conventions and checks the CIR closed form by
+simulation.</p>
+<p><em>References:</em> D. Duffie and K. J. Singleton, “Modeling Term Structures
+of Defaultable Bonds,” <em>Rev. Financial Stud.</em> 12 (1999) 687-720.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Duffie and Singleton (1999) assumed that at default a bond loses a fraction L of its own market value. Then defaultable claims are priced like riskless ones discounted at r + \lambda L, so any short-rate machinery prices credit too. With a Cox-Ingersoll-Ross intensity the risky bond has the CIR closed form; here it is compared with a simulation, and the three recovery conventions are compared for a flat hazard."><img alt="" src="../_images/sphx_glr_plot_02_duffie_singleton_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/reduced_form/plot_02_duffie_singleton.html"><span class="doc">Duffie and Singleton: recovery of market value</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Duffie and Singleton: recovery of market value</div>
+</div></div></section>
+<section id="li-s-gaussian-copula">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">2000 – Li’s Gaussian Copula</a><a class="headerlink" href="#li-s-gaussian-copula" title="Link to this heading">#</a></h2>
+<p>David Li joined default times with a Gaussian copula. Each name keeps
+the survival curve implied by its CDS spreads, and one correlation
+parameter controls how often names default together. The model priced
+basket swaps and CDOs for a decade, and its thin joint tail made it a
+symbol of the 2007-2008 crisis.</p>
+<div class="math notranslate nohighlight">
+\[P(\tau_1 \le T, \tau_2 \le T) = \Phi_2\big(N^{-1}(p_1), N^{-1}(p_2); \rho\big)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.copula_defaults.copula_default_times()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">joint_default_probability()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">default_correlation()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">nth_to_default_probability()</span></code>.
+The example shows joint default times and nth-to-default probabilities.</p>
+<p><em>References:</em> D. X. Li, “On Default Correlation: A Copula Function
+Approach,” <em>J. Fixed Income</em> 9 (2000) 43-54.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Li (2000) took each name&#x27;s default-time distribution from its CDS curve and joined them with a Gaussian copula: correlated normals become uniforms, and each uniform is mapped through that name&#x27;s survival curve. The marginals stay exactly as the market implies; the copula correlation controls how often names default together, which is what a first-to-default basket or a CDO tranche is really priced on."><img alt="" src="../_images/sphx_glr_plot_03_li_gaussian_copula_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/portfolio_loss/plot_03_li_gaussian_copula.html"><span class="doc">Li’s Gaussian copula for default times</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Li's Gaussian copula for default times</div>
+</div></div></section>
+<section id="israel-rosenthal-and-wei-finding-generators">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">2001 – Israel, Rosenthal and Wei: Finding Generators</a><a class="headerlink" href="#israel-rosenthal-and-wei-finding-generators" title="Link to this heading">#</a></h2>
+<p>Agencies publish annual transition matrices, but continuous-time models
+need generators. Robert Israel, Jeffrey Rosenthal and Jason Wei showed
+that the matrix logarithm of an empirical rating matrix usually has
+negative off-diagonal entries, which would be negative migration
+intensities, gave conditions under which no valid generator exists, and
+proposed zeroing the offending entries and restoring the row sums.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.migration.generator_from_transition()</span></code>
+(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.logm.html#scipy.linalg.logm" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.linalg.logm()</span></code></a>),
+<code class="xref py py-func docutils literal notranslate"><span class="pre">is_valid_generator()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">regularize_generator()</span></code>
+(diagonal and weighted adjustments). The example regularizes the log of
+the CreditMetrics matrix and measures the error.</p>
+<p><em>References:</em> R. B. Israel, J. S. Rosenthal and J. Z. Wei, “Finding
+Generators for Markov Chains via Empirical Transition Matrices, with
+Applications to Credit Ratings,” <em>Math. Finance</em> 11 (2001) 245-265.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Going from an annual transition matrix P to a generator is not as simple as \log P. Israel, Rosenthal and Wei (2001) showed that for empirical rating matrices the principal logarithm usually has negative off-diagonal entries, which would be negative migration intensities. Their fix: set those entries to zero and absorb the change in the diagonal. A weighted variant spreads it over the row instead. Both leave e^{G} within a few basis points of P."><img alt="" src="../_images/sphx_glr_plot_03_israel_rosenthal_wei_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/migration/plot_03_israel_rosenthal_wei.html"><span class="doc">Israel, Rosenthal and Wei: finding a valid generator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Israel, Rosenthal and Wei: finding a valid generator</div>
+</div></div></section>
+<section id="crosbie-and-bohn-distance-to-default">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">2003 – Crosbie and Bohn: Distance to Default</a><a class="headerlink" href="#crosbie-and-bohn-distance-to-default" title="Link to this heading">#</a></h2>
+<p>Moody’s KMV turned Merton’s model into a commercial default predictor.
+Peter Crosbie and Jeffrey Bohn described backing asset values out of a
+daily equity series by iteration, a default point of short-term debt
+plus half the long-term debt, and the distance to default, the number
+of standard deviations separating the two, mapped to an expected
+default frequency.</p>
+<div class="math notranslate nohighlight">
+\[DD = \frac{\ln(V/D) + (\mu - \sigma_V^2/2) T}{\sigma_V \sqrt T}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.structural.kmv_iterate()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">kmv_default_point()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">distance_to_default()</span></code>.
+The example runs the iteration and a rolling distance to default.</p>
+<p><em>References:</em> P. J. Crosbie and J. R. Bohn, <em>Modeling Default Risk</em>
+(Moody’s KMV, 2003).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Moody&#x27;s KMV (Crosbie and Bohn 2003) turned Merton&#x27;s model into a default-prediction tool. Asset values are backed out from a daily equity series by iterating: guess the asset volatility, invert the equity call day by day, re-estimate the volatility from the implied asset returns, and repeat. The default point is short-term debt plus half the long-term debt, and the number of standard deviations between the assets and that point,"><img alt="" src="../_images/sphx_glr_plot_04_distance_to_default_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/structural/plot_04_distance_to_default.html"><span class="doc">Crosbie and Bohn: the distance to default</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Crosbie and Bohn: the distance to default</div>
+</div></div></section>
+<section id="o-kane-and-turnbull-the-cds-par-spread">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">2003 – O’Kane and Turnbull: The CDS Par Spread</a><a class="headerlink" href="#o-kane-and-turnbull-the-cds-par-spread" title="Link to this heading">#</a></h2>
+<p>Dominic O’Kane and Stuart Turnbull set out the market-standard valuation
+of credit default swaps: the premium leg as a risky annuity including
+premium accrued at default, the protection leg as an integral over the
+default density, both evaluated on a grid with defaults at mid-step.
+The par spread equates them and reduces to <span class="math notranslate nohighlight">\(\lambda(1 - R)\)</span> in
+the continuous limit.</p>
+<div class="math notranslate nohighlight">
+\[s = \frac{(1 - R)\int_0^T Z(u)\,(-dQ(u))}{\text{RPV01}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.cds.cds_legs()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">cds_par_spread()</span></code>. The example
+works Hull’s annual setting by hand and shows the approach to the
+credit triangle.</p>
+<p><em>References:</em> D. O’Kane and S. Turnbull, <em>Valuation of Credit Default
+Swaps</em> (Lehman Brothers, 2003).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A credit default swap exchanges a running premium for a payment of 1 - R at default. O&#x27;Kane and Turnbull (2003) wrote both legs as integrals over the default density and evaluated them on a grid with defaults at mid-step, including the premium accrued between the last payment date and default. The par spread equates the legs; for a flat hazard and a continuously paid premium it is exactly \lambda(1 - R)."><img alt="" src="../_images/sphx_glr_plot_01_cds_par_spread_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/cds/plot_01_cds_par_spread.html"><span class="doc">O’Kane and Turnbull: the CDS par spread</span></a></p>
+  <div class="sphx-glr-thumbnail-title">O'Kane and Turnbull: the CDS par spread</div>
+</div></div></section>
+<section id="the-basel-ii-irb-formula">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">2004 – The Basel II IRB Formula</a><a class="headerlink" href="#the-basel-ii-irb-formula" title="Link to this heading">#</a></h2>
+<p>The Basel Committee’s revised framework let banks use their own default
+probabilities and set capital with Vasicek’s model at 99.9% confidence,
+less expected loss, times a maturity adjustment, with supervisory
+correlations by asset class. Michael Gordy had shown that this is the
+only setting in which a loan’s charge does not depend on the rest of the
+portfolio.</p>
+<div class="math notranslate nohighlight">
+\[K = \left[LGD\, N\left(\frac{N^{-1}(PD) + \sqrt R N^{-1}(0.999)}{\sqrt{1 - R}}\right) - PD \cdot LGD\right] \frac{1 + (M - 2.5) b}{1 - 1.5 b}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.basel.basel_irb_capital()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">basel_risk_weight()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">basel_correlation()</span></code>. The
+example plots risk weights by asset class and the quantile behind them.</p>
+<p><em>References:</em> Basel Committee on Banking Supervision, <em>International
+Convergence of Capital Measurement and Capital Standards: A Revised
+Framework</em> (2004); M. B. Gordy, <em>J. Financial Intermediation</em> 12 (2003)
+199-232.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The Basel Committee (2004) set bank capital for credit risk with Vasicek&#x27;s model: capital per unit of exposure is the 99.9% quantile of the large-pool loss rate, minus the expected loss already covered by provisions, times a maturity adjustment. The supervisory asset correlation falls from 24% to 12% as the PD rises. Gordy (2003) showed this is the only setting where each loan&#x27;s capital charge does not depend on the rest of the portfolio."><img alt="" src="../_images/sphx_glr_plot_04_basel_irb_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/portfolio_loss/plot_04_basel_irb.html"><span class="doc">The Basel II IRB formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Basel II IRB formula</div>
+</div></div></section>
+<section id="hull-and-white-tranches-without-monte-carlo">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">2004 – Hull and White: Tranches Without Monte Carlo</a><a class="headerlink" href="#hull-and-white-tranches-without-monte-carlo" title="Link to this heading">#</a></h2>
+<p>John Hull and Alan White priced CDO tranches and nth-to-default swaps in
+the one-factor copula semi-analytically: conditional on the factor,
+defaults are independent and the pool loss is binomial, so expected
+tranche losses at each payment date are a single integral. Correlation
+moves risk between the equity and senior tranches, which is why tranche
+quotes were read as implied correlations.</p>
+<div class="math notranslate nohighlight">
+\[L_{[A, D]} = \frac{\min(L, D) - \min(L, A)}{D - A}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.tranches.expected_tranche_loss()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">tranche_spread()</span></code>. The
+example shows tranche spreads against correlation and finite pools
+against the large-pool limit.</p>
+<p><em>References:</em> J. Hull and A. White, “Valuation of a CDO and an n-th to
+Default CDS Without Monte Carlo Simulation,” <em>J. Derivatives</em> 12 (2004)
+8-23.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A tranche of a synthetic CDO absorbs portfolio losses between its attachment and detachment points. Hull and White (2004) priced tranches in Li&#x27;s one-factor Gaussian copula by conditioning on the common factor: given it, defaults are independent and the pool loss is binomial, so the expected tranche loss at each date is one integral over the factor. Raising the correlation moves risk from the equity tranche, which loses less, to the senior tranches, which lose more."><img alt="" src="../_images/sphx_glr_plot_05_tranche_expected_loss_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/portfolio_loss/plot_05_tranche_expected_loss.html"><span class="doc">Hull and White: pricing CDO tranches without Monte Carlo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hull and White: pricing CDO tranches without Monte Carlo</div>
+</div></div></section>
+<section id="the-isda-standard-model-hazard-bootstrapping">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">2009 – The ISDA Standard Model: Hazard Bootstrapping</a><a class="headerlink" href="#the-isda-standard-model-hazard-bootstrapping" title="Link to this heading">#</a></h2>
+<p>The 2009 “Big Bang” standardized CDS contracts: fixed coupons of 100 or
+500 bp, an upfront payment, and an open-source ISDA standard model to
+convert between upfronts and spreads. Its core is a bootstrap of a
+piecewise-constant hazard curve, one maturity at a time, so that every
+quoted CDS reprices exactly.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.credit.systems.cds.bootstrap_hazard_curve()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">cds_upfront()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">upfront_to_spread()</span></code> (flat rate,
+even payment grid; ISDA day counts and IMM dates are not modelled). The
+example bootstraps a term structure of quotes and computes upfronts at
+both standard coupons.</p>
+<p><em>References:</em> ISDA, <em>CDS Standard Model</em> (2009); Markit, <em>The CDS Big
+Bang</em> (2009).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Since the 2009 &quot;Big Bang&quot; CDS trade with a fixed coupon (100 or 500 bp) and an upfront payment, and the ISDA standard model converts between quotes by bootstrapping a piecewise-constant hazard curve: solve for the hazard on (0, T_1] that reprices the shortest CDS, freeze it, solve the next segment, and so on. The bootstrapped curve reprices every quote and gives survival probabilities at any date."><img alt="" src="../_images/sphx_glr_plot_02_isda_hazard_bootstrap_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/credit/cds/plot_02_isda_hazard_bootstrap.html"><span class="doc">The ISDA standard model: bootstrapping hazard rates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The ISDA standard model: bootstrapping hazard rates</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/credit.html"><span class="doc">financialkit.credit</span></a></p></li>
+<li><p><a class="reference internal" href="options_breakthroughs.html"><span class="doc">Breakthroughs in Option Pricing</span></a></p></li>
+<li><p><a class="reference internal" href="interest_rate_models_breakthroughs.html"><span class="doc">Breakthroughs in Interest-Rate Models</span></a></p></li>
+<li><p><a class="reference internal" href="risk_breakthroughs.html"><span class="doc">Breakthroughs in Risk Measurement</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="interest_rate_models_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Interest-Rate Models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="monte_carlo_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Monte Carlo Methods</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#altman-s-z-score">1968 – Altman’s Z-Score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merton-s-structural-model">1974 – Merton’s Structural Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-and-cox-first-passage">1976 – Black and Cox: First Passage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vasicek-s-large-homogeneous-portfolio">1987 – Vasicek’s Large Homogeneous Portfolio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leland-s-endogenous-default">1994 – Leland’s Endogenous Default</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarrow-and-turnbull-hazard-rates">1995 – Jarrow and Turnbull: Hazard Rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creditmetrics">1997 – CreditMetrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarrow-lando-and-turnbull-generator-matrices">1997 – Jarrow, Lando and Turnbull: Generator Matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creditrisk-and-panjer-s-recursion">1997 – CreditRisk+ and Panjer’s Recursion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duffie-and-singleton-recovery-of-market-value">1999 – Duffie and Singleton: Recovery of Market Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#li-s-gaussian-copula">2000 – Li’s Gaussian Copula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#israel-rosenthal-and-wei-finding-generators">2001 – Israel, Rosenthal and Wei: Finding Generators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crosbie-and-bohn-distance-to-default">2003 – Crosbie and Bohn: Distance to Default</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-kane-and-turnbull-the-cds-par-spread">2003 – O’Kane and Turnbull: The CDS Par Spread</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basel-ii-irb-formula">2004 – The Basel II IRB Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hull-and-white-tranches-without-monte-carlo">2004 – Hull and White: Tranches Without Monte Carlo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-isda-standard-model-hazard-bootstrapping">2009 – The ISDA Standard Model: Hazard Bootstrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/credit_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

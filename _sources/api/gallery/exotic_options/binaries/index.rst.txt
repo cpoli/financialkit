@@ -1,0 +1,51 @@
+
+
+.. _sphx_glr_api_gallery_exotic_options_binaries:
+
+Binary options
+--------------
+
+All-or-nothing payoffs, the building blocks into which Reiner and
+Rubinstein decomposed vanilla and barrier options.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Mark Rubinstein and Eric Reiner&#x27;s &quot;Unscrambling the Binary Code&quot; (1991) priced the all-or-nothing payoffs and showed that every vanilla and barrier option is assembled from them. A cash-or-nothing call pays 1 if S_T &gt; K and is worth e^{-rT}N(d_2); an asset-or-nothing call pays the share and is worth Se^{-qT}N(d_1). A vanilla call is one asset-or-nothing call minus K cash-or-nothing calls. A gap option uses different trigger and payoff strikes and can be worth less than nothing, and a one-touch pays as soon as a barrier is hit.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/binaries/images/thumb/sphx_glr_plot_01_digital_options_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/binaries/plot_01_digital_options`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reiner-Rubinstein binary options</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/exotic_options/binaries/plot_01_digital_options
+

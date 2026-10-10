@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.861088Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.861088Z",
+      "mimetype": null,
+      "name": "plot_03_gordon_growth.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/valuation/plot_03_gordon_growth.ipynb",
+      "size": 3066,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.860891Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.860891Z",
+      "mimetype": null,
+      "name": "plot_01_williams_ddm.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/valuation/plot_01_williams_ddm.ipynb",
+      "size": 3485,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.861182Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.861182Z",
+      "mimetype": null,
+      "name": "plot_04_shiller_excess_volatility.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/valuation/plot_04_shiller_excess_volatility.ipynb",
+      "size": 2912,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.860987Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.860987Z",
+      "mimetype": null,
+      "name": "plot_02_modigliani_miller.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/valuation/plot_02_modigliani_miller.ipynb",
+      "size": 2887,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.209951Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.210813Z",
+  "mimetype": null,
+  "name": "valuation",
+  "path": "jupyterlite_contents/api/gallery/asset_pricing/valuation",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

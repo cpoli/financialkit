@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.887367Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.887367Z",
+      "mimetype": null,
+      "name": "plot_02_truth_in_lending_apr.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/amortization/plot_02_truth_in_lending_apr.ipynb",
+      "size": 3281,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.887269Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.887269Z",
+      "mimetype": null,
+      "name": "plot_01_amortizing_mortgage.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_value/amortization/plot_01_amortizing_mortgage.ipynb",
+      "size": 3136,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.268008Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.268313Z",
+  "mimetype": null,
+  "name": "amortization",
+  "path": "jupyterlite_contents/api/gallery/time_value/amortization",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

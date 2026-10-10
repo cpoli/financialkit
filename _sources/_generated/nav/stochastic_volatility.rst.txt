@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.stochastic_volatility hub </_generated/subpackages/stochastic_volatility>` · :doc:`History </history/stochastic_volatility_breakthroughs>` · :doc:`Examples </api/gallery/stochastic_volatility/index>` · :doc:`API reference </api/stochastic_volatility>`

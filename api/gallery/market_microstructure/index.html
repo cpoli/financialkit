@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/market_microstructure/index';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>This gallery walks through every public feature of
+<code class="docutils literal notranslate"><span class="pre">financialkit.market_microstructure</span></code>: spread measures and estimators,
+trade classification, dealer and market-making models, asymmetric
+information and informed-trading measures, optimal execution and
+illiquidity.</p>
+<p>Each script in this gallery is self-contained and can be run directly with
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">examples/market_microstructure/&lt;section&gt;/&lt;script&gt;.py</span></code>.</p>
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>spreads</strong> – Demsetz’s spreads, Roll’s estimator, Lee-Ready trade
+classification and the Corwin-Schultz high-low estimator.</p></li>
+<li><p><strong>dealers</strong> – Garman’s Poisson dealer, Ho-Stoll inventory quotes and
+Avellaneda-Stoikov market making.</p></li>
+<li><p><strong>information</strong> – Kyle’s insider, Glosten-Milgrom, Hasbrouck’s
+trade-impact VAR, PIN and VPIN.</p></li>
+<li><p><strong>execution</strong> – the square-root impact law, Bertsimas-Lo and
+Almgren-Chriss.</p></li>
+<li><p><strong>liquidity</strong> – Amihud’s illiquidity ratio.</p></li>
+</ul>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div></section>
+<section id="dealers">
+<h2>Dealers<a class="headerlink" href="#dealers" title="Link to this heading">#</a></h2>
+<p>Market makers who manage order flow, inventory and risk.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Mark Garman (1976) started market microstructure by modelling orders as Poisson streams: buyers arrive at rate \lambda_a(a), falling with the ask, and sellers at \lambda_b(b), rising with the bid. A monopolist dealer holding stock and cash fails when either runs out. The stock follows a gambler&#x27;s-ruin walk, so the probability of eventually running out of shares is (\lambda_a/\lambda_b)^{I_0} when sellers outnumber buyers, and one otherwise. Keeping both stock and cash growing requires \lambda_b &gt; \lambda_a and a\lambda_a &gt; b\lambda_b, hence a &gt; b: the dealer must set a spread."><img alt="" src="../../../_images/sphx_glr_plot_01_garman_inventory_thumb.png" />
+<p><a class="reference internal" href="dealers/plot_01_garman_inventory.html"><span class="doc">Garman’s order-flow dealer</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Garman's order-flow dealer</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Thomas Ho and Hans Stoll (1981) gave the dealer risk aversion. Holding inventory exposes it to price moves, so a dealer who is long lowers both quotes, making a sale to it less attractive and a purchase from it more so, until the inventory returns to zero. With order arrivals \lambda = \alpha - \beta\delta on each side, the spread itself, \alpha/\beta, does not depend on the inventory: only its position does."><img alt="" src="../../../_images/sphx_glr_plot_02_ho_stoll_thumb.png" />
+<p><a class="reference internal" href="dealers/plot_02_ho_stoll.html"><span class="doc">Ho and Stoll: the dealer’s inventory problem</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ho and Stoll: the dealer's inventory problem</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Marco Avellaneda and Sasha Stoikov (2008) let a market maker quote around a Brownian mid price s, with fills arriving at rate A e^{-k\delta} at distance \delta. A trader with exponential utility first computes the reservation price r = s - q\gamma\sigma^2(T - t), the mid price adjusted for its inventory q, and then quotes a spread \gamma\sigma^2(T-t) + \frac{2}{\gamma}\ln(1 + \gamma/k) around it. The example reproduces the comparison of their Table 1: the inventory strategy gives up a little expected profit for a much smaller variance."><img alt="" src="../../../_images/sphx_glr_plot_03_avellaneda_stoikov_thumb.png" />
+<p><a class="reference internal" href="dealers/plot_03_avellaneda_stoikov.html"><span class="doc">Avellaneda and Stoikov: market making in a limit order book</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Avellaneda and Stoikov: market making in a limit order book</div>
+</div></div></section>
+<section id="execution">
+<h2>Execution<a class="headerlink" href="#execution" title="Link to this heading">#</a></h2>
+<p>The cost of trading a large order, and how to schedule it.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A large order executed over a day moves the price by far less than proportionally to its size. Practitioners measured it in the 1980s and 1990s (Loeb, 1983; the BARRA market impact model of Torre, 1997): the impact of a metaorder of Q shares in a stock trading V shares a day with daily volatility \sigma is"><img alt="" src="../../../_images/sphx_glr_plot_01_square_root_impact_thumb.png" />
+<p><a class="reference internal" href="execution/plot_01_square_root_impact.html"><span class="doc">The square-root impact law</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The square-root impact law</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Dimitris Bertsimas and Andrew Lo (1998) treated buying \bar S shares over T periods as a dynamic program. If each purchase moves the price permanently by \theta per share, P_k = P_{k-1} + \theta S_k + \varepsilon_k, the best a risk-neutral trader can do is split the order evenly. If a serially correlated signal X_k also drives prices, the optimal order is linear in the remaining shares and the latest signal, and trading ahead of predicted rises pays."><img alt="" src="../../../_images/sphx_glr_plot_02_bertsimas_lo_thumb.png" />
+<p><a class="reference internal" href="execution/plot_02_bertsimas_lo.html"><span class="doc">Bertsimas and Lo: optimal control of execution costs</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bertsimas and Lo: optimal control of execution costs</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Robert Almgren and Neil Chriss (2000) split impact into a permanent part \gamma and a temporary part \eta that punishes trading fast. Selling slowly is cheap in expectation but leaves the position exposed to volatility for longer. Minimising E + \lambda V gives"><img alt="" src="../../../_images/sphx_glr_plot_03_almgren_chriss_thumb.png" />
+<p><a class="reference internal" href="execution/plot_03_almgren_chriss.html"><span class="doc">Almgren and Chriss: the efficient frontier of execution</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Almgren and Chriss: the efficient frontier of execution</div>
+</div></div></section>
+<section id="information">
+<h2>Information<a class="headerlink" href="#information" title="Link to this heading">#</a></h2>
+<p>How informed traders move prices, and how to measure their presence.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Albert Kyle (1985) placed an insider who knows the liquidation value v \sim N(p_0, \sigma_v^2) in a market with noise traders whose orders u \sim N(0, \sigma_u^2) camouflage it. A competitive market maker sees only the total flow y = x + u and sets p = E[v \mid y] = p_0 + \lambda y. In equilibrium"><img alt="" src="../../../_images/sphx_glr_plot_01_kyle_thumb.png" />
+<p><a class="reference internal" href="information/plot_01_kyle.html"><span class="doc">Kyle’s insider and the price impact lambda</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kyle's insider and the price impact lambda</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Lawrence Glosten and Paul Milgrom (1985) explained the spread with no inventory and no costs. A competitive dealer trades one unit at a time with traders who are informed with probability \alpha. Since a buy is more likely to come from someone who knows the value is high, the dealer sets the ask to E[V \mid \text{buy}] and the bid to E[V \mid \text{sell}], losing to the informed exactly what it gains from the uninformed. Each trade updates the dealer&#x27;s belief by Bayes&#x27; rule, so prices are a martingale that converges to the truth."><img alt="" src="../../../_images/sphx_glr_plot_02_glosten_milgrom_thumb.png" />
+<p><a class="reference internal" href="information/plot_02_glosten_milgrom.html"><span class="doc">Glosten and Milgrom: a spread from adverse selection alone</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Glosten and Milgrom: a spread from adverse selection alone</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Joel Hasbrouck (1991) measured the information in trades with a vector autoregression of quote revisions r_t and signed trades x_t. Order flow is persistent and quotes also react to inventory, so a trade&#x27;s immediate price effect overstates what it reveals. The cumulative impulse response of the quote to an unexpected trade separates the two: it settles at the permanent impact, the information content, after the transitory part has decayed."><img alt="" src="../../../_images/sphx_glr_plot_03_hasbrouck_var_thumb.png" />
+<p><a class="reference internal" href="information/plot_03_hasbrouck_var.html"><span class="doc">Hasbrouck’s trade-impact VAR</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hasbrouck's trade-impact VAR</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Easley, Kiefer, O&#x27;Hara and Paperman (1996) turned the Glosten-Milgrom logic into an estimator that needs only daily counts of buys and sells. On a day with private news (probability \alpha), informed traders add rate \mu to one side; otherwise only uninformed buys and sells arrive, at rates \varepsilon_b, \varepsilon_s. The fitted mixture gives the share of trades that are informed, \mathrm{PIN} = \alpha\mu / (\alpha\mu + \varepsilon_b + \varepsilon_s). Their finding: thinly traded stocks have a higher PIN, which explains their wider spreads."><img alt="" src="../../../_images/sphx_glr_plot_04_pin_thumb.png" />
+<p><a class="reference internal" href="information/plot_04_pin.html"><span class="doc">Easley, Kiefer, O’Hara and Paperman: the probability of informed trading</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Easley, Kiefer, O'Hara and Paperman: the probability of informed trading</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="High-frequency markets have too many trades and too few days for the PIN likelihood. Easley, López de Prado and O&#x27;Hara (2012) measured order imbalance in volume time instead: cut the trading record into buckets of equal volume, split each one-minute bar&#x27;s volume into buys and sells by bulk volume classification, V^B = V\Phi(\Delta P/\sigma_{\Delta P}), and average |V^B - V^S|/V over the last 50 buckets. Their VPIN rose for hours before the flash crash of 6 May 2010."><img alt="" src="../../../_images/sphx_glr_plot_05_vpin_thumb.png" />
+<p><a class="reference internal" href="information/plot_05_vpin.html"><span class="doc">VPIN: flow toxicity in volume time</span></a></p>
+  <div class="sphx-glr-thumbnail-title">VPIN: flow toxicity in volume time</div>
+</div></div></section>
+<section id="liquidity">
+<h2>Liquidity<a class="headerlink" href="#liquidity" title="Link to this heading">#</a></h2>
+<p>Illiquidity measured from daily returns and volume.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Yakov Amihud (2002) proposed a liquidity measure that needs only daily returns and dollar volume: the average of |r_d| / \mathrm{DVol}_d, the price move per dollar traded. It approximates Kyle&#x27;s lambda, which needs signed order flow, and Amihud found that stocks with a higher ratio earn higher expected returns, an illiquidity premium."><img alt="" src="../../../_images/sphx_glr_plot_01_amihud_thumb.png" />
+<p><a class="reference internal" href="liquidity/plot_01_amihud.html"><span class="doc">Amihud’s illiquidity ratio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Amihud's illiquidity ratio</div>
+</div></div></section>
+<section id="spreads">
+<h2>Spreads<a class="headerlink" href="#spreads" title="Link to this heading">#</a></h2>
+<p>The price of immediacy, measured from quotes, from trades, and from prices alone.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Harold Demsetz (1968) argued that a trader who wants to trade now pays the dealer the spread for standing ready, and that the spread shrinks as trading activity grows, because a busy dealer turns over inventory faster. Today the spread is measured three ways: the quoted spread on the screen, the effective spread actually paid relative to the midquote, and the realized spread the liquidity provider keeps once the price has moved; the difference is the price impact, lost to better-informed traders."><img alt="" src="../../../_images/sphx_glr_plot_01_demsetz_spreads_thumb.png" />
+<p><a class="reference internal" href="spreads/plot_01_demsetz_spreads.html"><span class="doc">Demsetz: the bid-ask spread as the price of immediacy</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Demsetz: the bid-ask spread as the price of immediacy</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Richard Roll (1984) noticed that trades bouncing between bid and ask make successive price changes negatively correlated even when the underlying value is a random walk. With equally likely buys and sells, \operatorname{cov}(\Delta p_t, \Delta p_{t-1}) = -s^2/4, so the spread can be read off a price series with no quotes at all:"><img alt="" src="../../../_images/sphx_glr_plot_02_roll_estimator_thumb.png" />
+<p><a class="reference internal" href="spreads/plot_02_roll_estimator.html"><span class="doc">Roll’s spread estimator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Roll's spread estimator</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Trade records do not say who initiated a trade. Charles Lee and Mark Ready (1991) signed trades above the midquote as buys and below it as sells, used the tick test for trades at the midquote, and compared each trade with the quote of five seconds earlier: on the NYSE the quote revision a trade caused was often time-stamped before the trade itself, so the contemporaneous quote had already moved toward the trade price."><img alt="" src="../../../_images/sphx_glr_plot_03_lee_ready_thumb.png" />
+<p><a class="reference internal" href="spreads/plot_03_lee_ready.html"><span class="doc">Lee and Ready’s trade classification</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lee and Ready's trade classification</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Daily highs are usually buys at the ask and lows sells at the bid, so the high-low range contains the spread as well as volatility. Shane Corwin and Paul Schultz (2012) noticed that the volatility part of the squared range doubles over two days while the spread part does not, and solved for the spread from two one-day ranges and one two-day range. It needs only daily data, yet is far more precise than Roll&#x27;s estimator from daily closes."><img alt="" src="../../../_images/sphx_glr_plot_04_corwin_schultz_thumb.png" />
+<p><a class="reference internal" href="spreads/plot_04_corwin_schultz.html"><span class="doc">Corwin and Schultz’s high-low spread estimator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Corwin and Schultz's high-low spread estimator</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/e484b61f700efd91653b7c7a0677c7ff/market_microstructure_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">market_microstructure_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/432203669f2d16f685d6d96829afcc37/market_microstructure_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">market_microstructure_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealers">Dealers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information">Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liquidity">Liquidity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spreads">Spreads</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/api/gallery/market_microstructure/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_api_gallery_asset_pricing_capm:
+
+The CAPM
+--------
+
+The security market line, performance measurement with Jensen's alpha,
+the zero-beta CAPM without a riskless asset, and the exact test of
+whether a portfolio is mean-variance efficient.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Sharpe (1964), with Lintner and Mossin, asked what prices must be if every investor follows Markowitz. With a riskless asset everyone holds the same tangency portfolio, so in equilibrium it is the market portfolio, and each asset&#x27;s expected return is set by its beta on the market alone:">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/capm/images/thumb/sphx_glr_plot_01_security_market_line_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/capm/plot_01_security_market_line`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sharpe's CAPM and the security market line</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Michael Jensen (1968) measured a mutual fund&#x27;s skill as the intercept of its excess return regressed on the market&#x27;s,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/capm/images/thumb/sphx_glr_plot_02_jensen_alpha_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/capm/plot_02_jensen_alpha`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jensen's alpha</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Sharpe&#x27;s CAPM assumes unlimited riskless borrowing. Fischer Black (1972) dropped it: every frontier portfolio m still prices all assets linearly, with the expected return of z, the minimum-variance portfolio uncorrelated with m, in place of the riskless rate,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/capm/images/thumb/sphx_glr_plot_03_zero_beta_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/capm/plot_03_zero_beta`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black's zero-beta CAPM</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Testing the CAPM means asking whether the market portfolio is mean-variance efficient, that is whether the time-series alphas of a set of test assets are jointly zero. Michael Gibbons, Stephen Ross and Jay Shanken (1989) gave the exact finite-sample distribution under normal errors:">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/capm/images/thumb/sphx_glr_plot_04_grs_test_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/capm/plot_04_grs_test`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Gibbons-Ross-Shanken test</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/asset_pricing/capm/plot_01_security_market_line
+   /api/gallery/asset_pricing/capm/plot_02_jensen_alpha
+   /api/gallery/asset_pricing/capm/plot_03_zero_beta
+   /api/gallery/asset_pricing/capm/plot_04_grs_test
+

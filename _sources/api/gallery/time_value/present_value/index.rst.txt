@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_time_value_present_value:
+
+Present value
+-------------
+
+Discounting payments to one comparable number: Fibonacci's present
+value, Fisher's real and nominal rates, and Fisher's net present value.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Chapter 12 of Fibonacci&#x27;s Liber Abaci (1202) contains problems in which a sum is repaid in instalments at a fixed rate per period, and Fibonacci values each schedule by discounting every instalment back to the start (Goetzmann, 2005). The same idea in modern form: a lender is offered three ways to be repaid a loan of 100 bezants, and the one worth most today depends on the rate. Present value turns each schedule into a single number that can be compared.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/present_value/images/thumb/sphx_glr_plot_01_fibonacci_present_value_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/present_value/plot_01_fibonacci_present_value`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fibonacci's present value: comparing payment schedules</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In Appreciation and Interest (1896) Irving Fisher argued that lenders who foresee inflation demand compensation for it, so that a nominal rate i and a real rate r satisfy 1 + i = (1 + r)(1 + \pi). The familiar shortcut r \approx i - \pi is accurate only when inflation is low; this script compares the two across inflation rates, up to hyperinflation.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/present_value/images/thumb/sphx_glr_plot_02_fisher_real_rate_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/present_value/plot_02_fisher_real_rate`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fisher's real and nominal rates of interest</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In The Rate of Interest (1907) Fisher argued that, with access to a capital market, the owner of a firm should choose the income stream with the largest present value at the market rate, whatever their own taste for spending now or later. Net present value is that rule. Here two mutually exclusive projects cost the same; which one has the larger NPV depends on the discount rate, and the profiles cross at Fisher&#x27;s &quot;rate of return over cost&quot; between them.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/present_value/images/thumb/sphx_glr_plot_03_fisher_net_present_value_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/present_value/plot_03_fisher_net_present_value`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fisher's net present value: choosing between income streams</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_value/present_value/plot_01_fibonacci_present_value
+   /api/gallery/time_value/present_value/plot_02_fisher_real_rate
+   /api/gallery/time_value/present_value/plot_03_fisher_net_present_value
+

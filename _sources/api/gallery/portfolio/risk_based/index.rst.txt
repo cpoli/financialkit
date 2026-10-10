@@ -1,0 +1,105 @@
+
+
+.. _sphx_glr_api_gallery_portfolio_risk_based:
+
+Risk-based allocation
+---------------------
+
+Portfolios built from risk alone: tail risk, diversification and equal
+risk contributions.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Value at risk is not convex in the portfolio weights, so minimizing it is hard. R. Tyrrell Rockafellar and Stanislav Uryasev (2000) showed that conditional value at risk (expected shortfall) is, and better: over a set of scenarios, minimizing it is a linear program,">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/risk_based/images/thumb/sphx_glr_plot_01_cvar_optimization_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/risk_based/plot_01_cvar_optimization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rockafellar-Uryasev CVaR optimization</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Yves Choueifaty and Yves Coignard (2008) defined the diversification ratio of a long-only portfolio as its weighted average volatility over its actual volatility,">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/risk_based/images/thumb/sphx_glr_plot_02_most_diversified_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/risk_based/plot_02_most_diversified`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Choueifaty's most-diversified portfolio</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An equally weighted stock-bond portfolio takes nearly all its risk from the stocks. Sébastien Maillard, Thierry Roncalli and Jérôme Teiletche (2010) studied the equal risk contribution portfolio, in which each asset&#x27;s Euler contribution w_i(\Sigma w)_i/\sigma_p to the portfolio volatility is the same. It always exists and is unique, and its volatility lies between the minimum-variance and 1/N portfolios&#x27;. It is computed here from Spinu&#x27;s convex reformulation.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/risk_based/images/thumb/sphx_glr_plot_03_risk_parity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/risk_based/plot_03_risk_parity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Maillard-Roncalli-Teiletche risk parity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Marcos Lopez de Prado (2016) observed that inverting a noisy covariance matrix, as every quadratic optimizer does, amplifies its errors. His hierarchical risk parity never inverts it: it clusters assets by the correlation distance \sqrt{(1-\rho_{ij})/2}, reorders them along the dendrogram so similar assets sit together, then splits capital top down between halves in inverse proportion to their variance. Its risk varies less from one estimation sample to the next than the minimum-variance portfolio&#x27;s, though with few observations per asset minimum variance can still be less risky on average.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/risk_based/images/thumb/sphx_glr_plot_04_hierarchical_risk_parity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/risk_based/plot_04_hierarchical_risk_parity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lopez de Prado's hierarchical risk parity</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/portfolio/risk_based/plot_01_cvar_optimization
+   /api/gallery/portfolio/risk_based/plot_02_most_diversified
+   /api/gallery/portfolio/risk_based/plot_03_risk_parity
+   /api/gallery/portfolio/risk_based/plot_04_hierarchical_risk_parity
+

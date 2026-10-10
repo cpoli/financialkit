@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.876773Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.876773Z",
+      "mimetype": null,
+      "name": "plot_02_tavella_randall_grid.ipynb",
+      "path": "jupyterlite_contents/api/gallery/pde_methods/accuracy/plot_02_tavella_randall_grid.ipynb",
+      "size": 2946,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.876693Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.876693Z",
+      "mimetype": null,
+      "name": "plot_01_richardson_extrapolation.ipynb",
+      "path": "jupyterlite_contents/api/gallery/pde_methods/accuracy/plot_01_richardson_extrapolation.ipynb",
+      "size": 3118,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.245211Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.245630Z",
+  "mimetype": null,
+  "name": "accuracy",
+  "path": "jupyterlite_contents/api/gallery/pde_methods/accuracy",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

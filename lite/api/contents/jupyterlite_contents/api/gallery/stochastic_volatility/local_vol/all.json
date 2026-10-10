@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.884446Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.884446Z",
+      "mimetype": null,
+      "name": "plot_02_dupire.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/local_vol/plot_02_dupire.ipynb",
+      "size": 3141,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.884181Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.884181Z",
+      "mimetype": null,
+      "name": "plot_01_cox_cev.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/local_vol/plot_01_cox_cev.ipynb",
+      "size": 3592,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.261664Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.261940Z",
+  "mimetype": null,
+  "name": "local_vol",
+  "path": "jupyterlite_contents/api/gallery/stochastic_volatility/local_vol",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

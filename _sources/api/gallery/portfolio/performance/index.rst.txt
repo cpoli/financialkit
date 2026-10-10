@@ -1,0 +1,86 @@
+
+
+.. _sphx_glr_api_gallery_portfolio_performance:
+
+Performance measurement
+-----------------------
+
+Return per unit of risk, its sampling error, and where skill comes from.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Sharpe (1966) ranked 34 mutual funds by their reward-to-variability ratio, the mean excess return divided by its standard deviation. By Tobin&#x27;s separation it is the right yardstick for an investor&#x27;s whole portfolio: leverage changes the return but not the ratio. It is also an estimate, and Andrew Lo (2002) showed how noisy: with independent returns its standard error is \sqrt{(1 + SR^2/2)/n} per period, so years of data separate good managers from lucky ones only slowly.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/performance/images/thumb/sphx_glr_plot_01_sharpe_ratio_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/performance/plot_01_sharpe_ratio`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Sharpe ratio</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Grinold (1989) decomposed an active manager&#x27;s information ratio into skill and breadth:">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/performance/images/thumb/sphx_glr_plot_02_fundamental_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/performance/plot_02_fundamental_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Grinold's fundamental law of active management</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Volatility penalizes a fund for its best months as much as for its worst. Frank Sortino and Lee Price (1994) measured risk instead by the downside deviation, the root mean square shortfall below a minimum acceptable return \tau,">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/performance/images/thumb/sphx_glr_plot_03_sortino_ratio_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/performance/plot_03_sortino_ratio`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Sortino ratio</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/portfolio/performance/plot_01_sharpe_ratio
+   /api/gallery/portfolio/performance/plot_02_fundamental_law
+   /api/gallery/portfolio/performance/plot_03_sortino_ratio
+

@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.pde_methods hub </_generated/subpackages/pde_methods>` · :doc:`History </history/pde_methods_breakthroughs>` · :doc:`Examples </api/gallery/pde_methods/index>` · :doc:`API reference </api/pde_methods>`

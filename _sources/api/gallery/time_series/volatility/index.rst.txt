@@ -1,0 +1,158 @@
+
+
+.. _sphx_glr_api_gallery_time_series_volatility:
+
+Volatility
+----------
+
+Range-based and realized volatility, and the ARCH family of conditional-variance models.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A daily close-to-close return uses two prices out of the thousands traded that day. Michael Parkinson (1980) used two more, the high and the low: for Brownian motion with volatility \sigma,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_01_parkinson_range_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_01_parkinson_range`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Parkinson's range volatility</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Forecast errors for UK inflation were sometimes small and sometimes large, in clusters. Robert Engle (1982) let the conditional variance depend on the last squared shock,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_02_engle_arch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_02_engle_arch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Engle's ARCH</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pure ARCH models needed many lags to capture how slowly volatility decays. Tim Bollerslev (1986), Engle&#x27;s student, added the lagged variance itself,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_03_bollerslev_garch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_03_bollerslev_garch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bollerslev's GARCH</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="GARCH reacts to the size of yesterday&#x27;s shock but not its sign, and its coefficients must be kept positive. Daniel Nelson (1991) modelled the logarithm of the variance instead,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_04_nelson_egarch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_04_nelson_egarch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nelson's EGARCH</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lawrence Glosten, Ravi Jagannathan and David Runkle (1993) asked whether expected stock returns rise with volatility, and found that the answer depended on modelling volatility&#x27;s asymmetric response to news. Their GARCH variant adds one term for negative shocks,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_05_gjr_garch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_05_gjr_garch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Glosten-Jagannathan-Runkle</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1994 J.P. Morgan published RiskMetrics, a free methodology and data set for Value-at-Risk. Its volatility model was deliberately simple: an exponentially weighted moving average">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_06_riskmetrics_ewma_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_06_riskmetrics_ewma`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">RiskMetrics EWMA</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="GARCH models fit beautifully in-sample, yet regressions of squared daily returns on their variance forecasts gave R^2 of a few percent, and sceptics concluded the models were useless for forecasting. Torben Andersen and Tim Bollerslev (1998) showed that the fault lay with the yardstick. A squared return \sigma_t^2 z_t^2 is an unbiased but very noisy measure of the day&#x27;s variance, and even a perfect forecast explains only a small part of it. Summing squared five-minute returns (realized variance) measures the variance almost exactly, and against it the same forecasts explain many times more.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/volatility/images/thumb/sphx_glr_plot_07_realized_volatility_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/volatility/plot_07_realized_volatility`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Andersen-Bollerslev realized volatility</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_series/volatility/plot_01_parkinson_range
+   /api/gallery/time_series/volatility/plot_02_engle_arch
+   /api/gallery/time_series/volatility/plot_03_bollerslev_garch
+   /api/gallery/time_series/volatility/plot_04_nelson_egarch
+   /api/gallery/time_series/volatility/plot_05_gjr_garch
+   /api/gallery/time_series/volatility/plot_06_riskmetrics_ewma
+   /api/gallery/time_series/volatility/plot_07_realized_volatility
+

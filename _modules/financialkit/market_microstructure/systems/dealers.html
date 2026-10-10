@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.market_microstructure.systems.dealers &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/market_microstructure/systems/dealers';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.market_microstructure.systems.dealers</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.market_microstructure.systems.dealers</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Dealers and market makers: Garman's order flow, Ho-Stoll inventory and Avellaneda-Stoikov.</span>
+
+<span class="sd">Mark Garman (1976) modelled buy and sell orders as Poisson streams whose</span>
+<span class="sd">rates depend on the ask and the bid, and showed that a dealer who sets</span>
+<span class="sd">no spread runs out of stock or cash with certainty. Thomas Ho and Hans</span>
+<span class="sd">Stoll (1981) made the dealer risk averse: inventory is risky, so a dealer</span>
+<span class="sd">who is long shades both quotes down to sell more and buy less, while the</span>
+<span class="sd">width of the spread pays for the order flow. Marco Avellaneda and Sasha</span>
+<span class="sd">Stoikov (2008) solved the same trade-off in continuous time for a mid</span>
+<span class="sd">price that moves as Brownian motion and fills that arrive at rate</span>
+<span class="sd">:math:`A e^{-k\\delta}` at distance :math:`\\delta` from the mid.</span>
+
+<span class="sd">References: M. B. Garman, "Market Microstructure," *J. Financial</span>
+<span class="sd">Economics* 3 (1976) 257-275; T. Ho and H. R. Stoll, "Optimal Dealer</span>
+<span class="sd">Pricing under Transactions and Return Uncertainty," *J. Financial</span>
+<span class="sd">Economics* 9 (1981) 47-73; M. Avellaneda and S. Stoikov, "High-Frequency</span>
+<span class="sd">Trading in a Limit Order Book," *Quantitative Finance* 8 (2008) 217-224;</span>
+<span class="sd">M. O'Hara, *Market Microstructure Theory* (Blackwell, 1995), Ch. 2.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.integrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">brownian_increments</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.market_microstructure.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">GarmanResult</span><span class="p">,</span> <span class="n">MarketMakingResult</span><span class="p">,</span> <span class="n">QuotingStrategy</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"garman_ruin_probability"</span><span class="p">,</span>
+    <span class="s2">"simulate_garman"</span><span class="p">,</span>
+    <span class="s2">"ho_stoll_quotes"</span><span class="p">,</span>
+    <span class="s2">"reservation_price"</span><span class="p">,</span>
+    <span class="s2">"avellaneda_stoikov_spread"</span><span class="p">,</span>
+    <span class="s2">"AvellanedaStoikov"</span><span class="p">,</span>
+    <span class="s2">"SymmetricQuotes"</span><span class="p">,</span>
+    <span class="s2">"simulate_market_making"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="garman_ruin_probability">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.garman_ruin_probability">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">garman_ruin_probability</span><span class="p">(</span><span class="n">inventory</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">buy_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sell_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Probability that Garman's dealer eventually runs out of stock.</span>
+
+<span class="sd">    Customers buy (the dealer sells one share) at rate `buy_rate` and sell</span>
+<span class="sd">    at rate `sell_rate`, so the inventory is a gambler's-ruin random walk:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       P(\\text{ruin} \\mid I_0) = \\min\\left(1, \\left(\\lambda_a / \\lambda_b\\right)^{I_0}\\right).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    inventory : array_like of int</span>
+<span class="sd">        Starting inventory :math:`I_0 \\ge 0`.</span>
+<span class="sd">    buy_rate : float</span>
+<span class="sd">        :math:`\\lambda_a`, the arrival rate of buy orders at the ask.</span>
+<span class="sd">    sell_rate : float</span>
+<span class="sd">        :math:`\\lambda_b`, the arrival rate of sell orders at the bid.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; garman_ruin_probability([0, 3, 10], 2.0, 3.0).round(4).tolist()</span>
+<span class="sd">    [1.0, 0.2963, 0.0173]</span>
+<span class="sd">    &gt;&gt;&gt; float(garman_ruin_probability(50, 1.0, 1.0))</span>
+<span class="sd">    1.0</span>
+<span class="sd">    """</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">inventory</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">I</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">buy_rate</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">sell_rate</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"need inventory &gt;= 0 and positive rates"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="p">(</span><span class="n">buy_rate</span> <span class="o">/</span> <span class="n">sell_rate</span><span class="p">)</span> <span class="o">**</span> <span class="n">I</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="simulate_garman">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.simulate_garman">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_garman</span><span class="p">(</span>
+    <span class="n">stock</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">cash</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">ask</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">bid</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">buy_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">sell_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">n_events</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_paths</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">rng</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GarmanResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Simulate Garman's dealer event by event until stock or cash runs out.</span>
+
+<span class="sd">    A buy order (rate :math:`\\lambda_a`) takes one share at the ask; a sell</span>
+<span class="sd">    order (rate :math:`\\lambda_b`) delivers one at the bid. The dealer fails</span>
+<span class="sd">    when the stock is zero or the cash cannot pay the bid. Both inventories</span>
+<span class="sd">    drift upward only if :math:`\\lambda_b &gt; \\lambda_a` and</span>
+<span class="sd">    :math:`a\\lambda_a &gt; b\\lambda_b`, which needs :math:`a &gt; b`: a spread.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    stock : int</span>
+<span class="sd">        Starting shares.</span>
+<span class="sd">    cash : float</span>
+<span class="sd">        Starting cash; ``np.inf`` isolates the stock inventory.</span>
+<span class="sd">    ask, bid : float</span>
+<span class="sd">        Fixed quotes.</span>
+<span class="sd">    buy_rate, sell_rate : float</span>
+<span class="sd">        :math:`\\lambda_a(a)` and :math:`\\lambda_b(b)` at those quotes.</span>
+<span class="sd">    n_events : int</span>
+<span class="sd">        Orders simulated per path.</span>
+<span class="sd">    n_paths : int</span>
+<span class="sd">    rng : numpy.random.Generator or int, optional</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    GarmanResult</span>
+<span class="sd">        Paths are frozen after failure.</span>
+<span class="sd">    """</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">buy_rate</span> <span class="o">+</span> <span class="n">sell_rate</span>
+    <span class="n">buys</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="n">n_events</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">buy_rate</span> <span class="o">/</span> <span class="n">total</span>
+    <span class="n">waits</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">total</span><span class="p">,</span> <span class="p">(</span><span class="n">n_paths</span><span class="p">,</span> <span class="n">n_events</span><span class="p">))</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">waits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">d_stock</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">buys</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">d_cash</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">buys</span><span class="p">,</span> <span class="n">ask</span><span class="p">,</span> <span class="o">-</span><span class="n">bid</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">stock</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">d_stock</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">cash</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">d_cash</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Failure: no stock to sell, or not enough cash to pay the next bid.</span>
+    <span class="n">dead</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;</span> <span class="n">bid</span><span class="p">)</span>
+    <span class="n">failed</span> <span class="o">=</span> <span class="n">dead</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">failed</span><span class="p">,</span> <span class="n">dead</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">n_events</span><span class="p">)</span>
+    <span class="n">after</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_events</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">first</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">after</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_paths</span><span class="p">),</span> <span class="n">first</span><span class="p">][:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">after</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_paths</span><span class="p">),</span> <span class="n">first</span><span class="p">][:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">c</span><span class="p">)</span>
+    <span class="n">t_fail</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">failed</span><span class="p">,</span> <span class="n">times</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_paths</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">n_events</span><span class="p">)],</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">GarmanResult</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span> <span class="n">stock</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">cash</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">failed</span><span class="o">=</span><span class="n">failed</span><span class="p">,</span> <span class="n">failure_time</span><span class="o">=</span><span class="n">t_fail</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ho_stoll_quotes">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.ho_stoll_quotes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">ho_stoll_quotes</span><span class="p">(</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">inventory</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">risk_aversion</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tau</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Optimal bid and ask of a risk-averse dealer, a one-period Ho-Stoll model.</span>
+
+<span class="sd">    Orders arrive at :math:`\\lambda = \\alpha - \\beta\\delta` on each side,</span>
+<span class="sd">    :math:`\\delta` being the distance of the quote from the true value</span>
+<span class="sd">    :math:`p`. The dealer maximises expected trading profit minus</span>
+<span class="sd">    :math:`\\tfrac{\\gamma}{2}\\sigma^2\\tau` times the squared end-of-period</span>
+<span class="sd">    inventory. The first-order conditions give Ho and Stoll's two results:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       \\delta_a + \\delta_b = \\frac{\\alpha}{\\beta}, \\qquad</span>
+<span class="sd">       \\frac{a + b}{2} = p - \\frac{\\kappa I}{2(1 + \\kappa\\beta)}, \\quad \\kappa = \\gamma\\sigma^2\\tau:</span>
+
+<span class="sd">    the spread does not depend on inventory, and the quotes slide down</span>
+<span class="sd">    when the dealer is long.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value : array_like</span>
+<span class="sd">        True value :math:`p`.</span>
+<span class="sd">    inventory : array_like</span>
+<span class="sd">        Dealer's inventory :math:`I`.</span>
+<span class="sd">    alpha, beta : float</span>
+<span class="sd">        Intercept and slope of the order-arrival rate.</span>
+<span class="sd">    risk_aversion : float</span>
+<span class="sd">        :math:`\\gamma \\ge 0`.</span>
+<span class="sd">    sigma : float</span>
+<span class="sd">        Volatility of the value, per unit time.</span>
+<span class="sd">    tau : float</span>
+<span class="sd">        Holding horizon.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bid, ask : ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; b, a = ho_stoll_quotes(100.0, [-10, 0, 10], alpha=10.0, beta=20.0, risk_aversion=0.1, sigma=0.2)</span>
+<span class="sd">    &gt;&gt;&gt; (a - b).round(6).tolist(), ((a + b) / 2).round(4).tolist()</span>
+<span class="sd">    ([0.5, 0.5, 0.5], [100.0185, 100.0, 99.9815])</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">beta</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">risk_aversion</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"need beta &gt; 0 and risk_aversion &gt;= 0"</span><span class="p">)</span>
+    <span class="n">kappa</span> <span class="o">=</span> <span class="n">risk_aversion</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">tau</span>
+    <span class="n">skew</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">inventory</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">kappa</span> <span class="o">*</span> <span class="n">beta</span><span class="p">)</span>
+    <span class="n">half</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">/</span> <span class="n">beta</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span> <span class="o">-</span> <span class="n">half</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">skew</span><span class="p">,</span> <span class="n">p</span> <span class="o">+</span> <span class="n">half</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">skew</span></div>
+
+
+
+<div class="viewcode-block" id="reservation_price">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.reservation_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">reservation_price</span><span class="p">(</span><span class="n">mid</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">inventory</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">risk_aversion</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_left</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Avellaneda-Stoikov indifference price :math:`r = s - q\\gamma\\sigma^2 (T - t)`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; reservation_price(100.0, [-2, 0, 2], 0.1, 2.0, 0.5).tolist()</span>
+<span class="sd">    [100.4, 100.0, 99.6]</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">inventory</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">*</span> <span class="n">risk_aversion</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">time_left</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="avellaneda_stoikov_spread">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.avellaneda_stoikov_spread">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">avellaneda_stoikov_spread</span><span class="p">(</span><span class="n">risk_aversion</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">time_left</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Optimal total spread :math:`\\gamma\\sigma^2 (T - t) + \\frac{2}{\\gamma}\\ln(1 + \\gamma / k)`.</span>
+
+<span class="sd">    As :math:`\\gamma \\to 0` it tends to :math:`2/k`, the spread that</span>
+<span class="sd">    maximises expected profit from fills at rate :math:`A e^{-k\\delta}`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; round(float(avellaneda_stoikov_spread(0.1, 2.0, 1.0, 1.5)), 4)</span>
+<span class="sd">    1.6908</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">risk_aversion</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"need risk_aversion &gt; 0 and k &gt; 0"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">risk_aversion</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">time_left</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">risk_aversion</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">risk_aversion</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="AvellanedaStoikov">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.AvellanedaStoikov">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AvellanedaStoikov</span><span class="p">(</span><span class="n">QuotingStrategy</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Avellaneda-Stoikov's inventory strategy: the optimal spread around the reservation price.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    risk_aversion : float</span>
+<span class="sd">        :math:`\\gamma`.</span>
+<span class="sd">    sigma : float</span>
+<span class="sd">        Mid-price volatility in price units per square root of time.</span>
+<span class="sd">    k : float</span>
+<span class="sd">        Decay of the fill intensity with distance from the mid.</span>
+<span class="sd">    T : float</span>
+<span class="sd">        Terminal time.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">risk_aversion</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_aversion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">risk_aversion</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">T</span>
+
+<div class="viewcode-block" id="AvellanedaStoikov.quotes">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.AvellanedaStoikov.quotes">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">quotes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mid</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">inventory</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">reservation_price</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="n">inventory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_aversion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">half</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">avellaneda_stoikov_spread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">risk_aversion</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">r</span> <span class="o">-</span> <span class="n">half</span><span class="p">,</span> <span class="n">r</span> <span class="o">+</span> <span class="n">half</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="SymmetricQuotes">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.SymmetricQuotes">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SymmetricQuotes</span><span class="p">(</span><span class="n">QuotingStrategy</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Quotes a fixed half-spread either side of the mid, ignoring inventory.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    half_spread : float or callable</span>
+<span class="sd">        A number, or ``f(t)`` returning one.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">half_spread</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">half_spread</span> <span class="o">=</span> <span class="n">half_spread</span>
+
+<div class="viewcode-block" id="SymmetricQuotes.quotes">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.SymmetricQuotes.quotes">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">quotes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mid</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">inventory</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">half_spread</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">half_spread</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">half_spread</span>
+        <span class="k">return</span> <span class="n">mid</span> <span class="o">-</span> <span class="n">h</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="n">h</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="simulate_market_making">
+<a class="viewcode-back" href="../../../../api/market_microstructure.html#financialkit.market_microstructure.simulate_market_making">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_market_making</span><span class="p">(</span>
+    <span class="n">strategy</span><span class="p">:</span> <span class="n">QuotingStrategy</span><span class="p">,</span>
+    <span class="n">s0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">n_steps</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">A</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">k</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">n_paths</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">rng</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">Generator</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarketMakingResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Simulate a market maker as in Avellaneda and Stoikov's Section 4.</span>
+
+<span class="sd">    The mid price is arithmetic Brownian motion (increments from</span>
+<span class="sd">    :func:`financialkit.integrators.brownian_increments`). In each step of</span>
+<span class="sd">    length :math:`dt` the ask is lifted with probability</span>
+<span class="sd">    :math:`A e^{-k\\delta_a} dt` and the bid hit with probability</span>
+<span class="sd">    :math:`A e^{-k\\delta_b} dt`, one share each.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    strategy : QuotingStrategy</span>
+<span class="sd">    s0 : float</span>
+<span class="sd">        Initial mid price.</span>
+<span class="sd">    sigma : float</span>
+<span class="sd">        Mid-price volatility.</span>
+<span class="sd">    T : float</span>
+<span class="sd">        Horizon.</span>
+<span class="sd">    n_steps : int</span>
+<span class="sd">        Choose it so that :math:`A\\,dt` stays well below one.</span>
+<span class="sd">    A, k : float</span>
+<span class="sd">        Fill-intensity parameters.</span>
+<span class="sd">    n_paths : int</span>
+<span class="sd">    rng : numpy.random.Generator or int, optional</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    MarketMakingResult</span>
+<span class="sd">    """</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="n">n_steps</span>
+    <span class="n">dW</span> <span class="o">=</span> <span class="n">brownian_increments</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="n">n_paths</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">dW</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">bid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+    <span class="n">ask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_paths</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">))</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">n_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+        <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">strategy</span><span class="o">.</span><span class="n">quotes</span><span class="p">(</span><span class="n">mid</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">q</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">times</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">bid</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">ask</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+        <span class="n">sold</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">mid</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]))</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+        <span class="n">bought</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">mid</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">))</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+        <span class="n">q</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sold</span> <span class="o">+</span> <span class="n">bought</span>
+        <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">sold</span> <span class="o">*</span> <span class="n">a</span> <span class="o">-</span> <span class="n">bought</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">MarketMakingResult</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span> <span class="n">mid</span><span class="o">=</span><span class="n">mid</span><span class="p">,</span> <span class="n">bid</span><span class="o">=</span><span class="n">bid</span><span class="p">,</span> <span class="n">ask</span><span class="o">=</span><span class="n">ask</span><span class="p">,</span> <span class="n">inventory</span><span class="o">=</span><span class="n">q</span><span class="p">,</span> <span class="n">cash</span><span class="o">=</span><span class="n">x</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

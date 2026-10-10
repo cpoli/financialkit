@@ -1,0 +1,50 @@
+
+
+.. _sphx_glr_api_gallery_risk_drawdowns:
+
+Drawdowns
+---------
+
+The worst fall from a peak, and return measured against it.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A drawdown is the fall from the highest wealth reached so far. Terry Young (1991) proposed judging managed-futures funds by their compound annual return divided by their maximum drawdown, the Calmar ratio, because investors leave a fund after a deep drawdown long before its volatility looks alarming. Two strategies with the same mean and volatility can have very different drawdowns if their bad days cluster.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/drawdowns/images/thumb/sphx_glr_plot_01_calmar_drawdowns_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/drawdowns/plot_01_calmar_drawdowns`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Young's Calmar ratio and drawdowns</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/risk/drawdowns/plot_01_calmar_drawdowns
+

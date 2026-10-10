@@ -1,0 +1,751 @@
+
+:orphan:
+
+.. _sphx_glr_sg_execution_times:
+
+
+Computation times
+=================
+**00:48.150** total execution time for 239 files **from all galleries**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_local_vol_plot_02_dupire.py` (``../../examples/stochastic_volatility/local_vol/plot_02_dupire.py``)
+     - 00:02.561
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_risk_based_plot_01_cvar_optimization.py` (``../../examples/portfolio/risk_based/plot_01_cvar_optimization.py``)
+     - 00:01.732
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_hjm_plot_01_hjm_drift_condition.py` (``../../examples/interest_rate_models/hjm/plot_01_hjm_drift_condition.py``)
+     - 00:01.632
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_local_vol_plot_01_cox_cev.py` (``../../examples/stochastic_volatility/local_vol/plot_01_cox_cev.py``)
+     - 00:01.542
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_multilevel_plot_01_giles_mlmc.py` (``../../examples/monte_carlo/multilevel/plot_01_giles_mlmc.py``)
+     - 00:01.294
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_capm_plot_04_grs_test.py` (``../../examples/asset_pricing/capm/plot_04_grs_test.py``)
+     - 00:00.962
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_simulation_plot_01_andersen_qe.py` (``../../examples/stochastic_volatility/simulation/plot_01_andersen_qe.py``)
+     - 00:00.956
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_backtesting_plot_03_christoffersen.py` (``../../examples/risk/backtesting/plot_03_christoffersen.py``)
+     - 00:00.868
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_06_duffie_kan_affine.py` (``../../examples/interest_rate_models/short_rate/plot_06_duffie_kan_affine.py``)
+     - 00:00.867
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_fourier_plot_01_carr_madan_fft.py` (``../../examples/stochastic_volatility/fourier/plot_01_carr_madan_fft.py``)
+     - 00:00.749
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_03_double_barrier.py` (``../../examples/exotic_options/barriers/plot_03_double_barrier.py``)
+     - 00:00.730
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_expected_shortfall_plot_03_acerbi_tasche.py` (``../../examples/risk/expected_shortfall/plot_03_acerbi_tasche.py``)
+     - 00:00.710
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_amortization_plot_01_amortizing_mortgage.py` (``../../examples/time_value/amortization/plot_01_amortizing_mortgage.py``)
+     - 00:00.705
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_04_lo_mackinlay.py` (``../../examples/time_series/efficiency/plot_04_lo_mackinlay.py``)
+     - 00:00.703
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_04_pin.py` (``../../examples/market_microstructure/information/plot_04_pin.py``)
+     - 00:00.700
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_basics_plot_01_crude_monte_carlo.py` (``../../examples/monte_carlo/basics/plot_01_crude_monte_carlo.py``)
+     - 00:00.650
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_cds_plot_01_cds_par_spread.py` (``../../examples/credit/cds/plot_01_cds_par_spread.py``)
+     - 00:00.648
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_heston_plot_01_hull_white_mixing.py` (``../../examples/stochastic_volatility/heston/plot_01_hull_white_mixing.py``)
+     - 00:00.640
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_american_plot_01_longstaff_schwartz.py` (``../../examples/exotic_options/american/plot_01_longstaff_schwartz.py``)
+     - 00:00.624
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_01_bachelier.py` (``../../examples/options/closed_form/plot_01_bachelier.py``)
+     - 00:00.603
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_07_g2pp.py` (``../../examples/interest_rate_models/short_rate/plot_07_g2pp.py``)
+     - 00:00.601
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_01_ho_lee.py` (``../../examples/interest_rate_models/curve_fitted/plot_01_ho_lee.py``)
+     - 00:00.596
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_mean_variance_plot_04_one_over_n.py` (``../../examples/portfolio/mean_variance/plot_04_one_over_n.py``)
+     - 00:00.581
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_capm_plot_01_security_market_line.py` (``../../examples/asset_pricing/capm/plot_01_security_market_line.py``)
+     - 00:00.566
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_01_kendall_autocorrelation.py` (``../../examples/time_series/efficiency/plot_01_kendall_autocorrelation.py``)
+     - 00:00.554
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_backtesting_plot_01_kupiec.py` (``../../examples/risk/backtesting/plot_01_kupiec.py``)
+     - 00:00.553
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_trees_plot_05_barone_adesi_whaley.py` (``../../examples/options/trees/plot_05_barone_adesi_whaley.py``)
+     - 00:00.539
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_portfolio_loss_plot_05_tranche_expected_loss.py` (``../../examples/credit/portfolio_loss/plot_05_tranche_expected_loss.py``)
+     - 00:00.528
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_05_cir.py` (``../../examples/interest_rate_models/short_rate/plot_05_cir.py``)
+     - 00:00.512
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_bonds_plot_01_yield_to_maturity.py` (``../../examples/fixed_income/bonds/plot_01_yield_to_maturity.py``)
+     - 00:00.478
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_dealers_plot_01_garman_inventory.py` (``../../examples/market_microstructure/dealers/plot_01_garman_inventory.py``)
+     - 00:00.364
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_portfolio_loss_plot_02_creditrisk_plus.py` (``../../examples/credit/portfolio_loss/plot_02_creditrisk_plus.py``)
+     - 00:00.318
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_simulation_plot_02_full_truncation.py` (``../../examples/stochastic_volatility/simulation/plot_02_full_truncation.py``)
+     - 00:00.306
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_greeks_plot_02_delta_hedging.py` (``../../examples/options/greeks/plot_02_delta_hedging.py``)
+     - 00:00.271
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_trees_plot_03_rendleman_bartter.py` (``../../examples/options/trees/plot_03_rendleman_bartter.py``)
+     - 00:00.270
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_trees_plot_06_leisen_reimer.py` (``../../examples/options/trees/plot_06_leisen_reimer.py``)
+     - 00:00.264
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_american_plot_02_brennan_schwartz.py` (``../../examples/pde_methods/american/plot_02_brennan_schwartz.py``)
+     - 00:00.259
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_02_glosten_milgrom.py` (``../../examples/market_microstructure/information/plot_02_glosten_milgrom.py``)
+     - 00:00.259
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_quasi_monte_carlo_plot_05_paskov_traub.py` (``../../examples/monte_carlo/quasi_monte_carlo/plot_05_paskov_traub.py``)
+     - 00:00.256
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_copulas_plot_02_t_copula_tail_dependence.py` (``../../examples/risk/copulas/plot_02_t_copula_tail_dependence.py``)
+     - 00:00.254
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_quasi_monte_carlo_plot_06_brownian_bridge.py` (``../../examples/monte_carlo/quasi_monte_carlo/plot_06_brownian_bridge.py``)
+     - 00:00.245
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_extreme_value_plot_01_fisher_tippett_gev.py` (``../../examples/risk/extreme_value/plot_01_fisher_tippett_gev.py``)
+     - 00:00.218
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_03_thomas_algorithm.py` (``../../examples/pde_methods/schemes/plot_03_thomas_algorithm.py``)
+     - 00:00.218
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_03_ljung_box.py` (``../../examples/time_series/efficiency/plot_03_ljung_box.py``)
+     - 00:00.217
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_trees_plot_01_crr_convergence.py` (``../../examples/options/trees/plot_01_crr_convergence.py``)
+     - 00:00.217
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_volatility_plot_04_nelson_egarch.py` (``../../examples/time_series/volatility/plot_04_nelson_egarch.py``)
+     - 00:00.216
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_jumps_plot_04_madan_carr_chang.py` (``../../examples/stochastic_volatility/jumps/plot_04_madan_carr_chang.py``)
+     - 00:00.216
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_04_discrete_barrier_correction.py` (``../../examples/exotic_options/barriers/plot_04_discrete_barrier_correction.py``)
+     - 00:00.215
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_migration_plot_01_creditmetrics.py` (``../../examples/credit/migration/plot_01_creditmetrics.py``)
+     - 00:00.205
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_multi_factor_plot_01_peaceman_rachford_adi.py` (``../../examples/pde_methods/multi_factor/plot_01_peaceman_rachford_adi.py``)
+     - 00:00.202
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_bayesian_plot_02_michaud_resampling.py` (``../../examples/portfolio/bayesian/plot_02_michaud_resampling.py``)
+     - 00:00.201
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_linear_models_plot_03_akaike_order_selection.py` (``../../examples/time_series/linear_models/plot_03_akaike_order_selection.py``)
+     - 00:00.196
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_fourier_plot_03_cos_method.py` (``../../examples/stochastic_volatility/fourier/plot_03_cos_method.py``)
+     - 00:00.195
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_bayesian_plot_01_black_litterman.py` (``../../examples/portfolio/bayesian/plot_01_black_litterman.py``)
+     - 00:00.194
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_heston_plot_02_heston.py` (``../../examples/stochastic_volatility/heston/plot_02_heston.py``)
+     - 00:00.193
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_compounding_plot_03_bernoulli_continuous_compounding.py` (``../../examples/time_value/compounding/plot_03_bernoulli_continuous_compounding.py``)
+     - 00:00.192
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_migration_plot_03_israel_rosenthal_wei.py` (``../../examples/credit/migration/plot_03_israel_rosenthal_wei.py``)
+     - 00:00.191
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_american_plot_01_cryer_psor.py` (``../../examples/pde_methods/american/plot_01_cryer_psor.py``)
+     - 00:00.190
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_consumption_plot_01_lucas_tree.py` (``../../examples/asset_pricing/consumption/plot_01_lucas_tree.py``)
+     - 00:00.181
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_smile_plot_02_svi.py` (``../../examples/stochastic_volatility/smile/plot_02_svi.py``)
+     - 00:00.178
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_01_feynman_kac_bond_price.py` (``../../examples/interest_rate_models/short_rate/plot_01_feynman_kac_bond_price.py``)
+     - 00:00.175
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_02_roll_estimator.py` (``../../examples/market_microstructure/spreads/plot_02_roll_estimator.py``)
+     - 00:00.174
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_asian_plot_02_turnbull_wakeman.py` (``../../examples/exotic_options/asian/plot_02_turnbull_wakeman.py``)
+     - 00:00.173
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_02_feller_condition.py` (``../../examples/interest_rate_models/short_rate/plot_02_feller_condition.py``)
+     - 00:00.171
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_stability_plot_01_cfl_explicit_blowup.py` (``../../examples/pde_methods/stability/plot_01_cfl_explicit_blowup.py``)
+     - 00:00.170
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_trees_plot_04_boyle_trinomial.py` (``../../examples/options/trees/plot_04_boyle_trinomial.py``)
+     - 00:00.168
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_trees_plot_02_crr_american_put.py` (``../../examples/options/trees/plot_02_crr_american_put.py``)
+     - 00:00.167
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_expected_shortfall_plot_01_coherence.py` (``../../examples/risk/expected_shortfall/plot_01_coherence.py``)
+     - 00:00.167
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_quasi_monte_carlo_plot_02_koksma_hlawka.py` (``../../examples/monte_carlo/quasi_monte_carlo/plot_02_koksma_hlawka.py``)
+     - 00:00.164
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_covariance_plot_02_ledoit_wolf.py` (``../../examples/portfolio/covariance/plot_02_ledoit_wolf.py``)
+     - 00:00.162
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_path_dependent_plot_01_floating_lookback.py` (``../../examples/exotic_options/path_dependent/plot_01_floating_lookback.py``)
+     - 00:00.159
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_risk_based_plot_04_hierarchical_risk_parity.py` (``../../examples/portfolio/risk_based/plot_04_hierarchical_risk_parity.py``)
+     - 00:00.154
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_path_dependent_plot_03_variance_swap.py` (``../../examples/exotic_options/path_dependent/plot_03_variance_swap.py``)
+     - 00:00.152
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_execution_plot_02_bertsimas_lo.py` (``../../examples/market_microstructure/execution/plot_02_bertsimas_lo.py``)
+     - 00:00.152
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_var_plot_06_filtered_historical.py` (``../../examples/risk/var/plot_06_filtered_historical.py``)
+     - 00:00.148
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_unit_roots_plot_02_engle_granger.py` (``../../examples/time_series/unit_roots/plot_02_engle_granger.py``)
+     - 00:00.146
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_unit_roots_plot_01_dickey_fuller.py` (``../../examples/time_series/unit_roots/plot_01_dickey_fuller.py``)
+     - 00:00.144
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_performance_plot_02_fundamental_law.py` (``../../examples/portfolio/performance/plot_02_fundamental_law.py``)
+     - 00:00.143
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_greeks_plot_02_pathwise.py` (``../../examples/monte_carlo/greeks/plot_02_pathwise.py``)
+     - 00:00.142
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_accuracy_plot_02_tavella_randall_grid.py` (``../../examples/pde_methods/accuracy/plot_02_tavella_randall_grid.py``)
+     - 00:00.142
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_jumps_plot_03_bates.py` (``../../examples/stochastic_volatility/jumps/plot_03_bates.py``)
+     - 00:00.142
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_volatility_plot_07_realized_volatility.py` (``../../examples/time_series/volatility/plot_07_realized_volatility.py``)
+     - 00:00.141
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_growth_plot_03_cppi.py` (``../../examples/portfolio/growth/plot_03_cppi.py``)
+     - 00:00.141
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_03_merton_short_rate.py` (``../../examples/interest_rate_models/short_rate/plot_03_merton_short_rate.py``)
+     - 00:00.140
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_06_explicit_is_trinomial.py` (``../../examples/pde_methods/schemes/plot_06_explicit_is_trinomial.py``)
+     - 00:00.140
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_01_crank_nicolson.py` (``../../examples/pde_methods/schemes/plot_01_crank_nicolson.py``)
+     - 00:00.140
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_migration_plot_02_generator_matrix.py` (``../../examples/credit/migration/plot_02_generator_matrix.py``)
+     - 00:00.138
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_greeks_plot_01_greeks.py` (``../../examples/options/greeks/plot_01_greeks.py``)
+     - 00:00.133
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_reduced_form_plot_01_jarrow_turnbull.py` (``../../examples/credit/reduced_form/plot_01_jarrow_turnbull.py``)
+     - 00:00.133
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_02_hull_white.py` (``../../examples/interest_rate_models/curve_fitted/plot_02_hull_white.py``)
+     - 00:00.132
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_04_nelson_siegel.py` (``../../examples/fixed_income/curves/plot_04_nelson_siegel.py``)
+     - 00:00.132
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_jumps_plot_02_madan_seneta_variance_gamma.py` (``../../examples/stochastic_volatility/jumps/plot_02_madan_seneta_variance_gamma.py``)
+     - 00:00.132
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_growth_plot_01_kelly_criterion.py` (``../../examples/portfolio/growth/plot_01_kelly_criterion.py``)
+     - 00:00.131
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_07_barrier_pde.py` (``../../examples/pde_methods/schemes/plot_07_barrier_pde.py``)
+     - 00:00.130
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_greeks_plot_01_likelihood_ratio.py` (``../../examples/monte_carlo/greeks/plot_01_likelihood_ratio.py``)
+     - 00:00.127
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_smile_plot_03_lee_moment_formula.py` (``../../examples/stochastic_volatility/smile/plot_03_lee_moment_formula.py``)
+     - 00:00.126
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_02_fama_runs_test.py` (``../../examples/time_series/efficiency/plot_02_fama_runs_test.py``)
+     - 00:00.125
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_fourier_plot_02_lewis_formula.py` (``../../examples/stochastic_volatility/fourier/plot_02_lewis_formula.py``)
+     - 00:00.124
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_jumps_plot_01_merton_jump_diffusion.py` (``../../examples/stochastic_volatility/jumps/plot_01_merton_jump_diffusion.py``)
+     - 00:00.124
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_risk_based_plot_02_most_diversified.py` (``../../examples/portfolio/risk_based/plot_02_most_diversified.py``)
+     - 00:00.123
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_stylized_facts_plot_02_hill_tail_index.py` (``../../examples/time_series/stylized_facts/plot_02_hill_tail_index.py``)
+     - 00:00.118
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_dealers_plot_02_ho_stoll.py` (``../../examples/market_microstructure/dealers/plot_02_ho_stoll.py``)
+     - 00:00.117
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_stability_plot_02_von_neumann.py` (``../../examples/pde_methods/stability/plot_02_von_neumann.py``)
+     - 00:00.117
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_04_vasicek.py` (``../../examples/interest_rate_models/short_rate/plot_04_vasicek.py``)
+     - 00:00.116
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_reduced_form_plot_02_duffie_singleton.py` (``../../examples/credit/reduced_form/plot_02_duffie_singleton.py``)
+     - 00:00.114
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_basics_plot_02_box_muller.py` (``../../examples/monte_carlo/basics/plot_02_box_muller.py``)
+     - 00:00.111
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_01_merton_down_and_out.py` (``../../examples/exotic_options/barriers/plot_01_merton_down_and_out.py``)
+     - 00:00.109
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_01_jamshidian_bond_option.py` (``../../examples/interest_rate_models/options/plot_01_jamshidian_bond_option.py``)
+     - 00:00.109
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_path_dependent_plot_02_fixed_lookback.py` (``../../examples/exotic_options/path_dependent/plot_02_fixed_lookback.py``)
+     - 00:00.109
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_covariance_plot_01_single_index.py` (``../../examples/portfolio/covariance/plot_01_single_index.py``)
+     - 00:00.108
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_cds_plot_02_isda_hazard_bootstrap.py` (``../../examples/credit/cds/plot_02_isda_hazard_bootstrap.py``)
+     - 00:00.107
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_quasi_monte_carlo_plot_04_owen_scrambling.py` (``../../examples/monte_carlo/quasi_monte_carlo/plot_04_owen_scrambling.py``)
+     - 00:00.106
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_consumption_plot_03_equity_premium_puzzle.py` (``../../examples/asset_pricing/consumption/plot_03_equity_premium_puzzle.py``)
+     - 00:00.105
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_portfolio_loss_plot_03_li_gaussian_copula.py` (``../../examples/credit/portfolio_loss/plot_03_li_gaussian_copula.py``)
+     - 00:00.104
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_05_schwartz_explicit.py` (``../../examples/pde_methods/schemes/plot_05_schwartz_explicit.py``)
+     - 00:00.103
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_structural_plot_04_distance_to_default.py` (``../../examples/credit/structural/plot_04_distance_to_default.py``)
+     - 00:00.102
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_structural_plot_01_merton_structural.py` (``../../examples/credit/structural/plot_01_merton_structural.py``)
+     - 00:00.102
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_03_bgm_caps_floors.py` (``../../examples/interest_rate_models/options/plot_03_bgm_caps_floors.py``)
+     - 00:00.102
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_02_laasonen_implicit.py` (``../../examples/pde_methods/schemes/plot_02_laasonen_implicit.py``)
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_mean_variance_plot_01_markowitz_frontier.py` (``../../examples/portfolio/mean_variance/plot_01_markowitz_frontier.py``)
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_01_kyle.py` (``../../examples/market_microstructure/information/plot_01_kyle.py``)
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_05_vpin.py` (``../../examples/market_microstructure/information/plot_05_vpin.py``)
+     - 00:00.099
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_var_plot_05_hybrid_var.py` (``../../examples/risk/var/plot_05_hybrid_var.py``)
+     - 00:00.099
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_growth_plot_02_merton_portfolio.py` (``../../examples/portfolio/growth/plot_02_merton_portfolio.py``)
+     - 00:00.098
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_risk_based_plot_03_risk_parity.py` (``../../examples/portfolio/risk_based/plot_03_risk_parity.py``)
+     - 00:00.097
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_var_plot_02_roy_safety_first.py` (``../../examples/risk/var/plot_02_roy_safety_first.py``)
+     - 00:00.096
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_quasi_monte_carlo_plot_03_sobol.py` (``../../examples/monte_carlo/quasi_monte_carlo/plot_03_sobol.py``)
+     - 00:00.096
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_portfolio_loss_plot_04_basel_irb.py` (``../../examples/credit/portfolio_loss/plot_04_basel_irb.py``)
+     - 00:00.095
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_volatility_plot_02_engle_arch.py` (``../../examples/time_series/volatility/plot_02_engle_arch.py``)
+     - 00:00.094
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_03_black_derman_toy.py` (``../../examples/interest_rate_models/curve_fitted/plot_03_black_derman_toy.py``)
+     - 00:00.093
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_extreme_value_plot_02_peaks_over_threshold.py` (``../../examples/risk/extreme_value/plot_02_peaks_over_threshold.py``)
+     - 00:00.093
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_binaries_plot_01_digital_options.py` (``../../examples/exotic_options/binaries/plot_01_digital_options.py``)
+     - 00:00.093
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_04_heat_equation_transform.py` (``../../examples/pde_methods/schemes/plot_04_heat_equation_transform.py``)
+     - 00:00.092
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_03_black_scholes.py` (``../../examples/options/closed_form/plot_03_black_scholes.py``)
+     - 00:00.092
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_quasi_monte_carlo_plot_01_halton.py` (``../../examples/monte_carlo/quasi_monte_carlo/plot_01_halton.py``)
+     - 00:00.092
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_capm_plot_02_jensen_alpha.py` (``../../examples/asset_pricing/capm/plot_02_jensen_alpha.py``)
+     - 00:00.090
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_implied_vol_plot_03_volatility_smile.py` (``../../examples/options/implied_vol/plot_03_volatility_smile.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_portfolio_loss_plot_01_vasicek_lhp.py` (``../../examples/credit/portfolio_loss/plot_01_vasicek_lhp.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_mean_variance_plot_02_tobin_tangency.py` (``../../examples/portfolio/mean_variance/plot_02_tobin_tangency.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_execution_plot_03_almgren_chriss.py` (``../../examples/market_microstructure/execution/plot_03_almgren_chriss.py``)
+     - 00:00.087
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_factors_plot_01_fama_macbeth.py` (``../../examples/asset_pricing/factors/plot_01_fama_macbeth.py``)
+     - 00:00.086
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_03_hasbrouck_var.py` (``../../examples/market_microstructure/information/plot_03_hasbrouck_var.py``)
+     - 00:00.086
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_compound_plot_03_chooser.py` (``../../examples/exotic_options/compound/plot_03_chooser.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_stylized_facts_plot_01_mandelbrot_fat_tails.py` (``../../examples/time_series/stylized_facts/plot_01_mandelbrot_fat_tails.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_variance_reduction_plot_02_importance_sampling.py` (``../../examples/monte_carlo/variance_reduction/plot_02_importance_sampling.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_structural_plot_03_leland.py` (``../../examples/credit/structural/plot_03_leland.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_amortization_plot_02_truth_in_lending_apr.py` (``../../examples/time_value/amortization/plot_02_truth_in_lending_apr.py``)
+     - 00:00.084
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_sdf_plot_01_harrison_kreps.py` (``../../examples/asset_pricing/sdf/plot_01_harrison_kreps.py``)
+     - 00:00.083
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_annuities_plot_01_de_witt_life_annuity.py` (``../../examples/time_value/annuities/plot_01_de_witt_life_annuity.py``)
+     - 00:00.083
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_copulas_plot_01_sklar_gaussian_copula.py` (``../../examples/risk/copulas/plot_01_sklar_gaussian_copula.py``)
+     - 00:00.082
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_dealers_plot_03_avellaneda_stoikov.py` (``../../examples/market_microstructure/dealers/plot_03_avellaneda_stoikov.py``)
+     - 00:00.082
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_linear_models_plot_02_box_jenkins_arma.py` (``../../examples/time_series/linear_models/plot_02_box_jenkins_arma.py``)
+     - 00:00.082
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_02_reiner_rubinstein.py` (``../../examples/exotic_options/barriers/plot_02_reiner_rubinstein.py``)
+     - 00:00.081
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_factors_plot_03_fama_french.py` (``../../examples/asset_pricing/factors/plot_03_fama_french.py``)
+     - 00:00.080
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_variance_reduction_plot_05_control_variates.py` (``../../examples/monte_carlo/variance_reduction/plot_05_control_variates.py``)
+     - 00:00.080
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_factors_plot_04_carhart_momentum.py` (``../../examples/asset_pricing/factors/plot_04_carhart_momentum.py``)
+     - 00:00.080
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_performance_plot_01_sharpe_ratio.py` (``../../examples/portfolio/performance/plot_01_sharpe_ratio.py``)
+     - 00:00.080
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_structural_plot_02_black_cox.py` (``../../examples/credit/structural/plot_02_black_cox.py``)
+     - 00:00.080
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_basics_plot_03_boyle_option_pricing.py` (``../../examples/monte_carlo/basics/plot_03_boyle_option_pricing.py``)
+     - 00:00.079
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_backtesting_plot_02_basel_traffic_light.py` (``../../examples/risk/backtesting/plot_02_basel_traffic_light.py``)
+     - 00:00.078
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_variance_reduction_plot_04_latin_hypercube.py` (``../../examples/monte_carlo/variance_reduction/plot_04_latin_hypercube.py``)
+     - 00:00.078
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_drawdowns_plot_01_calmar_drawdowns.py` (``../../examples/risk/drawdowns/plot_01_calmar_drawdowns.py``)
+     - 00:00.078
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_02_jamshidian_swaption.py` (``../../examples/interest_rate_models/options/plot_02_jamshidian_swaption.py``)
+     - 00:00.077
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_long_memory_plot_01_hurst_exponent.py` (``../../examples/time_series/long_memory/plot_01_hurst_exponent.py``)
+     - 00:00.077
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_04_black_swaption.py` (``../../examples/interest_rate_models/options/plot_04_black_swaption.py``)
+     - 00:00.075
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_multi_asset_plot_01_margrabe.py` (``../../examples/exotic_options/multi_asset/plot_01_margrabe.py``)
+     - 00:00.074
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_annuities_plot_03_price_sinking_fund.py` (``../../examples/time_value/annuities/plot_03_price_sinking_fund.py``)
+     - 00:00.074
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_linear_models_plot_01_yule_autoregression.py` (``../../examples/time_series/linear_models/plot_01_yule_autoregression.py``)
+     - 00:00.074
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_variance_reduction_plot_03_antithetic_variates.py` (``../../examples/monte_carlo/variance_reduction/plot_03_antithetic_variates.py``)
+     - 00:00.074
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_jumps_plot_05_kou.py` (``../../examples/stochastic_volatility/jumps/plot_05_kou.py``)
+     - 00:00.073
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_04_futures_convexity_adjustment.py` (``../../examples/interest_rate_models/curve_fitted/plot_04_futures_convexity_adjustment.py``)
+     - 00:00.072
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_var_plot_04_monte_carlo_var.py` (``../../examples/risk/var/plot_04_monte_carlo_var.py``)
+     - 00:00.072
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_01_macaulay_duration.py` (``../../examples/fixed_income/duration/plot_01_macaulay_duration.py``)
+     - 00:00.072
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_compound_plot_01_geske_compound.py` (``../../examples/exotic_options/compound/plot_01_geske_compound.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_01_demsetz_spreads.py` (``../../examples/market_microstructure/spreads/plot_01_demsetz_spreads.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_volatility_plot_05_gjr_garch.py` (``../../examples/time_series/volatility/plot_05_gjr_garch.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_volatility_plot_03_bollerslev_garch.py` (``../../examples/time_series/volatility/plot_03_bollerslev_garch.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_smile_plot_01_sabr.py` (``../../examples/stochastic_volatility/smile/plot_01_sabr.py``)
+     - 00:00.071
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_performance_plot_03_sortino_ratio.py` (``../../examples/portfolio/performance/plot_03_sortino_ratio.py``)
+     - 00:00.069
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_american_plot_03_penalty_method.py` (``../../examples/pde_methods/american/plot_03_penalty_method.py``)
+     - 00:00.068
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_accuracy_plot_01_richardson_extrapolation.py` (``../../examples/pde_methods/accuracy/plot_01_richardson_extrapolation.py``)
+     - 00:00.067
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_liquidity_plot_01_amihud.py` (``../../examples/market_microstructure/liquidity/plot_01_amihud.py``)
+     - 00:00.066
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_execution_plot_01_square_root_impact.py` (``../../examples/market_microstructure/execution/plot_01_square_root_impact.py``)
+     - 00:00.066
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_valuation_plot_04_shiller_excess_volatility.py` (``../../examples/asset_pricing/valuation/plot_04_shiller_excess_volatility.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_compound_plot_02_forward_start.py` (``../../examples/exotic_options/compound/plot_02_forward_start.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_multi_asset_plot_02_stulz_max_min.py` (``../../examples/exotic_options/multi_asset/plot_02_stulz_max_min.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_asian_plot_01_kemna_vorst.py` (``../../examples/exotic_options/asian/plot_01_kemna_vorst.py``)
+     - 00:00.065
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_variance_reduction_plot_01_neyman_stratification.py` (``../../examples/monte_carlo/variance_reduction/plot_01_neyman_stratification.py``)
+     - 00:00.064
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_present_value_plot_01_fibonacci_present_value.py` (``../../examples/time_value/present_value/plot_01_fibonacci_present_value.py``)
+     - 00:00.064
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_implied_vol_plot_04_brenner_subrahmanyam.py` (``../../examples/options/implied_vol/plot_04_brenner_subrahmanyam.py``)
+     - 00:00.064
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_annuities_plot_02_consol_perpetuity.py` (``../../examples/time_value/annuities/plot_02_consol_perpetuity.py``)
+     - 00:00.064
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_variance_reduction_plot_06_moment_matching.py` (``../../examples/monte_carlo/variance_reduction/plot_06_moment_matching.py``)
+     - 00:00.064
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_expected_shortfall_plot_02_euler_allocation.py` (``../../examples/risk/expected_shortfall/plot_02_euler_allocation.py``)
+     - 00:00.063
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_irr_plot_01_internal_rate_of_return.py` (``../../examples/time_value/irr/plot_01_internal_rate_of_return.py``)
+     - 00:00.062
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_05_ho_key_rate_durations.py` (``../../examples/fixed_income/duration/plot_05_ho_key_rate_durations.py``)
+     - 00:00.061
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_valuation_plot_03_gordon_growth.py` (``../../examples/asset_pricing/valuation/plot_03_gordon_growth.py``)
+     - 00:00.061
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_04_merton_bounds_and_dividends.py` (``../../examples/options/closed_form/plot_04_merton_bounds_and_dividends.py``)
+     - 00:00.061
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_var_plot_03_parametric_var.py` (``../../examples/risk/var/plot_03_parametric_var.py``)
+     - 00:00.061
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_06_svensson.py` (``../../examples/fixed_income/curves/plot_06_svensson.py``)
+     - 00:00.060
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_factors_plot_02_ross_apt.py` (``../../examples/asset_pricing/factors/plot_02_ross_apt.py``)
+     - 00:00.059
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_volatility_plot_01_parkinson_range.py` (``../../examples/time_series/volatility/plot_01_parkinson_range.py``)
+     - 00:00.059
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_present_value_plot_02_fisher_real_rate.py` (``../../examples/time_value/present_value/plot_02_fisher_real_rate.py``)
+     - 00:00.058
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_04_corwin_schultz.py` (``../../examples/market_microstructure/spreads/plot_04_corwin_schultz.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_stability_plot_03_rannacher_smoothing.py` (``../../examples/pde_methods/stability/plot_03_rannacher_smoothing.py``)
+     - 00:00.057
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_valuation_plot_01_williams_ddm.py` (``../../examples/asset_pricing/valuation/plot_01_williams_ddm.py``)
+     - 00:00.056
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_compounding_plot_02_witt_compound_interest_tables.py` (``../../examples/time_value/compounding/plot_02_witt_compound_interest_tables.py``)
+     - 00:00.056
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_scoring_plot_01_altman_z_score.py` (``../../examples/credit/scoring/plot_01_altman_z_score.py``)
+     - 00:00.055
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_capm_plot_03_zero_beta.py` (``../../examples/asset_pricing/capm/plot_03_zero_beta.py``)
+     - 00:00.055
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_volatility_plot_06_riskmetrics_ewma.py` (``../../examples/time_series/volatility/plot_06_riskmetrics_ewma.py``)
+     - 00:00.054
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_implied_vol_plot_02_breeden_litzenberger.py` (``../../examples/options/implied_vol/plot_02_breeden_litzenberger.py``)
+     - 00:00.054
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_valuation_plot_02_modigliani_miller.py` (``../../examples/asset_pricing/valuation/plot_02_modigliani_miller.py``)
+     - 00:00.053
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_04_convexity.py` (``../../examples/fixed_income/duration/plot_04_convexity.py``)
+     - 00:00.051
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_implied_vol_plot_01_implied_volatility.py` (``../../examples/options/implied_vol/plot_01_implied_volatility.py``)
+     - 00:00.048
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_sdf_plot_02_hansen_jagannathan.py` (``../../examples/asset_pricing/sdf/plot_02_hansen_jagannathan.py``)
+     - 00:00.048
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_05_litterman_scheinkman_pca.py` (``../../examples/fixed_income/curves/plot_05_litterman_scheinkman_pca.py``)
+     - 00:00.047
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_day_counts_plot_02_isda_actual_actual.py` (``../../examples/time_value/day_counts/plot_02_isda_actual_actual.py``)
+     - 00:00.046
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_05_black76.py` (``../../examples/options/closed_form/plot_05_black76.py``)
+     - 00:00.045
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_multi_asset_plot_03_quanto.py` (``../../examples/exotic_options/multi_asset/plot_03_quanto.py``)
+     - 00:00.043
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_02_mcculloch_spline.py` (``../../examples/fixed_income/curves/plot_02_mcculloch_spline.py``)
+     - 00:00.043
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_06_garman_kohlhagen.py` (``../../examples/options/closed_form/plot_06_garman_kohlhagen.py``)
+     - 00:00.042
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_02_stoll_put_call_parity.py` (``../../examples/options/closed_form/plot_02_stoll_put_call_parity.py``)
+     - 00:00.042
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_risk_var_plot_01_cornish_fisher.py` (``../../examples/risk/var/plot_01_cornish_fisher.py``)
+     - 00:00.040
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_consumption_plot_02_breeden_ccapm.py` (``../../examples/asset_pricing/consumption/plot_02_breeden_ccapm.py``)
+     - 00:00.040
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_immunization_plot_02_fong_vasicek_m_squared.py` (``../../examples/fixed_income/immunization/plot_02_fong_vasicek_m_squared.py``)
+     - 00:00.038
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_swaps_plot_02_interest_rate_swap.py` (``../../examples/fixed_income/swaps/plot_02_interest_rate_swap.py``)
+     - 00:00.035
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_portfolio_mean_variance_plot_03_merton_analytic_frontier.py` (``../../examples/portfolio/mean_variance/plot_03_merton_analytic_frontier.py``)
+     - 00:00.035
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_bonds_plot_02_strips_zero_coupon.py` (``../../examples/fixed_income/bonds/plot_02_strips_zero_coupon.py``)
+     - 00:00.035
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_01_lutz_forward_rates.py` (``../../examples/fixed_income/curves/plot_01_lutz_forward_rates.py``)
+     - 00:00.034
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_compounding_plot_01_pacioli_rule_of_72.py` (``../../examples/time_value/compounding/plot_01_pacioli_rule_of_72.py``)
+     - 00:00.031
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_irr_plot_03_baldwin_mirr.py` (``../../examples/time_value/irr/plot_03_baldwin_mirr.py``)
+     - 00:00.031
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_present_value_plot_03_fisher_net_present_value.py` (``../../examples/time_value/present_value/plot_03_fisher_net_present_value.py``)
+     - 00:00.030
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_day_counts_plot_01_thirty_360_accrued_interest.py` (``../../examples/time_value/day_counts/plot_01_thirty_360_accrued_interest.py``)
+     - 00:00.030
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_immunization_plot_01_redington_immunization.py` (``../../examples/fixed_income/immunization/plot_01_redington_immunization.py``)
+     - 00:00.029
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_03_lee_ready.py` (``../../examples/market_microstructure/spreads/plot_03_lee_ready.py``)
+     - 00:00.028
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_03_bootstrapping.py` (``../../examples/fixed_income/curves/plot_03_bootstrapping.py``)
+     - 00:00.027
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_03_fisher_weil_duration.py` (``../../examples/fixed_income/duration/plot_03_fisher_weil_duration.py``)
+     - 00:00.027
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_value_irr_plot_02_lorie_savage_multiple_irr.py` (``../../examples/time_value/irr/plot_02_lorie_savage_multiple_irr.py``)
+     - 00:00.027
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_02_hicks_modified_duration.py` (``../../examples/fixed_income/duration/plot_02_hicks_modified_duration.py``)
+     - 00:00.024
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_swaps_plot_01_ibm_world_bank_currency_swap.py` (``../../examples/fixed_income/swaps/plot_01_ibm_world_bank_currency_swap.py``)
+     - 00:00.022
+     - 0.0

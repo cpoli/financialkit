@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Asset Pricing &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/asset_pricing_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Portfolio Theory" href="portfolio_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in PDE Methods" href="pde_methods_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Asset Pricing</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-asset-pricing">
+<h1>Breakthroughs in Asset Pricing<a class="headerlink" href="#breakthroughs-in-asset-pricing" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/asset_pricing.html"><span class="doc">financialkit.asset_pricing hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/asset_pricing/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/asset_pricing.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“Asset pricing theory all stems from one simple concept, derived in
+the first page of the first chapter of this book: price equals
+expected discounted payoff.”
+– John H. Cochrane, <em>Asset Pricing</em> (2001)</p>
+</div></blockquote>
+<p>What should an asset be worth, and why do some assets earn more than
+others? The first answers were accounting ones: a share is worth the
+dividends it will pay, discounted. Markowitz’s portfolio theory turned
+the question into one about risk, and the capital asset pricing model
+answered it with a single number, beta. Three decades of tests then
+found the CAPM’s line too flat and its anomalies too many, and the field
+moved to multifactor models built from the data itself. In parallel,
+economists rebuilt the theory from the investor’s consumption and the
+absence of arbitrage, arriving at one equation, <span class="math notranslate nohighlight">\(p = E[m x]\)</span>,
+whose discount factor <span class="math notranslate nohighlight">\(m\)</span> every model specifies differently, and
+at puzzles that no simple specification of <span class="math notranslate nohighlight">\(m\)</span> resolves. This
+chronology traces the ideas behind <a class="reference internal" href="../api/asset_pricing.html#module-financialkit.asset_pricing" title="financialkit.asset_pricing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.asset_pricing</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#williams-s-dividend-discount-model" id="id1">1938 – Williams’s Dividend Discount Model</a></p></li>
+<li><p><a class="reference internal" href="#modigliani-and-miller" id="id2">1958 – Modigliani and Miller</a></p></li>
+<li><p><a class="reference internal" href="#gordon-growth" id="id3">1959 – Gordon Growth</a></p></li>
+<li><p><a class="reference internal" href="#sharpe-s-capital-asset-pricing-model" id="id4">1964 – Sharpe’s Capital Asset Pricing Model</a></p></li>
+<li><p><a class="reference internal" href="#jensen-s-alpha" id="id5">1968 – Jensen’s Alpha</a></p></li>
+<li><p><a class="reference internal" href="#black-s-zero-beta-capm" id="id6">1972 – Black’s Zero-Beta CAPM</a></p></li>
+<li><p><a class="reference internal" href="#fama-macbeth-regressions" id="id7">1973 – Fama-MacBeth Regressions</a></p></li>
+<li><p><a class="reference internal" href="#ross-s-arbitrage-pricing-theory" id="id8">1976 – Ross’s Arbitrage Pricing Theory</a></p></li>
+<li><p><a class="reference internal" href="#lucas-s-tree" id="id9">1978 – Lucas’s Tree</a></p></li>
+<li><p><a class="reference internal" href="#harrison-and-kreps-the-stochastic-discount-factor" id="id10">1979 – Harrison and Kreps: the Stochastic Discount Factor</a></p></li>
+<li><p><a class="reference internal" href="#breeden-s-consumption-capm" id="id11">1979 – Breeden’s Consumption CAPM</a></p></li>
+<li><p><a class="reference internal" href="#shiller-s-excess-volatility" id="id12">1981 – Shiller’s Excess Volatility</a></p></li>
+<li><p><a class="reference internal" href="#mehra-and-prescott-s-equity-premium-puzzle" id="id13">1985 – Mehra and Prescott’s Equity Premium Puzzle</a></p></li>
+<li><p><a class="reference internal" href="#the-gibbons-ross-shanken-test" id="id14">1989 – The Gibbons-Ross-Shanken Test</a></p></li>
+<li><p><a class="reference internal" href="#the-hansen-jagannathan-bound" id="id15">1991 – The Hansen-Jagannathan Bound</a></p></li>
+<li><p><a class="reference internal" href="#the-fama-french-three-factors" id="id16">1993 – The Fama-French Three Factors</a></p></li>
+<li><p><a class="reference internal" href="#carhart-s-momentum-factor" id="id17">1997 – Carhart’s Momentum Factor</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id18">See Also</a></p></li>
+</ul>
+</nav>
+<section id="williams-s-dividend-discount-model">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1938 – Williams’s Dividend Discount Model</a><a class="headerlink" href="#williams-s-dividend-discount-model" title="Link to this heading">#</a></h2>
+<p>John Burr Williams’s Harvard dissertation, published as <em>The Theory of
+Investment Value</em>, defined a stock’s investment value as the present
+value of all its future dividends, with earnings mattering only through
+the dividends they fund. Williams built explicit forecasts of growth,
+payout and terminal value, and so wrote the first systematic manual of
+fundamental valuation, a decade before Graham and Dodd’s methods were
+codified as security analysis.</p>
+<div class="math notranslate nohighlight">
+\[V_0 = \sum_{t=1}^{\infty} \frac{D_t}{(1 + r)^t}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.valuation.dividend_discount_value()</span></code>
+discounts explicit dividend forecasts and an optional Gordon terminal
+value. The example shows how slowly the partial sums converge and how
+much of the value lies beyond the forecast horizon.</p>
+<p><em>References:</em> J. B. Williams, <em>The Theory of Investment Value</em>, Harvard
+University Press (1938).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John Burr Williams (1938) defined the investment value of a stock as the present value of all the dividends it will ever pay,"><img alt="" src="../_images/sphx_glr_plot_01_williams_ddm_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/valuation/plot_01_williams_ddm.html"><span class="doc">Williams’s dividend discount model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Williams's dividend discount model</div>
+</div></div></section>
+<section id="modigliani-and-miller">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1958 – Modigliani and Miller</a><a class="headerlink" href="#modigliani-and-miller" title="Link to this heading">#</a></h2>
+<p>Franco Modigliani and Merton Miller argued by arbitrage that, in a
+frictionless market, two firms with the same operating cash flows must
+have the same total value however they are financed, since investors can
+lever or unlever on their own account (Proposition I). Debt is cheaper
+than equity, but borrowing makes the remaining equity riskier, and its
+expected return rises just enough to keep the average cost of capital
+constant (Proposition II). Their 1963 correction showed that the tax
+deductibility of interest adds a tax shield worth <span class="math notranslate nohighlight">\(t D\)</span>. The
+arbitrage argument itself became the method of modern finance.</p>
+<div class="math notranslate nohighlight">
+\[r_E = r_A + (r_A - r_D)(1 - t)\frac{D}{E}, \qquad V_L = V_U + t D\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.valuation.levered_cost_of_equity()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">wacc()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">levered_firm_value()</span></code>.
+The example plots both propositions with and without corporate tax.</p>
+<p><em>References:</em> F. Modigliani and M. H. Miller, “The Cost of Capital,
+Corporation Finance and the Theory of Investment,” <em>Am. Econ. Rev.</em> 48
+(1958) 261-297; “Corporate Income Taxes and the Cost of Capital: A
+Correction,” <em>Am. Econ. Rev.</em> 53 (1963) 433-443.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Franco Modigliani and Merton Miller (1958) showed that, without taxes or frictions, a firm&#x27;s value does not depend on how it is financed (Proposition I). Debt is cheaper than equity, but borrowing makes the remaining equity riskier, and its required return rises exactly enough to keep the weighted average cost of capital constant (Proposition II):"><img alt="" src="../_images/sphx_glr_plot_02_modigliani_miller_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/valuation/plot_02_modigliani_miller.html"><span class="doc">Modigliani-Miller</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Modigliani-Miller</div>
+</div></div></section>
+<section id="gordon-growth">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1959 – Gordon Growth</a><a class="headerlink" href="#gordon-growth" title="Link to this heading">#</a></h2>
+<p>Myron Gordon summed Williams’s series for dividends that grow at a
+constant rate, giving the most widely used valuation formula in
+finance, and tied the growth rate to the firm’s investment: a firm that
+retains a fraction <span class="math notranslate nohighlight">\(b\)</span> of its earnings and earns a return
+<span class="math notranslate nohighlight">\(ROE\)</span> on them grows at <span class="math notranslate nohighlight">\(b \cdot ROE\)</span>. Inverted, the formula
+gives the market’s cost of equity as the dividend yield plus growth,
+and it makes plain that retention creates value only when
+<span class="math notranslate nohighlight">\(ROE\)</span> exceeds <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[P_0 = \frac{D_1}{r - g}, \qquad g = b \cdot ROE\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.valuation.gordon_growth_price()</span></code>
+calls <a class="reference internal" href="../api/time_value.html#financialkit.time_value.perpetuity_present_value" title="financialkit.time_value.perpetuity_present_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_value.perpetuity_present_value()</span></code></a>, with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">implied_cost_of_equity()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">sustainable_growth()</span></code>.
+The example shows the price’s explosion as <span class="math notranslate nohighlight">\(g \to r\)</span> and the value
+of retention at different returns on equity.</p>
+<p><em>References:</em> M. J. Gordon, “Dividends, Earnings, and Stock Prices,”
+<em>Rev. Econ. Statist.</em> 41 (1959) 99-105.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Myron Gordon (1959) summed Williams&#x27;s series for dividends that grow at a constant rate, P_0 = D_1 / (r - g), and connected the growth rate to the firm&#x27;s investment: a firm that retains a share b of its earnings and earns ROE on them grows at g = b \cdot ROE. Read backwards, the model gives the market&#x27;s cost of equity as the dividend yield plus growth."><img alt="" src="../_images/sphx_glr_plot_03_gordon_growth_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/valuation/plot_03_gordon_growth.html"><span class="doc">Gordon growth</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Gordon growth</div>
+</div></div></section>
+<section id="sharpe-s-capital-asset-pricing-model">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1964 – Sharpe’s Capital Asset Pricing Model</a><a class="headerlink" href="#sharpe-s-capital-asset-pricing-model" title="Link to this heading">#</a></h2>
+<p>William Sharpe, and independently John Lintner (1965) and Jan Mossin
+(1966), asked what prices must be if every investor follows Markowitz.
+With a riskless asset, all investors hold the same tangency portfolio,
+which in equilibrium must be the market. The tangency condition prices
+every asset by its covariance with the market alone: risk that can be
+diversified away earns nothing. Sharpe shared the 1990 Nobel prize for
+it.</p>
+<div class="math notranslate nohighlight">
+\[E[r_i] = r_f + \beta_i\,(E[r_m] - r_f), \qquad \beta_i = \frac{\mathrm{Cov}(r_i, r_m)}{\sigma^2_m}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.capm.capm_equilibrium()</span></code>
+finds the market as the tangency portfolio
+(<a class="reference internal" href="../api/risk.html#financialkit.risk.safety_first_portfolio" title="financialkit.risk.safety_first_portfolio"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.risk.safety_first_portfolio()</span></code></a>) and its betas;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">capm_expected_return()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">estimate_beta()</span></code>. The
+example puts five sectors on the security market line and contrasts it
+with total volatility.</p>
+<p><em>References:</em> W. F. Sharpe, “Capital Asset Prices: A Theory of Market
+Equilibrium under Conditions of Risk,” <em>J. Finance</em> 19 (1964) 425-442;
+J. Lintner, <em>Rev. Econ. Statist.</em> 47 (1965) 13-37.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="William Sharpe (1964), with Lintner and Mossin, asked what prices must be if every investor follows Markowitz. With a riskless asset everyone holds the same tangency portfolio, so in equilibrium it is the market portfolio, and each asset&#x27;s expected return is set by its beta on the market alone:"><img alt="" src="../_images/sphx_glr_plot_01_security_market_line_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/capm/plot_01_security_market_line.html"><span class="doc">Sharpe’s CAPM and the security market line</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sharpe's CAPM and the security market line</div>
+</div></div></section>
+<section id="jensen-s-alpha">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1968 – Jensen’s Alpha</a><a class="headerlink" href="#jensen-s-alpha" title="Link to this heading">#</a></h2>
+<p>Michael Jensen turned the CAPM into a performance measure: regress a
+fund’s excess return on the market’s, and the intercept is the return
+earned beyond what its market risk justifies. Applied to 115 mutual
+funds from 1945 to 1964, it showed that the average fund
+underperformed by about the size of its fees, and that no more funds
+beat the market than chance would allow. The result fed directly into
+the efficient-markets view and, eventually, the index fund.</p>
+<div class="math notranslate nohighlight">
+\[r_{pt} - r_{ft} = \alpha_p + \beta_p (r_{mt} - r_{ft}) + \varepsilon_{pt}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.capm.jensen_alpha()</span></code>,
+the one-factor case of
+<code class="xref py py-func docutils literal notranslate"><span class="pre">time_series_regression()</span></code>.
+The example simulates 115 funds, a handful of them skilled, and reads
+their alphas and t-statistics.</p>
+<p><em>References:</em> M. C. Jensen, “The Performance of Mutual Funds in the
+Period 1945-1964,” <em>J. Finance</em> 23 (1968) 389-416.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Michael Jensen (1968) measured a mutual fund&#x27;s skill as the intercept of its excess return regressed on the market&#x27;s,"><img alt="" src="../_images/sphx_glr_plot_02_jensen_alpha_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/capm/plot_02_jensen_alpha.html"><span class="doc">Jensen’s alpha</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Jensen's alpha</div>
+</div></div></section>
+<section id="black-s-zero-beta-capm">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1972 – Black’s Zero-Beta CAPM</a><a class="headerlink" href="#black-s-zero-beta-capm" title="Link to this heading">#</a></h2>
+<p>Fischer Black removed the CAPM’s least realistic assumption, unlimited
+borrowing at the riskless rate. Every portfolio on the minimum-variance
+frontier still prices all assets linearly in their betas on it, with
+the expected return of a zero-beta portfolio in place of the riskless
+rate. Because that return exceeds the lending rate, the security market
+line is flatter than Sharpe’s, which is what Black, Jensen and Scholes
+found in the data the same year.</p>
+<div class="math notranslate nohighlight">
+\[E[r_i] = E[r_z] + \beta_{im}\,(E[r_m] - E[r_z]), \qquad \mathrm{Cov}(r_z, r_m) = 0\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.capm.zero_beta_capm()</span></code>
+finds the frontier portfolio with a given zero-beta rate and the
+minimum-variance portfolio uncorrelated with it. The example draws both
+on the frontier and compares the two security market lines.</p>
+<p><em>References:</em> F. Black, “Capital Market Equilibrium with Restricted
+Borrowing,” <em>J. Business</em> 45 (1972) 444-455; F. Black, M. C. Jensen and
+M. Scholes, in <em>Studies in the Theory of Capital Markets</em>, Praeger
+(1972).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Sharpe&#x27;s CAPM assumes unlimited riskless borrowing. Fischer Black (1972) dropped it: every frontier portfolio m still prices all assets linearly, with the expected return of z, the minimum-variance portfolio uncorrelated with m, in place of the riskless rate,"><img alt="" src="../_images/sphx_glr_plot_03_zero_beta_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/capm/plot_03_zero_beta.html"><span class="doc">Black’s zero-beta CAPM</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black's zero-beta CAPM</div>
+</div></div></section>
+<section id="fama-macbeth-regressions">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1973 – Fama-MacBeth Regressions</a><a class="headerlink" href="#fama-macbeth-regressions" title="Link to this heading">#</a></h2>
+<p>Eugene Fama and James MacBeth tested the CAPM with a cross-sectional
+regression of returns on betas each month, then averaged the slopes
+over time. The standard errors come from the time series of slopes,
+which handles the cross-correlation of returns without modelling it.
+Over 1935-1968 they found a positive price of beta, and no reward for
+beta squared or for idiosyncratic risk. The two-pass procedure is still
+the standard way to estimate factor risk premia.</p>
+<div class="math notranslate nohighlight">
+\[r^e_{it} = \gamma_{0t} + \gamma_{1t}\beta_i + u_{it}, \qquad \hat\lambda = \frac1T\sum_t \hat\gamma_t, \quad \mathrm{se}(\hat\lambda) = \frac{\sigma(\hat\gamma_t)}{\sqrt T}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.factors.fama_macbeth()</span></code>
+runs both passes, or the second alone on given characteristics. The
+example recovers a market premium and repeats Fama and MacBeth’s test
+with beta squared and residual risk.</p>
+<p><em>References:</em> E. F. Fama and J. D. MacBeth, “Risk, Return, and
+Equilibrium: Empirical Tests,” <em>J. Polit. Econ.</em> 81 (1973) 607-636.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Eugene Fama and James MacBeth (1973) estimated risk premia with a cross-sectional regression each month,"><img alt="" src="../_images/sphx_glr_plot_01_fama_macbeth_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/factors/plot_01_fama_macbeth.html"><span class="doc">Fama-MacBeth regressions</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fama-MacBeth regressions</div>
+</div></div></section>
+<section id="ross-s-arbitrage-pricing-theory">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1976 – Ross’s Arbitrage Pricing Theory</a><a class="headerlink" href="#ross-s-arbitrage-pricing-theory" title="Link to this heading">#</a></h2>
+<p>Stephen Ross derived linear pricing without assuming an equilibrium or
+mean-variance investors. If returns are driven by a few factors plus
+diversifiable noise, any asset off the plane
+<span class="math notranslate nohighlight">\(E[r_i] = r_f + \beta_i'\lambda\)</span> can be combined with others into
+a portfolio with no cost and no factor exposure that still earns a
+positive expected return. In a large market its risk diversifies away,
+so the pricing errors must be small for all but a few assets. The APT
+justified using several factors at once, and named none of them.</p>
+<div class="math notranslate nohighlight">
+\[E[r_i] = r_f + \sum_{k=1}^K \beta_{ik}\lambda_k\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.factors.apt_expected_returns()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">apt_arbitrage_portfolio()</span></code>,
+which builds the zero-cost, zero-beta portfolio from the residuals of
+expected returns on the betas. The example shows its Sharpe ratio
+growing without bound when pricing errors persist across many assets.</p>
+<p><em>References:</em> S. A. Ross, “The Arbitrage Theory of Capital Asset
+Pricing,” <em>J. Econ. Theory</em> 13 (1976) 341-360.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Stephen Ross (1976) derived linear pricing without an equilibrium model. If returns follow a factor model r_i = E[r_i] + \beta_i&#x27; f + \varepsilon_i with diversifiable \varepsilon_i, then any asset off the plane E[r_i] = r_f + \beta_i&#x27;\lambda can be combined with others into a portfolio with no cost and no factor risk that still earns a positive expected return. In a large market its idiosyncratic risk diversifies away, and the portfolio becomes an arbitrage. The pricing errors therefore have to be small for all but finitely many assets."><img alt="" src="../_images/sphx_glr_plot_02_ross_apt_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/factors/plot_02_ross_apt.html"><span class="doc">Ross’s arbitrage pricing theory</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ross's arbitrage pricing theory</div>
+</div></div></section>
+<section id="lucas-s-tree">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1978 – Lucas’s Tree</a><a class="headerlink" href="#lucas-s-tree" title="Link to this heading">#</a></h2>
+<p>Robert Lucas priced assets in an exchange economy: a representative
+agent with power utility owns a tree whose fruit is the only
+consumption good, and prices must make the agent content to hold it.
+The Euler equation that results prices every asset with the discount
+factor <span class="math notranslate nohighlight">\(\beta (C_{t+1}/C_t)^{-\gamma}\)</span>, and showed that a
+fully rational price can follow a random walk because the dividends it
+capitalises do. The model became the laboratory of consumption-based
+asset pricing.</p>
+<div class="math notranslate nohighlight">
+\[P_t = E_t\left[\beta \left(\frac{C_{t+1}}{C_t}\right)^{-\gamma} (P_{t+1} + D_{t+1})\right]\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/asset_pricing.html#financialkit.asset_pricing.LucasTree" title="financialkit.asset_pricing.systems.consumption.LucasTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.consumption.LucasTree</span></code></a>
+prices the tree and the riskless bond in closed form for lognormal
+growth and simulates the economy. The example shows the constant
+price-dividend ratio and how rates and the premium vary with risk
+aversion.</p>
+<p><em>References:</em> R. E. Lucas Jr., “Asset Prices in an Exchange Economy,”
+<em>Econometrica</em> 46 (1978) 1429-1445.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Robert Lucas (1978) priced assets in the simplest economy that has them: a representative agent with power utility owns a tree whose fruit is the only consumption good. Prices must make the agent content to hold the tree and eat its dividend, which gives the Euler equation"><img alt="" src="../_images/sphx_glr_plot_01_lucas_tree_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/consumption/plot_01_lucas_tree.html"><span class="doc">Lucas’s tree</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lucas's tree</div>
+</div></div></section>
+<section id="harrison-and-kreps-the-stochastic-discount-factor">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1979 – Harrison and Kreps: the Stochastic Discount Factor</a><a class="headerlink" href="#harrison-and-kreps-the-stochastic-discount-factor" title="Link to this heading">#</a></h2>
+<p>Michael Harrison and David Kreps proved that a market is free of
+arbitrage exactly when there is a strictly positive linear pricing rule
+consistent with every traded price: state prices, a positive discount
+factor, or an equivalent martingale measure, three forms of one object.
+Prices are unique when the market is complete; otherwise a new claim
+has an interval of arbitrage-free prices. This fundamental theorem made
+risk-neutral pricing rigorous and gave all of asset pricing the form
+<span class="math notranslate nohighlight">\(p = E[m x]\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[p_j = \sum_s q_s x_{sj} = E[m\,x_j], \qquad m_s = \frac{q_s}{\pi_s} &gt; 0\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/asset_pricing.html#financialkit.asset_pricing.FiniteStateMarket" title="financialkit.asset_pricing.systems.sdf.FiniteStateMarket"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.sdf.FiniteStateMarket</span></code></a>
+finds positive state prices or an arbitrage portfolio with
+<code class="docutils literal notranslate"><span class="pre">scipy.optimize.linprog</span></code>, and bounds the price of a new claim. The
+example prices calls in complete binomial and incomplete trinomial
+markets and exploits a mispriced stock.</p>
+<p><em>References:</em> J. M. Harrison and D. M. Kreps, “Martingales and
+Arbitrage in Multiperiod Securities Markets,” <em>J. Econ. Theory</em> 20
+(1979) 381-408.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Michael Harrison and David Kreps (1979) proved the fundamental theorem of asset pricing: a market has no arbitrage if and only if some strictly positive linear rule prices every traded payoff. With finitely many states it is a vector of state prices q_s &gt; 0 with p = X&#x27;q; divided by the physical probabilities it is the stochastic discount factor m_s = q_s / \pi_s, so that p = E[m x]; normalised, it is the risk-neutral measure. In a complete market the state prices are unique. In an incomplete one, a new claim has an interval of arbitrage-free prices."><img alt="" src="../_images/sphx_glr_plot_01_harrison_kreps_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/sdf/plot_01_harrison_kreps.html"><span class="doc">Harrison-Kreps: state prices and the stochastic discount factor</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Harrison-Kreps: state prices and the stochastic discount factor</div>
+</div></div></section>
+<section id="breeden-s-consumption-capm">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1979 – Breeden’s Consumption CAPM</a><a class="headerlink" href="#breeden-s-consumption-capm" title="Link to this heading">#</a></h2>
+<p>Merton’s intertemporal CAPM priced assets with one beta for every state
+variable that moves investment opportunities. Douglas Breeden showed
+that all of them collapse into a single beta on aggregate consumption:
+optimal consumption already responds to every state variable, so an
+asset’s premium is its covariance with consumption growth times risk
+aversion. Assets that pay off when consumption is low are insurance and
+earn less.</p>
+<div class="math notranslate nohighlight">
+\[E[R_i] - R_f \approx \gamma\,\mathrm{Cov}(R_i, \Delta c) = \gamma\,\beta_{i,c}\,\sigma_c^2\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.consumption.ccapm_expected_excess_return()</span></code>,
+with consumption betas from <code class="xref py py-func docutils literal notranslate"><span class="pre">estimate_beta()</span></code>.
+The example estimates the price of consumption risk from a
+cross-section of assets and the implied risk aversion.</p>
+<p><em>References:</em> D. T. Breeden, “An Intertemporal Asset Pricing Model with
+Stochastic Consumption and Investment Opportunities,” <em>J. Financ. Econ.</em>
+7 (1979) 265-296.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Merton&#x27;s intertemporal CAPM needs a beta for every state variable that shifts investment opportunities. Douglas Breeden (1979) showed that they all collapse into one: since optimal consumption already responds to every state variable, an asset&#x27;s risk premium is proportional to its covariance with aggregate consumption growth,"><img alt="" src="../_images/sphx_glr_plot_02_breeden_ccapm_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/consumption/plot_02_breeden_ccapm.html"><span class="doc">Breeden’s consumption CAPM</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Breeden's consumption CAPM</div>
+</div></div></section>
+<section id="shiller-s-excess-volatility">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">1981 – Shiller’s Excess Volatility</a><a class="headerlink" href="#shiller-s-excess-volatility" title="Link to this heading">#</a></h2>
+<p>If prices are rational forecasts of discounted dividends, the price
+plus an unforecastable error equals the discounted value of the
+dividends actually paid. A forecast cannot vary more than what it
+forecasts, so prices must be less volatile than this ex-post rational
+price. Robert Shiller found US stock prices five to thirteen times too
+volatile, launching the debate over excess volatility that led to his
+2013 Nobel prize and to the study of time-varying discount rates.</p>
+<div class="math notranslate nohighlight">
+\[p^*_t = \sum_{k \ge 1} \frac{D_{t+k}}{(1 + r)^k}, \qquad p_t = E_t[p^*_t] \;\Rightarrow\; \sigma(p) \le \sigma(p^*)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.valuation.ex_post_rational_price()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">variance_bound()</span></code> and
+the AR(1) rational price
+<code class="xref py py-func docutils literal notranslate"><span class="pre">ar1_dividend_price()</span></code>.
+The example shows a rational price respecting the bound and an
+overreacting one violating it.</p>
+<p><em>References:</em> R. J. Shiller, “Do Stock Prices Move Too Much to be
+Justified by Subsequent Changes in Dividends?” <em>Am. Econ. Rev.</em> 71
+(1981) 421-436.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="If a price is the rational forecast of discounted future dividends, p_t = E_t[p^_t], then the ex-post rational price p^_t computed from the dividends actually paid equals the price plus an unforecastable error. An optimal forecast varies less than the thing it forecasts, so \sigma(p) \le \sigma(p^*). Robert Shiller (1981) found US stock prices five to thirteen times too volatile for this bound."><img alt="" src="../_images/sphx_glr_plot_04_shiller_excess_volatility_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/valuation/plot_04_shiller_excess_volatility.html"><span class="doc">Shiller’s excess volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Shiller's excess volatility</div>
+</div></div></section>
+<section id="mehra-and-prescott-s-equity-premium-puzzle">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">1985 – Mehra and Prescott’s Equity Premium Puzzle</a><a class="headerlink" href="#mehra-and-prescott-s-equity-premium-puzzle" title="Link to this heading">#</a></h2>
+<p>Rajnish Mehra and Edward Prescott calibrated a two-state Markov version
+of Lucas’s economy to US consumption from 1889 to 1978 and asked how
+large an equity premium it could produce. With risk aversion up to ten
+and a riskless rate below four percent, the answer was 0.35 percent,
+against 6.18 percent in the data. Consumption is too smooth for
+stocks to be that risky to a power-utility investor. Habit formation,
+recursive utility, rare disasters and long-run risks are all attempts
+to resolve the puzzle.</p>
+<div class="math notranslate nohighlight">
+\[w_i = \beta \sum_j \phi_{ij} \lambda_j^{1-\gamma} (w_j + 1), \qquad R_{f,i} = \Big(\beta \sum_j \phi_{ij} \lambda_j^{-\gamma}\Big)^{-1}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/asset_pricing.html#financialkit.asset_pricing.MehraPrescott" title="financialkit.asset_pricing.systems.consumption.MehraPrescott"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.consumption.MehraPrescott</span></code></a>
+solves the price-dividend ratios and moments of the economy, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">implied_risk_aversion()</span></code>
+gives the risk aversion a premium requires. The example maps the
+admissible region of riskless rates and premia against the data.</p>
+<p><em>References:</em> R. Mehra and E. C. Prescott, “The Equity Premium: A
+Puzzle,” <em>J. Monet. Econ.</em> 15 (1985) 145-161.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Rajnish Mehra and Edward Prescott (1985) calibrated a two-state version of Lucas&#x27;s economy to US consumption growth from 1889 to 1978 (mean 1.8%, standard deviation 3.6%, autocorrelation -0.14). Over the same period stocks earned 6.98% a year and short-term bills 0.80%: a premium of 6.18%. Searching over every time preference \beta &lt; 1 and risk aversion \gamma \le 10, they could produce a premium of at most 0.35% while keeping the riskless rate below 4%. Consumption is simply too smooth for stocks to be that risky to a power-utility agent."><img alt="" src="../_images/sphx_glr_plot_03_equity_premium_puzzle_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/consumption/plot_03_equity_premium_puzzle.html"><span class="doc">The equity premium puzzle</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The equity premium puzzle</div>
+</div></div></section>
+<section id="the-gibbons-ross-shanken-test">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">1989 – The Gibbons-Ross-Shanken Test</a><a class="headerlink" href="#the-gibbons-ross-shanken-test" title="Link to this heading">#</a></h2>
+<p>Testing the CAPM means asking whether the market portfolio is
+mean-variance efficient, or equivalently whether the time-series alphas
+of all test assets are jointly zero. Michael Gibbons, Stephen Ross and
+Jay Shanken gave the exact finite-sample F-distribution of that test
+under normal errors, and showed that it measures how much the
+tangency portfolio’s squared Sharpe ratio improves when the test assets
+join the factors. It remains the standard test of any traded factor
+model.</p>
+<div class="math notranslate nohighlight">
+\[\frac{T - N - K}{N}\,\frac{\hat\alpha'\hat\Sigma^{-1}\hat\alpha}{1 + \bar f'\hat\Omega^{-1}\bar f} \sim F_{N,\,T-N-K}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.capm.grs_test()</span></code>.
+The example checks the test’s size against the F-distribution and
+traces its power against mispricing.</p>
+<p><em>References:</em> M. R. Gibbons, S. A. Ross and J. Shanken, “A Test of the
+Efficiency of a Given Portfolio,” <em>Econometrica</em> 57 (1989) 1121-1152.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Testing the CAPM means asking whether the market portfolio is mean-variance efficient, that is whether the time-series alphas of a set of test assets are jointly zero. Michael Gibbons, Stephen Ross and Jay Shanken (1989) gave the exact finite-sample distribution under normal errors:"><img alt="" src="../_images/sphx_glr_plot_04_grs_test_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/capm/plot_04_grs_test.html"><span class="doc">The Gibbons-Ross-Shanken test</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Gibbons-Ross-Shanken test</div>
+</div></div></section>
+<section id="the-hansen-jagannathan-bound">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">1991 – The Hansen-Jagannathan Bound</a><a class="headerlink" href="#the-hansen-jagannathan-bound" title="Link to this heading">#</a></h2>
+<p>Lars Peter Hansen and Ravi Jagannathan asked what asset returns alone
+reveal about the discount factor. Any <span class="math notranslate nohighlight">\(m\)</span> that prices the returns
+must be volatile enough: <span class="math notranslate nohighlight">\(\sigma(m)/E(m)\)</span> is at least the highest
+Sharpe ratio available, and the full bound for each mean is attained by
+a combination of the returns themselves. With an equity Sharpe ratio
+near 0.4 a year, the power-utility discount factor enters the
+admissible region only at implausible risk aversion. Any candidate
+model can be screened against the bound before it is estimated.</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2(m) \ge (\mathbf 1 - E(m)\,\mu)'\,\Sigma^{-1}\,(\mathbf 1 - E(m)\,\mu), \qquad \frac{\sigma(m)}{E(m)} \ge \frac{|E[R^e]|}{\sigma(R^e)}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.systems.sdf.hansen_jagannathan_bound()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">max_sharpe_ratio()</span></code>. The
+example draws the bound for stocks and bills and the moments of the
+CRRA discount factor for increasing risk aversion.</p>
+<p><em>References:</em> L. P. Hansen and R. Jagannathan, “Implications of
+Security Market Data for Models of Dynamic Economies,” <em>J. Polit. Econ.</em>
+99 (1991) 225-262.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Lars Peter Hansen and Ravi Jagannathan (1991) asked what asset returns alone reveal about the stochastic discount factor. Any m that prices the returns, E[m R] = 1, must satisfy"><img alt="" src="../_images/sphx_glr_plot_02_hansen_jagannathan_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/sdf/plot_02_hansen_jagannathan.html"><span class="doc">The Hansen-Jagannathan bound</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Hansen-Jagannathan bound</div>
+</div></div></section>
+<section id="the-fama-french-three-factors">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">1993 – The Fama-French Three Factors</a><a class="headerlink" href="#the-fama-french-three-factors" title="Link to this heading">#</a></h2>
+<p>By the early 1990s the CAPM had failed on two simple characteristics:
+small stocks and stocks with high book-to-market ratios earned more
+than their betas implied. Eugene Fama and Kenneth French built two
+long-short factors from the same sorts, SMB and HML, and showed that
+with the market they explained the returns of 25 size and value
+portfolios, leaving alphas near zero. The three-factor model replaced
+the CAPM as the benchmark for performance evaluation and empirical
+work.</p>
+<div class="math notranslate nohighlight">
+\[r^e_{it} = \alpha_i + b_i\,MKT_t + s_i\,SMB_t + h_i\,HML_t + \varepsilon_{it}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.utils.sorts.long_short_factor()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">sort_portfolios()</span></code>
+build the factors and test portfolios, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">time_series_regression()</span></code>
+estimates the alphas. The example compares CAPM and three-factor
+alphas of 25 synthetic size-value portfolios, with GRS tests.</p>
+<p><em>References:</em> E. F. Fama and K. R. French, “Common Risk Factors in the
+Returns on Stocks and Bonds,” <em>J. Financ. Econ.</em> 33 (1993) 3-56.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The CAPM fails on portfolios sorted by size and book-to-market: small stocks and value stocks earn more than their market betas justify. Eugene Fama and Kenneth French (1993) added two long-short factors built from the same sorts, SMB (small minus big) and HML (high minus low book-to-market),"><img alt="" src="../_images/sphx_glr_plot_03_fama_french_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/factors/plot_03_fama_french.html"><span class="doc">Fama-French three factors</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fama-French three factors</div>
+</div></div></section>
+<section id="carhart-s-momentum-factor">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">1997 – Carhart’s Momentum Factor</a><a class="headerlink" href="#carhart-s-momentum-factor" title="Link to this heading">#</a></h2>
+<p>Narasimhan Jegadeesh and Sheridan Titman (1993) showed that stocks with
+the best returns over the past year keep outperforming for months, an
+anomaly the three factors could not absorb. Mark Carhart added a
+fourth factor, UMD, long last year’s winners and short its losers, and
+used it to show that most persistence in mutual fund performance came
+from funds that happened to hold winning stocks rather than from skill.
+The four-factor model became the standard for fund evaluation.</p>
+<div class="math notranslate nohighlight">
+\[r^e_{it} = \alpha_i + b_i\,MKT_t + s_i\,SMB_t + h_i\,HML_t + u_i\,UMD_t + \varepsilon_{it}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.asset_pricing.utils.sorts.momentum_signal()</span></code>
+computes the twelve-month, skip-one-month formation return, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">long_short_factor()</span></code> turns
+it into UMD. The example prices momentum deciles with three and four
+factors.</p>
+<p><em>References:</em> M. M. Carhart, “On Persistence in Mutual Fund
+Performance,” <em>J. Finance</em> 52 (1997) 57-82; N. Jegadeesh and S. Titman,
+<em>J. Finance</em> 48 (1993) 65-91.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jegadeesh and Titman (1993) found that stocks with the highest returns over the past year keep outperforming for months, which the Fama-French factors cannot explain. Mark Carhart (1997) added a fourth factor, UMD (up minus down), long last year&#x27;s winners and short its losers, skipping the most recent month. With it, most of the apparent persistence in mutual fund performance disappeared: winning funds had simply held winning stocks."><img alt="" src="../_images/sphx_glr_plot_04_carhart_momentum_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/asset_pricing/factors/plot_04_carhart_momentum.html"><span class="doc">Carhart’s momentum factor</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Carhart's momentum factor</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/asset_pricing.html"><span class="doc">financialkit.asset_pricing</span></a></p></li>
+<li><p><a class="reference internal" href="risk_breakthroughs.html"><span class="doc">Breakthroughs in Risk Measurement</span></a></p></li>
+<li><p><a class="reference internal" href="time_series_breakthroughs.html"><span class="doc">Breakthroughs in Financial Time Series</span></a></p></li>
+<li><p><a class="reference internal" href="time_value_breakthroughs.html"><span class="doc">Breakthroughs in the Time Value of Money</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pde_methods_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in PDE Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="portfolio_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Portfolio Theory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#williams-s-dividend-discount-model">1938 – Williams’s Dividend Discount Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modigliani-and-miller">1958 – Modigliani and Miller</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gordon-growth">1959 – Gordon Growth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharpe-s-capital-asset-pricing-model">1964 – Sharpe’s Capital Asset Pricing Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jensen-s-alpha">1968 – Jensen’s Alpha</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-s-zero-beta-capm">1972 – Black’s Zero-Beta CAPM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fama-macbeth-regressions">1973 – Fama-MacBeth Regressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ross-s-arbitrage-pricing-theory">1976 – Ross’s Arbitrage Pricing Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lucas-s-tree">1978 – Lucas’s Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#harrison-and-kreps-the-stochastic-discount-factor">1979 – Harrison and Kreps: the Stochastic Discount Factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breeden-s-consumption-capm">1979 – Breeden’s Consumption CAPM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shiller-s-excess-volatility">1981 – Shiller’s Excess Volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mehra-and-prescott-s-equity-premium-puzzle">1985 – Mehra and Prescott’s Equity Premium Puzzle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gibbons-ross-shanken-test">1989 – The Gibbons-Ross-Shanken Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hansen-jagannathan-bound">1991 – The Hansen-Jagannathan Bound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fama-french-three-factors">1993 – The Fama-French Three Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carhart-s-momentum-factor">1997 – Carhart’s Momentum Factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/asset_pricing_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+
+
+.. _sphx_glr_api_gallery_risk_var:
+
+Value at risk
+-------------
+
+The loss that is exceeded with a given small probability, estimated in
+closed form, by expansion, by simulation and from weighted or filtered
+history.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Cornish and Fisher (1937) expanded the quantile of a nearly normal distribution in its cumulants. To second order, with skewness S and excess kurtosis K,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_01_cornish_fisher_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_01_cornish_fisher`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cornish-Fisher: VaR beyond the normal</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The same year as Markowitz, A. D. Roy (1952) asked which portfolio minimises the chance of disaster, P(R &lt; d). With only means and variances known, Chebyshev&#x27;s inequality bounds it by 1 / s^2, where s = (\mu - d)/\sigma, so the safest portfolio maximises s: the point where a line from (0, d) touches the efficient frontier. It is the first downside risk measure and an early form of the Sharpe ratio.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_02_roy_safety_first_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_02_roy_safety_first`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Roy's safety-first criterion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In October 1994 J.P. Morgan published RiskMetrics, its methodology and daily covariance data, free. A portfolio with money exposures w to factors with covariance \Sigma has, under joint normality,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_03_parametric_var_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_03_parametric_var`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">RiskMetrics: parametric (delta-normal) VaR</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Delta-normal VaR treats every position as linear in its risk factors. For options that is badly wrong: a short straddle has zero delta at the money, so its delta-normal VaR is zero, yet it loses heavily on a large move in either direction. Pritsker (1997) compared delta, delta-gamma and full-revaluation Monte Carlo VaR and found that only full revaluation is reliable for books with large gamma. The cost is repricing every position in every scenario.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_04_monte_carlo_var_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_04_monte_carlo_var`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pritsker: Monte Carlo VaR for option books</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Historical simulation gives every day in the window the same weight, so after a jump in volatility it takes months to notice and then drops the crisis days abruptly when they leave the window. Boudoukh, Richardson and Whitelaw (1998) weighted the outcome i days old by \lambda^i, combining RiskMetrics&#x27; exponential smoothing with historical simulation&#x27;s distribution-free tail: &quot;the best of both worlds&quot;.">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_05_hybrid_var_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_05_hybrid_var`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boudoukh-Richardson-Whitelaw hybrid VaR</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Historical simulation keeps the empirical shape of the tail but not its current scale; a GARCH model tracks the scale but imposes a shape. Barone-Adesi, Giannopoulos and Vosper (1999) combined them: divide each past return by that day&#x27;s volatility to get standardized residuals z_t = r_t / \sigma_t, then rescale them by tomorrow&#x27;s forecast,">
+
+.. only:: html
+
+  .. image:: /api/gallery/risk/var/images/thumb/sphx_glr_plot_06_filtered_historical_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/risk/var/plot_06_filtered_historical`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Barone-Adesi: filtered historical simulation</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/risk/var/plot_01_cornish_fisher
+   /api/gallery/risk/var/plot_02_roy_safety_first
+   /api/gallery/risk/var/plot_03_parametric_var
+   /api/gallery/risk/var/plot_04_monte_carlo_var
+   /api/gallery/risk/var/plot_05_hybrid_var
+   /api/gallery/risk/var/plot_06_filtered_historical
+

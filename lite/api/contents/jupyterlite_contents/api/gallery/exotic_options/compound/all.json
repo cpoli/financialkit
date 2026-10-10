@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.864270Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.864270Z",
+      "mimetype": null,
+      "name": "plot_02_forward_start.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/compound/plot_02_forward_start.ipynb",
+      "size": 3569,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.864364Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.864364Z",
+      "mimetype": null,
+      "name": "plot_03_chooser.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/compound/plot_03_chooser.ipynb",
+      "size": 3557,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.864169Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.864169Z",
+      "mimetype": null,
+      "name": "plot_01_geske_compound.ipynb",
+      "path": "jupyterlite_contents/api/gallery/exotic_options/compound/plot_01_geske_compound.ipynb",
+      "size": 3709,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.218367Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.218984Z",
+  "mimetype": null,
+  "name": "compound",
+  "path": "jupyterlite_contents/api/gallery/exotic_options/compound",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

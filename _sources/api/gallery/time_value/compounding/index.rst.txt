@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_time_value_compounding:
+
+Compounding
+-----------
+
+Interest on interest: Pacioli's rule of 72, Witt's compound-interest
+tables, and Bernoulli's limit of ever more frequent compounding.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Luca Pacioli&#x27;s Summa de arithmetica (1494) gives, without proof, a rule for how long money takes to double: divide 72 by the annual interest rate in percent. The exact doubling time with annual compounding is \ln 2 / \ln(1 + r), and since \ln(1 + r) \approx r - r^2/2 the best constant drifts upward with the rate; 72 is close to right near 8% and has many convenient divisors.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/compounding/images/thumb/sphx_glr_plot_01_pacioli_rule_of_72_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/compounding/plot_01_pacioli_rule_of_72`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pacioli's rule of 72</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Witt&#x27;s Arithmeticall Questions (London, 1613) was the first English book of compound-interest tables. For a given rate it listed, year by year, the amount of 1, the present value of 1, and the value of an annuity of 1, so that a clerk could price a loan or a lease with a look-up and a multiplication. This script prints such a table at 10% and uses it to price an annuity.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/compounding/images/thumb/sphx_glr_plot_02_witt_compound_interest_tables_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/compounding/plot_02_witt_compound_interest_tables`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Witt's compound-interest tables</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In 1683 Jacob Bernoulli asked what a sum lent at interest becomes if the interest is added not yearly but half-yearly, monthly, daily, at every instant. At 100% a year, 1 grows to (1 + 1/m)^m with m compounding periods, which increases with m but stays bounded; he showed the limit lies between 2.5 and 3. The limit is e, and continuous compounding, e^{rt}, is the convention financialkit uses by default.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_value/compounding/images/thumb/sphx_glr_plot_03_bernoulli_continuous_compounding_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_value/compounding/plot_03_bernoulli_continuous_compounding`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bernoulli and continuous compounding</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_value/compounding/plot_01_pacioli_rule_of_72
+   /api/gallery/time_value/compounding/plot_02_witt_compound_interest_tables
+   /api/gallery/time_value/compounding/plot_03_bernoulli_continuous_compounding
+

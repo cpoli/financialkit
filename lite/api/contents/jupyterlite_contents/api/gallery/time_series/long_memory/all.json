@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.885738Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.885738Z",
+      "mimetype": null,
+      "name": "plot_01_hurst_exponent.ipynb",
+      "path": "jupyterlite_contents/api/gallery/time_series/long_memory/plot_01_hurst_exponent.ipynb",
+      "size": 3877,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.264842Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.264903Z",
+  "mimetype": null,
+  "name": "long_memory",
+  "path": "jupyterlite_contents/api/gallery/time_series/long_memory",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

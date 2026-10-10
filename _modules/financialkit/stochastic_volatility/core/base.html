@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.stochastic_volatility.core.base &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/stochastic_volatility/core/base';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.stochastic_volatility.core.base</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.stochastic_volatility.core.base</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Abstract base classes and result containers for financialkit.stochastic_volatility.</span>
+
+<span class="sd">Every model beyond Black-Scholes in this domain that is priced by</span>
+<span class="sd">transform methods implements :class:`CharacteristicFunctionModel`: it</span>
+<span class="sd">supplies the characteristic function of the normalised log return</span>
+<span class="sd">:math:`X_T = \\ln(S_T / F_T)`, where :math:`F_T = S e^{(r - q) T}` is the</span>
+<span class="sd">forward, and inherits pricing by any of the Fourier methods (Heston's</span>
+<span class="sd">two probabilities, Carr-Madan's FFT, Lewis's single integral, the COS</span>
+<span class="sd">expansion) and Black-Scholes implied volatilities. Because :math:`X_T`</span>
+<span class="sd">is normalised by the forward, :math:`E[e^{X_T}] = 1` and the</span>
+<span class="sd">characteristic function does not depend on rates or dividends, so one</span>
+<span class="sd">model instance serves every spot, rate and strike.</span>
+
+<span class="sd">Everything with more structure returns a small dataclass that the</span>
+<span class="sd">visualizers plot: a Carr-Madan strike grid, a Dupire local-volatility</span>
+<span class="sd">surface, simulated Heston paths, and SABR and SVI fits.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"CharacteristicFunctionModel"</span><span class="p">,</span>
+    <span class="s2">"FFTResult"</span><span class="p">,</span>
+    <span class="s2">"LocalVolSurface"</span><span class="p">,</span>
+    <span class="s2">"HestonPaths"</span><span class="p">,</span>
+    <span class="s2">"SABRFit"</span><span class="p">,</span>
+    <span class="s2">"SVIFit"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="CharacteristicFunctionModel">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.CharacteristicFunctionModel">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CharacteristicFunctionModel</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""A model for :math:`X_T = \\ln(S_T / F_T)` known through its characteristic function.</span>
+
+<span class="sd">    Subclasses implement :meth:`char_func`; pricing, implied volatilities</span>
+<span class="sd">    and cumulants follow from it.</span>
+<span class="sd">    """</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>
+
+<div class="viewcode-block" id="CharacteristicFunctionModel.char_func">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.CharacteristicFunctionModel.char_func">[docs]</a>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">char_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Characteristic function :math:`\\phi(u) = E[e^{i u X_T}]`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        u : array_like of complex</span>
+<span class="sd">            Arguments; complex values are allowed wherever the moment</span>
+<span class="sd">            generating function exists, which the Fourier pricers need.</span>
+<span class="sd">        T : float</span>
+<span class="sd">            Maturity in years.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of complex</span>
+<span class="sd">            With :math:`\\phi(0) = 1` and :math:`\\phi(-i) = E[e^{X_T}] = 1`.</span>
+<span class="sd">        """</span></div>
+
+
+<div class="viewcode-block" id="CharacteristicFunctionModel.cumulants">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.CharacteristicFunctionModel.cumulants">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cumulants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.02</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""First, second and fourth cumulants of :math:`X_T`.</span>
+
+<span class="sd">        By central differences of the cumulant generating function</span>
+<span class="sd">        :math:`\\kappa(s) = \\ln \\phi(-i s)` at :math:`s = 0`. The COS method</span>
+<span class="sd">        uses them to size its truncation interval.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        T : float</span>
+<span class="sd">            Maturity in years.</span>
+<span class="sd">        h : float</span>
+<span class="sd">            Step in :math:`s`; the moment generating function must exist on</span>
+<span class="sd">            :math:`[-2h, 2h]`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        c1, c2, c4 : float</span>
+<span class="sd">        """</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">char_func</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">s</span><span class="p">,</span> <span class="n">T</span><span class="p">)))</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+        <span class="n">c2</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">c4</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">k</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span><span class="o">**</span><span class="mi">4</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">c1</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">c2</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">c4</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CharacteristicFunctionModel.price">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.CharacteristicFunctionModel.price">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">price</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">S</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">K</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+        <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">q</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">,</span>
+        <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"cos"</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""European option prices under the model.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        S : float</span>
+<span class="sd">            Spot.</span>
+<span class="sd">        K : array_like</span>
+<span class="sd">            Strikes.</span>
+<span class="sd">        T, r, q : float</span>
+<span class="sd">            Maturity, risk-free rate and dividend yield.</span>
+<span class="sd">        option_type : {"call", "put"}</span>
+<span class="sd">        method : {"cos", "lewis", "heston", "fft"}</span>
+<span class="sd">            :func:`~financialkit.stochastic_volatility.systems.fourier.cos_price`,</span>
+<span class="sd">            :func:`~financialkit.stochastic_volatility.systems.fourier.lewis_price`,</span>
+<span class="sd">            :func:`~financialkit.stochastic_volatility.systems.heston.heston_price` or</span>
+<span class="sd">            :func:`~financialkit.stochastic_volatility.systems.fourier.carr_madan_price`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float or ndarray</span>
+<span class="sd">        """</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.stochastic_volatility.systems.fourier</span><span class="w"> </span><span class="kn">import</span> <span class="n">carr_madan_price</span><span class="p">,</span> <span class="n">cos_price</span><span class="p">,</span> <span class="n">lewis_price</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.stochastic_volatility.systems.heston</span><span class="w"> </span><span class="kn">import</span> <span class="n">heston_price</span>
+
+        <span class="n">pricers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"cos"</span><span class="p">:</span> <span class="n">cos_price</span><span class="p">,</span> <span class="s2">"lewis"</span><span class="p">:</span> <span class="n">lewis_price</span><span class="p">,</span> <span class="s2">"heston"</span><span class="p">:</span> <span class="n">heston_price</span><span class="p">,</span> <span class="s2">"fft"</span><span class="p">:</span> <span class="n">carr_madan_price</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pricers</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"method must be one of </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">pricers</span><span class="p">)</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">method</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pricers</span><span class="p">[</span><span class="n">method</span><span class="p">](</span><span class="bp">self</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">option_type</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CharacteristicFunctionModel.implied_vol">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.CharacteristicFunctionModel.implied_vol">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">implied_vol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">S</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">K</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"cos"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Black-Scholes implied volatilities of the model's prices.</span>
+
+<span class="sd">        Out-of-the-money options are inverted (puts below the forward,</span>
+<span class="sd">        calls above), where the time value is the whole price.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        S : float</span>
+<span class="sd">        K : array_like</span>
+<span class="sd">        T, r, q : float</span>
+<span class="sd">        method : str</span>
+<span class="sd">            As in :meth:`price`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float or ndarray</span>
+<span class="sd">        """</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.options</span><span class="w"> </span><span class="kn">import</span> <span class="n">implied_volatility</span>
+
+        <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+        <span class="n">calls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">"call"</span><span class="p">,</span> <span class="n">method</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+        <span class="n">puts</span> <span class="o">=</span> <span class="n">calls</span> <span class="o">-</span> <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">q</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+        <span class="n">otm_call</span> <span class="o">=</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">r</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">otm_call</span><span class="p">):</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">otm_call</span><span class="p">]</span> <span class="o">=</span> <span class="n">implied_volatility</span><span class="p">(</span><span class="n">calls</span><span class="p">[</span><span class="n">otm_call</span><span class="p">],</span> <span class="n">S</span><span class="p">,</span> <span class="n">k</span><span class="p">[</span><span class="n">otm_call</span><span class="p">],</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">"call"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="o">~</span><span class="n">otm_call</span><span class="p">):</span>
+            <span class="n">out</span><span class="p">[</span><span class="o">~</span><span class="n">otm_call</span><span class="p">]</span> <span class="o">=</span> <span class="n">implied_volatility</span><span class="p">(</span><span class="n">puts</span><span class="p">[</span><span class="o">~</span><span class="n">otm_call</span><span class="p">],</span> <span class="n">S</span><span class="p">,</span> <span class="n">k</span><span class="p">[</span><span class="o">~</span><span class="n">otm_call</span><span class="p">],</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">"put"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">K</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">out</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="FFTResult">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.FFTResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FFTResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Call prices on the Carr-Madan log-strike grid."""</span>
+
+    <span class="n">strikes</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (N,): Strikes :math:`e^{k_j}` on the FFT grid."""</span>
+
+    <span class="n">calls</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (N,): European call prices at those strikes."""</span>
+
+    <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Damping exponent of the modified call price :math:`e^{\\alpha k} C(k)`."""</span>
+
+    <span class="n">eta</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Spacing of the integration grid; the log-strike spacing is :math:`2\\pi / (N \\eta)`."""</span></div>
+
+
+
+<div class="viewcode-block" id="LocalVolSurface">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.LocalVolSurface">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LocalVolSurface</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A local volatility :math:`\\sigma(K, T)` on a strike-maturity grid."""</span>
+
+    <span class="n">strikes</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_K,): Increasing strikes."""</span>
+
+    <span class="n">maturities</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_T,): Increasing maturities."""</span>
+
+    <span class="n">vol</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_T, n_K): Local volatility at each node."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">S</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Bilinear interpolation, held flat outside the grid.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        S, t : array_like</span>
+<span class="sd">            Spot levels and times, broadcast together.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">        """</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegularGridInterpolator</span>
+
+        <span class="n">S</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+        <span class="n">interp</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">maturities</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strikes</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">vol</span><span class="p">)</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">maturities</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">maturities</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strikes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">strikes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">interp</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="HestonPaths">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.HestonPaths">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HestonPaths</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Simulated spot and variance paths under the Heston model."""</span>
+
+    <span class="n">times</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_steps + 1,): The time grid."""</span>
+
+    <span class="n">spot</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_paths, n_steps + 1): Spot paths."""</span>
+
+    <span class="n">variance</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_paths, n_steps + 1): Variance paths (negative values</span>
+<span class="sd">    can appear under the truncation schemes, which only use their positive part)."""</span>
+
+    <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""The discretisation: ``"full_truncation"``, ``"partial_truncation"``,</span>
+<span class="sd">    ``"higham_mao"`` or ``"qe"``."""</span></div>
+
+
+
+<div class="viewcode-block" id="SABRFit">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.SABRFit">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SABRFit</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""SABR parameters fitted to a smile at one expiry."""</span>
+
+    <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Initial volatility level :math:`\\alpha`."""</span>
+
+    <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""CEV exponent :math:`\\beta` (held fixed in the fit)."""</span>
+
+    <span class="n">rho</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Correlation between the forward and the volatility."""</span>
+
+    <span class="n">nu</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Volatility of volatility :math:`\\nu`."""</span>
+
+    <span class="n">F</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Forward."""</span>
+
+    <span class="n">T</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Expiry in years."""</span>
+
+    <span class="n">rmse</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Root-mean-square implied volatility error of the fit."""</span>
+
+<div class="viewcode-block" id="SABRFit.implied_vol">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.SABRFit.implied_vol">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">implied_vol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">K</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Hagan's implied volatility at strikes ``K`` with the fitted parameters."""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.stochastic_volatility.systems.smile</span><span class="w"> </span><span class="kn">import</span> <span class="n">sabr_implied_vol</span>
+
+        <span class="k">return</span> <span class="n">sabr_implied_vol</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nu</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="SVIFit">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.SVIFit">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SVIFit</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Raw SVI parameters fitted to total implied variance at one expiry."""</span>
+
+    <span class="n">a</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Vertical level of the total variance."""</span>
+
+    <span class="n">b</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Slope of the wings."""</span>
+
+    <span class="n">rho</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Asymmetry, in :math:`(-1, 1)`."""</span>
+
+    <span class="n">m</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Horizontal shift."""</span>
+
+    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Smoothness at the vertex."""</span>
+
+    <span class="n">T</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Expiry in years."""</span>
+
+    <span class="n">rmse</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Root-mean-square total variance error of the fit."""</span>
+
+<div class="viewcode-block" id="SVIFit.total_variance">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.SVIFit.total_variance">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">total_variance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Total implied variance :math:`w(k)` at log-moneyness ``k``."""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.stochastic_volatility.systems.smile</span><span class="w"> </span><span class="kn">import</span> <span class="n">svi_total_variance</span>
+
+        <span class="k">return</span> <span class="n">svi_total_variance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SVIFit.implied_vol">
+<a class="viewcode-back" href="../../../../api/stochastic_volatility.html#financialkit.stochastic_volatility.SVIFit.implied_vol">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">implied_vol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Implied volatility :math:`\\sqrt{w(k) / T}` at log-moneyness ``k``."""</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_variance</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">out</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

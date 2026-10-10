@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/monte_carlo/index';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Crude Monte Carlo" href="basics/index.html" />
+    <link rel="prev" title="Brigo-Mercurio G2++: two Gaussian factors" href="../interest_rate_models/short_rate/plot_07_g2pp.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../time_value/index.html">financialkit.time_value</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../time_value/amortization/index.html">Amortization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time_value/annuities/index.html">Annuities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time_value/compounding/index.html">Compounding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time_value/day_counts/index.html">Day counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time_value/irr/index.html">Internal rate of return</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time_value/present_value/index.html">Present value</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fixed_income/index.html">financialkit.fixed_income</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fixed_income/bonds/index.html">Bonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fixed_income/curves/index.html">Yield curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fixed_income/duration/index.html">Duration and convexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fixed_income/immunization/index.html">Immunization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fixed_income/swaps/index.html">Swaps</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../options/index.html">financialkit.options</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../options/closed_form/index.html">Closed-form pricers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../options/greeks/index.html">Greeks and hedging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../options/implied_vol/index.html">Implied volatility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../options/trees/index.html">Lattices and American options</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../interest_rate_models/index.html">financialkit.interest_rate_models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../interest_rate_models/curve_fitted/index.html">Curve-fitted models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interest_rate_models/hjm/index.html">Heath-Jarrow-Morton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interest_rate_models/options/index.html">Rate options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interest_rate_models/short_rate/index.html">Short-rate models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a aria-current="page" class="current reference internal" href="#">financialkit.monte_carlo</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics/index.html">Crude Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="greeks/index.html">Monte Carlo Greeks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multilevel/index.html">Multilevel Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quasi_monte_carlo/index.html">Quasi-Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variance_reduction/index.html">Variance reduction</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../examples/index.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>This gallery walks through every public feature of
+<code class="docutils literal notranslate"><span class="pre">financialkit.monte_carlo</span></code>: crude Monte Carlo with error bars, variance
+reduction, quasi-Monte Carlo, Monte Carlo Greeks and multilevel Monte
+Carlo. Each script illustrates one dated breakthrough from the
+<a class="reference internal" href="../../../history/monte_carlo_breakthroughs.html"><span class="doc">history page</span></a>.</p>
+<p>Each script in this gallery is self-contained and can be run directly with
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">examples/monte_carlo/&lt;section&gt;/&lt;script&gt;.py</span></code>.</p>
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>basics</strong> – the Monte Carlo method of Metropolis and Ulam, Box-Muller
+normal variates and Boyle’s option prices.</p></li>
+<li><p><strong>variance_reduction</strong> – Neyman stratification, importance sampling,
+antithetic variates, Latin hypercube sampling, control variates and
+moment matching.</p></li>
+<li><p><strong>quasi_monte_carlo</strong> – Halton and Sobol sequences, the Koksma-Hlawka
+inequality, Owen scrambling, Paskov-Traub’s high-dimensional
+integrals and the Brownian bridge.</p></li>
+<li><p><strong>greeks</strong> – likelihood-ratio and pathwise Greeks.</p></li>
+<li><p><strong>multilevel</strong> – Giles’s multilevel Monte Carlo.</p></li>
+</ul>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div></section>
+<section id="crude-monte-carlo">
+<h2>Crude Monte Carlo<a class="headerlink" href="#crude-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Expectations as sample means with standard errors and confidence
+intervals, normal variates from uniforms, and option prices by
+simulation.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Stanislaw Ulam, convalescing in 1946 and playing solitaire, wondered whether it was quicker to estimate his chance of winning by playing many games than by combinatorics. With John von Neumann and Nicholas Metropolis he turned the idea into a method for the neutron-diffusion problems at Los Alamos, and Metropolis and Ulam named it in 1949. An integral is an expectation, so"><img alt="" src="../../../_images/sphx_glr_plot_01_crude_monte_carlo_thumb.png" />
+<p><a class="reference internal" href="basics/plot_01_crude_monte_carlo.html"><span class="doc">Metropolis-Ulam: the Monte Carlo method</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Metropolis-Ulam: the Monte Carlo method</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Every Black-Scholes simulation needs normal random numbers, and a computer produces uniforms. George Box and Mervin Muller (1958) gave an exact transform: if u_1, u_2 are independent uniforms,"><img alt="" src="../../../_images/sphx_glr_plot_02_box_muller_thumb.png" />
+<p><a class="reference internal" href="basics/plot_02_box_muller.html"><span class="doc">Box-Muller normal variates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Box-Muller normal variates</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Phelim Boyle (1977) observed that risk-neutral valuation turns an option price into an expectation, and so into a simulation:"><img alt="" src="../../../_images/sphx_glr_plot_03_boyle_option_pricing_thumb.png" />
+<p><a class="reference internal" href="basics/plot_03_boyle_option_pricing.html"><span class="doc">Boyle: options by Monte Carlo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Boyle: options by Monte Carlo</div>
+</div></div></section>
+<section id="monte-carlo-greeks">
+<h2>Monte Carlo Greeks<a class="headerlink" href="#monte-carlo-greeks" title="Link to this heading">#</a></h2>
+<p>Sensitivities without bump-and-reprice: the likelihood-ratio and
+pathwise estimators, checked against the Black-Scholes Greeks.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Bumping a parameter and re-simulating gives a biased, noisy derivative. Peter Glynn (1987), and Reiman and Weiss (1989), differentiated the density instead of the payoff:"><img alt="" src="../../../_images/sphx_glr_plot_01_likelihood_ratio_thumb.png" />
+<p><a class="reference internal" href="greeks/plot_01_likelihood_ratio.html"><span class="doc">Glynn: likelihood-ratio Greeks</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Glynn: likelihood-ratio Greeks</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Mark Broadie and Paul Glasserman (1996) differentiated each simulated payoff with respect to the parameter and averaged:"><img alt="" src="../../../_images/sphx_glr_plot_02_pathwise_thumb.png" />
+<p><a class="reference internal" href="greeks/plot_02_pathwise.html"><span class="doc">Broadie-Glasserman pathwise Greeks</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Broadie-Glasserman pathwise Greeks</div>
+</div></div></section>
+<section id="multilevel-monte-carlo">
+<h2>Multilevel Monte Carlo<a class="headerlink" href="#multilevel-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Giles’s telescoping sum over Euler discretisations of increasing
+resolution, and its cost against standard Monte Carlo.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Pricing with a discretised SDE has two errors: the bias of the time step and the statistical error. Balancing them with Euler&#x27;s scheme costs O(\varepsilon^{-3}). Michael Giles (2008), borrowing the idea of multigrid (and of Heinrich&#x27;s multilevel integration), wrote the finest approximation as a telescoping sum,"><img alt="" src="../../../_images/sphx_glr_plot_01_giles_mlmc_thumb.png" />
+<p><a class="reference internal" href="multilevel/plot_01_giles_mlmc.html"><span class="doc">Giles multilevel Monte Carlo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Giles multilevel Monte Carlo</div>
+</div></div></section>
+<section id="quasi-monte-carlo">
+<h2>Quasi-Monte Carlo<a class="headerlink" href="#quasi-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Low-discrepancy points instead of random ones: Halton and Sobol
+sequences, the Koksma-Hlawka error bound, randomized QMC with error bars,
+and high-dimensional path integrals with and without the Brownian bridge.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Johannes van der Corput (1935) built a one-dimensional sequence that fills the unit interval evenly by reflecting the binary digits of k about the radix point: 1/2, 1/4, 3/4, 1/8, 5/8, ... John Halton (1960) took one such radical-inverse sequence per coordinate, in distinct prime bases, to fill the d-dimensional cube. The points are deterministic, yet integrate far better than random ones in low dimension, with an error close to (\log n)^d / n."><img alt="" src="../../../_images/sphx_glr_plot_01_halton_thumb.png" />
+<p><a class="reference internal" href="quasi_monte_carlo/plot_01_halton.html"><span class="doc">Halton sequences</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Halton sequences</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Jurjen Koksma (1942) in one dimension and Edmund Hlawka (1961) in many bounded the error of an equal-weight rule by a product of two numbers, one about the integrand and one about the points:"><img alt="" src="../../../_images/sphx_glr_plot_02_koksma_hlawka_thumb.png" />
+<p><a class="reference internal" href="quasi_monte_carlo/plot_02_koksma_hlawka.html"><span class="doc">Koksma-Hlawka and discrepancy</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Koksma-Hlawka and discrepancy</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Ilya Sobol (1967) constructed sequences in base 2 whose leading points form (t, m, s)-nets: every dyadic box of volume 2^{t - m} holds exactly 2^t of the first 2^m points. With well-chosen direction numbers (Joe and Kuo&#x27;s, which scipy.stats.qmc.Sobol uses) they stay balanced in thousands of dimensions and are the workhorse of quasi-Monte Carlo in finance."><img alt="" src="../../../_images/sphx_glr_plot_03_sobol_thumb.png" />
+<p><a class="reference internal" href="quasi_monte_carlo/plot_03_sobol.html"><span class="doc">Sobol sequences</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sobol sequences</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A deterministic point set gives one number and no error bar. Art Owen (1995) randomly permuted the digits of a net, nested so that the result is still a net: every scrambled point is uniform on the cube, so the estimate is unbiased, independent scramblings give an honest standard error, and for smooth integrands the root-mean-square error falls like N^{-3/2}, faster than the unscrambled sequence&#x27;s N^{-1}."><img alt="" src="../../../_images/sphx_glr_plot_04_owen_scrambling_thumb.png" />
+<p><a class="reference internal" href="quasi_monte_carlo/plot_04_owen_scrambling.html"><span class="doc">Owen scrambling: randomized QMC</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Owen scrambling: randomized QMC</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Theory said quasi-Monte Carlo should lose its edge beyond a dozen dimensions, since (\log N)^d / N only beats N^{-1/2} for astronomically large N. Spassimir Paskov and Joseph Traub (1995) priced a Goldman Sachs collateralized mortgage obligation, a 360-dimensional integral, and found Sobol points beat Monte Carlo anyway. The explanation, later formalized as effective dimension: financial integrands depend mostly on a few coordinates and their low-order interactions."><img alt="" src="../../../_images/sphx_glr_plot_05_paskov_traub_thumb.png" />
+<p><a class="reference internal" href="quasi_monte_carlo/plot_05_paskov_traub.html"><span class="doc">Paskov-Traub: QMC in high dimension</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Paskov-Traub: QMC in high dimension</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Quasi-random points are best distributed in their first coordinates. If those coordinates drive the first time steps, the coarse shape of each path is left to the poorly distributed later ones. Russel Caflisch and Bradley Moskowitz (1995), and Caflisch, Morokoff and Owen (1997) for mortgage-backed securities, reordered the construction: the first coordinate sets W(T), the second W(T/2) given the ends, and so on by bisection,"><img alt="" src="../../../_images/sphx_glr_plot_06_brownian_bridge_thumb.png" />
+<p><a class="reference internal" href="quasi_monte_carlo/plot_06_brownian_bridge.html"><span class="doc">Caflisch-Moskowitz Brownian bridge</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Caflisch-Moskowitz Brownian bridge</div>
+</div></div></section>
+<section id="variance-reduction">
+<h2>Variance reduction<a class="headerlink" href="#variance-reduction" title="Link to this heading">#</a></h2>
+<p>The same expectation from fewer samples: stratification, importance
+sampling, antithetic variates, Latin hypercubes, control variates and
+moment matching, each compared with crude Monte Carlo.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jerzy Neyman (1934) showed survey statisticians how to sample a stratified population: draw from each stratum separately and allocate the sample in proportion to the stratum&#x27;s weight times its standard deviation,"><img alt="" src="../../../_images/sphx_glr_plot_01_neyman_stratification_thumb.png" />
+<p><a class="reference internal" href="variance_reduction/plot_01_neyman_stratification.html"><span class="doc">Neyman stratification</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Neyman stratification</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Herman Kahn and Andy Marshall (1953), at RAND, wrote down the trick for shielding calculations in which almost no simulated neutron gets through: sample from a density that makes the rare event common, and reweight by the likelihood ratio. For normal drivers a mean shift \theta gives"><img alt="" src="../../../_images/sphx_glr_plot_02_importance_sampling_thumb.png" />
+<p><a class="reference internal" href="variance_reduction/plot_02_importance_sampling.html"><span class="doc">Kahn-Marshall importance sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kahn-Marshall importance sampling</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="John Hammersley and Keith Morton (1956) proposed pairing each random input with its mirror image. If f is monotone, f(Z) and f(-Z) are negatively correlated and their average is less variable than two independent draws:"><img alt="" src="../../../_images/sphx_glr_plot_03_antithetic_variates_thumb.png" />
+<p><a class="reference internal" href="variance_reduction/plot_03_antithetic_variates.html"><span class="doc">Hammersley-Morton antithetic variates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hammersley-Morton antithetic variates</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Michael McKay, Richard Beckman and William Conover (1979), at Los Alamos, needed to run expensive computer codes on few input combinations. A Latin hypercube design of n points stratifies every coordinate into n equal intervals at once: each interval of each axis holds exactly one point, the axes shuffled independently. The variance of an additive integrand falls by an order of n; interactions are left alone."><img alt="" src="../../../_images/sphx_glr_plot_04_latin_hypercube_thumb.png" />
+<p><a class="reference internal" href="variance_reduction/plot_04_latin_hypercube.html"><span class="doc">McKay-Beckman-Conover Latin hypercube</span></a></p>
+  <div class="sphx-glr-thumbnail-title">McKay-Beckman-Conover Latin hypercube</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="If a quantity X simulated alongside the target Y has a known mean, its sampling error tells us about the error in \bar Y. Stephen Lavenberg and Peter Welch (1981) framed the correction as a regression: estimate \beta by least squares and use"><img alt="" src="../../../_images/sphx_glr_plot_05_control_variates_thumb.png" />
+<p><a class="reference internal" href="variance_reduction/plot_05_control_variates.html"><span class="doc">Lavenberg-Welch control variates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lavenberg-Welch control variates</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A finite sample of normals never has mean exactly 0 and variance exactly 1, and the payoff inherits those sampling errors. Jérôme Barraquand (1995), pricing multi-asset options, simply rescaled the sample,"><img alt="" src="../../../_images/sphx_glr_plot_06_moment_matching_thumb.png" />
+<p><a class="reference internal" href="variance_reduction/plot_06_moment_matching.html"><span class="doc">Barraquand moment matching</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Barraquand moment matching</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/96ac482044c79aaa3fa8430d652398a3/monte_carlo_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">monte_carlo_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/983ec1f7c65e5ff5e11ed64127f23f37/monte_carlo_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">monte_carlo_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../interest_rate_models/short_rate/plot_07_g2pp.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Brigo-Mercurio G2++: two Gaussian factors</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="basics/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Crude Monte Carlo</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crude-monte-carlo">Crude Monte Carlo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-greeks">Monte Carlo Greeks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multilevel-monte-carlo">Multilevel Monte Carlo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quasi-monte-carlo">Quasi-Monte Carlo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-reduction">Variance reduction</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/api/gallery/monte_carlo/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

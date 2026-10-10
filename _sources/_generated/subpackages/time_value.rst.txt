@@ -1,0 +1,26 @@
+financialkit.time_value
+=======================
+
+Compounding and equivalent rates, present value and NPV, annuities, IRR and MIRR, amortization and the APR, and day-count conventions.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/time_value_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/time_value/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/time_value
+      :link-type: doc
+
+      Every public class and function.
+

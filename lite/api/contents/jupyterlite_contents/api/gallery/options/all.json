@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:59.243725Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:59.244973Z",
+      "mimetype": null,
+      "name": "trees",
+      "path": "jupyterlite_contents/api/gallery/options/trees",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:59.242788Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:59.243539Z",
+      "mimetype": null,
+      "name": "implied_vol",
+      "path": "jupyterlite_contents/api/gallery/options/implied_vol",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:59.240077Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:59.242061Z",
+      "mimetype": null,
+      "name": "closed_form",
+      "path": "jupyterlite_contents/api/gallery/options/closed_form",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:59.242290Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:59.242598Z",
+      "mimetype": null,
+      "name": "greeks",
+      "path": "jupyterlite_contents/api/gallery/options/greeks",
+      "size": null,
+      "type": "directory",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.240052Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.243729Z",
+  "mimetype": null,
+  "name": "options",
+  "path": "jupyterlite_contents/api/gallery/options",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

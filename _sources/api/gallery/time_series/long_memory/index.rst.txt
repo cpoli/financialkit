@@ -1,0 +1,50 @@
+
+
+.. _sphx_glr_api_gallery_time_series_long_memory:
+
+Long memory
+-----------
+
+Hurst's rescaled range and fractional Gaussian noise.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="To size the Aswan reservoirs, Harold Edwin Hurst (1951) studied the range of cumulative departures of the Nile&#x27;s annual flow from its mean: the storage a dam would need to deliver the average flow every year. Divided by the standard deviation, the range of independent inflows grows like n^{1/2}; Hurst found n^{0.73} for the Nile and many other records. Wet years cluster with wet years. Mandelbrot later linked the exponent H to fractional Brownian motion: H &gt; 1/2 means persistence, H &lt; 1/2 mean reversion, and in markets a reliable H \ne 1/2 would make returns predictable.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/long_memory/images/thumb/sphx_glr_plot_01_hurst_exponent_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/long_memory/plot_01_hurst_exponent`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hurst exponent</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_series/long_memory/plot_01_hurst_exponent
+

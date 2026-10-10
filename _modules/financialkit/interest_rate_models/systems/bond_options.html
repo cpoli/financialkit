@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.interest_rate_models.systems.bond_options &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/interest_rate_models/systems/bond_options';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.interest_rate_models.systems.bond_options</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.interest_rate_models.systems.bond_options</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Interest-rate options: zero-coupon and coupon bond options, caps and</span>
+<span class="sd">floors, and European swaptions.</span>
+
+<span class="sd">* :func:`zero_coupon_bond_option`: Jamshidian's (1989) closed form for a</span>
+<span class="sd">  European option on a zero-coupon bond in any Gaussian short-rate model.</span>
+<span class="sd">  The bond's forward price is lognormal under the option-expiry forward</span>
+<span class="sd">  measure, so the price is Black-76 (from :mod:`financialkit.options`)</span>
+<span class="sd">  with the model's total bond volatility.</span>
+<span class="sd">* :func:`coupon_bond_option` and :func:`jamshidian_swaption`: Jamshidian's</span>
+<span class="sd">  decomposition. In a one-factor model every bond price falls with the</span>
+<span class="sd">  short rate, so an option on a coupon bond is a portfolio of options on</span>
+<span class="sd">  its zero-coupon pieces, struck at their values at the critical rate</span>
+<span class="sd">  :math:`r^*` (:func:`scipy.optimize.brentq`). A payer swaption is a put</span>
+<span class="sd">  on a coupon bond.</span>
+<span class="sd">* :func:`cap_floor_price` and :func:`model_cap_floor_price`: a cap is a</span>
+<span class="sd">  strip of caplets, each priced by Black's formula on its simple forward</span>
+<span class="sd">  rate (the market model of Brace, Gatarek and Musiela, 1997), or, in a</span>
+<span class="sd">  Gaussian short-rate model, as puts on zero-coupon bonds.</span>
+<span class="sd">* :func:`black_swaption_price`: Jamshidian's (1997) swap market model, in</span>
+<span class="sd">  which the forward swap rate is lognormal under the annuity measure and</span>
+<span class="sd">  a swaption is Black-76 on it, times the annuity.</span>
+
+<span class="sd">References: F. Jamshidian, "An Exact Bond Option Formula," Journal of</span>
+<span class="sd">Finance 44(1) (1989) 205-209; A. Brace, D. Gatarek and M. Musiela,</span>
+<span class="sd">"The Market Model of Interest Rate Dynamics," Mathematical Finance 7(2)</span>
+<span class="sd">(1997) 127-155; F. Jamshidian, "LIBOR and Swap Market Models and</span>
+<span class="sd">Measures," Finance and Stochastics 1(4) (1997) 293-330; J. C. Hull,</span>
+<span class="sd">*Options, Futures, and Other Derivatives*, 10th ed. (Pearson, 2018),</span>
+<span class="sd">Ch. 29 and Sec. 32.4; D. Brigo and F. Mercurio, *Interest Rate Models --</span>
+<span class="sd">Theory and Practice*, 2nd ed. (Springer, 2006), Ch. 3.3 and 6.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">brentq</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_ATOL</span><span class="p">,</span> <span class="n">DEFAULT_MAX_ITER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.fixed_income.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CurveLike</span><span class="p">,</span> <span class="n">as_curve</span><span class="p">,</span> <span class="n">coupon_times</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.interest_rate_models.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CapFloorResult</span><span class="p">,</span> <span class="n">GaussianShortRateModel</span><span class="p">,</span> <span class="n">JamshidianResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.options</span><span class="w"> </span><span class="kn">import</span> <span class="n">black76_price</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"zero_coupon_bond_option"</span><span class="p">,</span>
+    <span class="s2">"coupon_bond_option"</span><span class="p">,</span>
+    <span class="s2">"swaption_schedule"</span><span class="p">,</span>
+    <span class="s2">"forward_swap_rate"</span><span class="p">,</span>
+    <span class="s2">"forward_swap_annuity"</span><span class="p">,</span>
+    <span class="s2">"jamshidian_swaption"</span><span class="p">,</span>
+    <span class="s2">"black_swaption_price"</span><span class="p">,</span>
+    <span class="s2">"cap_floor_price"</span><span class="p">,</span>
+    <span class="s2">"model_cap_floor_price"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="zero_coupon_bond_option">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.zero_coupon_bond_option">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">zero_coupon_bond_option</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">GaussianShortRateModel</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""European option, expiring at ``T``, on a unit zero-coupon bond maturing at ``S``.</span>
+
+<span class="sd">    .. math:: c = P(0, S) N(h) - K P(0, T) N(h - \sigma_P), \quad</span>
+<span class="sd">              h = \frac{1}{\sigma_P}\ln\frac{P(0, S)}{K P(0, T)} + \frac{\sigma_P}{2},</span>
+
+<span class="sd">    which is Black-76 on the forward bond price :math:`P(0, S)/P(0, T)`</span>
+<span class="sd">    with volatility :math:`\sigma_P/\sqrt{T}`, discounted by :math:`P(0, T)`.</span>
+<span class="sd">    :math:`\sigma_P` is the model's</span>
+<span class="sd">    :meth:`~financialkit.interest_rate_models.core.base.GaussianShortRateModel.bond_option_volatility`</span>
+<span class="sd">    (Jamshidian 1989 for Vasicek; the same formula holds for Ho-Lee,</span>
+<span class="sd">    Hull-White and G2++).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : GaussianShortRateModel</span>
+<span class="sd">    T, S : array_like</span>
+<span class="sd">        Option expiry and bond maturity, ``0 &lt; T &lt; S``.</span>
+<span class="sd">    K : array_like</span>
+<span class="sd">        Strike per unit face.</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    A 1-year option on a 5-year bond under Vasicek; call minus put is the</span>
+<span class="sd">    forward value :math:`P(0, 5) - K P(0, 1)`:</span>
+
+<span class="sd">    &gt;&gt;&gt; from financialkit.interest_rate_models.systems.short_rate import VasicekModel</span>
+<span class="sd">    &gt;&gt;&gt; m = VasicekModel(0.1, 0.1, 0.1, 0.02)</span>
+<span class="sd">    &gt;&gt;&gt; c = zero_coupon_bond_option(m, 1.0, 5.0, 0.67, "call")</span>
+<span class="sd">    &gt;&gt;&gt; p = zero_coupon_bond_option(m, 1.0, 5.0, 0.67, "put")</span>
+<span class="sd">    &gt;&gt;&gt; bool(np.isclose(c - p, m.zero_coupon_bond(5.0) - 0.67 * m.zero_coupon_bond(1.0)))</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">T</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">S</span> <span class="o">&lt;=</span> <span class="n">T</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"need 0 &lt; T &lt; S"</span><span class="p">)</span>
+    <span class="n">PT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">zero_coupon_bond</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">PS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">zero_coupon_bond</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">vol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bond_option_volatility</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">black76_price</span><span class="p">(</span><span class="n">PS</span> <span class="o">/</span> <span class="n">PT</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">PT</span><span class="p">)</span> <span class="o">/</span> <span class="n">T</span><span class="p">,</span> <span class="n">vol</span><span class="p">,</span> <span class="n">option_type</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_critical_rate</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">GaussianShortRateModel</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">times</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">flows</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">K</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">flows</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">zero_coupon_bond</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">r</span><span class="p">)))</span> <span class="o">-</span> <span class="n">K</span>
+
+    <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span>
+    <span class="k">while</span> <span class="n">value</span><span class="p">(</span><span class="n">lo</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">lo</span> <span class="o">*=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">value</span><span class="p">(</span><span class="n">hi</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">hi</span> <span class="o">*=</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">brentq</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="n">DEFAULT_ATOL</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="n">DEFAULT_MAX_ITER</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="coupon_bond_option">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.coupon_bond_option">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">coupon_bond_option</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">GaussianShortRateModel</span><span class="p">,</span> <span class="n">T</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">payment_times</span><span class="p">,</span> <span class="n">cash_flows</span><span class="p">,</span> <span class="n">K</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">option_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"call"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">JamshidianResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""European option on a coupon bond by Jamshidian's (1989) decomposition.</span>
+
+<span class="sd">    In a one-factor model the bond's value at expiry,</span>
+<span class="sd">    :math:`\sum_i c_i P(T, t_i; r)`, falls with :math:`r`. Let :math:`r^*`</span>
+<span class="sd">    solve :math:`\sum_i c_i P(T, t_i; r^*) = K` and :math:`K_i = P(T, t_i; r^*)`.</span>
+<span class="sd">    The bond is above the strike exactly when every zero is above its</span>
+<span class="sd">    :math:`K_i`, so</span>
+
+<span class="sd">    .. math:: \max\left(\sum_i c_i P(T, t_i) - K, 0\right) = \sum_i c_i \max(P(T, t_i) - K_i, 0),</span>
+
+<span class="sd">    and the option is a portfolio of zero-coupon bond options.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : GaussianShortRateModel</span>
+<span class="sd">        A one-factor model (Merton, Vasicek, Ho-Lee or Hull-White).</span>
+<span class="sd">    T : float</span>
+<span class="sd">        Option expiry.</span>
+<span class="sd">    payment_times, cash_flows : array_like, shape (n,)</span>
+<span class="sd">        Bond payments after ``T``.</span>
+<span class="sd">    K : float</span>
+<span class="sd">        Strike (on the bond's dirty price).</span>
+<span class="sd">    option_type : {"call", "put"}</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    JamshidianResult</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">n_factors</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Jamshidian's decomposition needs a one-factor model"</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">payment_times</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">flows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">cash_flows</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">times</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">flows</span><span class="o">.</span><span class="n">shape</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">times</span> <span class="o">&lt;=</span> <span class="n">T</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"payment_times and cash_flows must match and fall after T"</span><span class="p">)</span>
+    <span class="n">r_star</span> <span class="o">=</span> <span class="n">_critical_rate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+    <span class="n">strikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">zero_coupon_bond</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">r_star</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">components</span> <span class="o">=</span> <span class="n">flows</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">zero_coupon_bond_option</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">option_type</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">JamshidianResult</span><span class="p">(</span>
+        <span class="n">price</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">components</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span>
+        <span class="n">critical_rate</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">r_star</span><span class="p">),</span>
+        <span class="n">payment_times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+        <span class="n">cash_flows</span><span class="o">=</span><span class="n">flows</span><span class="p">,</span>
+        <span class="n">strikes</span><span class="o">=</span><span class="n">strikes</span><span class="p">,</span>
+        <span class="n">components</span><span class="o">=</span><span class="n">components</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="swaption_schedule">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.swaption_schedule">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">swaption_schedule</span><span class="p">(</span><span class="n">expiry</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tenor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Fixed-leg payment dates of a swap starting at `expiry` and running for `tenor` years.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; swaption_schedule(1.0, 2.0, 2).tolist()</span>
+<span class="sd">    [1.5, 2.0, 2.5, 3.0]</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">expiry</span> <span class="o">+</span> <span class="n">coupon_times</span><span class="p">(</span><span class="n">tenor</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="forward_swap_annuity">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.forward_swap_annuity">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward_swap_annuity</span><span class="p">(</span><span class="n">curve</span><span class="p">:</span> <span class="n">CurveLike</span><span class="p">,</span> <span class="n">expiry</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tenor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Annuity :math:`A = \sum_i \tau_i P(0, t_i)` of a forward-starting swap's fixed leg."""</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">swaption_schedule</span><span class="p">(</span><span class="n">expiry</span><span class="p">,</span> <span class="n">tenor</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    <span class="n">accrual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">expiry</span><span class="p">],</span> <span class="n">times</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">accrual</span> <span class="o">*</span> <span class="n">as_curve</span><span class="p">(</span><span class="n">curve</span><span class="p">)</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="n">times</span><span class="p">)))</span></div>
+
+
+
+<div class="viewcode-block" id="forward_swap_rate">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.forward_swap_rate">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward_swap_rate</span><span class="p">(</span><span class="n">curve</span><span class="p">:</span> <span class="n">CurveLike</span><span class="p">,</span> <span class="n">expiry</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tenor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Forward par swap rate :math:`S = [P(0, T_0) - P(0, T_n)] / A`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from financialkit.fixed_income import FlatCurve</span>
+<span class="sd">    &gt;&gt;&gt; round(forward_swap_rate(FlatCurve(0.04), 1.0, 5.0, 1), 6) == round(float(np.expm1(0.04)), 6)</span>
+<span class="sd">    True</span>
+<span class="sd">    """</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">as_curve</span><span class="p">(</span><span class="n">curve</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">swaption_schedule</span><span class="p">(</span><span class="n">expiry</span><span class="p">,</span> <span class="n">tenor</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">((</span><span class="n">c</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="n">expiry</span><span class="p">)</span> <span class="o">-</span> <span class="n">c</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">/</span> <span class="n">forward_swap_annuity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">expiry</span><span class="p">,</span> <span class="n">tenor</span><span class="p">,</span> <span class="n">freq</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="jamshidian_swaption">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.jamshidian_swaption">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">jamshidian_swaption</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">GaussianShortRateModel</span><span class="p">,</span> <span class="n">expiry</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tenor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">strike</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">payer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">notional</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">JamshidianResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""European swaption in a one-factor model, by Jamshidian's decomposition.</span>
+
+<span class="sd">    At expiry, receiving fixed at :math:`K` on a swap is worth</span>
+<span class="sd">    :math:`\sum_i c_i P(T_0, t_i) - 1` with :math:`c_i = K\tau_i` (plus 1 at</span>
+<span class="sd">    the end), so a receiver swaption is a call, and a payer swaption a</span>
+<span class="sd">    put, on that coupon bond struck at par.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : GaussianShortRateModel</span>
+<span class="sd">        One-factor model.</span>
+<span class="sd">    expiry, tenor : float</span>
+<span class="sd">        Option expiry and length of the underlying swap.</span>
+<span class="sd">    strike : float</span>
+<span class="sd">        Fixed rate.</span>
+<span class="sd">    freq : int</span>
+<span class="sd">        Fixed-leg payments per year.</span>
+<span class="sd">    payer : bool</span>
+<span class="sd">        Payer (right to pay fixed) or receiver swaption.</span>
+<span class="sd">    notional : float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    JamshidianResult</span>
+<span class="sd">        Scaled by `notional`.</span>
+<span class="sd">    """</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">swaption_schedule</span><span class="p">(</span><span class="n">expiry</span><span class="p">,</span> <span class="n">tenor</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    <span class="n">accrual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">expiry</span><span class="p">],</span> <span class="n">times</span><span class="p">]))</span>
+    <span class="n">flows</span> <span class="o">=</span> <span class="n">strike</span> <span class="o">*</span> <span class="n">accrual</span>
+    <span class="n">flows</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">coupon_bond_option</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">expiry</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">flows</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">"put"</span> <span class="k">if</span> <span class="n">payer</span> <span class="k">else</span> <span class="s2">"call"</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">price</span> <span class="o">*=</span> <span class="n">notional</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">components</span> <span class="o">*</span> <span class="n">notional</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
+
+<div class="viewcode-block" id="black_swaption_price">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.black_swaption_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">black_swaption_price</span><span class="p">(</span><span class="n">curve</span><span class="p">:</span> <span class="n">CurveLike</span><span class="p">,</span> <span class="n">expiry</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">tenor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">strike</span><span class="p">,</span> <span class="n">vol</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">payer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">notional</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Black's formula for a European swaption (Jamshidian's 1997 swap market model).</span>
+
+<span class="sd">    Under the annuity measure the forward swap rate :math:`S` is a</span>
+<span class="sd">    martingale; taking it lognormal gives</span>
+
+<span class="sd">    .. math:: V_{\text{payer}} = A\,[S N(d_1) - K N(d_2)], \quad</span>
+<span class="sd">              V_{\text{receiver}} = A\,[K N(-d_2) - S N(-d_1)],</span>
+
+<span class="sd">    Black-76 with zero rate times the annuity :math:`A`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    curve : YieldCurve or float</span>
+<span class="sd">    expiry, tenor : float</span>
+<span class="sd">        Option expiry and swap length.</span>
+<span class="sd">    strike, vol : array_like</span>
+<span class="sd">        Fixed rate and Black volatility of the swap rate.</span>
+<span class="sd">    freq : int</span>
+<span class="sd">    payer : bool</span>
+<span class="sd">    notional : float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Hull, 10th ed., Example 29.5: a 5 x 3 payer swaption struck at 6.2%,</span>
+<span class="sd">    semiannual, flat 6% curve with continuous compounding, 20% volatility,</span>
+<span class="sd">    principal 100.</span>
+
+<span class="sd">    &gt;&gt;&gt; round(black_swaption_price(0.06, 5.0, 3.0, 0.062, 0.2, 2, notional=100.0), 2)</span>
+<span class="sd">    2.07</span>
+<span class="sd">    """</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">as_curve</span><span class="p">(</span><span class="n">curve</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">forward_swap_annuity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">expiry</span><span class="p">,</span> <span class="n">tenor</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">forward_swap_rate</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">expiry</span><span class="p">,</span> <span class="n">tenor</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">notional</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">black76_price</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">strike</span><span class="p">,</span> <span class="n">expiry</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">vol</span><span class="p">,</span> <span class="s2">"call"</span> <span class="k">if</span> <span class="n">payer</span> <span class="k">else</span> <span class="s2">"put"</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_cap_schedule</span><span class="p">(</span><span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">coupon_times</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">times</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"a cap needs at least two periods (the first, already fixed, is excluded)"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">times</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">times</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+
+<div class="viewcode-block" id="cap_floor_price">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.cap_floor_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cap_floor_price</span><span class="p">(</span><span class="n">curve</span><span class="p">:</span> <span class="n">CurveLike</span><span class="p">,</span> <span class="n">strike</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">vol</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"cap"</span><span class="p">,</span> <span class="n">notional</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CapFloorResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""A cap or floor priced caplet by caplet with Black's formula.</span>
+
+<span class="sd">    Caplet :math:`k` pays :math:`\tau_k \max(L_k - K, 0)` at :math:`t_{k+1}`</span>
+<span class="sd">    on the rate :math:`L_k` fixed at :math:`t_k`. Under the</span>
+<span class="sd">    :math:`t_{k+1}`-forward measure the simple forward rate</span>
+<span class="sd">    :math:`F_k = [P(0, t_k)/P(0, t_{k+1}) - 1]/\tau_k` is a martingale,</span>
+<span class="sd">    and taking it lognormal (Brace-Gatarek-Musiela 1997) gives</span>
+
+<span class="sd">    .. math:: \text{caplet}_k = \tau_k P(0, t_{k+1})\,[F_k N(d_1) - K N(d_2)].</span>
+
+<span class="sd">    The first period, whose rate is already fixed, is excluded.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    curve : YieldCurve or float</span>
+<span class="sd">    strike : float</span>
+<span class="sd">        Cap (floor) rate.</span>
+<span class="sd">    maturity : float</span>
+<span class="sd">        End of the last period.</span>
+<span class="sd">    vol : float or array_like</span>
+<span class="sd">        Black volatility: one flat volatility, or one per caplet.</span>
+<span class="sd">    freq : int</span>
+<span class="sd">        Resets per year.</span>
+<span class="sd">    kind : {"cap", "floor"}</span>
+<span class="sd">    notional : float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CapFloorResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    On a curve flat at 7% with quarterly compounding every forward is 7%;</span>
+<span class="sd">    cap minus floor at the same strike is the forward-starting swap:</span>
+
+<span class="sd">    &gt;&gt;&gt; curve = 4 * np.log(1.0175)</span>
+<span class="sd">    &gt;&gt;&gt; cap = cap_floor_price(curve, 0.07, 2.0, 0.20, freq=4)</span>
+<span class="sd">    &gt;&gt;&gt; floor = cap_floor_price(curve, 0.07, 2.0, 0.20, freq=4, kind="floor")</span>
+<span class="sd">    &gt;&gt;&gt; cap.caplets.size, round(float(cap.forwards[0]), 4), bool(np.isclose(cap.price, floor.price))</span>
+<span class="sd">    (7, 0.07, True)</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"cap"</span><span class="p">,</span> <span class="s2">"floor"</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'kind must be "cap" or "floor", got </span><span class="si">{</span><span class="n">kind</span><span class="si">!r}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">as_curve</span><span class="p">(</span><span class="n">curve</span><span class="p">)</span>
+    <span class="n">resets</span><span class="p">,</span> <span class="n">pays</span> <span class="o">=</span> <span class="n">_cap_schedule</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">pays</span> <span class="o">-</span> <span class="n">resets</span>
+    <span class="n">P_reset</span><span class="p">,</span> <span class="n">P_pay</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="n">resets</span><span class="p">),</span> <span class="n">c</span><span class="o">.</span><span class="n">discount</span><span class="p">(</span><span class="n">pays</span><span class="p">)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="n">P_reset</span> <span class="o">/</span> <span class="n">P_pay</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">tau</span>
+    <span class="n">vol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">resets</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">r_eff</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">P_pay</span><span class="p">)</span> <span class="o">/</span> <span class="n">resets</span>
+    <span class="n">caplets</span> <span class="o">=</span> <span class="n">notional</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">black76_price</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">strike</span><span class="p">,</span> <span class="n">resets</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">vol</span><span class="p">,</span> <span class="s2">"call"</span> <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">"cap"</span> <span class="k">else</span> <span class="s2">"put"</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CapFloorResult</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">caplets</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">caplets</span><span class="o">=</span><span class="n">caplets</span><span class="p">,</span> <span class="n">forwards</span><span class="o">=</span><span class="n">F</span><span class="p">,</span> <span class="n">reset_times</span><span class="o">=</span><span class="n">resets</span><span class="p">,</span> <span class="n">payment_times</span><span class="o">=</span><span class="n">pays</span><span class="p">,</span> <span class="n">strike</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">strike</span><span class="p">),</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="model_cap_floor_price">
+<a class="viewcode-back" href="../../../../api/interest_rate_models.html#financialkit.interest_rate_models.model_cap_floor_price">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">model_cap_floor_price</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">GaussianShortRateModel</span><span class="p">,</span> <span class="n">strike</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">maturity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"cap"</span><span class="p">,</span> <span class="n">notional</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CapFloorResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""A cap or floor in a Gaussian short-rate model, as options on zero-coupon bonds.</span>
+
+<span class="sd">    A caplet paying at :math:`t_{k+1}` is worth, at its fixing :math:`t_k`,</span>
+<span class="sd">    :math:`(1 + K\tau)\max(1/(1 + K\tau) - P(t_k, t_{k+1}), 0)`: a put on a</span>
+<span class="sd">    zero-coupon bond (Hull, 10th ed., Sec. 32.4). A floorlet is the call.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : GaussianShortRateModel</span>
+<span class="sd">    strike, maturity : float</span>
+<span class="sd">    freq : int</span>
+<span class="sd">    kind : {"cap", "floor"}</span>
+<span class="sd">    notional : float</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    CapFloorResult</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"cap"</span><span class="p">,</span> <span class="s2">"floor"</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'kind must be "cap" or "floor", got </span><span class="si">{</span><span class="n">kind</span><span class="si">!r}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">resets</span><span class="p">,</span> <span class="n">pays</span> <span class="o">=</span> <span class="n">_cap_schedule</span><span class="p">(</span><span class="n">maturity</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">pays</span> <span class="o">-</span> <span class="n">resets</span>
+    <span class="n">P_reset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">zero_coupon_bond</span><span class="p">(</span><span class="n">resets</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">P_pay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">zero_coupon_bond</span><span class="p">(</span><span class="n">pays</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="n">P_reset</span> <span class="o">/</span> <span class="n">P_pay</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">tau</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">strike</span> <span class="o">*</span> <span class="n">tau</span>
+    <span class="n">zbo</span> <span class="o">=</span> <span class="n">zero_coupon_bond_option</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">resets</span><span class="p">,</span> <span class="n">pays</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="s2">"put"</span> <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">"cap"</span> <span class="k">else</span> <span class="s2">"call"</span><span class="p">)</span>
+    <span class="n">caplets</span> <span class="o">=</span> <span class="n">notional</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">zbo</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CapFloorResult</span><span class="p">(</span><span class="n">price</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">caplets</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">caplets</span><span class="o">=</span><span class="n">caplets</span><span class="p">,</span> <span class="n">forwards</span><span class="o">=</span><span class="n">F</span><span class="p">,</span> <span class="n">reset_times</span><span class="o">=</span><span class="n">resets</span><span class="p">,</span> <span class="n">payment_times</span><span class="o">=</span><span class="n">pays</span><span class="p">,</span> <span class="n">strike</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">strike</span><span class="p">),</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

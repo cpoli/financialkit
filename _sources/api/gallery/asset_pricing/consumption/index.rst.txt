@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_asset_pricing_consumption:
+
+Consumption-based pricing
+-------------------------
+
+Asset prices from a representative agent's Euler equation: Lucas's
+tree, the consumption CAPM and the equity premium puzzle.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Lucas (1978) priced assets in the simplest economy that has them: a representative agent with power utility owns a tree whose fruit is the only consumption good. Prices must make the agent content to hold the tree and eat its dividend, which gives the Euler equation">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/consumption/images/thumb/sphx_glr_plot_01_lucas_tree_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/consumption/plot_01_lucas_tree`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lucas's tree</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Merton&#x27;s intertemporal CAPM needs a beta for every state variable that shifts investment opportunities. Douglas Breeden (1979) showed that they all collapse into one: since optimal consumption already responds to every state variable, an asset&#x27;s risk premium is proportional to its covariance with aggregate consumption growth,">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/consumption/images/thumb/sphx_glr_plot_02_breeden_ccapm_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/consumption/plot_02_breeden_ccapm`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Breeden's consumption CAPM</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Rajnish Mehra and Edward Prescott (1985) calibrated a two-state version of Lucas&#x27;s economy to US consumption growth from 1889 to 1978 (mean 1.8%, standard deviation 3.6%, autocorrelation -0.14). Over the same period stocks earned 6.98% a year and short-term bills 0.80%: a premium of 6.18%. Searching over every time preference \beta &lt; 1 and risk aversion \gamma \le 10, they could produce a premium of at most 0.35% while keeping the riskless rate below 4%. Consumption is simply too smooth for stocks to be that risky to a power-utility agent.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/consumption/images/thumb/sphx_glr_plot_03_equity_premium_puzzle_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/consumption/plot_03_equity_premium_puzzle`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The equity premium puzzle</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/asset_pricing/consumption/plot_01_lucas_tree
+   /api/gallery/asset_pricing/consumption/plot_02_breeden_ccapm
+   /api/gallery/asset_pricing/consumption/plot_03_equity_premium_puzzle
+

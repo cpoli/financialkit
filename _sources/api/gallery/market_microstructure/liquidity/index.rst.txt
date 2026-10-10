@@ -1,0 +1,50 @@
+
+
+.. _sphx_glr_api_gallery_market_microstructure_liquidity:
+
+Liquidity
+---------
+
+Illiquidity measured from daily returns and volume.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Yakov Amihud (2002) proposed a liquidity measure that needs only daily returns and dollar volume: the average of |r_d| / \mathrm{DVol}_d, the price move per dollar traded. It approximates Kyle&#x27;s lambda, which needs signed order flow, and Amihud found that stocks with a higher ratio earn higher expected returns, an illiquidity premium.">
+
+.. only:: html
+
+  .. image:: /api/gallery/market_microstructure/liquidity/images/thumb/sphx_glr_plot_01_amihud_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/market_microstructure/liquidity/plot_01_amihud`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Amihud's illiquidity ratio</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/market_microstructure/liquidity/plot_01_amihud
+

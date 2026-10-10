@@ -1,0 +1,104 @@
+
+
+.. _sphx_glr_api_gallery_time_series_efficiency:
+
+Market efficiency
+-----------------
+
+Testing the random walk: serial correlation, runs, portmanteau statistics and variance ratios.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Maurice Kendall (1953) set out to find the cycles in 22 British price series (wheat, cotton, share indices) at weekly intervals. He found none: the serial correlations of the price changes were indistinguishable from zero, and &quot;the series looks like a wandering one, almost as if once a week the Demon of Chance drew a random number&quot;. The levels, by contrast, are almost perfectly autocorrelated, which is what makes them look patterned to the eye.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/efficiency/images/thumb/sphx_glr_plot_01_kendall_autocorrelation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/efficiency/plot_01_kendall_autocorrelation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kendall: the random walk of prices</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Correlation coefficients can be dominated by a few large changes. In his 1965 thesis Eugene Fama added a distribution-free check on the 30 Dow Jones stocks: count the runs, the unbroken sequences of price changes with the same sign. Positive dependence produces long runs and too few of them; reversals produce too many. Under independence the number of runs is approximately normal with a known mean and variance, and Fama found the observed counts close to the expected ones.">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/efficiency/images/thumb/sphx_glr_plot_02_fama_runs_test_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/efficiency/plot_02_fama_runs_test`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Fama's runs test</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Checking twenty autocorrelations one at a time finds a &quot;significant&quot; one by chance about two times in three. Box and Pierce (1970) pooled them into a single statistic, Q = n\sum_{k \le h}\hat\rho_k^2 \sim \chi^2_h, and Greta Ljung and George Box (1978) fixed its poor small-sample behaviour by weighting each term,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/efficiency/images/thumb/sphx_glr_plot_03_ljung_box_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/efficiency/plot_03_ljung_box`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ljung-Box portmanteau test</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="If log prices follow a random walk, the variance of q-week returns is q times that of one-week returns. Andrew Lo and Craig MacKinlay (1988) turned this into a test,">
+
+.. only:: html
+
+  .. image:: /api/gallery/time_series/efficiency/images/thumb/sphx_glr_plot_04_lo_mackinlay_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/time_series/efficiency/plot_04_lo_mackinlay`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lo-MacKinlay variance ratio</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/time_series/efficiency/plot_01_kendall_autocorrelation
+   /api/gallery/time_series/efficiency/plot_02_fama_runs_test
+   /api/gallery/time_series/efficiency/plot_03_ljung_box
+   /api/gallery/time_series/efficiency/plot_04_lo_mackinlay
+

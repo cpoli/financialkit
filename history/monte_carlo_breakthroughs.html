@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Monte Carlo Methods &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/monte_carlo_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in PDE Methods" href="pde_methods_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Credit Risk" href="credit_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Monte Carlo Methods</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-monte-carlo-methods">
+<h1>Breakthroughs in Monte Carlo Methods<a class="headerlink" href="#breakthroughs-in-monte-carlo-methods" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/monte_carlo.html"><span class="doc">financialkit.monte_carlo hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/monte_carlo/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/monte_carlo.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“Anyone who considers arithmetical methods of producing random digits
+is, of course, in a state of sin.”
+– John von Neumann</p>
+</div></blockquote>
+<p>Monte Carlo replaces an integral by an average over random samples. Its
+error falls only like the inverse square root of the sample size, but
+it falls that way in any dimension, which is why a method born in the
+neutron-diffusion calculations at Los Alamos became the standard tool
+for pricing path-dependent and multi-asset derivatives. Seventy years of
+work have gone into making the square root hurt less: variance
+reduction from survey statistics and operations research, quasi-random
+points from number theory, Greeks without finite differences, and a
+multilevel decomposition borrowed from multigrid solvers. This
+chronology traces the ideas behind <a class="reference internal" href="../api/monte_carlo.html#module-financialkit.monte_carlo" title="financialkit.monte_carlo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.monte_carlo</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#neyman-stratification" id="id1">1934 – Neyman Stratification</a></p></li>
+<li><p><a class="reference internal" href="#metropolis-ulam-the-monte-carlo-method" id="id2">1949 – Metropolis-Ulam: the Monte Carlo Method</a></p></li>
+<li><p><a class="reference internal" href="#kahn-marshall-importance-sampling" id="id3">1953 – Kahn-Marshall Importance Sampling</a></p></li>
+<li><p><a class="reference internal" href="#hammersley-morton-antithetic-variates" id="id4">1956 – Hammersley-Morton Antithetic Variates</a></p></li>
+<li><p><a class="reference internal" href="#box-muller-normal-variates" id="id5">1958 – Box-Muller Normal Variates</a></p></li>
+<li><p><a class="reference internal" href="#halton-sequences" id="id6">1960 – Halton Sequences</a></p></li>
+<li><p><a class="reference internal" href="#koksma-hlawka-and-discrepancy" id="id7">1961 – Koksma-Hlawka and Discrepancy</a></p></li>
+<li><p><a class="reference internal" href="#sobol-sequences" id="id8">1967 – Sobol Sequences</a></p></li>
+<li><p><a class="reference internal" href="#boyle-options-by-monte-carlo" id="id9">1977 – Boyle: Options by Monte Carlo</a></p></li>
+<li><p><a class="reference internal" href="#mckay-beckman-conover-latin-hypercube" id="id10">1979 – McKay-Beckman-Conover Latin Hypercube</a></p></li>
+<li><p><a class="reference internal" href="#lavenberg-welch-control-variates" id="id11">1981 – Lavenberg-Welch Control Variates</a></p></li>
+<li><p><a class="reference internal" href="#glynn-likelihood-ratio-greeks" id="id12">1987 – Glynn: Likelihood-Ratio Greeks</a></p></li>
+<li><p><a class="reference internal" href="#barraquand-moment-matching" id="id13">1995 – Barraquand Moment Matching</a></p></li>
+<li><p><a class="reference internal" href="#owen-scrambling-randomized-qmc" id="id14">1995 – Owen Scrambling: Randomized QMC</a></p></li>
+<li><p><a class="reference internal" href="#paskov-traub-qmc-in-high-dimension" id="id15">1995 – Paskov-Traub: QMC in High Dimension</a></p></li>
+<li><p><a class="reference internal" href="#broadie-glasserman-pathwise-greeks" id="id16">1996 – Broadie-Glasserman Pathwise Greeks</a></p></li>
+<li><p><a class="reference internal" href="#caflisch-moskowitz-brownian-bridge" id="id17">1996 – Caflisch-Moskowitz Brownian Bridge</a></p></li>
+<li><p><a class="reference internal" href="#giles-multilevel-monte-carlo" id="id18">2008 – Giles Multilevel Monte Carlo</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id19">See Also</a></p></li>
+</ul>
+</nav>
+<section id="neyman-stratification">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1934 – Neyman Stratification</a><a class="headerlink" href="#neyman-stratification" title="Link to this heading">#</a></h2>
+<p>Jerzy Neyman’s paper to the Royal Statistical Society compared
+purposive selection with random sampling and settled the question in
+favour of stratified random samples. He also derived the allocation of
+a fixed sample between strata that minimises the variance of the
+estimated mean: proportional to each stratum’s weight times its
+standard deviation. Transplanted to simulation, the strata are pieces
+of the probability space of the driving random number, and the rule
+sends samples to where the payoff is most variable.</p>
+<div class="math notranslate nohighlight">
+\[n_h \propto p_h \sigma_h, \qquad
+\operatorname{Var}\hat\mu = \sum_h \frac{p_h^2 \sigma_h^2}{n_h}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.variance_reduction.stratified_estimate()</span></code>
+stratifies the uniform that drives a payoff into equal-probability
+strata, with proportional allocation or Neyman’s allocation from a pilot
+run (<code class="xref py py-func docutils literal notranslate"><span class="pre">neyman_allocation()</span></code>),
+and returns a <a class="reference internal" href="../api/monte_carlo.html#financialkit.monte_carlo.StratifiedResult" title="financialkit.monte_carlo.core.base.StratifiedResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">StratifiedResult</span></code></a>.
+The example prices an out-of-the-money call with both allocations.</p>
+<p><em>References:</em> J. Neyman, “On the Two Different Aspects of the
+Representative Method: The Method of Stratified Sampling and the Method
+of Purposive Selection,” <em>Journal of the Royal Statistical Society</em> 97
+(1934) 558-625; P. Glasserman, <em>Monte Carlo Methods in Financial
+Engineering</em> (Springer, 2004), Section 4.3.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jerzy Neyman (1934) showed survey statisticians how to sample a stratified population: draw from each stratum separately and allocate the sample in proportion to the stratum&#x27;s weight times its standard deviation,"><img alt="" src="../_images/sphx_glr_plot_01_neyman_stratification_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/variance_reduction/plot_01_neyman_stratification.html"><span class="doc">Neyman stratification</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Neyman stratification</div>
+</div></div></section>
+<section id="metropolis-ulam-the-monte-carlo-method">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1949 – Metropolis-Ulam: the Monte Carlo Method</a><a class="headerlink" href="#metropolis-ulam-the-monte-carlo-method" title="Link to this heading">#</a></h2>
+<p>Stanislaw Ulam’s idea of estimating the odds of solitaire by playing it,
+and John von Neumann’s plan to run the same experiment for neutrons on
+the ENIAC, were named and published by Nicholas Metropolis and Ulam in
+1949. The paper set out the method’s two defining features: an integral
+or expectation is estimated by a sample mean, and the central limit
+theorem supplies the error bar, with a rate independent of the
+dimension.</p>
+<div class="math notranslate nohighlight">
+\[\int_{[0,1)^d} f(u)\,du \approx \frac1n \sum_{i=1}^n f(U_i), \qquad
+\mathrm{SE} = \frac{s}{\sqrt n}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.basics.monte_carlo_integrate()</span></code>
+returns a <a class="reference internal" href="../api/monte_carlo.html#financialkit.monte_carlo.MonteCarloResult" title="financialkit.monte_carlo.core.base.MonteCarloResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">MonteCarloResult</span></code></a>
+with the standard error and a confidence interval; every other
+estimator in the domain returns the same container. The example
+estimates <span class="math notranslate nohighlight">\(\pi\)</span>, ball volumes in two and six dimensions, and the
+coverage of the 95% interval.</p>
+<p><em>References:</em> N. Metropolis and S. Ulam, “The Monte Carlo Method,”
+<em>Journal of the American Statistical Association</em> 44 (1949) 335-341;
+N. Metropolis, “The Beginning of the Monte Carlo Method,” <em>Los Alamos
+Science</em> 15 (1987) 125-130.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Stanislaw Ulam, convalescing in 1946 and playing solitaire, wondered whether it was quicker to estimate his chance of winning by playing many games than by combinatorics. With John von Neumann and Nicholas Metropolis he turned the idea into a method for the neutron-diffusion problems at Los Alamos, and Metropolis and Ulam named it in 1949. An integral is an expectation, so"><img alt="" src="../_images/sphx_glr_plot_01_crude_monte_carlo_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/basics/plot_01_crude_monte_carlo.html"><span class="doc">Metropolis-Ulam: the Monte Carlo method</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Metropolis-Ulam: the Monte Carlo method</div>
+</div></div></section>
+<section id="kahn-marshall-importance-sampling">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1953 – Kahn-Marshall Importance Sampling</a><a class="headerlink" href="#kahn-marshall-importance-sampling" title="Link to this heading">#</a></h2>
+<p>Herman Kahn and Andrew Marshall, at RAND, collected the variance
+reduction techniques then in use for radiation shielding, where almost
+no simulated particle penetrates the shield. Importance sampling draws
+from a different density that makes the important outcomes common and
+corrects with the likelihood ratio. They showed that the zero-variance
+density is proportional to the integrand itself, which is unusable but
+says what a good choice looks like. For normal drivers the natural
+family is a mean shift.</p>
+<div class="math notranslate nohighlight">
+\[E[f(Z)] = E_\theta\left[f(Z)\,e^{-\theta^\top Z + |\theta|^2/2}\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.variance_reduction.importance_sampling_normal()</span></code>
+samples <span class="math notranslate nohighlight">\(N(\theta, I)\)</span> and applies the weight, for scalar or vector
+shifts. The example prices deep out-of-the-money calls with the shift
+that sends the stock to the strike, and scans the variance over the
+shift.</p>
+<p><em>References:</em> H. Kahn and A. W. Marshall, “Methods of Reducing Sample
+Size in Monte Carlo Computations,” <em>Journal of the Operations Research
+Society of America</em> 1 (1953) 263-278; Glasserman (2004), Section 4.6.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Herman Kahn and Andy Marshall (1953), at RAND, wrote down the trick for shielding calculations in which almost no simulated neutron gets through: sample from a density that makes the rare event common, and reweight by the likelihood ratio. For normal drivers a mean shift \theta gives"><img alt="" src="../_images/sphx_glr_plot_02_importance_sampling_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/variance_reduction/plot_02_importance_sampling.html"><span class="doc">Kahn-Marshall importance sampling</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kahn-Marshall importance sampling</div>
+</div></div></section>
+<section id="hammersley-morton-antithetic-variates">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1956 – Hammersley-Morton Antithetic Variates</a><a class="headerlink" href="#hammersley-morton-antithetic-variates" title="Link to this heading">#</a></h2>
+<p>John Hammersley and Keith Morton proposed estimating an expectation from
+pairs of negatively correlated samples. For a uniform <span class="math notranslate nohighlight">\(U\)</span> the
+partner is <span class="math notranslate nohighlight">\(1 - U\)</span>; for a normal it is <span class="math notranslate nohighlight">\(-Z\)</span>. When the
+integrand is monotone the two halves of a pair err in opposite
+directions and the pair average has smaller variance than two
+independent draws; when it is symmetric the method backfires. It needs
+no knowledge of the problem and costs nothing, which has made it the
+default first step in derivatives pricing.</p>
+<div class="math notranslate nohighlight">
+\[\operatorname{Var}\left[\tfrac12\bigl(f(Z) + f(-Z)\bigr)\right]
+= \tfrac12\operatorname{Var} f(Z)\,(1 + \rho)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.variance_reduction.antithetic_estimate()</span></code>
+averages mirrored pairs and takes the standard error over pairs; for
+whole paths it pairs with <a class="reference internal" href="../api/integrators.html#financialkit.integrators.antithetic_increments" title="financialkit.integrators.antithetic_increments"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.antithetic_increments()</span></code></a>.
+The example contrasts a call (monotone, a gain) with a straddle (nearly
+symmetric, a loss) and prices an Asian call on antithetic paths.</p>
+<p><em>References:</em> J. M. Hammersley and K. W. Morton, “A New Monte Carlo
+Technique: Antithetic Variates,” <em>Mathematical Proceedings of the
+Cambridge Philosophical Society</em> 52 (1956) 449-475; Glasserman (2004),
+Section 4.2.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="John Hammersley and Keith Morton (1956) proposed pairing each random input with its mirror image. If f is monotone, f(Z) and f(-Z) are negatively correlated and their average is less variable than two independent draws:"><img alt="" src="../_images/sphx_glr_plot_03_antithetic_variates_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/variance_reduction/plot_03_antithetic_variates.html"><span class="doc">Hammersley-Morton antithetic variates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hammersley-Morton antithetic variates</div>
+</div></div></section>
+<section id="box-muller-normal-variates">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1958 – Box-Muller Normal Variates</a><a class="headerlink" href="#box-muller-normal-variates" title="Link to this heading">#</a></h2>
+<p>George Box and Mervin Muller published a two-paragraph note that solved
+the practical problem of turning a computer’s uniform random numbers
+into exact normal deviates. The joint density of two independent
+normals depends only on the radius, whose square is exponential, and
+the angle is uniform; inverting both distribution functions gives two
+normals from two uniforms with no rejection and no approximation.</p>
+<div class="math notranslate nohighlight">
+\[z_1 = \sqrt{-2\ln u_1}\cos(2\pi u_2), \qquad
+z_2 = \sqrt{-2\ln u_1}\sin(2\pi u_2)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.basics.box_muller()</span></code>
+is the transform and <code class="xref py py-func docutils literal notranslate"><span class="pre">box_muller_normals()</span></code>
+draws fresh normals with it. The example maps the uniform square to the
+normal plane and checks the output with a Kolmogorov-Smirnov test.</p>
+<p><em>References:</em> G. E. P. Box and M. E. Muller, “A Note on the Generation
+of Random Normal Deviates,” <em>Annals of Mathematical Statistics</em> 29
+(1958) 610-611.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Every Black-Scholes simulation needs normal random numbers, and a computer produces uniforms. George Box and Mervin Muller (1958) gave an exact transform: if u_1, u_2 are independent uniforms,"><img alt="" src="../_images/sphx_glr_plot_02_box_muller_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/basics/plot_02_box_muller.html"><span class="doc">Box-Muller normal variates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Box-Muller normal variates</div>
+</div></div></section>
+<section id="halton-sequences">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1960 – Halton Sequences</a><a class="headerlink" href="#halton-sequences" title="Link to this heading">#</a></h2>
+<p>Johannes van der Corput had shown in 1935 that reversing the binary
+digits of the integers about the radix point gives a sequence that
+fills the unit interval with the smallest possible gaps. John Halton
+generalised it to the <span class="math notranslate nohighlight">\(d\)</span>-dimensional cube by using a different
+prime base in each coordinate, and proved that the resulting points
+integrate with an error of order <span class="math notranslate nohighlight">\((\log N)^d / N\)</span>. The sequence is
+simple to compute and excellent in a handful of dimensions, but its
+projections onto pairs of large neighbouring primes are strongly
+correlated until the sample is very large.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.quasi_monte_carlo.van_der_corput()</span></code>
+computes radical inverses directly and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">halton()</span></code> wraps
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.Halton.html#scipy.stats.qmc.Halton" title="(in SciPy v1.18.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.stats.qmc.Halton</span></code></a>, optionally scrambled. The example shows
+the gap-filling order, a correlated high-dimensional projection and the
+integration error against random points.</p>
+<p><em>References:</em> J. H. Halton, “On the Efficiency of Certain Quasi-Random
+Sequences of Points in Evaluating Multi-Dimensional Integrals,”
+<em>Numerische Mathematik</em> 2 (1960) 84-90; J. G. van der Corput,
+“Verteilungsfunktionen,” <em>Proc. Akad. Wet. Amsterdam</em> 38 (1935) 813-821.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Johannes van der Corput (1935) built a one-dimensional sequence that fills the unit interval evenly by reflecting the binary digits of k about the radix point: 1/2, 1/4, 3/4, 1/8, 5/8, ... John Halton (1960) took one such radical-inverse sequence per coordinate, in distinct prime bases, to fill the d-dimensional cube. The points are deterministic, yet integrate far better than random ones in low dimension, with an error close to (\log n)^d / n."><img alt="" src="../_images/sphx_glr_plot_01_halton_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/quasi_monte_carlo/plot_01_halton.html"><span class="doc">Halton sequences</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Halton sequences</div>
+</div></div></section>
+<section id="koksma-hlawka-and-discrepancy">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1961 – Koksma-Hlawka and Discrepancy</a><a class="headerlink" href="#koksma-hlawka-and-discrepancy" title="Link to this heading">#</a></h2>
+<p>Jurjen Koksma proved in 1942 that in one dimension the error of an
+equal-weight rule is at most the total variation of the integrand times
+the star discrepancy of the nodes; Edmund Hlawka extended the
+inequality to the cube in 1961, with the variation in the sense of
+Hardy and Krause. The bound separates the integrand from the points,
+explains why quasi-random points beat random ones, and defines the goal
+of the whole field: point sets of low discrepancy.</p>
+<div class="math notranslate nohighlight">
+\[\left|\frac1N\sum_{i=1}^N f(x_i) - \int_{[0,1]^d} f\right|
+\le V_{HK}(f)\,D_N^*(x_1, \dots, x_N)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.quasi_monte_carlo.star_discrepancy()</span></code>
+computes <span class="math notranslate nohighlight">\(D_N^*\)</span> exactly in one and two dimensions,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">l2_star_discrepancy()</span></code>
+the <span class="math notranslate nohighlight">\(L^2\)</span> version in any dimension (via
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.discrepancy.html#scipy.stats.qmc.discrepancy" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.qmc.discrepancy()</span></code></a>), and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">koksma_hlawka_bound()</span></code>
+the bound. The example draws the local discrepancy of a box, compares
+discrepancies of random, Halton and Sobol points, and checks the bound
+for <span class="math notranslate nohighlight">\(f(x, y) = xy\)</span>.</p>
+<p><em>References:</em> E. Hlawka, “Funktionen von beschränkter Variation in der
+Theorie der Gleichverteilung,” <em>Annali di Matematica Pura ed Applicata</em>
+54 (1961) 325-333; J. F. Koksma, “Een algemeene stelling uit de theorie
+der gelijkmatige verdeeling modulo 1,” <em>Mathematica B (Zutphen)</em> 11
+(1942) 7-11; H. Niederreiter, <em>Random Number Generation and Quasi-Monte
+Carlo Methods</em> (SIAM, 1992), Chapter 2.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jurjen Koksma (1942) in one dimension and Edmund Hlawka (1961) in many bounded the error of an equal-weight rule by a product of two numbers, one about the integrand and one about the points:"><img alt="" src="../_images/sphx_glr_plot_02_koksma_hlawka_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/quasi_monte_carlo/plot_02_koksma_hlawka.html"><span class="doc">Koksma-Hlawka and discrepancy</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Koksma-Hlawka and discrepancy</div>
+</div></div></section>
+<section id="sobol-sequences">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1967 – Sobol Sequences</a><a class="headerlink" href="#sobol-sequences" title="Link to this heading">#</a></h2>
+<p>Ilya Sobol constructed base-2 digital sequences, generated by binary
+direction numbers, whose initial segments are nets: every dyadic box of
+the right volume contains exactly the right number of points. They are
+fast to generate with bitwise operations, remain well balanced in high
+dimension with good direction numbers, and became the default
+low-discrepancy sequence in finance after the 1990s.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.quasi_monte_carlo.sobol()</span></code>
+wraps <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.Sobol.html#scipy.stats.qmc.Sobol" title="(in SciPy v1.18.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.stats.qmc.Sobol</span></code></a> (Joe-Kuo direction numbers). The
+example verifies the net property on two grids and compares integration
+errors with Halton and random points in eight dimensions.</p>
+<p><em>References:</em> I. M. Sobol, “On the Distribution of Points in a Cube and
+the Approximate Evaluation of Integrals,” <em>USSR Computational
+Mathematics and Mathematical Physics</em> 7 (1967) 86-112; S. Joe and F. Y.
+Kuo, “Constructing Sobol Sequences with Better Two-Dimensional
+Projections,” <em>SIAM Journal on Scientific Computing</em> 30 (2008)
+2635-2654.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Ilya Sobol (1967) constructed sequences in base 2 whose leading points form (t, m, s)-nets: every dyadic box of volume 2^{t - m} holds exactly 2^t of the first 2^m points. With well-chosen direction numbers (Joe and Kuo&#x27;s, which scipy.stats.qmc.Sobol uses) they stay balanced in thousands of dimensions and are the workhorse of quasi-Monte Carlo in finance."><img alt="" src="../_images/sphx_glr_plot_03_sobol_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/quasi_monte_carlo/plot_03_sobol.html"><span class="doc">Sobol sequences</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sobol sequences</div>
+</div></div></section>
+<section id="boyle-options-by-monte-carlo">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1977 – Boyle: Options by Monte Carlo</a><a class="headerlink" href="#boyle-options-by-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Four years after Black and Scholes, Phelim Boyle observed that
+risk-neutral valuation writes any European payoff’s price as a
+discounted expectation, so it can be simulated. He priced options on
+dividend-paying stocks, checked them against the closed form, used
+antithetic and control variates, and pointed out that the method
+handles payoffs and processes for which no formula exists. Simulation
+has been part of derivatives pricing ever since.</p>
+<div class="math notranslate nohighlight">
+\[V = e^{-rT} E^Q[\text{payoff}(S_T)], \qquad
+S_T = S e^{(r - q - \sigma^2/2)T + \sigma\sqrt T Z}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.basics.european_option_mc()</span></code>
+simulates terminal prices through <a class="reference internal" href="../api/integrators.html#financialkit.integrators.gbm_paths" title="financialkit.integrators.gbm_paths"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.gbm_paths()</span></code></a>
+and returns the price with its error bar. The example reproduces Hull’s
+Example 15.6 and the price curve across strikes.</p>
+<p><em>References:</em> P. P. Boyle, “Options: A Monte Carlo Approach,” <em>Journal of
+Financial Economics</em> 4 (1977) 323-338; J. C. Hull, <em>Options, Futures, and
+Other Derivatives</em>, 10th ed. (Pearson, 2018), Chapter 21.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Phelim Boyle (1977) observed that risk-neutral valuation turns an option price into an expectation, and so into a simulation:"><img alt="" src="../_images/sphx_glr_plot_03_boyle_option_pricing_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/basics/plot_03_boyle_option_pricing.html"><span class="doc">Boyle: options by Monte Carlo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Boyle: options by Monte Carlo</div>
+</div></div></section>
+<section id="mckay-beckman-conover-latin-hypercube">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1979 – McKay-Beckman-Conover Latin Hypercube</a><a class="headerlink" href="#mckay-beckman-conover-latin-hypercube" title="Link to this heading">#</a></h2>
+<p>Michael McKay, Richard Beckman and William Conover, at Los Alamos, needed
+to explore the inputs of expensive computer models with few runs. Their
+Latin hypercube design places one point in each of <span class="math notranslate nohighlight">\(n\)</span> equal
+intervals of every coordinate, pairing the coordinates by independent
+random permutations, so that every one-dimensional margin is stratified
+simultaneously. They proved that the variance never exceeds crude Monte
+Carlo’s by more than a factor <span class="math notranslate nohighlight">\(n/(n-1)\)</span> for monotone integrands,
+and Stein (1987) showed that the additive part of the integrand is
+filtered out entirely.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.variance_reduction.latin_hypercube_estimate()</span></code>
+uses <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.LatinHypercube.html#scipy.stats.qmc.LatinHypercube" title="(in SciPy v1.18.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy.stats.qmc.LatinHypercube</span></code></a> and takes its standard
+error from independent designs. The example shows the one-per-row,
+one-per-column structure and prices a five-asset basket and a call on
+it.</p>
+<p><em>References:</em> M. D. McKay, R. J. Beckman and W. J. Conover, “A
+Comparison of Three Methods for Selecting Values of Input Variables in
+the Analysis of Output from a Computer Code,” <em>Technometrics</em> 21 (1979)
+239-245; M. Stein, “Large Sample Properties of Simulations Using Latin
+Hypercube Sampling,” <em>Technometrics</em> 29 (1987) 143-151.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Michael McKay, Richard Beckman and William Conover (1979), at Los Alamos, needed to run expensive computer codes on few input combinations. A Latin hypercube design of n points stratifies every coordinate into n equal intervals at once: each interval of each axis holds exactly one point, the axes shuffled independently. The variance of an additive integrand falls by an order of n; interactions are left alone."><img alt="" src="../_images/sphx_glr_plot_04_latin_hypercube_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/variance_reduction/plot_04_latin_hypercube.html"><span class="doc">McKay-Beckman-Conover Latin hypercube</span></a></p>
+  <div class="sphx-glr-thumbnail-title">McKay-Beckman-Conover Latin hypercube</div>
+</div></div></section>
+<section id="lavenberg-welch-control-variates">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1981 – Lavenberg-Welch Control Variates</a><a class="headerlink" href="#lavenberg-welch-control-variates" title="Link to this heading">#</a></h2>
+<p>The idea of correcting a simulated mean by the observed error of a
+quantity with known expectation is old, but Stephen Lavenberg and Peter
+Welch gave it its modern form as a regression: the optimal coefficients
+are least-squares slopes, several controls can be used at once, and the
+variance falls by the fraction of variance the controls explain. In
+option pricing the discounted stock price, the geometric average of an
+Asian option or a simpler option with a closed form are all controls.</p>
+<div class="math notranslate nohighlight">
+\[\hat\mu = \bar Y - \beta^\top(\bar X - \mu_X), \qquad
+\operatorname{Var}\hat\mu \approx (1 - R^2)\frac{s_Y^2}{n}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.variance_reduction.control_variate_estimate()</span></code>
+fits <span class="math notranslate nohighlight">\(\beta\)</span> with <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html#numpy.linalg.lstsq" title="(in NumPy v2.5)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.linalg.lstsq()</span></code></a> and returns a
+<a class="reference internal" href="../api/monte_carlo.html#financialkit.monte_carlo.ControlVariateResult" title="financialkit.monte_carlo.core.base.ControlVariateResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ControlVariateResult</span></code></a> with
+the coefficients, <span class="math notranslate nohighlight">\(R^2\)</span> and the uncontrolled estimate. The example
+draws the regression for a call on <span class="math notranslate nohighlight">\(S_T\)</span> and adds an at-the-money
+call as a second control.</p>
+<p><em>References:</em> S. S. Lavenberg and P. D. Welch, “A Perspective on the Use
+of Control Variables to Increase the Efficiency of Monte Carlo
+Simulations,” <em>Management Science</em> 27 (1981) 322-335; Glasserman
+(2004), Section 4.1.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="If a quantity X simulated alongside the target Y has a known mean, its sampling error tells us about the error in \bar Y. Stephen Lavenberg and Peter Welch (1981) framed the correction as a regression: estimate \beta by least squares and use"><img alt="" src="../_images/sphx_glr_plot_05_control_variates_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/variance_reduction/plot_05_control_variates.html"><span class="doc">Lavenberg-Welch control variates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lavenberg-Welch control variates</div>
+</div></div></section>
+<section id="glynn-likelihood-ratio-greeks">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">1987 – Glynn: Likelihood-Ratio Greeks</a><a class="headerlink" href="#glynn-likelihood-ratio-greeks" title="Link to this heading">#</a></h2>
+<p>Peter Glynn’s survey at the 1987 Winter Simulation Conference, and
+Reiman and Weiss’s paper of 1989, established the likelihood-ratio (or
+score-function) method for derivatives of expectations: differentiate
+the probability density of the simulated output rather than the output
+itself. The payoff is never differentiated, so discontinuous payoffs
+pose no problem; the price is a weight that grows noisier as the
+parameter’s influence spreads over more random inputs.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial\theta} E_\theta[f(X)]
+= E_\theta\left[f(X)\,\frac{\partial}{\partial\theta}\ln p_\theta(X)\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.greeks.likelihood_ratio_greeks()</span></code>
+returns the price, delta, vega and gamma of vanilla or digital options
+with standard errors in a
+<a class="reference internal" href="../api/monte_carlo.html#financialkit.monte_carlo.MonteCarloGreeks" title="financialkit.monte_carlo.core.base.MonteCarloGreeks"><code class="xref py py-class docutils literal notranslate"><span class="pre">MonteCarloGreeks</span></code></a>. The
+example checks them against the Black-Scholes Greeks and the digital
+call’s delta.</p>
+<p><em>References:</em> P. W. Glynn, “Likelihood Ratio Gradient Estimation: An
+Overview,” <em>Proceedings of the 1987 Winter Simulation Conference</em>,
+366-375; M. I. Reiman and A. Weiss, “Sensitivity Analysis for
+Simulations via Likelihood Ratios,” <em>Operations Research</em> 37 (1989)
+830-844; Glasserman (2004), Section 7.3.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Bumping a parameter and re-simulating gives a biased, noisy derivative. Peter Glynn (1987), and Reiman and Weiss (1989), differentiated the density instead of the payoff:"><img alt="" src="../_images/sphx_glr_plot_01_likelihood_ratio_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/greeks/plot_01_likelihood_ratio.html"><span class="doc">Glynn: likelihood-ratio Greeks</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Glynn: likelihood-ratio Greeks</div>
+</div></div></section>
+<section id="barraquand-moment-matching">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">1995 – Barraquand Moment Matching</a><a class="headerlink" href="#barraquand-moment-matching" title="Link to this heading">#</a></h2>
+<p>Jérôme Barraquand, valuing high-dimensional multivariate European
+securities, corrected the sampling error of the inputs directly:
+transform the sample of normals so that its mean and covariance are
+exactly the theoretical ones. “Quadratic resampling” makes simple
+moments of the payoff exact, at the cost of dependence between samples
+and an <span class="math notranslate nohighlight">\(O(1/n)\)</span> bias, so error bars must come from independent
+batches.</p>
+<div class="math notranslate nohighlight">
+\[\tilde z_i = \frac{z_i - \bar z}{s_z}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.variance_reduction.moment_match()</span></code>
+rescales a sample and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">moment_matching_estimate()</span></code>
+estimates with it over independent replications. The example compares
+replicated crude and matched estimates of a call across sample sizes.</p>
+<p><em>References:</em> J. Barraquand, “Numerical Valuation of High Dimensional
+Multivariate European Securities,” <em>Management Science</em> 41 (1995)
+1882-1891; Glasserman (2004), Section 4.5.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A finite sample of normals never has mean exactly 0 and variance exactly 1, and the payoff inherits those sampling errors. Jérôme Barraquand (1995), pricing multi-asset options, simply rescaled the sample,"><img alt="" src="../_images/sphx_glr_plot_06_moment_matching_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/variance_reduction/plot_06_moment_matching.html"><span class="doc">Barraquand moment matching</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Barraquand moment matching</div>
+</div></div></section>
+<section id="owen-scrambling-randomized-qmc">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">1995 – Owen Scrambling: Randomized QMC</a><a class="headerlink" href="#owen-scrambling-randomized-qmc" title="Link to this heading">#</a></h2>
+<p>Quasi-Monte Carlo’s weakness was the missing error bar. Art Owen
+randomly permuted the base-<span class="math notranslate nohighlight">\(b\)</span> digits of a net in a nested way
+that preserves the net property: the scrambled points are still a net,
+yet each one is uniformly distributed. The estimate becomes unbiased,
+independent scramblings give a sample standard error, and Owen later
+proved that for smooth integrands the variance falls like
+<span class="math notranslate nohighlight">\(N^{-3}(\log N)^{d-1}\)</span>, better than the unrandomized sequence.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.quasi_monte_carlo.randomized_qmc_estimate()</span></code>
+integrates over independently scrambled Sobol or Halton point sets
+(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.qmc.html#module-scipy.stats.qmc" title="(in SciPy v1.18.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.stats.qmc</span></code></a>). The example shows that scrambling keeps the
+stratification and that the root-mean-square error falls like
+<span class="math notranslate nohighlight">\(N^{-3/2}\)</span>.</p>
+<p><em>References:</em> A. B. Owen, “Randomly Permuted (t, m, s)-Nets and (t,
+s)-Sequences,” in <em>Monte Carlo and Quasi-Monte Carlo Methods in
+Scientific Computing</em>, Lecture Notes in Statistics 106 (Springer, 1995)
+299-317; A. B. Owen, “Scrambled Net Variance for Integrals of Smooth
+Functions,” <em>Annals of Statistics</em> 25 (1997) 1541-1562.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A deterministic point set gives one number and no error bar. Art Owen (1995) randomly permuted the digits of a net, nested so that the result is still a net: every scrambled point is uniform on the cube, so the estimate is unbiased, independent scramblings give an honest standard error, and for smooth integrands the root-mean-square error falls like N^{-3/2}, faster than the unscrambled sequence&#x27;s N^{-1}."><img alt="" src="../_images/sphx_glr_plot_04_owen_scrambling_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/quasi_monte_carlo/plot_04_owen_scrambling.html"><span class="doc">Owen scrambling: randomized QMC</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Owen scrambling: randomized QMC</div>
+</div></div></section>
+<section id="paskov-traub-qmc-in-high-dimension">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">1995 – Paskov-Traub: QMC in High Dimension</a><a class="headerlink" href="#paskov-traub-qmc-in-high-dimension" title="Link to this heading">#</a></h2>
+<p>Conventional wisdom held that low-discrepancy sequences were useless
+beyond a few dozen dimensions. Spassimir Paskov and Joseph Traub valued
+a collateralized mortgage obligation from Goldman Sachs, a
+360-dimensional integral, and found that Sobol points converged faster
+than Monte Carlo by a large factor. The resolution came from Caflisch,
+Morokoff and Owen’s notion of effective dimension: financial integrands
+are dominated by a few coordinates and low-order interactions, which
+the leading coordinates of a good sequence cover well.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.quasi_monte_carlo.gbm_path_estimate()</span></code>
+prices a path-dependent payoff from pseudo-random or Sobol increments
+(<a class="reference internal" href="../api/integrators.html#financialkit.integrators.sobol_increments" title="financialkit.integrators.sobol_increments"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.sobol_increments()</span></code></a>, time order), with
+the standard error from replications. The example prices a 64-date
+arithmetic Asian call and maps the payoff’s sensitivity to each
+coordinate.</p>
+<p><em>References:</em> S. H. Paskov and J. F. Traub, “Faster Valuation of
+Financial Derivatives,” <em>Journal of Portfolio Management</em> 22 (1995)
+113-120; R. E. Caflisch, W. Morokoff and A. Owen, “Valuation of Mortgage
+Backed Securities Using Brownian Bridges to Reduce Effective
+Dimension,” <em>Journal of Computational Finance</em> 1 (1997) 27-46.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Theory said quasi-Monte Carlo should lose its edge beyond a dozen dimensions, since (\log N)^d / N only beats N^{-1/2} for astronomically large N. Spassimir Paskov and Joseph Traub (1995) priced a Goldman Sachs collateralized mortgage obligation, a 360-dimensional integral, and found Sobol points beat Monte Carlo anyway. The explanation, later formalized as effective dimension: financial integrands depend mostly on a few coordinates and their low-order interactions."><img alt="" src="../_images/sphx_glr_plot_05_paskov_traub_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/quasi_monte_carlo/plot_05_paskov_traub.html"><span class="doc">Paskov-Traub: QMC in high dimension</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Paskov-Traub: QMC in high dimension</div>
+</div></div></section>
+<section id="broadie-glasserman-pathwise-greeks">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">1996 – Broadie-Glasserman Pathwise Greeks</a><a class="headerlink" href="#broadie-glasserman-pathwise-greeks" title="Link to this heading">#</a></h2>
+<p>Mark Broadie and Paul Glasserman set out two unbiased simulation
+estimators of price sensitivities side by side: the likelihood ratio
+and the pathwise derivative, which differentiates each simulated
+discounted payoff with respect to the parameter and averages. When the
+payoff is Lipschitz the derivative and the expectation commute, and the
+pathwise estimator is usually much less noisy; when the payoff jumps,
+as a digital does, it fails, and the two methods complement each other.</p>
+<div class="math notranslate nohighlight">
+\[\Delta = E\left[e^{-rT}\mathbf 1\{S_T &gt; K\}\frac{S_T}{S}\right]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.greeks.pathwise_greeks()</span></code>
+returns the pathwise delta and vega of a vanilla option (gamma is not
+defined pathwise and is <code class="docutils literal notranslate"><span class="pre">nan</span></code>; digitals are refused). The example
+compares its variance with the likelihood ratio on common random
+numbers across strikes.</p>
+<p><em>References:</em> M. Broadie and P. Glasserman, “Estimating Security Price
+Derivatives Using Simulation,” <em>Management Science</em> 42 (1996) 269-285;
+Glasserman (2004), Section 7.2.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Mark Broadie and Paul Glasserman (1996) differentiated each simulated payoff with respect to the parameter and averaged:"><img alt="" src="../_images/sphx_glr_plot_02_pathwise_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/greeks/plot_02_pathwise.html"><span class="doc">Broadie-Glasserman pathwise Greeks</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Broadie-Glasserman pathwise Greeks</div>
+</div></div></section>
+<section id="caflisch-moskowitz-brownian-bridge">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">1996 – Caflisch-Moskowitz Brownian Bridge</a><a class="headerlink" href="#caflisch-moskowitz-brownian-bridge" title="Link to this heading">#</a></h2>
+<p>Russel Caflisch and Bradley Moskowitz, presenting quasi-Monte Carlo for
+finance at the 1994 Las Vegas conference (published 1995-96), proposed
+building each Brownian path by bisection: the first coordinate fixes the
+endpoint, the next the midpoint given the endpoints, and so on. The
+leading, best-distributed coordinates then carry most of the path’s
+variance, the effective dimension drops, and quasi-Monte Carlo gains
+substantially on path-dependent payoffs. Caflisch, Morokoff and Owen
+applied it to mortgage-backed securities in 1997.</p>
+<div class="math notranslate nohighlight">
+\[W(t_m) \mid W(t_l), W(t_r) \sim
+N\left(\frac{(t_r - t_m)W(t_l) + (t_m - t_l)W(t_r)}{t_r - t_l},\;
+\frac{(t_m - t_l)(t_r - t_m)}{t_r - t_l}\right)\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/integrators.html#financialkit.integrators.brownian_bridge" title="financialkit.integrators.brownian_bridge"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.brownian_bridge()</span></code></a>
+builds the paths and <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.quasi_monte_carlo.gbm_path_estimate()</span></code>
+with <code class="docutils literal notranslate"><span class="pre">sampler=&quot;bridge&quot;</span></code> prices with them. The example shows the
+coarse-to-fine construction and the gain over time-ordered Sobol points
+on the 64-date Asian call.</p>
+<p><em>References:</em> R. E. Caflisch and B. Moskowitz, “Modified Monte Carlo
+Methods Using Quasi-Random Sequences,” in <em>Monte Carlo and Quasi-Monte
+Carlo Methods in Scientific Computing</em>, Lecture Notes in Statistics 106
+(Springer, 1995) 1-16; W. J. Morokoff and R. E. Caflisch, “Quasi-Monte
+Carlo Integration,” <em>Journal of Computational Physics</em> 122 (1995)
+218-230; Glasserman (2004), Section 5.5.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Quasi-random points are best distributed in their first coordinates. If those coordinates drive the first time steps, the coarse shape of each path is left to the poorly distributed later ones. Russel Caflisch and Bradley Moskowitz (1995), and Caflisch, Morokoff and Owen (1997) for mortgage-backed securities, reordered the construction: the first coordinate sets W(T), the second W(T/2) given the ends, and so on by bisection,"><img alt="" src="../_images/sphx_glr_plot_06_brownian_bridge_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/quasi_monte_carlo/plot_06_brownian_bridge.html"><span class="doc">Caflisch-Moskowitz Brownian bridge</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Caflisch-Moskowitz Brownian bridge</div>
+</div></div></section>
+<section id="giles-multilevel-monte-carlo">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">2008 – Giles Multilevel Monte Carlo</a><a class="headerlink" href="#giles-multilevel-monte-carlo" title="Link to this heading">#</a></h2>
+<p>Michael Giles combined the telescoping idea of multigrid solvers and of
+Heinrich’s multilevel integration with SDE discretisation. The
+expectation on the finest grid is written as the coarsest expectation
+plus a sum of corrections, each estimated from fine and coarse Euler
+paths driven by the same Brownian increments. The corrections’ variance
+falls with the step size, so the optimal sample sizes decrease
+geometrically with the level, and the cost of a root-mean-square error
+<span class="math notranslate nohighlight">\(\varepsilon\)</span> falls from <span class="math notranslate nohighlight">\(O(\varepsilon^{-3})\)</span> to
+<span class="math notranslate nohighlight">\(O(\varepsilon^{-2}(\log\varepsilon)^2)\)</span>. The idea has since spread
+to PDEs with random coefficients, nested simulation and Markov chain
+Monte Carlo.</p>
+<div class="math notranslate nohighlight">
+\[E[P_L] = E[P_0] + \sum_{l=1}^{L} E[P_l - P_{l-1}], \qquad
+N_l \propto \sqrt{V_l / C_l}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.monte_carlo.systems.multilevel.mlmc_level()</span></code>
+simulates coupled level corrections with
+<a class="reference internal" href="../api/integrators.html#financialkit.integrators.euler_maruyama" title="financialkit.integrators.euler_maruyama"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.euler_maruyama()</span></code></a>, and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">multilevel_monte_carlo()</span></code>
+runs Giles’s adaptive algorithm to a target accuracy, returning an
+<a class="reference internal" href="../api/monte_carlo.html#financialkit.monte_carlo.MLMCResult" title="financialkit.monte_carlo.core.base.MLMCResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">MLMCResult</span></code></a>. The example
+plots the level variances and sample sizes and the cost against
+standard Monte Carlo.</p>
+<p><em>References:</em> M. B. Giles, “Multilevel Monte Carlo Path Simulation,”
+<em>Operations Research</em> 56 (2008) 607-617; M. B. Giles, “Multilevel Monte
+Carlo Methods,” <em>Acta Numerica</em> 24 (2015) 259-328; S. Heinrich,
+“Multilevel Monte Carlo Methods,” in <em>Large-Scale Scientific Computing</em>,
+LNCS 2179 (Springer, 2001) 58-67.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Pricing with a discretised SDE has two errors: the bias of the time step and the statistical error. Balancing them with Euler&#x27;s scheme costs O(\varepsilon^{-3}). Michael Giles (2008), borrowing the idea of multigrid (and of Heinrich&#x27;s multilevel integration), wrote the finest approximation as a telescoping sum,"><img alt="" src="../_images/sphx_glr_plot_01_giles_mlmc_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/monte_carlo/multilevel/plot_01_giles_mlmc.html"><span class="doc">Giles multilevel Monte Carlo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Giles multilevel Monte Carlo</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/monte_carlo.html"><span class="doc">financialkit.monte_carlo</span></a></p></li>
+<li><p><a class="reference internal" href="../api/integrators.html"><span class="doc">financialkit.integrators</span></a></p></li>
+<li><p><a class="reference internal" href="options_breakthroughs.html"><span class="doc">Breakthroughs in Option Pricing</span></a></p></li>
+<li><p><a class="reference internal" href="interest_rate_models_breakthroughs.html"><span class="doc">Breakthroughs in Interest-Rate Models</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="credit_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Credit Risk</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pde_methods_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in PDE Methods</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neyman-stratification">1934 – Neyman Stratification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metropolis-ulam-the-monte-carlo-method">1949 – Metropolis-Ulam: the Monte Carlo Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kahn-marshall-importance-sampling">1953 – Kahn-Marshall Importance Sampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hammersley-morton-antithetic-variates">1956 – Hammersley-Morton Antithetic Variates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-muller-normal-variates">1958 – Box-Muller Normal Variates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#halton-sequences">1960 – Halton Sequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koksma-hlawka-and-discrepancy">1961 – Koksma-Hlawka and Discrepancy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobol-sequences">1967 – Sobol Sequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boyle-options-by-monte-carlo">1977 – Boyle: Options by Monte Carlo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mckay-beckman-conover-latin-hypercube">1979 – McKay-Beckman-Conover Latin Hypercube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lavenberg-welch-control-variates">1981 – Lavenberg-Welch Control Variates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glynn-likelihood-ratio-greeks">1987 – Glynn: Likelihood-Ratio Greeks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barraquand-moment-matching">1995 – Barraquand Moment Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#owen-scrambling-randomized-qmc">1995 – Owen Scrambling: Randomized QMC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paskov-traub-qmc-in-high-dimension">1995 – Paskov-Traub: QMC in High Dimension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadie-glasserman-pathwise-greeks">1996 – Broadie-Glasserman Pathwise Greeks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caflisch-moskowitz-brownian-bridge">1996 – Caflisch-Moskowitz Brownian Bridge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giles-multilevel-monte-carlo">2008 – Giles Multilevel Monte Carlo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/monte_carlo_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+
+
+.. _sphx_glr_api_gallery_credit_reduced_form:
+
+Reduced-form models
+-------------------
+
+Default as the first jump of an intensity, and what is recovered.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jarrow and Turnbull (1995) modelled the timing of default rather than its cause: default is the first jump of a Poisson process with intensity \lambda(t), so the survival probability is Q(t) = e^{-\int_0^t \lambda}. A risky zero-coupon bond that recovers a fraction \delta of a riskless one is worth P(0,T)[\delta + (1-\delta)Q(T)], and its spread is close to \lambda(1 - \delta): the credit triangle.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/reduced_form/images/thumb/sphx_glr_plot_01_jarrow_turnbull_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/reduced_form/plot_01_jarrow_turnbull`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jarrow and Turnbull: hazard rates and survival curves</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Duffie and Singleton (1999) assumed that at default a bond loses a fraction L of its own market value. Then defaultable claims are priced like riskless ones discounted at r + \lambda L, so any short-rate machinery prices credit too. With a Cox-Ingersoll-Ross intensity the risky bond has the CIR closed form; here it is compared with a simulation, and the three recovery conventions are compared for a flat hazard.">
+
+.. only:: html
+
+  .. image:: /api/gallery/credit/reduced_form/images/thumb/sphx_glr_plot_02_duffie_singleton_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/credit/reduced_form/plot_02_duffie_singleton`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Duffie and Singleton: recovery of market value</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/credit/reduced_form/plot_01_jarrow_turnbull
+   /api/gallery/credit/reduced_form/plot_02_duffie_singleton
+

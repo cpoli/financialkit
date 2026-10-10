@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.time_value hub </_generated/subpackages/time_value>` · :doc:`History </history/time_value_breakthroughs>` · :doc:`Examples </api/gallery/time_value/index>` · :doc:`API reference </api/time_value>`

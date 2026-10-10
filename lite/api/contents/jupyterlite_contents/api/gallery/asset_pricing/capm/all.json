@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.859653Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.859653Z",
+      "mimetype": null,
+      "name": "plot_03_zero_beta.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/capm/plot_03_zero_beta.ipynb",
+      "size": 3940,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.859756Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.859756Z",
+      "mimetype": null,
+      "name": "plot_04_grs_test.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/capm/plot_04_grs_test.ipynb",
+      "size": 3363,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.859537Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.859537Z",
+      "mimetype": null,
+      "name": "plot_02_jensen_alpha.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/capm/plot_02_jensen_alpha.ipynb",
+      "size": 2989,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.859419Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.859419Z",
+      "mimetype": null,
+      "name": "plot_01_security_market_line.ipynb",
+      "path": "jupyterlite_contents/api/gallery/asset_pricing/capm/plot_01_security_market_line.ipynb",
+      "size": 3213,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.205344Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.206633Z",
+  "mimetype": null,
+  "name": "capm",
+  "path": "jupyterlite_contents/api/gallery/asset_pricing/capm",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

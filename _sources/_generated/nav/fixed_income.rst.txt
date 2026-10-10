@@ -1,0 +1,3 @@
+.. container:: subpkg-nav
+
+   :doc:`financialkit.fixed_income hub </_generated/subpackages/fixed_income>` · :doc:`History </history/fixed_income_breakthroughs>` · :doc:`Examples </api/gallery/fixed_income/index>` · :doc:`API reference </api/fixed_income>`

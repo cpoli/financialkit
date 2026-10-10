@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Financial Time Series &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/time_series_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Breakthroughs in Market Microstructure" href="market_microstructure_breakthroughs.html" />
+    <link rel="prev" title="Breakthroughs in Risk Measurement" href="risk_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_microstructure_breakthroughs.html">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Financial Time Series</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-financial-time-series">
+<h1>Breakthroughs in Financial Time Series<a class="headerlink" href="#breakthroughs-in-financial-time-series" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/time_series.html"><span class="doc">financialkit.time_series hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/time_series/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/time_series.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“The series looks like a wandering one, almost as if once a week the
+Demon of Chance drew a random number from a symmetrical population of
+fixed dispersion and added it to the current price to determine the
+next week’s price.”
+– Maurice Kendall, 1953</p>
+</div></blockquote>
+<p>A price series is a single realization of a random process that can never
+be rerun, so everything known about it has to be inferred from its own
+past. Financial time-series analysis began by borrowing the
+autoregressions that statisticians had built for sunspots and rivers,
+and then found that prices broke their assumptions one by one.
+Prices wander like random walks, so their changes, not their levels, are
+the object of study. The changes are nearly uncorrelated, which is the
+efficient-markets hypothesis in statistical form, and much of the history
+is a sequence of ever sharper tests of that claim. Yet the changes are not
+independent: their size clusters, their tails are fat, and volatility
+responds more to falls than to rises. Two Nobel prizes, Engle’s and
+Granger’s in 2003, went to modelling these features. This chronology
+traces the ideas behind <a class="reference internal" href="../api/time_series.html#module-financialkit.time_series" title="financialkit.time_series"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.time_series</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#yule-s-autoregression" id="id1">1927 – Yule’s Autoregression</a></p></li>
+<li><p><a class="reference internal" href="#hurst-exponent" id="id2">1951 – Hurst Exponent</a></p></li>
+<li><p><a class="reference internal" href="#kendall-the-random-walk-of-prices" id="id3">1953 – Kendall: the Random Walk of Prices</a></p></li>
+<li><p><a class="reference internal" href="#mandelbrot-fat-tails" id="id4">1963 – Mandelbrot: Fat Tails</a></p></li>
+<li><p><a class="reference internal" href="#fama-s-runs-test" id="id5">1965 – Fama’s Runs Test</a></p></li>
+<li><p><a class="reference internal" href="#box-jenkins-arma" id="id6">1970 – Box-Jenkins ARMA</a></p></li>
+<li><p><a class="reference internal" href="#akaike-information-criterion" id="id7">1974 – Akaike Information Criterion</a></p></li>
+<li><p><a class="reference internal" href="#hill-tail-index" id="id8">1975 – Hill Tail Index</a></p></li>
+<li><p><a class="reference internal" href="#ljung-box-portmanteau-test" id="id9">1978 – Ljung-Box Portmanteau Test</a></p></li>
+<li><p><a class="reference internal" href="#dickey-fuller-unit-roots" id="id10">1979 – Dickey-Fuller Unit Roots</a></p></li>
+<li><p><a class="reference internal" href="#parkinson-s-range-volatility" id="id11">1980 – Parkinson’s Range Volatility</a></p></li>
+<li><p><a class="reference internal" href="#engle-s-arch" id="id12">1982 – Engle’s ARCH</a></p></li>
+<li><p><a class="reference internal" href="#bollerslev-s-garch" id="id13">1986 – Bollerslev’s GARCH</a></p></li>
+<li><p><a class="reference internal" href="#engle-granger-cointegration" id="id14">1987 – Engle-Granger Cointegration</a></p></li>
+<li><p><a class="reference internal" href="#lo-mackinlay-variance-ratio" id="id15">1988 – Lo-MacKinlay Variance Ratio</a></p></li>
+<li><p><a class="reference internal" href="#nelson-s-egarch" id="id16">1991 – Nelson’s EGARCH</a></p></li>
+<li><p><a class="reference internal" href="#glosten-jagannathan-runkle" id="id17">1993 – Glosten-Jagannathan-Runkle</a></p></li>
+<li><p><a class="reference internal" href="#riskmetrics-ewma" id="id18">1994 – RiskMetrics EWMA</a></p></li>
+<li><p><a class="reference internal" href="#andersen-bollerslev-realized-volatility" id="id19">1998 – Andersen-Bollerslev Realized Volatility</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id20">See Also</a></p></li>
+</ul>
+</nav>
+<section id="yule-s-autoregression">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1927 – Yule’s Autoregression</a><a class="headerlink" href="#yule-s-autoregression" title="Link to this heading">#</a></h2>
+<p>The standard tool for periodic data was Schuster’s periodogram, which
+treats a series as exact sine waves plus measurement error. Udny Yule
+found it unconvincing for sunspot numbers, whose cycles vary in length
+and height. He proposed instead a pendulum “bombarded by peas”: a damped
+oscillation that random shocks keep alive. For Wolfer’s sunspot numbers
+he fitted <span class="math notranslate nohighlight">\(x_t = 1.34\,x_{t-1} - 0.65\,x_{t-2} + \varepsilon_t\)</span>,
+whose complex characteristic roots give a pseudo-cycle of about ten
+and a half years. The coefficients solve the <em>Yule-Walker equations</em>, a Toeplitz
+system in the sample autocorrelations. With this paper the
+autoregressive model, the backbone of time-series analysis, was born.</p>
+<div class="math notranslate nohighlight">
+\[\rho_k = \sum_{i=1}^{p}\phi_i\,\rho_{k-i}, \quad k = 1, \dots, p\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.linear_models.yule_walker()</span></code>
+(via <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve_toeplitz.html#scipy.linalg.solve_toeplitz" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.linalg.solve_toeplitz()</span></code></a>), with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">ar_cycle_period()</span></code>
+for the pseudo-period and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_arma()</span></code>.</p>
+<p><em>References:</em> G. U. Yule, “On a Method of Investigating Periodicities in
+Disturbed Series, with Special Reference to Wolfer’s Sunspot Numbers,”
+<em>Philosophical Transactions of the Royal Society A</em> 226 (1927) 267-298.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Schuster&#x27;s periodogram treated sunspot numbers as a sum of exact cycles plus measurement error. Udny Yule (1927) proposed instead a pendulum &quot;bombarded by peas&quot;: a damped oscillation kept alive by random shocks,"><img alt="" src="../_images/sphx_glr_plot_01_yule_autoregression_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/linear_models/plot_01_yule_autoregression.html"><span class="doc">Yule’s autoregression</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Yule's autoregression</div>
+</div></div></section>
+<section id="hurst-exponent">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1951 – Hurst Exponent</a><a class="headerlink" href="#hurst-exponent" title="Link to this heading">#</a></h2>
+<p>Harold Edwin Hurst spent decades measuring the Nile to size the
+reservoirs above Aswan. The storage a dam needs to release the average
+flow every year is the range <span class="math notranslate nohighlight">\(R\)</span> of cumulative departures from the
+mean. Divided by the standard deviation <span class="math notranslate nohighlight">\(S\)</span>, this rescaled range
+grows like <span class="math notranslate nohighlight">\(n^{1/2}\)</span> for independent inflows, but Hurst found
+<span class="math notranslate nohighlight">\(n^{0.73}\)</span> for the Nile and for hundreds of other natural records.
+Wet years cluster with wet years over long horizons. Mandelbrot later
+explained the exponent <span class="math notranslate nohighlight">\(H\)</span> with fractional Brownian motion and
+brought it to finance, where <span class="math notranslate nohighlight">\(H \ne 1/2\)</span> would mean long-range
+predictability. Anis and Lloyd’s (1976) exact expectation of <span class="math notranslate nohighlight">\(R/S\)</span>
+for independent data corrects the estimate’s small-sample bias.</p>
+<div class="math notranslate nohighlight">
+\[E\Bigl[\frac{R}{S}\Bigr]_n \propto n^{H}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.long_memory.hurst_exponent()</span></code>
+returns a <a class="reference internal" href="../api/time_series.html#financialkit.time_series.HurstResult" title="financialkit.time_series.core.base.HurstResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">HurstResult</span></code></a> with
+the raw and Anis-Lloyd-corrected exponents;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_fgn()</span></code>
+generates exact fractional Gaussian noise by circulant embedding
+(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/fft.html#module-scipy.fft" title="(in SciPy v1.18.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.fft</span></code></a>).</p>
+<p><em>References:</em> H. E. Hurst, “Long-Term Storage Capacity of Reservoirs,”
+<em>Transactions of the American Society of Civil Engineers</em> 116 (1951)
+770-799; A. A. Anis and E. H. Lloyd, “The Expected Value of the Adjusted
+Rescaled Hurst Range of Independent Normal Summands,” <em>Biometrika</em> 63(1)
+(1976) 111-116; B. B. Mandelbrot and J. W. Van Ness, “Fractional Brownian
+Motions, Fractional Noises and Applications,” <em>SIAM Review</em> 10(4) (1968)
+422-437.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="To size the Aswan reservoirs, Harold Edwin Hurst (1951) studied the range of cumulative departures of the Nile&#x27;s annual flow from its mean: the storage a dam would need to deliver the average flow every year. Divided by the standard deviation, the range of independent inflows grows like n^{1/2}; Hurst found n^{0.73} for the Nile and many other records. Wet years cluster with wet years. Mandelbrot later linked the exponent H to fractional Brownian motion: H &gt; 1/2 means persistence, H &lt; 1/2 mean reversion, and in markets a reliable H \ne 1/2 would make returns predictable."><img alt="" src="../_images/sphx_glr_plot_01_hurst_exponent_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/long_memory/plot_01_hurst_exponent.html"><span class="doc">Hurst exponent</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hurst exponent</div>
+</div></div></section>
+<section id="kendall-the-random-walk-of-prices">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1953 – Kendall: the Random Walk of Prices</a><a class="headerlink" href="#kendall-the-random-walk-of-prices" title="Link to this heading">#</a></h2>
+<p>Maurice Kendall went looking for cycles in 22 British price series:
+wheat, cotton and industrial share indices, sampled weekly. Instead he
+found that the serial correlations of the price <em>changes</em> were close to
+zero at every lag, while the levels were almost perfectly correlated. He
+concluded that prices wander like a random walk. The finding surprised
+economists who had expected cycles, but it established the empirical fact that efficient-markets theory would
+explain a decade later: in a well-functioning market, past price changes
+do not predict future ones.</p>
+<div class="math notranslate nohighlight">
+\[\hat\rho_k = \frac{\sum_{t}(x_t - \bar x)(x_{t-k} - \bar x)}{\sum_t (x_t - \bar x)^2},
+\qquad |\hat\rho_k| \lesssim \frac{1.96}{\sqrt n}\ \text{under independence}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.efficiency.autocorrelation()</span></code>
+(by FFT) and <code class="xref py py-func docutils literal notranslate"><span class="pre">bartlett_band()</span></code>;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">plot_acf()</span></code> draws the
+correlogram.</p>
+<p><em>References:</em> M. G. Kendall, “The Analysis of Economic Time-Series – Part
+I: Prices,” <em>Journal of the Royal Statistical Society A</em> 116(1) (1953)
+11-34.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Maurice Kendall (1953) set out to find the cycles in 22 British price series (wheat, cotton, share indices) at weekly intervals. He found none: the serial correlations of the price changes were indistinguishable from zero, and &quot;the series looks like a wandering one, almost as if once a week the Demon of Chance drew a random number&quot;. The levels, by contrast, are almost perfectly autocorrelated, which is what makes them look patterned to the eye."><img alt="" src="../_images/sphx_glr_plot_01_kendall_autocorrelation_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/efficiency/plot_01_kendall_autocorrelation.html"><span class="doc">Kendall: the random walk of prices</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kendall: the random walk of prices</div>
+</div></div></section>
+<section id="mandelbrot-fat-tails">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1963 – Mandelbrot: Fat Tails</a><a class="headerlink" href="#mandelbrot-fat-tails" title="Link to this heading">#</a></h2>
+<p>Benoit Mandelbrot plotted the frequency of large daily and monthly
+changes in cotton prices on doubly logarithmic paper and found
+straight lines. The tails decay like a power law, not like the Gaussian
+that Bachelier’s random walk assumed, so extreme moves are vastly more
+common than the normal distribution predicts. He proposed the stable
+Paretian laws, with index <span class="math notranslate nohighlight">\(\alpha \approx 1.7\)</span>, which have infinite
+variance. He also noted that large changes tend to be followed by large
+changes. Later work settled on tail indices between 3 and 5 for most
+assets, so variances are finite, but fat tails and volatility clustering
+became the first two <em>stylized facts</em> of returns.</p>
+<div class="math notranslate nohighlight">
+\[P(|X| &gt; u) \sim C\,u^{-\alpha}, \qquad u \to \infty\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.stylized_facts.tail_survival()</span></code>
+(the log-log tail), <code class="xref py py-func docutils literal notranslate"><span class="pre">return_statistics()</span></code>
+(moments and the Jarque-Bera test via <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.jarque_bera.html#scipy.stats.jarque_bera" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.stats.jarque_bera()</span></code></a>) and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">log_returns()</span></code>.</p>
+<p><em>References:</em> B. Mandelbrot, “The Variation of Certain Speculative
+Prices,” <em>Journal of Business</em> 36(4) (1963) 394-419; R. Cont, “Empirical
+Properties of Asset Returns: Stylized Facts and Statistical Issues,”
+<em>Quantitative Finance</em> 1(2) (2001) 223-236.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Benoit Mandelbrot (1963) plotted the frequency of large changes in cotton prices on doubly logarithmic paper and found straight lines: the tail probability P(|X| &gt; u) decays like a power u^{-\alpha}, not like the Gaussian e^{-u^2/2}. Five-sigma days, which a normal distribution makes once-in-several-millennia events, happen every few years. He proposed the stable (Lévy) laws, with \alpha \approx 1.7 for cotton; later work settled on tail indices between 3 and 5 for most returns, but the log-log plot remains the standard diagnostic."><img alt="" src="../_images/sphx_glr_plot_01_mandelbrot_fat_tails_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/stylized_facts/plot_01_mandelbrot_fat_tails.html"><span class="doc">Mandelbrot: fat tails</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Mandelbrot: fat tails</div>
+</div></div></section>
+<section id="fama-s-runs-test">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1965 – Fama’s Runs Test</a><a class="headerlink" href="#fama-s-runs-test" title="Link to this heading">#</a></h2>
+<p>Eugene Fama’s thesis, published in full in the <em>Journal of Business</em>,
+examined the daily prices of the 30 Dow Jones Industrials. Correlation coefficients can be
+dominated by a few huge changes, which Mandelbrot had just shown to be
+common. Fama therefore added a distribution-free test that uses only the
+signs of the changes, counting the <em>runs</em> of consecutive changes with the
+same sign. Trends would produce too few runs and reversals too many.
+The counts were close to their expected values under independence. The
+paper, and Fama’s 1970 survey, made the efficient-markets hypothesis the
+organizing idea of empirical finance.</p>
+<div class="math notranslate nohighlight">
+\[m = \frac{N(N+1) - \sum_i n_i^2}{N}, \qquad
+\sigma_m^2 = \frac{\sum_i n_i^2\bigl[\sum_i n_i^2 + N(N+1)\bigr] - 2N\sum_i n_i^3 - N^3}{N^2(N-1)}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.efficiency.runs_test()</span></code>
+with Fama’s three-sign (+, -, 0) moments, returning a
+<a class="reference internal" href="../api/time_series.html#financialkit.time_series.TestResult" title="financialkit.time_series.core.base.TestResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestResult</span></code></a>.</p>
+<p><em>References:</em> E. F. Fama, “The Behavior of Stock-Market Prices,” <em>Journal
+of Business</em> 38(1) (1965) 34-105; A. Wald and J. Wolfowitz, “On a Test
+Whether Two Samples Are from the Same Population,” <em>Annals of
+Mathematical Statistics</em> 11(2) (1940) 147-162.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Correlation coefficients can be dominated by a few large changes. In his 1965 thesis Eugene Fama added a distribution-free check on the 30 Dow Jones stocks: count the runs, the unbroken sequences of price changes with the same sign. Positive dependence produces long runs and too few of them; reversals produce too many. Under independence the number of runs is approximately normal with a known mean and variance, and Fama found the observed counts close to the expected ones."><img alt="" src="../_images/sphx_glr_plot_02_fama_runs_test_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/efficiency/plot_02_fama_runs_test.html"><span class="doc">Fama’s runs test</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Fama's runs test</div>
+</div></div></section>
+<section id="box-jenkins-arma">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1970 – Box-Jenkins ARMA</a><a class="headerlink" href="#box-jenkins-arma" title="Link to this heading">#</a></h2>
+<p>George Box and Gwilym Jenkins’s book turned mixed autoregressive
+moving-average models into a practical method with three stages. First,
+<em>identify</em> the orders from the autocorrelation function, which cuts off
+after lag <span class="math notranslate nohighlight">\(q\)</span> for a moving average, and the partial autocorrelation
+function, which cuts off after lag <span class="math notranslate nohighlight">\(p\)</span> for an autoregression.
+Second, <em>estimate</em> by maximum likelihood. Third, <em>check</em> the residuals for
+leftover structure, and repeat until they are white noise. Then forecast,
+with error bands from the model’s moving-average representation. ARMA
+models became the benchmark that every economic forecast had to beat.</p>
+<div class="math notranslate nohighlight">
+\[\phi(B)(x_t - \mu) = \theta(B)\,\varepsilon_t, \qquad
+\operatorname{Var}(\hat x_{T+h} - x_{T+h}) = \sigma^2\sum_{j&lt;h}\psi_j^2\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.linear_models.fit_arma()</span></code>
+(conditional maximum likelihood by <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html#scipy.optimize.least_squares" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.least_squares()</span></code></a>,
+kept stationary and invertible by Monahan’s transform), returning an
+<a class="reference internal" href="../api/time_series.html#financialkit.time_series.ARMAResult" title="financialkit.time_series.core.base.ARMAResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ARMAResult</span></code></a> with
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">forecast()</span></code>;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">partial_autocorrelation()</span></code>
+(Durbin-Levinson), <code class="xref py py-func docutils literal notranslate"><span class="pre">arma_acf()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">arma_psi_weights()</span></code>.</p>
+<p><em>References:</em> G. E. P. Box and G. M. Jenkins, <em>Time Series Analysis:
+Forecasting and Control</em> (San Francisco: Holden-Day, 1970); J. F. Monahan,
+“A Note on Enforcing Stationarity in Autoregressive-Moving Average
+Models,” <em>Biometrika</em> 71(2) (1984) 403-404.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="George Box and Gwilym Jenkins (1970) turned the mixed autoregressive moving-average model"><img alt="" src="../_images/sphx_glr_plot_02_box_jenkins_arma_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/linear_models/plot_02_box_jenkins_arma.html"><span class="doc">Box-Jenkins ARMA</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Box-Jenkins ARMA</div>
+</div></div></section>
+<section id="akaike-information-criterion">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1974 – Akaike Information Criterion</a><a class="headerlink" href="#akaike-information-criterion" title="Link to this heading">#</a></h2>
+<p>Box and Jenkins chose orders by inspecting correlograms. Hirotugu Akaike
+replaced the judgement call with a number. The maximized log-likelihood
+is an optimistic estimate of how well a model will predict new data, and
+Akaike showed that the optimism is about one unit per estimated
+parameter. Minimizing <span class="math notranslate nohighlight">\(-2\ell + 2k\)</span> therefore picks the model with
+the smallest expected Kullback-Leibler distance from the truth. Gideon
+Schwarz (1978) derived the heavier Bayesian penalty
+<span class="math notranslate nohighlight">\(k \ln n\)</span>, which selects the true order with probability tending
+to one. AIC is better for prediction and BIC for identification.</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{AIC} = -2\ell(\hat\theta) + 2k, \qquad \mathrm{BIC} = -2\ell(\hat\theta) + k\ln n\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.linear_models.select_arma_order()</span></code>
+fits every order on a common sample and returns an
+<a class="reference internal" href="../api/time_series.html#financialkit.time_series.OrderSelectionResult" title="financialkit.time_series.core.base.OrderSelectionResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrderSelectionResult</span></code></a>;
+every <a class="reference internal" href="../api/time_series.html#financialkit.time_series.ARMAResult" title="financialkit.time_series.core.base.ARMAResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ARMAResult</span></code></a> and
+<a class="reference internal" href="../api/time_series.html#financialkit.time_series.VolatilityFit" title="financialkit.time_series.core.base.VolatilityFit"><code class="xref py py-class docutils literal notranslate"><span class="pre">VolatilityFit</span></code></a> reports
+<code class="docutils literal notranslate"><span class="pre">aic</span></code> and <code class="docutils literal notranslate"><span class="pre">bic</span></code>.</p>
+<p><em>References:</em> H. Akaike, “A New Look at the Statistical Model
+Identification,” <em>IEEE Transactions on Automatic Control</em> 19(6) (1974)
+716-723; G. Schwarz, “Estimating the Dimension of a Model,” <em>Annals of
+Statistics</em> 6(2) (1978) 461-464.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Adding parameters always raises the likelihood, so the likelihood alone cannot choose a model&#x27;s order. Hirotugu Akaike (1974) showed that -2\ell + 2k estimates the expected Kullback-Leibler distance between the fitted model and the truth, so the order that minimizes it predicts best. Gideon Schwarz&#x27;s (1978) Bayesian criterion -2\ell + k\ln n penalizes more heavily and is consistent: it picks the true order with probability one as n \to \infty, while AIC keeps a small chance of overfitting."><img alt="" src="../_images/sphx_glr_plot_03_akaike_order_selection_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/linear_models/plot_03_akaike_order_selection.html"><span class="doc">Akaike information criterion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Akaike information criterion</div>
+</div></div></section>
+<section id="hill-tail-index">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1975 – Hill Tail Index</a><a class="headerlink" href="#hill-tail-index" title="Link to this heading">#</a></h2>
+<p>If a tail is a power law, the logarithms of the largest observations,
+measured from a high threshold, are exponentially distributed with mean
+<span class="math notranslate nohighlight">\(1/\alpha\)</span>. Bruce Hill turned this into a simple estimator that
+uses only the <span class="math notranslate nohighlight">\(k\)</span> largest order statistics and is the maximum
+likelihood estimator for an exact Pareto tail. The <em>Hill plot</em> of
+<span class="math notranslate nohighlight">\(\hat\alpha_k\)</span> against <span class="math notranslate nohighlight">\(k\)</span> shows the central difficulty of
+tail estimation: small <span class="math notranslate nohighlight">\(k\)</span> is noisy, and large <span class="math notranslate nohighlight">\(k\)</span> reaches
+into the body of the distribution and is biased. Applied to returns, it
+gave tail indices between 3 and 5, so variances exist but fourth moments
+barely do.</p>
+<div class="math notranslate nohighlight">
+\[\hat\alpha_k = \Bigl[\frac1k\sum_{i=1}^{k}\ln X_{(i)} - \ln X_{(k+1)}\Bigr]^{-1},
+\qquad \operatorname{se}(\hat\alpha_k) \approx \frac{\alpha}{\sqrt k}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.stylized_facts.hill_estimator()</span></code>
+returns a <a class="reference internal" href="../api/time_series.html#financialkit.time_series.TailIndexResult" title="financialkit.time_series.core.base.TailIndexResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TailIndexResult</span></code></a>
+for either tail; <code class="xref py py-func docutils literal notranslate"><span class="pre">plot_hill()</span></code>
+draws the Hill plot.</p>
+<p><em>References:</em> B. M. Hill, “A Simple General Approach to Inference About
+the Tail of a Distribution,” <em>Annals of Statistics</em> 3(5) (1975)
+1163-1174.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="If the tail is a power law, P(X &gt; u) \approx C u^{-\alpha}, the log-excesses of the largest observations over a threshold are exponential with mean 1/\alpha. Bruce Hill (1975) turned this into the estimator"><img alt="" src="../_images/sphx_glr_plot_02_hill_tail_index_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/stylized_facts/plot_02_hill_tail_index.html"><span class="doc">Hill tail index</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hill tail index</div>
+</div></div></section>
+<section id="ljung-box-portmanteau-test">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1978 – Ljung-Box Portmanteau Test</a><a class="headerlink" href="#ljung-box-portmanteau-test" title="Link to this heading">#</a></h2>
+<p>Checking many autocorrelations one by one is bound to find a
+“significant” one by chance. Box and Pierce (1970) pooled the first
+<span class="math notranslate nohighlight">\(h\)</span> into a single chi-squared statistic for diagnosing fitted ARMA
+residuals. Its distribution is far from <span class="math notranslate nohighlight">\(\chi^2\)</span> in samples of
+realistic size, so it rejected too rarely. Greta Ljung and George Box
+weighted each term by <span class="math notranslate nohighlight">\((n+2)/(n-k)\)</span>, the reciprocal of its exact
+variance factor, and the corrected statistic matches its reference
+closely. Applied to squared returns rather than returns, the same test
+became a standard check for volatility clustering.</p>
+<div class="math notranslate nohighlight">
+\[Q = n(n+2)\sum_{k=1}^{h}\frac{\hat\rho_k^2}{n-k} \;\sim\; \chi^2_{h-p-q}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.efficiency.ljung_box()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">box_pierce()</span></code>, with
+<code class="docutils literal notranslate"><span class="pre">fitted_params</span></code> for ARMA residuals.</p>
+<p><em>References:</em> G. M. Ljung and G. E. P. Box, “On a Measure of Lack of Fit
+in Time Series Models,” <em>Biometrika</em> 65(2) (1978) 297-303; G. E. P. Box
+and D. A. Pierce, “Distribution of Residual Autocorrelations in
+Autoregressive-Integrated Moving Average Time Series Models,” <em>Journal of
+the American Statistical Association</em> 65(332) (1970) 1509-1526.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Checking twenty autocorrelations one at a time finds a &quot;significant&quot; one by chance about two times in three. Box and Pierce (1970) pooled them into a single statistic, Q = n\sum_{k \le h}\hat\rho_k^2 \sim \chi^2_h, and Greta Ljung and George Box (1978) fixed its poor small-sample behaviour by weighting each term,"><img alt="" src="../_images/sphx_glr_plot_03_ljung_box_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/efficiency/plot_03_ljung_box.html"><span class="doc">Ljung-Box portmanteau test</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ljung-Box portmanteau test</div>
+</div></div></section>
+<section id="dickey-fuller-unit-roots">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1979 – Dickey-Fuller Unit Roots</a><a class="headerlink" href="#dickey-fuller-unit-roots" title="Link to this heading">#</a></h2>
+<p>Whether a series has a unit root decides whether shocks to it are
+permanent, as for a stock price, or fade away, as for a stationary
+interest rate. The obvious test, the t-ratio of <span class="math notranslate nohighlight">\(\gamma\)</span> in
+<span class="math notranslate nohighlight">\(\Delta y_t = \gamma y_{t-1} + e_t\)</span>, does not have a t distribution
+when <span class="math notranslate nohighlight">\(\gamma = 0\)</span>: it is skewed to the left. David Dickey and Wayne
+Fuller derived and tabulated its distribution by simulation. Said and
+Dickey (1984) added lagged differences to absorb serial correlation, and
+James MacKinnon’s response surfaces give critical values for any sample
+size. Nelson and Plosser’s (1982) finding that most macroeconomic series
+cannot reject a unit root changed empirical macroeconomics.</p>
+<div class="math notranslate nohighlight">
+\[\Delta y_t = \alpha + \beta t + \gamma y_{t-1} + \sum_{i=1}^{k}\delta_i\,\Delta y_{t-i} + e_t,
+\qquad H_0: \gamma = 0\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.unit_roots.adf_test()</span></code>
+(AIC lag selection), returning a
+<a class="reference internal" href="../api/time_series.html#financialkit.time_series.UnitRootResult" title="financialkit.time_series.core.base.UnitRootResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnitRootResult</span></code></a> with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">mackinnon_critical_values()</span></code>;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_dickey_fuller()</span></code>
+traces the null distribution.</p>
+<p><em>References:</em> D. A. Dickey and W. A. Fuller, “Distribution of the
+Estimators for Autoregressive Time Series with a Unit Root,” <em>Journal of
+the American Statistical Association</em> 74(366) (1979) 427-431; S. E. Said
+and D. A. Dickey, “Testing for Unit Roots in Autoregressive-Moving
+Average Models of Unknown Order,” <em>Biometrika</em> 71(3) (1984) 599-607; J.
+G. MacKinnon, “Critical Values for Cointegration Tests,” Queen’s
+Economics Department Working Paper 1227 (2010).</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Is a series a random walk (\rho = 1) or does it revert to a mean (:math:`\rho &lt; 1`)? Regressing \Delta y_t on y_{t-1} and looking at the t-ratio of the slope seems natural, but under a unit root that ratio does not have a t distribution: it is skewed to the left, and more so when a constant or trend is included. David Dickey and Wayne Fuller (1979) tabulated its distribution by simulation. Their test, with lagged differences added (Said and Dickey 1984) and MacKinnon&#x27;s critical values, is still the first thing run on an interest rate, a price-dividend ratio or a pairs-trading spread."><img alt="" src="../_images/sphx_glr_plot_01_dickey_fuller_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/unit_roots/plot_01_dickey_fuller.html"><span class="doc">Dickey-Fuller unit roots</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Dickey-Fuller unit roots</div>
+</div></div></section>
+<section id="parkinson-s-range-volatility">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1980 – Parkinson’s Range Volatility</a><a class="headerlink" href="#parkinson-s-range-volatility" title="Link to this heading">#</a></h2>
+<p>Close-to-close returns throw away almost everything that happened during
+the day. Michael Parkinson, a physicist, applied the theory of the range
+of Brownian motion. The squared log ratio of the high to the low, divided
+by <span class="math notranslate nohighlight">\(4\ln 2\)</span>, is an unbiased estimate of the period’s variance and
+is about five times more efficient than the squared return. A month of
+daily ranges carries roughly as much information as five months of
+closes. The idea led to the Garman-Klass and Rogers-Satchell estimators
+and to range-based volatility models.</p>
+<div class="math notranslate nohighlight">
+\[\hat\sigma^2_t = \frac{(\ln H_t - \ln L_t)^2}{4\ln 2}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.realized.parkinson_variance()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">close_to_close_variance()</span></code>;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_ohlc()</span></code> builds
+daily bars from exact GBM paths (<a class="reference internal" href="../api/integrators.html#financialkit.integrators.gbm_paths" title="financialkit.integrators.gbm_paths"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.gbm_paths()</span></code></a>).</p>
+<p><em>References:</em> M. Parkinson, “The Extreme Value Method for Estimating the
+Variance of the Rate of Return,” <em>Journal of Business</em> 53(1) (1980)
+61-65.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A daily close-to-close return uses two prices out of the thousands traded that day. Michael Parkinson (1980) used two more, the high and the low: for Brownian motion with volatility \sigma,"><img alt="" src="../_images/sphx_glr_plot_01_parkinson_range_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/volatility/plot_01_parkinson_range.html"><span class="doc">Parkinson’s range volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Parkinson's range volatility</div>
+</div></div></section>
+<section id="engle-s-arch">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">1982 – Engle’s ARCH</a><a class="headerlink" href="#engle-s-arch" title="Link to this heading">#</a></h2>
+<p>Robert Engle was modelling UK inflation, whose forecast errors were small
+in some periods and large in others. He let the conditional variance
+depend on past squared errors. The model’s returns are uncorrelated but
+not independent, cluster in volatility and have fat tails even with
+normal innovations, which reproduces Mandelbrot’s two stylized facts at
+once. Engle also gave a Lagrange-multiplier test that regresses squared
+residuals on their own lags. ARCH opened the econometrics of risk and
+earned him the 2003 Nobel prize.</p>
+<div class="math notranslate nohighlight">
+\[r_t = \sigma_t z_t, \qquad \sigma_t^2 = \omega + \alpha\,r_{t-1}^2, \qquad
+\mathrm{LM} = T R^2 \sim \chi^2_q\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/time_series.html#financialkit.time_series.ARCH" title="financialkit.time_series.systems.garch.ARCH"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.time_series.systems.garch.ARCH</span></code></a>
+(a <a class="reference internal" href="../api/time_series.html#financialkit.time_series.VolatilityModel" title="financialkit.time_series.core.base.VolatilityModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">VolatilityModel</span></code></a> fitted by
+maximum likelihood) and <code class="xref py py-func docutils literal notranslate"><span class="pre">arch_lm_test()</span></code>.</p>
+<p><em>References:</em> R. F. Engle, “Autoregressive Conditional Heteroscedasticity
+with Estimates of the Variance of United Kingdom Inflation,”
+<em>Econometrica</em> 50(4) (1982) 987-1007.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Forecast errors for UK inflation were sometimes small and sometimes large, in clusters. Robert Engle (1982) let the conditional variance depend on the last squared shock,"><img alt="" src="../_images/sphx_glr_plot_02_engle_arch_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/volatility/plot_02_engle_arch.html"><span class="doc">Engle’s ARCH</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Engle's ARCH</div>
+</div></div></section>
+<section id="bollerslev-s-garch">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">1986 – Bollerslev’s GARCH</a><a class="headerlink" href="#bollerslev-s-garch" title="Link to this heading">#</a></h2>
+<p>Volatility decays slowly, so pure ARCH needed long lag lists with
+awkward constraints. Tim Bollerslev, Engle’s student, added the lagged
+conditional variance itself, which gives an ARCH(<span class="math notranslate nohighlight">\(\infty\)</span>) with
+geometrically declining weights in just three parameters. GARCH(1,1)
+fitted to daily returns almost anywhere gives a small <span class="math notranslate nohighlight">\(\alpha\)</span>
+and a persistence <span class="math notranslate nohighlight">\(\alpha + \beta\)</span> just below one. It is still the
+default volatility model of practitioners, and its forecasts mean-revert
+to a long-run variance at a rate set by the persistence.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_t^2 = \omega + \alpha\,\varepsilon_{t-1}^2 + \beta\,\sigma_{t-1}^2, \qquad
+E_T[\sigma^2_{T+h}] = \bar\sigma^2 + (\alpha+\beta)^{h-1}(\sigma^2_{T+1} - \bar\sigma^2)\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/time_series.html#financialkit.time_series.GARCH" title="financialkit.time_series.systems.garch.GARCH"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.time_series.systems.garch.GARCH</span></code></a>
+(variance filtering by <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.lfilter.html#scipy.signal.lfilter" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.signal.lfilter()</span></code></a>, estimation by
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a> with standard errors from the numerical
+Hessian), with <code class="xref py py-meth docutils literal notranslate"><span class="pre">forecast()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">plot_conditional_volatility()</span></code>.</p>
+<p><em>References:</em> T. Bollerslev, “Generalized Autoregressive Conditional
+Heteroskedasticity,” <em>Journal of Econometrics</em> 31(3) (1986) 307-327.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Pure ARCH models needed many lags to capture how slowly volatility decays. Tim Bollerslev (1986), Engle&#x27;s student, added the lagged variance itself,"><img alt="" src="../_images/sphx_glr_plot_03_bollerslev_garch_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/volatility/plot_03_bollerslev_garch.html"><span class="doc">Bollerslev’s GARCH</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bollerslev's GARCH</div>
+</div></div></section>
+<section id="engle-granger-cointegration">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">1987 – Engle-Granger Cointegration</a><a class="headerlink" href="#engle-granger-cointegration" title="Link to this heading">#</a></h2>
+<p>Granger and Newbold (1974) had shown that regressions between
+independent random walks routinely produce high <span class="math notranslate nohighlight">\(R^2\)</span> and
+“significant” coefficients. Yet economic theory ties some nonstationary
+series together, such as consumption and income, spot and futures
+prices, or a stock’s two share classes. Clive Granger called such series
+<em>cointegrated</em>: each wanders, but a linear combination does not. Engle
+and Granger proved that cointegrated series have an error-correction
+representation and proposed a two-step test. The first step regresses
+the levels, and the second tests the residuals for a unit root, using
+critical values that account for the estimated coefficients.</p>
+<div class="math notranslate nohighlight">
+\[y_t = a + b\,x_t + u_t, \qquad u_t \sim I(0) \iff y, x \text{ cointegrated}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.unit_roots.engle_granger()</span></code>
+returns a <a class="reference internal" href="../api/time_series.html#financialkit.time_series.CointegrationResult" title="financialkit.time_series.core.base.CointegrationResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">CointegrationResult</span></code></a>
+with MacKinnon’s critical values for two to four variables;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_cointegrated_pair()</span></code>
+builds test pairs.</p>
+<p><em>References:</em> R. F. Engle and C. W. J. Granger, “Co-Integration and Error
+Correction: Representation, Estimation, and Testing,” <em>Econometrica</em>
+55(2) (1987) 251-276; C. W. J. Granger and P. Newbold, “Spurious
+Regressions in Econometrics,” <em>Journal of Econometrics</em> 2(2) (1974)
+111-120.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Granger and Newbold (1974) showed that regressing one random walk on an independent one gives &quot;significant&quot; slopes and high R^2 most of the time: a spurious regression. Yet some nonstationary series are tied together, such as spot and futures prices, or two share classes of the same company. Robert Engle and Clive Granger (1987) called them cointegrated: some combination y_t - b x_t is stationary. Their two-step test regresses y on x and runs a Dickey-Fuller test on the residuals, with critical values that allow for b having been fitted. It is the textbook basis of pairs trading."><img alt="" src="../_images/sphx_glr_plot_02_engle_granger_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/unit_roots/plot_02_engle_granger.html"><span class="doc">Engle-Granger cointegration</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Engle-Granger cointegration</div>
+</div></div></section>
+<section id="lo-mackinlay-variance-ratio">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">1988 – Lo-MacKinlay Variance Ratio</a><a class="headerlink" href="#lo-mackinlay-variance-ratio" title="Link to this heading">#</a></h2>
+<p>If log prices are a random walk, the variance of <span class="math notranslate nohighlight">\(q\)</span>-period returns
+grows in proportion to <span class="math notranslate nohighlight">\(q\)</span>. Andrew Lo and Craig MacKinlay built a
+test on the ratio of the two variances. It uses overlapping observations,
+corrects for bias, and has a standard error that stays valid under
+volatility clustering. On weekly U.S. stock returns from 1962 to 1985 it
+rejected the random walk decisively, chiefly through the positive
+autocorrelation of small-stock portfolios. The paper’s title, “Stock
+Market Prices Do Not Follow Random Walks,” reopened the debate that
+Kendall and Fama seemed to have settled.</p>
+<div class="math notranslate nohighlight">
+\[VR(q) = \frac{\hat\sigma^2_c(q)}{\hat\sigma^2_a} \approx 1 + 2\sum_{k=1}^{q-1}\Bigl(1 - \frac kq\Bigr)\rho_k,
+\qquad z^*(q) = \frac{\sqrt T\,(VR(q) - 1)}{\sqrt{\hat\theta(q)}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.efficiency.variance_ratio()</span></code>
+returns a <a class="reference internal" href="../api/time_series.html#financialkit.time_series.VarianceRatioResult" title="financialkit.time_series.core.base.VarianceRatioResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarianceRatioResult</span></code></a>
+with both the homoskedastic and the heteroskedasticity-consistent
+statistics; <code class="xref py py-func docutils literal notranslate"><span class="pre">plot_variance_ratio()</span></code>.</p>
+<p><em>References:</em> A. W. Lo and A. C. MacKinlay, “Stock Market Prices Do Not
+Follow Random Walks: Evidence from a Simple Specification Test,” <em>Review
+of Financial Studies</em> 1(1) (1988) 41-66; J. Y. Campbell, A. W. Lo and A.
+C. MacKinlay, <em>The Econometrics of Financial Markets</em> (Princeton, 1997),
+Ch. 2.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="If log prices follow a random walk, the variance of q-week returns is q times that of one-week returns. Andrew Lo and Craig MacKinlay (1988) turned this into a test,"><img alt="" src="../_images/sphx_glr_plot_04_lo_mackinlay_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/efficiency/plot_04_lo_mackinlay.html"><span class="doc">Lo-MacKinlay variance ratio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lo-MacKinlay variance ratio</div>
+</div></div></section>
+<section id="nelson-s-egarch">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">1991 – Nelson’s EGARCH</a><a class="headerlink" href="#nelson-s-egarch" title="Link to this heading">#</a></h2>
+<p>GARCH responds to the size of a shock but not to its sign, and its
+coefficients need positivity constraints. Daniel Nelson modelled the
+logarithm of the variance instead. The variance is then positive by
+construction, and a term in the signed standardized shock lets bad news
+raise volatility more than good news of the same size. This is the
+<em>leverage effect</em> that Black (1976) had observed in stock returns. Nelson
+also worked out the model’s stationarity and moments, and found a
+strongly negative asymmetry in daily returns on the U.S. stock market.</p>
+<div class="math notranslate nohighlight">
+\[\ln\sigma_t^2 = \omega + \beta\ln\sigma_{t-1}^2 + \alpha\bigl(|z_{t-1}| - E|z|\bigr) + \gamma\,z_{t-1}\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/time_series.html#financialkit.time_series.EGARCH" title="financialkit.time_series.systems.garch.EGARCH"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.time_series.systems.garch.EGARCH</span></code></a>,
+with the closed-form unconditional variance for normal innovations;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">plot_news_impact()</span></code>
+compares news impact curves.</p>
+<p><em>References:</em> D. B. Nelson, “Conditional Heteroskedasticity in Asset
+Returns: A New Approach,” <em>Econometrica</em> 59(2) (1991) 347-370; F. Black,
+“Studies of Stock Price Volatility Changes,” <em>Proceedings of the American
+Statistical Association, Business and Economic Statistics Section</em>
+(1976) 177-181.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="GARCH reacts to the size of yesterday&#x27;s shock but not its sign, and its coefficients must be kept positive. Daniel Nelson (1991) modelled the logarithm of the variance instead,"><img alt="" src="../_images/sphx_glr_plot_04_nelson_egarch_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/volatility/plot_04_nelson_egarch.html"><span class="doc">Nelson’s EGARCH</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Nelson's EGARCH</div>
+</div></div></section>
+<section id="glosten-jagannathan-runkle">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">1993 – Glosten-Jagannathan-Runkle</a><a class="headerlink" href="#glosten-jagannathan-runkle" title="Link to this heading">#</a></h2>
+<p>Do investors demand a higher expected return when volatility is high?
+Estimates of this risk-return trade-off had come out positive, negative
+or insignificant depending on the volatility model. Lawrence Glosten,
+Ravi Jagannathan and David Runkle showed that the answer hinged on the
+asymmetric response of volatility to news. They added a single term to
+GARCH for negative shocks. On U.S. monthly excess returns nearly all of
+the response came from bad news. The GJR model keeps GARCH’s analytic
+forecasts and became, with EGARCH, the standard asymmetric volatility
+model.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_t^2 = \omega + \bigl(\alpha + \gamma\,\mathbf 1\{\varepsilon_{t-1} &lt; 0\}\bigr)\varepsilon_{t-1}^2 + \beta\,\sigma_{t-1}^2\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/time_series.html#financialkit.time_series.GJRGARCH" title="financialkit.time_series.systems.garch.GJRGARCH"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.time_series.systems.garch.GJRGARCH</span></code></a>,
+with persistence <span class="math notranslate nohighlight">\(\alpha + \gamma/2 + \beta\)</span> and analytic
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">forecast()</span></code>.</p>
+<p><em>References:</em> L. R. Glosten, R. Jagannathan and D. E. Runkle, “On the
+Relation between the Expected Value and the Volatility of the Nominal
+Excess Return on Stocks,” <em>Journal of Finance</em> 48(5) (1993) 1779-1801.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Lawrence Glosten, Ravi Jagannathan and David Runkle (1993) asked whether expected stock returns rise with volatility, and found that the answer depended on modelling volatility&#x27;s asymmetric response to news. Their GARCH variant adds one term for negative shocks,"><img alt="" src="../_images/sphx_glr_plot_05_gjr_garch_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/volatility/plot_05_gjr_garch.html"><span class="doc">Glosten-Jagannathan-Runkle</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Glosten-Jagannathan-Runkle</div>
+</div></div></section>
+<section id="riskmetrics-ewma">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">1994 – RiskMetrics EWMA</a><a class="headerlink" href="#riskmetrics-ewma" title="Link to this heading">#</a></h2>
+<p>J.P. Morgan’s chairman wanted a single number for the firm’s risk at
+4:15 every afternoon. The methodology behind it was published in October
+1994, free of charge, as RiskMetrics. Its volatility model was an
+exponentially weighted moving average of squared returns, with one decay
+factor for every asset: <span class="math notranslate nohighlight">\(\lambda = 0.94\)</span> for daily data and
+<span class="math notranslate nohighlight">\(0.97\)</span> for monthly. It is a GARCH(1,1) without a constant and with
+unit persistence. It needs no estimation and adapts quickly, and it
+became the industry’s default and the template for Value-at-Risk
+reporting.</p>
+<div class="math notranslate nohighlight">
+\[\sigma_t^2 = \lambda\,\sigma_{t-1}^2 + (1 - \lambda)\,r_{t-1}^2\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/time_series.html#financialkit.time_series.EWMA" title="financialkit.time_series.systems.garch.EWMA"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.time_series.systems.garch.EWMA</span></code></a>
+(<code class="docutils literal notranslate"><span class="pre">lam=0.94</span></code> by default; <code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code>
+estimates <span class="math notranslate nohighlight">\(\lambda\)</span> by maximum likelihood instead).</p>
+<p><em>References:</em> J.P. Morgan/Reuters, <em>RiskMetrics – Technical Document</em>,
+4th ed. (New York, 1996), Ch. 5.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In 1994 J.P. Morgan published RiskMetrics, a free methodology and data set for Value-at-Risk. Its volatility model was deliberately simple: an exponentially weighted moving average"><img alt="" src="../_images/sphx_glr_plot_06_riskmetrics_ewma_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/volatility/plot_06_riskmetrics_ewma.html"><span class="doc">RiskMetrics EWMA</span></a></p>
+  <div class="sphx-glr-thumbnail-title">RiskMetrics EWMA</div>
+</div></div></section>
+<section id="andersen-bollerslev-realized-volatility">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">1998 – Andersen-Bollerslev Realized Volatility</a><a class="headerlink" href="#andersen-bollerslev-realized-volatility" title="Link to this heading">#</a></h2>
+<p>Regressions of squared daily returns on GARCH forecasts gave
+<span class="math notranslate nohighlight">\(R^2\)</span> of a few percent, and critics concluded that volatility
+models were useless out of sample. Torben Andersen and Tim Bollerslev
+showed that the squared return is to blame. It is an unbiased but
+extremely noisy measure of the day’s variance, so even a perfect
+forecast explains little of it. Summing squared intraday returns gives
+<em>realized variance</em>, which converges to the day’s integrated variance.
+Against it the same forecasts explain far more. Realized measures went
+on to underpin variance swaps and a new generation of volatility
+forecasting models.</p>
+<div class="math notranslate nohighlight">
+\[RV_t = \sum_{i=1}^{m} r_{t,i}^2 \;\xrightarrow{\;m\to\infty\;}\; \int_{t-1}^{t}\sigma_s^2\,ds\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.systems.realized.realized_variance()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">mincer_zarnowitz()</span></code>;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_intraday_returns()</span></code>
+spreads each day’s variance over intraday returns.</p>
+<p><em>References:</em> T. G. Andersen and T. Bollerslev, “Answering the Skeptics:
+Yes, Standard Volatility Models Do Provide Accurate Forecasts,”
+<em>International Economic Review</em> 39(4) (1998) 885-905; J. Mincer and V.
+Zarnowitz, “The Evaluation of Economic Forecasts,” in <em>Economic Forecasts
+and Expectations</em> (New York: NBER, 1969), 3-46.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="GARCH models fit beautifully in-sample, yet regressions of squared daily returns on their variance forecasts gave R^2 of a few percent, and sceptics concluded the models were useless for forecasting. Torben Andersen and Tim Bollerslev (1998) showed that the fault lay with the yardstick. A squared return \sigma_t^2 z_t^2 is an unbiased but very noisy measure of the day&#x27;s variance, and even a perfect forecast explains only a small part of it. Summing squared five-minute returns (realized variance) measures the variance almost exactly, and against it the same forecasts explain many times more."><img alt="" src="../_images/sphx_glr_plot_07_realized_volatility_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/time_series/volatility/plot_07_realized_volatility.html"><span class="doc">Andersen-Bollerslev realized volatility</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Andersen-Bollerslev realized volatility</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/time_series.html"><span class="doc">financialkit.time_series</span></a></p></li>
+<li><p><a class="reference internal" href="options_breakthroughs.html"><span class="doc">Breakthroughs in Option Pricing</span></a></p></li>
+<li><p><a class="reference internal" href="interest_rate_models_breakthroughs.html"><span class="doc">Breakthroughs in Interest-Rate Models</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="risk_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Risk Measurement</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="market_microstructure_breakthroughs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Breakthroughs in Market Microstructure</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yule-s-autoregression">1927 – Yule’s Autoregression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hurst-exponent">1951 – Hurst Exponent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kendall-the-random-walk-of-prices">1953 – Kendall: the Random Walk of Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mandelbrot-fat-tails">1963 – Mandelbrot: Fat Tails</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fama-s-runs-test">1965 – Fama’s Runs Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-jenkins-arma">1970 – Box-Jenkins ARMA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#akaike-information-criterion">1974 – Akaike Information Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hill-tail-index">1975 – Hill Tail Index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ljung-box-portmanteau-test">1978 – Ljung-Box Portmanteau Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dickey-fuller-unit-roots">1979 – Dickey-Fuller Unit Roots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parkinson-s-range-volatility">1980 – Parkinson’s Range Volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engle-s-arch">1982 – Engle’s ARCH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bollerslev-s-garch">1986 – Bollerslev’s GARCH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engle-granger-cointegration">1987 – Engle-Granger Cointegration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lo-mackinlay-variance-ratio">1988 – Lo-MacKinlay Variance Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nelson-s-egarch">1991 – Nelson’s EGARCH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glosten-jagannathan-runkle">1993 – Glosten-Jagannathan-Runkle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#riskmetrics-ewma">1994 – RiskMetrics EWMA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#andersen-bollerslev-realized-volatility">1998 – Andersen-Bollerslev Realized Volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/time_series_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

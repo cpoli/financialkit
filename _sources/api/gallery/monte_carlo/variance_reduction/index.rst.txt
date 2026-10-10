@@ -1,0 +1,142 @@
+
+
+.. _sphx_glr_api_gallery_monte_carlo_variance_reduction:
+
+Variance reduction
+------------------
+
+The same expectation from fewer samples: stratification, importance
+sampling, antithetic variates, Latin hypercubes, control variates and
+moment matching, each compared with crude Monte Carlo.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jerzy Neyman (1934) showed survey statisticians how to sample a stratified population: draw from each stratum separately and allocate the sample in proportion to the stratum&#x27;s weight times its standard deviation,">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/variance_reduction/images/thumb/sphx_glr_plot_01_neyman_stratification_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/variance_reduction/plot_01_neyman_stratification`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Neyman stratification</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Herman Kahn and Andy Marshall (1953), at RAND, wrote down the trick for shielding calculations in which almost no simulated neutron gets through: sample from a density that makes the rare event common, and reweight by the likelihood ratio. For normal drivers a mean shift \theta gives">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/variance_reduction/images/thumb/sphx_glr_plot_02_importance_sampling_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/variance_reduction/plot_02_importance_sampling`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kahn-Marshall importance sampling</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Hammersley and Keith Morton (1956) proposed pairing each random input with its mirror image. If f is monotone, f(Z) and f(-Z) are negatively correlated and their average is less variable than two independent draws:">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/variance_reduction/images/thumb/sphx_glr_plot_03_antithetic_variates_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/variance_reduction/plot_03_antithetic_variates`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hammersley-Morton antithetic variates</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Michael McKay, Richard Beckman and William Conover (1979), at Los Alamos, needed to run expensive computer codes on few input combinations. A Latin hypercube design of n points stratifies every coordinate into n equal intervals at once: each interval of each axis holds exactly one point, the axes shuffled independently. The variance of an additive integrand falls by an order of n; interactions are left alone.">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/variance_reduction/images/thumb/sphx_glr_plot_04_latin_hypercube_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/variance_reduction/plot_04_latin_hypercube`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">McKay-Beckman-Conover Latin hypercube</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="If a quantity X simulated alongside the target Y has a known mean, its sampling error tells us about the error in \bar Y. Stephen Lavenberg and Peter Welch (1981) framed the correction as a regression: estimate \beta by least squares and use">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/variance_reduction/images/thumb/sphx_glr_plot_05_control_variates_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/variance_reduction/plot_05_control_variates`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lavenberg-Welch control variates</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A finite sample of normals never has mean exactly 0 and variance exactly 1, and the payoff inherits those sampling errors. Jérôme Barraquand (1995), pricing multi-asset options, simply rescaled the sample,">
+
+.. only:: html
+
+  .. image:: /api/gallery/monte_carlo/variance_reduction/images/thumb/sphx_glr_plot_06_moment_matching_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/monte_carlo/variance_reduction/plot_06_moment_matching`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Barraquand moment matching</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/monte_carlo/variance_reduction/plot_01_neyman_stratification
+   /api/gallery/monte_carlo/variance_reduction/plot_02_importance_sampling
+   /api/gallery/monte_carlo/variance_reduction/plot_03_antithetic_variates
+   /api/gallery/monte_carlo/variance_reduction/plot_04_latin_hypercube
+   /api/gallery/monte_carlo/variance_reduction/plot_05_control_variates
+   /api/gallery/monte_carlo/variance_reduction/plot_06_moment_matching
+

@@ -1,0 +1,473 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of
+``financialkit.pde_methods``: the explicit, implicit and Crank-Nicolson
+schemes, their stability and accuracy, American options as linear
+complementarity problems, and a two-asset ADI solver. Each script
+illustrates one dated breakthrough from the
+:doc:`history page </history/pde_methods_breakthroughs>`.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/pde_methods/<section>/<script>.py``.
+
+Sections
+--------
+
+- **schemes** -- Crank-Nicolson, Laasonen's implicit scheme, the Thomas
+  algorithm, the heat-equation transform, Schwartz's explicit scheme,
+  the explicit scheme as a trinomial tree, and barrier options.
+- **stability** -- the Courant-Friedrichs-Lewy condition, von Neumann
+  analysis and Rannacher smoothing.
+- **accuracy** -- Richardson extrapolation and Tavella-Randall grids.
+- **american** -- Cryer's projected SOR, the Brennan-Schwartz algorithm
+  and the penalty method.
+- **multi_factor** -- the Peaceman-Rachford ADI scheme for two assets.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Accuracy
+--------
+
+Getting more digits from the same work: Richardson extrapolation across
+grids, and grids that concentrate their nodes where the payoff bends.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lewis Fry Richardson (1911), computing stresses in masonry dams by finite differences, noticed that when the error behaves like C h^p, two solutions on grids h and h/2 determine both the constant and the limit: V \approx V_{h/2} + (V_{h/2} - V_h)/(2^p - 1). richardson_extrapolation applies this to Crank-Nicolson prices; three grids also confirm that the observed order is 2, which needs the strike on a node and Rannacher&#x27;s start so that the error is a clean power of h.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/accuracy/images/thumb/sphx_glr_plot_01_richardson_extrapolation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/accuracy/plot_01_richardson_extrapolation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Richardson extrapolation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Away from the strike a vanilla option is almost linear, so a uniform grid spends most of its nodes where nothing happens. Tavella and Randall (2000) map a uniform coordinate through a hyperbolic sine to cluster the nodes around the strike, keeping the grid smooth so the three-point differences stay second order. tavella_randall_grid builds the grid, and grid=&quot;tavella_randall&quot; prices on it: the same accuracy with a fraction of the nodes.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/accuracy/images/thumb/sphx_glr_plot_02_tavella_randall_grid_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/accuracy/plot_02_tavella_randall_grid`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tavella-Randall non-uniform grids</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+American options
+----------------
+
+Early exercise turns each implicit step into a linear complementarity
+problem: projected SOR, the Brennan-Schwartz direct solve and the
+penalty method.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An American option is either held, where it satisfies the Black-Scholes equation, or exercised, where it equals its payoff; each implicit step becomes a linear complementarity problem Ax \ge b,\ x \ge g,\ (Ax - b)^\top(x - g) = 0. Colin Cryer (1971) solved it by successive over-relaxation, projecting each update back onto x \ge g. psor does this inside CrankNicolson; the sweep count depends strongly on the relaxation parameter \omega.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/american/images/thumb/sphx_glr_plot_01_cryer_psor_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/american/plot_01_cryer_psor`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cryer's projected SOR</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Michael Brennan and Eduardo Schwartz (1977) priced the American put with an implicit scheme and a direct solve: eliminate the tridiagonal system starting from the top of the grid, then substitute back upward from S = 0, taking the larger of the computed value and the payoff at each node. Because the put is exercised on a single interval at the bottom of the grid, this one pass solves the complementarity problem exactly. brennan_schwartz matches PSOR to rounding at a fraction of the cost.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/american/images/thumb/sphx_glr_plot_02_brennan_schwartz_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/american/plot_02_brennan_schwartz`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brennan-Schwartz American put</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Peter Forsyth and Kenneth Vetzal (2002) replaced the complementarity constraint by a penalty: on nodes where the value falls below the payoff, add \rho\,(g - x) with a large \rho. The resulting nonlinear system is solved by a Newton (policy) iteration that only changes which nodes are penalised, and converges in two or three tridiagonal solves per time step, independently of the grid size -- unlike PSOR, whose sweep count grows as the grid is refined. penalty_solve implements it.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/american/images/thumb/sphx_glr_plot_03_penalty_method_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/american/plot_03_penalty_method`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Forsyth-Vetzal penalty method</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Multi-factor
+------------
+
+Two state variables without a two-dimensional linear solve: the
+alternating-direction implicit scheme.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="With two assets every implicit step couples a whole plane of unknowns. Donald Peaceman and Henry Rachford (1955), modelling oil reservoirs, split each step into two half steps, each implicit in one direction only, so that a step is a set of independent tridiagonal solves. PeacemanRachfordADI prices Margrabe&#x27;s option to exchange one asset for another, whose exact value is Black-Scholes with the second asset as the strike and the volatility of the ratio, \sqrt{\sigma_1^2 + \sigma_2^2 - 2\rho\sigma_1\sigma_2}.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/multi_factor/images/thumb/sphx_glr_plot_01_peaceman_rachford_adi_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/multi_factor/plot_01_peaceman_rachford_adi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Peaceman-Rachford ADI</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Schemes
+-------
+
+The Black-Scholes equation on a grid: explicit, implicit and
+Crank-Nicolson time stepping, the tridiagonal solves they need, the
+transformation to the heat equation, the link to trinomial trees, and
+knock-out barriers.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Crank and Phyllis Nicolson (1947) averaged the explicit and implicit differences of the heat equation around the half step,">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_01_crank_nicolson_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_01_crank_nicolson`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Crank-Nicolson</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pentti Laasonen (1949) evaluated the space derivatives of the heat equation at the new time level, (I - \Delta\tau A) V^{n+1} = V^n. Every step is then a linear solve, but no step is too large: the scheme is stable and monotone for any \Delta\tau, at the price of first-order accuracy in time. ImplicitScheme shows both sides: a large step that would wreck the explicit scheme gives a sensible answer, and halving the step halves the error.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_02_laasonen_implicit_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_02_laasonen_implicit`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Laasonen's implicit scheme</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Every implicit step in one space dimension is a tridiagonal system. Llewellyn Thomas (1949) wrote down the specialised Gaussian elimination that solves it in O(m) operations: one sweep removes the sub-diagonal, a second substitutes back. No pivoting is needed because the implicit Black-Scholes matrix is diagonally dominant. thomas_solve is that algorithm by hand; it agrees with scipy.linalg.solve_banded to rounding, and its cost grows linearly while a dense solve grows cubically.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_03_thomas_algorithm_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_03_thomas_algorithm`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Thomas algorithm</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Black and Scholes (1973) found their formula by changing variables until the pricing equation became the heat equation. With x = \ln(S/K) and \tau = \tfrac12\sigma^2(T - t), V = K e^{\alpha x + \beta\tau} u turns Black-Scholes into u_\tau = u_{xx}, whose initial condition is the transformed payoff. heat_equation_price solves the heat equation by Crank-Nicolson on a uniform grid, watches the payoff diffuse, and transforms back.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_04_heat_equation_transform_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_04_heat_equation_transform`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black-Scholes as the heat equation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Eduardo Schwartz (1977) valued warrants, which no formula covered, by replacing the derivatives in the Black-Scholes equation with differences and stepping back from expiry one explicit step at a time:">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_05_schwartz_explicit_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_05_schwartz_explicit`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Schwartz: explicit finite differences</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Brennan and Schwartz (1978) noticed that in x = \ln S the explicit scheme&#x27;s weights on the three neighbouring nodes sum to one and match the mean and variance of the log-price increment: the explicit scheme is a trinomial tree, and its stability condition is just the requirement that the weights be probabilities. With \Delta x = \sigma\sqrt{3\Delta t} the middle weight is 2/3, Hull&#x27;s standard tree. log_explicit_price runs the scheme, and explicit_trinomial_probabilities shows the weights turn negative exactly where the scheme becomes unstable.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_06_explicit_is_trinomial_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_06_explicit_is_trinomial`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brennan-Schwartz: explicit schemes are trinomial trees</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A knock-out option is a boundary condition: the value is zero on the barrier. Zvan, Forsyth and Vetzal (2000) showed that finite differences price barriers accurately when a grid node sits exactly on the barrier and the solver handles the discontinuous data smoothly, rather than letting the barrier fall between nodes. price_barrier starts the grid at the barrier, and the result matches the method of images, C_{do}(S) = C(S) - (H/S)^{2\lambda - 2} C(H^2/S).">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/schemes/images/thumb/sphx_glr_plot_07_barrier_pde_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/schemes/plot_07_barrier_pde`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Zvan-Forsyth-Vetzal barrier options</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Stability
+---------
+
+When a scheme's errors grow without bound: the CFL time-step limit of the
+explicit scheme, von Neumann's Fourier analysis, and Rannacher's cure for
+Crank-Nicolson's undamped oscillations.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Courant, Friedrichs and Lewy (1928) proved that an explicit difference scheme cannot converge if its time step outruns the way information spreads across the grid. For the diffusion in the Black-Scholes equation the bound ties the time step to the square of the spot step: \Delta t \lesssim 1/(\sigma^2 M^2). explicit_stability computes the limit from the eigenvalues of the discrete operator; a step 3% below it gives the right price, a step 30% above it blows up from rounding errors near the top of the grid.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/stability/images/thumb/sphx_glr_plot_01_cfl_explicit_blowup_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/stability/plot_01_cfl_explicit_blowup`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Courant-Friedrichs-Lewy</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John von Neumann&#x27;s method, used at Los Alamos in the 1940s and published in 1950, inserts a single Fourier mode V_j^n = g^n e^{ij\xi} into a constant-coefficient scheme. The mode grows when its amplification factor has |g(\xi)| &gt; 1, so stability means |g| \le 1 for every \xi. For the theta-scheme in log-spot, g = (1 + (1-\theta)z)/(1 - \theta z) with z \approx -\sigma^2\Delta t/\Delta x^2 (1 - \cos\xi): von_neumann_amplification shows the explicit scheme failing above a diffusion number of one, Crank-Nicolson never growing but barely damping the highest modes, and the implicit scheme damping them all.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/stability/images/thumb/sphx_glr_plot_02_von_neumann_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/stability/plot_02_von_neumann`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Von Neumann stability analysis</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Crank-Nicolson is stable, but its amplification factor tends to -1 for the stiffest modes, so the high-frequency error excited by a payoff kink is never damped: it just flips sign every step. With large time steps the price looks fine while delta and gamma oscillate around the strike. Rolf Rannacher (1984) proposed starting with a few fully implicit steps, which damp those modes, before switching to Crank-Nicolson. CrankNicolson with rannacher_steps=2 replaces the first two steps by four implicit half steps.">
+
+.. only:: html
+
+  .. image:: /api/gallery/pde_methods/stability/images/thumb/sphx_glr_plot_03_rannacher_smoothing_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/pde_methods/stability/plot_03_rannacher_smoothing`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rannacher smoothing</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/pde_methods/accuracy/index.rst
+   /api/gallery/pde_methods/american/index.rst
+   /api/gallery/pde_methods/multi_factor/index.rst
+   /api/gallery/pde_methods/schemes/index.rst
+   /api/gallery/pde_methods/stability/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: pde_methods_python.zip </api/gallery/pde_methods/pde_methods_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: pde_methods_jupyter.zip </api/gallery/pde_methods/pde_methods_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

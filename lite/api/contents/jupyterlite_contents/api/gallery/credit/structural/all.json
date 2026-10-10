@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.862889Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.862889Z",
+      "mimetype": null,
+      "name": "plot_02_black_cox.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/structural/plot_02_black_cox.ipynb",
+      "size": 3586,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.862990Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.862990Z",
+      "mimetype": null,
+      "name": "plot_03_leland.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/structural/plot_03_leland.ipynb",
+      "size": 3776,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.863091Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.863091Z",
+      "mimetype": null,
+      "name": "plot_04_distance_to_default.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/structural/plot_04_distance_to_default.ipynb",
+      "size": 3664,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.862784Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.862784Z",
+      "mimetype": null,
+      "name": "plot_01_merton_structural.ipynb",
+      "path": "jupyterlite_contents/api/gallery/credit/structural/plot_01_merton_structural.ipynb",
+      "size": 3331,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.215124Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.215919Z",
+  "mimetype": null,
+  "name": "structural",
+  "path": "jupyterlite_contents/api/gallery/credit/structural",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

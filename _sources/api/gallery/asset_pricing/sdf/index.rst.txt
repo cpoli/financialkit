@@ -1,0 +1,69 @@
+
+
+.. _sphx_glr_api_gallery_asset_pricing_sdf:
+
+The stochastic discount factor
+------------------------------
+
+No arbitrage as the existence of positive state prices, and the
+volatility a discount factor needs to price the assets.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Michael Harrison and David Kreps (1979) proved the fundamental theorem of asset pricing: a market has no arbitrage if and only if some strictly positive linear rule prices every traded payoff. With finitely many states it is a vector of state prices q_s &gt; 0 with p = X&#x27;q; divided by the physical probabilities it is the stochastic discount factor m_s = q_s / \pi_s, so that p = E[m x]; normalised, it is the risk-neutral measure. In a complete market the state prices are unique. In an incomplete one, a new claim has an interval of arbitrage-free prices.">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/sdf/images/thumb/sphx_glr_plot_01_harrison_kreps_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/sdf/plot_01_harrison_kreps`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Harrison-Kreps: state prices and the stochastic discount factor</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lars Peter Hansen and Ravi Jagannathan (1991) asked what asset returns alone reveal about the stochastic discount factor. Any m that prices the returns, E[m R] = 1, must satisfy">
+
+.. only:: html
+
+  .. image:: /api/gallery/asset_pricing/sdf/images/thumb/sphx_glr_plot_02_hansen_jagannathan_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/asset_pricing/sdf/plot_02_hansen_jagannathan`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Hansen-Jagannathan bound</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/asset_pricing/sdf/plot_01_harrison_kreps
+   /api/gallery/asset_pricing/sdf/plot_02_hansen_jagannathan
+

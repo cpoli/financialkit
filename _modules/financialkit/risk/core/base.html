@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.risk.core.base &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/risk/core/base';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.risk.core.base</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.risk.core.base</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Abstract base classes and result containers for financialkit.risk.</span>
+
+<span class="sd">Sign convention, package-wide in this domain: inputs are profits and</span>
+<span class="sd">losses (or returns), so a loss is a negative number, and every risk</span>
+<span class="sd">figure is reported as a positive loss. ``alpha`` is the confidence level</span>
+<span class="sd">(``0.99`` for a 99% VaR), so the tail probability is ``1 - alpha``.</span>
+
+<span class="sd">Closed forms (parametric VaR and ES, Cornish-Fisher, tail-dependence</span>
+<span class="sd">coefficients) return plain floats or arrays that broadcast. Everything</span>
+<span class="sd">estimated from scenarios returns a small dataclass that the visualizers</span>
+<span class="sd">plot. :class:`RiskMeasure` is the interface Artzner, Delbaen, Eber and</span>
+<span class="sd">Heath's coherence axioms are stated for; VaR and expected shortfall both</span>
+<span class="sd">implement it.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"VaRResult"</span><span class="p">,</span>
+    <span class="s2">"BacktestResult"</span><span class="p">,</span>
+    <span class="s2">"TrafficLightResult"</span><span class="p">,</span>
+    <span class="s2">"GEVResult"</span><span class="p">,</span>
+    <span class="s2">"GPDResult"</span><span class="p">,</span>
+    <span class="s2">"CoherenceResult"</span><span class="p">,</span>
+    <span class="s2">"AllocationResult"</span><span class="p">,</span>
+    <span class="s2">"DrawdownResult"</span><span class="p">,</span>
+    <span class="s2">"RiskMeasure"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="VaRResult">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.VaRResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VaRResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Value at risk and expected shortfall estimated from scenarios."""</span>
+
+    <span class="n">var</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Value at risk, a positive loss."""</span>
+
+    <span class="n">es</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Expected shortfall at the same level, a positive loss."""</span>
+
+    <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Confidence level, e.g. ``0.99``."""</span>
+
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""``"historical"``, ``"hybrid"``, ``"filtered_historical"`` or ``"monte_carlo"``."""</span>
+
+    <span class="n">scenarios</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n,): Scenario profits and losses the figures were read from."""</span>
+
+    <span class="n">weights</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n,): Probability of each scenario (equal unless age-weighted)."""</span>
+
+    <span class="n">ci</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">"nan"</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"nan"</span><span class="p">))</span>
+<span class="w">    </span><span class="sd">"""Order-statistic confidence interval for the VaR (Monte Carlo only)."""</span></div>
+
+
+
+<div class="viewcode-block" id="BacktestResult">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.BacktestResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BacktestResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A likelihood-ratio test of VaR exceptions."""</span>
+
+    <span class="n">statistic</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Likelihood-ratio statistic."""</span>
+
+    <span class="n">p_value</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Asymptotic chi-squared p-value."""</span>
+
+    <span class="n">df</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Degrees of freedom of the chi-squared reference distribution."""</span>
+
+    <span class="n">n_exceptions</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Number of days the loss exceeded the VaR."""</span>
+
+    <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Number of days tested."""</span>
+
+    <span class="n">expected</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Expected number of exceptions, ``n_obs * (1 - alpha)``."""</span>
+
+<div class="viewcode-block" id="BacktestResult.reject">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.BacktestResult.reject">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Whether the model is rejected at significance ``level``."""</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_value</span> <span class="o">&lt;</span> <span class="n">level</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="TrafficLightResult">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.TrafficLightResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TrafficLightResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The Basel Committee's (1996) backtesting zone for an internal model."""</span>
+
+    <span class="n">zone</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""``"green"``, ``"yellow"`` or ``"red"``."""</span>
+
+    <span class="n">n_exceptions</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Exceptions observed."""</span>
+
+    <span class="n">cumulative_probability</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Binomial probability of at most ``n_exceptions`` exceptions for an accurate model."""</span>
+
+    <span class="n">multiplier</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Capital multiplier, 3 plus the plus factor (``nan`` outside the 250-day, 99% setting)."""</span></div>
+
+
+
+<div class="viewcode-block" id="GEVResult">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.GEVResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GEVResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A generalized extreme value fit to block maxima of losses."""</span>
+
+    <span class="n">xi</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Shape: ``&gt; 0`` Fréchet (fat tails), ``0`` Gumbel, ``&lt; 0`` Weibull."""</span>
+
+    <span class="n">mu</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Location."""</span>
+
+    <span class="n">sigma</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Scale."""</span>
+
+    <span class="n">block_size</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Observations per block."""</span>
+
+    <span class="n">maxima</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_blocks,): The block maxima of the losses."""</span></div>
+
+
+
+<div class="viewcode-block" id="GPDResult">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.GPDResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GPDResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A generalized Pareto fit to losses above a threshold."""</span>
+
+    <span class="n">xi</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Tail index: ``1 / xi`` is the number of finite moments."""</span>
+
+    <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Scale of the excesses."""</span>
+
+    <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Loss threshold ``u``."""</span>
+
+    <span class="n">n_exceed</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Number of losses above ``u``."""</span>
+
+    <span class="n">n_obs</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Total number of observations."""</span>
+
+    <span class="n">excesses</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n_exceed,): Losses above ``u`` minus ``u``."""</span></div>
+
+
+
+<div class="viewcode-block" id="CoherenceResult">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.CoherenceResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CoherenceResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Which of Artzner et al.'s four axioms a risk measure satisfied on a test pair."""</span>
+
+    <span class="n">monotonicity</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="w">    </span><span class="sd">"""``rho(Z) &gt;= rho(X)`` for a position ``Z &lt;= X`` in every state."""</span>
+
+    <span class="n">subadditivity</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="w">    </span><span class="sd">"""``rho(X + Y) &lt;= rho(X) + rho(Y)``."""</span>
+
+    <span class="n">positive_homogeneity</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="w">    </span><span class="sd">"""``rho(lam X) = lam rho(X)``."""</span>
+
+    <span class="n">translation_invariance</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="w">    </span><span class="sd">"""``rho(X + c) = rho(X) - c``."""</span>
+
+    <span class="n">rho_x</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""``rho(X)``."""</span>
+
+    <span class="n">rho_y</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""``rho(Y)``."""</span>
+
+    <span class="n">rho_sum</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""``rho(X + Y)``."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">coherent</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""True when all four axioms held."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">monotonicity</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">subadditivity</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">positive_homogeneity</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">translation_invariance</span></div>
+
+
+
+<div class="viewcode-block" id="AllocationResult">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.AllocationResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AllocationResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Euler allocation of a portfolio risk figure to its positions."""</span>
+
+    <span class="n">contributions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (d,): Risk contribution of each position; they sum to ``total``."""</span>
+
+    <span class="n">total</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Portfolio risk figure."""</span>
+
+    <span class="n">measure</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">"""``"var"``, ``"es"`` or ``"volatility"``."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">shares</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""ndarray: Contributions as fractions of the total."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contributions</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span></div>
+
+
+
+<div class="viewcode-block" id="DrawdownResult">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.DrawdownResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DrawdownResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The drawdown path of a wealth index and its summary statistics."""</span>
+
+    <span class="n">wealth</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n + 1,): Wealth index, starting at 1."""</span>
+
+    <span class="n">peak</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n + 1,): Running maximum of the wealth."""</span>
+
+    <span class="n">drawdown</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="w">    </span><span class="sd">"""ndarray, shape (n + 1,): Fractional fall from the peak, ``1 - wealth / peak`` (non-negative)."""</span>
+
+    <span class="n">max_drawdown</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""Largest drawdown."""</span>
+
+    <span class="n">peak_index</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Index of the peak preceding the largest drawdown."""</span>
+
+    <span class="n">trough_index</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""Index of the trough of the largest drawdown."""</span>
+
+    <span class="n">recovery_index</span><span class="p">:</span> <span class="nb">int</span>
+<span class="w">    </span><span class="sd">"""First index after the trough at which the peak is regained (``-1`` if never)."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">longest_duration</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""int: Longest run of consecutive periods spent below a previous peak."""</span>
+        <span class="n">under</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drawdown</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="n">best</span> <span class="o">=</span> <span class="n">run</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">under</span><span class="p">:</span>
+            <span class="n">run</span> <span class="o">=</span> <span class="n">run</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">u</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">run</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">best</span></div>
+
+
+
+<div class="viewcode-block" id="RiskMeasure">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.RiskMeasure">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RiskMeasure</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""A map from a random profit and loss, given by scenarios, to a capital figure.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Confidence level in ``(0, 1)``.</span>
+<span class="sd">    """</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">alpha</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"alpha must lie in (0, 1), got </span><span class="si">{</span><span class="n">alpha</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pnl</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Risk of the equally likely scenario profits and losses ``pnl`` (a positive loss)."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(alpha=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="si">}</span><span class="s2">)"</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

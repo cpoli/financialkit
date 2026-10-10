@@ -1,0 +1,26 @@
+financialkit.credit
+===================
+
+Altman's Z-score, Merton, Black-Cox and Leland structural models and the KMV distance to default, hazard curves and recovery conventions, CDS pricing and bootstrapping, CreditMetrics and generator matrices, Vasicek's large pool, CreditRisk+, Li's copula, the Basel IRB formula and CDO tranches.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/credit_breakthroughs
+      :link-type: doc
+
+      The foundational breakthroughs behind this subpackage, linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/credit/index
+      :link-type: doc
+
+      Runnable tutorials and the full example gallery.
+
+   .. grid-item-card:: API reference
+      :link: /api/credit
+      :link-type: doc
+
+      Every public class and function.
+

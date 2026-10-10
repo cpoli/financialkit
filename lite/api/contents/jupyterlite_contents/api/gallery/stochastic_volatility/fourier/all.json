@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.883225Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.883225Z",
+      "mimetype": null,
+      "name": "plot_03_cos_method.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/fourier/plot_03_cos_method.ipynb",
+      "size": 3135,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.883043Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.883043Z",
+      "mimetype": null,
+      "name": "plot_01_carr_madan_fft.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/fourier/plot_01_carr_madan_fft.ipynb",
+      "size": 3575,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.883130Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.883130Z",
+      "mimetype": null,
+      "name": "plot_02_lewis_formula.ipynb",
+      "path": "jupyterlite_contents/api/gallery/stochastic_volatility/fourier/plot_02_lewis_formula.ipynb",
+      "size": 2610,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.259277Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.259875Z",
+  "mimetype": null,
+  "name": "fourier",
+  "path": "jupyterlite_contents/api/gallery/stochastic_volatility/fourier",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

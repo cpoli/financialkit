@@ -1,0 +1,87 @@
+
+
+.. _sphx_glr_api_gallery_portfolio_growth:
+
+Growth and dynamic strategies
+-----------------------------
+
+Maximizing the long-run growth of wealth, the continuous-time
+consumption and investment problem, and portfolio insurance.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Kelly (1956), at Bell Labs, asked how a gambler with a private wire should bet. Staking the fraction f of wealth on a bet won with probability p at odds b, wealth grows at the rate g(f) = p\log(1 + bf) + q\log(1 - f) per bet, maximized by f^* = p - q/b. The Kelly bettor eventually outgrows any other fixed-fraction strategy; betting more than twice Kelly makes growth negative even though every bet is favourable.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/growth/images/thumb/sphx_glr_plot_01_kelly_criterion_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/growth/plot_01_kelly_criterion`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Kelly criterion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Merton (1969) solved the lifetime consumption and investment problem in continuous time. With a stock following geometric Brownian motion, a riskless rate r and constant relative risk aversion \gamma, the optimal policy is to keep the constant fraction">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/growth/images/thumb/sphx_glr_plot_02_merton_portfolio_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/growth/plot_02_merton_portfolio`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's portfolio problem</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fischer Black and Robert Jones (1987) proposed a simple rule for protecting a floor: hold m times the cushion (wealth above the floor) in stocks and the rest in bonds. When stocks fall the cushion shrinks and so does the exposure, so under continuous trading wealth never touches the floor; Black and Perold (1992) showed the cushion is then a power m of the stock price. With discrete rebalancing, a fall of more than 1/m between trades breaks through the floor: gap risk.">
+
+.. only:: html
+
+  .. image:: /api/gallery/portfolio/growth/images/thumb/sphx_glr_plot_03_cppi_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/portfolio/growth/plot_03_cppi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black and Jones's constant proportion portfolio insurance</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/portfolio/growth/plot_01_kelly_criterion
+   /api/gallery/portfolio/growth/plot_02_merton_portfolio
+   /api/gallery/portfolio/growth/plot_03_cppi
+

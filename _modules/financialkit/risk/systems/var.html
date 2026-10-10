@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>financialkit.risk.systems.var &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/financialkit/risk/systems/var';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">financialkit.risk.systems.var</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for financialkit.risk.systems.var</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Value at risk: historical, parametric, Cornish-Fisher, Monte Carlo,</span>
+<span class="sd">age-weighted (hybrid) and filtered historical simulation.</span>
+
+<span class="sd">Every function takes profits and losses (losses negative) and reports</span>
+<span class="sd">the VaR as a positive loss at confidence level ``alpha``. The scenario</span>
+<span class="sd">estimators return a :class:`~financialkit.risk.core.base.VaRResult`</span>
+<span class="sd">holding the scenarios and their weights, and all of them read the VaR</span>
+<span class="sd">and ES off :func:`~financialkit.risk.utils.tail.weighted_tail`, so they</span>
+<span class="sd">agree exactly in their common limits (``lam = 1`` in the hybrid method</span>
+<span class="sd">is plain historical simulation).</span>
+
+<span class="sd">References: J.P. Morgan/Reuters, *RiskMetrics -- Technical Document*,</span>
+<span class="sd">4th ed. (1996); E. A. Cornish and R. A. Fisher, *Rev. Int. Stat. Inst.*</span>
+<span class="sd">5 (1937) 307-320; M. Pritsker, *J. Financial Services Research* 12</span>
+<span class="sd">(1997) 201-242; J. Boudoukh, M. Richardson and R. Whitelaw, *Risk* 11</span>
+<span class="sd">(1998) 64-67; G. Barone-Adesi, K. Giannopoulos and L. Vosper, *J.</span>
+<span class="sd">Futures Markets* 19 (1999) 583-602; Hull, *Options, Futures, and Other</span>
+<span class="sd">Derivatives*, 10th ed., Ch. 22.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.lib.stride_tricks</span><span class="w"> </span><span class="kn">import</span> <span class="n">sliding_window_view</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.integrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">RNGLike</span><span class="p">,</span> <span class="n">correlated_increments</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.risk.core.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">VaRResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">financialkit.risk.utils.tail</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_alpha</span><span class="p">,</span> <span class="n">weighted_tail</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"historical_var"</span><span class="p">,</span>
+    <span class="s2">"rolling_historical_var"</span><span class="p">,</span>
+    <span class="s2">"parametric_var"</span><span class="p">,</span>
+    <span class="s2">"delta_normal_var"</span><span class="p">,</span>
+    <span class="s2">"cornish_fisher_var"</span><span class="p">,</span>
+    <span class="s2">"monte_carlo_var"</span><span class="p">,</span>
+    <span class="s2">"hybrid_var"</span><span class="p">,</span>
+    <span class="s2">"filtered_historical_var"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_as_output</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">x</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_scenario_result</span><span class="p">(</span><span class="n">pnl</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">weights</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VaRResult</span><span class="p">:</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">pnl</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">pnl</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">weights</span> <span class="o">/</span> <span class="n">weights</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">var</span><span class="p">,</span> <span class="n">es</span> <span class="o">=</span> <span class="n">weighted_tail</span><span class="p">(</span><span class="n">pnl</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">VaRResult</span><span class="p">(</span><span class="n">var</span><span class="o">=</span><span class="n">var</span><span class="p">,</span> <span class="n">es</span><span class="o">=</span><span class="n">es</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">scenarios</span><span class="o">=</span><span class="n">pnl</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="historical_var">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.historical_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">historical_var</span><span class="p">(</span><span class="n">pnl</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VaRResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Historical-simulation VaR and ES: past outcomes, equally likely.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pnl : array_like, shape (n,)</span>
+<span class="sd">        Historical profits and losses (or returns).</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Confidence level.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    VaRResult</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With 100 outcomes the 95% VaR is the fifth-worst loss.</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; historical_var(-np.arange(1.0, 101.0), 0.95).var</span>
+<span class="sd">    96.0</span>
+<span class="sd">    """</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">check_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_scenario_result</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pnl</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">alpha</span><span class="p">,</span> <span class="s2">"historical"</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="rolling_historical_var">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.rolling_historical_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rolling_historical_var</span><span class="p">(</span><span class="n">pnl</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">250</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Out-of-sample historical VaR forecasts from a rolling window.</span>
+
+<span class="sd">    The forecast for day ``t`` uses days ``t - window`` to ``t - 1`` only,</span>
+<span class="sd">    as in the Basel Committee's (1996) backtesting framework.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pnl : array_like, shape (n,)</span>
+<span class="sd">        Daily profits and losses in time order.</span>
+<span class="sd">    window : int</span>
+<span class="sd">        Look-back length in days.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Confidence level.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray, shape (n - window,)</span>
+<span class="sd">        VaR forecasts for days ``window, ..., n - 1``.</span>
+<span class="sd">    """</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">check_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pnl</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">window</span> <span class="o">&lt;</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"window must lie in [1, </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">], got </span><span class="si">{</span><span class="n">window</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">sliding_window_view</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">window</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># The same order statistic weighted_tail picks for equal weights.</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">window</span> <span class="o">*</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">1e-12</span><span class="p">)))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">windows</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="parametric_var">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.parametric_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">parametric_var</span><span class="p">(</span>
+    <span class="n">mu</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span> <span class="n">horizon</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">distribution</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"normal"</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Parametric VaR of a normal or Student-t profit and loss.</span>
+
+<span class="sd">    :math:`\\mathrm{VaR} = -\\mu h + \\sigma \\sqrt{h}\\, q_\\alpha`, with</span>
+<span class="sd">    :math:`q_\\alpha` the standard normal quantile, or the Student-t</span>
+<span class="sd">    quantile rescaled to unit variance, :math:`t_\\nu^{-1}(\\alpha)\\sqrt{(\\nu - 2)/\\nu}`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mu, sigma : array_like</span>
+<span class="sd">        Mean and standard deviation of the one-period profit and loss.</span>
+<span class="sd">    alpha : array_like</span>
+<span class="sd">        Confidence level.</span>
+<span class="sd">    horizon : array_like</span>
+<span class="sd">        Number of periods; the mean scales with ``h`` and the volatility</span>
+<span class="sd">        with ``sqrt(h)`` (independent increments).</span>
+<span class="sd">    distribution : {"normal", "t"}</span>
+<span class="sd">    df : float, optional</span>
+<span class="sd">        Degrees of freedom (&gt; 2) for ``distribution="t"``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Hull, 10th ed., Ch. 22: a $10 million position with a 2% daily</span>
+<span class="sd">    volatility has a one-day 99% VaR of about $465,300 and a ten-day VaR</span>
+<span class="sd">    of about $1.47 million.</span>
+
+<span class="sd">    &gt;&gt;&gt; round(parametric_var(0.0, 200_000.0, 0.99))</span>
+<span class="sd">    465270</span>
+<span class="sd">    &gt;&gt;&gt; round(parametric_var(0.0, 200_000.0, 0.99, horizon=10))</span>
+<span class="sd">    1471312</span>
+<span class="sd">    """</span>
+    <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">horizon</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">_as_output</span><span class="p">(</span><span class="o">-</span><span class="n">mu</span> <span class="o">*</span> <span class="n">h</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="n">_std_quantile</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">df</span><span class="p">))</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_std_quantile</span><span class="p">(</span><span class="n">alpha</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">distribution</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">((</span><span class="n">alpha</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"alpha must lie in (0, 1)"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">"normal"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">"t"</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"distribution='t' needs df &gt; 2 so the variance is finite"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">df</span> <span class="o">-</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"distribution must be 'normal' or 't', got </span><span class="si">{</span><span class="n">distribution</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="delta_normal_var">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.delta_normal_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">delta_normal_var</span><span class="p">(</span><span class="n">exposures</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span> <span class="n">horizon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""RiskMetrics delta-normal portfolio VaR, :math:`q_\\alpha \\sqrt{h\\, w^\\top \\Sigma w}`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    exposures : array_like, shape (d,)</span>
+<span class="sd">        Money exposure to each risk factor (position value, or delta</span>
+<span class="sd">        times spot).</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">        Covariance of the one-period factor returns.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Confidence level.</span>
+<span class="sd">    horizon : float</span>
+<span class="sd">        Number of periods.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Hull, 10th ed., Ch. 22: $10 million in Microsoft (2% daily vol) and</span>
+<span class="sd">    $5 million in AT&amp;T (1%), correlation 0.3. The ten-day 99% VaR is</span>
+<span class="sd">    about $1.62 million, against $1.83 million if the two VaRs are added.</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; cov = np.array([[0.02**2, 0.3 * 0.02 * 0.01], [0.3 * 0.02 * 0.01, 0.01**2]])</span>
+<span class="sd">    &gt;&gt;&gt; round(delta_normal_var([10e6, 5e6], cov, 0.99, horizon=10))</span>
+<span class="sd">    1620114</span>
+<span class="sd">    """</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">exposures</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="n">sigma_p</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">cov</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">@</span> <span class="n">w</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">check_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">horizon</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma_p</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="cornish_fisher_var">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.cornish_fisher_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cornish_fisher_var</span><span class="p">(</span><span class="n">mu</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">skew</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">excess_kurtosis</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""VaR from the Cornish-Fisher expansion of the quantile in skewness and kurtosis.</span>
+
+<span class="sd">    With :math:`z = \\Phi^{-1}(1 - \\alpha)`, skewness :math:`S` and excess</span>
+<span class="sd">    kurtosis :math:`K`, the adjusted quantile is</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">       z_{cf} = z + \\frac{(z^2 - 1) S}{6} + \\frac{(z^3 - 3z) K}{24} - \\frac{(2z^3 - 5z) S^2}{36},</span>
+
+<span class="sd">    and :math:`\\mathrm{VaR} = -(\\mu + \\sigma z_{cf})`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mu, sigma, skew, excess_kurtosis : array_like</span>
+<span class="sd">        First four moments of the profit and loss.</span>
+<span class="sd">    alpha : array_like</span>
+<span class="sd">        Confidence level.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or ndarray</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    With no skew and no excess kurtosis it is the normal VaR.</span>
+
+<span class="sd">    &gt;&gt;&gt; round(cornish_fisher_var(0.0, 1.0, 0.0, 0.0, 0.99), 4)</span>
+<span class="sd">    2.3263</span>
+<span class="sd">    &gt;&gt;&gt; round(cornish_fisher_var(0.0, 1.0, -0.5, 3.0, 0.99), 4)</span>
+<span class="sd">    3.3013</span>
+<span class="sd">    """</span>
+    <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">skew</span><span class="p">,</span> <span class="n">excess_kurtosis</span><span class="p">,</span> <span class="n">alpha</span><span class="p">))</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="n">z_cf</span> <span class="o">=</span> <span class="n">z</span> <span class="o">+</span> <span class="p">(</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="mf">6.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">z</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">K</span> <span class="o">/</span> <span class="mf">24.0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">z</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mf">36.0</span>
+    <span class="k">return</span> <span class="n">_as_output</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">z_cf</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="monte_carlo_var">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.monte_carlo_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">monte_carlo_var</span><span class="p">(</span>
+    <span class="n">pnl_fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">ArrayLike</span><span class="p">],</span>
+    <span class="n">cov</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span>
+    <span class="n">mean</span><span class="p">:</span> <span class="n">ArrayLike</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">horizon</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">n_paths</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">,</span>
+    <span class="n">ci_level</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">rng</span><span class="p">:</span> <span class="n">RNGLike</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VaRResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Full-revaluation Monte Carlo VaR (Pritsker 1997).</span>
+
+<span class="sd">    Draws joint normal risk-factor moves</span>
+<span class="sd">    :math:`\\Delta X \\sim N(\\mu h, \\Sigma h)` through</span>
+<span class="sd">    :func:`financialkit.integrators.correlated_increments`, revalues the</span>
+<span class="sd">    portfolio in every scenario with ``pnl_fn`` and reads the VaR and ES</span>
+<span class="sd">    off the simulated distribution, with an exact order-statistic</span>
+<span class="sd">    confidence interval for the VaR.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pnl_fn : callable</span>
+<span class="sd">        ``pnl_fn(dX) -&gt; pnl`` maps factor moves of shape ``(n_paths, d)``</span>
+<span class="sd">        to the portfolio's profit and loss, shape ``(n_paths,)``.</span>
+<span class="sd">    cov : array_like, shape (d, d)</span>
+<span class="sd">        Covariance of the one-period factor moves.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Confidence level.</span>
+<span class="sd">    mean : array_like, shape (d,), optional</span>
+<span class="sd">        Mean one-period factor move; zero if omitted.</span>
+<span class="sd">    horizon : float</span>
+<span class="sd">        Number of periods.</span>
+<span class="sd">    n_paths : int</span>
+<span class="sd">        Number of scenarios.</span>
+<span class="sd">    ci_level : float</span>
+<span class="sd">        Coverage of the confidence interval stored in ``result.ci``.</span>
+<span class="sd">    rng : numpy.random.Generator, int or None</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    VaRResult</span>
+<span class="sd">    """</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">check_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">cov</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+    <span class="n">sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+    <span class="n">dX</span> <span class="o">=</span> <span class="n">correlated_increments</span><span class="p">(</span><span class="n">c</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="n">sd</span><span class="p">),</span> <span class="n">T</span><span class="o">=</span><span class="n">horizon</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_paths</span><span class="o">=</span><span class="n">n_paths</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">sd</span>
+    <span class="k">if</span> <span class="n">mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dX</span> <span class="o">=</span> <span class="n">dX</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="o">*</span> <span class="n">horizon</span>
+    <span class="n">pnl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pnl_fn</span><span class="p">(</span><span class="n">dX</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pnl</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">n_paths</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"pnl_fn must return one value per scenario (</span><span class="si">{</span><span class="n">n_paths</span><span class="si">}</span><span class="s2">), got </span><span class="si">{</span><span class="n">pnl</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">_scenario_result</span><span class="p">(</span><span class="n">pnl</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="s2">"monte_carlo"</span><span class="p">)</span>
+    <span class="c1"># The k-th order statistic lies below the p-quantile with probability</span>
+    <span class="c1"># P(Binomial(n, p) &gt;= k), which gives a distribution-free interval.</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">pnl</span><span class="p">)</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">ci_level</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">n_paths</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="o">.</span><span class="n">ppf</span><span class="p">((</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">ci_level</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">n_paths</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">ci</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">n_paths</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]),</span> <span class="nb">float</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">lo</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]))</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
+
+<div class="viewcode-block" id="hybrid_var">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.hybrid_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">hybrid_var</span><span class="p">(</span><span class="n">pnl</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span> <span class="n">lam</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.98</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VaRResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Boudoukh-Richardson-Whitelaw age-weighted historical simulation.</span>
+
+<span class="sd">    The outcome ``i`` days old gets probability proportional to</span>
+<span class="sd">    :math:`\\lambda^i`, so recent days count more and the VaR reacts to</span>
+<span class="sd">    a change in volatility within weeks instead of a whole window;</span>
+<span class="sd">    ``lam = 1`` is plain historical simulation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pnl : array_like, shape (n,)</span>
+<span class="sd">        Profits and losses in time order, most recent last.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Confidence level.</span>
+<span class="sd">    lam : float</span>
+<span class="sd">        Decay factor in ``(0, 1]``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    VaRResult</span>
+<span class="sd">    """</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">check_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="mf">0.0</span> <span class="o">&lt;</span> <span class="n">lam</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"lam must lie in (0, 1], got </span><span class="si">{</span><span class="n">lam</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pnl</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_scenario_result</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="s2">"hybrid"</span><span class="p">,</span> <span class="n">lam</span><span class="o">**</span><span class="n">age</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="filtered_historical_var">
+<a class="viewcode-back" href="../../../../api/risk.html#financialkit.risk.filtered_historical_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">filtered_historical_var</span><span class="p">(</span><span class="n">pnl</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">sigma</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">sigma_forecast</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VaRResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Filtered historical simulation (Barone-Adesi, Giannopoulos and Vosper 1999).</span>
+
+<span class="sd">    Each past outcome is divided by the volatility of its day, giving</span>
+<span class="sd">    roughly i.i.d. standardized residuals :math:`z_t = x_t / \\sigma_t`,</span>
+<span class="sd">    and rescaled by tomorrow's forecast: the scenarios are</span>
+<span class="sd">    :math:`\\hat\\sigma_{n+1} z_t`. The empirical shape of the tail is</span>
+<span class="sd">    kept while its scale follows current volatility.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pnl : array_like, shape (n,)</span>
+<span class="sd">        Historical profits and losses.</span>
+<span class="sd">    sigma : array_like, shape (n,)</span>
+<span class="sd">        Conditional volatility of each day, from any filter (EWMA, GARCH).</span>
+<span class="sd">    sigma_forecast : float</span>
+<span class="sd">        Volatility forecast for the day the VaR is for.</span>
+<span class="sd">    alpha : float</span>
+<span class="sd">        Confidence level.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    VaRResult</span>
+<span class="sd">    """</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">check_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pnl</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"sigma must be positive and match pnl"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_scenario_result</span><span class="p">(</span><span class="n">sigma_forecast</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">s</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="s2">"filtered_historical"</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

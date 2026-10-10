@@ -1,0 +1,447 @@
+:orphan:
+
+Examples
+========
+
+This gallery walks through every public feature of
+``financialkit.interest_rate_models``: equilibrium and affine short-rate
+models, models fitted to today's curve, bond options, caps, floors and
+swaptions, and the Heath-Jarrow-Morton framework. Each script illustrates
+one dated breakthrough from the
+:doc:`history page </history/interest_rate_models_breakthroughs>`.
+
+Each script in this gallery is self-contained and can be run directly with
+``python examples/interest_rate_models/<section>/<script>.py``.
+
+Sections
+--------
+
+- **short_rate** -- Feynman-Kac bond prices by simulation, Feller's
+  boundary condition, Merton's Gaussian rate, Vasicek, Cox-Ingersoll-Ross,
+  Duffie-Kan affine models and the two-factor G2++.
+- **curve_fitted** -- Ho-Lee, Hull-White, the Black-Derman-Toy tree and
+  the futures convexity adjustment.
+- **options** -- Jamshidian's bond options and swaptions, caps and floors
+  by Black's formula, and Black swaptions.
+- **hjm** -- the Heath-Jarrow-Morton drift condition.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Curve-fitted models
+-------------------
+
+Arbitrage-free models that take today's yield curve as an input: Ho-Lee,
+Hull-White and the Black-Derman-Toy tree, and the convexity gap between
+futures and forward rates that they predict.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Thomas Ho and Sang-Bin Lee (1986) turned the problem around. Instead of deriving a curve from a short-rate model, they took today&#x27;s curve as given and made the model fit it: a binomial tree of whole discount curves whose drift is chosen to reprice every bond. Its continuous-time limit is Merton&#x27;s Gaussian rate with a time-dependent drift,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/curve_fitted/images/thumb/sphx_glr_plot_01_ho_lee_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/curve_fitted/plot_01_ho_lee`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ho-Lee: the first arbitrage-free term-structure model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Hull and Alan White (1990) combined Vasicek&#x27;s mean reversion with Ho and Lee&#x27;s curve fitting,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/curve_fitted/images/thumb/sphx_glr_plot_02_hull_white_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/curve_fitted/plot_02_hull_white`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hull-White: extended Vasicek</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fischer Black, Emanuel Derman and William Toy (1990), at Goldman Sachs, built a binomial tree of short rates that is lognormal, so rates stay positive, and fitted to the market curve level by level. At step i the rates are r_{i,j} = U_i e^{\sigma_i\sqrt{\Delta t}\,(2j - i)} with probability 1/2 on each branch, and the median U_i is solved so that the tree reprices the bond maturing one step later, using Arrow-Debreu prices carried forward through the tree. Options, including American ones, are then priced by backward induction.">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/curve_fitted/images/thumb/sphx_glr_plot_03_black_derman_toy_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/curve_fitted/plot_03_black_derman_toy`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Black-Derman-Toy: a lognormal rate tree</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A Eurodollar futures contract is settled every day, a forward rate agreement only at the end. Gains on the futures are reinvested when rates are high and financed when they are low, so the futures rate is the risk-neutral expectation of the future rate and exceeds the forward rate. With the Ho-Lee and Hull-White models (1990) the gap has a closed form; under Ho-Lee">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/curve_fitted/images/thumb/sphx_glr_plot_04_futures_convexity_adjustment_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/curve_fitted/plot_04_futures_convexity_adjustment`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The futures convexity adjustment</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Heath-Jarrow-Morton
+-------------------
+
+Modelling the whole forward curve, and the drift condition that
+absence of arbitrage imposes on it.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="David Heath, Robert Jarrow and Andrew Morton (1992) modelled the whole forward curve at once,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/hjm/images/thumb/sphx_glr_plot_01_hjm_drift_condition_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/hjm/plot_01_hjm_drift_condition`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Heath-Jarrow-Morton: the drift condition</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Rate options
+------------
+
+Options on bonds, caps, floors and swaptions: Jamshidian's closed form
+and decomposition in Gaussian short-rate models, and Black's formula in
+the LIBOR and swap market models.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Farshid Jamshidian (1989) priced a European option on a zero-coupon bond in Vasicek&#x27;s model in closed form. Under the measure that uses the option-expiry bond as numeraire, the forward bond price P(0, S)/P(0, T) is a lognormal martingale, so">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/options/images/thumb/sphx_glr_plot_01_jamshidian_bond_option_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/options/plot_01_jamshidian_bond_option`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jamshidian: an exact bond option formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An option on a coupon bond is not a portfolio of options on its coupons, in general. Jamshidian (1989) noticed that in a one-factor model it is: every zero-coupon bond price falls with the short rate, so the bond is above its strike exactly when the short rate is below a critical r^, and then each zero is above K_i = P(T, t_i; r^). Hence">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/options/images/thumb/sphx_glr_plot_02_jamshidian_swaption_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/options/plot_02_jamshidian_swaption`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jamshidian's decomposition: swaptions in one-factor models</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Traders priced each caplet with Black&#x27;s formula on its forward LIBOR rate long before anyone could say which model justified it. Alan Brace, Dariusz Gatarek and Marek Musiela (1997), with Miltersen, Sandmann and Sondermann, built that model: under the measure that uses the payment bond as numeraire, the simple forward rate F_k = [P(0, t_k)/P(0, t_{k+1}) - 1]/\tau is a martingale, and if it is lognormal">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/options/images/thumb/sphx_glr_plot_03_bgm_caps_floors_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/options/plot_03_bgm_caps_floors`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brace-Gatarek-Musiela: caps and floors by Black's formula</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jamshidian (1997) showed that the market&#x27;s way of quoting swaptions is also exact in a model of its own. Under the measure that uses the swap&#x27;s fixed-leg annuity A = \sum_i \tau_i P(0, t_i) as numeraire, the forward swap rate S = [P(0, T_0) - P(0, T_n)]/A is a martingale, and if it is lognormal a payer swaption is">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/options/images/thumb/sphx_glr_plot_04_black_swaption_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/options/plot_04_black_swaption`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jamshidian's swap market model: Black swaptions</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Short-rate models
+-----------------
+
+Models of the instantaneous short rate that produce their own yield
+curve: Merton, Vasicek and Cox-Ingersoll-Ross, the affine family that
+contains them, and the two-factor G2++, all checked against Feynman-Kac
+Monte Carlo.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Feynman&#x27;s path integrals (1948) and Mark Kac&#x27;s proof (1949) tie a parabolic PDE to an expectation over Brownian paths. For a short-rate model the bond-pricing PDE \partial_t P + \mu\,\partial_r P + \tfrac12\sigma^2\partial_{rr} P = rP is solved by">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_01_feynman_kac_bond_price_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_01_feynman_kac_bond_price`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Feynman-Kac: bond prices by Monte Carlo</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Feller (1951) classified the boundaries of diffusions such as the square-root process">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_02_feller_condition_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_02_feller_condition`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Feller's boundary condition</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In Section 6 of &quot;Theory of Rational Option Pricing&quot; (1973), Robert Merton let the short rate follow an arithmetic Brownian motion, dr = \mu\,dt + \sigma\,dW, the first stochastic interest rate in continuous time. Bonds price in closed form,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_03_merton_short_rate_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_03_merton_short_rate`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Merton's Gaussian short rate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Oldrich Vasicek (1977) derived the term structure from a short rate pulled back towards a long-run mean,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_04_vasicek_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_04_vasicek`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Vasicek's mean-reverting short rate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Cox, Jonathan Ingersoll and Stephen Ross (1985) derived the short rate from a general-equilibrium economy and found">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_05_cir_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_05_cir`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox-Ingersoll-Ross: the square-root short rate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Darrell Duffie and Rui Kan (1996) found the common structure behind Vasicek, CIR and their multi-factor extensions. If the state&#x27;s drift and variance are affine in the state,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_06_duffie_kan_affine_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_06_duffie_kan_affine`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Duffie-Kan: affine term structures</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In a one-factor model a single shock moves every yield, so the 1-year and 30-year rates are perfectly correlated, which the data flatly reject. Damiano Brigo and Fabio Mercurio&#x27;s G2++ (2001) adds a second Gaussian factor,">
+
+.. only:: html
+
+  .. image:: /api/gallery/interest_rate_models/short_rate/images/thumb/sphx_glr_plot_07_g2pp_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/interest_rate_models/short_rate/plot_07_g2pp`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brigo-Mercurio G2++: two Gaussian factors</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /api/gallery/interest_rate_models/curve_fitted/index.rst
+   /api/gallery/interest_rate_models/hjm/index.rst
+   /api/gallery/interest_rate_models/options/index.rst
+   /api/gallery/interest_rate_models/short_rate/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: interest_rate_models_python.zip </api/gallery/interest_rate_models/interest_rate_models_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: interest_rate_models_jupyter.zip </api/gallery/interest_rate_models/interest_rate_models_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Examples &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/credit/index';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../../../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>This gallery walks through every public feature of <code class="docutils literal notranslate"><span class="pre">financialkit.credit</span></code>:
+Altman’s Z-score; Merton’s structural model, Black-Cox first passage,
+Leland’s endogenous default and the KMV distance to default; hazard
+rates and recovery conventions; CDS pricing and hazard bootstrapping;
+rating migration with CreditMetrics and generator matrices; and
+portfolio credit risk with Vasicek’s large pool, CreditRisk+, Li’s
+copula, the Basel IRB formula and CDO tranches.</p>
+<p>Each script in this gallery is self-contained and can be run directly with
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">examples/credit/&lt;section&gt;/&lt;script&gt;.py</span></code>.</p>
+<section id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>scoring</strong> – Altman’s Z-score.</p></li>
+<li><p><strong>structural</strong> – Merton, Black-Cox, Leland and the distance to default.</p></li>
+<li><p><strong>reduced_form</strong> – Jarrow-Turnbull hazard rates and Duffie-Singleton
+recovery of market value.</p></li>
+<li><p><strong>cds</strong> – the CDS par spread and the ISDA hazard bootstrap.</p></li>
+<li><p><strong>migration</strong> – CreditMetrics, generator matrices and the
+Israel-Rosenthal-Wei regularization.</p></li>
+<li><p><strong>portfolio_loss</strong> – Vasicek’s large pool, CreditRisk+, Li’s Gaussian
+copula, the Basel IRB formula and tranche expected losses.</p></li>
+</ul>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div></section>
+<section id="credit-default-swaps">
+<h2>Credit default swaps<a class="headerlink" href="#credit-default-swaps" title="Link to this heading">#</a></h2>
+<p>Pricing protection, and reading default probabilities off quotes.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A credit default swap exchanges a running premium for a payment of 1 - R at default. O&#x27;Kane and Turnbull (2003) wrote both legs as integrals over the default density and evaluated them on a grid with defaults at mid-step, including the premium accrued between the last payment date and default. The par spread equates the legs; for a flat hazard and a continuously paid premium it is exactly \lambda(1 - R)."><img alt="" src="../../../_images/sphx_glr_plot_01_cds_par_spread_thumb.png" />
+<p><a class="reference internal" href="cds/plot_01_cds_par_spread.html"><span class="doc">O’Kane and Turnbull: the CDS par spread</span></a></p>
+  <div class="sphx-glr-thumbnail-title">O'Kane and Turnbull: the CDS par spread</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Since the 2009 &quot;Big Bang&quot; CDS trade with a fixed coupon (100 or 500 bp) and an upfront payment, and the ISDA standard model converts between quotes by bootstrapping a piecewise-constant hazard curve: solve for the hazard on (0, T_1] that reprices the shortest CDS, freeze it, solve the next segment, and so on. The bootstrapped curve reprices every quote and gives survival probabilities at any date."><img alt="" src="../../../_images/sphx_glr_plot_02_isda_hazard_bootstrap_thumb.png" />
+<p><a class="reference internal" href="cds/plot_02_isda_hazard_bootstrap.html"><span class="doc">The ISDA standard model: bootstrapping hazard rates</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The ISDA standard model: bootstrapping hazard rates</div>
+</div></div></section>
+<section id="rating-migration">
+<h2>Rating migration<a class="headerlink" href="#rating-migration" title="Link to this heading">#</a></h2>
+<p>Transition matrices in discrete and continuous time.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="J. P. Morgan&#x27;s CreditMetrics (1997) revalues a bond in every rating it could hold a year from now, weights the values with a rating transition matrix, and reads the credit VaR off the resulting distribution. For a portfolio, obligors migrate jointly: each one&#x27;s asset return is mapped to a rating through normal thresholds, and the asset returns are correlated. The Technical Document&#x27;s five-year BBB bond has mean value 107.09 and standard deviation 2.99."><img alt="" src="../../../_images/sphx_glr_plot_01_creditmetrics_thumb.png" />
+<p><a class="reference internal" href="migration/plot_01_creditmetrics.html"><span class="doc">CreditMetrics: credit VaR from rating migrations</span></a></p>
+  <div class="sphx-glr-thumbnail-title">CreditMetrics: credit VaR from rating migrations</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Jarrow, Lando and Turnbull (1997) put rating migration in continuous time. A generator \Lambda, with non-negative off-diagonal intensities and rows summing to zero, gives the transition matrix for every horizon, P(t) = e^{\Lambda t}. Default probabilities by rating, and risky bond prices with recovery of treasury, follow for any maturity, including fractions of a year that an annual matrix cannot provide."><img alt="" src="../../../_images/sphx_glr_plot_02_generator_matrix_thumb.png" />
+<p><a class="reference internal" href="migration/plot_02_generator_matrix.html"><span class="doc">Jarrow, Lando and Turnbull: generator matrices</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Jarrow, Lando and Turnbull: generator matrices</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Going from an annual transition matrix P to a generator is not as simple as \log P. Israel, Rosenthal and Wei (2001) showed that for empirical rating matrices the principal logarithm usually has negative off-diagonal entries, which would be negative migration intensities. Their fix: set those entries to zero and absorb the change in the diagonal. A weighted variant spreads it over the row instead. Both leave e^{G} within a few basis points of P."><img alt="" src="../../../_images/sphx_glr_plot_03_israel_rosenthal_wei_thumb.png" />
+<p><a class="reference internal" href="migration/plot_03_israel_rosenthal_wei.html"><span class="doc">Israel, Rosenthal and Wei: finding a valid generator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Israel, Rosenthal and Wei: finding a valid generator</div>
+</div></div></section>
+<section id="portfolio-losses">
+<h2>Portfolio losses<a class="headerlink" href="#portfolio-losses" title="Link to this heading">#</a></h2>
+<p>Correlated defaults, loss distributions, regulatory capital and tranches.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Vasicek (1987) let every loan default when its asset return \sqrt\rho M + \sqrt{1-\rho}\,\varepsilon_i falls below N^{-1}(p). Given the common factor M, defaults are independent, so in a large pool the default rate is the deterministic p(M), and its distribution is known in closed form. Correlation does not change the expected loss, only how it is spread out: at high correlation most years are quiet and a few are disasters."><img alt="" src="../../../_images/sphx_glr_plot_01_vasicek_lhp_thumb.png" />
+<p><a class="reference internal" href="portfolio_loss/plot_01_vasicek_lhp.html"><span class="doc">Vasicek’s large homogeneous portfolio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Vasicek's large homogeneous portfolio</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Credit Suisse First Boston&#x27;s CreditRisk+ (1997) treated defaults like insurance claims: Poisson events with rates driven by a gamma-distributed sector factor, and exposures rounded to multiples of a loss unit. The default count is then negative binomial, and Panjer&#x27;s (1981) recursion produces the whole loss distribution exactly, without simulation. The factor&#x27;s volatility \sigma fattens the tail without changing the expected loss."><img alt="" src="../../../_images/sphx_glr_plot_02_creditrisk_plus_thumb.png" />
+<p><a class="reference internal" href="portfolio_loss/plot_02_creditrisk_plus.html"><span class="doc">CreditRisk+ and Panjer’s recursion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">CreditRisk+ and Panjer's recursion</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Li (2000) took each name&#x27;s default-time distribution from its CDS curve and joined them with a Gaussian copula: correlated normals become uniforms, and each uniform is mapped through that name&#x27;s survival curve. The marginals stay exactly as the market implies; the copula correlation controls how often names default together, which is what a first-to-default basket or a CDO tranche is really priced on."><img alt="" src="../../../_images/sphx_glr_plot_03_li_gaussian_copula_thumb.png" />
+<p><a class="reference internal" href="portfolio_loss/plot_03_li_gaussian_copula.html"><span class="doc">Li’s Gaussian copula for default times</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Li's Gaussian copula for default times</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The Basel Committee (2004) set bank capital for credit risk with Vasicek&#x27;s model: capital per unit of exposure is the 99.9% quantile of the large-pool loss rate, minus the expected loss already covered by provisions, times a maturity adjustment. The supervisory asset correlation falls from 24% to 12% as the PD rises. Gordy (2003) showed this is the only setting where each loan&#x27;s capital charge does not depend on the rest of the portfolio."><img alt="" src="../../../_images/sphx_glr_plot_04_basel_irb_thumb.png" />
+<p><a class="reference internal" href="portfolio_loss/plot_04_basel_irb.html"><span class="doc">The Basel II IRB formula</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The Basel II IRB formula</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A tranche of a synthetic CDO absorbs portfolio losses between its attachment and detachment points. Hull and White (2004) priced tranches in Li&#x27;s one-factor Gaussian copula by conditioning on the common factor: given it, defaults are independent and the pool loss is binomial, so the expected tranche loss at each date is one integral over the factor. Raising the correlation moves risk from the equity tranche, which loses less, to the senior tranches, which lose more."><img alt="" src="../../../_images/sphx_glr_plot_05_tranche_expected_loss_thumb.png" />
+<p><a class="reference internal" href="portfolio_loss/plot_05_tranche_expected_loss.html"><span class="doc">Hull and White: pricing CDO tranches without Monte Carlo</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hull and White: pricing CDO tranches without Monte Carlo</div>
+</div></div></section>
+<section id="reduced-form-models">
+<h2>Reduced-form models<a class="headerlink" href="#reduced-form-models" title="Link to this heading">#</a></h2>
+<p>Default as the first jump of an intensity, and what is recovered.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Jarrow and Turnbull (1995) modelled the timing of default rather than its cause: default is the first jump of a Poisson process with intensity \lambda(t), so the survival probability is Q(t) = e^{-\int_0^t \lambda}. A risky zero-coupon bond that recovers a fraction \delta of a riskless one is worth P(0,T)[\delta + (1-\delta)Q(T)], and its spread is close to \lambda(1 - \delta): the credit triangle."><img alt="" src="../../../_images/sphx_glr_plot_01_jarrow_turnbull_thumb.png" />
+<p><a class="reference internal" href="reduced_form/plot_01_jarrow_turnbull.html"><span class="doc">Jarrow and Turnbull: hazard rates and survival curves</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Jarrow and Turnbull: hazard rates and survival curves</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Duffie and Singleton (1999) assumed that at default a bond loses a fraction L of its own market value. Then defaultable claims are priced like riskless ones discounted at r + \lambda L, so any short-rate machinery prices credit too. With a Cox-Ingersoll-Ross intensity the risky bond has the CIR closed form; here it is compared with a simulation, and the three recovery conventions are compared for a flat hazard."><img alt="" src="../../../_images/sphx_glr_plot_02_duffie_singleton_thumb.png" />
+<p><a class="reference internal" href="reduced_form/plot_02_duffie_singleton.html"><span class="doc">Duffie and Singleton: recovery of market value</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Duffie and Singleton: recovery of market value</div>
+</div></div></section>
+<section id="scoring">
+<h2>Scoring<a class="headerlink" href="#scoring" title="Link to this heading">#</a></h2>
+<p>Telling failing firms from survivors with accounting ratios.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Altman (1968) fed five accounting ratios of 33 bankrupt and 33 surviving manufacturers into a linear discriminant analysis and found"><img alt="" src="../../../_images/sphx_glr_plot_01_altman_z_score_thumb.png" />
+<p><a class="reference internal" href="scoring/plot_01_altman_z_score.html"><span class="doc">Altman’s Z-score</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Altman's Z-score</div>
+</div></div></section>
+<section id="structural-models">
+<h2>Structural models<a class="headerlink" href="#structural-models" title="Link to this heading">#</a></h2>
+<p>Default as an option on the firm’s assets: at maturity, at a barrier,
+or when shareholders choose.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Merton (1974) treated a firm&#x27;s equity as a European call on its assets V, struck at the face value D of its zero-coupon debt. Debt is then a riskless bond minus a put, the risk-neutral default probability is N(-d_2), and the credit spread follows from leverage and asset volatility alone. Hull&#x27;s Example 24.3 backs out the unobserved asset value and volatility from equity (3) and its volatility (80%)."><img alt="" src="../../../_images/sphx_glr_plot_01_merton_structural_thumb.png" />
+<p><a class="reference internal" href="structural/plot_01_merton_structural.html"><span class="doc">Merton’s structural model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Merton's structural model</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Black and Cox (1976) let safety covenants force default the first time the asset value touches a barrier, not only at maturity. The reflection principle gives the first-passage probability in closed form. Here it is checked against simulated asset paths (with a Brownian-bridge correction for crossings between grid points) and compared with Merton&#x27;s maturity-only default probability."><img alt="" src="../../../_images/sphx_glr_plot_02_black_cox_thumb.png" />
+<p><a class="reference internal" href="structural/plot_02_black_cox.html"><span class="doc">Black and Cox: default at the first passage</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Black and Cox: default at the first passage</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Leland (1994) priced perpetual debt on a firm whose coupons are tax deductible and whose bankruptcy destroys half its assets. Shareholders keep paying coupons as long as equity is worth something and default at the asset level V_B where equity hits zero with zero slope. Firm value, unlevered assets plus tax shields minus expected bankruptcy costs, is maximised at a coupon that sets the optimal leverage; in Leland&#x27;s base case this is about 75% with a 75 bp spread."><img alt="" src="../../../_images/sphx_glr_plot_03_leland_thumb.png" />
+<p><a class="reference internal" href="structural/plot_03_leland.html"><span class="doc">Leland’s endogenous default and optimal leverage</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Leland's endogenous default and optimal leverage</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Moody&#x27;s KMV (Crosbie and Bohn 2003) turned Merton&#x27;s model into a default-prediction tool. Asset values are backed out from a daily equity series by iterating: guess the asset volatility, invert the equity call day by day, re-estimate the volatility from the implied asset returns, and repeat. The default point is short-term debt plus half the long-term debt, and the number of standard deviations between the assets and that point,"><img alt="" src="../../../_images/sphx_glr_plot_04_distance_to_default_thumb.png" />
+<p><a class="reference internal" href="structural/plot_04_distance_to_default.html"><span class="doc">Crosbie and Bohn: the distance to default</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Crosbie and Bohn: the distance to default</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/c76ba78aed43fb9a952d8494217e8680/credit_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">credit_python.zip</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/8685d3c8384caed6c6302d9445f12ac9/credit_jupyter.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">credit_jupyter.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-default-swaps">Credit default swaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rating-migration">Rating migration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-losses">Portfolio losses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-form-models">Reduced-form models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scoring">Scoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-models">Structural models</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/api/gallery/credit/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

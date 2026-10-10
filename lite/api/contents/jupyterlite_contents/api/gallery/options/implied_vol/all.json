@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.875491Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.875491Z",
+      "mimetype": null,
+      "name": "plot_01_implied_volatility.ipynb",
+      "path": "jupyterlite_contents/api/gallery/options/implied_vol/plot_01_implied_volatility.ipynb",
+      "size": 3522,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.875697Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.875697Z",
+      "mimetype": null,
+      "name": "plot_03_volatility_smile.ipynb",
+      "path": "jupyterlite_contents/api/gallery/options/implied_vol/plot_03_volatility_smile.ipynb",
+      "size": 3745,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.875976Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.875976Z",
+      "mimetype": null,
+      "name": "plot_04_brenner_subrahmanyam.ipynb",
+      "path": "jupyterlite_contents/api/gallery/options/implied_vol/plot_04_brenner_subrahmanyam.ipynb",
+      "size": 3799,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.875593Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.875593Z",
+      "mimetype": null,
+      "name": "plot_02_breeden_litzenberger.ipynb",
+      "path": "jupyterlite_contents/api/gallery/options/implied_vol/plot_02_breeden_litzenberger.ipynb",
+      "size": 3588,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.242788Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.243539Z",
+  "mimetype": null,
+  "name": "implied_vol",
+  "path": "jupyterlite_contents/api/gallery/options/implied_vol",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

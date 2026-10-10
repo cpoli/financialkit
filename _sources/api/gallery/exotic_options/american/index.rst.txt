@@ -1,0 +1,50 @@
+
+
+.. _sphx_glr_api_gallery_exotic_options_american:
+
+American options by simulation
+------------------------------
+
+Longstaff and Schwartz's least-squares Monte Carlo for early exercise.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Monte Carlo simulates forward, but early exercise is decided backward: whether to exercise today depends on the value of waiting. Francis Longstaff and Eduardo Schwartz (2001) estimated that continuation value by regressing the discounted future cash flows of the in-the-money paths on a few functions of today&#x27;s price. Working back from expiry, each path is exercised where the payoff beats the fitted value. The method extends to many assets and path-dependent payoffs, where trees and PDEs give up.">
+
+.. only:: html
+
+  .. image:: /api/gallery/exotic_options/american/images/thumb/sphx_glr_plot_01_longstaff_schwartz_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/exotic_options/american/plot_01_longstaff_schwartz`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Longstaff-Schwartz least-squares Monte Carlo</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/exotic_options/american/plot_01_longstaff_schwartz
+

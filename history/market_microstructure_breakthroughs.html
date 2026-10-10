@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Breakthroughs in Market Microstructure &#8212; financialkit 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'history/market_microstructure_breakthroughs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../examples/index.html" />
+    <link rel="prev" title="Breakthroughs in Financial Time Series" href="time_series_breakthroughs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="time_value_breakthroughs.html">Breakthroughs in the Time Value of Money</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fixed_income_breakthroughs.html">Breakthroughs in Fixed Income</a></li>
+<li class="toctree-l1"><a class="reference internal" href="options_breakthroughs.html">Breakthroughs in Option Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exotic_options_breakthroughs.html">Breakthroughs in Exotic Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stochastic_volatility_breakthroughs.html">Breakthroughs in Stochastic Volatility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interest_rate_models_breakthroughs.html">Breakthroughs in Interest-Rate Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credit_breakthroughs.html">Breakthroughs in Credit Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monte_carlo_breakthroughs.html">Breakthroughs in Monte Carlo Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pde_methods_breakthroughs.html">Breakthroughs in PDE Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asset_pricing_breakthroughs.html">Breakthroughs in Asset Pricing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio_breakthroughs.html">Breakthroughs in Portfolio Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="risk_breakthroughs.html">Breakthroughs in Risk Measurement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_series_breakthroughs.html">Breakthroughs in Financial Time Series</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">Breakthroughs in Market Microstructure</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">History</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Breakthroughs in Market Microstructure</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="breakthroughs-in-market-microstructure">
+<h1>Breakthroughs in Market Microstructure<a class="headerlink" href="#breakthroughs-in-market-microstructure" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/market_microstructure.html"><span class="doc">financialkit.market_microstructure hub</span></a> · <a class="reference internal" href="#"><span class="doc">History</span></a> · <a class="reference internal" href="../api/gallery/market_microstructure/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="../api/market_microstructure.html"><span class="doc">API reference</span></a></p>
+</div>
+<blockquote class="epigraph">
+<div><p>“‘Market liquidity’ is a slippery and elusive concept, in part because
+it encompasses a number of transactional properties of markets.”
+– Albert Kyle (1985)</p>
+</div></blockquote>
+<p>Asset-pricing theory takes prices as given; market microstructure asks
+how they are made. Someone has to stand ready to trade, and that service
+has a price: the bid-ask spread. Economists first explained it by the
+dealer’s costs and inventory risk, then, in 1985, by the realisation
+that some traders know more than others, which turned the order flow
+itself into information and the spread into insurance against it. The
+same ideas produced estimators of spreads and of informed trading that
+need nothing but prices or trade counts, and, once trading became
+electronic and algorithmic, models of how to execute a large order and
+how to make markets by machine. This chronology traces the ideas behind
+<a class="reference internal" href="../api/market_microstructure.html#module-financialkit.market_microstructure" title="financialkit.market_microstructure"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.market_microstructure</span></code></a>.</p>
+<nav class="contents local" id="timeline">
+<p class="topic-title">Timeline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#demsetz-the-cost-of-transacting" id="id1">1968 – Demsetz: The Cost of Transacting</a></p></li>
+<li><p><a class="reference internal" href="#garman-s-order-flow-dealer" id="id2">1976 – Garman’s Order-Flow Dealer</a></p></li>
+<li><p><a class="reference internal" href="#ho-and-stoll-dealer-inventory-risk" id="id3">1981 – Ho and Stoll: Dealer Inventory Risk</a></p></li>
+<li><p><a class="reference internal" href="#roll-s-implicit-spread" id="id4">1984 – Roll’s Implicit Spread</a></p></li>
+<li><p><a class="reference internal" href="#kyle-s-insider" id="id5">1985 – Kyle’s Insider</a></p></li>
+<li><p><a class="reference internal" href="#glosten-and-milgrom-adverse-selection" id="id6">1985 – Glosten and Milgrom: Adverse Selection</a></p></li>
+<li><p><a class="reference internal" href="#hasbrouck-s-trade-impact-var" id="id7">1991 – Hasbrouck’s Trade-Impact VAR</a></p></li>
+<li><p><a class="reference internal" href="#lee-and-ready-who-initiated-the-trade" id="id8">1991 – Lee and Ready: Who Initiated the Trade?</a></p></li>
+<li><p><a class="reference internal" href="#easley-kiefer-o-hara-and-paperman-pin" id="id9">1996 – Easley, Kiefer, O’Hara and Paperman: PIN</a></p></li>
+<li><p><a class="reference internal" href="#the-square-root-impact-law" id="id10">1997 – The Square-Root Impact Law</a></p></li>
+<li><p><a class="reference internal" href="#bertsimas-and-lo-optimal-control-of-execution-costs" id="id11">1998 – Bertsimas and Lo: Optimal Control of Execution Costs</a></p></li>
+<li><p><a class="reference internal" href="#almgren-and-chriss-efficient-execution" id="id12">2000 – Almgren and Chriss: Efficient Execution</a></p></li>
+<li><p><a class="reference internal" href="#amihud-s-illiquidity-ratio" id="id13">2002 – Amihud’s Illiquidity Ratio</a></p></li>
+<li><p><a class="reference internal" href="#avellaneda-and-stoikov-market-making-in-a-limit-order-book" id="id14">2008 – Avellaneda and Stoikov: Market Making in a Limit Order Book</a></p></li>
+<li><p><a class="reference internal" href="#corwin-and-schultz-spreads-from-highs-and-lows" id="id15">2012 – Corwin and Schultz: Spreads from Highs and Lows</a></p></li>
+<li><p><a class="reference internal" href="#easley-lopez-de-prado-and-o-hara-vpin" id="id16">2012 – Easley, López de Prado and O’Hara: VPIN</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id17">See Also</a></p></li>
+</ul>
+</nav>
+<section id="demsetz-the-cost-of-transacting">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1968 – Demsetz: The Cost of Transacting</a><a class="headerlink" href="#demsetz-the-cost-of-transacting" title="Link to this heading">#</a></h2>
+<p>Harold Demsetz asked what investors pay to trade on the New York Stock
+Exchange beyond commissions. His answer was the bid-ask spread, the
+price of <em>immediacy</em>: a trader who will not wait for a counterparty pays
+a dealer to stand ready. In a cross-section of NYSE stocks the spread
+fell with the number of transactions, because a busy dealer turns over
+inventory faster. Modern practice measures it three ways, from quotes
+(quoted spread), from trades against the midquote (effective spread)
+and net of the subsequent price move (realized spread), the difference
+being the price impact that informed traders inflict.</p>
+<div class="math notranslate nohighlight">
+\[s^{\text{eff}} = 2q(p - m_t) = \underbrace{2q(p - m_{t+\Delta})}_{\text{realized}} + \underbrace{2q(m_{t+\Delta} - m_t)}_{\text{impact}}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.spreads.quoted_spread()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">effective_spread()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">realized_spread()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">price_impact()</span></code>.
+The example decomposes the effective spread of a simulated market and
+fits Demsetz’s spread-activity elasticity.</p>
+<p><em>References:</em> H. Demsetz, “The Cost of Transacting,” <em>Quarterly J.
+Economics</em> 82 (1968) 33-53; R. D. Huang and H. R. Stoll, “Dealer versus
+Auction Markets,” <em>J. Financial Economics</em> 41 (1996) 313-357.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Harold Demsetz (1968) argued that a trader who wants to trade now pays the dealer the spread for standing ready, and that the spread shrinks as trading activity grows, because a busy dealer turns over inventory faster. Today the spread is measured three ways: the quoted spread on the screen, the effective spread actually paid relative to the midquote, and the realized spread the liquidity provider keeps once the price has moved; the difference is the price impact, lost to better-informed traders."><img alt="" src="../_images/sphx_glr_plot_01_demsetz_spreads_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/spreads/plot_01_demsetz_spreads.html"><span class="doc">Demsetz: the bid-ask spread as the price of immediacy</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Demsetz: the bid-ask spread as the price of immediacy</div>
+</div></div></section>
+<section id="garman-s-order-flow-dealer">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1976 – Garman’s Order-Flow Dealer</a><a class="headerlink" href="#garman-s-order-flow-dealer" title="Link to this heading">#</a></h2>
+<p>Mark Garman’s paper gave the field its name. Buyers and sellers arrive
+as Poisson streams whose rates depend on the ask and the bid, and a
+monopolist dealer clears them from its stock of shares and cash. The
+inventories are random walks, so the dealer fails with certainty unless
+both drift upward, which requires selling more dearly than it buys: the
+spread is the price of survival. The stock alone is a gambler’s-ruin
+problem with an explicit failure probability.</p>
+<div class="math notranslate nohighlight">
+\[P(\text{run out of stock} \mid I_0) = \min\left(1, (\lambda_a / \lambda_b)^{I_0}\right)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.dealers.garman_ruin_probability()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_garman()</span></code>.
+The example checks the ruin probability by simulation and shows dealers
+failing without a spread.</p>
+<p><em>References:</em> M. B. Garman, “Market Microstructure,” <em>J. Financial
+Economics</em> 3 (1976) 257-275; M. O’Hara, <em>Market Microstructure Theory</em>
+(Blackwell, 1995), Ch. 2.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Mark Garman (1976) started market microstructure by modelling orders as Poisson streams: buyers arrive at rate \lambda_a(a), falling with the ask, and sellers at \lambda_b(b), rising with the bid. A monopolist dealer holding stock and cash fails when either runs out. The stock follows a gambler&#x27;s-ruin walk, so the probability of eventually running out of shares is (\lambda_a/\lambda_b)^{I_0} when sellers outnumber buyers, and one otherwise. Keeping both stock and cash growing requires \lambda_b &gt; \lambda_a and a\lambda_a &gt; b\lambda_b, hence a &gt; b: the dealer must set a spread."><img alt="" src="../_images/sphx_glr_plot_01_garman_inventory_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/dealers/plot_01_garman_inventory.html"><span class="doc">Garman’s order-flow dealer</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Garman's order-flow dealer</div>
+</div></div></section>
+<section id="ho-and-stoll-dealer-inventory-risk">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1981 – Ho and Stoll: Dealer Inventory Risk</a><a class="headerlink" href="#ho-and-stoll-dealer-inventory-risk" title="Link to this heading">#</a></h2>
+<p>Thomas Ho and Hans Stoll made the dealer risk averse and the value of
+its inventory uncertain. A dealer who has bought too much now prefers
+selling to buying, so it lowers both quotes; one who is short raises
+them. The spread compensates for providing immediacy, while its
+<em>position</em> manages inventory. In a one-period mean-variance version with
+linear order arrival, the spread is independent of inventory and the
+midquote moves linearly against it.</p>
+<div class="math notranslate nohighlight">
+\[\delta_a + \delta_b = \frac{\alpha}{\beta}, \qquad
+\frac{a + b}{2} = p - \frac{\gamma\sigma^2\tau\, I}{2(1 + \gamma\sigma^2\tau\beta)}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.dealers.ho_stoll_quotes()</span></code>.
+The example plots quotes against inventory for several risk aversions
+and simulates the resulting mean-reverting inventory.</p>
+<p><em>References:</em> T. Ho and H. R. Stoll, “Optimal Dealer Pricing under
+Transactions and Return Uncertainty,” <em>J. Financial Economics</em> 9 (1981)
+47-73; H. R. Stoll, “The Supply of Dealer Services in Securities
+Markets,” <em>J. Finance</em> 33 (1978) 1133-1151.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Thomas Ho and Hans Stoll (1981) gave the dealer risk aversion. Holding inventory exposes it to price moves, so a dealer who is long lowers both quotes, making a sale to it less attractive and a purchase from it more so, until the inventory returns to zero. With order arrivals \lambda = \alpha - \beta\delta on each side, the spread itself, \alpha/\beta, does not depend on the inventory: only its position does."><img alt="" src="../_images/sphx_glr_plot_02_ho_stoll_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/dealers/plot_02_ho_stoll.html"><span class="doc">Ho and Stoll: the dealer’s inventory problem</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Ho and Stoll: the dealer's inventory problem</div>
+</div></div></section>
+<section id="roll-s-implicit-spread">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1984 – Roll’s Implicit Spread</a><a class="headerlink" href="#roll-s-implicit-spread" title="Link to this heading">#</a></h2>
+<p>Richard Roll observed that if the value follows a random walk and each
+trade lands at the bid or the ask with equal probability, the bounce
+between them makes consecutive price changes negatively correlated,
+with first-order autocovariance <span class="math notranslate nohighlight">\(-s^2/4\)</span>. The spread can therefore
+be estimated from transaction prices alone, which made it measurable
+for decades of daily data that has no quotes. In short samples the
+autocovariance is often positive, and the estimator is undefined.</p>
+<div class="math notranslate nohighlight">
+\[\hat s = 2\sqrt{-\operatorname{cov}(\Delta p_t, \Delta p_{t-1})}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.spreads.roll_spread()</span></code>,
+using the autocovariance from
+<a class="reference internal" href="../api/time_series.html#financialkit.time_series.autocovariance" title="financialkit.time_series.autocovariance"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.autocovariance()</span></code></a>. The example shows the
+bounce in the autocorrelations and the estimator’s accuracy across
+spreads and sample sizes.</p>
+<p><em>References:</em> R. Roll, “A Simple Implicit Measure of the Effective
+Bid-Ask Spread in an Efficient Market,” <em>J. Finance</em> 39 (1984)
+1127-1139.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Richard Roll (1984) noticed that trades bouncing between bid and ask make successive price changes negatively correlated even when the underlying value is a random walk. With equally likely buys and sells, \operatorname{cov}(\Delta p_t, \Delta p_{t-1}) = -s^2/4, so the spread can be read off a price series with no quotes at all:"><img alt="" src="../_images/sphx_glr_plot_02_roll_estimator_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/spreads/plot_02_roll_estimator.html"><span class="doc">Roll’s spread estimator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Roll's spread estimator</div>
+</div></div></section>
+<section id="kyle-s-insider">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">1985 – Kyle’s Insider</a><a class="headerlink" href="#kyle-s-insider" title="Link to this heading">#</a></h2>
+<p>Albert Kyle modelled a single insider who knows the asset’s value,
+noise traders whose random orders give it cover, and a competitive
+market maker who sees only the total order flow. In the linear
+equilibrium the market maker moves the price by <span class="math notranslate nohighlight">\(\lambda\)</span> per unit
+of flow, a measure of the market’s depth known ever since as Kyle’s
+lambda, and the insider trades just enough that half of the private
+information is revealed. More noise trading makes the market deeper
+and the insider richer.</p>
+<div class="math notranslate nohighlight">
+\[p = p_0 + \lambda(x + u), \qquad \lambda = \frac{\sigma_v}{2\sigma_u}, \qquad x = \frac{\sigma_u}{\sigma_v}(v - p_0)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.information.kyle_equilibrium()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_kyle()</span></code>;
+<code class="xref py py-func docutils literal notranslate"><span class="pre">kyle_lambda()</span></code>
+estimates lambda by regression. The example recovers lambda from
+simulated auctions and shows that the equilibrium intensity maximises
+the insider’s profit.</p>
+<p><em>References:</em> A. S. Kyle, “Continuous Auctions and Insider Trading,”
+<em>Econometrica</em> 53 (1985) 1315-1335.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Albert Kyle (1985) placed an insider who knows the liquidation value v \sim N(p_0, \sigma_v^2) in a market with noise traders whose orders u \sim N(0, \sigma_u^2) camouflage it. A competitive market maker sees only the total flow y = x + u and sets p = E[v \mid y] = p_0 + \lambda y. In equilibrium"><img alt="" src="../_images/sphx_glr_plot_01_kyle_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/information/plot_01_kyle.html"><span class="doc">Kyle’s insider and the price impact lambda</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Kyle's insider and the price impact lambda</div>
+</div></div></section>
+<section id="glosten-and-milgrom-adverse-selection">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">1985 – Glosten and Milgrom: Adverse Selection</a><a class="headerlink" href="#glosten-and-milgrom-adverse-selection" title="Link to this heading">#</a></h2>
+<p>Lawrence Glosten and Paul Milgrom showed that a spread arises even when
+dealing is free and dealers are risk neutral. A buy order is more likely
+to come from someone who knows the value is high, so a competitive
+dealer sets the ask to the expected value <em>given</em> a buy and the bid to
+the expected value given a sell. The dealer loses to the informed what
+it earns from the uninformed, each trade updates its beliefs by Bayes’
+rule, and the quotes converge to the true value.</p>
+<div class="math notranslate nohighlight">
+\[a = E[V \mid \text{buy}], \qquad b = E[V \mid \text{sell}]\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.information.glosten_milgrom_quotes()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_glosten_milgrom()</span></code>.
+The example shows quotes converging on high and low values and the
+spread widening with the share of informed traders.</p>
+<p><em>References:</em> L. R. Glosten and P. R. Milgrom, “Bid, Ask and Transaction
+Prices in a Specialist Market with Heterogeneously Informed Traders,”
+<em>J. Financial Economics</em> 14 (1985) 71-100.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Lawrence Glosten and Paul Milgrom (1985) explained the spread with no inventory and no costs. A competitive dealer trades one unit at a time with traders who are informed with probability \alpha. Since a buy is more likely to come from someone who knows the value is high, the dealer sets the ask to E[V \mid \text{buy}] and the bid to E[V \mid \text{sell}], losing to the informed exactly what it gains from the uninformed. Each trade updates the dealer&#x27;s belief by Bayes&#x27; rule, so prices are a martingale that converges to the truth."><img alt="" src="../_images/sphx_glr_plot_02_glosten_milgrom_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/information/plot_02_glosten_milgrom.html"><span class="doc">Glosten and Milgrom: a spread from adverse selection alone</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Glosten and Milgrom: a spread from adverse selection alone</div>
+</div></div></section>
+<section id="hasbrouck-s-trade-impact-var">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1991 – Hasbrouck’s Trade-Impact VAR</a><a class="headerlink" href="#hasbrouck-s-trade-impact-var" title="Link to this heading">#</a></h2>
+<p>Joel Hasbrouck measured how much information trades carry with a
+vector autoregression of quote revisions and signed trades. Order flow
+is persistent and quotes also respond to inventory, so the immediate
+price reaction to a trade is a poor measure of its information. The
+cumulative response of the quote to an <em>unexpected</em> trade settles at the
+permanent impact, and the share of the efficient price’s variance that
+trade innovations explain says how much information arrives through
+trading rather than public news.</p>
+<div class="math notranslate nohighlight">
+\[r_t = \sum_{i=1}^p a_i r_{t-i} + \sum_{i=0}^p b_i x_{t-i} + v_{1,t}, \qquad
+x_t = \sum_{i=1}^p c_i r_{t-i} + \sum_{i=1}^p d_i x_{t-i} + v_{2,t}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.trade_impact.hasbrouck_var()</span></code>,
+fitted with <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.time_series.utils.ols()</span></code>. The example
+separates permanent from transitory impact in a market with persistent
+order flow and inventory effects.</p>
+<p><em>References:</em> J. Hasbrouck, “Measuring the Information Content of Stock
+Trades,” <em>J. Finance</em> 46 (1991) 179-207.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Joel Hasbrouck (1991) measured the information in trades with a vector autoregression of quote revisions r_t and signed trades x_t. Order flow is persistent and quotes also react to inventory, so a trade&#x27;s immediate price effect overstates what it reveals. The cumulative impulse response of the quote to an unexpected trade separates the two: it settles at the permanent impact, the information content, after the transitory part has decayed."><img alt="" src="../_images/sphx_glr_plot_03_hasbrouck_var_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/information/plot_03_hasbrouck_var.html"><span class="doc">Hasbrouck’s trade-impact VAR</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hasbrouck's trade-impact VAR</div>
+</div></div></section>
+<section id="lee-and-ready-who-initiated-the-trade">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">1991 – Lee and Ready: Who Initiated the Trade?</a><a class="headerlink" href="#lee-and-ready-who-initiated-the-trade" title="Link to this heading">#</a></h2>
+<p>Spread, impact and informed-trading measures all need to know whether
+each trade was a buy or a sell, and trade records do not say. Charles
+Lee and Mark Ready combined the quote rule (above the midquote is a buy)
+with the tick test (an uptick is a buy) for trades exactly at the
+midquote, and compared each trade with the quote of five seconds
+earlier, because NYSE quote revisions triggered by a trade were often
+recorded before it. Their algorithm remains the default in empirical
+work.</p>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.classification.lee_ready()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">tick_test()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">quote_rule()</span></code>,
+with <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.utils.quotes.align_quotes()</span></code>
+for the five-second rule. The example measures each rule’s accuracy
+with and without the delay.</p>
+<p><em>References:</em> C. M. C. Lee and M. J. Ready, “Inferring Trade Direction
+from Intraday Data,” <em>J. Finance</em> 46 (1991) 733-746.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Trade records do not say who initiated a trade. Charles Lee and Mark Ready (1991) signed trades above the midquote as buys and below it as sells, used the tick test for trades at the midquote, and compared each trade with the quote of five seconds earlier: on the NYSE the quote revision a trade caused was often time-stamped before the trade itself, so the contemporaneous quote had already moved toward the trade price."><img alt="" src="../_images/sphx_glr_plot_03_lee_ready_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/spreads/plot_03_lee_ready.html"><span class="doc">Lee and Ready’s trade classification</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lee and Ready's trade classification</div>
+</div></div></section>
+<section id="easley-kiefer-o-hara-and-paperman-pin">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">1996 – Easley, Kiefer, O’Hara and Paperman: PIN</a><a class="headerlink" href="#easley-kiefer-o-hara-and-paperman-pin" title="Link to this heading">#</a></h2>
+<p>David Easley, Nicholas Kiefer, Maureen O’Hara and Joseph Paperman turned
+the Glosten-Milgrom model into something that could be estimated from
+daily counts of buys and sells. Each day news arrives with probability
+<span class="math notranslate nohighlight">\(\alpha\)</span>; informed traders then add Poisson rate <span class="math notranslate nohighlight">\(\mu\)</span> to one
+side of a market where uninformed orders arrive at rates
+<span class="math notranslate nohighlight">\(\varepsilon_b, \varepsilon_s\)</span>. Maximum likelihood on the resulting
+mixture gives the probability that a trade is informed, which they
+found higher in thinly traded stocks, explaining their wider spreads.</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{PIN} = \frac{\alpha\mu}{\alpha\mu + \varepsilon_b + \varepsilon_s}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.informed_trading.fit_pin()</span></code>
+maximises <code class="xref py py-func docutils literal notranslate"><span class="pre">pin_loglik()</span></code>
+with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize" title="(in SciPy v1.18.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a> from several starting points and
+reports a delta-method standard error. The example fits simulated
+stocks of different activity.</p>
+<p><em>References:</em> D. Easley, N. M. Kiefer, M. O’Hara and J. B. Paperman,
+“Liquidity, Information, and Infrequently Traded Stocks,” <em>J. Finance</em>
+51 (1996) 1405-1436.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Easley, Kiefer, O&#x27;Hara and Paperman (1996) turned the Glosten-Milgrom logic into an estimator that needs only daily counts of buys and sells. On a day with private news (probability \alpha), informed traders add rate \mu to one side; otherwise only uninformed buys and sells arrive, at rates \varepsilon_b, \varepsilon_s. The fitted mixture gives the share of trades that are informed, \mathrm{PIN} = \alpha\mu / (\alpha\mu + \varepsilon_b + \varepsilon_s). Their finding: thinly traded stocks have a higher PIN, which explains their wider spreads."><img alt="" src="../_images/sphx_glr_plot_04_pin_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/information/plot_04_pin.html"><span class="doc">Easley, Kiefer, O’Hara and Paperman: the probability of informed trading</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Easley, Kiefer, O'Hara and Paperman: the probability of informed trading</div>
+</div></div></section>
+<section id="the-square-root-impact-law">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">1997 – The Square-Root Impact Law</a><a class="headerlink" href="#the-square-root-impact-law" title="Link to this heading">#</a></h2>
+<p>Executing a large order moves the price against the trader, and
+practitioners found that the impact of a whole metaorder grows like the
+square root of its size relative to daily volume, not linearly. Thomas
+Loeb’s 1983 cost tables showed the concave shape, and BARRA’s market
+impact model (Torre, 1997) put the square root into production. Later
+studies found it across markets, decades and asset classes, with an
+exponent close to one half; it is now among the most robust empirical
+regularities in finance.</p>
+<div class="math notranslate nohighlight">
+\[I = Y\,\sigma\,\sqrt{Q / V}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.execution.square_root_impact()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">fit_impact_law()</span></code>.
+The example fits the exponent to synthetic metaorders and compares
+with linear impact.</p>
+<p><em>References:</em> T. F. Loeb, “Trading Cost: The Critical Link between
+Investment Information and Results,” <em>Financial Analysts J.</em> 39 (1983)
+39-44; N. Torre, <em>BARRA Market Impact Model Handbook</em> (BARRA, 1997); B.
+Tóth et al., “Anomalous Price Impact and the Critical Nature of
+Liquidity in Financial Markets,” <em>Physical Review X</em> 1 (2011) 021006.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A large order executed over a day moves the price by far less than proportionally to its size. Practitioners measured it in the 1980s and 1990s (Loeb, 1983; the BARRA market impact model of Torre, 1997): the impact of a metaorder of Q shares in a stock trading V shares a day with daily volatility \sigma is"><img alt="" src="../_images/sphx_glr_plot_01_square_root_impact_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/execution/plot_01_square_root_impact.html"><span class="doc">The square-root impact law</span></a></p>
+  <div class="sphx-glr-thumbnail-title">The square-root impact law</div>
+</div></div></section>
+<section id="bertsimas-and-lo-optimal-control-of-execution-costs">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">1998 – Bertsimas and Lo: Optimal Control of Execution Costs</a><a class="headerlink" href="#bertsimas-and-lo-optimal-control-of-execution-costs" title="Link to this heading">#</a></h2>
+<p>Dimitris Bertsimas and Andrew Lo posed best execution as stochastic
+dynamic programming. With a linear permanent price impact, a
+risk-neutral trader buying a block over several periods can do no
+better than an even split; when a serially correlated signal also moves
+prices, the optimal order is linear in the shares remaining and the
+latest signal, and the quadratic value function satisfies a simple
+backward recursion.</p>
+<div class="math notranslate nohighlight">
+\[S_k = \left(1 - \frac{\theta}{2a_{k+1}}\right) W_k + \frac{\rho b_{k+1}}{2a_{k+1}} X_{k-1}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.execution.bertsimas_lo()</span></code>.
+The example recovers TWAP without information, shows the signal
+tilting the schedule and measures the saving by simulation.</p>
+<p><em>References:</em> D. Bertsimas and A. W. Lo, “Optimal Control of Execution
+Costs,” <em>J. Financial Markets</em> 1 (1998) 1-50.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Dimitris Bertsimas and Andrew Lo (1998) treated buying \bar S shares over T periods as a dynamic program. If each purchase moves the price permanently by \theta per share, P_k = P_{k-1} + \theta S_k + \varepsilon_k, the best a risk-neutral trader can do is split the order evenly. If a serially correlated signal X_k also drives prices, the optimal order is linear in the remaining shares and the latest signal, and trading ahead of predicted rises pays."><img alt="" src="../_images/sphx_glr_plot_02_bertsimas_lo_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/execution/plot_02_bertsimas_lo.html"><span class="doc">Bertsimas and Lo: optimal control of execution costs</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bertsimas and Lo: optimal control of execution costs</div>
+</div></div></section>
+<section id="almgren-and-chriss-efficient-execution">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">2000 – Almgren and Chriss: Efficient Execution</a><a class="headerlink" href="#almgren-and-chriss-efficient-execution" title="Link to this heading">#</a></h2>
+<p>Robert Almgren and Neil Chriss separated permanent impact from the
+temporary impact of trading fast and added the trader’s aversion to the
+risk of holding the position. The optimal holdings decay as hyperbolic
+sines, from a straight line for a risk-neutral trader to near-immediate
+liquidation for a very risk-averse one, and sweeping the risk aversion
+traces an efficient frontier of expected cost against its variance.
+Their framework underlies most implementation-shortfall algorithms.</p>
+<div class="math notranslate nohighlight">
+\[x_j = X\,\frac{\sinh(\kappa(T - t_j))}{\sinh(\kappa T)}, \qquad
+\cosh(\kappa\tau) = 1 + \frac{\lambda\sigma^2\tau^2}{2\tilde\eta}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.execution.almgren_chriss()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">execution_cost()</span></code>.
+The example uses the paper’s worked example to draw trajectories and
+the efficient frontier.</p>
+<p><em>References:</em> R. Almgren and N. Chriss, “Optimal Execution of Portfolio
+Transactions,” <em>J. Risk</em> 3 (2000) 5-39.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Robert Almgren and Neil Chriss (2000) split impact into a permanent part \gamma and a temporary part \eta that punishes trading fast. Selling slowly is cheap in expectation but leaves the position exposed to volatility for longer. Minimising E + \lambda V gives"><img alt="" src="../_images/sphx_glr_plot_03_almgren_chriss_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/execution/plot_03_almgren_chriss.html"><span class="doc">Almgren and Chriss: the efficient frontier of execution</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Almgren and Chriss: the efficient frontier of execution</div>
+</div></div></section>
+<section id="amihud-s-illiquidity-ratio">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">2002 – Amihud’s Illiquidity Ratio</a><a class="headerlink" href="#amihud-s-illiquidity-ratio" title="Link to this heading">#</a></h2>
+<p>Yakov Amihud proposed measuring illiquidity as the average absolute
+daily return per dollar traded, a proxy for Kyle’s lambda that needs
+only daily returns and volume and so can be computed for every stock
+over long histories. He showed that expected returns rise with it, both
+across stocks and over time, an illiquidity premium. It remains the most
+widely used low-frequency liquidity measure.</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{ILLIQ} = \frac{1}{D}\sum_{d=1}^D \frac{|r_d|}{\mathrm{DVol}_d}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.liquidity.amihud_illiquidity()</span></code>.
+The example ranks a synthetic cross-section by Amihud’s ratio and
+compares it with the true and regression-estimated Kyle lambdas.</p>
+<p><em>References:</em> Y. Amihud, “Illiquidity and Stock Returns: Cross-Section
+and Time-Series Effects,” <em>J. Financial Markets</em> 5 (2002) 31-56.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Yakov Amihud (2002) proposed a liquidity measure that needs only daily returns and dollar volume: the average of |r_d| / \mathrm{DVol}_d, the price move per dollar traded. It approximates Kyle&#x27;s lambda, which needs signed order flow, and Amihud found that stocks with a higher ratio earn higher expected returns, an illiquidity premium."><img alt="" src="../_images/sphx_glr_plot_01_amihud_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/liquidity/plot_01_amihud.html"><span class="doc">Amihud’s illiquidity ratio</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Amihud's illiquidity ratio</div>
+</div></div></section>
+<section id="avellaneda-and-stoikov-market-making-in-a-limit-order-book">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">2008 – Avellaneda and Stoikov: Market Making in a Limit Order Book</a><a class="headerlink" href="#avellaneda-and-stoikov-market-making-in-a-limit-order-book" title="Link to this heading">#</a></h2>
+<p>Marco Avellaneda and Sasha Stoikov wrote down the electronic market
+maker’s problem: quote around a mid price that moves as Brownian
+motion, get filled at a rate that decays exponentially with distance
+from the mid, and maximise exponential utility of terminal wealth. The
+solution first shifts the mid price to an inventory-adjusted
+<em>reservation price</em> and then sets an optimal spread around it, a
+continuous-time descendant of Ho and Stoll that became the template for
+algorithmic market making.</p>
+<div class="math notranslate nohighlight">
+\[r = s - q\gamma\sigma^2(T - t), \qquad \delta_a + \delta_b = \gamma\sigma^2(T - t) + \frac{2}{\gamma}\ln\left(1 + \frac{\gamma}{k}\right)\]</div>
+<p><em>Implementation:</em> <a class="reference internal" href="../api/market_microstructure.html#financialkit.market_microstructure.AvellanedaStoikov" title="financialkit.market_microstructure.systems.dealers.AvellanedaStoikov"><code class="xref py py-class docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.dealers.AvellanedaStoikov</span></code></a>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">reservation_price()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">avellaneda_stoikov_spread()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_market_making()</span></code>,
+whose mid price comes from <a class="reference internal" href="../api/integrators.html#financialkit.integrators.brownian_increments" title="financialkit.integrators.brownian_increments"><code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.integrators.brownian_increments()</span></code></a>.
+The example reproduces the paper’s comparison with symmetric quoting.</p>
+<p><em>References:</em> M. Avellaneda and S. Stoikov, “High-Frequency Trading in
+a Limit Order Book,” <em>Quantitative Finance</em> 8 (2008) 217-224.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Marco Avellaneda and Sasha Stoikov (2008) let a market maker quote around a Brownian mid price s, with fills arriving at rate A e^{-k\delta} at distance \delta. A trader with exponential utility first computes the reservation price r = s - q\gamma\sigma^2(T - t), the mid price adjusted for its inventory q, and then quotes a spread \gamma\sigma^2(T-t) + \frac{2}{\gamma}\ln(1 + \gamma/k) around it. The example reproduces the comparison of their Table 1: the inventory strategy gives up a little expected profit for a much smaller variance."><img alt="" src="../_images/sphx_glr_plot_03_avellaneda_stoikov_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/dealers/plot_03_avellaneda_stoikov.html"><span class="doc">Avellaneda and Stoikov: market making in a limit order book</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Avellaneda and Stoikov: market making in a limit order book</div>
+</div></div></section>
+<section id="corwin-and-schultz-spreads-from-highs-and-lows">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">2012 – Corwin and Schultz: Spreads from Highs and Lows</a><a class="headerlink" href="#corwin-and-schultz-spreads-from-highs-and-lows" title="Link to this heading">#</a></h2>
+<p>Shane Corwin and Paul Schultz noticed that daily highs are almost
+always buys at the ask and lows sells at the bid, so the high-low range
+contains both volatility and the spread. The volatility part of the
+squared log range doubles over two days while the spread part does not,
+so one two-day range and two one-day ranges identify the spread. The
+estimator needs only daily data and is far more accurate than Roll’s.</p>
+<div class="math notranslate nohighlight">
+\[\alpha = \frac{\sqrt{2\beta} - \sqrt\beta}{3 - 2\sqrt2} - \sqrt{\frac{\gamma}{3 - 2\sqrt2}}, \qquad
+S = \frac{2(e^\alpha - 1)}{1 + e^\alpha}\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.spreads.corwin_schultz_spread()</span></code>.
+The example compares monthly and quarterly estimates with the true
+spread and with Roll’s estimator from daily closes.</p>
+<p><em>References:</em> S. A. Corwin and P. Schultz, “A Simple Way to Estimate
+Bid-Ask Spreads from Daily High and Low Prices,” <em>J. Finance</em> 67 (2012)
+719-760.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Daily highs are usually buys at the ask and lows sells at the bid, so the high-low range contains the spread as well as volatility. Shane Corwin and Paul Schultz (2012) noticed that the volatility part of the squared range doubles over two days while the spread part does not, and solved for the spread from two one-day ranges and one two-day range. It needs only daily data, yet is far more precise than Roll&#x27;s estimator from daily closes."><img alt="" src="../_images/sphx_glr_plot_04_corwin_schultz_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/spreads/plot_04_corwin_schultz.html"><span class="doc">Corwin and Schultz’s high-low spread estimator</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Corwin and Schultz's high-low spread estimator</div>
+</div></div></section>
+<section id="easley-lopez-de-prado-and-o-hara-vpin">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">2012 – Easley, López de Prado and O’Hara: VPIN</a><a class="headerlink" href="#easley-lopez-de-prado-and-o-hara-vpin" title="Link to this heading">#</a></h2>
+<p>In high-frequency markets the PIN likelihood is impractical, and
+information arrives in volume rather than clock time. David Easley,
+Marcos López de Prado and Maureen O’Hara grouped trading into buckets of
+equal volume, split each bar’s volume into buys and sells by the
+standardised price change (bulk volume classification), and averaged
+the absolute order imbalance over recent buckets. Their measure of flow
+toxicity rose in the hours before the flash crash of 6 May 2010; its
+predictive power has been debated since.</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{VPIN} = \frac{1}{n}\sum_{\tau=1}^{n} \frac{|V^B_\tau - V^S_\tau|}{V}, \qquad V^B = V\,\Phi\left(\frac{\Delta P}{\sigma_{\Delta P}}\right)\]</div>
+<p><em>Implementation:</em> <code class="xref py py-func docutils literal notranslate"><span class="pre">financialkit.market_microstructure.systems.informed_trading.vpin()</span></code>
+and <code class="xref py py-func docutils literal notranslate"><span class="pre">bulk_volume_classification()</span></code>.
+The example tracks VPIN through a simulated episode of toxic selling.</p>
+<p><em>References:</em> D. Easley, M. M. López de Prado and M. O’Hara, “Flow
+Toxicity and Liquidity in a High-Frequency World,” <em>Review of Financial
+Studies</em> 25 (2012) 1457-1493; T. G. Andersen and O. Bondarenko, “VPIN
+and the Flash Crash,” <em>J. Financial Markets</em> 17 (2014) 1-46.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="High-frequency markets have too many trades and too few days for the PIN likelihood. Easley, López de Prado and O&#x27;Hara (2012) measured order imbalance in volume time instead: cut the trading record into buckets of equal volume, split each one-minute bar&#x27;s volume into buys and sells by bulk volume classification, V^B = V\Phi(\Delta P/\sigma_{\Delta P}), and average |V^B - V^S|/V over the last 50 buckets. Their VPIN rose for hours before the flash crash of 6 May 2010."><img alt="" src="../_images/sphx_glr_plot_05_vpin_thumb.png" />
+<p><a class="reference internal" href="../api/gallery/market_microstructure/information/plot_05_vpin.html"><span class="doc">VPIN: flow toxicity in volume time</span></a></p>
+  <div class="sphx-glr-thumbnail-title">VPIN: flow toxicity in volume time</div>
+</div></div></section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/market_microstructure.html"><span class="doc">financialkit.market_microstructure</span></a></p></li>
+<li><p><a class="reference internal" href="time_series_breakthroughs.html"><span class="doc">Breakthroughs in Financial Time Series</span></a></p></li>
+<li><p><a class="reference internal" href="risk_breakthroughs.html"><span class="doc">Breakthroughs in Risk Measurement</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="time_series_breakthroughs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Breakthroughs in Financial Time Series</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../examples/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demsetz-the-cost-of-transacting">1968 – Demsetz: The Cost of Transacting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#garman-s-order-flow-dealer">1976 – Garman’s Order-Flow Dealer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ho-and-stoll-dealer-inventory-risk">1981 – Ho and Stoll: Dealer Inventory Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roll-s-implicit-spread">1984 – Roll’s Implicit Spread</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kyle-s-insider">1985 – Kyle’s Insider</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glosten-and-milgrom-adverse-selection">1985 – Glosten and Milgrom: Adverse Selection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasbrouck-s-trade-impact-var">1991 – Hasbrouck’s Trade-Impact VAR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lee-and-ready-who-initiated-the-trade">1991 – Lee and Ready: Who Initiated the Trade?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easley-kiefer-o-hara-and-paperman-pin">1996 – Easley, Kiefer, O’Hara and Paperman: PIN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-square-root-impact-law">1997 – The Square-Root Impact Law</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bertsimas-and-lo-optimal-control-of-execution-costs">1998 – Bertsimas and Lo: Optimal Control of Execution Costs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#almgren-and-chriss-efficient-execution">2000 – Almgren and Chriss: Efficient Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#amihud-s-illiquidity-ratio">2002 – Amihud’s Illiquidity Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#avellaneda-and-stoikov-market-making-in-a-limit-order-book">2008 – Avellaneda and Stoikov: Market Making in a Limit Order Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corwin-and-schultz-spreads-from-highs-and-lows">2012 – Corwin and Schultz: Spreads from Highs and Lows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#easley-lopez-de-prado-and-o-hara-vpin">2012 – Easley, López de Prado and O’Hara: VPIN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/history/market_microstructure_breakthroughs.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

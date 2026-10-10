@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-10T04:56:57.881639Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-10T04:56:57.881639Z",
+      "mimetype": null,
+      "name": "plot_01_calmar_drawdowns.ipynb",
+      "path": "jupyterlite_contents/api/gallery/risk/drawdowns/plot_01_calmar_drawdowns.ipynb",
+      "size": 3976,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-10T04:56:59.255542Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-10T04:56:59.255630Z",
+  "mimetype": null,
+  "name": "drawdowns",
+  "path": "jupyterlite_contents/api/gallery/risk/drawdowns",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
