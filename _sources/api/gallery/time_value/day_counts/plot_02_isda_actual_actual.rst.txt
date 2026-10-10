@@ -112,9 +112,9 @@ The same calendar period earns different interest under each convention.
 
  .. code-block:: none
 
-    /Users/cpoli/Code/financialkit/examples/time_value/day_counts/plot_02_isda_actual_actual.py:33: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    /home/runner/work/financialkit/financialkit/examples/time_value/day_counts/plot_02_isda_actual_actual.py:33: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
       starts = np.arange(np.datetime64("2023-01-01"), np.datetime64("2025-01-01"), 7)
-    /Users/cpoli/Code/financialkit/examples/time_value/day_counts/plot_02_isda_actual_actual.py:34: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+    /home/runner/work/financialkit/financialkit/examples/time_value/day_counts/plot_02_isda_actual_actual.py:34: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
       ends = (starts.astype("datetime64[M]") + 6).astype("datetime64[D]") + (starts - starts.astype("datetime64[M]").astype("datetime64[D]"))
 
 
@@ -123,7 +123,7 @@ The same calendar period earns different interest under each convention.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.046 seconds)
+   **Total running time of the script:** (0 minutes 0.085 seconds)
 
 
 .. _sphx_glr_download_api_gallery_time_value_day_counts_plot_02_isda_actual_actual.py:

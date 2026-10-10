@@ -129,7 +129,7 @@ Bridge-corrected Monte Carlo confirms one point on each curve.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.109 seconds)
+   **Total running time of the script:** (0 minutes 0.200 seconds)
 
 
 .. _sphx_glr_download_api_gallery_exotic_options_barriers_plot_01_merton_down_and_out.py:

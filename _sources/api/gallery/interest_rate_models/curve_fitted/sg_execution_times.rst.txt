@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.894** total execution time for 4 files **from api/gallery/interest_rate_models/curve_fitted**:
+**00:00.822** total execution time for 4 files **from api/gallery/interest_rate_models/curve_fitted**:
 
 .. container::
 
@@ -32,15 +32,15 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_01_ho_lee.py` (``plot_01_ho_lee.py``)
-     - 00:00.596
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_02_hull_white.py` (``plot_02_hull_white.py``)
-     - 00:00.132
+     - 00:00.269
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_03_black_derman_toy.py` (``plot_03_black_derman_toy.py``)
-     - 00:00.093
+     - 00:00.214
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_01_ho_lee.py` (``plot_01_ho_lee.py``)
+     - 00:00.187
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_curve_fitted_plot_04_futures_convexity_adjustment.py` (``plot_04_futures_convexity_adjustment.py``)
-     - 00:00.072
+     - 00:00.151
      - 0.0

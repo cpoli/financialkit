@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.326** total execution time for 3 files **from api/gallery/asset_pricing/consumption**:
+**00:00.514** total execution time for 3 files **from api/gallery/asset_pricing/consumption**:
 
 .. container::
 
@@ -32,12 +32,12 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_asset_pricing_consumption_plot_01_lucas_tree.py` (``plot_01_lucas_tree.py``)
-     - 00:00.181
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_consumption_plot_03_equity_premium_puzzle.py` (``plot_03_equity_premium_puzzle.py``)
-     - 00:00.105
+     - 00:00.235
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_asset_pricing_consumption_plot_01_lucas_tree.py` (``plot_01_lucas_tree.py``)
+     - 00:00.199
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_consumption_plot_02_breeden_ccapm.py` (``plot_02_breeden_ccapm.py``)
-     - 00:00.040
+     - 00:00.080
      - 0.0

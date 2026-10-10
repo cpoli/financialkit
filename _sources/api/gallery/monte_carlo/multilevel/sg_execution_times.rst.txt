@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.294** total execution time for 1 file **from api/gallery/monte_carlo/multilevel**:
+**00:01.563** total execution time for 1 file **from api/gallery/monte_carlo/multilevel**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_monte_carlo_multilevel_plot_01_giles_mlmc.py` (``plot_01_giles_mlmc.py``)
-     - 00:01.294
+     - 00:01.563
      - 0.0

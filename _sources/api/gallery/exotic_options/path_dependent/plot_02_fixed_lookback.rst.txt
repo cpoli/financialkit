@@ -85,7 +85,7 @@ New options across strikes
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x116f51fd0>
+    <matplotlib.legend.Legend object at 0x7fdf66f73bc0>
 
 
 
@@ -121,7 +121,7 @@ strike.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.109 seconds)
+   **Total running time of the script:** (0 minutes 0.172 seconds)
 
 
 .. _sphx_glr_download_api_gallery_exotic_options_path_dependent_plot_02_fixed_lookback.py:

@@ -120,7 +120,7 @@ Payer, receiver and parity
 
  .. code-block:: none
 
-    max parity error: 4.2e-17
+    max parity error: 5.6e-17
 
 
 
@@ -162,7 +162,7 @@ terms is downward sloping, the signature of a normal (Gaussian) model.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.075 seconds)
+   **Total running time of the script:** (0 minutes 0.175 seconds)
 
 
 .. _sphx_glr_download_api_gallery_interest_rate_models_options_plot_04_black_swaption.py:

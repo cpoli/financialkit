@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.625** total execution time for 6 files **from api/gallery/options/trees**:
+**00:03.353** total execution time for 6 files **from api/gallery/options/trees**:
 
 .. container::
 
@@ -33,20 +33,20 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_options_trees_plot_05_barone_adesi_whaley.py` (``plot_05_barone_adesi_whaley.py``)
-     - 00:00.539
+     - 00:00.967
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_trees_plot_03_rendleman_bartter.py` (``plot_03_rendleman_bartter.py``)
-     - 00:00.270
+     - 00:00.636
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_trees_plot_06_leisen_reimer.py` (``plot_06_leisen_reimer.py``)
-     - 00:00.264
+     - 00:00.578
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_trees_plot_01_crr_convergence.py` (``plot_01_crr_convergence.py``)
-     - 00:00.217
+     - 00:00.491
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_trees_plot_04_boyle_trinomial.py` (``plot_04_boyle_trinomial.py``)
-     - 00:00.168
+     - 00:00.344
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_trees_plot_02_crr_american_put.py` (``plot_02_crr_american_put.py``)
-     - 00:00.167
+     - 00:00.338
      - 0.0

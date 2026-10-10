@@ -96,7 +96,7 @@ The whole grid at once
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.103 seconds)
+   **Total running time of the script:** (0 minutes 0.196 seconds)
 
 
 .. _sphx_glr_download_api_gallery_pde_methods_schemes_plot_05_schwartz_explicit.py:

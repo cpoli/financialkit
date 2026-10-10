@@ -107,7 +107,7 @@ The value surface, and the price across correlations
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.202 seconds)
+   **Total running time of the script:** (0 minutes 0.329 seconds)
 
 
 .. _sphx_glr_download_api_gallery_pde_methods_multi_factor_plot_01_peaceman_rachford_adi.py:

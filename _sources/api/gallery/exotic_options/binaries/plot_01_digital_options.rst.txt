@@ -84,7 +84,7 @@ A vanilla call from two digitals
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x1171f06e0>
+    <matplotlib.legend.Legend object at 0x7fdf66f72ed0>
 
 
 
@@ -113,7 +113,7 @@ The digital's delta spikes at the strike near expiry
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x116f112b0>
+    <matplotlib.legend.Legend object at 0x7fdf66970380>
 
 
 
@@ -155,7 +155,7 @@ the digital that pays at expiry if S_T > 120 (the reflection principle).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.093 seconds)
+   **Total running time of the script:** (0 minutes 0.146 seconds)
 
 
 .. _sphx_glr_download_api_gallery_exotic_options_binaries_plot_01_digital_options.py:

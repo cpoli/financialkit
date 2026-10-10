@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.375** total execution time for 3 files **from api/gallery/stochastic_volatility/smile**:
+**00:00.830** total execution time for 3 files **from api/gallery/stochastic_volatility/smile**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_stochastic_volatility_smile_plot_02_svi.py` (``plot_02_svi.py``)
-     - 00:00.178
+     - 00:00.402
      - 0.0
    * - :ref:`sphx_glr_api_gallery_stochastic_volatility_smile_plot_03_lee_moment_formula.py` (``plot_03_lee_moment_formula.py``)
-     - 00:00.126
+     - 00:00.281
      - 0.0
    * - :ref:`sphx_glr_api_gallery_stochastic_volatility_smile_plot_01_sabr.py` (``plot_01_sabr.py``)
-     - 00:00.071
+     - 00:00.148
      - 0.0

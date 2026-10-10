@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.404** total execution time for 2 files **from api/gallery/options/greeks**:
+**00:00.753** total execution time for 2 files **from api/gallery/options/greeks**:
 
 .. container::
 
@@ -33,8 +33,8 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_options_greeks_plot_02_delta_hedging.py` (``plot_02_delta_hedging.py``)
-     - 00:00.271
+     - 00:00.474
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_greeks_plot_01_greeks.py` (``plot_01_greeks.py``)
-     - 00:00.133
+     - 00:00.279
      - 0.0

@@ -129,7 +129,7 @@ The efficient frontier
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.087 seconds)
+   **Total running time of the script:** (0 minutes 0.136 seconds)
 
 
 .. _sphx_glr_download_api_gallery_market_microstructure_execution_plot_03_almgren_chriss.py:

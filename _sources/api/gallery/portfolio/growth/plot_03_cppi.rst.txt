@@ -153,7 +153,7 @@ Gap risk grows with the multiplier and the rebalancing interval
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.141 seconds)
+   **Total running time of the script:** (0 minutes 0.293 seconds)
 
 
 .. _sphx_glr_download_api_gallery_portfolio_growth_plot_03_cppi.py:

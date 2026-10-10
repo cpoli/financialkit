@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.885** total execution time for 6 files **from api/gallery/options/closed_form**:
+**00:00.698** total execution time for 6 files **from api/gallery/options/closed_form**:
 
 .. container::
 
@@ -32,21 +32,21 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_01_bachelier.py` (``plot_01_bachelier.py``)
-     - 00:00.603
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_03_black_scholes.py` (``plot_03_black_scholes.py``)
-     - 00:00.092
+     - 00:00.166
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_01_bachelier.py` (``plot_01_bachelier.py``)
+     - 00:00.152
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_04_merton_bounds_and_dividends.py` (``plot_04_merton_bounds_and_dividends.py``)
-     - 00:00.061
+     - 00:00.120
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_05_black76.py` (``plot_05_black76.py``)
-     - 00:00.045
+     - 00:00.094
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_06_garman_kohlhagen.py` (``plot_06_garman_kohlhagen.py``)
-     - 00:00.042
+     - 00:00.085
      - 0.0
    * - :ref:`sphx_glr_api_gallery_options_closed_form_plot_02_stoll_put_call_parity.py` (``plot_02_stoll_put_call_parity.py``)
-     - 00:00.042
+     - 00:00.080
      - 0.0

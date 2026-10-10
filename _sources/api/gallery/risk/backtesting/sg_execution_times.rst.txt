@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.499** total execution time for 3 files **from api/gallery/risk/backtesting**:
+**00:02.362** total execution time for 3 files **from api/gallery/risk/backtesting**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_risk_backtesting_plot_03_christoffersen.py` (``plot_03_christoffersen.py``)
-     - 00:00.868
+     - 00:02.016
      - 0.0
    * - :ref:`sphx_glr_api_gallery_risk_backtesting_plot_01_kupiec.py` (``plot_01_kupiec.py``)
-     - 00:00.553
+     - 00:00.180
      - 0.0
    * - :ref:`sphx_glr_api_gallery_risk_backtesting_plot_02_basel_traffic_light.py` (``plot_02_basel_traffic_light.py``)
-     - 00:00.078
+     - 00:00.166
      - 0.0

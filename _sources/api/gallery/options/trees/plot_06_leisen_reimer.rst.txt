@@ -90,7 +90,7 @@ Second-order convergence
     Leisen-Reimer empirical order: 1.98
     error with 51 steps: CRR 8.7e-03, Leisen-Reimer 1.8e-04
 
-    <matplotlib.legend.Legend object at 0x1166d6270>
+    <matplotlib.legend.Legend object at 0x7fdf6759dac0>
 
 
 
@@ -125,7 +125,7 @@ American puts converge smoothly too
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.264 seconds)
+   **Total running time of the script:** (0 minutes 0.578 seconds)
 
 
 .. _sphx_glr_download_api_gallery_options_trees_plot_06_leisen_reimer.py:

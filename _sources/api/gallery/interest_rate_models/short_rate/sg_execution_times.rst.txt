@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:02.582** total execution time for 7 files **from api/gallery/interest_rate_models/short_rate**:
+**00:06.656** total execution time for 7 files **from api/gallery/interest_rate_models/short_rate**:
 
 .. container::
 
@@ -33,23 +33,23 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_06_duffie_kan_affine.py` (``plot_06_duffie_kan_affine.py``)
-     - 00:00.867
+     - 00:02.472
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_07_g2pp.py` (``plot_07_g2pp.py``)
-     - 00:00.601
+     - 00:01.498
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_05_cir.py` (``plot_05_cir.py``)
-     - 00:00.512
+     - 00:01.440
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_01_feynman_kac_bond_price.py` (``plot_01_feynman_kac_bond_price.py``)
-     - 00:00.175
+     - 00:00.384
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_02_feller_condition.py` (``plot_02_feller_condition.py``)
-     - 00:00.171
+     - 00:00.331
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_03_merton_short_rate.py` (``plot_03_merton_short_rate.py``)
-     - 00:00.140
+     - 00:00.288
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_short_rate_plot_04_vasicek.py` (``plot_04_vasicek.py``)
-     - 00:00.116
+     - 00:00.243
      - 0.0

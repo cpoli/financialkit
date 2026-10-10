@@ -65,7 +65,7 @@ a flat hazard.
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x116492e40>
+    <matplotlib.legend.Legend object at 0x7fdf60a6df10>
 
 
 
@@ -114,7 +114,7 @@ Monte Carlo averages :math:`e^{-\int (r + L\lambda)}` over CIR paths.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.114 seconds)
+   **Total running time of the script:** (0 minutes 0.216 seconds)
 
 
 .. _sphx_glr_download_api_gallery_credit_reduced_form_plot_02_duffie_singleton.py:

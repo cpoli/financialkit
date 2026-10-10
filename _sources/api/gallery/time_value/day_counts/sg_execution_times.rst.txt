@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.076** total execution time for 2 files **from api/gallery/time_value/day_counts**:
+**00:00.148** total execution time for 2 files **from api/gallery/time_value/day_counts**:
 
 .. container::
 
@@ -33,8 +33,8 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_time_value_day_counts_plot_02_isda_actual_actual.py` (``plot_02_isda_actual_actual.py``)
-     - 00:00.046
+     - 00:00.085
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_value_day_counts_plot_01_thirty_360_accrued_interest.py` (``plot_01_thirty_360_accrued_interest.py``)
-     - 00:00.030
+     - 00:00.063
      - 0.0

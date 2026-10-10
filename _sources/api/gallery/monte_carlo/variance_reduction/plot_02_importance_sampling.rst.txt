@@ -110,7 +110,7 @@ Relative error against moneyness
     K = 150: exact 0.01487, crude 0.01524 +/- 0.00328, IS 0.01496 +/- 0.00013
     K = 160: exact 0.00308, crude 0.00239 +/- 0.00113, IS 0.00313 +/- 0.00003
 
-    <matplotlib.legend.Legend object at 0x111facad0>
+    <matplotlib.legend.Legend object at 0x7fdf61179280>
 
 
 
@@ -146,7 +146,7 @@ explode. The best shift is close to the strike's normal score.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.085 seconds)
+   **Total running time of the script:** (0 minutes 0.185 seconds)
 
 
 .. _sphx_glr_download_api_gallery_monte_carlo_variance_reduction_plot_02_importance_sampling.py:

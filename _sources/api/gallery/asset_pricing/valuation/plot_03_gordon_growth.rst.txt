@@ -124,7 +124,7 @@ The implied cost of equity
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.061 seconds)
+   **Total running time of the script:** (0 minutes 0.145 seconds)
 
 
 .. _sphx_glr_download_api_gallery_asset_pricing_valuation_plot_03_gordon_growth.py:

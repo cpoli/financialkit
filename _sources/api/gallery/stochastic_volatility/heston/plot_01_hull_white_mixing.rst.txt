@@ -123,7 +123,7 @@ The symmetric smile
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.640 seconds)
+   **Total running time of the script:** (0 minutes 0.301 seconds)
 
 
 .. _sphx_glr_download_api_gallery_stochastic_volatility_heston_plot_01_hull_white_mixing.py:

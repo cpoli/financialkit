@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.363** total execution time for 4 files **from api/gallery/interest_rate_models/options**:
+**00:00.761** total execution time for 4 files **from api/gallery/interest_rate_models/options**:
 
 .. container::
 
@@ -32,15 +32,15 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_01_jamshidian_bond_option.py` (``plot_01_jamshidian_bond_option.py``)
-     - 00:00.109
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_03_bgm_caps_floors.py` (``plot_03_bgm_caps_floors.py``)
-     - 00:00.102
-     - 0.0
-   * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_02_jamshidian_swaption.py` (``plot_02_jamshidian_swaption.py``)
-     - 00:00.077
+     - 00:00.242
      - 0.0
    * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_04_black_swaption.py` (``plot_04_black_swaption.py``)
-     - 00:00.075
+     - 00:00.175
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_02_jamshidian_swaption.py` (``plot_02_jamshidian_swaption.py``)
+     - 00:00.174
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_interest_rate_models_options_plot_01_jamshidian_bond_option.py` (``plot_01_jamshidian_bond_option.py``)
+     - 00:00.170
      - 0.0

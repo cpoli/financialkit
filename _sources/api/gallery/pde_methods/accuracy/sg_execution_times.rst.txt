@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.210** total execution time for 2 files **from api/gallery/pde_methods/accuracy**:
+**00:00.451** total execution time for 2 files **from api/gallery/pde_methods/accuracy**:
 
 .. container::
 
@@ -33,8 +33,8 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_pde_methods_accuracy_plot_02_tavella_randall_grid.py` (``plot_02_tavella_randall_grid.py``)
-     - 00:00.142
+     - 00:00.302
      - 0.0
    * - :ref:`sphx_glr_api_gallery_pde_methods_accuracy_plot_01_richardson_extrapolation.py` (``plot_01_richardson_extrapolation.py``)
-     - 00:00.067
+     - 00:00.149
      - 0.0

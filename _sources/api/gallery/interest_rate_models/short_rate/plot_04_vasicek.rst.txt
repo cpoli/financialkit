@@ -109,7 +109,7 @@ Exact simulation and mean reversion
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x11b508440>
+    <matplotlib.legend.Legend object at 0x7fdf60f99df0>
 
 
 
@@ -142,7 +142,7 @@ Closed form against Monte Carlo
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.116 seconds)
+   **Total running time of the script:** (0 minutes 0.243 seconds)
 
 
 .. _sphx_glr_download_api_gallery_interest_rate_models_short_rate_plot_04_vasicek.py:

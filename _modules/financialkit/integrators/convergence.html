@@ -449,24 +449,19 @@
 <a class="viewcode-back" href="../../../api/integrators.html#financialkit.integrators.ConvergenceResult">[docs]</a>
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ConvergenceResult</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Errors of a scheme at several step sizes and the fitted order.</span>
-
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    dts : ndarray of float</span>
-<span class="sd">        Step sizes, coarsest first.</span>
-<span class="sd">    errors : ndarray of float</span>
-<span class="sd">        Monte Carlo estimate of the error at each step size.</span>
-<span class="sd">    standard_errors : ndarray of float</span>
-<span class="sd">        Standard error of each entry of `errors`.</span>
-<span class="sd">    order : float</span>
-<span class="sd">        Slope of ``log(errors)`` against ``log(dts)``.</span>
-<span class="sd">    """</span>
+<span class="w">    </span><span class="sd">"""Errors of a scheme at several step sizes and the fitted order."""</span>
 
     <span class="n">dts</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">"""ndarray of float: Step sizes, coarsest first."""</span>
+
     <span class="n">errors</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">"""ndarray of float: Monte Carlo estimate of the error at each step size."""</span>
+
     <span class="n">standard_errors</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
-    <span class="n">order</span><span class="p">:</span> <span class="nb">float</span></div>
+<span class="w">    </span><span class="sd">"""ndarray of float: Standard error of each entry of :attr:`errors`."""</span>
+
+    <span class="n">order</span><span class="p">:</span> <span class="nb">float</span>
+<span class="w">    </span><span class="sd">"""float: Slope of ``log(errors)`` against ``log(dts)``."""</span></div>
 
 
 

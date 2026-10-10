@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.624** total execution time for 1 file **from api/gallery/exotic_options/american**:
+**00:00.209** total execution time for 1 file **from api/gallery/exotic_options/american**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_exotic_options_american_plot_01_longstaff_schwartz.py` (``plot_01_longstaff_schwartz.py``)
-     - 00:00.624
+     - 00:00.209
      - 0.0

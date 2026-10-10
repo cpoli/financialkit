@@ -145,7 +145,7 @@ The Greeks of a call against spot
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.133 seconds)
+   **Total running time of the script:** (0 minutes 0.279 seconds)
 
 
 .. _sphx_glr_download_api_gallery_options_greeks_plot_01_greeks.py:

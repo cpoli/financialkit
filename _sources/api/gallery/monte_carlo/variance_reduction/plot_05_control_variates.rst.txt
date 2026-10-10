@@ -95,7 +95,7 @@ The regression behind the estimator
     K = 90.0: crude 16.7734 +/- 0.1731, controlled 16.6782 +/- 0.0418
     Black-Scholes 16.6994, beta 0.835, R^2 0.942
 
-    <matplotlib.legend.Legend object at 0x111f73a10>
+    <matplotlib.legend.Legend object at 0x7fdf60fc4560>
 
 
 
@@ -134,7 +134,7 @@ Black-Scholes price is known) helps the out-of-the-money strikes.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.080 seconds)
+   **Total running time of the script:** (0 minutes 0.191 seconds)
 
 
 .. _sphx_glr_download_api_gallery_monte_carlo_variance_reduction_plot_05_control_variates.py:

@@ -136,7 +136,7 @@ volatility each model implies.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.109 seconds)
+   **Total running time of the script:** (0 minutes 0.170 seconds)
 
 
 .. _sphx_glr_download_api_gallery_interest_rate_models_options_plot_01_jamshidian_bond_option.py:

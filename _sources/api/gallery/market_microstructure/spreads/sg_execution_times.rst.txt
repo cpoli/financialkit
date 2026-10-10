@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.329** total execution time for 4 files **from api/gallery/market_microstructure/spreads**:
+**00:00.675** total execution time for 4 files **from api/gallery/market_microstructure/spreads**:
 
 .. container::
 
@@ -33,14 +33,14 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_02_roll_estimator.py` (``plot_02_roll_estimator.py``)
-     - 00:00.174
+     - 00:00.352
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_01_demsetz_spreads.py` (``plot_01_demsetz_spreads.py``)
-     - 00:00.071
+     - 00:00.163
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_04_corwin_schultz.py` (``plot_04_corwin_schultz.py``)
-     - 00:00.057
+     - 00:00.104
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_spreads_plot_03_lee_ready.py` (``plot_03_lee_ready.py``)
-     - 00:00.028
+     - 00:00.056
      - 0.0

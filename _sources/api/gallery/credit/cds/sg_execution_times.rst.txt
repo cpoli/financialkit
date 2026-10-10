@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.755** total execution time for 2 files **from api/gallery/credit/cds**:
+**00:00.395** total execution time for 2 files **from api/gallery/credit/cds**:
 
 .. container::
 
@@ -32,9 +32,9 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_credit_cds_plot_01_cds_par_spread.py` (``plot_01_cds_par_spread.py``)
-     - 00:00.648
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_credit_cds_plot_02_isda_hazard_bootstrap.py` (``plot_02_isda_hazard_bootstrap.py``)
-     - 00:00.107
+     - 00:00.244
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_cds_plot_01_cds_par_spread.py` (``plot_01_cds_par_spread.py``)
+     - 00:00.150
      - 0.0

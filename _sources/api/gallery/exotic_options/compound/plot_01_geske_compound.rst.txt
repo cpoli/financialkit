@@ -93,7 +93,7 @@ The four compound options
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x116f13cb0>
+    <matplotlib.legend.Legend object at 0x7fdf6744b8f0>
 
 
 
@@ -127,7 +127,7 @@ compound strike, whatever the spot.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.071 seconds)
+   **Total running time of the script:** (0 minutes 0.125 seconds)
 
 
 .. _sphx_glr_download_api_gallery_exotic_options_compound_plot_01_geske_compound.py:

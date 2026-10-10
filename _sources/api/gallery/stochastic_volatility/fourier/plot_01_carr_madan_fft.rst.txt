@@ -88,7 +88,7 @@ A whole strike grid from one FFT
 
     226 strikes between 50 and 200, max error against Black-Scholes 2.2e-07
 
-    <matplotlib.legend.Legend object at 0x116f57b60>
+    <matplotlib.legend.Legend object at 0x7fdf66a8cc50>
 
 
 
@@ -126,7 +126,7 @@ much and the payoff's growth is amplified. Mid-range values of
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.749 seconds)
+   **Total running time of the script:** (0 minutes 0.226 seconds)
 
 
 .. _sphx_glr_download_api_gallery_stochastic_volatility_fourier_plot_01_carr_madan_fft.py:

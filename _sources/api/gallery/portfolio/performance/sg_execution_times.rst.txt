@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.291** total execution time for 3 files **from api/gallery/portfolio/performance**:
+**00:00.641** total execution time for 3 files **from api/gallery/portfolio/performance**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_portfolio_performance_plot_02_fundamental_law.py` (``plot_02_fundamental_law.py``)
-     - 00:00.143
+     - 00:00.319
      - 0.0
    * - :ref:`sphx_glr_api_gallery_portfolio_performance_plot_01_sharpe_ratio.py` (``plot_01_sharpe_ratio.py``)
-     - 00:00.080
+     - 00:00.176
      - 0.0
    * - :ref:`sphx_glr_api_gallery_portfolio_performance_plot_03_sortino_ratio.py` (``plot_03_sortino_ratio.py``)
-     - 00:00.069
+     - 00:00.147
      - 0.0

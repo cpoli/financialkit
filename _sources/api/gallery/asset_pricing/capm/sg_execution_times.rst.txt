@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.672** total execution time for 4 files **from api/gallery/asset_pricing/capm**:
+**00:01.614** total execution time for 4 files **from api/gallery/asset_pricing/capm**:
 
 .. container::
 
@@ -33,14 +33,14 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_asset_pricing_capm_plot_04_grs_test.py` (``plot_04_grs_test.py``)
-     - 00:00.962
+     - 00:01.171
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_capm_plot_01_security_market_line.py` (``plot_01_security_market_line.py``)
-     - 00:00.566
+     - 00:00.172
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_capm_plot_02_jensen_alpha.py` (``plot_02_jensen_alpha.py``)
-     - 00:00.090
+     - 00:00.158
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_capm_plot_03_zero_beta.py` (``plot_03_zero_beta.py``)
-     - 00:00.055
+     - 00:00.113
      - 0.0

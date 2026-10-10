@@ -85,7 +85,7 @@ Correlation drives the price
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x116f11a90>
+    <matplotlib.legend.Legend object at 0x7fdf8e34aab0>
 
 
 
@@ -122,7 +122,7 @@ Pairs of volatilities with the same ratio volatility give the same price.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.074 seconds)
+   **Total running time of the script:** (0 minutes 0.131 seconds)
 
 
 .. _sphx_glr_download_api_gallery_exotic_options_multi_asset_plot_01_margrabe.py:

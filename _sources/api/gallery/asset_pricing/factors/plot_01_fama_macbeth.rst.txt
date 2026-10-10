@@ -152,7 +152,7 @@ Average returns against beta
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.086 seconds)
+   **Total running time of the script:** (0 minutes 0.223 seconds)
 
 
 .. _sphx_glr_download_api_gallery_asset_pricing_factors_plot_01_fama_macbeth.py:

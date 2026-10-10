@@ -94,7 +94,7 @@ More frequent premiums and accrual on default converge to the triangle.
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x11612ba10>
+    <matplotlib.legend.Legend object at 0x7fdf601ce090>
 
 
 
@@ -133,7 +133,7 @@ The term structure of par spreads
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.648 seconds)
+   **Total running time of the script:** (0 minutes 0.150 seconds)
 
 
 .. _sphx_glr_download_api_gallery_credit_cds_plot_01_cds_par_spread.py:

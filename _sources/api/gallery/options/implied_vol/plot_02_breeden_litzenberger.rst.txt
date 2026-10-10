@@ -87,7 +87,7 @@ Black-Scholes prices recover the lognormal density
 
     max error against the lognormal: 1.7e-06
 
-    <matplotlib.legend.Legend object at 0x1167d17f0>
+    <matplotlib.legend.Legend object at 0x7fdf668ee960>
 
 
 
@@ -131,7 +131,7 @@ modes, which no single Black-Scholes volatility could produce.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.054 seconds)
+   **Total running time of the script:** (0 minutes 0.118 seconds)
 
 
 .. _sphx_glr_download_api_gallery_options_implied_vol_plot_02_breeden_litzenberger.py:

@@ -116,7 +116,7 @@ Forwards above a rising curve, below a falling one
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x116d9cc20>
+    <matplotlib.legend.Legend object at 0x7fdf66fa5a30>
 
 
 
@@ -150,7 +150,7 @@ Zero rates are time averages of forwards
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.034 seconds)
+   **Total running time of the script:** (0 minutes 0.076 seconds)
 
 
 .. _sphx_glr_download_api_gallery_fixed_income_curves_plot_01_lutz_forward_rates.py:

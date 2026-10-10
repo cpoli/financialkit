@@ -116,7 +116,7 @@ Fees weigh more on short loans
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.084 seconds)
+   **Total running time of the script:** (0 minutes 0.155 seconds)
 
 
 .. _sphx_glr_download_api_gallery_time_value_amortization_plot_02_truth_in_lending_apr.py:

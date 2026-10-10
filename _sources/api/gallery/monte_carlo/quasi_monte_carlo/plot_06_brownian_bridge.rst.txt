@@ -89,7 +89,7 @@ path's outline is already in place.
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x111efdd30>
+    <matplotlib.legend.Legend object at 0x7fdf6101a990>
 
 
 
@@ -136,7 +136,7 @@ The 64-date Asian call of the Paskov-Traub example.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.245 seconds)
+   **Total running time of the script:** (0 minutes 0.486 seconds)
 
 
 .. _sphx_glr_download_api_gallery_monte_carlo_quasi_monte_carlo_plot_06_brownian_bridge.py:

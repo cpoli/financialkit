@@ -138,7 +138,7 @@ old 99% VaR for the normal but larger under fat tails.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.710 seconds)
+   **Total running time of the script:** (0 minutes 1.198 seconds)
 
 
 .. _sphx_glr_download_api_gallery_risk_expected_shortfall_plot_03_acerbi_tasche.py:

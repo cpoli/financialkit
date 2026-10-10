@@ -98,7 +98,7 @@ Gamma on the grid, from second differences
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.057 seconds)
+   **Total running time of the script:** (0 minutes 0.117 seconds)
 
 
 .. _sphx_glr_download_api_gallery_pde_methods_stability_plot_03_rannacher_smoothing.py:

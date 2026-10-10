@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.222** total execution time for 3 files **from api/gallery/exotic_options/compound**:
+**00:00.399** total execution time for 3 files **from api/gallery/exotic_options/compound**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_exotic_options_compound_plot_03_chooser.py` (``plot_03_chooser.py``)
-     - 00:00.085
+     - 00:00.158
      - 0.0
    * - :ref:`sphx_glr_api_gallery_exotic_options_compound_plot_01_geske_compound.py` (``plot_01_geske_compound.py``)
-     - 00:00.071
+     - 00:00.125
      - 0.0
    * - :ref:`sphx_glr_api_gallery_exotic_options_compound_plot_02_forward_start.py` (``plot_02_forward_start.py``)
-     - 00:00.065
+     - 00:00.115
      - 0.0

@@ -146,7 +146,7 @@ sample autocovariance is often positive and the estimator undefined.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.174 seconds)
+   **Total running time of the script:** (0 minutes 0.352 seconds)
 
 
 .. _sphx_glr_download_api_gallery_market_microstructure_spreads_plot_02_roll_estimator.py:

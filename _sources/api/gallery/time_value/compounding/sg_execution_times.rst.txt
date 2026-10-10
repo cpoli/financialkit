@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.279** total execution time for 3 files **from api/gallery/time_value/compounding**:
+**00:00.419** total execution time for 3 files **from api/gallery/time_value/compounding**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_time_value_compounding_plot_03_bernoulli_continuous_compounding.py` (``plot_03_bernoulli_continuous_compounding.py``)
-     - 00:00.192
+     - 00:00.240
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_value_compounding_plot_02_witt_compound_interest_tables.py` (``plot_02_witt_compound_interest_tables.py``)
-     - 00:00.056
+     - 00:00.116
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_value_compounding_plot_01_pacioli_rule_of_72.py` (``plot_01_pacioli_rule_of_72.py``)
-     - 00:00.031
+     - 00:00.063
      - 0.0

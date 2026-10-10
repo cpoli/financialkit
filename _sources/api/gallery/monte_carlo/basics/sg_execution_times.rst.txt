@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.841** total execution time for 3 files **from api/gallery/monte_carlo/basics**:
+**00:00.694** total execution time for 3 files **from api/gallery/monte_carlo/basics**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_monte_carlo_basics_plot_01_crude_monte_carlo.py` (``plot_01_crude_monte_carlo.py``)
-     - 00:00.650
+     - 00:00.280
      - 0.0
    * - :ref:`sphx_glr_api_gallery_monte_carlo_basics_plot_02_box_muller.py` (``plot_02_box_muller.py``)
-     - 00:00.111
+     - 00:00.246
      - 0.0
    * - :ref:`sphx_glr_api_gallery_monte_carlo_basics_plot_03_boyle_option_pricing.py` (``plot_03_boyle_option_pricing.py``)
-     - 00:00.079
+     - 00:00.168
      - 0.0

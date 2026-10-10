@@ -110,8 +110,8 @@ Out of sample with a 60-month window
  .. code-block:: none
 
                          1/N: Sharpe 0.163, turnover 0.00
-        sample mean-variance: Sharpe 0.054, turnover 0.20
-      long-only min variance: Sharpe 0.176, turnover 0.06
+        sample mean-variance: Sharpe 0.048, turnover 0.22
+      long-only min variance: Sharpe 0.151, turnover 0.06
 
 
 
@@ -163,7 +163,7 @@ Each point evaluates the estimated weights under the true moments.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.581 seconds)
+   **Total running time of the script:** (0 minutes 1.219 seconds)
 
 
 .. _sphx_glr_download_api_gallery_portfolio_mean_variance_plot_04_one_over_n.py:

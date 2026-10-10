@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.131** total execution time for 2 files **from api/gallery/asset_pricing/sdf**:
+**00:00.316** total execution time for 2 files **from api/gallery/asset_pricing/sdf**:
 
 .. container::
 
@@ -33,8 +33,8 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_asset_pricing_sdf_plot_01_harrison_kreps.py` (``plot_01_harrison_kreps.py``)
-     - 00:00.083
+     - 00:00.210
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_sdf_plot_02_hansen_jagannathan.py` (``plot_02_hansen_jagannathan.py``)
-     - 00:00.048
+     - 00:00.106
      - 0.0

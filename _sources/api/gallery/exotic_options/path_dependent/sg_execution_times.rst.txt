@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.420** total execution time for 3 files **from api/gallery/exotic_options/path_dependent**:
+**00:00.723** total execution time for 3 files **from api/gallery/exotic_options/path_dependent**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_exotic_options_path_dependent_plot_01_floating_lookback.py` (``plot_01_floating_lookback.py``)
-     - 00:00.159
+     - 00:00.282
      - 0.0
    * - :ref:`sphx_glr_api_gallery_exotic_options_path_dependent_plot_03_variance_swap.py` (``plot_03_variance_swap.py``)
-     - 00:00.152
+     - 00:00.268
      - 0.0
    * - :ref:`sphx_glr_api_gallery_exotic_options_path_dependent_plot_02_fixed_lookback.py` (``plot_02_fixed_lookback.py``)
-     - 00:00.109
+     - 00:00.172
      - 0.0

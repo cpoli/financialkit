@@ -97,7 +97,7 @@ The payoff diffusing in heat-equation variables, and back in prices
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.092 seconds)
+   **Total running time of the script:** (0 minutes 0.182 seconds)
 
 
 .. _sphx_glr_download_api_gallery_pde_methods_schemes_plot_04_heat_equation_transform.py:

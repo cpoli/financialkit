@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.370** total execution time for 3 files **from api/gallery/portfolio/growth**:
+**00:00.759** total execution time for 3 files **from api/gallery/portfolio/growth**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_portfolio_growth_plot_03_cppi.py` (``plot_03_cppi.py``)
-     - 00:00.141
+     - 00:00.293
      - 0.0
    * - :ref:`sphx_glr_api_gallery_portfolio_growth_plot_01_kelly_criterion.py` (``plot_01_kelly_criterion.py``)
-     - 00:00.131
+     - 00:00.276
      - 0.0
    * - :ref:`sphx_glr_api_gallery_portfolio_growth_plot_02_merton_portfolio.py` (``plot_02_merton_portfolio.py``)
-     - 00:00.098
+     - 00:00.190
      - 0.0

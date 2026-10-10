@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.534** total execution time for 3 files **from api/gallery/credit/migration**:
+**00:01.223** total execution time for 3 files **from api/gallery/credit/migration**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_credit_migration_plot_01_creditmetrics.py` (``plot_01_creditmetrics.py``)
-     - 00:00.205
+     - 00:00.466
      - 0.0
    * - :ref:`sphx_glr_api_gallery_credit_migration_plot_03_israel_rosenthal_wei.py` (``plot_03_israel_rosenthal_wei.py``)
-     - 00:00.191
+     - 00:00.388
      - 0.0
    * - :ref:`sphx_glr_api_gallery_credit_migration_plot_02_generator_matrix.py` (``plot_02_generator_matrix.py``)
-     - 00:00.138
+     - 00:00.369
      - 0.0

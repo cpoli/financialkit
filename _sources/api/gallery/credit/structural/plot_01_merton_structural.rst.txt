@@ -88,7 +88,7 @@ Payoffs at maturity
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x116491a90>
+    <matplotlib.legend.Legend object at 0x7fdf60d83bc0>
 
 
 
@@ -131,7 +131,7 @@ because surviving firms drift away from default.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.102 seconds)
+   **Total running time of the script:** (0 minutes 0.202 seconds)
 
 
 .. _sphx_glr_download_api_gallery_credit_structural_plot_01_merton_structural.py:

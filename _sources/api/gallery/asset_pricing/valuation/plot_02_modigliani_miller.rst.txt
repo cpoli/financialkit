@@ -72,7 +72,7 @@ of permanent debt adds a tax shield worth :math:`t D`.
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x116bed7f0>
+    <matplotlib.legend.Legend object at 0x7fdf61178a40>
 
 
 
@@ -107,7 +107,7 @@ Proposition I
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.053 seconds)
+   **Total running time of the script:** (0 minutes 0.116 seconds)
 
 
 .. _sphx_glr_download_api_gallery_asset_pricing_valuation_plot_02_modigliani_miller.py:

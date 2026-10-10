@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.247** total execution time for 2 files **from api/gallery/credit/reduced_form**:
+**00:00.412** total execution time for 2 files **from api/gallery/credit/reduced_form**:
 
 .. container::
 
@@ -32,9 +32,9 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_credit_reduced_form_plot_01_jarrow_turnbull.py` (``plot_01_jarrow_turnbull.py``)
-     - 00:00.133
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_credit_reduced_form_plot_02_duffie_singleton.py` (``plot_02_duffie_singleton.py``)
-     - 00:00.114
+     - 00:00.216
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_reduced_form_plot_01_jarrow_turnbull.py` (``plot_01_jarrow_turnbull.py``)
+     - 00:00.196
      - 0.0

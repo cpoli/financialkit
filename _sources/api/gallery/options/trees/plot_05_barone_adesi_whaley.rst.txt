@@ -90,7 +90,7 @@ Accuracy and speed against a 2000-step tree
 
  .. code-block:: none
 
-    max |BAW - tree| = 0.0863; time 8.3 ms vs 424 ms
+    max |BAW - tree| = 0.0863; time 19.2 ms vs 719 ms
     at S = 100: American 6.8670, European 6.4671, critical price 78.65
 
     Text(0.5, 1.0, 'American put, 6 months')
@@ -129,7 +129,7 @@ The critical price across maturities
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.539 seconds)
+   **Total running time of the script:** (0 minutes 0.967 seconds)
 
 
 .. _sphx_glr_download_api_gallery_options_trees_plot_05_barone_adesi_whaley.py:

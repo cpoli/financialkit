@@ -192,7 +192,7 @@ Tomorrow's filtered scenario distribution
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.148 seconds)
+   **Total running time of the script:** (0 minutes 0.272 seconds)
 
 
 .. _sphx_glr_download_api_gallery_risk_var_plot_06_filtered_historical.py:
