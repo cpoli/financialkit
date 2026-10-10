@@ -8,7 +8,7 @@ brackets as `<topic>/plot_NN_<slug>.py`.
 
 ## Release TODOs (for the author, after the first GitHub Release)
 
-- [ ] Create the GitHub repository `cpoli/financialkit`, push, and enable
+- [x] Create the GitHub repository `cpoli/financialkit`, push, and enable
       Pages from `gh-pages` (the release workflow deploys there).
 - [ ] PyPI trusted publisher (see the header of `.github/workflows/release.yml`).
 - [ ] Enable Zenodo for the repository, then add the **version DOI** of
