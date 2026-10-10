@@ -15,7 +15,7 @@ brackets as `<topic>/plot_NN_<slug>.py`.
       the release (never the concept DOI) to `CITATION.cff` as `doi:`.
 - [x] Add the Zenodo badge to the README in the
       `https://zenodo.org/badge/<repo-id>.svg` form.
-- [ ] Add a Codecov token (repository secret `CODECOV_TOKEN`).
+- [x] Add a Codecov token (repository secret `CODECOV_TOKEN`).
 
 ## Phase checklist
 
