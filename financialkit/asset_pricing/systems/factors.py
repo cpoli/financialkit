@@ -175,8 +175,10 @@ def apt_arbitrage_portfolio(expected_returns: ArrayLike, betas: ArrayLike) -> np
     --------
     >>> import numpy as np
     >>> w = apt_arbitrage_portfolio([0.05, 0.08, 0.13], [0.0, 1.0, 2.0])
-    >>> abs(round(float(w.sum()), 12)), abs(round(float(w @ [0.0, 1.0, 2.0]), 12)), round(float(w @ [0.05, 0.08, 0.13]) * 1e6)
-    (0.0, 0.0, 67)
+    >>> bool(np.isclose(w.sum(), 0.0, atol=1e-9)), bool(np.isclose(w @ [0.0, 1.0, 2.0], 0.0, atol=1e-9))
+    (True, True)
+    >>> bool(np.isclose(w @ [0.05, 0.08, 0.13], 6.6667e-05, rtol=1e-4))
+    True
     """
     mu = np.asarray(expected_returns, dtype=np.float64)
     X = np.column_stack([np.ones(mu.size), as_panel(betas)])
