@@ -16,6 +16,9 @@ brackets as `<topic>/plot_NN_<slug>.py`.
 - [x] Add the Zenodo badge to the README in the
       `https://zenodo.org/badge/DOI/<version-doi>.svg` form (update it each release).
 - [x] Add a Codecov token (repository secret `CODECOV_TOKEN`).
+- [ ] Release 0.2.0 (the tutorials and the quickstart notebook under
+      `[Unreleased]` in `CHANGELOG.md`), then put its Zenodo version DOI
+      in `CITATION.cff` and the README badge.
 
 ## Phase checklist
 
@@ -49,6 +52,128 @@ Each domain is built in its own session, from this file plus
   - [x] `notebooks/quickstart.ipynb` (six domains), and the Colab badge and quickstart links restored in `README.md` and `docs/source/index.rst`
   - [x] The quickstart notebook in the JupyterLite site (`jupyterlite_contents` in `conf.py`); the gallery notebooks were already there
   - [x] `outreach/` drafts (gitignored, as in mathematicskit)
+- [ ] 5. Post-2008 finance, one domain per session in build order (see
+      [Planned additions](#planned-additions-phase-5))
+  - [ ] `fixed_income`
+  - [ ] `options`
+  - [ ] `interest_rate_models`
+  - [ ] `stochastic_volatility`
+  - [ ] `time_series`
+  - [ ] `risk`
+  - [ ] `credit`
+  - [ ] `market_microstructure`
+- [ ] 6. Course material
+  - [ ] An exercise set per domain in `docs/source/exercises/`, five to ten
+        problems each, each built on a gallery example (change a
+        parameter, predict the result, check it with financialkit), with
+        solutions in collapsed `sphinx-design` dropdowns that run in the
+        docs build
+  - [ ] Two tutorials on phase 5: *One swap, two curves* (OIS
+        discounting, SOFR compounding, the forward market model) and
+        *Counterparty risk, end to end* (Hull-White exposure, CVA, DVA,
+        FVA)
+- [ ] 7. On the way to 1.0 (1.0 freezes the public API; see `CONTRIBUTING.md`)
+  - [ ] API review of every `__all__`: function vs. class for the same
+        kind of model, `tol`/`max_iter`/`n_paths`/`seed` spelled the same
+        everywhere, consistent result field names; deprecate what changes
+  - [ ] Coverage to 100% (`fixed_income` is at 96%, `interest_rate_models`
+        at 97%), then make it blocking with `--cov-fail-under`
+  - [ ] Enforce the 5-second budget per gallery example: fail the docs
+        build when an entry of `sg_execution_times.rst` exceeds it
+  - [ ] Benchmarks for the `@njit` kernels (trees, PSOR, Longstaff-Schwartz,
+        the SDE integrators), with and without numba, so "same results,
+        slower" has numbers
+  - [ ] A conda-forge `recipe.yaml` (only `version` in `context`;
+        `name: financialkit` and the PyPI source URL written out)
+
+## Scope decisions
+
+- **Out of scope** (the dependencies are fixed): deep hedging and other
+  neural-network methods, which need a deep-learning framework; market
+  data fetching; wrappers around QuantLib.
+- **Candidate domains**, not scheduled. CLAUDE.md forbids adding domains
+  without the author's decision, and each would need 15+ breakthroughs:
+  - `commodities`: Gibson-Schwartz (1990), Schwartz's one-, two- and
+    three-factor models (1997), Schwartz-Smith (2000), seasonality,
+    storage and spark-spread options;
+  - `inflation`: Jarrow-Yildirim (2003), zero-coupon and year-on-year
+    inflation swaps, inflation caps;
+  - `real_options`: McDonald-Siegel (1986), Dixit-Pindyck (1994),
+    Trigeorgis's expansion and abandonment options, Myers's
+    underinvestment (1977).
+
+## Where financialkit stands
+
+236 breakthroughs and 239 gallery examples over 14 domains; 868 tests,
+99% line coverage; 5 tutorials and the quickstart notebook. Most history
+pages stop around 2010: the multi-curve world, the LIBOR transition,
+XVA, rough volatility and FRTB are phase 5.
+
+| Domain | Breakthroughs | Gallery examples |
+|---|---:|---:|
+| `time_value` | 16 | 16 |
+| `fixed_income` | 16 | 17 |
+| `options` | 16 | 18 |
+| `interest_rate_models` | 16 | 16 |
+| `monte_carlo` | 18 | 18 |
+| `exotic_options` | 17 | 17 |
+| `pde_methods` | 16 | 16 |
+| `stochastic_volatility` | 17 | 17 |
+| `time_series` | 19 | 19 |
+| `risk` | 17 | 17 |
+| `portfolio` | 18 | 18 |
+| `asset_pricing` | 17 | 17 |
+| `credit` | 17 | 17 |
+| `market_microstructure` | 16 | 16 |
+
+## Planned additions (phase 5)
+
+Each entry joins its domain's list below, and its history page, in
+chronological order when it is built, with its own gallery example and a
+`systems/` implementation, under the usual rules (numpy/scipy first, no
+new dependencies, a domain imports only from earlier domains).
+
+### fixed_income
+
+- 2010 -- Piterbarg: OIS discounting of collateralized trades, with separate forecasting curves [`curves/plot_07_ois_multi_curve.py`]
+- 2018 -- SOFR: compounding in arrears [`swaps/plot_03_sofr_compounded_in_arrears.py`]
+
+### options
+
+- 2015 -- Jäckel's "Let's be rational" implied volatility [`implied_vol/plot_05_jaeckel_lets_be_rational.py`]
+- 2020 -- Negative oil futures: Bachelier returns to the exchange [`closed_form/plot_07_bachelier_negative_prices.py`]
+
+### interest_rate_models
+
+- 2019 -- Lyashenko-Mercurio forward market model for backward-looking rates [`options/plot_05_lyashenko_mercurio_fmm.py`]
+
+### stochastic_volatility
+
+- 2014 -- Gatheral-Jacquier arbitrage-free SVI surfaces (SSVI) [`smile/plot_04_ssvi.py`]
+- 2016 -- Bayer-Friz-Gatheral rough Bergomi [`rough/plot_01_rough_bergomi.py`]
+- 2017 -- Bennedsen-Lunde-Pakkanen hybrid scheme [`rough/plot_02_hybrid_scheme.py`]
+- 2018 -- Gatheral-Jaillet-Rosenbaum: volatility is rough [`rough/plot_03_volatility_is_rough.py`]
+
+### time_series
+
+- 2009 -- Corsi's HAR model of realized volatility [`volatility/plot_08_corsi_har.py`]
+
+### risk
+
+- 2014 -- Acerbi-Szekely expected-shortfall backtests [`backtesting/plot_04_acerbi_szekely.py`]
+- 2016 -- FRTB: 97.5% expected shortfall with liquidity horizons [`expected_shortfall/plot_04_frtb_expected_shortfall.py`]
+
+### credit
+
+- 2005 -- Brigo-Masetti: unilateral CVA from exposure profiles [`xva/plot_01_brigo_masetti_cva.py`]
+- 2009 -- Gregory: bilateral CVA and DVA [`xva/plot_02_gregory_bilateral_cva.py`]
+- 2011 -- Burgard-Kjaer: funding valuation adjustment [`xva/plot_03_burgard_kjaer_fva.py`]
+
+### market_microstructure
+
+- 1971 -- Hawkes self-exciting order flow [`order_flow/plot_01_hawkes.py`]
+- 2010 -- Cont-Stoikov-Talreja limit order book [`order_flow/plot_02_cont_stoikov_talreja.py`]
+- 2014 -- Cont-Kukanov-Stoikov order-flow imbalance [`order_flow/plot_03_order_flow_imbalance.py`]
 
 ## Planned breakthroughs
 
