@@ -6,6 +6,10 @@ bond prices and yields, duration and convexity, yield-curve construction,
 immunization and swaps. Each script illustrates one dated breakthrough from
 the :doc:`history page </history/fixed_income_breakthroughs>`.
 
+See also the narrative tutorial:
+
+- :doc:`/tutorials/yield_curve_end_to_end`
+
 Each script in this gallery is self-contained and can be run directly with
 ``python examples/fixed_income/<section>/<script>.py``.
 

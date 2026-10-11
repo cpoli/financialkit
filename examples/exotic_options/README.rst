@@ -9,6 +9,10 @@ options, options on two assets, and American options by least-squares
 Monte Carlo. Each script illustrates one dated breakthrough from the
 :doc:`history page </history/exotic_options_breakthroughs>`.
 
+See also the narrative tutorial:
+
+- :doc:`/tutorials/one_option_five_pricers`
+
 Each script in this gallery is self-contained and can be run directly with
 ``python examples/exotic_options/<section>/<script>.py``.
 

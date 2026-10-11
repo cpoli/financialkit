@@ -9,6 +9,10 @@ rating migration with CreditMetrics and generator matrices; and
 portfolio credit risk with Vasicek's large pool, CreditRisk+, Li's
 copula, the Basel IRB formula and CDO tranches.
 
+See also the narrative tutorial:
+
+- :doc:`/tutorials/from_one_firm_to_a_portfolio`
+
 Each script in this gallery is self-contained and can be run directly with
 ``python examples/credit/<section>/<script>.py``.
 

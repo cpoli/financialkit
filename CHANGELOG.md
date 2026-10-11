@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Five cross-domain tutorials in `docs/source/tutorials/`, each linked
+  from the galleries of the domains it uses: *One option, five pricers*
+  (the Black-Scholes formula, trees, Monte Carlo, Crank-Nicolson and
+  Fourier pricing agree, then check each other on an American put), *The
+  yield curve, end to end* (bootstrapping, Nelson-Siegel, swaps,
+  Hull-White and caps), *Where the smile comes from* (implied volatility,
+  Heston, the Breeden-Litzenberger density, jumps and SABR), *From returns
+  to risk* (stylized facts, GARCH, VaR backtests, expected shortfall and
+  extreme value theory) and *Credit risk, from one firm to a portfolio*
+  (Merton, KMV, hazard rates and CDS, Vasicek, Li's copula and the Basel
+  formula).
+- `notebooks/quickstart.ipynb`, a ten-minute tour of six domains, with a
+  Colab badge in the README and the docs. It also ships in the JupyterLite
+  site, so the "Try it online" badge opens on it.
+
 ## [0.1.0] - 2026-10-10
 
 The first release.

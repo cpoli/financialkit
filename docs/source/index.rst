@@ -195,10 +195,19 @@ the inner loops of ``integrators``, ``options``, ``interest_rate_models``,
 ``monte_carlo``, ``pde_methods`` and ``stochastic_volatility``. Without it,
 those kernels run as plain Python with the same results, only slower.
 
-To try it without installing anything, use the **JupyterLite** button at
-the top of every gallery example. Every gallery also has a download-all
+To try it without installing anything, open the
+`quickstart notebook <https://colab.research.google.com/github/cpoli/financialkit/blob/main/notebooks/quickstart.ipynb>`__
+in Colab or `in JupyterLite <lite/lab/index.html?path=quickstart.ipynb>`__,
+or use the **JupyterLite** button at the top of every gallery example. Every gallery also has a download-all
 button for its scripts and notebooks. The public API follows a documented
 `stability and deprecation policy <https://github.com/cpoli/financialkit/blob/main/CONTRIBUTING.md#api-stability-and-deprecation-policy>`__.
+
+Five tutorials follow one problem across several domains:
+:doc:`/tutorials/one_option_five_pricers`,
+:doc:`/tutorials/yield_curve_end_to_end`,
+:doc:`/tutorials/where_the_smile_comes_from`,
+:doc:`/tutorials/from_returns_to_risk` and
+:doc:`/tutorials/from_one_firm_to_a_portfolio`.
 
 Conventionally imported as ``fk``:
 

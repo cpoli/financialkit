@@ -42,7 +42,7 @@ cd docs && make html
 
 CI (`.github/workflows/ci.yml`) runs:
 
-- lint, unit tests, doctests and mypy on Python 3.10-3.14, on Linux and macOS;
+- lint, unit tests, doctests and mypy on Python 3.10-3.15, on Linux and macOS;
 - a no-numba test job, which also uploads coverage because coverage cannot trace `@njit`-compiled bodies;
 - a distribution build and `twine check`.
 

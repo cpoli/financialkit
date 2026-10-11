@@ -7,6 +7,10 @@ age-weighted and filtered historical methods; Roy's safety-first
 criterion; expected shortfall, coherence and Euler allocation; extreme
 value theory; VaR backtests; copulas and tail dependence; and drawdowns.
 
+See also the narrative tutorial:
+
+- :doc:`/tutorials/from_returns_to_risk`
+
 Each script in this gallery is self-contained and can be run directly with
 ``python examples/risk/<section>/<script>.py``.
 

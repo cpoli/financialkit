@@ -8,7 +8,7 @@
 | Code style | [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) |
 | Downloads | [![Downloads](https://static.pepy.tech/badge/financialkit)](https://pepy.tech/project/financialkit) [![Downloads/Month](https://static.pepy.tech/badge/financialkit/month)](https://pepy.tech/project/financialkit) |
 | Community | [![GitHub Stars](https://img.shields.io/github/stars/cpoli/financialkit?style=social)](https://github.com/cpoli/financialkit) [![GitHub Forks](https://img.shields.io/github/forks/cpoli/financialkit?style=social)](https://github.com/cpoli/financialkit) [![Contributors](https://img.shields.io/github/contributors/cpoli/financialkit)](https://github.com/cpoli/financialkit/graphs/contributors) [![Last Commit](https://img.shields.io/github/last-commit/cpoli/financialkit)](https://github.com/cpoli/financialkit/commits/main) |
-| Try it online | [![JupyterLite](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://cpoli.github.io/financialkit/lite/lab/) |
+| Try it online | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cpoli/financialkit/blob/main/notebooks/quickstart.ipynb) [![JupyterLite](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://cpoli.github.io/financialkit/lite/lab/) |
 
 **See how the models of quantitative finance actually work.**
 financialkit is a Python toolkit for learning and teaching quantitative
@@ -72,6 +72,10 @@ print(fk.pde_methods.CrankNicolson(400, 200).price(S, K, T, r, sigma).price)  # 
 mc = fk.monte_carlo.european_option_mc(S, K, T, r, sigma, n_paths=200_000, rng=0)
 print(mc.estimate, mc.std_error)  # 13.361 +/- 0.036
 ```
+
+The [quickstart notebook](https://github.com/cpoli/financialkit/blob/main/notebooks/quickstart.ipynb) tours six domains in
+ten minutes. Open it in Colab using the badge above, or in the browser with
+JupyterLite.
 
 Conventions are the same everywhere: time in years, rates and volatilities
 as decimals, continuous compounding unless a parameter says otherwise, and
@@ -195,7 +199,7 @@ Monte Carlo tests are seeded and assert agreement within a few standard
 errors; deterministic tests check closed forms, parity relations and
 published values from Hull, Haug and the original papers. Both commands,
 plus `ruff check`/`ruff format --check` and `mypy`, run in CI on every PR
-(`.github/workflows/ci.yml`) across Python 3.10-3.14 on Linux and macOS.
+(`.github/workflows/ci.yml`) across Python 3.10-3.15 on Linux and macOS.
 See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
 
 ### Coverage
@@ -235,6 +239,11 @@ the `gh-pages` branch. To build locally:
 pip install -e ".[docs]"
 cd docs && make html
 ```
+
+Five [tutorials](https://cpoli.github.io/financialkit/tutorials/one_option_five_pricers.html)
+follow one problem across several domains: *One option, five pricers*,
+*The yield curve, end to end*, *Where the smile comes from*, *From returns
+to risk* and *Credit risk, from one firm to a portfolio*.
 
 See `docs/source/history/` for a chronology of each domain's breakthroughs,
 from Fibonacci's present values to VPIN, each linked to the code that

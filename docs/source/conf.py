@@ -221,6 +221,11 @@ sphinx_gallery_conf = {
     },
 }
 
+# The quickstart notebook also ships in the JupyterLite site, so the "Try it
+# online" badge opens on it; sphinx-gallery appends its own notebooks to this
+# list. Its first cell installs financialkit with %pip, which works on Pyodide.
+jupyterlite_contents = ["../../notebooks/quickstart.ipynb"]
+
 # Many domains share common attribute names (e.g. "x", "n") across unrelated
 # classes; autolinking to a single target for them isn't meaningful, so
 # treat those as non-fatal rather than broken links.

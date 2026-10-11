@@ -44,8 +44,11 @@ Each domain is built in its own session, from this file plus
 - [x] 3. `asset_pricing`
 - [x] 3. `credit`
 - [x] 3. `market_microstructure`
-- [ ] 4. Tutorials, quickstart notebook, JupyterLite contents, `outreach/`
-  - [ ] Once `notebooks/quickstart.ipynb` exists, restore the Colab badge and the quickstart-notebook links in `README.md` and `docs/source/index.rst`, as in mathematicskit
+- [x] 4. Tutorials, quickstart notebook, JupyterLite contents, `outreach/`
+  - [x] Five tutorials in `docs/source/tutorials/`, linked from the galleries they use: one option, five pricers; the yield curve, end to end; where the smile comes from; from returns to risk; credit risk, from one firm to a portfolio
+  - [x] `notebooks/quickstart.ipynb` (six domains), and the Colab badge and quickstart links restored in `README.md` and `docs/source/index.rst`
+  - [x] The quickstart notebook in the JupyterLite site (`jupyterlite_contents` in `conf.py`); the gallery notebooks were already there
+  - [x] `outreach/` drafts (gitignored, as in mathematicskit)
 
 ## Planned breakthroughs
 

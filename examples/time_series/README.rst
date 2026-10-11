@@ -8,6 +8,10 @@ conditional-volatility models. Each script illustrates one dated
 breakthrough from the :doc:`history page </history/time_series_breakthroughs>`.
 All data are synthetic and seeded; no market data is downloaded.
 
+See also the narrative tutorial:
+
+- :doc:`/tutorials/from_returns_to_risk`
+
 Each script in this gallery is self-contained and can be run directly with
 ``python examples/time_series/<section>/<script>.py``.
 
