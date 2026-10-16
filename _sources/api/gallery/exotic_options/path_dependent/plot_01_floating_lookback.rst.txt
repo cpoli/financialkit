@@ -89,7 +89,7 @@ Lookback against at-the-money vanilla options
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7fdf66a8e0c0>
+    <matplotlib.legend.Legend object at 0x116c67cb0>
 
 
 
@@ -125,7 +125,7 @@ Discrete monitoring misses the minimum; the bridge does not
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.282 seconds)
+   **Total running time of the script:** (0 minutes 0.159 seconds)
 
 
 .. _sphx_glr_download_api_gallery_exotic_options_path_dependent_plot_01_floating_lookback.py:

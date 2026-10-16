@@ -9,6 +9,11 @@ parity and the no-arbitrage bounds, the Greeks and delta hedging,
 implied volatility, the smile and the risk-neutral density, and the
 binomial and trinomial trees with American early exercise.
 
+See also the narrative tutorials:
+
+- :doc:`/tutorials/one_option_five_pricers`
+- :doc:`/tutorials/where_the_smile_comes_from`
+
 Each script in this gallery is self-contained and can be run directly with
 ``python examples/options/<section>/<script>.py``.
 

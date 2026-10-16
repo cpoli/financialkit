@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.127** total execution time for 3 files **from api/gallery/market_microstructure/dealers**:
+**00:00.562** total execution time for 3 files **from api/gallery/market_microstructure/dealers**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_market_microstructure_dealers_plot_01_garman_inventory.py` (``plot_01_garman_inventory.py``)
-     - 00:00.753
+     - 00:00.364
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_dealers_plot_02_ho_stoll.py` (``plot_02_ho_stoll.py``)
-     - 00:00.226
+     - 00:00.117
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_dealers_plot_03_avellaneda_stoikov.py` (``plot_03_avellaneda_stoikov.py``)
-     - 00:00.149
+     - 00:00.082
      - 0.0

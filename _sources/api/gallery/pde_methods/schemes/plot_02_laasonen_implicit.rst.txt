@@ -114,7 +114,7 @@ First order in time, against Crank-Nicolson's second
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.219 seconds)
+   **Total running time of the script:** (0 minutes 0.101 seconds)
 
 
 .. _sphx_glr_download_api_gallery_pde_methods_schemes_plot_02_laasonen_implicit.py:

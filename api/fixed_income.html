@@ -6,8 +6,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="financialkit.fixed_income" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/financialkit/api/fixed_income.html" />
+<meta property="og:site_name" content="financialkit" />
+<meta property="og:description" content="financialkit.fixed_income hub · History · Examples · API reference Bond cash flows, prices and yield to maturity ( scipy.optimize.brentq), accrued interest and STRIPS; Macaulay, modified and Fisher..." />
+<meta property="og:image" content="https://cpoli.github.io/financialkit/_static/images/financialkit_logo.png" />
+<meta property="og:image:alt" content="financialkit" />
+<meta name="description" content="financialkit.fixed_income hub · History · Examples · API reference Bond cash flows, prices and yield to maturity ( scipy.optimize.brentq), accrued interest and STRIPS; Macaulay, modified and Fisher..." />
 
-    <title>financialkit.fixed_income &#8212; financialkit 0.1.0 documentation</title>
+    <title>financialkit.fixed_income &#8212; financialkit</title>
   
   
   
@@ -53,6 +61,7 @@
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/fixed_income';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/financialkit/api/fixed_income.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="financialkit.options" href="options.html" />
@@ -1508,7 +1517,7 @@ continuously compounded is worth 98.39.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cash_flows</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#financialkit.fixed_income.CashFlows" title="financialkit.fixed_income.core.base.CashFlows"><code class="xref py py-class docutils literal notranslate"><span class="pre">CashFlows</span></code></a></span>)</p></li>
 <li><p><strong>y</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Yield (decimal).</p></li>
-<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]</span>) – Compounding frequency of <cite>y</cite>; <code class="docutils literal notranslate"><span class="pre">None</span></code> for continuous.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Compounding frequency of <cite>y</cite>; <code class="docutils literal notranslate"><span class="pre">None</span></code> for continuous.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1953,7 +1962,7 @@ date. Payments on both legs fall on <code class="docutils literal notranslate"><
 <li><p><strong>maturity</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Remaining life (years).</p></li>
 <li><p><strong>freq</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></span>) – Payments per year on both legs.</p></li>
 <li><p><strong>pay_fixed</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a></span>) – Value to the fixed-rate payer (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or receiver.</p></li>
-<li><p><strong>floating_rate</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>]</span>) – Annual rate already fixed for the next floating payment. May be
+<li><p><strong>floating_rate</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Annual rate already fixed for the next floating payment. May be
 omitted only on a reset date (maturity a whole number of periods),
 where the floating leg is worth exactly the notional.</p></li>
 </ul>
@@ -2256,7 +2265,7 @@ year, and <span class="math notranslate nohighlight">\(D_{mac}\)</span> itself u
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>cash_flows</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#financialkit.fixed_income.CashFlows" title="financialkit.fixed_income.core.base.CashFlows"><code class="xref py py-class docutils literal notranslate"><span class="pre">CashFlows</span></code></a></span>)</p></li>
 <li><p><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><em>float</em></a><em> or </em><em>array_like</em>) – Yield (decimal).</p></li>
-<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]</span>) – Compounding frequency of <cite>y</cite>; <code class="docutils literal notranslate"><span class="pre">None</span></code> for continuous.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Compounding frequency of <cite>y</cite>; <code class="docutils literal notranslate"><span class="pre">None</span></code> for continuous.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2444,7 +2453,7 @@ date, or a curve to price them on.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>changes</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><a class="reference internal" href="risk.html#financialkit.risk.BacktestResult.n_obs" title="financialkit.risk.BacktestResult.n_obs"><em>n_obs</em></a><em>, </em><em>n_tenors</em><em>)</em>) – Yield changes (one row per date, one column per maturity).</p></li>
-<li><p><strong>tenors</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]</span>) – Maturities of the columns (for plotting); default <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">...</span></code>.</p></li>
+<li><p><strong>tenors</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Maturities of the columns (for plotting); default <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">...</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -2492,7 +2501,7 @@ found with <a class="reference external" href="https://docs.scipy.org/doc/scipy/
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>price</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Dirty price.</p></li>
 <li><p><strong>cash_flows</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#financialkit.fixed_income.CashFlows" title="financialkit.fixed_income.core.base.CashFlows"><code class="xref py py-class docutils literal notranslate"><span class="pre">CashFlows</span></code></a></span>) – Positive cash flows.</p></li>
-<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.15)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]</span>) – Compounding frequency of the returned yield; <code class="docutils literal notranslate"><span class="pre">None</span></code> for continuous.</p></li>
+<li><p><strong>compounding</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> | <a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.15)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></span>) – Compounding frequency of the returned yield; <code class="docutils literal notranslate"><span class="pre">None</span></code> for continuous.</p></li>
 <li><p><strong>tol</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="(in Python v3.15)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></span>) – Absolute tolerance on the yield.</p></li>
 </ul>
 </dd>

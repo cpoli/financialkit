@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Where the Smile Comes From" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/financialkit/tutorials/where_the_smile_comes_from.html" />
+<meta property="og:site_name" content="financialkit" />
+<meta property="og:description" content="If Black and Scholes were right, every option on a stock would imply the same volatility. Markets disagree: implied volatility is higher for low strikes than for high ones, a skew, and higher at bo..." />
+<meta property="og:image" content="https://cpoli.github.io/financialkit/_static/images/financialkit_logo.png" />
+<meta property="og:image:alt" content="financialkit" />
+<meta name="description" content="If Black and Scholes were right, every option on a stock would imply the same volatility. Markets disagree: implied volatility is higher for low strikes than for high ones, a skew, and higher at bo..." />
+
+    <title>Where the Smile Comes From &#8212; financialkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=38b66d78"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/where_the_smile_comes_from';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/financialkit/tutorials/where_the_smile_comes_from.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-light" alt="financialkit logo"/>
+    <img src="../_static/financialkit_logo_transparent.png" class="logo__image only-dark pst-js-only" alt="financialkit logo"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/financialkit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/financialkit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Where the Smile Comes From</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="where-the-smile-comes-from">
+<h1>Where the Smile Comes From<a class="headerlink" href="#where-the-smile-comes-from" title="Link to this heading">#</a></h1>
+<p>If Black and Scholes were right, every option on a stock would imply the
+same volatility. Markets disagree: implied volatility is higher for
+low strikes than for high ones, a <em>skew</em>, and higher at both ends than in
+the middle, a <em>smile</em>. This tutorial builds a skew from a model in
+<a class="reference internal" href="../api/stochastic_volatility.html#module-financialkit.stochastic_volatility" title="financialkit.stochastic_volatility"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.stochastic_volatility</span></code></a>, reads it back through the
+implied-volatility tools in <a class="reference internal" href="../api/options.html#module-financialkit.options" title="financialkit.options"><code class="xref py py-mod docutils literal notranslate"><span class="pre">financialkit.options</span></code></a>, recovers the
+risk-neutral distribution it encodes, and fits the parametrization traders
+actually quote.</p>
+<section id="implied-volatility-inverts-the-formula">
+<h2>1. Implied volatility inverts the formula<a class="headerlink" href="#implied-volatility-inverts-the-formula" title="Link to this heading">#</a></h2>
+<p>Implied volatility is the volatility that makes Black-Scholes reproduce a
+price. Run a Black-Scholes price back through it and the input comes
+back, at every strike:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">financialkit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fk</span>
+
+<span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">70.0</span><span class="p">,</span> <span class="mf">130.0</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">flat</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">black_scholes_price</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">fk</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">implied_volatility</span><span class="p">(</span><span class="n">flat</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1"># [0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2]</span>
+</pre></div>
+</div>
+</section>
+<section id="stochastic-volatility-skews-the-smile">
+<h2>2. Stochastic volatility skews the smile<a class="headerlink" href="#stochastic-volatility-skews-the-smile" title="Link to this heading">#</a></h2>
+<p>In Heston’s model the variance follows its own mean-reverting process,
+correlated with the stock. A negative correlation, which is what equity
+markets show, means volatility rises when the stock falls. Price options
+under Heston by Fourier inversion, then ask what volatility Black-Scholes
+would need:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">heston</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">stochastic_volatility</span><span class="o">.</span><span class="n">HestonModel</span><span class="p">(</span><span class="n">v0</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">xi</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">rho</span><span class="o">=-</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">stochastic_volatility</span><span class="o">.</span><span class="n">heston_price</span><span class="p">(</span><span class="n">heston</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">smile</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">implied_vol_smile</span><span class="p">(</span><span class="n">prices</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">K</span><span class="p">[::</span><span class="mi">3</span><span class="p">],</span> <span class="n">smile</span><span class="o">.</span><span class="n">vols</span><span class="p">[::</span><span class="mi">3</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"K = </span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">5.1f</span><span class="si">}</span><span class="s2">: implied vol </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="c1"># K =  70.0: implied vol 29.39%</span>
+<span class="c1"># K =  85.0: implied vol 24.06%</span>
+<span class="c1"># K = 100.0: implied vol 18.39%</span>
+<span class="c1"># K = 115.0: implied vol 14.22%</span>
+<span class="c1"># K = 130.0: implied vol 14.28%</span>
+</pre></div>
+</div>
+<p>The long-run volatility is 20% everywhere, yet a 70 strike implies
+almost 30% and a 115 strike barely 14%; at 130 the curve turns up again,
+so the skew carries a smile. Before trusting a Fourier price,
+check it independently: simulate Heston paths with Andersen’s QE scheme
+and price the at-the-money call by Monte Carlo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mc</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">stochastic_volatility</span><span class="o">.</span><span class="n">heston_mc_price</span><span class="p">(</span><span class="n">heston</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_paths</span><span class="o">=</span><span class="mi">40_000</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Fourier: </span><span class="si">{</span><span class="n">prices</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, Monte Carlo: </span><span class="si">{</span><span class="n">mc</span><span class="o">.</span><span class="n">estimate</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">mc</span><span class="o">.</span><span class="n">std_error</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="c1"># Fourier: 5.9237, Monte Carlo: 5.9039 +/- 0.0339</span>
+</pre></div>
+</div>
+</section>
+<section id="the-distribution-behind-the-prices">
+<h2>3. The distribution behind the prices<a class="headerlink" href="#the-distribution-behind-the-prices" title="Link to this heading">#</a></h2>
+<p>Breeden and Litzenberger showed that the second derivative of call prices
+in the strike is the discounted risk-neutral density. Differencing a fine
+strip of Heston prices recovers it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">trapezoid</span>
+
+<span class="n">strikes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">40.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mi">801</span><span class="p">)</span>
+<span class="n">density</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">breeden_litzenberger_density</span><span class="p">(</span><span class="n">strikes</span><span class="p">,</span> <span class="n">fk</span><span class="o">.</span><span class="n">stochastic_volatility</span><span class="o">.</span><span class="n">heston_price</span><span class="p">(</span><span class="n">heston</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">density</span><span class="o">.</span><span class="n">strikes</span><span class="p">,</span> <span class="n">density</span><span class="o">.</span><span class="n">density</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"total probability </span><span class="si">{</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="c1"># total probability 0.9994</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"mean </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> against the forward </span><span class="si">{</span><span class="n">S</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="c1"># mean 101.49 against the forward 101.51</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"skewness </span><span class="si">{</span><span class="n">trapezoid</span><span class="p">((</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sd</span><span class="o">**</span><span class="mi">3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="c1"># skewness -0.89</span>
+</pre></div>
+</div>
+<p>The density integrates to one and is centred on the forward, as the
+absence of arbitrage requires. Its negative skewness is the skew: a fat
+left tail makes low-strike puts expensive, so their implied volatility
+is high. A lognormal with the same volatility would have positive
+skewness.</p>
+</section>
+<section id="jumps-smile-too">
+<h2>4. Jumps smile too<a class="headerlink" href="#jumps-smile-too" title="Link to this heading">#</a></h2>
+<p>Stochastic volatility is not the only explanation. Merton added
+occasional jumps to the stock, and downward jumps also fatten the left
+tail:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">merton</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">stochastic_volatility</span><span class="o">.</span><span class="n">MertonJumpModel</span><span class="p">(</span><span class="n">sigma</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">mu_j</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">merton</span><span class="o">.</span><span class="n">implied_vol</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">K</span><span class="p">[::</span><span class="mi">3</span><span class="p">],</span> <span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+<span class="c1"># [22.5  19.5  17.44 16.6  16.33]</span>
+</pre></div>
+</div>
+<p>The two models leave different fingerprints across maturities, though.
+Jumps make the smile steep for short expiries and flat for long ones,
+while stochastic volatility does the opposite, which is why the Bates
+model combines them.</p>
+</section>
+<section id="what-traders-quote-sabr">
+<h2>5. What traders quote: SABR<a class="headerlink" href="#what-traders-quote-sabr" title="Link to this heading">#</a></h2>
+<p>Desks rarely quote a full model. They fit a smile parametrization, and
+Hagan’s SABR formula is the standard in rates and FX. Calibrating it to
+the Heston smile above:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span> <span class="o">=</span> <span class="n">S</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">sabr</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">stochastic_volatility</span><span class="o">.</span><span class="n">sabr_calibrate</span><span class="p">(</span><span class="n">forward</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">smile</span><span class="o">.</span><span class="n">vols</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"rho </span><span class="si">{</span><span class="n">sabr</span><span class="o">.</span><span class="n">rho</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, nu </span><span class="si">{</span><span class="n">sabr</span><span class="o">.</span><span class="n">nu</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, RMSE </span><span class="si">{</span><span class="mf">1e4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sabr</span><span class="o">.</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> bp of vol"</span><span class="p">)</span>
+<span class="c1"># rho -0.646, nu 0.824, RMSE 35 bp of vol</span>
+</pre></div>
+</div>
+<p>SABR’s correlation <code class="docutils literal notranslate"><span class="pre">rho</span></code> and vol of vol <code class="docutils literal notranslate"><span class="pre">nu</span></code> play the same roles as
+Heston’s <code class="docutils literal notranslate"><span class="pre">rho</span></code> and <code class="docutils literal notranslate"><span class="pre">xi</span></code>, and the fit is close: three parameters
+summarise the whole smile.</p>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/options.html"><span class="doc">financialkit.options</span></a></p></li>
+<li><p><a class="reference internal" href="../api/stochastic_volatility.html"><span class="doc">financialkit.stochastic_volatility</span></a></p></li>
+<li><p><a class="reference internal" href="../history/options_breakthroughs.html"><span class="doc">Breakthroughs in Option Pricing</span></a></p></li>
+<li><p><a class="reference internal" href="../history/stochastic_volatility_breakthroughs.html"><span class="doc">Breakthroughs in Stochastic Volatility</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implied-volatility-inverts-the-formula">1. Implied volatility inverts the formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-volatility-skews-the-smile">2. Stochastic volatility skews the smile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-distribution-behind-the-prices">3. The distribution behind the prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jumps-smile-too">4. Jumps smile too</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-traders-quote-sabr">5. What traders quote: SABR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/tutorials/where_the_smile_comes_from.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, financialkit contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

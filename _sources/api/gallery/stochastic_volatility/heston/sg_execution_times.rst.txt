@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.730** total execution time for 2 files **from api/gallery/stochastic_volatility/heston**:
+**00:00.833** total execution time for 2 files **from api/gallery/stochastic_volatility/heston**:
 
 .. container::
 
@@ -32,9 +32,9 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_heston_plot_02_heston.py` (``plot_02_heston.py``)
-     - 00:00.429
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_stochastic_volatility_heston_plot_01_hull_white_mixing.py` (``plot_01_hull_white_mixing.py``)
-     - 00:00.301
+     - 00:00.640
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_stochastic_volatility_heston_plot_02_heston.py` (``plot_02_heston.py``)
+     - 00:00.193
      - 0.0

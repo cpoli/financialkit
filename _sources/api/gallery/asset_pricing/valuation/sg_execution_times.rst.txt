@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.545** total execution time for 4 files **from api/gallery/asset_pricing/valuation**:
+**00:00.235** total execution time for 4 files **from api/gallery/asset_pricing/valuation**:
 
 .. container::
 
@@ -33,14 +33,14 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_asset_pricing_valuation_plot_04_shiller_excess_volatility.py` (``plot_04_shiller_excess_volatility.py``)
-     - 00:00.152
+     - 00:00.065
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_valuation_plot_03_gordon_growth.py` (``plot_03_gordon_growth.py``)
-     - 00:00.145
+     - 00:00.061
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_valuation_plot_01_williams_ddm.py` (``plot_01_williams_ddm.py``)
-     - 00:00.132
+     - 00:00.056
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_valuation_plot_02_modigliani_miller.py` (``plot_02_modigliani_miller.py``)
-     - 00:00.116
+     - 00:00.053
      - 0.0

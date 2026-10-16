@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.149** total execution time for 1 file **from api/gallery/market_microstructure/liquidity**:
+**00:00.066** total execution time for 1 file **from api/gallery/market_microstructure/liquidity**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_market_microstructure_liquidity_plot_01_amihud.py` (``plot_01_amihud.py``)
-     - 00:00.149
+     - 00:00.066
      - 0.0

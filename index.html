@@ -6,8 +6,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="financialkit: Quantitative Finance in Python" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/financialkit/index.html" />
+<meta property="og:site_name" content="financialkit" />
+<meta property="og:description" content="financialkit is a unified toolkit for quantitative finance, spanning 14 domains, from the time value of money and fixed income to stochastic volatility, credit and market microstructure, under one ..." />
+<meta property="og:image" content="https://cpoli.github.io/financialkit/_static/images/financialkit_logo.png" />
+<meta property="og:image:alt" content="financialkit" />
+<meta name="description" content="financialkit is a unified toolkit for quantitative finance, spanning 14 domains, from the time value of money and fixed income to stochastic volatility, credit and market microstructure, under one ..." />
 
-    <title>financialkit &#8212; financialkit 0.1.0 documentation</title>
+    <title>financialkit: Quantitative Finance in Python &#8212; financialkit</title>
   
   
   
@@ -52,6 +60,7 @@
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/financialkit/index.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Subpackages" href="subpackages/index.html" />
@@ -391,8 +400,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="financialkit">
-<h1>financialkit<a class="headerlink" href="#financialkit" title="Link to this heading">#</a></h1>
+  <section id="financialkit-quantitative-finance-in-python">
+<h1>financialkit: Quantitative Finance in Python<a class="headerlink" href="#financialkit-quantitative-finance-in-python" title="Link to this heading">#</a></h1>
 <p><strong>financialkit</strong> is a unified toolkit for quantitative finance, spanning
 14 domains, from the time value of money and fixed income
 to stochastic volatility, credit and market microstructure, under one
@@ -553,10 +562,18 @@ pip<span class="w"> </span>install<span class="w"> </span>financialkit<span clas
 the inner loops of <code class="docutils literal notranslate"><span class="pre">integrators</span></code>, <code class="docutils literal notranslate"><span class="pre">options</span></code>, <code class="docutils literal notranslate"><span class="pre">interest_rate_models</span></code>,
 <code class="docutils literal notranslate"><span class="pre">monte_carlo</span></code>, <code class="docutils literal notranslate"><span class="pre">pde_methods</span></code> and <code class="docutils literal notranslate"><span class="pre">stochastic_volatility</span></code>. Without it,
 those kernels run as plain Python with the same results, only slower.</p>
-<p>To try it without installing anything, use the <strong>JupyterLite</strong> button at
-the top of every gallery example. Every gallery also has a download-all
+<p>To try it without installing anything, open the
+<a class="reference external" href="https://colab.research.google.com/github/cpoli/financialkit/blob/main/notebooks/quickstart.ipynb">quickstart notebook</a>
+in Colab or <a class="reference external" href="lite/lab/index.html?path=quickstart.ipynb">in JupyterLite</a>,
+or use the <strong>JupyterLite</strong> button at the top of every gallery example. Every gallery also has a download-all
 button for its scripts and notebooks. The public API follows a documented
 <a class="reference external" href="https://github.com/cpoli/financialkit/blob/main/CONTRIBUTING.md#api-stability-and-deprecation-policy">stability and deprecation policy</a>.</p>
+<p>Five tutorials follow one problem across several domains:
+<a class="reference internal" href="tutorials/one_option_five_pricers.html"><span class="doc">One Option, Five Pricers</span></a>,
+<a class="reference internal" href="tutorials/yield_curve_end_to_end.html"><span class="doc">The Yield Curve, End to End</span></a>,
+<a class="reference internal" href="tutorials/where_the_smile_comes_from.html"><span class="doc">Where the Smile Comes From</span></a>,
+<a class="reference internal" href="tutorials/from_returns_to_risk.html"><span class="doc">From Returns to Risk</span></a> and
+<a class="reference internal" href="tutorials/from_one_firm_to_a_portfolio.html"><span class="doc">Credit Risk, from One Firm to a Portfolio</span></a>.</p>
 <p>Conventionally imported as <code class="docutils literal notranslate"><span class="pre">fk</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">financialkit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fk</span>
 
@@ -576,6 +593,16 @@ button for its scripts and notebooks. The public API follows a documented
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<p class="rubric">Related toolkits</p>
+<p>Sibling Python toolkits for learning and teaching, built the same way:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cpoli.github.io/blockchainkit/">blockchainkit</a> – cryptography, consensus and blockchain systems</p></li>
+<li><p><a class="reference external" href="https://cpoli.github.io/chemistrykit/">chemistrykit</a> – computational chemistry</p></li>
+<li><p><a class="reference external" href="https://cpoli.github.io/engineeringkit/">engineeringkit</a> – computational engineering</p></li>
+<li><p><a class="reference external" href="https://cpoli.github.io/mathematicskit/">mathematicskit</a> – computational mathematics</p></li>
+<li><p><a class="reference external" href="https://cpoli.github.io/physicskit/">physicskit</a> – computational physics</p></li>
+<li><p><a class="reference external" href="https://cpoli.github.io/tbkit/">tbkit</a> – tight-binding models, band topology and quantum transport</p></li>
+</ul>
 </section>
 </section>
 

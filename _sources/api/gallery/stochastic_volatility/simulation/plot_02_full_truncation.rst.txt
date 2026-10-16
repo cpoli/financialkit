@@ -80,7 +80,7 @@ least biased. All three schemes here run through
     partial_truncation: bias [12.5   8.95  5.65  3.39], standard error [0.3  0.21 0.16 0.13]
             higham_mao: bias [-3.52 -7.14 -7.57 10.62], standard error [ 1.62  0.89  1.22 15.36]
 
-    <matplotlib.legend.Legend object at 0x7fdf601822d0>
+    <matplotlib.legend.Legend object at 0x117d8ef90>
 
 
 
@@ -123,7 +123,7 @@ the coefficients, so it drifts back up at rate :math:`\kappa\theta`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.660 seconds)
+   **Total running time of the script:** (0 minutes 0.306 seconds)
 
 
 .. _sphx_glr_download_api_gallery_stochastic_volatility_simulation_plot_02_full_truncation.py:

@@ -120,7 +120,7 @@ drive hidden factor loadings.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.164 seconds)
+   **Total running time of the script:** (0 minutes 0.080 seconds)
 
 
 .. _sphx_glr_download_api_gallery_asset_pricing_factors_plot_03_fama_french.py:

@@ -79,7 +79,7 @@ The key-rate shock shapes
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7fdf66aa9430>
+    <matplotlib.legend.Legend object at 0x117062ba0>
 
 
 
@@ -117,7 +117,7 @@ Bullet and barbell with equal duration
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.146 seconds)
+   **Total running time of the script:** (0 minutes 0.061 seconds)
 
 
 .. _sphx_glr_download_api_gallery_fixed_income_duration_plot_05_ho_key_rate_durations.py:

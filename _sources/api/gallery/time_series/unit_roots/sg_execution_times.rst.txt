@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.618** total execution time for 2 files **from api/gallery/time_series/unit_roots**:
+**00:00.290** total execution time for 2 files **from api/gallery/time_series/unit_roots**:
 
 .. container::
 
@@ -32,9 +32,9 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_time_series_unit_roots_plot_01_dickey_fuller.py` (``plot_01_dickey_fuller.py``)
-     - 00:00.326
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_time_series_unit_roots_plot_02_engle_granger.py` (``plot_02_engle_granger.py``)
-     - 00:00.292
+     - 00:00.146
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_unit_roots_plot_01_dickey_fuller.py` (``plot_01_dickey_fuller.py``)
+     - 00:00.144
      - 0.0

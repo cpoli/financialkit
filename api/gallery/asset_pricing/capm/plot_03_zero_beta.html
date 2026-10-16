@@ -6,8 +6,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Black’s zero-beta CAPM" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/financialkit/api/gallery/asset_pricing/capm/plot_03_zero_beta.html" />
+<meta property="og:site_name" content="financialkit" />
+<meta property="og:description" content="Sharpe’s CAPM assumes unlimited riskless borrowing. Fischer Black (1972) dropped it: every frontier portfolio m still prices all assets linearly, with the expected return of z, the minimum-variance..." />
+<meta property="og:image" content="https://cpoli.github.io/financialkit/_static/images/financialkit_logo.png" />
+<meta property="og:image:alt" content="financialkit" />
+<meta name="description" content="Sharpe’s CAPM assumes unlimited riskless borrowing. Fischer Black (1972) dropped it: every frontier portfolio m still prices all assets linearly, with the expected return of z, the minimum-variance..." />
 
-    <title>Black’s zero-beta CAPM &#8212; financialkit 0.1.0 documentation</title>
+    <title>Black’s zero-beta CAPM &#8212; financialkit</title>
   
   
   
@@ -53,6 +61,7 @@
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/asset_pricing/capm/plot_03_zero_beta';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/financialkit/api/gallery/asset_pricing/capm/plot_03_zero_beta.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -466,7 +475,7 @@ than the CAPM predicts.</p>
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">wz</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">wm</span></a> <span class="o">=</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">res</span><span class="o">.</span><span class="n">zero_beta_weights</span></a><span class="p">,</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">res</span><span class="o">.</span><span class="n">market_weights</span></a><span class="w">
 </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="s2">E[r_z] = </span><span class="si">{</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">res</span><span class="o">.</span><span class="n">zero_beta_rate</span></a><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">,  cov(z, m) = </span><span class="si">{</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">wz</span></a><span class="w"> </span><span class="o">&#64;</span><span class="w"> </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">cov</span></a><span class="w"> </span><span class="o">&#64;</span><span class="w"> </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">wm</span></a><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>E[r_z] = 0.0200,  cov(z, m) = 3.18e-18
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>E[r_z] = 0.0200,  cov(z, m) = 1.52e-18
 </pre></div>
 </div>
 <section id="the-frontier-the-market-and-its-zero-beta-portfolio">
@@ -486,7 +495,7 @@ than the CAPM predicts.</p>
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">axes</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="s2">expected return</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">axes</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<img src="../../../../_images/sphx_glr_plot_03_zero_beta_001.png" srcset="../../../../_images/sphx_glr_plot_03_zero_beta_001.png" alt="plot 03 zero beta" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x7fdf60661d00&gt;
+<img src="../../../../_images/sphx_glr_plot_03_zero_beta_001.png" srcset="../../../../_images/sphx_glr_plot_03_zero_beta_001.png" alt="plot 03 zero beta" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x116ab46e0&gt;
 </pre></div>
 </div>
 </section>
@@ -503,7 +512,7 @@ than the CAPM predicts.</p>
 </span><span class="w">
 </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.113 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.055 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-api-gallery-asset-pricing-capm-plot-03-zero-beta-py">
 <div class="lite-badge docutils container">
 <a class="reference external image-reference" href="../../../../lite/lab/index.html?path=api/gallery/asset_pricing/capm/plot_03_zero_beta.ipynb"><img alt="Launch JupyterLite" src="../../../../_images/jupyterlite_badge_logo.svg" style="width: 150px;" />

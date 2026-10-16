@@ -116,7 +116,7 @@ Hold the real rate at 3% and ask what nominal rate a lender needs.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.127 seconds)
+   **Total running time of the script:** (0 minutes 0.058 seconds)
 
 
 .. _sphx_glr_download_api_gallery_time_value_present_value_plot_02_fisher_real_rate.py:

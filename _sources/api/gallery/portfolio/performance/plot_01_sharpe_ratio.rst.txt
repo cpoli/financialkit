@@ -159,7 +159,7 @@ Years needed to tell a Sharpe ratio from zero
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.176 seconds)
+   **Total running time of the script:** (0 minutes 0.080 seconds)
 
 
 .. _sphx_glr_download_api_gallery_portfolio_performance_plot_01_sharpe_ratio.py:

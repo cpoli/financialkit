@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.571** total execution time for 6 files **from api/gallery/fixed_income/curves**:
+**00:00.343** total execution time for 6 files **from api/gallery/fixed_income/curves**:
 
 .. container::
 
@@ -32,21 +32,21 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_06_svensson.py` (``plot_06_svensson.py``)
-     - 00:00.122
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_04_nelson_siegel.py` (``plot_04_nelson_siegel.py``)
-     - 00:00.114
+     - 00:00.132
      - 0.0
-   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_02_mcculloch_spline.py` (``plot_02_mcculloch_spline.py``)
-     - 00:00.101
+   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_06_svensson.py` (``plot_06_svensson.py``)
+     - 00:00.060
      - 0.0
    * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_05_litterman_scheinkman_pca.py` (``plot_05_litterman_scheinkman_pca.py``)
-     - 00:00.100
+     - 00:00.047
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_02_mcculloch_spline.py` (``plot_02_mcculloch_spline.py``)
+     - 00:00.043
      - 0.0
    * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_01_lutz_forward_rates.py` (``plot_01_lutz_forward_rates.py``)
-     - 00:00.076
+     - 00:00.034
      - 0.0
    * - :ref:`sphx_glr_api_gallery_fixed_income_curves_plot_03_bootstrapping.py` (``plot_03_bootstrapping.py``)
-     - 00:00.058
+     - 00:00.027
      - 0.0

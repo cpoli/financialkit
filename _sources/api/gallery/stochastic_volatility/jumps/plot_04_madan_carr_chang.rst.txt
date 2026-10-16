@@ -93,7 +93,7 @@ The skew comes from theta
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.505 seconds)
+   **Total running time of the script:** (0 minutes 0.216 seconds)
 
 
 .. _sphx_glr_download_api_gallery_stochastic_volatility_jumps_plot_04_madan_carr_chang.py:

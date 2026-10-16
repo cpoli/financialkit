@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.329** total execution time for 1 file **from api/gallery/pde_methods/multi_factor**:
+**00:00.202** total execution time for 1 file **from api/gallery/pde_methods/multi_factor**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_pde_methods_multi_factor_plot_01_peaceman_rachford_adi.py` (``plot_01_peaceman_rachford_adi.py``)
-     - 00:00.329
+     - 00:00.202
      - 0.0

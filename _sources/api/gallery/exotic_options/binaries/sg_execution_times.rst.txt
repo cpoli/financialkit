@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.146** total execution time for 1 file **from api/gallery/exotic_options/binaries**:
+**00:00.093** total execution time for 1 file **from api/gallery/exotic_options/binaries**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_exotic_options_binaries_plot_01_digital_options.py` (``plot_01_digital_options.py``)
-     - 00:00.146
+     - 00:00.093
      - 0.0

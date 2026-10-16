@@ -58,8 +58,8 @@ to rounding at a fraction of the cost.
 
  .. code-block:: none
 
-    brennan_schwartz 4.282866 in 0.228 s, 202 iterations
-    psor             4.282866 in 0.022 s, 3606 iterations
+    brennan_schwartz 4.282866 in 0.128 s, 202 iterations
+    psor             4.282866 in 0.015 s, 3606 iterations
     CRR tree         4.283922
 
 
@@ -106,7 +106,7 @@ The put across spots and maturities
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.453 seconds)
+   **Total running time of the script:** (0 minutes 0.259 seconds)
 
 
 .. _sphx_glr_download_api_gallery_pde_methods_american_plot_02_brennan_schwartz.py:

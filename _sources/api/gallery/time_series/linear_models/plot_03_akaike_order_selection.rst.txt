@@ -87,7 +87,7 @@ sample. Both criteria bottom out at the true order.
 
     AIC choice: (2, 0)  BIC choice: (2, 0)
 
-    <matplotlib.colorbar.Colorbar object at 0x7fdf607d49e0>
+    <matplotlib.colorbar.Colorbar object at 0x116d87a10>
 
 
 
@@ -133,7 +133,7 @@ on 2 more often; AIC's lighter penalty lets extra lags in now and then.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.423 seconds)
+   **Total running time of the script:** (0 minutes 0.196 seconds)
 
 
 .. _sphx_glr_download_api_gallery_time_series_linear_models_plot_03_akaike_order_selection.py:

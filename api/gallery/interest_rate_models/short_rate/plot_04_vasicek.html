@@ -6,8 +6,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Vasicek’s mean-reverting short rate" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/financialkit/api/gallery/interest_rate_models/short_rate/plot_04_vasicek.html" />
+<meta property="og:site_name" content="financialkit" />
+<meta property="og:description" content="Oldrich Vasicek (1977) derived the term structure from a short rate pulled back towards a long-run mean, dr = \kappa(\theta - r)\,dt + \sigma\,dW, an Ornstein-Uhlenbeck process, together with the m..." />
+<meta property="og:image" content="https://cpoli.github.io/financialkit/_static/images/financialkit_logo.png" />
+<meta property="og:image:alt" content="financialkit" />
+<meta name="description" content="Oldrich Vasicek (1977) derived the term structure from a short rate pulled back towards a long-run mean, dr = \kappa(\theta - r)\,dt + \sigma\,dW, an Ornstein-Uhlenbeck process, together with the m..." />
 
-    <title>Vasicek’s mean-reverting short rate &#8212; financialkit 0.1.0 documentation</title>
+    <title>Vasicek’s mean-reverting short rate &#8212; financialkit</title>
   
   
   
@@ -53,6 +61,7 @@
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/interest_rate_models/short_rate/plot_04_vasicek';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/financialkit/api/gallery/interest_rate_models/short_rate/plot_04_vasicek.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Cox-Ingersoll-Ross: the square-root short rate" href="plot_05_cir.html" />
@@ -525,7 +534,7 @@ against the long yield <span class="math notranslate nohighlight">\(\theta - \si
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">axes</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">times</span></a><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.06</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.01</span> <span class="o">-</span> <span class="mf">0.06</span><span class="p">)</span> <span class="o">*</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ufunc.html#numpy.ufunc" title="numpy.ufunc"><span class="n">np</span><span class="o">.</span><span class="n">exp</span></a><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span> <span class="o">*</span> <a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">times</span></a><span class="p">)</span><span class="p">)</span><span class="p">,</span> <span class="s2">&quot;</span><span class="s2">w--</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;</span><span class="s2">E[r(t)]</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span><a class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><span class="n">axes</span></a><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x7fdf60f99df0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x11b508440&gt;
 </pre></div>
 </div>
 </section>
@@ -541,7 +550,7 @@ against the long yield <span class="math notranslate nohighlight">\(\theta - \si
 </span><span class="w">
 </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.243 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.116 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-api-gallery-interest-rate-models-short-rate-plot-04-vasicek-py">
 <div class="lite-badge docutils container">
 <a class="reference external image-reference" href="../../../../lite/lab/index.html?path=api/gallery/interest_rate_models/short_rate/plot_04_vasicek.ipynb"><img alt="Launch JupyterLite" src="../../../../_images/jupyterlite_badge_logo26.svg" style="width: 150px;" />

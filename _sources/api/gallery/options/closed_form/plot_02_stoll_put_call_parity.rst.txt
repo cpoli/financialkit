@@ -137,7 +137,7 @@ initial cash flow is pure profit.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.080 seconds)
+   **Total running time of the script:** (0 minutes 0.042 seconds)
 
 
 .. _sphx_glr_download_api_gallery_options_closed_form_plot_02_stoll_put_call_parity.py:

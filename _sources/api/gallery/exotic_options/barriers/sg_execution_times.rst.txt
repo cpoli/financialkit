@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.926** total execution time for 4 files **from api/gallery/exotic_options/barriers**:
+**00:01.135** total execution time for 4 files **from api/gallery/exotic_options/barriers**:
 
 .. container::
 
@@ -32,15 +32,15 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_04_discrete_barrier_correction.py` (``plot_04_discrete_barrier_correction.py``)
-     - 00:00.365
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_03_double_barrier.py` (``plot_03_double_barrier.py``)
-     - 00:00.207
+     - 00:00.730
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_04_discrete_barrier_correction.py` (``plot_04_discrete_barrier_correction.py``)
+     - 00:00.215
      - 0.0
    * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_01_merton_down_and_out.py` (``plot_01_merton_down_and_out.py``)
-     - 00:00.200
+     - 00:00.109
      - 0.0
    * - :ref:`sphx_glr_api_gallery_exotic_options_barriers_plot_02_reiner_rubinstein.py` (``plot_02_reiner_rubinstein.py``)
-     - 00:00.154
+     - 00:00.081
      - 0.0

@@ -6,8 +6,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Brennan-Schwartz American put" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/financialkit/api/gallery/pde_methods/american/plot_02_brennan_schwartz.html" />
+<meta property="og:site_name" content="financialkit" />
+<meta property="og:description" content="Michael Brennan and Eduardo Schwartz (1977) priced the American put with an implicit scheme and a direct solve: eliminate the tridiagonal system starting from the top of the grid, then substitute b..." />
+<meta property="og:image" content="https://cpoli.github.io/financialkit/_static/images/financialkit_logo.png" />
+<meta property="og:image:alt" content="financialkit" />
+<meta name="description" content="Michael Brennan and Eduardo Schwartz (1977) priced the American put with an implicit scheme and a direct solve: eliminate the tridiagonal system starting from the top of the grid, then substitute b..." />
 
-    <title>Brennan-Schwartz American put &#8212; financialkit 0.1.0 documentation</title>
+    <title>Brennan-Schwartz American put &#8212; financialkit</title>
   
   
   
@@ -53,6 +61,7 @@
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/gallery/pde_methods/american/plot_02_brennan_schwartz';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/financialkit/api/gallery/pde_methods/american/plot_02_brennan_schwartz.html" />
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -466,8 +475,8 @@ to rounding at a fraction of the cost.</p>
 </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="str"><span class="n">method</span></a><span class="si">:</span><span class="s2">16s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">res</span><span class="o">.</span><span class="n">price</span></a><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><a class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function reference external" href="https://docs.python.org/3/library/time.html#time.perf_counter" title="time.perf_counter"><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span></a><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">t0</span></a><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s, </span><span class="si">{</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="int"><span class="n">res</span><span class="o">.</span><span class="n">lcp_iterations</span></a><span class="si">}</span><span class="s2"> iterations</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="s2">CRR tree         </span><span class="si">{</span><a class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance reference external" href="https://docs.python.org/3/builtins/functions.html#float" title="float"><span class="n">tree</span></a><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>brennan_schwartz 4.282866 in 0.228 s, 202 iterations
-psor             4.282866 in 0.022 s, 3606 iterations
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>brennan_schwartz 4.282866 in 0.128 s, 202 iterations
+psor             4.282866 in 0.015 s, 3606 iterations
 CRR tree         4.283922
 </pre></div>
 </div>
@@ -490,7 +499,7 @@ CRR tree         4.283922
 </span><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="p">)</span><span class="w">
 </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="p">)</span><span class="w">
 </span></pre></div></div>
-<img src="../../../../_images/sphx_glr_plot_02_brennan_schwartz_001.png" srcset="../../../../_images/sphx_glr_plot_02_brennan_schwartz_001.png" alt="plot 02 brennan schwartz" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.453 seconds)</p>
+<img src="../../../../_images/sphx_glr_plot_02_brennan_schwartz_001.png" srcset="../../../../_images/sphx_glr_plot_02_brennan_schwartz_001.png" alt="plot 02 brennan schwartz" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.259 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-api-gallery-pde-methods-american-plot-02-brennan-schwartz-py">
 <div class="lite-badge docutils container">
 <a class="reference external image-reference" href="../../../../lite/lab/index.html?path=api/gallery/pde_methods/american/plot_02_brennan_schwartz.ipynb"><img alt="Launch JupyterLite" src="../../../../_images/jupyterlite_badge_logo42.svg" style="width: 150px;" />

@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.464** total execution time for 3 files **from api/gallery/time_value/annuities**:
+**00:00.221** total execution time for 3 files **from api/gallery/time_value/annuities**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_time_value_annuities_plot_01_de_witt_life_annuity.py` (``plot_01_de_witt_life_annuity.py``)
-     - 00:00.168
+     - 00:00.083
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_value_annuities_plot_03_price_sinking_fund.py` (``plot_03_price_sinking_fund.py``)
-     - 00:00.162
+     - 00:00.074
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_value_annuities_plot_02_consol_perpetuity.py` (``plot_02_consol_perpetuity.py``)
-     - 00:00.134
+     - 00:00.064
      - 0.0

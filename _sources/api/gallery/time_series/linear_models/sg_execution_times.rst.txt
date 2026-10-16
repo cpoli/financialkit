@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.732** total execution time for 3 files **from api/gallery/time_series/linear_models**:
+**00:00.352** total execution time for 3 files **from api/gallery/time_series/linear_models**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_time_series_linear_models_plot_03_akaike_order_selection.py` (``plot_03_akaike_order_selection.py``)
-     - 00:00.423
+     - 00:00.196
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_series_linear_models_plot_02_box_jenkins_arma.py` (``plot_02_box_jenkins_arma.py``)
-     - 00:00.171
+     - 00:00.082
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_series_linear_models_plot_01_yule_autoregression.py` (``plot_01_yule_autoregression.py``)
-     - 00:00.139
+     - 00:00.074
      - 0.0

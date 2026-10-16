@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.613** total execution time for 3 files **from api/gallery/risk/expected_shortfall**:
+**00:00.939** total execution time for 3 files **from api/gallery/risk/expected_shortfall**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_risk_expected_shortfall_plot_03_acerbi_tasche.py` (``plot_03_acerbi_tasche.py``)
-     - 00:01.198
+     - 00:00.710
      - 0.0
    * - :ref:`sphx_glr_api_gallery_risk_expected_shortfall_plot_01_coherence.py` (``plot_01_coherence.py``)
-     - 00:00.296
+     - 00:00.167
      - 0.0
    * - :ref:`sphx_glr_api_gallery_risk_expected_shortfall_plot_02_euler_allocation.py` (``plot_02_euler_allocation.py``)
-     - 00:00.118
+     - 00:00.063
      - 0.0

@@ -9,6 +9,10 @@ reduction, quasi-Monte Carlo, Monte Carlo Greeks and multilevel Monte
 Carlo. Each script illustrates one dated breakthrough from the
 :doc:`history page </history/monte_carlo_breakthroughs>`.
 
+See also the narrative tutorial:
+
+- :doc:`/tutorials/one_option_five_pricers`
+
 Each script in this gallery is self-contained and can be run directly with
 ``python examples/monte_carlo/<section>/<script>.py``.
 

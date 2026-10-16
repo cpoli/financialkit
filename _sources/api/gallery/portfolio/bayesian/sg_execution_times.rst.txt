@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.738** total execution time for 2 files **from api/gallery/portfolio/bayesian**:
+**00:00.394** total execution time for 2 files **from api/gallery/portfolio/bayesian**:
 
 .. container::
 
@@ -33,8 +33,8 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_portfolio_bayesian_plot_02_michaud_resampling.py` (``plot_02_michaud_resampling.py``)
-     - 00:00.479
+     - 00:00.201
      - 0.0
    * - :ref:`sphx_glr_api_gallery_portfolio_bayesian_plot_01_black_litterman.py` (``plot_01_black_litterman.py``)
-     - 00:00.259
+     - 00:00.194
      - 0.0

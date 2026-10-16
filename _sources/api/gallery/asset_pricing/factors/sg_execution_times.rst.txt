@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.663** total execution time for 4 files **from api/gallery/asset_pricing/factors**:
+**00:00.305** total execution time for 4 files **from api/gallery/asset_pricing/factors**:
 
 .. container::
 
@@ -33,14 +33,14 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_asset_pricing_factors_plot_01_fama_macbeth.py` (``plot_01_fama_macbeth.py``)
-     - 00:00.223
+     - 00:00.086
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_factors_plot_03_fama_french.py` (``plot_03_fama_french.py``)
-     - 00:00.164
+     - 00:00.080
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_factors_plot_04_carhart_momentum.py` (``plot_04_carhart_momentum.py``)
-     - 00:00.140
+     - 00:00.080
      - 0.0
    * - :ref:`sphx_glr_api_gallery_asset_pricing_factors_plot_02_ross_apt.py` (``plot_02_ross_apt.py``)
-     - 00:00.137
+     - 00:00.059
      - 0.0

@@ -133,7 +133,7 @@ never for ES.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.296 seconds)
+   **Total running time of the script:** (0 minutes 0.167 seconds)
 
 
 .. _sphx_glr_download_api_gallery_risk_expected_shortfall_plot_01_coherence.py:

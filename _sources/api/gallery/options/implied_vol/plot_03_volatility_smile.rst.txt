@@ -136,7 +136,7 @@ forward is raised so the overall forward is unchanged.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.195 seconds)
+   **Total running time of the script:** (0 minutes 0.089 seconds)
 
 
 .. _sphx_glr_download_api_gallery_options_implied_vol_plot_03_volatility_smile.py:

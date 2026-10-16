@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.766** total execution time for 7 files **from api/gallery/pde_methods/schemes**:
+**00:00.923** total execution time for 7 files **from api/gallery/pde_methods/schemes**:
 
 .. container::
 
@@ -33,23 +33,23 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_03_thomas_algorithm.py` (``plot_03_thomas_algorithm.py``)
-     - 00:00.434
-     - 0.0
-   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_07_barrier_pde.py` (``plot_07_barrier_pde.py``)
-     - 00:00.264
+     - 00:00.218
      - 0.0
    * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_06_explicit_is_trinomial.py` (``plot_06_explicit_is_trinomial.py``)
-     - 00:00.248
+     - 00:00.140
      - 0.0
    * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_01_crank_nicolson.py` (``plot_01_crank_nicolson.py``)
-     - 00:00.224
+     - 00:00.140
      - 0.0
-   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_02_laasonen_implicit.py` (``plot_02_laasonen_implicit.py``)
-     - 00:00.219
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_07_barrier_pde.py` (``plot_07_barrier_pde.py``)
+     - 00:00.130
      - 0.0
    * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_05_schwartz_explicit.py` (``plot_05_schwartz_explicit.py``)
-     - 00:00.196
+     - 00:00.103
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_02_laasonen_implicit.py` (``plot_02_laasonen_implicit.py``)
+     - 00:00.101
      - 0.0
    * - :ref:`sphx_glr_api_gallery_pde_methods_schemes_plot_04_heat_equation_transform.py` (``plot_04_heat_equation_transform.py``)
-     - 00:00.182
+     - 00:00.092
      - 0.0

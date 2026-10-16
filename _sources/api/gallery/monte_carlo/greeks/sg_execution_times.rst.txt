@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.480** total execution time for 2 files **from api/gallery/monte_carlo/greeks**:
+**00:00.269** total execution time for 2 files **from api/gallery/monte_carlo/greeks**:
 
 .. container::
 
@@ -32,9 +32,9 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_monte_carlo_greeks_plot_01_likelihood_ratio.py` (``plot_01_likelihood_ratio.py``)
-     - 00:00.245
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_monte_carlo_greeks_plot_02_pathwise.py` (``plot_02_pathwise.py``)
-     - 00:00.235
+     - 00:00.142
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_monte_carlo_greeks_plot_01_likelihood_ratio.py` (``plot_01_likelihood_ratio.py``)
+     - 00:00.127
      - 0.0

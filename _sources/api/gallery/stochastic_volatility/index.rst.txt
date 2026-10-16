@@ -9,6 +9,11 @@ volatility, jumps, Fourier pricing, smile parametrisations and Heston
 simulation. Each script illustrates one dated breakthrough from the
 :doc:`history page </history/stochastic_volatility_breakthroughs>`.
 
+See also the narrative tutorials:
+
+- :doc:`/tutorials/one_option_five_pricers`
+- :doc:`/tutorials/where_the_smile_comes_from`
+
 Each script in this gallery is self-contained and can be run directly with
 ``python examples/stochastic_volatility/<section>/<script>.py``.
 

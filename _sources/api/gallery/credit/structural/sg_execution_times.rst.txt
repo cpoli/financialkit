@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.707** total execution time for 4 files **from api/gallery/credit/structural**:
+**00:00.369** total execution time for 4 files **from api/gallery/credit/structural**:
 
 .. container::
 
@@ -32,15 +32,15 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_api_gallery_credit_structural_plot_01_merton_structural.py` (``plot_01_merton_structural.py``)
-     - 00:00.202
-     - 0.0
    * - :ref:`sphx_glr_api_gallery_credit_structural_plot_04_distance_to_default.py` (``plot_04_distance_to_default.py``)
-     - 00:00.198
+     - 00:00.102
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_credit_structural_plot_01_merton_structural.py` (``plot_01_merton_structural.py``)
+     - 00:00.102
      - 0.0
    * - :ref:`sphx_glr_api_gallery_credit_structural_plot_03_leland.py` (``plot_03_leland.py``)
-     - 00:00.157
+     - 00:00.085
      - 0.0
    * - :ref:`sphx_glr_api_gallery_credit_structural_plot_02_black_cox.py` (``plot_02_black_cox.py``)
-     - 00:00.150
+     - 00:00.080
      - 0.0

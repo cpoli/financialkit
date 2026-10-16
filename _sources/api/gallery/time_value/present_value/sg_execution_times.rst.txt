@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.341** total execution time for 3 files **from api/gallery/time_value/present_value**:
+**00:00.153** total execution time for 3 files **from api/gallery/time_value/present_value**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_time_value_present_value_plot_01_fibonacci_present_value.py` (``plot_01_fibonacci_present_value.py``)
-     - 00:00.152
+     - 00:00.064
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_value_present_value_plot_02_fisher_real_rate.py` (``plot_02_fisher_real_rate.py``)
-     - 00:00.127
+     - 00:00.058
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_value_present_value_plot_03_fisher_net_present_value.py` (``plot_03_fisher_net_present_value.py``)
-     - 00:00.063
+     - 00:00.030
      - 0.0

@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:03.932** total execution time for 4 files **from api/gallery/portfolio/risk_based**:
+**00:02.105** total execution time for 4 files **from api/gallery/portfolio/risk_based**:
 
 .. container::
 
@@ -33,14 +33,14 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_portfolio_risk_based_plot_01_cvar_optimization.py` (``plot_01_cvar_optimization.py``)
-     - 00:03.188
+     - 00:01.732
      - 0.0
    * - :ref:`sphx_glr_api_gallery_portfolio_risk_based_plot_04_hierarchical_risk_parity.py` (``plot_04_hierarchical_risk_parity.py``)
-     - 00:00.324
+     - 00:00.154
      - 0.0
    * - :ref:`sphx_glr_api_gallery_portfolio_risk_based_plot_02_most_diversified.py` (``plot_02_most_diversified.py``)
-     - 00:00.232
+     - 00:00.123
      - 0.0
    * - :ref:`sphx_glr_api_gallery_portfolio_risk_based_plot_03_risk_parity.py` (``plot_03_risk_parity.py``)
-     - 00:00.188
+     - 00:00.097
      - 0.0

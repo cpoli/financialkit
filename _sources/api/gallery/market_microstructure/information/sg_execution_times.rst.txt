@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:03.371** total execution time for 5 files **from api/gallery/market_microstructure/information**:
+**00:01.244** total execution time for 5 files **from api/gallery/market_microstructure/information**:
 
 .. container::
 
@@ -33,17 +33,17 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_04_pin.py` (``plot_04_pin.py``)
-     - 00:02.204
+     - 00:00.700
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_02_glosten_milgrom.py` (``plot_02_glosten_milgrom.py``)
-     - 00:00.508
-     - 0.0
-   * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_05_vpin.py` (``plot_05_vpin.py``)
-     - 00:00.224
+     - 00:00.259
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_01_kyle.py` (``plot_01_kyle.py``)
-     - 00:00.219
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_05_vpin.py` (``plot_05_vpin.py``)
+     - 00:00.099
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_information_plot_03_hasbrouck_var.py` (``plot_03_hasbrouck_var.py``)
-     - 00:00.217
+     - 00:00.086
      - 0.0

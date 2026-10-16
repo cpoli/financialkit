@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.526** total execution time for 5 files **from api/gallery/fixed_income/duration**:
+**00:00.236** total execution time for 5 files **from api/gallery/fixed_income/duration**:
 
 .. container::
 
@@ -33,17 +33,17 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_01_macaulay_duration.py` (``plot_01_macaulay_duration.py``)
-     - 00:00.153
+     - 00:00.072
      - 0.0
    * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_05_ho_key_rate_durations.py` (``plot_05_ho_key_rate_durations.py``)
-     - 00:00.146
+     - 00:00.061
      - 0.0
    * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_04_convexity.py` (``plot_04_convexity.py``)
-     - 00:00.116
+     - 00:00.051
      - 0.0
    * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_03_fisher_weil_duration.py` (``plot_03_fisher_weil_duration.py``)
-     - 00:00.059
+     - 00:00.027
      - 0.0
    * - :ref:`sphx_glr_api_gallery_fixed_income_duration_plot_02_hicks_modified_duration.py` (``plot_02_hicks_modified_duration.py``)
-     - 00:00.052
+     - 00:00.024
      - 0.0

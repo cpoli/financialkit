@@ -167,7 +167,7 @@ Correlation fattens the left tail of the portfolio value.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.466 seconds)
+   **Total running time of the script:** (0 minutes 0.205 seconds)
 
 
 .. _sphx_glr_download_api_gallery_credit_migration_plot_01_creditmetrics.py:

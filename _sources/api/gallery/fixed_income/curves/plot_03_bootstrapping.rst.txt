@@ -114,7 +114,7 @@ A zero curve from par yields
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7fdf66fa59d0>
+    <matplotlib.legend.Legend object at 0x116f0d400>
 
 
 
@@ -158,7 +158,7 @@ Least squares with more bonds than dates
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.058 seconds)
+   **Total running time of the script:** (0 minutes 0.027 seconds)
 
 
 .. _sphx_glr_download_api_gallery_fixed_income_curves_plot_03_bootstrapping.py:

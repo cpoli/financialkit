@@ -132,7 +132,7 @@ negative correlation with bonds lowers risk.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.197 seconds)
+   **Total running time of the script:** (0 minutes 0.101 seconds)
 
 
 .. _sphx_glr_download_api_gallery_portfolio_mean_variance_plot_01_markowitz_frontier.py:

@@ -120,7 +120,7 @@ The early-exercise premium and boundary
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.338 seconds)
+   **Total running time of the script:** (0 minutes 0.167 seconds)
 
 
 .. _sphx_glr_download_api_gallery_options_trees_plot_02_crr_american_put.py:

@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.115** total execution time for 1 file **from api/gallery/credit/scoring**:
+**00:00.055** total execution time for 1 file **from api/gallery/credit/scoring**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_credit_scoring_plot_01_altman_z_score.py` (``plot_01_altman_z_score.py``)
-     - 00:00.115
+     - 00:00.055
      - 0.0

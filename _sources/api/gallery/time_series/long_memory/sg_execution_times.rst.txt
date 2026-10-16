@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.150** total execution time for 1 file **from api/gallery/time_series/long_memory**:
+**00:00.077** total execution time for 1 file **from api/gallery/time_series/long_memory**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_time_series_long_memory_plot_01_hurst_exponent.py` (``plot_01_hurst_exponent.py``)
-     - 00:00.150
+     - 00:00.077
      - 0.0

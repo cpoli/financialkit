@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.618** total execution time for 3 files **from api/gallery/market_microstructure/execution**:
+**00:00.305** total execution time for 3 files **from api/gallery/market_microstructure/execution**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_market_microstructure_execution_plot_02_bertsimas_lo.py` (``plot_02_bertsimas_lo.py``)
-     - 00:00.330
-     - 0.0
-   * - :ref:`sphx_glr_api_gallery_market_microstructure_execution_plot_01_square_root_impact.py` (``plot_01_square_root_impact.py``)
      - 00:00.152
      - 0.0
    * - :ref:`sphx_glr_api_gallery_market_microstructure_execution_plot_03_almgren_chriss.py` (``plot_03_almgren_chriss.py``)
-     - 00:00.136
+     - 00:00.087
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_market_microstructure_execution_plot_01_square_root_impact.py` (``plot_01_square_root_impact.py``)
+     - 00:00.066
      - 0.0

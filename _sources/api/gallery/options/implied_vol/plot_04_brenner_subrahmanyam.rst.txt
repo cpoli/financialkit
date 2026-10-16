@@ -110,7 +110,7 @@ Accuracy across volatility and maturity
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7fdf668edf10>
+    <matplotlib.legend.Legend object at 0x1167d1be0>
 
 
 
@@ -145,7 +145,7 @@ Away from the money the approximation breaks down
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.124 seconds)
+   **Total running time of the script:** (0 minutes 0.064 seconds)
 
 
 .. _sphx_glr_download_api_gallery_options_implied_vol_plot_04_brenner_subrahmanyam.py:

@@ -601,8 +601,10 @@
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; import numpy as np</span>
 <span class="sd">    &gt;&gt;&gt; w = apt_arbitrage_portfolio([0.05, 0.08, 0.13], [0.0, 1.0, 2.0])</span>
-<span class="sd">    &gt;&gt;&gt; abs(round(float(w.sum()), 12)), abs(round(float(w @ [0.0, 1.0, 2.0]), 12)), round(float(w @ [0.05, 0.08, 0.13]) * 1e6)</span>
-<span class="sd">    (0.0, 0.0, 67)</span>
+<span class="sd">    &gt;&gt;&gt; bool(np.isclose(w.sum(), 0.0, atol=1e-9)), bool(np.isclose(w @ [0.0, 1.0, 2.0], 0.0, atol=1e-9))</span>
+<span class="sd">    (True, True)</span>
+<span class="sd">    &gt;&gt;&gt; bool(np.isclose(w @ [0.05, 0.08, 0.13], 6.6667e-05, rtol=1e-4))</span>
+<span class="sd">    True</span>
 <span class="sd">    """</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">expected_returns</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">mu</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> <span class="n">as_panel</span><span class="p">(</span><span class="n">betas</span><span class="p">)])</span>

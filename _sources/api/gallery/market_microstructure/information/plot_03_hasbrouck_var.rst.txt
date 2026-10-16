@@ -98,7 +98,7 @@ trade for inventory, and works it off at 30% per trade.
     immediate impact 0.0350, permanent impact 0.0194 (true 0.02)
     share of efficient-price variance due to trades 0.71
 
-    <matplotlib.legend.Legend object at 0x7fdf60d804d0>
+    <matplotlib.legend.Legend object at 0x116e7eba0>
 
 
 
@@ -135,7 +135,7 @@ The VAR coefficients
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.217 seconds)
+   **Total running time of the script:** (0 minutes 0.086 seconds)
 
 
 .. _sphx_glr_download_api_gallery_market_microstructure_information_plot_03_hasbrouck_var.py:

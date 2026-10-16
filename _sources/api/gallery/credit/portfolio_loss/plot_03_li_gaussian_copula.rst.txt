@@ -133,7 +133,7 @@ A ten-name basket
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.202 seconds)
+   **Total running time of the script:** (0 minutes 0.104 seconds)
 
 
 .. _sphx_glr_download_api_gallery_credit_portfolio_loss_plot_03_li_gaussian_copula.py:

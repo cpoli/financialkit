@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:02.534** total execution time for 4 files **from api/gallery/time_series/efficiency**:
+**00:01.599** total execution time for 4 files **from api/gallery/time_series/efficiency**:
 
 .. container::
 
@@ -33,14 +33,14 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_04_lo_mackinlay.py` (``plot_04_lo_mackinlay.py``)
-     - 00:01.725
-     - 0.0
-   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_03_ljung_box.py` (``plot_03_ljung_box.py``)
-     - 00:00.346
-     - 0.0
-   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_02_fama_runs_test.py` (``plot_02_fama_runs_test.py``)
-     - 00:00.281
+     - 00:00.703
      - 0.0
    * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_01_kendall_autocorrelation.py` (``plot_01_kendall_autocorrelation.py``)
-     - 00:00.182
+     - 00:00.554
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_03_ljung_box.py` (``plot_03_ljung_box.py``)
+     - 00:00.217
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_time_series_efficiency_plot_02_fama_runs_test.py` (``plot_02_fama_runs_test.py``)
+     - 00:00.125
      - 0.0

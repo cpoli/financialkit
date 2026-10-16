@@ -119,7 +119,7 @@ At low rates the larger total wins; at high rates the earlier money wins.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.152 seconds)
+   **Total running time of the script:** (0 minutes 0.064 seconds)
 
 
 .. _sphx_glr_download_api_gallery_time_value_present_value_plot_01_fibonacci_present_value.py:
