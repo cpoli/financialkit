@@ -65,6 +65,8 @@ docs = [
     "myst-parser>=2.0",
     "sphinx-gallery>=0.15",
     "sphinx-design>=0.6",
+    "sphinx-sitemap>=2.6",
+    "sphinxext-opengraph>=0.9",
     "jupyterlite-sphinx>=0.17",
     "jupyterlite-pyodide-kernel>=0.4",
 ]

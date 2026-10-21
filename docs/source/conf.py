@@ -43,6 +43,8 @@ extensions = [
     "sphinx_gallery.gen_gallery",
     "sphinx_design",
     "jupyterlite_sphinx",
+    "sphinx_sitemap",
+    "sphinxext.opengraph",
 ]
 
 templates_path = ["_templates"]
@@ -232,6 +234,29 @@ jupyterlite_contents = ["../../notebooks/quickstart.ipynb"]
 suppress_warnings = ["ref.python", "config.cache"]
 
 html_theme = "pydata_sphinx_theme"
+
+# Search-engine metadata: sphinx-sitemap writes sitemap.xml with absolute
+# URLs from html_baseurl, and sphinxext-opengraph adds a <meta
+# name="description"> plus og:* link-preview tags from each page's text.
+# html_baseurl also gives every page a <link rel="canonical">.
+html_baseurl = "https://cpoli.github.io/financialkit/"
+html_title = project
+sitemap_url_scheme = "{link}"
+sitemap_excludes = [
+    "search.html",
+    "genindex.html",
+    "py-modindex.html",
+    "*sg_execution_times.html",
+    "_modules/*",
+    # Include-only fragments (card grids, nav strips), not standalone pages.
+    "_generated/grid_*",
+    "_generated/vars.html",
+    "_generated/nav/*",
+]
+ogp_site_url = html_baseurl
+ogp_site_name = project
+ogp_image = html_baseurl + "_static/images/financialkit_logo.png"
+ogp_social_cards = {"enable": False}
 html_logo = "_static/images/financialkit_logo_transparent.png"
 html_theme_options = {
     "github_url": "https://github.com/cpoli/financialkit",
