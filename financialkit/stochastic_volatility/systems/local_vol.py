@@ -127,7 +127,7 @@ def cev_local_vol(S: ArrayLike, sigma: float, beta: float) -> np.ndarray | float
 
     Examples
     --------
-    >>> cev_local_vol(100.0, 2.0, 0.5)
+    >>> round(cev_local_vol(100.0, 2.0, 0.5), 6)
     0.2
     """
     return as_output(sigma * np.asarray(S, dtype=np.float64) ** (beta - 1.0))

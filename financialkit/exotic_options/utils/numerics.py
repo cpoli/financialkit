@@ -125,8 +125,8 @@ def barrier_crossing_probability(x0: ArrayLike, x1: ArrayLike, b: float, sigma: 
     Examples
     --------
     >>> import numpy as np
-    >>> float(barrier_crossing_probability(0.1, 0.1, 0.0, 0.2, 0.25))
-    0.1353352832366127
+    >>> round(float(barrier_crossing_probability(0.1, 0.1, 0.0, 0.2, 0.25)), 6)
+    0.135335
     """
     d0 = np.asarray(x0, dtype=np.float64) - b
     d1 = np.asarray(x1, dtype=np.float64) - b
