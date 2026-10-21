@@ -24,6 +24,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Colab badge in the README and the docs. It also ships in the JupyterLite
   site, so the "Try it online" badge opens on it.
 
+### Changed
+
+- The minimum scipy is now 1.11 (was 1.10). scipy 1.10's
+  non-central chi-squared and binomial functions warn on overflow in
+  ranges the CEV and credit-portfolio models reach.
+- CI tests on Windows, and on Python 3.10 with every dependency at the
+  minimum version `pyproject.toml` allows.
+
+### Fixed
+
+- `monte_carlo.randomized_qmc_estimate(..., sequence="halton")` no
+  longer returns one scrambling repeated `n_replications` times, with a
+  zero standard error, on scipy older than 1.15.
+
 ## [0.1.0] - 2026-10-10
 
 The first release.

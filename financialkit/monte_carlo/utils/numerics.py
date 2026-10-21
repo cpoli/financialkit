@@ -145,4 +145,7 @@ def qmc_engine(kind: str, d: int, scramble: bool = True, rng=None):
     try:
         return classes[kind](d=int(d), rng=gen, **kwargs)
     except TypeError:  # pragma: no cover - scipy < 1.15 names the argument `seed`
-        return classes[kind](d=int(d), seed=gen, **kwargs)
+        # Old Halton scrambles from a copy of a Generator `seed` without
+        # advancing it, so engines sharing `gen` would repeat one scrambling;
+        # an integer drawn from `gen` keeps them independent.
+        return classes[kind](d=int(d), seed=int(gen.integers(2**63)), **kwargs)
