@@ -1,98 +1,428 @@
 # Roadmap
 
-financialkit is built in phases, each green (ruff, pytest, doctests,
-mypy, docs) before the next. This file is the build checklist and the
-plan of every domain's history page. Each breakthrough is implemented in
-the domain's `systems/` modules and has its own gallery example, named in
-brackets as `<topic>/plot_NN_<slug>.py`.
+## Where financialkit stands
 
-## Release TODOs (for the author, after the first GitHub Release)
+0.1.0 (2026-10-10) shipped 14 domains: 236 breakthroughs and 239 gallery
+examples, 868 tests at 99% line coverage, 5 tutorials and the quickstart
+notebook. All the domains are built. The per-domain build plans that used
+to be here are in git history (`git show 681a826:ROADMAP.md`). The history
+pages in `docs/source/history/` are the record of every entry.
 
-- [x] Create the GitHub repository `cpoli/financialkit`, push, and enable
-      Pages from `gh-pages` (the release workflow deploys there).
-- [x] PyPI trusted publisher (see the header of `.github/workflows/release.yml`).
-- [x] Enable Zenodo for the repository, then add the **version DOI** of
-      the release (never the concept DOI) to `CITATION.cff` as `doi:`.
-- [x] Add the Zenodo badge to the README in the
-      `https://zenodo.org/badge/DOI/<version-doi>.svg` form (update it each release).
-- [x] Add a Codecov token (repository secret `CODECOV_TOKEN`).
-- [ ] Release 0.2.0 (the tutorials and the quickstart notebook under
-      `[Unreleased]` in `CHANGELOG.md`), then put its Zenodo version DOI
-      in `CITATION.cff` and the README badge.
+| Domain | Breakthroughs | Gallery examples | Latest entry |
+|---|---:|---:|---:|
+| `time_value` | 16 | 16 | 1998 |
+| `fixed_income` | 16 | 17 | 1994 |
+| `options` | 16 | 18 | 1996 |
+| `interest_rate_models` | 16 | 16 | 2001 |
+| `monte_carlo` | 18 | 18 | 2008 |
+| `exotic_options` | 17 | 17 | 2001 |
+| `pde_methods` | 16 | 16 | 2002 |
+| `stochastic_volatility` | 17 | 17 | 2010 |
+| `time_series` | 19 | 19 | 1998 |
+| `risk` | 17 | 17 | 2005 |
+| `portfolio` | 18 | 18 | 2016 |
+| `asset_pricing` | 17 | 17 | 1997 |
+| `credit` | 17 | 17 | 2009 |
+| `market_microstructure` | 16 | 16 | 2012 |
 
-## Phase checklist
+### What the 0.1.0 audit found
 
-Each domain is built in its own session, from this file plus
-`financialkit-spec.md`.
+The breadth is real, but six weaknesses matter more than more breakthroughs:
 
-- [x] 1. Scaffold: infrastructure, `constants`, `_jit`, `integrators` (SDE schemes), root docs, git
-  - [x] Infrastructure copied from mathematicskit and renamed; `pyproject.toml`, `CONTRIBUTING.md`, `SECURITY.md`, `CITATION.cff` edited
-  - [x] `CLAUDE.md`
-  - [x] `README.md`, `docs/source/index.rst`, `CHANGELOG.md`, `docs/make_readme_*figure*.py` (finance text and figures, with the disclaimer)
-  - [x] `conf.py` `SUBPACKAGES`/`_CATEGORY_ORDER` and the docs index pages (finance categories; domains are added as they land)
-  - [x] New logo (candlestick icon)
-  - [x] `financialkit/__init__.py`, `constants.py`, `integrators/` with tests
-  - [x] `git init` (author cpoli374 <cpoli374@gmail.com>) and first commit
-- [x] 2. `time_value` (reference domain)
-- [x] 3. `fixed_income`
-- [x] 3. `options`
-- [x] 3. `interest_rate_models`
-- [x] 3. `monte_carlo`
-- [x] 3. `exotic_options`
-- [x] 3. `pde_methods`
-- [x] 3. `stochastic_volatility`
-- [x] 3. `time_series`
-- [x] 3. `risk`
-- [x] 3. `portfolio`
-- [x] 3. `asset_pricing`
-- [x] 3. `credit`
-- [x] 3. `market_microstructure`
-- [x] 4. Tutorials, quickstart notebook, JupyterLite contents, `outreach/`
-  - [x] Five tutorials in `docs/source/tutorials/`, linked from the galleries they use: one option, five pricers; the yield curve, end to end; where the smile comes from; from returns to risk; credit risk, from one firm to a portfolio
-  - [x] `notebooks/quickstart.ipynb` (six domains), and the Colab badge and quickstart links restored in `README.md` and `docs/source/index.rst`
-  - [x] The quickstart notebook in the JupyterLite site (`jupyterlite_contents` in `conf.py`); the gallery notebooks were already there
-  - [x] `outreach/` drafts (gitignored, as in mathematicskit)
-- [ ] 5. Post-2008 finance, one domain per session in build order (see
-      [Planned additions](#planned-additions-phase-5))
-  - [ ] `fixed_income`
-  - [ ] `options`
-  - [ ] `interest_rate_models`
-  - [ ] `stochastic_volatility`
-  - [ ] `time_series`
-  - [ ] `risk`
-  - [ ] `credit`
-  - [ ] `market_microstructure`
-- [ ] 6. Course material
-  - [ ] An exercise set per domain in `docs/source/exercises/`, five to ten
-        problems each, each built on a gallery example (change a
-        parameter, predict the result, check it with financialkit), with
-        solutions in collapsed `sphinx-design` dropdowns that run in the
-        docs build
-  - [ ] Two tutorials on phase 5: *One swap, two curves* (OIS
-        discounting, SOFR compounding, the forward market model) and
-        *Counterparty risk, end to end* (Hull-White exposure, CVA, DVA,
-        FVA)
-- [ ] 7. On the way to 1.0 (1.0 freezes the public API; see `CONTRIBUTING.md`)
-  - [ ] API review of every `__all__`: function vs. class for the same
-        kind of model, `tol`/`max_iter`/`n_paths`/`seed` spelled the same
-        everywhere, consistent result field names; deprecate what changes
-  - [ ] Coverage to 100% (`fixed_income` is at 96%, `interest_rate_models`
-        at 97%), then make it blocking with `--cov-fail-under`
-  - [ ] Enforce the 5-second budget per gallery example: fail the docs
-        build when an entry of `sg_execution_times.rst` exceeds it
-  - [ ] Benchmarks for the `@njit` kernels (trees, PSOR, Longstaff-Schwartz,
-        the SDE integrators), with and without numba, so "same results,
-        slower" has numbers
-  - [ ] A conda-forge `recipe.yaml` (only `version` in `context`;
-        `name: financialkit` and the PyPI source URL written out)
+1. **The examples prove nothing.** None of the 239 gallery scripts ends
+   in an `assert`, and the tutorials are static `code-block`s with
+   hand-pasted output that nothing re-runs. The docs build only catches
+   crashes, so a wrong number goes straight to the site.
+2. **The domains don't compose.** `credit` (CDS legs, hazard bootstrap,
+   risky bonds) takes a flat `r` instead of a `CurveLike`. The
+   Longstaff-Schwartz and exotic Monte Carlo pricers simulate their own
+   GBM from `sigma`, so an American or a barrier under Heston, local
+   volatility or Hull-White is impossible. The planned XVA work needs both.
+3. **No calibration.** Only SABR and a single SVI slice can be fitted.
+   Nothing calibrates Heston, Bates or variance gamma to a smile, Hull-White
+   or G2++ to caps and swaptions, or Dupire to an implied-volatility
+   surface, although calibration is how all these models are actually used.
+4. **No dates.** Bonds and swaps are built from year fractions and a
+   regular `freq`. There are no schedules, stubs, business-day rolls or
+   settlement lags, and SOFR compounding in arrears (planned) needs them.
+5. **Synthetic data only.** Every empirical lesson (stylized facts,
+   GARCH, Fama-French, Shiller's excess volatility, the equity premium)
+   runs on data drawn from the model being shown, which is circular.
+6. **History pages stop early and skip classics.** Six domains end before
+   2000. Missing pre-2008 cornerstones include Hansen's GMM, Hamilton's
+   regime switching, Johansen cointegration, DCC-GARCH, the Kalman filter,
+   Bjerksund-Stensland, callable bonds and OAS, MBS prepayment and Barra
+   factor risk models.
 
-## Scope decisions
+Smaller problems: `options.implied_volatility` loops forever when `T = 0`
+(its bracket-doubling `while` has no cap) and solves one element at a time
+with `brentq`. Pricers return `nan` silently on invalid input such as
+`S < 0` (there is no shared validation module, just 252 ad-hoc
+`ValueError`s). Two public names have two implementations with different
+signatures (`accrued_interest`, `realized_variance`). Warnings don't fail
+the tests. Nothing tests the convention that every example is linked from
+exactly one breakthrough.
+
+## How to work from this file
+
+Each item below is meant to be done on its own, in one session, from a
+prompt such as "Do ROADMAP item C2". An item names what to change and when
+it is done. Where one item should come after another it says **After**.
+Nothing else is ordered, but section A is small and should go first.
+
+Every item is done when:
+
+- `ruff check .`, `ruff format --check .`, `mypy financialkit`,
+  `MPLBACKEND=Agg pytest -q`, the same with `NUMBA_DISABLE_JIT=1`, the
+  doctests and `cd docs && make html` are green;
+- the change has a line under `## [Unreleased]` in CHANGELOG.md;
+- the item is moved from "Open work" to "Done" here, with the date.
+
+CLAUDE.md applies to everything: no new dependencies, nothing on the
+network, a domain imports only from earlier domains, every model cites its
+source, and every new breakthrough has a dated history entry, its own
+gallery example and a `systems/` implementation. A history page must never
+fall below 15 entries. Keep the public API backward compatible: when you
+rename something, keep the old name as a deprecated alias.
+
+Sessions may run in parallel. CHANGELOG.md, this file, the table above and
+`docs/source/conf.py` are shared: re-read them just before editing and
+change only your item's lines.
+
+## Open work
+
+### A. Hygiene and bugs
+
+**A1. Commit or revert the pending working tree.** `README.md`,
+`docs/source/conf.py`, `docs/source/index.rst` and `pyproject.toml` hold
+uncommitted SEO work (sitemap, OpenGraph, a "Related toolkits" rubric) and
+put shields.io badges back after commits `df90ed0`, `c210460` and `6ffbd6f`
+moved them to badgen. Decide which badge host wins, check that
+`sphinx-sitemap` and `sphinxext-opengraph` are in the `docs` extra, and
+commit or drop. *Done when* `git status` is clean and the docs build passes.
+
+**A2. Fix `implied_volatility`.** In
+`financialkit/options/systems/implied_vol.py`, `while f(hi) < 0: hi *= 2`
+never ends for `T = 0` (and in general has no cap). Return intrinsic-based
+results or raise a clear `ValueError` for `T <= 0`, cap the bracket, and
+add regression tests for `T = 0`, prices at the bounds and deep
+out-of-the-money options. *Done when* every case returns or raises within
+a second.
+
+**A3. Degenerate inputs in closed-form pricers.** Check every closed-form
+pricer and Greek in `options`, `exotic_options` and `interest_rate_models`
+at `T = 0`, `sigma = 0`, `K = 0`, negative rates and, where it is invalid,
+negative `S`. Each must return the correct limit or raise `ValueError`,
+never `nan` or a `RuntimeWarning` (today `black_scholes_greeks` at `T = 0`
+warns and `black_scholes_price(-100, ...)` returns `nan`). **After** B3,
+which will surface these. *Done when* a parametrized test covers each
+pricer at each limit.
+
+**A4. One implementation per name.** `time_value.accrued_interest` (dates
+and a day count) and `fixed_income.accrued_interest` (year fractions)
+differ in signature, and so do `exotic_options.realized_variance` and
+`time_series.realized_variance`, and the two `plot_cash_flows`. Make the
+later domain call the earlier one, or rename one (keep a deprecated
+alias), and say in each docstring which is which. *Done when* no public
+name means two different things.
+
+### B. Quality gates
+
+**B1. Test the history conventions.** Add
+`financialkit/tests/test_history_conventions.py`: every history page has at
+least 15 dated entries in chronological order, each entry has an
+`*Implementation:*` line and a `.. minigallery::`, every
+`examples/**/plot_*.py` is linked from exactly one entry, and every linked
+file exists. Copy engineeringkit's test if it fits. *Done when* the test
+passes and deleting a link makes it fail.
+
+**B2. Gallery examples check their claims, one domain per session.** For
+the domain named in the prompt, end each `examples/<domain>/**/plot_*.py`
+with an `assert` of the result it illustrates (parity holds, the tree
+converges to the formula, the backtest rejects, within a stated
+tolerance), not just that it ran. *Done when* every example of that domain
+asserts, and the docs build still fits the 5-second budget.
+
+**B3. Make warnings errors.** Add `filterwarnings = ["error"]` to
+`[tool.pytest.ini_options]` and fix the root causes rather than filtering
+them. Allow-list only third-party deprecations you cannot fix, each with a
+comment. *Done when* the suite passes with and without numba.
+
+**B4. Coverage gate.** Bring `fixed_income` (96%) and
+`interest_rate_models` (97%) to 100% with real tests, then add
+`--cov-fail-under=100` to the no-numba CI job, the one that measures
+coverage. *Done when* CI enforces it.
+
+**B5. Test the supported dependency range and Windows.** `pyproject.toml`
+promises numpy 1.24, scipy 1.10 and matplotlib 3.6, but CI installs the
+latest. Add a Python 3.10 job with those floors pinned and a
+`windows-latest` row. Fix what fails or raise the floors. *Done when* both
+jobs are green.
+
+**B6. Run the tutorials and the quickstart notebook in CI.** The five
+tutorials are `code-block`s with pasted output that nothing executes.
+Convert them to executed blocks (`.. plot::`, or a test that extracts each
+block and compares the printed lines with the `# ` comments, as in
+engineeringkit's `test_course_material.py`), and execute
+`notebooks/quickstart.ipynb` in CI without new runtime dependencies (a test
+that runs its code cells is enough). *Done when* changing a model's output
+fails the tests.
+
+**B7. Textbook reference tests, one domain per session.** Today 29 of 104
+test files cite Hull or Haug. For the domain named in the prompt, add
+`tests/test_reference_values.py` with at least five published numbers
+(Hull, Haug, Glasserman, Brigo-Mercurio, Tsay, McNeil-Frey-Embrechts or
+the original paper), citing edition and table or example number. *Done
+when* the domain has five such tests and each fails if the model is
+perturbed.
+
+**B8. Property tests for pricers.** `hypothesis` is a test dependency but
+is used in only 3 files. Add property tests for the no-arbitrage
+invariants: call price increasing in `S` and `T` and convex and decreasing
+in `K`, put-call parity for every European pricer (closed form, trees,
+PDE, FFT, COS), and American price at least the European. *Done when* the
+properties run on every European pricer.
+
+**B9. Enforce the 5-second budget per gallery example.** Fail the docs
+build when an entry of `sg_execution_times.rst` exceeds 5 s in the
+no-numba docs job. *Done when* CI fails on a deliberately slow example.
+
+**B10. Benchmarks for the `@njit` kernels.** Time the trees, PSOR,
+Longstaff-Schwartz and the SDE integrators with and without numba, in a
+script under `benchmarks/` and a table in the docs, so "same results,
+slower" has numbers. *Done when* the table is in the docs.
+
+**B11. Check external links.** Add a weekly workflow running
+`make -C docs linkcheck`, with `linkcheck_ignore` for publishers that
+refuse robots. *Done when* the first run is green.
+
+### C. Architecture and composability
+
+**C1. Credit takes a discount curve.** Make `cds_legs`, `cds_par_spread`,
+`cds_upfront`, `bootstrap_hazard_curve`, `risky_zero_coupon` and the other
+`credit` functions that take `r` accept a `fixed_income` `CurveLike`
+(`as_curve` already turns a float into a flat curve, so existing calls keep
+working). Test that a flat curve reproduces today's numbers and that a
+bootstrapped curve changes the par spread as expected. *Done when* no
+`credit` function needs a flat rate.
+
+**C2. Price on any paths.** Give `longstaff_schwartz`, `barrier_option_mc`,
+`arithmetic_asian_mc` and `lookback_option_mc` a `paths=` (and discount
+factors) entry point, keeping the GBM arguments as the default. Add a
+gallery example pricing an American put on Heston paths
+(`stochastic_volatility.heston_paths`) and a test that GBM paths
+reproduce today's prices. Mind the build order: `stochastic_volatility`
+is after `exotic_options`, so the example combines them and the library
+does not import across. *Done when* the four pricers accept paths.
+
+**C3. Calibrate Fourier models to a smile.** Add a calibration function
+in `stochastic_volatility` that fits a `CharacteristicFunctionModel`
+(Heston, Bates, variance gamma, Kou) to option prices or implied vols
+across strikes and maturities with `scipy.optimize.least_squares`,
+vega-weighted, with a result dataclass (parameters, residuals, RMSE in
+vol points). Test that it recovers the parameters from prices it
+generated. Add a gallery example as a second example under the Heston
+breakthrough. *Done when* the round-trip test passes.
+
+**C4. Calibrate short-rate models to caps and swaptions.** Add a
+calibration of `HullWhiteModel` (`a`, `sigma`) and `G2PlusPlusModel` to
+Black cap or swaption vols, using `model_cap_floor_price` and
+`jamshidian_swaption`. Add a round-trip test and a gallery example under
+the Hull-White breakthrough. *Done when* the round-trip test passes.
+
+**C5. An implied-volatility surface.** Add a surface object in
+`stochastic_volatility` built from SVI slices, with Gatheral's calendar
+and butterfly arbitrage checks (`durrleman_g` exists), and feed it to
+`dupire_local_vol` so local volatility can be built from implied vols, not
+only from a price function. **After** D2's SSVI if both are scheduled.
+*Done when* local volatility from the surface reprices the input options
+within a stated tolerance in a test.
+
+**C6. Greeks for any pricer.** Generalize `finite_difference_greeks`
+(today fixed to `S, K, T, r, sigma, q`) to bump any named parameter of any
+pricer or model, with central differences and common random numbers for
+Monte Carlo pricers. Test it against `black_scholes_greeks` and against
+`pathwise_greeks`. *Done when* Heston vega (bumping `v0`) and a barrier
+delta are one call each.
+
+**C7. Shared input validation.** Add `financialkit/_validation.py`
+(`positive`, `nonnegative`, `finite`, `in_interval`, `option_type`) and use
+it in the closed-form pricers first, replacing the duplicated checks.
+**After** A3. *Done when* `options`, `exotic_options` and
+`interest_rate_models` validate through it and the error messages are
+uniform.
+
+**C8. Schedules and business days.** Add to `time_value` a coupon schedule
+generator (start, end, frequency, short or long front or back stub,
+end-of-month rule), business-day adjustments (following, modified
+following, preceding) on a weekend calendar plus a user-supplied holiday
+array (no bundled holiday data), and settlement lags. Let
+`fixed_income.bond_cash_flows` and the swaps accept a schedule. Test
+against ISDA and SIA worked examples. *Done when* a bond with a short
+first coupon prices and accrues correctly.
+
+**C9. Vectorized implied volatility.** Replace the per-element `brentq`
+loop with a vectorized solver (Newton or Halley on a rational initial
+guess, falling back to bisection), so a 100 × 100 surface inverts in
+milliseconds. Jäckel's method (D2) can then become the default. **After**
+A2. *Done when* a benchmark test shows the speed-up and the results match
+`brentq` to `DEFAULT_ATOL`.
+
+**C10. API review before 1.0.** Review every `__all__`: function vs. class
+for the same kind of model (`heston_price` vs. `HestonModel`, `GARCH` vs.
+`fit_arma`), `tol`/`max_iter`/`n_paths`/`n_steps`/`rng` spelled the same
+everywhere (`n_exercise`, `n_space`, `n_time`), consistent result field
+names, and whether the visualizers are exported (`fixed_income` and
+`exotic_options` export `plot_*`, `options` and `credit` don't). Write the
+decisions into CONTRIBUTING.md and deprecate what changes. **After** the C
+items above. *Done when* the review is written and applied.
+
+### D. Curriculum gaps, one domain per item
+
+Each entry joins its domain's history page in chronological order, with
+its own gallery example at the path in brackets and a `systems/`
+implementation. An item may be split across sessions; tick entries as
+they land.
+
+**D1. `fixed_income`.** **After** C8 for SOFR.
+- [ ] 1977 -- Treasury bond futures: conversion factor and cheapest to deliver [`futures/plot_01_cheapest_to_deliver.py`]
+- [ ] 1985 -- The PSA prepayment benchmark and MBS cash flows [`mbs/plot_01_psa_prepayment.py`]
+- [ ] 2010 -- Piterbarg: OIS discounting of collateralized trades, with separate forecasting curves [`curves/plot_07_ois_multi_curve.py`]
+- [ ] 2018 -- SOFR: compounding in arrears [`swaps/plot_03_sofr_compounded_in_arrears.py`]
+
+**D2. `options`.** **After** C9 for Jäckel.
+- [ ] 1993 -- Bjerksund-Stensland American approximation [`trees/plot_07_bjerksund_stensland.py`]
+- [ ] 2003 -- Haug-Haug-Lewis: discrete cash dividends [`closed_form/plot_08_discrete_dividends.py`]
+- [ ] 2007 -- Castagna-Mercurio vanna-volga FX smile [`implied_vol/plot_06_vanna_volga.py`]
+- [ ] 2015 -- Jäckel's "Let's be rational" implied volatility [`implied_vol/plot_05_jaeckel_lets_be_rational.py`]
+- [ ] 2020 -- Negative oil futures: Bachelier returns to the exchange [`closed_form/plot_07_bachelier_negative_prices.py`]
+
+**D3. `interest_rate_models`.**
+- [ ] 1989 -- Richard-Roll: MBS prepayment under a short-rate model [`mbs/plot_01_richard_roll_prepayment.py`]
+- [ ] 1994 -- Hull-White trinomial tree: callable bonds and the option-adjusted spread [`curve_fitted/plot_05_callable_bond_oas.py`]
+- [ ] 2019 -- Lyashenko-Mercurio forward market model for backward-looking rates [`options/plot_05_lyashenko_mercurio_fmm.py`]
+
+**D4. `monte_carlo`.**
+- [ ] 2006 -- Giles-Glasserman adjoint Greeks ("smoking adjoints") [`greeks/plot_03_adjoint_greeks.py`]
+
+**D5. `pde_methods`.**
+- [ ] 1988 -- Craig-Sneyd ADI with mixed derivatives [`multi_factor/plot_02_craig_sneyd.py`]
+- [ ] 2010 -- In 't Hout-Foulon: the Heston PDE by ADI [`multi_factor/plot_03_heston_adi.py`]
+
+**D6. `stochastic_volatility`.** Rough Bergomi needs a fractional kernel
+simulator, written here, not in `integrators` unless it is general.
+- [ ] 2014 -- Gatheral-Jacquier arbitrage-free SVI surfaces (SSVI) [`smile/plot_04_ssvi.py`]
+- [ ] 2016 -- Bayer-Friz-Gatheral rough Bergomi [`rough/plot_01_rough_bergomi.py`]
+- [ ] 2017 -- Bennedsen-Lunde-Pakkanen hybrid scheme [`rough/plot_02_hybrid_scheme.py`]
+- [ ] 2018 -- Gatheral-Jaillet-Rosenbaum: volatility is rough [`rough/plot_03_volatility_is_rough.py`]
+
+**D7. `time_series`.** The largest gap: the page stops in 1998 and has no
+multivariate or state-space models.
+- [ ] 1960 -- Kalman filter and the state-space model [`state_space/plot_01_kalman_filter.py`]
+- [ ] 1980 -- Sims's vector autoregression and impulse responses [`linear_models/plot_04_sims_var.py`]
+- [ ] 1988 -- Johansen cointegration test [`unit_roots/plot_03_johansen.py`]
+- [ ] 1989 -- Hamilton's regime-switching model [`state_space/plot_02_hamilton_regime_switching.py`]
+- [ ] 1992 -- KPSS stationarity test [`unit_roots/plot_04_kpss.py`]
+- [ ] 2002 -- Engle's dynamic conditional correlation (DCC-GARCH) [`volatility/plot_09_engle_dcc.py`]
+- [ ] 2009 -- Corsi's HAR model of realized volatility [`volatility/plot_08_corsi_har.py`]
+
+**D8. `risk`.**
+- [ ] 1997 -- Rouvinez: delta-gamma VaR [`var/plot_07_delta_gamma_var.py`]
+- [ ] 1999 -- Bangia-Diebold-Schuermann-Stroughair liquidity-adjusted VaR [`var/plot_08_liquidity_adjusted_var.py`]
+- [ ] 2014 -- Acerbi-Szekely expected-shortfall backtests [`backtesting/plot_04_acerbi_szekely.py`]
+- [ ] 2016 -- FRTB: 97.5% expected shortfall with liquidity horizons [`expected_shortfall/plot_04_frtb_expected_shortfall.py`]
+
+**D9. `portfolio`.**
+- [ ] 1974 -- Rosenberg's fundamental factor risk model (Barra) [`covariance/plot_03_rosenberg_factor_model.py`]
+- [ ] 2003 -- Goldfarb-Iyengar robust portfolio selection [`bayesian/plot_03_robust_optimization.py`]
+- [ ] 2013 -- Gârleanu-Pedersen: trading with transaction costs [`growth/plot_04_garleanu_pedersen.py`]
+
+**D10. `asset_pricing`.** The page stops in 1997 and lacks GMM, the
+estimator the whole field uses.
+- [ ] 1982 -- Hansen's generalized method of moments [`sdf/plot_03_hansen_gmm.py`]
+- [ ] 1982 -- Hansen-Singleton: the Euler equation estimated [`consumption/plot_04_hansen_singleton.py`]
+- [ ] 1988 -- Campbell-Shiller log-linear present value [`valuation/plot_05_campbell_shiller.py`]
+- [ ] 1999 -- Campbell-Cochrane habit formation [`consumption/plot_05_campbell_cochrane_habit.py`]
+- [ ] 2004 -- Bansal-Yaron long-run risk [`consumption/plot_06_bansal_yaron.py`]
+- [ ] 2015 -- Fama-French five factors [`factors/plot_05_fama_french_five.py`]
+- [ ] 2016 -- Harvey-Liu-Zhu: the factor zoo and multiple testing [`factors/plot_06_harvey_liu_zhu.py`]
+
+**D11. `credit`.** **After** C1 and C2: exposure is Longstaff-Schwartz
+regression on Hull-White paths, discounted on a curve.
+- [ ] 2003 -- Andersen-Sidenius-Basu loss recursion [`portfolio_loss/plot_06_andersen_sidenius_basu.py`]
+- [ ] 2004 -- Base correlation [`portfolio_loss/plot_07_base_correlation.py`]
+- [ ] 2005 -- Brigo-Masetti: unilateral CVA from exposure profiles [`xva/plot_01_brigo_masetti_cva.py`]
+- [ ] 2009 -- Gregory: bilateral CVA and DVA [`xva/plot_02_gregory_bilateral_cva.py`]
+- [ ] 2011 -- Burgard-Kjaer: funding valuation adjustment [`xva/plot_03_burgard_kjaer_fva.py`]
+
+**D12. `market_microstructure`.**
+- [ ] 1971 -- Hawkes self-exciting order flow [`order_flow/plot_01_hawkes.py`]
+- [ ] 2010 -- Cont-Stoikov-Talreja limit order book [`order_flow/plot_02_cont_stoikov_talreja.py`]
+- [ ] 2013 -- Obizhaeva-Wang transient impact [`execution/plot_04_obizhaeva_wang.py`]
+- [ ] 2014 -- Cont-Kukanov-Stoikov order-flow imbalance [`order_flow/plot_03_order_flow_imbalance.py`]
+
+`time_value`, `exotic_options` and the rest of `monte_carlo` have no
+pressing gaps.
+
+### E. Data
+
+**E1. Decide on bundled datasets (the author).** CLAUDE.md allows small
+CSVs under `financialkit/datasets/`, "generated by a committed script",
+but a script that downloads breaks the no-network rule, and the
+candidate sources have different terms: Shiller's stock-market data
+(public), FRED Treasury yields (public domain for most series), Ken
+French's factor library (no stated licence). Decide which, if any, ship,
+and how the script is run (by the author, once, offline from CI).
+*Done when* the decision is written into CLAUDE.md.
+
+**E2. Build `financialkit.datasets` and port the empirical examples.**
+**After** E1. Add loaders that return numpy arrays (no pandas), the
+generating script, package data and a test of each loader. Port the
+examples where synthetic data is circular: Mandelbrot's fat tails, the
+Hill estimator, GARCH, Shiller's excess volatility, the equity premium
+puzzle, Fama-French and yield-curve PCA. *Done when* those examples run
+on real data offline.
+
+### F. Course material
+
+**F1. Exercises, one domain per session.** For the domain named in the
+prompt, add `docs/source/exercises/<domain>.rst`: five to ten problems,
+each built on a gallery example (change a parameter, predict, check with
+financialkit), with solutions in collapsed `sphinx-design` dropdowns that
+run in the docs build and are checked as in B6. *Done when* the page
+builds and its solutions are tested.
+
+**F2. Two tutorials on the new material.** *One swap, two curves* (OIS
+discounting, SOFR compounding, the forward market model) and
+*Counterparty risk, end to end* (Hull-White exposure, CVA, DVA, FVA).
+**After** D1, D3, D11 and B6. *Done when* both are linked from the
+galleries they use and executed in CI.
+
+**F3. A calibration tutorial.** *From quotes to a model*: an SVI surface,
+local volatility from it, Heston fitted to the same quotes, and the
+exotic prices the two disagree on. **After** C2, C3 and C5.
+
+### G. Releases (the author)
+
+**G1. Release 0.2.0** (the tutorials and the quickstart notebook under
+`[Unreleased]` in CHANGELOG.md), then put its Zenodo version DOI in
+`CITATION.cff` and the README badge. Releasing A2 with it is worth it.
+
+**G2. conda-forge recipe.** A `recipe.yaml` with only `version` in
+`context`, and `name: financialkit` and the PyPI source URL written out.
+
+**G3. 1.0.** Freezes the public API (see CONTRIBUTING.md). **After** all
+of B, C10 and G1.
+
+### H. Scope decisions
 
 - **Out of scope** (the dependencies are fixed): deep hedging and other
   neural-network methods, which need a deep-learning framework; market
   data fetching; wrappers around QuantLib.
 - **Candidate domains**, not scheduled. CLAUDE.md forbids adding domains
-  without the author's decision, and each would need 15+ breakthroughs:
+  without the author's decision, each would need 15+ breakthroughs, and
+  none should start before section D, since every existing domain still
+  has gaps:
   - `commodities`: Gibson-Schwartz (1990), Schwartz's one-, two- and
     three-factor models (1997), Schwartz-Smith (2000), seasonality,
     storage and spark-spread options;
@@ -102,355 +432,17 @@ Each domain is built in its own session, from this file plus
     Trigeorgis's expansion and abandonment options, Myers's
     underinvestment (1977).
 
-## Where financialkit stands
+## Done
 
-236 breakthroughs and 239 gallery examples over 14 domains; 868 tests,
-99% line coverage; 5 tutorials and the quickstart notebook. Most history
-pages stop around 2010: the multi-curve world, the LIBOR transition,
-XVA, rough volatility and FRTB are phase 5.
+### Unreleased
 
-| Domain | Breakthroughs | Gallery examples |
-|---|---:|---:|
-| `time_value` | 16 | 16 |
-| `fixed_income` | 16 | 17 |
-| `options` | 16 | 18 |
-| `interest_rate_models` | 16 | 16 |
-| `monte_carlo` | 18 | 18 |
-| `exotic_options` | 17 | 17 |
-| `pde_methods` | 16 | 16 |
-| `stochastic_volatility` | 17 | 17 |
-| `time_series` | 19 | 19 |
-| `risk` | 17 | 17 |
-| `portfolio` | 18 | 18 |
-| `asset_pricing` | 17 | 17 |
-| `credit` | 17 | 17 |
-| `market_microstructure` | 16 | 16 |
+- Five tutorials, the quickstart notebook in Colab and JupyterLite, and
+  the `outreach/` drafts.
 
-## Planned additions (phase 5)
+### 0.1.0 (2026-10-10)
 
-Each entry joins its domain's list below, and its history page, in
-chronological order when it is built, with its own gallery example and a
-`systems/` implementation, under the usual rules (numpy/scipy first, no
-new dependencies, a domain imports only from earlier domains).
-
-### fixed_income
-
-- 2010 -- Piterbarg: OIS discounting of collateralized trades, with separate forecasting curves [`curves/plot_07_ois_multi_curve.py`]
-- 2018 -- SOFR: compounding in arrears [`swaps/plot_03_sofr_compounded_in_arrears.py`]
-
-### options
-
-- 2015 -- Jäckel's "Let's be rational" implied volatility [`implied_vol/plot_05_jaeckel_lets_be_rational.py`]
-- 2020 -- Negative oil futures: Bachelier returns to the exchange [`closed_form/plot_07_bachelier_negative_prices.py`]
-
-### interest_rate_models
-
-- 2019 -- Lyashenko-Mercurio forward market model for backward-looking rates [`options/plot_05_lyashenko_mercurio_fmm.py`]
-
-### stochastic_volatility
-
-- 2014 -- Gatheral-Jacquier arbitrage-free SVI surfaces (SSVI) [`smile/plot_04_ssvi.py`]
-- 2016 -- Bayer-Friz-Gatheral rough Bergomi [`rough/plot_01_rough_bergomi.py`]
-- 2017 -- Bennedsen-Lunde-Pakkanen hybrid scheme [`rough/plot_02_hybrid_scheme.py`]
-- 2018 -- Gatheral-Jaillet-Rosenbaum: volatility is rough [`rough/plot_03_volatility_is_rough.py`]
-
-### time_series
-
-- 2009 -- Corsi's HAR model of realized volatility [`volatility/plot_08_corsi_har.py`]
-
-### risk
-
-- 2014 -- Acerbi-Szekely expected-shortfall backtests [`backtesting/plot_04_acerbi_szekely.py`]
-- 2016 -- FRTB: 97.5% expected shortfall with liquidity horizons [`expected_shortfall/plot_04_frtb_expected_shortfall.py`]
-
-### credit
-
-- 2005 -- Brigo-Masetti: unilateral CVA from exposure profiles [`xva/plot_01_brigo_masetti_cva.py`]
-- 2009 -- Gregory: bilateral CVA and DVA [`xva/plot_02_gregory_bilateral_cva.py`]
-- 2011 -- Burgard-Kjaer: funding valuation adjustment [`xva/plot_03_burgard_kjaer_fva.py`]
-
-### market_microstructure
-
-- 1971 -- Hawkes self-exciting order flow [`order_flow/plot_01_hawkes.py`]
-- 2010 -- Cont-Stoikov-Talreja limit order book [`order_flow/plot_02_cont_stoikov_talreja.py`]
-- 2014 -- Cont-Kukanov-Stoikov order-flow imbalance [`order_flow/plot_03_order_flow_imbalance.py`]
-
-## Planned breakthroughs
-
-### time_value
-
-1. c. 1202 -- Fibonacci's *Liber Abaci*: present value [`present_value/plot_01_fibonacci_present_value.py`]
-2. 1494 -- Pacioli's rule of 72 [`compounding/plot_01_pacioli_rule_of_72.py`]
-3. 1613 -- Witt's compound-interest tables [`compounding/plot_02_witt_compound_interest_tables.py`]
-4. 1671 -- De Witt's life annuities [`annuities/plot_01_de_witt_life_annuity.py`]
-5. 1683 -- Bernoulli and continuous compounding [`compounding/plot_03_bernoulli_continuous_compounding.py`]
-6. 1751 -- Consols and the perpetuity [`annuities/plot_02_consol_perpetuity.py`]
-7. 1772 -- Price's sinking fund [`annuities/plot_03_price_sinking_fund.py`]
-8. 1896 -- Fisher's real and nominal rates [`present_value/plot_02_fisher_real_rate.py`]
-9. 1907 -- Fisher's net present value [`present_value/plot_03_fisher_net_present_value.py`]
-10. 1930 -- The internal rate of return [`irr/plot_01_internal_rate_of_return.py`]
-11. 1933 -- The fully amortizing mortgage [`amortization/plot_01_amortizing_mortgage.py`]
-12. 1955 -- Lorie-Savage: multiple IRRs [`irr/plot_02_lorie_savage_multiple_irr.py`]
-13. 1959 -- Baldwin's modified IRR [`irr/plot_03_baldwin_mirr.py`]
-14. 1968 -- Truth in Lending: APR and the effective rate [`amortization/plot_02_truth_in_lending_apr.py`]
-15. 1993 -- SIA 30/360 and accrued interest [`day_counts/plot_01_thirty_360_accrued_interest.py`]
-16. 1998 -- ISDA's actual/actual and the day-count zoo [`day_counts/plot_02_isda_actual_actual.py`]
-
-### fixed_income
-
-1. 1938 -- Macaulay duration [`duration/plot_01_macaulay_duration.py`]
-2. 1939 -- Hicks: duration as an elasticity (modified duration) [`duration/plot_02_hicks_modified_duration.py`]
-3. 1940 -- Lutz: forward rates [`curves/plot_01_lutz_forward_rates.py`]
-4. 1952 -- Redington immunization [`immunization/plot_01_redington_immunization.py`]
-5. 1971 -- Fisher-Weil duration [`duration/plot_03_fisher_weil_duration.py`]
-6. 1971 -- McCulloch's spline discount function [`curves/plot_02_mcculloch_spline.py`]
-7. 1972 -- *Inside the Yield Book*: yield to maturity [`bonds/plot_01_yield_to_maturity.py`]
-8. 1976 -- Carleton-Cooper bootstrapping [`curves/plot_03_bootstrapping.py`]
-9. 1981 -- The IBM-World Bank swap [`swaps/plot_01_ibm_world_bank_currency_swap.py`, `swaps/plot_02_interest_rate_swap.py`]
-10. 1983 -- Bierwag-Kaufman-Toevs: convexity [`duration/plot_04_convexity.py`]
-11. 1984 -- Fong-Vasicek M-squared [`immunization/plot_02_fong_vasicek_m_squared.py`]
-12. 1985 -- STRIPS: a bond as a portfolio of zeros [`bonds/plot_02_strips_zero_coupon.py`]
-13. 1987 -- Nelson-Siegel [`curves/plot_04_nelson_siegel.py`]
-14. 1991 -- Litterman-Scheinkman: level, slope, curvature [`curves/plot_05_litterman_scheinkman_pca.py`]
-15. 1992 -- Ho's key rate durations [`duration/plot_05_ho_key_rate_durations.py`]
-16. 1994 -- Svensson [`curves/plot_06_svensson.py`]
-
-### options
-
-1. 1900 -- Bachelier [`closed_form/plot_01_bachelier.py`]
-2. 1969 -- Stoll's put-call parity [`closed_form/plot_02_stoll_put_call_parity.py`]
-3. 1973 -- Black-Scholes [`closed_form/plot_03_black_scholes.py`]
-4. 1973 -- Merton: dividends and no-arbitrage bounds [`closed_form/plot_04_merton_bounds_and_dividends.py`]
-5. 1973 -- Delta hedging and the Greeks [`greeks/plot_01_greeks.py`, `greeks/plot_02_delta_hedging.py`]
-6. 1976 -- Black-76 [`closed_form/plot_05_black76.py`]
-7. 1976 -- Latane-Rendleman implied volatility [`implied_vol/plot_01_implied_volatility.py`]
-8. 1978 -- Breeden-Litzenberger risk-neutral density [`implied_vol/plot_02_breeden_litzenberger.py`]
-9. 1979 -- Cox-Ross-Rubinstein binomial tree [`trees/plot_01_crr_convergence.py`, `trees/plot_02_crr_american_put.py`]
-10. 1979 -- Rendleman-Bartter tree [`trees/plot_03_rendleman_bartter.py`]
-11. 1983 -- Garman-Kohlhagen FX options [`closed_form/plot_06_garman_kohlhagen.py`]
-12. 1986 -- Boyle's trinomial tree [`trees/plot_04_boyle_trinomial.py`]
-13. 1987 -- Barone-Adesi-Whaley American approximation [`trees/plot_05_barone_adesi_whaley.py`]
-14. 1987 -- The volatility smile [`implied_vol/plot_03_volatility_smile.py`]
-15. 1988 -- Brenner-Subrahmanyam at-the-money approximation [`implied_vol/plot_04_brenner_subrahmanyam.py`]
-16. 1996 -- Leisen-Reimer tree [`trees/plot_06_leisen_reimer.py`]
-
-### interest_rate_models
-
-1. 1949 -- Feynman-Kac: bond prices by Monte Carlo [`short_rate/plot_01_feynman_kac_bond_price.py`]
-2. 1951 -- Feller's boundary condition [`short_rate/plot_02_feller_condition.py`]
-3. 1973 -- Merton's Gaussian short rate [`short_rate/plot_03_merton_short_rate.py`]
-4. 1977 -- Vasicek [`short_rate/plot_04_vasicek.py`]
-5. 1985 -- Cox-Ingersoll-Ross [`short_rate/plot_05_cir.py`]
-6. 1986 -- Ho-Lee [`curve_fitted/plot_01_ho_lee.py`]
-7. 1989 -- Jamshidian: bond options [`options/plot_01_jamshidian_bond_option.py`]
-8. 1989 -- Jamshidian decomposition: swaptions [`options/plot_02_jamshidian_swaption.py`]
-9. 1990 -- Hull-White [`curve_fitted/plot_02_hull_white.py`]
-10. 1990 -- Black-Derman-Toy [`curve_fitted/plot_03_black_derman_toy.py`]
-11. 1990 -- Futures convexity adjustment [`curve_fitted/plot_04_futures_convexity_adjustment.py`]
-12. 1992 -- Heath-Jarrow-Morton drift condition [`hjm/plot_01_hjm_drift_condition.py`]
-13. 1996 -- Duffie-Kan affine term structures [`short_rate/plot_06_duffie_kan_affine.py`]
-14. 1997 -- BGM: caps and floors by Black's formula [`options/plot_03_bgm_caps_floors.py`]
-15. 1997 -- Jamshidian's swap market model: Black swaptions [`options/plot_04_black_swaption.py`]
-16. 2001 -- Brigo-Mercurio G2++ [`short_rate/plot_07_g2pp.py`]
-
-### monte_carlo
-
-1. 1934 -- Neyman stratification [`variance_reduction/plot_01_neyman_stratification.py`]
-2. 1949 -- Metropolis-Ulam: the Monte Carlo method [`basics/plot_01_crude_monte_carlo.py`]
-3. 1953 -- Kahn-Marshall importance sampling [`variance_reduction/plot_02_importance_sampling.py`]
-4. 1956 -- Hammersley-Morton antithetic variates [`variance_reduction/plot_03_antithetic_variates.py`]
-5. 1958 -- Box-Muller normal variates [`basics/plot_02_box_muller.py`]
-6. 1960 -- Halton sequences [`quasi_monte_carlo/plot_01_halton.py`]
-7. 1961 -- Koksma-Hlawka and discrepancy [`quasi_monte_carlo/plot_02_koksma_hlawka.py`]
-8. 1967 -- Sobol sequences [`quasi_monte_carlo/plot_03_sobol.py`]
-9. 1977 -- Boyle: options by Monte Carlo [`basics/plot_03_boyle_option_pricing.py`]
-10. 1979 -- McKay-Beckman-Conover Latin hypercube [`variance_reduction/plot_04_latin_hypercube.py`]
-11. 1981 -- Lavenberg-Welch control variates [`variance_reduction/plot_05_control_variates.py`]
-12. 1987 -- Glynn: likelihood-ratio Greeks [`greeks/plot_01_likelihood_ratio.py`]
-13. 1995 -- Barraquand moment matching [`variance_reduction/plot_06_moment_matching.py`]
-14. 1995 -- Owen scrambling: randomized QMC [`quasi_monte_carlo/plot_04_owen_scrambling.py`]
-15. 1995 -- Paskov-Traub: QMC in high dimension [`quasi_monte_carlo/plot_05_paskov_traub.py`]
-16. 1996 -- Broadie-Glasserman pathwise Greeks [`greeks/plot_02_pathwise.py`]
-17. 1996 -- Caflisch-Moskowitz Brownian bridge [`quasi_monte_carlo/plot_06_brownian_bridge.py`]
-18. 2008 -- Giles multilevel Monte Carlo [`multilevel/plot_01_giles_mlmc.py`]
-
-### exotic_options
-
-1. 1973 -- Merton's down-and-out call [`barriers/plot_01_merton_down_and_out.py`]
-2. 1978 -- Margrabe exchange option [`multi_asset/plot_01_margrabe.py`]
-3. 1979 -- Goldman-Sosin-Gatto floating lookback [`path_dependent/plot_01_floating_lookback.py`]
-4. 1979 -- Geske compound options [`compound/plot_01_geske_compound.py`]
-5. 1982 -- Stulz options on the max and min [`multi_asset/plot_02_stulz_max_min.py`]
-6. 1990 -- Kemna-Vorst Asian options [`asian/plot_01_kemna_vorst.py`]
-7. 1990 -- Rubinstein forward-start options [`compound/plot_02_forward_start.py`]
-8. 1991 -- Reiner-Rubinstein barriers [`barriers/plot_02_reiner_rubinstein.py`]
-9. 1991 -- Reiner-Rubinstein binaries [`binaries/plot_01_digital_options.py`]
-10. 1991 -- Rubinstein chooser [`compound/plot_03_chooser.py`]
-11. 1991 -- Conze-Viswanathan fixed lookback [`path_dependent/plot_02_fixed_lookback.py`]
-12. 1991 -- Turnbull-Wakeman Asian approximation [`asian/plot_02_turnbull_wakeman.py`]
-13. 1992 -- Ikeda-Kunitomo double barriers [`barriers/plot_03_double_barrier.py`]
-14. 1992 -- Reiner quantos [`multi_asset/plot_03_quanto.py`]
-15. 1997 -- Broadie-Glasserman-Kou discrete barriers [`barriers/plot_04_discrete_barrier_correction.py`]
-16. 1999 -- Demeterfi-Derman-Kamal-Zou variance swaps [`path_dependent/plot_03_variance_swap.py`]
-17. 2001 -- Longstaff-Schwartz [`american/plot_01_longstaff_schwartz.py`]
-
-### pde_methods
-
-1. 1911 -- Richardson extrapolation [`accuracy/plot_01_richardson_extrapolation.py`]
-2. 1928 -- Courant-Friedrichs-Lewy [`stability/plot_01_cfl_explicit_blowup.py`]
-3. 1947 -- Crank-Nicolson [`schemes/plot_01_crank_nicolson.py`]
-4. 1949 -- Laasonen's implicit scheme [`schemes/plot_02_laasonen_implicit.py`]
-5. 1949 -- Thomas algorithm [`schemes/plot_03_thomas_algorithm.py`]
-6. 1950 -- Von Neumann stability analysis [`stability/plot_02_von_neumann.py`]
-7. 1955 -- Peaceman-Rachford ADI [`multi_factor/plot_01_peaceman_rachford_adi.py`]
-8. 1971 -- Cryer's projected SOR [`american/plot_01_cryer_psor.py`]
-9. 1973 -- Black-Scholes as the heat equation [`schemes/plot_04_heat_equation_transform.py`]
-10. 1977 -- Schwartz: explicit finite differences [`schemes/plot_05_schwartz_explicit.py`]
-11. 1977 -- Brennan-Schwartz American put [`american/plot_02_brennan_schwartz.py`]
-12. 1978 -- Brennan-Schwartz: explicit schemes are trinomial trees [`schemes/plot_06_explicit_is_trinomial.py`]
-13. 1984 -- Rannacher smoothing [`stability/plot_03_rannacher_smoothing.py`]
-14. 2000 -- Tavella-Randall non-uniform grids [`accuracy/plot_02_tavella_randall_grid.py`]
-15. 2000 -- Zvan-Forsyth-Vetzal barrier options [`schemes/plot_07_barrier_pde.py`]
-16. 2002 -- Forsyth-Vetzal penalty method [`american/plot_03_penalty_method.py`]
-
-### stochastic_volatility
-
-1. 1975 -- Cox CEV [`local_vol/plot_01_cox_cev.py`]
-2. 1976 -- Merton jump diffusion [`jumps/plot_01_merton_jump_diffusion.py`]
-3. 1987 -- Hull-White stochastic volatility [`heston/plot_01_hull_white_mixing.py`]
-4. 1990 -- Madan-Seneta variance gamma [`jumps/plot_02_madan_seneta_variance_gamma.py`]
-5. 1993 -- Heston [`heston/plot_02_heston.py`]
-6. 1994 -- Dupire local volatility [`local_vol/plot_02_dupire.py`]
-7. 1996 -- Bates jumps with stochastic volatility [`jumps/plot_03_bates.py`]
-8. 1998 -- Madan-Carr-Chang skewed variance gamma [`jumps/plot_04_madan_carr_chang.py`]
-9. 1999 -- Carr-Madan FFT [`fourier/plot_01_carr_madan_fft.py`]
-10. 2001 -- Lewis's single-integral formula [`fourier/plot_02_lewis_formula.py`]
-11. 2002 -- Hagan SABR [`smile/plot_01_sabr.py`]
-12. 2002 -- Kou double-exponential jumps [`jumps/plot_05_kou.py`]
-13. 2004 -- Gatheral SVI [`smile/plot_02_svi.py`]
-14. 2004 -- Lee's moment formula [`smile/plot_03_lee_moment_formula.py`]
-15. 2008 -- Andersen QE scheme [`simulation/plot_01_andersen_qe.py`]
-16. 2008 -- Fang-Oosterlee COS method [`fourier/plot_03_cos_method.py`]
-17. 2010 -- Lord-Koekkoek-van Dijk full truncation [`simulation/plot_02_full_truncation.py`]
-
-### time_series
-
-1. 1927 -- Yule's autoregression [`linear_models/plot_01_yule_autoregression.py`]
-2. 1951 -- Hurst exponent [`long_memory/plot_01_hurst_exponent.py`]
-3. 1953 -- Kendall: the random walk of prices [`efficiency/plot_01_kendall_autocorrelation.py`]
-4. 1963 -- Mandelbrot: fat tails [`stylized_facts/plot_01_mandelbrot_fat_tails.py`]
-5. 1965 -- Fama's runs test [`efficiency/plot_02_fama_runs_test.py`]
-6. 1970 -- Box-Jenkins ARMA [`linear_models/plot_02_box_jenkins_arma.py`]
-7. 1974 -- Akaike information criterion [`linear_models/plot_03_akaike_order_selection.py`]
-8. 1975 -- Hill tail index [`stylized_facts/plot_02_hill_tail_index.py`]
-9. 1978 -- Ljung-Box portmanteau test [`efficiency/plot_03_ljung_box.py`]
-10. 1979 -- Dickey-Fuller unit roots [`unit_roots/plot_01_dickey_fuller.py`]
-11. 1980 -- Parkinson's range volatility [`volatility/plot_01_parkinson_range.py`]
-12. 1982 -- Engle's ARCH [`volatility/plot_02_engle_arch.py`]
-13. 1986 -- Bollerslev's GARCH [`volatility/plot_03_bollerslev_garch.py`]
-14. 1987 -- Engle-Granger cointegration [`unit_roots/plot_02_engle_granger.py`]
-15. 1988 -- Lo-MacKinlay variance ratio [`efficiency/plot_04_lo_mackinlay.py`]
-16. 1991 -- Nelson's EGARCH [`volatility/plot_04_nelson_egarch.py`]
-17. 1993 -- Glosten-Jagannathan-Runkle [`volatility/plot_05_gjr_garch.py`]
-18. 1994 -- RiskMetrics EWMA [`volatility/plot_06_riskmetrics_ewma.py`]
-19. 1998 -- Andersen-Bollerslev realized volatility [`volatility/plot_07_realized_volatility.py`]
-
-### risk
-
-1. 1928 -- Fisher-Tippett extreme values [`extreme_value/plot_01_fisher_tippett_gev.py`]
-2. 1937 -- Cornish-Fisher expansion [`var/plot_01_cornish_fisher.py`]
-3. 1952 -- Roy's safety-first criterion [`var/plot_02_roy_safety_first.py`]
-4. 1959 -- Sklar's copulas [`copulas/plot_01_sklar_gaussian_copula.py`]
-5. 1975 -- Pickands-Balkema-de Haan peaks over threshold [`extreme_value/plot_02_peaks_over_threshold.py`]
-6. 1991 -- Young's Calmar ratio and drawdowns [`drawdowns/plot_01_calmar_drawdowns.py`]
-7. 1994 -- RiskMetrics parametric VaR [`var/plot_03_parametric_var.py`]
-8. 1995 -- Kupiec's proportion-of-failures test [`backtesting/plot_01_kupiec.py`]
-9. 1996 -- Basel historical VaR and the traffic light [`backtesting/plot_02_basel_traffic_light.py`]
-10. 1997 -- Pritsker: Monte Carlo VaR [`var/plot_04_monte_carlo_var.py`]
-11. 1998 -- Boudoukh-Richardson-Whitelaw hybrid VaR [`var/plot_05_hybrid_var.py`]
-12. 1998 -- Christoffersen's independence test [`backtesting/plot_03_christoffersen.py`]
-13. 1999 -- Artzner-Delbaen-Eber-Heath coherence [`expected_shortfall/plot_01_coherence.py`]
-14. 1999 -- Barone-Adesi filtered historical simulation [`var/plot_06_filtered_historical.py`]
-15. 1999 -- Tasche: Euler risk allocation [`expected_shortfall/plot_02_euler_allocation.py`]
-16. 2002 -- Acerbi-Tasche expected shortfall [`expected_shortfall/plot_03_acerbi_tasche.py`]
-17. 2005 -- Demarta-McNeil t copula [`copulas/plot_02_t_copula_tail_dependence.py`]
-
-### portfolio
-
-1. 1952 -- Markowitz mean-variance [`mean_variance/plot_01_markowitz_frontier.py`]
-2. 1956 -- Kelly criterion [`growth/plot_01_kelly_criterion.py`]
-3. 1958 -- Tobin separation [`mean_variance/plot_02_tobin_tangency.py`]
-4. 1963 -- Sharpe's single-index model [`covariance/plot_01_single_index.py`]
-5. 1966 -- The Sharpe ratio [`performance/plot_01_sharpe_ratio.py`]
-6. 1969 -- Merton's portfolio problem [`growth/plot_02_merton_portfolio.py`]
-7. 1972 -- Merton's analytic frontier [`mean_variance/plot_03_merton_analytic_frontier.py`]
-8. 1987 -- Black-Jones CPPI [`growth/plot_03_cppi.py`]
-9. 1989 -- Grinold's fundamental law [`performance/plot_02_fundamental_law.py`]
-10. 1992 -- Black-Litterman [`bayesian/plot_01_black_litterman.py`]
-11. 1994 -- Sortino ratio [`performance/plot_03_sortino_ratio.py`]
-12. 1998 -- Michaud resampled efficiency [`bayesian/plot_02_michaud_resampling.py`]
-13. 2000 -- Rockafellar-Uryasev CVaR optimization [`risk_based/plot_01_cvar_optimization.py`]
-14. 2004 -- Ledoit-Wolf shrinkage [`covariance/plot_02_ledoit_wolf.py`]
-15. 2008 -- Choueifaty most-diversified portfolio [`risk_based/plot_02_most_diversified.py`]
-16. 2009 -- DeMiguel-Garlappi-Uppal 1/N [`mean_variance/plot_04_one_over_n.py`]
-17. 2010 -- Maillard-Roncalli-Teiletche risk parity [`risk_based/plot_03_risk_parity.py`]
-18. 2016 -- Lopez de Prado hierarchical risk parity [`risk_based/plot_04_hierarchical_risk_parity.py`]
-
-### asset_pricing
-
-1. 1938 -- Williams's dividend discount model [`valuation/plot_01_williams_ddm.py`]
-2. 1958 -- Modigliani-Miller [`valuation/plot_02_modigliani_miller.py`]
-3. 1959 -- Gordon growth [`valuation/plot_03_gordon_growth.py`]
-4. 1964 -- Sharpe's CAPM [`capm/plot_01_security_market_line.py`]
-5. 1968 -- Jensen's alpha [`capm/plot_02_jensen_alpha.py`]
-6. 1972 -- Black's zero-beta CAPM [`capm/plot_03_zero_beta.py`]
-7. 1973 -- Fama-MacBeth regressions [`factors/plot_01_fama_macbeth.py`]
-8. 1976 -- Ross's APT [`factors/plot_02_ross_apt.py`]
-9. 1978 -- Lucas's tree [`consumption/plot_01_lucas_tree.py`]
-10. 1979 -- Harrison-Kreps: the stochastic discount factor [`sdf/plot_01_harrison_kreps.py`]
-11. 1979 -- Breeden's consumption CAPM [`consumption/plot_02_breeden_ccapm.py`]
-12. 1981 -- Shiller's excess volatility [`valuation/plot_04_shiller_excess_volatility.py`]
-13. 1985 -- Mehra-Prescott equity premium puzzle [`consumption/plot_03_equity_premium_puzzle.py`]
-14. 1989 -- Gibbons-Ross-Shanken test [`capm/plot_04_grs_test.py`]
-15. 1991 -- Hansen-Jagannathan bound [`sdf/plot_02_hansen_jagannathan.py`]
-16. 1993 -- Fama-French three factors [`factors/plot_03_fama_french.py`]
-17. 1997 -- Carhart momentum [`factors/plot_04_carhart_momentum.py`]
-
-### credit
-
-1. 1968 -- Altman Z-score [`scoring/plot_01_altman_z_score.py`]
-2. 1974 -- Merton's structural model [`structural/plot_01_merton_structural.py`]
-3. 1976 -- Black-Cox first passage [`structural/plot_02_black_cox.py`]
-4. 1987 -- Vasicek's large homogeneous portfolio [`portfolio_loss/plot_01_vasicek_lhp.py`]
-5. 1994 -- Leland's endogenous default [`structural/plot_03_leland.py`]
-6. 1995 -- Jarrow-Turnbull hazard rates [`reduced_form/plot_01_jarrow_turnbull.py`]
-7. 1997 -- CreditMetrics transition matrices [`migration/plot_01_creditmetrics.py`]
-8. 1997 -- Jarrow-Lando-Turnbull generator matrices [`migration/plot_02_generator_matrix.py`]
-9. 1997 -- CreditRisk+ and Panjer's recursion [`portfolio_loss/plot_02_creditrisk_plus.py`]
-10. 1999 -- Duffie-Singleton recovery of market value [`reduced_form/plot_02_duffie_singleton.py`]
-11. 2000 -- Li's Gaussian copula [`portfolio_loss/plot_03_li_gaussian_copula.py`]
-12. 2001 -- Israel-Rosenthal-Wei: finding generators [`migration/plot_03_israel_rosenthal_wei.py`]
-13. 2003 -- Crosbie-Bohn distance to default [`structural/plot_04_distance_to_default.py`]
-14. 2003 -- O'Kane-Turnbull CDS par spread [`cds/plot_01_cds_par_spread.py`]
-15. 2004 -- Basel II IRB formula [`portfolio_loss/plot_04_basel_irb.py`]
-16. 2004 -- Hull-White tranche pricing [`portfolio_loss/plot_05_tranche_expected_loss.py`]
-17. 2009 -- The ISDA standard model: hazard bootstrapping [`cds/plot_02_isda_hazard_bootstrap.py`]
-
-### market_microstructure
-
-1. 1968 -- Demsetz: the bid-ask spread [`spreads/plot_01_demsetz_spreads.py`]
-2. 1976 -- Garman's order-flow dealer [`dealers/plot_01_garman_inventory.py`]
-3. 1981 -- Ho-Stoll dealer inventory [`dealers/plot_02_ho_stoll.py`]
-4. 1984 -- Roll's spread estimator [`spreads/plot_02_roll_estimator.py`]
-5. 1985 -- Kyle's insider [`information/plot_01_kyle.py`]
-6. 1985 -- Glosten-Milgrom [`information/plot_02_glosten_milgrom.py`]
-7. 1991 -- Hasbrouck's trade-impact VAR [`information/plot_03_hasbrouck_var.py`]
-8. 1991 -- Lee-Ready trade classification [`spreads/plot_03_lee_ready.py`]
-9. 1996 -- Easley-Kiefer-O'Hara-Paperman PIN [`information/plot_04_pin.py`]
-10. 1997 -- The square-root impact law [`execution/plot_01_square_root_impact.py`]
-11. 1998 -- Bertsimas-Lo optimal execution [`execution/plot_02_bertsimas_lo.py`]
-12. 2000 -- Almgren-Chriss [`execution/plot_03_almgren_chriss.py`]
-13. 2002 -- Amihud illiquidity [`liquidity/plot_01_amihud.py`]
-14. 2008 -- Avellaneda-Stoikov market making [`dealers/plot_03_avellaneda_stoikov.py`]
-15. 2012 -- Corwin-Schultz high-low spread [`spreads/plot_04_corwin_schultz.py`]
-16. 2012 -- VPIN [`information/plot_05_vpin.py`]
+- Scaffold cloned from mathematicskit: CI, docs, gallery, history pages,
+  JupyterLite, release workflow, `constants`, `_jit` and `integrators`.
+- All 14 domains, built one per session in the order above.
+- GitHub repository and Pages, PyPI trusted publishing, the Zenodo
+  version DOI and badge, the Codecov token.
