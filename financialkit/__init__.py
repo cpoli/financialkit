@@ -13,7 +13,7 @@ implemented, and ROADMAP.md for the full plan.
 
 # Defined before the subpackage imports: each subpackage re-exports it via
 # ``from financialkit import __version__`` while this module is still loading.
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 from financialkit import (  # noqa: E402
     asset_pricing,
