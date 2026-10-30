@@ -137,8 +137,8 @@ def add_months(d, n, end_of_month: bool = False) -> np.ndarray:
     --------
     >>> add_months("2023-08-31", [-6, 6]).tolist()
     [datetime.date(2023, 2, 28), datetime.date(2024, 2, 29)]
-    >>> add_months("2023-02-28", 3), add_months("2023-02-28", 3, end_of_month=True)
-    (np.datetime64('2023-05-28'), np.datetime64('2023-05-31'))
+    >>> str(add_months("2023-02-28", 3)), str(add_months("2023-02-28", 3, end_of_month=True))
+    ('2023-05-28', '2023-05-31')
     """
     d = as_dates(d)
     first = (d.astype("datetime64[M]") + np.asarray(n, dtype=np.int64).astype("timedelta64[M]")).astype("datetime64[D]")

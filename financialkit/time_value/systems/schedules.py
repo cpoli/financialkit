@@ -96,8 +96,8 @@ def adjust_date(dates, convention: str = "following", holidays=None):
     Saturday 30 September 2023: following crosses into October, so
     modified following goes back to Friday.
 
-    >>> adjust_date("2023-09-30", "following"), adjust_date("2023-09-30", "modified following")
-    (np.datetime64('2023-10-02'), np.datetime64('2023-09-29'))
+    >>> str(adjust_date("2023-09-30", "following")), str(adjust_date("2023-09-30", "modified following"))
+    ('2023-10-02', '2023-09-29')
     """
     roll = BUSINESS_DAY_CONVENTIONS[_convention(convention)]
     dates = as_dates(dates)
@@ -126,8 +126,8 @@ def settlement_date(trade_date, lag: int = 2, holidays=None):
     --------
     A Friday trade settles T + 2 on Tuesday, or on Wednesday if Monday is a holiday.
 
-    >>> settlement_date("2024-03-08"), settlement_date("2024-03-08", holidays=["2024-03-11"])
-    (np.datetime64('2024-03-12'), np.datetime64('2024-03-13'))
+    >>> str(settlement_date("2024-03-08")), str(settlement_date("2024-03-08", holidays=["2024-03-11"]))
+    ('2024-03-12', '2024-03-13')
     """
     if lag < 0:
         raise ValueError("lag must be nonnegative")
