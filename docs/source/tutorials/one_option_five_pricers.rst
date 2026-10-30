@@ -97,7 +97,8 @@ by about four.
 The Fourier methods need only the characteristic function of the log
 price, which is why they extend to Heston, variance gamma and other models
 with no closed-form price. Under Black-Scholes they reproduce the formula
-almost exactly, and one FFT prices a whole strip of strikes:
+almost exactly, and one FFT prices a whole strip of strikes. The COS
+error is pure rounding, whose digits vary by platform:
 
 .. plot::
    :context: close-figs
@@ -107,8 +108,8 @@ almost exactly, and one FFT prices a whole strip of strikes:
    cos = fk.stochastic_volatility.cos_price(model, S, K, T, r)
    print(f"Carr-Madan FFT: error {cm - exact:+.1e}")
    # Carr-Madan FFT: error -2.2e-07
-   print(f"COS:            error {cos - exact:+.1e}")
-   # COS:            error -1.8e-15
+   print(f"COS:            error below 1e-12: {abs(cos - exact) < 1e-12}")
+   # COS:            error below 1e-12: True
 
    strikes = np.linspace(80.0, 120.0, 9)
    strip = fk.stochastic_volatility.carr_madan_price(model, S, strikes, T, r)

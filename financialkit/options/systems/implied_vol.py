@@ -192,7 +192,10 @@ def implied_volatility(
     lo, hi = np.full(price.shape, _SIGMA_LO), np.full(price.shape, _SIGMA_HI)
     while np.any(short := (f(hi) < 0) & (hi < _SIGMA_MAX)):
         hi[short] = np.minimum(4.0 * hi[short], _SIGMA_MAX)
-    unresolved = (f(lo) >= 0) | (f(hi) < 0)
+    # Within round-off of a positive lower bound the sign of f(lo) depends on
+    # the platform's last bits; such prices imply a volatility below the bracket.
+    near_lower = (lower > 0) & (price - lower <= 16.0 * np.spacing(np.maximum(F, K) * D))
+    unresolved = (f(lo) >= 0) | (f(hi) < 0) | near_lower
     if np.any(unresolved):
         i = np.flatnonzero(unresolved)[0]
         raise ValueError(
