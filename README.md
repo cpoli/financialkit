@@ -2,7 +2,7 @@
 
 | | |
 |:--|:-:|
-| Package | [![PyPI version](https://badgen.net/pypi/v/financialkit)](https://pypi.org/project/financialkit/) [![Python versions](https://badgen.net/pypi/python/financialkit)](https://pypi.org/project/financialkit/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23279817.svg)](https://doi.org/10.5281/zenodo.23279817) |
+| Package | [![PyPI version](https://badgen.net/pypi/v/financialkit)](https://pypi.org/project/financialkit/) [![Python versions](https://badgen.net/pypi/python/financialkit)](https://pypi.org/project/financialkit/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23795067.svg)](https://doi.org/10.5281/zenodo.23795067) |
 | Quality | [![License](https://badgen.net/github/license/cpoli/financialkit)](https://github.com/cpoli/financialkit/blob/main/LICENSE) [![CI](https://github.com/cpoli/financialkit/actions/workflows/ci.yml/badge.svg)](https://github.com/cpoli/financialkit/actions/workflows/ci.yml) [![Coverage](https://codecov.io/gh/cpoli/financialkit/branch/main/graph/badge.svg)](https://codecov.io/gh/cpoli/financialkit) |
 | Documentation | [![Docs](https://badgen.net/badge/docs/cpoli.github.io%2Ffinancialkit/blue)](https://cpoli.github.io/financialkit/) |
 | Code style | [![Ruff](https://badgen.net/badge/code%20style/ruff/purple)](https://github.com/astral-sh/ruff) |
@@ -242,8 +242,8 @@ reproduces it.
 
 If you use financialkit in your research, please cite it; see
 [CITATION.cff](CITATION.cff). Each release is archived on Zenodo with its own
-DOI; version 0.1.0 is
-[10.5281/zenodo.23279817](https://doi.org/10.5281/zenodo.23279817).
+DOI; version 0.2.0 is
+[10.5281/zenodo.23795067](https://doi.org/10.5281/zenodo.23795067).
 
 ## Contributing
 

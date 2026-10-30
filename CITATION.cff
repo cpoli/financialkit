@@ -4,6 +4,7 @@ title: "financialkit: a quantitative-finance toolkit"
 type: software
 version: 0.2.0
 date-released: "2026-10-30"
+doi: 10.5281/zenodo.23795067
 license: MIT
 repository-code: "https://github.com/cpoli/financialkit"
 url: "https://cpoli.github.io/financialkit/"

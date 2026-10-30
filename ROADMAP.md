@@ -5,7 +5,8 @@
 - **0.1.0** shipped on 2026-10-10 with 14 domains, 236 breakthroughs,
   239 gallery examples, 868 tests at 99% line coverage, 5 tutorials and
   the quickstart notebook.
-- **Since then**, the work under "Done" below is unreleased (see G1).
+- **0.2.0** shipped on 2026-10-30 with the work listed under "Done"
+  below.
 - **The record** of every entry is the history pages in
   `docs/source/history/`. The old per-domain build plans are in git
   history (`git show 681a826:ROADMAP.md`).
@@ -108,7 +109,7 @@ At a glance (all can start now except G3):
 | F1 | Exercises, one domain per session | |
 | F2 | Two tutorials: two-curve swaps, counterparty risk | |
 | F3 | A calibration tutorial | |
-| G1-G3 | Release 0.2.0, conda-forge, 1.0 | author |
+| G2-G3 | conda-forge, 1.0 | author |
 
 Sections D (curriculum gaps) and E (data) have nothing open.
 `time_value`, `exotic_options` and `monte_carlo` have no pressing
@@ -208,14 +209,11 @@ done.
 
 ### G. Releases (the author)
 
-- **G1. Release 0.2.0** with everything under `[Unreleased]` in
-  CHANGELOG.md. Then put its Zenodo version DOI in `CITATION.cff` and
-  the README badge.
 - **G2. conda-forge recipe.** A `recipe.yaml` with only `version` in
   `context`, and `name: financialkit` and the PyPI source URL written
   out.
 - **G3. 1.0** freezes the public API (see CONTRIBUTING.md). **After**
-  all of B and G1 (C10 is done).
+  all of B (C10 is done).
 
 ### H. Scope decisions
 
@@ -238,8 +236,10 @@ done.
 
 ## Done
 
-### Unreleased
+### 0.2.0 (2026-10-30)
 
+- G1 (2026-10-30): released 0.2.0 to PyPI and GitHub, with Zenodo
+  version DOI 10.5281/zenodo.23795067 in `CITATION.cff` and the README.
 - C10 (2026-10-27): the API review before 1.0, written into
   CONTRIBUTING.md as "Public API conventions". Functions and classes
   each keep their job (a model with shared parameters is a class;
