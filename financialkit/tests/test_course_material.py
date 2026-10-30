@@ -116,3 +116,8 @@ def test_quickstart_notebook_runs_and_prints_what_it_says():
         # The version print is the one line that changes with every release.
         printed = [line for line in _run(code, namespace) if line != fk.__version__]
         assert printed == _expected_output(code), f"notebook cell {number}"
+
+
+def test_expected_output_skips_prose_comments():
+    code = "# a prose comment\nprint(1)\n# 1\n\n# more prose\n"
+    assert _expected_output(code) == ["1"]

@@ -142,3 +142,7 @@ def test_validation():
         volatility_roughness(np.zeros(10), lags=[1, 20])
     with pytest.raises(ValueError, match="at least two lags"):
         volatility_roughness(np.arange(100.0), lags=[1])
+
+
+def test_rough_bergomi_alpha_is_h_minus_a_half():
+    assert RoughBergomiModel(H=0.1, eta=1.9, rho=-0.9, xi0=0.04).alpha == pytest.approx(-0.4)

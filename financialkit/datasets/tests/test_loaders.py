@@ -82,3 +82,8 @@ def test_results_are_frozen():
     d = load_treasury_yields()
     with pytest.raises(AttributeError):
         d.tenors = np.zeros(8)
+
+
+def test_shiller_real_dividend_is_in_latest_dollars():
+    d = load_shiller()
+    assert d.real_dividend[0] == pytest.approx(d.dividend[0] * d.cpi[-1] / d.cpi[0])

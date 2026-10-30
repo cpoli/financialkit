@@ -117,3 +117,9 @@ def test_compounded_in_arrears_validation():
         compounded_in_arrears(BUSINESS, np.zeros(BUSINESS.size), "2024-02-01", "2024-01-02")
     with pytest.raises(ValueError):
         compounded_in_arrears(BUSINESS, np.zeros(BUSINESS.size), "2024-01-02", "2024-02-01", lookback=-1)
+
+
+def test_overnight_forwards_needs_a_business_day():
+    # Saturday to Monday holds no business day
+    with pytest.raises(ValueError, match="no business day"):
+        overnight_forwards(0.04, "2024-01-06", "2024-01-08")

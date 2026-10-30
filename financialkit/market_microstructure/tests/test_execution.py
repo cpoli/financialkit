@@ -112,3 +112,8 @@ def test_obizhaeva_wang_continuous_limit_and_no_resilience():
     assert transient_impact_cost([0.3, 0.2, 0.5], 1.0, kappa, 0.0) == pytest.approx(0.5 * kappa)
     with pytest.raises(ValueError):
         obizhaeva_wang(X, T, 0, kappa, rho)
+
+
+def test_transient_impact_cost_needs_trades():
+    with pytest.raises(ValueError, match="non-empty"):
+        transient_impact_cost([], 1.0, 0.01, 2.0)

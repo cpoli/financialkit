@@ -279,7 +279,7 @@ def bachelier_implied_volatility(
     for i in range(tv.size):
         lo = np.sqrt(2 * np.pi) * tv[i]  # the time value is at most v / sqrt(2 pi), so v >= this
         hi = 2 * lo + m[i]
-        while g(hi, i) < 0:
+        while g(hi, i) < 0:  # pragma: no cover - a safeguard: numerically g(2 lo + m) >= 0.083 m, so hi already brackets
             hi *= 2
         vols[i] = brentq(g, lo, hi, args=(i,), xtol=tol * lo, rtol=4 * np.finfo(float).eps, maxiter=DEFAULT_MAX_ITER) if g(lo, i) < 0 else lo
     return as_output((vols / np.sqrt(T)).reshape(shape))

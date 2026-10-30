@@ -138,3 +138,10 @@ def test_fundamental_factor_covariance_validates_inputs():
         fundamental_factor_covariance(R, np.ones((3, 3)))
     with pytest.raises(ValueError):
         fundamental_factor_covariance(R, np.ones((3, 1)), weights=[1.0, -1.0, 1.0])
+
+
+def test_fundamental_factor_condition_number():
+    rng = np.random.default_rng(5)
+    res = fundamental_factor_covariance(rng.standard_normal((40, 8)), rng.standard_normal((8, 2)))
+    ev = np.linalg.eigvalsh(res.cov)
+    assert res.condition_number == pytest.approx(ev[-1] / ev[0])

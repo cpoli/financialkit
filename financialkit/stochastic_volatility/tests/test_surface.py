@@ -222,3 +222,10 @@ def test_ssvi_validation():
         ssvi_surface([90.0, 100.0], [1.0, 1.0], [0.2, 0.2], 100.0, 0.0, phi="x")
     with pytest.raises(ValueError, match="at least two per expiry"):
         ssvi_surface([90.0, 100.0], [1.0, 2.0], [0.2, 0.2], 100.0, 0.0)
+
+
+def test_surface_base_needs_total_variance():
+    from financialkit.stochastic_volatility.systems.surface import _ImpliedVarianceSurface
+
+    with pytest.raises(NotImplementedError):
+        _ImpliedVarianceSurface().total_variance(0.0, 1.0)

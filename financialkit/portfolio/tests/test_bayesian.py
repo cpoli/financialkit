@@ -129,3 +129,13 @@ def test_robust_portfolio_beats_nominal_in_the_worst_case():
         robust_portfolio(mu, B[:3], F, D, 1.0)
     with pytest.raises(ValueError):
         robust_portfolio(mu, B, F, D, 1.0, mu_halfwidth=-0.1)
+
+
+def test_robust_portfolio_reports_a_failed_optimization(monkeypatch):
+    from scipy import optimize
+
+    mu, B, F, D = _factor_inputs(1)
+    failed = optimize.OptimizeResult(success=False, message="forced failure")
+    monkeypatch.setattr("financialkit.portfolio.systems.bayesian.optimize.minimize", lambda *a, **k: failed)
+    with pytest.raises(RuntimeError, match="forced failure"):
+        robust_portfolio(mu, B, F, D, 4.0)

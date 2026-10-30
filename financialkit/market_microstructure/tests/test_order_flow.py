@@ -171,3 +171,14 @@ def test_fit_ofi_impact():
     assert np.all(np.abs(fit.coef - [0.2, 0.05]) < 4 * fit.std_errors)
     with pytest.raises(ValueError):
         fit_ofi_impact([1.0, 2.0], [1.0])
+
+
+def test_hawkes_validation_and_empty_history():
+    with pytest.raises(ValueError, match="mu > 0"):
+        simulate_hawkes(0.0, 0.5, 1.0, 10.0)
+    # with no events the intensity is the baseline
+    np.testing.assert_array_equal(hawkes_intensity([], [0.5, 2.0], 0.3, 0.5, 1.0), [0.3, 0.3])
+    with pytest.raises(ValueError, match="three events"):
+        fit_hawkes([0.5, 1.0], 2.0)
+    with pytest.raises(ValueError, match="n_ticks"):
+        simulate_cst(LAM, 0.94, THETA, 10, n_ticks=2 * len(LAM) + 1)
