@@ -11,17 +11,21 @@ Corput, Halton and Sobol sequences, exact and :math:`L^2` star
 discrepancies with the Koksma-Hlawka bound, Owen-scrambled randomized
 QMC with error bars, and high-dimensional path integrals with and
 without Brownian-bridge ordering. Greeks by the likelihood-ratio and
-pathwise methods, and Giles's adaptive multilevel Monte Carlo.
+pathwise methods, Giles and Glasserman's adjoint deltas and vegas of a
+swaption book in the LIBOR market model, and Giles's adaptive multilevel
+Monte Carlo.
 """
 
 from financialkit import __version__
 from financialkit.monte_carlo.core.base import (
     ControlVariateResult,
+    LMMGreeks,
     MLMCResult,
     MonteCarloGreeks,
     MonteCarloResult,
     StratifiedResult,
 )
+from financialkit.monte_carlo.systems.adjoint import lmm_swaption_greeks
 from financialkit.monte_carlo.systems.basics import (
     box_muller,
     box_muller_normals,
@@ -76,6 +80,7 @@ __all__ = [
     "StratifiedResult",
     "ControlVariateResult",
     "MonteCarloGreeks",
+    "LMMGreeks",
     "MLMCResult",
     "monte_carlo_integrate",
     "box_muller",
@@ -99,6 +104,7 @@ __all__ = [
     "gbm_path_estimate",
     "likelihood_ratio_greeks",
     "pathwise_greeks",
+    "lmm_swaption_greeks",
     "mlmc_level",
     "multilevel_monte_carlo",
     "sample_mean",

@@ -36,7 +36,9 @@ fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 t = np.linspace(0, 1, 17)
 for k in (1, 2, 4, 16):
     zk = np.where(np.arange(16) < k, z, 0.0)
-    axes[0].plot(t, brownian_bridge(zk[None, :], 1.0)[0], "o-" if k < 16 else "k-", ms=3, label=f"first {k} coordinates")
+    W = brownian_bridge(zk[None, :], 1.0)[0]
+    assert np.isclose(W[-1], z[0])
+    axes[0].plot(t, W, "o-" if k < 16 else "k-", ms=3, label=f"first {k} coordinates")
 axes[0].set_xlabel("t")
 axes[0].set_ylabel("W(t)")
 axes[0].legend()
@@ -54,9 +56,13 @@ def asian(paths):
 
 
 ns = 2 ** np.arange(7, 12)
+final = {}
 for s, label in [("pseudo", "Monte Carlo"), ("sobol", "Sobol, time order"), ("bridge", "Sobol, Brownian bridge")]:
     res = [gbm_path_estimate(asian, S, T, r, sigma, d, n, sampler=s, n_replications=8, rng=n) for n in ns]
     plot_error_convergence(ns, [x.std_error for x in res], ax=axes[1], label=label, rates=(0.5,) if s == "pseudo" else ())
     print(f"{label:24s}: {res[-1].estimate:.4f} +/- {res[-1].std_error:.5f}")
+    final[s] = res[-1]
+assert final["bridge"].std_error < final["sobol"].std_error < final["pseudo"].std_error
+assert abs(final["bridge"].estimate - final["pseudo"].estimate) < 3 * final["pseudo"].std_error
 fig.tight_layout()
 plt.show()

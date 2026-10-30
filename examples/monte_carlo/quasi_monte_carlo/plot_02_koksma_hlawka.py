@@ -46,8 +46,10 @@ sets = {
     "Halton": lambda n: halton(n, 2, scramble=True, rng=n),
     "Sobol": lambda n: sobol(n, 2, rng=n),
 }
-for name, gen in sets.items():
-    axes[1].loglog(ns, [star_discrepancy(gen(n)) for n in ns], "o-", label=name)
+disc = {name: [star_discrepancy(gen(n)) for n in ns] for name, gen in sets.items()}
+assert disc["Halton"][-1] < disc["random"][-1] / 3 and disc["Sobol"][-1] < disc["random"][-1] / 3
+for name, d in disc.items():
+    axes[1].loglog(ns, d, "o-", label=name)
 axes[1].loglog(ns, 1 / np.sqrt(ns), "k:", label=r"$N^{-1/2}$")
 axes[1].loglog(ns, np.log(ns) ** 2 / ns / 4, "k--", label=r"$(\log N)^2 / N$")
 axes[1].set_xlabel("N")
@@ -62,8 +64,10 @@ axes[1].legend()
 
 for name, gen in sets.items():
     err = [abs(np.mean(np.prod(gen(n), axis=1)) - 0.25) for n in ns]
+    bound = [koksma_hlawka_bound(gen(n), 3.0) for n in ns]
+    assert np.all(np.array(err) <= bound)
     (line,) = axes[2].loglog(ns, err, "o", label=f"{name} error")
-    axes[2].loglog(ns, [koksma_hlawka_bound(gen(n), 3.0) for n in ns], "-", color=line.get_color(), alpha=0.6)
+    axes[2].loglog(ns, bound, "-", color=line.get_color(), alpha=0.6)
 axes[2].set_xlabel("N")
 axes[2].set_title(r"errors (dots) under $V_{HK} D_N^*$ (lines)")
 axes[2].legend()

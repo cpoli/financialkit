@@ -30,6 +30,8 @@ rhs = np.maximum(S[1:-1] - 100.0, 0.0)
 x = thomas_solve(lo, di, up, rhs)
 print("max |Thomas - solve_banded| =", np.abs(x - solve_tridiagonal(lo, di, up, rhs)).max())
 print("diagonally dominant:", bool(np.all(np.abs(di) >= np.abs(lo) + np.abs(up))))
+assert np.allclose(x, solve_tridiagonal(lo, di, up, rhs), rtol=0.0, atol=1e-10)
+assert np.all(np.abs(di) >= np.abs(lo) + np.abs(up))
 
 # %%
 # Linear against cubic cost
@@ -61,6 +63,7 @@ axes[0].legend()
 
 a = CrankNicolson(200, 50, solver="thomas").price(100.0, 100.0, 1.0, 0.05, 0.2)
 b = CrankNicolson(200, 50, solver="banded").price(100.0, 100.0, 1.0, 0.05, 0.2)
+assert np.allclose(a.V, b.V, rtol=0.0, atol=1e-10)
 axes[1].semilogy(a.S, np.abs(a.V - b.V) + 1e-18)
 axes[1].set_xlabel("spot S")
 axes[1].set_title("|Thomas - solve_banded| over the grid")

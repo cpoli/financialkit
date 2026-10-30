@@ -27,10 +27,10 @@ __all__ = ["HAS_NUMBA", "njit"]
 
 try:
     from numba import njit as _numba_njit
-
-    HAS_NUMBA = True
-except ImportError:  # pragma: no cover - exercised only without numba installed
+except ImportError:
     HAS_NUMBA = False
+else:  # pragma: no cover - coverage is measured (and gated) in the CI job without numba
+    HAS_NUMBA = True
 
 
 def _identity_njit(*args: Any, **kwargs: Any) -> Any:

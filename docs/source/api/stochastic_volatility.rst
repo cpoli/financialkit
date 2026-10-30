@@ -14,8 +14,11 @@ formula), variance gamma (Madan-Seneta, Madan-Carr-Chang), Kou's
 double-exponential jumps and Bates. Fourier pricing for every
 characteristic-function model: Carr-Madan's FFT, Lewis's single
 integral and the COS method. Smiles: Hagan's SABR formula and
-calibration, Gatheral's SVI with Durrleman's condition, and Lee's moment
-formula. Simulation: full-truncation, partial-truncation and Higham-Mao
+calibration, Gatheral's SVI with Durrleman's condition, Lee's moment
+formula, and Gatheral and Jacquier's arbitrage-free SSVI surface. Rough
+volatility: the rough Bergomi model, simulated exactly by Cholesky or by
+the hybrid scheme, fractional Brownian motion by circulant embedding,
+and the scaling estimate of the roughness of volatility. Simulation: full-truncation, partial-truncation and Higham-Mao
 Euler schemes and Andersen's quadratic-exponential scheme for Heston.
 
 .. automodule:: financialkit.stochastic_volatility

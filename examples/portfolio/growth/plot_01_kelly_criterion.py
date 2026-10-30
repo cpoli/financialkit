@@ -20,6 +20,7 @@ from financialkit.portfolio import kelly_fraction, kelly_growth_rate, kelly_weal
 p = 0.55
 f_star = kelly_fraction(p)
 print(f"Kelly fraction for an even-money bet with p = {p}: {f_star:.2f}")
+assert np.isclose(f_star, 2 * p - 1)
 
 # %%
 # Growth rate against the fraction staked
@@ -28,6 +29,8 @@ print(f"Kelly fraction for an even-money bet with p = {p}: {f_star:.2f}")
 f = np.linspace(0, 0.25, 300)
 fig, ax = plt.subplots(figsize=(7, 3.5))
 ax.plot(f, kelly_growth_rate(f, p))
+assert abs(f[np.argmax(kelly_growth_rate(f, p))] - f_star) < f[1] and np.all(kelly_growth_rate(f[f > 2 * f_star], p) < 0)
+assert np.isclose(kelly_growth_rate(f_star / 2, p) / kelly_growth_rate(f_star, p), 0.75, atol=0.01)
 ax.axvline(f_star, color="C2", ls="--", label="Kelly")
 ax.axvline(2 * f_star, color="C3", ls=":", label="twice Kelly")
 ax.axhline(0, color="0.3", lw=0.8)
@@ -45,11 +48,14 @@ fig.tight_layout()
 
 n_bets, n_paths = 1000, 200
 fig, ax = plt.subplots(figsize=(7, 4))
+medians = []
 for mult, color in [(0.5, "C0"), (1.0, "C2"), (2.0, "C3")]:
     W = kelly_wealth_paths(mult * f_star, p, n_bets, n_paths, rng=0)
+    medians.append(np.median(W[:, -1]))
     ax.semilogy(np.median(W, axis=0), color=color, lw=2, label=f"{mult:g} x Kelly (median)")
     ax.fill_between(np.arange(n_bets + 1), *np.percentile(W, [10, 90], axis=0), color=color, alpha=0.15)
     print(f"{mult:g} x Kelly: median final wealth {np.median(W[:, -1]):.3g}, P(lose money) {np.mean(W[:, -1] < 1):.2f}")
+assert medians[1] > medians[0] > 10 * medians[2]
 ax.set_xlabel("bet")
 ax.set_ylabel("wealth")
 ax.legend()

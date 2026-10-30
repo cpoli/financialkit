@@ -38,6 +38,7 @@ for i, (reg, label) in enumerate((("n", "none"), ("c", "constant"), ("ct", "cons
     cv = mackinnon_critical_values(T, reg)["5%"]
     ax.axvline(cv, color=f"C{i}", ls="--", lw=1)
     print(f"{label:16s} simulated 5% quantile {np.quantile(tau, 0.05):.3f}, MacKinnon {cv:.3f}")
+    assert abs(np.quantile(tau, 0.05) - cv) < 0.06 and cv < -1.645
 ax.set_xlabel("t-ratio of gamma")
 ax.legend()
 
@@ -60,6 +61,7 @@ for name, x in (("mean-reverting", reverting), ("random walk", walk)):
     res = adf_test(x, regression="c")
     ax.plot(100 * x, label=f"{name}: ADF = {res.statistic:.2f}")
     print(f"{name:15s} ADF = {res.statistic:.2f} (5% cv {res.critical_values['5%']:.2f}), lags {res.lags}, reject: {res.rejects()}")
+assert adf_test(reverting, regression="c").rejects() and not adf_test(walk, regression="c").rejects()
 ax.set_xlabel("month")
 ax.set_ylabel("rate (%)")
 ax.legend()

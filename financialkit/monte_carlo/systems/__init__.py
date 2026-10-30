@@ -2,6 +2,7 @@
 reduction, quasi-Monte Carlo, Greeks and multilevel Monte Carlo.
 """
 
+from financialkit.monte_carlo.systems.adjoint import lmm_swaption_greeks
 from financialkit.monte_carlo.systems.basics import (
     box_muller,
     box_muller_normals,
@@ -60,6 +61,7 @@ __all__ = [
     "gbm_path_estimate",
     "likelihood_ratio_greeks",
     "pathwise_greeks",
+    "lmm_swaption_greeks",
     "mlmc_level",
     "multilevel_monte_carlo",
 ]

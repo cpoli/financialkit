@@ -1,15 +1,19 @@
 """Credit models: scoring, structural and first-passage models, hazard rates
-and recovery, CDS pricing and bootstrapping, rating migration, and
-portfolio losses (Vasicek, CreditRisk+, copulas, Basel IRB, tranches).
+and recovery, CDS pricing and bootstrapping, rating migration,
+portfolio losses (Vasicek, CreditRisk+, copulas, Basel IRB, the ASB
+recursion, tranches and base correlation), and counterparty exposure
+with CVA, DVA and FVA.
 """
 
 from financialkit.credit.systems.basel import basel_correlation, basel_irb_capital, basel_maturity_adjustment, basel_risk_weight
 from financialkit.credit.systems.cds import bootstrap_hazard_curve, cds_legs, cds_par_spread, cds_upfront, upfront_to_spread
 from financialkit.credit.systems.copula_defaults import copula_default_times, default_correlation, joint_default_probability, nth_to_default_probability
 from financialkit.credit.systems.creditrisk_plus import creditrisk_plus
+from financialkit.credit.systems.exposure import pathwise_discount, regression_mark_to_market, swap_exposure
 from financialkit.credit.systems.first_passage import black_cox_default_probability, black_cox_survival, first_passage_crossing_probability
 from financialkit.credit.systems.hazard import HazardCurve, hazard_from_spread, jarrow_turnbull_zero, spread_from_hazard
 from financialkit.credit.systems.leland import leland_model, leland_optimal_coupon
+from financialkit.credit.systems.loss_recursion import asb_loss_distribution
 from financialkit.credit.systems.migration import (
     creditmetrics_bond,
     creditmetrics_portfolio,
@@ -25,7 +29,14 @@ from financialkit.credit.systems.migration import (
 from financialkit.credit.systems.recovery import duffie_singleton_cir_zero, risky_zero_coupon
 from financialkit.credit.systems.scoring import ALTMAN_COEFFICIENTS, altman_ratios, altman_z_score, altman_zone, linear_discriminant
 from financialkit.credit.systems.structural import distance_to_default, kmv_default_point, kmv_iterate, merton_calibrate, merton_model
-from financialkit.credit.systems.tranches import expected_tranche_loss, tranche_loss, tranche_spread
+from financialkit.credit.systems.tranches import (
+    base_correlation,
+    base_correlation_spread,
+    compound_correlations,
+    expected_tranche_loss,
+    tranche_loss,
+    tranche_spread,
+)
 from financialkit.credit.systems.vasicek import (
     conditional_default_probability,
     one_factor_loss_distribution,
@@ -34,6 +45,7 @@ from financialkit.credit.systems.vasicek import (
     vasicek_pdf,
     vasicek_quantile,
 )
+from financialkit.credit.systems.xva import bilateral_cva, funding_valuation_adjustment, swap_cva_swaptions, unilateral_cva
 
 __all__ = [
     "ALTMAN_COEFFICIENTS",
@@ -90,4 +102,15 @@ __all__ = [
     "tranche_loss",
     "expected_tranche_loss",
     "tranche_spread",
+    "asb_loss_distribution",
+    "base_correlation_spread",
+    "base_correlation",
+    "compound_correlations",
+    "regression_mark_to_market",
+    "pathwise_discount",
+    "swap_exposure",
+    "unilateral_cva",
+    "swap_cva_swaptions",
+    "bilateral_cva",
+    "funding_valuation_adjustment",
 ]

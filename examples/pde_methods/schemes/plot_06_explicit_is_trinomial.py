@@ -24,6 +24,8 @@ S, K, T, r, sigma = 50.0, 50.0, 5 / 12, 0.10, 0.40
 dt = T / 200
 p = explicit_trinomial_probabilities(sigma, r, dt, sigma * np.sqrt(3 * dt))
 print(f"p_down {p.p_down:.4f}, p_mid {p.p_mid:.4f}, p_up {p.p_up:.4f}, total {p.total:.4f}")
+assert abs(p.total - 1.0) < 1e-12
+assert abs(p.p_mid - 2 / 3) < 1e-12
 
 # %%
 # The scheme prices like a tree: European and American puts
@@ -33,6 +35,8 @@ ns = np.arange(50, 501, 50)
 eu = [log_explicit_price(S, K, T, r, sigma, option_type="put", n_time=n).price for n in ns]
 am = [log_explicit_price(S, K, T, r, sigma, option_type="put", american=True, n_time=n).price for n in ns]
 crr = CRRTree(2000).price(S, K, T, r, sigma, option_type="put", american=True).price
+assert abs(eu[-1] - black_scholes_price(S, K, T, r, sigma, option_type="put")) < 0.005
+assert abs(am[-1] - crr) < 0.005
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 axes[0].plot(ns, eu, "o-", label="explicit log-spot, European")
@@ -49,6 +53,7 @@ axes[0].legend(fontsize=8)
 
 lam = np.linspace(0.2, 1.6, 50)
 p_mid = [explicit_trinomial_probabilities(sigma, r, dt, sigma * np.sqrt(dt / l)).p_mid for l in lam]
+assert np.array_equal(np.less(p_mid, -1e-12), lam > 1.0 + 1e-9)  # negative exactly past the limit
 axes[1].plot(lam, p_mid)
 axes[1].axhline(0.0, color="k", lw=0.8)
 axes[1].axvline(1.0, color="C3", ls="--", label="stability limit")

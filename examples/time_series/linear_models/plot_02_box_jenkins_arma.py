@@ -46,7 +46,9 @@ fig.tight_layout()
 res = fit_arma(x, 1, 1)
 lb = ljung_box(res.residuals, lags=12, fitted_params=2)
 print(f"phi = {res.ar[0]:.3f}, theta = {res.ma[0]:.3f}, mu = {res.mean:.3f}, sigma^2 = {res.sigma2:.3f}")
-print(f"Ljung-Box on residuals: Q = {lb.statistic:.1f}, p = {lb.pvalue:.2f}")
+print(f"Ljung-Box on residuals: Q = {lb.statistic:.1f}, p = {lb.p_value:.2f}")
+assert abs(res.ar[0] - 0.75) < 0.05 and abs(res.ma[0] - 0.4) < 0.1
+assert lb.p_value > 0.05
 
 # %%
 # Forecasting
@@ -58,6 +60,7 @@ h = 30
 mean, se = res.forecast(h)
 t = np.arange(x.size)
 tf = np.arange(x.size, x.size + h)
+assert abs(mean[-1] - res.mean) < 0.01 and np.all(np.diff(se) > 0)
 fig, ax = plt.subplots(figsize=(8, 3.5))
 ax.plot(t[-120:], x[-120:], color="C0", label="observed")
 ax.plot(tf, mean, color="C3", label="forecast")

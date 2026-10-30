@@ -7,7 +7,9 @@ Leland's endogenous default and the KMV distance to default; hazard
 rates and recovery conventions; CDS pricing and hazard bootstrapping;
 rating migration with CreditMetrics and generator matrices; and
 portfolio credit risk with Vasicek's large pool, CreditRisk+, Li's
-copula, the Basel IRB formula and CDO tranches.
+copula, the Basel IRB formula, CDO tranches, the Andersen-Sidenius-Basu
+recursion and base correlation; and counterparty risk with CVA, DVA and
+FVA.
 
 See also the narrative tutorial:
 
@@ -27,4 +29,7 @@ Sections
 - **migration** -- CreditMetrics, generator matrices and the
   Israel-Rosenthal-Wei regularization.
 - **portfolio_loss** -- Vasicek's large pool, CreditRisk+, Li's Gaussian
-  copula, the Basel IRB formula and tranche expected losses.
+  copula, the Basel IRB formula, tranche expected losses, the
+  Andersen-Sidenius-Basu recursion and base correlation.
+- **xva** -- exposure profiles on Hull-White paths, Brigo-Masetti CVA,
+  Gregory's bilateral CVA and DVA, and Burgard-Kjaer FVA.

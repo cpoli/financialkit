@@ -20,6 +20,7 @@ from financialkit.stochastic_volatility.visualizers import plot_density, plot_sm
 m = VarianceGammaModel(sigma=0.12, nu=0.2, theta=-0.14)
 for T, ref in ((0.1, 10.993703187), (1.0, 19.099354724)):
     print(f"T = {T}: call {lewis_price(m, 100.0, 90.0, T, 0.1):.9f} (Fang-Oosterlee reference {ref})")
+    assert abs(lewis_price(m, 100.0, 90.0, T, 0.1) - ref) < 1e-8
 
 # %%
 # The skew comes from theta
@@ -29,10 +30,14 @@ S, r, T = 100.0, 0.0, 0.5
 x = np.linspace(-0.7, 0.5, 400)
 K = S * np.exp(np.linspace(-0.4, 0.3, 22))
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+skews = []
 for theta in (0.0, -0.15, -0.3):
     v = VarianceGammaModel(0.2, 0.3, theta)
+    iv = v.implied_vol(S, K, T, r)
+    skews.append(iv[0] - iv[-1])
     plot_density(x, v.pdf(x, T), ax=ax1, label=f"theta = {theta}", log=True)
-    plot_smile(K, v.implied_vol(S, K, T, r), forward=S, ax=ax2, label=f"theta = {theta}")
+    plot_smile(K, iv, forward=S, ax=ax2, label=f"theta = {theta}")
+assert abs(skews[0]) < 0.01 and skews[2] > 0.1 and np.all(np.diff(skews) > 0)
 ax1.set_ylim(1e-3, 10)
 fig.tight_layout()
 

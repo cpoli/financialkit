@@ -29,8 +29,11 @@ from financialkit.options.visualizers import plot_option_value
 S0, K, T, r, sigma = 100.0, 105.0, 1.0, 0.05, 0.2
 _, paths = gbm_paths(S0, r, sigma, T, n_steps=1, n_paths=400_000, rng=0)
 discounted = np.exp(-r * T) * np.maximum(paths[:, -1] - K, 0.0)
-print(f"Black-Scholes: {black_scholes_price(S0, K, T, r, sigma):.4f}")
-print(f"Monte Carlo:   {discounted.mean():.4f} +/- {1.96 * discounted.std() / np.sqrt(discounted.size):.4f}")
+exact = black_scholes_price(S0, K, T, r, sigma)
+se = discounted.std() / np.sqrt(discounted.size)
+print(f"Black-Scholes: {exact:.4f}")
+print(f"Monte Carlo:   {discounted.mean():.4f} +/- {1.96 * se:.4f}")
+assert abs(discounted.mean() - exact) < 3 * se
 
 # %%
 # The price as a function of spot, approaching the payoff at expiry

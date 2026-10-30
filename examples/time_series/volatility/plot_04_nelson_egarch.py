@@ -48,6 +48,9 @@ ga = GARCH.fit(r)
 for k in ("alpha", "gamma", "beta"):
     print(f"{k:5s} true {egarch.params[k]:+.3f}  fitted {eg.params[k]:+.3f} +/- {eg.std_errors[k]:.3f}")
 print(f"log-likelihood: EGARCH {eg.loglik:.1f}, GARCH {ga.loglik:.1f}; AIC {eg.aic:.1f} vs {ga.aic:.1f}")
+for k in ("alpha", "gamma", "beta"):
+    assert abs(eg.params[k] - egarch.params[k]) < 3 * eg.std_errors[k]
+assert eg.params["gamma"] < -2 * eg.std_errors["gamma"] and eg.aic < ga.aic
 
 fig, ax = plt.subplots(figsize=(8, 3.5))
 ax.plot(np.sqrt(eg.variance[:600]), label="EGARCH")

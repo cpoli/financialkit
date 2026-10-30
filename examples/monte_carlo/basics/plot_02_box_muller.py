@@ -46,7 +46,12 @@ x = np.linspace(-4, 4, 200)
 axes[2].hist(z, bins=80, density=True, alpha=0.6, label="Box-Muller")
 axes[2].plot(x, norm.pdf(x), "k", label="N(0, 1)")
 axes[2].legend()
-axes[2].set_title(f"KS p-value {kstest(z, 'norm').pvalue:.2f}")
-print(f"mean {z.mean():+.4f}, variance {z.var():.4f}, corr(z1, z2) {np.corrcoef(z1, z2)[0, 1]:+.4f}")
+pvalue = kstest(z, "norm").pvalue
+axes[2].set_title(f"KS p-value {pvalue:.2f}")
+corr = np.corrcoef(z1, z2)[0, 1]
+print(f"mean {z.mean():+.4f}, variance {z.var():.4f}, corr(z1, z2) {corr:+.4f}")
+assert pvalue > 0.01
+assert abs(z.mean()) < 4 / np.sqrt(z.size) and abs(z.var() - 1) < 4 * np.sqrt(2 / z.size)
+assert abs(corr) < 4 / np.sqrt(z1.size)
 fig.tight_layout()
 plt.show()

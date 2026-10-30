@@ -27,6 +27,7 @@ from numpy.lib.stride_tricks import sliding_window_view
 from numpy.typing import ArrayLike
 from scipy import stats
 
+from financialkit._deprecation import renamed_parameter
 from financialkit.integrators import RNGLike, correlated_increments
 from financialkit.risk.core.base import VaRResult
 from financialkit.risk.utils.tail import check_alpha, weighted_tail
@@ -236,6 +237,7 @@ def cornish_fisher_var(mu: ArrayLike, sigma: ArrayLike, skew: ArrayLike, excess_
     return _as_output(-(mu + sigma * z_cf))
 
 
+@renamed_parameter("ci_level", "confidence", "financialkit.risk.monte_carlo_var")
 def monte_carlo_var(
     pnl_fn: Callable[[np.ndarray], ArrayLike],
     cov: ArrayLike,
@@ -243,7 +245,7 @@ def monte_carlo_var(
     mean: ArrayLike | None = None,
     horizon: float = 1.0,
     n_paths: int = 10_000,
-    ci_level: float = 0.95,
+    confidence: float = 0.95,
     rng: RNGLike = None,
 ) -> VaRResult:
     """Full-revaluation Monte Carlo VaR (Pritsker 1997).
@@ -270,7 +272,7 @@ def monte_carlo_var(
         Number of periods.
     n_paths : int
         Number of scenarios.
-    ci_level : float
+    confidence : float
         Coverage of the confidence interval stored in ``result.ci``.
     rng : numpy.random.Generator, int or None
 
@@ -291,8 +293,8 @@ def monte_carlo_var(
     # The k-th order statistic lies below the p-quantile with probability
     # P(Binomial(n, p) >= k), which gives a distribution-free interval.
     p, x = 1.0 - alpha, np.sort(pnl)
-    lo = int(stats.binom.ppf((1.0 - ci_level) / 2.0, n_paths, p))
-    hi = int(stats.binom.ppf((1.0 + ci_level) / 2.0, n_paths, p))
+    lo = int(stats.binom.ppf((1.0 - confidence) / 2.0, n_paths, p))
+    hi = int(stats.binom.ppf((1.0 + confidence) / 2.0, n_paths, p))
     res.ci = (float(-x[min(hi, n_paths - 1)]), float(-x[max(lo - 1, 0)]))
     return res
 

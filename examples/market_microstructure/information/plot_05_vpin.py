@@ -40,6 +40,7 @@ start = np.searchsorted(res.bucket_end, np.argmax(toxic))
 ax.axvspan(start, res.vpin.size, color="C3", alpha=0.1, label="toxic flow")
 ax.legend(loc="upper left", fontsize="small")
 print(f"VPIN before the episode {np.nanmean(res.vpin[50:start]):.3f}, at the end {res.vpin[-1]:.3f}")
+assert res.vpin[-1] > 2 * np.nanmax(res.vpin[50:start])
 
 # %%
 # Price and VPIN in clock time

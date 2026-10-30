@@ -7,7 +7,9 @@ from financialkit.constants import DEFAULT_ATOL
 from financialkit.fixed_income import (
     FlatCurve,
     NelsonSiegelCurve,
+    SplineDiscountCurve,
     SvenssonCurve,
+    YieldCurve,
     ZeroCurve,
     bond_cash_flows,
     bootstrap_par_curve,
@@ -133,3 +135,49 @@ def test_pca_level_slope_curvature():
 
 def test_flat_curve_par_yield():
     assert FlatCurve(2 * np.log(1.03)).par_yield(10.0, freq=2) == pytest.approx(0.06, abs=1e-12)
+
+
+def test_flat_and_zero_curve_repr_round_trip():
+    flat = FlatCurve(0.03)
+    assert eval(repr(flat)).rate == flat.rate
+    zero = ZeroCurve([1.0, 2.0], [0.01, 0.02])
+    rebuilt = eval(repr(zero), {"ZeroCurve": ZeroCurve, "array": np.array})
+    np.testing.assert_array_equal(rebuilt.rates, zero.rates)
+
+
+def test_svensson_closed_form_forward_matches_numerical_derivative():
+    """The closed-form instantaneous forward equals d(r t)/dt, the base class's finite difference."""
+    curve = SvenssonCurve(0.04, -0.02, 0.01, 0.005, 1.5, 4.0)
+    t = np.array([0.5, 2.0, 7.0, 15.0])
+    np.testing.assert_allclose(curve.instantaneous_forward(t), YieldCurve.instantaneous_forward(curve, t), atol=1e-8)
+    ns = NelsonSiegelCurve(0.04, -0.02, 0.01, 1.5)
+    no_hump = SvenssonCurve(0.04, -0.02, 0.01, 0.0, 1.5, 4.0)
+    np.testing.assert_allclose(no_hump.instantaneous_forward(t), ns.instantaneous_forward(t), atol=1e-15)
+
+
+def test_curve_constructors_reject_invalid_inputs():
+    with pytest.raises(ValueError, match="same nonzero length"):
+        ZeroCurve([1.0, 2.0], [0.01])
+    with pytest.raises(ValueError, match="strictly increasing"):
+        ZeroCurve([2.0, 1.0], [0.01, 0.02])
+    with pytest.raises(ValueError, match="t2 must exceed t1"):
+        FlatCurve(0.03).forward_rate(2.0, 1.0)
+    with pytest.raises(ValueError, match="tau must be positive"):
+        NelsonSiegelCurve(0.04, -0.02, 0.01, 0.0)
+    with pytest.raises(ValueError, match="tau1 and tau2"):
+        SvenssonCurve(0.04, -0.02, 0.01, 0.005, 1.5, -1.0)
+    with pytest.raises(ValueError, match="coefficients"):
+        SplineDiscountCurve([0.1, 0.2], [0.0, 5.0, 30.0], degree=3)
+
+
+def test_curve_fitters_reject_mismatched_inputs():
+    with pytest.raises(ValueError, match="strictly increasing"):
+        forward_rates([1.0, 1.0], [0.03, 0.04])
+    with pytest.raises(ValueError, match="distinct"):
+        bootstrap_zero_curve([1.0, 1.0], [0.05, 0.06], [100.0, 101.0])
+    with pytest.raises(ValueError, match="shape"):
+        carleton_cooper_discount_factors([1.0, 2.0], np.ones((3, 2)), [99.0, 98.0])
+    with pytest.raises(ValueError, match="one price per bond"):
+        fit_mcculloch_spline([bond_cash_flows(100.0, 0.05, 2.0)], [99.0, 98.0])
+    with pytest.raises(ValueError, match="2-D"):
+        yield_curve_pca(np.zeros(10))

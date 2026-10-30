@@ -40,14 +40,18 @@ axes[0].set_title(f"cap {cap.price:,.0f}, floor {floor.price:,.0f}")
 tau = cap.payment_times - cap.reset_times
 swap = 1e6 * np.sum(tau * curve.discount(cap.payment_times) * (cap.forwards - 0.045))
 print(f"cap - floor = {cap.price - floor.price:,.2f}; forward-start swap = {swap:,.2f}")
+assert np.isclose(cap.price - floor.price, swap, rtol=1e-10)  # cap-floor parity
 
 # %%
 # Cap prices across strikes
 # -------------------------
 
 K = np.linspace(0.02, 0.08, 25)
-axes[1].plot(100 * K, [cap_floor_price(curve, k, 5.0, 0.25, freq=4).price for k in K], label="cap")
-axes[1].plot(100 * K, [cap_floor_price(curve, k, 5.0, 0.25, freq=4, kind="floor").price for k in K], label="floor")
+caps = np.array([cap_floor_price(curve, k, 5.0, 0.25, freq=4).price for k in K])
+floors = np.array([cap_floor_price(curve, k, 5.0, 0.25, freq=4, kind="floor").price for k in K])
+assert np.all(np.diff(caps) < 0) and np.all(np.diff(floors) > 0)
+axes[1].plot(100 * K, caps, label="cap")
+axes[1].plot(100 * K, floors, label="floor")
 axes[1].set_xlabel("strike (%)")
 axes[1].set_ylabel("price per unit notional")
 axes[1].legend()

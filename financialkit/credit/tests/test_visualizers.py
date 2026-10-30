@@ -10,9 +10,17 @@ from financialkit.credit import (
     creditmetrics_matrix,
     creditmetrics_portfolio,
     creditrisk_plus,
+    swap_exposure,
     tranche_spread,
 )
-from financialkit.credit.visualizers import plot_loss_distribution, plot_survival, plot_tranche_losses, plot_transition_matrix, plot_value_distribution
+from financialkit.credit.visualizers import (
+    plot_exposure_profile,
+    plot_loss_distribution,
+    plot_survival,
+    plot_tranche_losses,
+    plot_transition_matrix,
+    plot_value_distribution,
+)
 
 P = creditmetrics_matrix()
 
@@ -31,3 +39,11 @@ def test_plot_matrices_and_values():
 def test_plot_tranches():
     res = [tranche_spread(a, d, HazardCurve.flat(0.01), 0.3, 3.0, 0.03) for a, d in ((0.0, 0.03), (0.03, 0.07))]
     assert isinstance(plot_tranche_losses(res), matplotlib.axes.Axes)
+
+
+def test_plot_exposure_profile():
+    from financialkit.interest_rate_models import HullWhiteModel
+
+    prof = swap_exposure(HullWhiteModel(0.03, 0.1, 0.01), 0.03, 2.0, n_paths=200, rng=0)
+    assert isinstance(plot_exposure_profile(prof, n_paths=5, label="payer"), matplotlib.axes.Axes)
+    assert isinstance(plot_exposure_profile(prof, pfe_level=None), matplotlib.axes.Axes)

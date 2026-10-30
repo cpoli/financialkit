@@ -25,6 +25,8 @@ from financialkit.market_microstructure import kyle_equilibrium, kyle_lambda, si
 
 eq = kyle_equilibrium(sigma_v=2.0, sigma_u=1.0, p0=50.0)
 print(f"lambda {eq.lam}, beta {eq.beta}, insider profit {eq.insider_profit}, Var(v | p) {eq.posterior_variance}")
+assert np.isclose(eq.lam, 2.0 / (2 * 1.0)) and np.isclose(eq.beta, 1.0 / 2.0)
+assert np.isclose(eq.insider_profit, 2.0 * 1.0 / 2) and np.isclose(eq.posterior_variance, 2.0**2 / 2)
 
 # %%
 # Order flow moves the price
@@ -36,6 +38,7 @@ print(f"lambda {eq.lam}, beta {eq.beta}, insider profit {eq.insider_profit}, Var
 
 v, y, p = simulate_kyle(eq, 3000, rng=7)
 fit = kyle_lambda(v - eq.p0, y)
+assert abs(fit.coef[1] - eq.lam) < 4 * fit.std_errors[1]
 fig, ax = plt.subplots(figsize=(6, 4))
 ax.plot(y, v, ".", ms=2, color="0.6", label="value $v$")
 ax.plot(np.sort(y), eq.p0 + eq.lam * np.sort(y), "C3", label=f"price, $\\lambda$ = {eq.lam}")
@@ -56,6 +59,7 @@ fig.tight_layout()
 
 betas = np.linspace(0.05, 1.0, 20)
 sim_profit = [np.mean(b * (vv - eq.p0) * (vv - pp)) for b in betas for vv, _, pp in [simulate_kyle(eq, 4000, beta=b, rng=8)]]
+assert abs(betas[np.argmax(sim_profit)] - eq.beta) <= betas[1] - betas[0]
 fig, ax = plt.subplots(figsize=(6, 3.5))
 ax.plot(betas, betas * eq.sigma_v**2 * (1 - eq.lam * betas), "k-", label="expected profit")
 ax.plot(betas, sim_profit, "o", ms=4, color="C0", label="simulated")

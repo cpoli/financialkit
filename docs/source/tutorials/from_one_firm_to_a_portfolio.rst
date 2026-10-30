@@ -19,7 +19,8 @@ assets, struck at the face value of its debt: if the assets are worth
 less than the debt when it falls due, the shareholders walk away. So
 Black-Scholes prices equity, and debt is what remains:
 
-.. code-block:: python
+.. plot::
+   :context: reset
 
    import numpy as np
    import financialkit as fk
@@ -45,7 +46,8 @@ are. Moody's KMV inverts Merton's two equations (equity as a call, and
 equity volatility as asset volatility levered up by the call's delta) to
 recover them:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    implied = fk.credit.merton_calibrate(E=firm.equity, sigma_E=firm.equity_volatility, D=100.0, T=1.0, r=0.03)
    print(f"equity volatility {100 * firm.equity_volatility:.1f}% implies assets {implied.asset_value:.2f} with volatility {100 * implied.asset_volatility:.1f}%")
@@ -67,7 +69,8 @@ hazard rate. A flat 2% hazard rate gives survival :math:`e^{-\lambda t}`,
 and the credit default swap that insures against it has a par spread
 close to :math:`\lambda (1 - R)`, the "credit triangle":
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    curve = fk.credit.HazardCurve.flat(0.02)
    print(f"5-year default probability {100 * curve.default_probability(5.0):.2f}%")
@@ -88,7 +91,8 @@ given default. In Vasicek's one-factor model, each firm's assets load on
 a common factor with correlation :math:`\rho`. The expected loss does
 not depend on :math:`\rho` at all, but the tail does:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    for rho in (0.0, 0.15, 0.30):
        book = fk.credit.one_factor_loss_distribution(0.02, rho, 100, lgd=0.45)
@@ -102,7 +106,8 @@ expected loss. With 30% asset correlation it is more than seventeen
 times: defaults arrive together, in recessions. Simulating correlated
 default times with Li's Gaussian copula shows the same thing name by name:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    for rho in (0.0, 0.30):
        times = fk.credit.copula_default_times(curve, rho, 20_000, n_names=100, rng=1)
@@ -119,7 +124,8 @@ Vasicek's closed form, and Basel II turned its 99.9% quantile into the
 capital banks must hold against unexpected loss, with a correlation that
 falls as the default probability rises:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    rho_basel = fk.credit.basel_correlation(0.02)
    k = fk.credit.basel_irb_capital(0.02, lgd=0.45, maturity=1.0)

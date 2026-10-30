@@ -33,6 +33,7 @@ def margrabe(rho):
 
 res = PeacemanRachfordADI(120, 120, 60).price(S1, S2, T, r, sigma1, sigma2, 0.5, exchange)
 print(f"ADI {res.price:.4f}, Margrabe {margrabe(0.5):.4f}")
+assert abs(res.price - margrabe(0.5)) < 0.01
 
 # %%
 # The value surface, and the price across correlations
@@ -45,6 +46,7 @@ axes[0].set_title("exchange option, rho = 0.5")
 
 rhos = np.linspace(-0.9, 0.9, 7)
 adi = [PeacemanRachfordADI(80, 80, 40).price(S1, S2, T, r, sigma1, sigma2, rho, exchange).price for rho in rhos]
+assert np.allclose(adi, [margrabe(rho) for rho in rhos], rtol=0.02)
 axes[1].plot(rhos, [margrabe(rho) for rho in rhos], "k", lw=1, label="Margrabe")
 axes[1].plot(rhos, adi, "o", label="Peaceman-Rachford ADI")
 axes[1].set_xlabel("correlation rho")

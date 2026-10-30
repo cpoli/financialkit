@@ -20,7 +20,7 @@ lies above the at-the-money volatility squared.
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.exotic_options import plot_variance_strip, realized_variance, variance_swap_strike
+from financialkit.exotic_options import annualized_realized_variance, plot_variance_strip, variance_swap_strike
 from financialkit.integrators import gbm_paths
 from financialkit.options import black_scholes_price
 
@@ -41,6 +41,10 @@ def strip(vol):
 flat, skewed = strip(0.2), strip(skew(K))
 print(f"flat 20% smile: fair volatility {flat.vol_strike:.4f}")
 print(f"skewed smile (ATM 20%): fair volatility {skewed.vol_strike:.4f}")
+# The strip recovers a flat 20% to within the strike grid's truncation
+# error, and the skew lifts the fair volatility above the at-the-money one.
+assert abs(flat.vol_strike - 0.2) < 1e-3
+assert skewed.vol_strike > 0.2
 
 # %%
 # The replicating strip under the skew
@@ -59,7 +63,8 @@ axes[1].set_xlim(40, 200)
 # ------------------------------------------------------------------
 
 _, paths = gbm_paths(S, r, 0.2, T, 252, 5000, rng=0)
-rv = realized_variance(paths, T)
+rv = annualized_realized_variance(paths, T)
+assert abs(rv.mean() - flat.fair_variance) < 4 * rv.std() / np.sqrt(rv.size)
 axes[2].hist(rv, bins=50, density=True, alpha=0.7)
 axes[2].axvline(flat.fair_variance, color="k", lw=2, label=f"fair strike {flat.fair_variance:.4f}")
 axes[2].axvline(rv.mean(), color="C3", ls="--", label=f"mean realized {rv.mean():.4f}")

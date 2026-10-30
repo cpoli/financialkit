@@ -27,6 +27,7 @@ from financialkit.time_value import irr, irr_all, mirr
 cf = [-1000.0, 800.0, 500.0, 200.0]
 print(f"IRR  = {irr(cf):.2%}")
 print(f"MIRR = {mirr(cf, 0.10, 0.10):.2%} (finance and reinvest at 10%)")
+assert 0.10 < mirr(cf, 0.10, 0.10) < irr(cf)
 
 # %%
 # The pump problem gets one answer
@@ -34,6 +35,7 @@ print(f"MIRR = {mirr(cf, 0.10, 0.10):.2%} (finance and reinvest at 10%)")
 
 pump = [-1600.0, 10_000.0, -10_000.0]
 print(f"pump IRRs: {irr_all(pump)}; MIRR at 10%: {mirr(pump, 0.10, 0.10):.2%}")
+assert len(irr_all(pump)) == 2 and np.isfinite(mirr(pump, 0.10, 0.10))
 
 # %%
 # MIRR moves between the reinvestment rate and the IRR
@@ -41,7 +43,10 @@ print(f"pump IRRs: {irr_all(pump)}; MIRR at 10%: {mirr(pump, 0.10, 0.10):.2%}")
 
 reinvest = np.linspace(0.0, 0.6, 121)
 fig, ax = plt.subplots(figsize=(7, 4.5))
-ax.plot(100 * reinvest, [100 * mirr(cf, 0.10, r) for r in reinvest], label="MIRR")
+m = np.array([mirr(cf, 0.10, r) for r in reinvest])
+ax.plot(100 * reinvest, 100 * m, label="MIRR")
+assert np.isclose(mirr(cf, 0.10, irr(cf)), irr(cf))
+assert np.all((m - reinvest) * (irr(cf) - m) >= -1e-12)  # MIRR lies between the two
 ax.axhline(100 * irr(cf), color="tab:red", ls="--", label="IRR")
 ax.plot(100 * reinvest, 100 * reinvest, ":", color="gray", label="reinvestment rate")
 ax.set_xlabel("reinvestment rate (%)")

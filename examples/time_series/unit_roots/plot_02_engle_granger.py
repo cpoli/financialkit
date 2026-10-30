@@ -36,6 +36,8 @@ spur = engle_granger(a, b)
 for name, res in (("cointegrated", coint), ("spurious", spur)):
     cv = res.critical_values["5%"]
     print(f"{name:13s} b = {res.beta[0]:6.3f}, R^2 = {res.r_squared:.2f}, EG = {res.statistic:6.2f} (5% cv {cv:.2f}), reject: {res.rejects()}")
+assert coint.rejects() and abs(coint.beta[0] - 1.2) < 0.05
+assert not spur.rejects()
 
 fig, axes = plt.subplots(2, 2, figsize=(9, 5.5), sharex=True)
 axes[0, 0].plot(y, label="y")
@@ -68,4 +70,5 @@ for _ in range(300):
     big_t.append(abs(coef[1] / se) > 2)
     eg_reject.append(engle_granger(a, b, lags=0).rejects())
 print(f"|t| > 2 in {np.mean(big_t):.0%} of spurious regressions; Engle-Granger rejects in {np.mean(eg_reject):.0%}")
+assert np.mean(big_t) > 0.5 and np.mean(eg_reject) < 0.1
 plt.show()

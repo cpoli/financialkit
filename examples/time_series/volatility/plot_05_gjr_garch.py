@@ -35,6 +35,9 @@ for k in ("alpha", "gamma", "beta"):
     print(f"{k:5s} true {true.params[k]:.3f}  fitted {gjr.params[k]:.3f} +/- {gjr.std_errors[k]:.3f}")
 print(f"persistence alpha + gamma/2 + beta = {gjr.model.persistence:.3f}")
 print(f"likelihood-ratio statistic vs GARCH: {2 * (gjr.loglik - garch.loglik):.1f} (chi^2_1 5% value 3.84)")
+for k in ("alpha", "gamma", "beta"):
+    assert abs(gjr.params[k] - true.params[k]) < 3 * gjr.std_errors[k]
+assert 2 * (gjr.loglik - garch.loglik) > 3.84
 
 ax = plot_news_impact({"fitted GJR": gjr.model, "fitted GARCH": garch.model}, var_prev=true.unconditional_variance)
 ax.set_title("GJR: a kinked parabola")
@@ -48,7 +51,9 @@ ax.set_title("GJR: a kinked parabola")
 z = (r - gjr.model.mean) / np.sqrt(gjr.variance)
 nxt = gjr.variance[1:] / gjr.variance[:-1]
 fig, ax = plt.subplots()
-ax.bar(["after a fall", "after a rise"], [nxt[z[:-1] < -1].mean(), nxt[z[:-1] > 1].mean()], color=["C3", "C2"])
+after_fall, after_rise = nxt[z[:-1] < -1].mean(), nxt[z[:-1] > 1].mean()
+assert after_fall > 1 > after_rise
+ax.bar(["after a fall", "after a rise"], [after_fall, after_rise], color=["C3", "C2"])
 ax.axhline(1, color="k", lw=0.8)
 ax.set_ylabel(r"mean $\sigma_{t+1}^2 / \sigma_t^2$")
 plt.show()

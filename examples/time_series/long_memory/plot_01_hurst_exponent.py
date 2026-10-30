@@ -47,6 +47,7 @@ for H, x in series.items():
     res = hurst_exponent(x)
     plot_rescaled_range(res, ax=ax, label=f"true {H}:")
     print(f"true H = {H}: raw slope {res.hurst:.2f}, corrected {res.hurst_corrected:.2f}")
+    assert abs(res.hurst_corrected - H) < 0.08
 ax.legend(fontsize=8)
 plt.show()
 
@@ -55,4 +56,6 @@ plt.show()
 # small-sample bias is removed.
 
 returns = 0.01 * np.random.default_rng(0).standard_normal(4096)
-print(f"random-walk returns: corrected H = {hurst_exponent(returns).hurst_corrected:.2f}")
+H_rw = hurst_exponent(returns).hurst_corrected
+print(f"random-walk returns: corrected H = {H_rw:.2f}")
+assert abs(H_rw - 0.5) < 0.05

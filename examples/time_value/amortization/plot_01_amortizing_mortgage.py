@@ -27,6 +27,9 @@ print(f"last payment:  interest {s.interest[-1]:,.2f}, principal {s.principal[-1
 print(f"total interest over 30 years: {s.total_interest:,.0f}")
 half = int((s.balance > 100_000).sum())
 print(f"half the principal is repaid only after {half / 12:.1f} years")
+assert abs(s.balance[-1]) < 1e-6 and abs(s.principal.sum() - 200_000.0) < 1e-6
+assert s.interest[0] > s.principal[0] and s.interest[-1] < s.principal[-1]
+assert half / 12 > 20
 
 # %%
 # Interest first, principal later
@@ -34,13 +37,16 @@ print(f"half the principal is repaid only after {half / 12:.1f} years")
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 plot_amortization(s, ax=axes[0])
+payments = {}
 for years in (15, 30):
     loan = amortization_schedule(200_000.0, 0.06, 12 * years)
+    payments[years] = loan.payment
     axes[1].plot(loan.periods / 12, loan.balance, label=f"{years}-year: payment {loan.payment:,.0f}")
 axes[1].set_xlabel("years")
 axes[1].set_ylabel("outstanding balance")
 axes[1].set_title("15- vs 30-year mortgage")
 axes[1].legend()
 fig.tight_layout()
+assert payments[15] > payments[30]
 
 plt.show()

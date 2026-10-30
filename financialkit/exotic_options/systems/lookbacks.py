@@ -23,6 +23,10 @@ Options: 'Buy at the Low, Sell at the High'," *J. Finance* 34 (1979)
 Case of Lookback Options," *J. Finance* 46 (1991) 1893-1907; E. G. Haug,
 *The Complete Guide to Option Pricing Formulas*, 2nd ed. (McGraw-Hill,
 2007), Sections 4.15.1-4.15.2.
+
+With ``sigma = 0`` or at ``T = 0`` both closed forms return the payoff of
+the riskless path :math:`S e^{bt}`, whose extremes are its end points.
+Spots and observed extremes must be positive.
 """
 
 from __future__ import annotations
@@ -31,10 +35,12 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy.stats import norm
 
-from financialkit.exotic_options.utils.numerics import bridge_extremum
-from financialkit.integrators import RNGLike, gbm_paths
+from financialkit._validation import nonnegative, positive
+from financialkit._validation import option_type as check_option_type
+from financialkit.exotic_options.utils.numerics import bridge_extremum, spot_paths
+from financialkit.integrators import RNGLike
 from financialkit.monte_carlo import MonteCarloResult, sample_mean
-from financialkit.options.utils.common import as_output, option_sign
+from financialkit.options.utils.common import as_output
 
 __all__ = ["floating_lookback_price", "fixed_lookback_price", "lookback_option_mc"]
 
@@ -70,6 +76,14 @@ def _blocks(S, level, T, r, b, sigma, upper: bool):
 
 def _inputs(*args: ArrayLike) -> list[np.ndarray]:
     return list(np.broadcast_arrays(*(np.asarray(a, dtype=np.float64) for a in args)))
+
+
+def _split(S: np.ndarray, X: np.ndarray, T: np.ndarray, r: np.ndarray, q: np.ndarray, sigma: np.ndarray) -> tuple[np.ndarray, ...]:
+    """Validate; return the riskless path's end point, the mask where the closed form applies, and safe ``T`` and ``sigma``."""
+    nonnegative(T=T, sigma=sigma)
+    positive(S=S, S_extreme=X)
+    regular = sigma * np.sqrt(T) > 0
+    return S * np.exp((r - q) * T), regular, np.where(regular, T, 1.0), np.where(regular, sigma, 1.0)
 
 
 def floating_lookback_price(
@@ -109,16 +123,19 @@ def floating_lookback_price(
     >>> round(floating_lookback_price(120.0, 0.5, 0.10, 0.30, q=0.06, S_extreme=100.0), 3)
     25.353
     """
-    phi = option_sign(option_type)
+    phi = check_option_type(option_type)
     S, T, r, sigma, q, X = _inputs(S, T, r, sigma, q, S if S_extreme is None else S_extreme)
+    end, regular, Ts, sig = _split(S, X, T, r, q, sigma)
     b = r - q
     if phi == 1:
         X = np.minimum(X, S)
-        out = S * np.exp((b - r) * T) - X * np.exp(-r * T) + _blocks(S, X, T, r, b, sigma, upper=False)
+        out = S * np.exp((b - r) * Ts) - X * np.exp(-r * Ts) + _blocks(S, X, Ts, r, b, sig, upper=False)
+        deterministic = end - np.minimum(X, end)
     else:
         X = np.maximum(X, S)
-        out = X * np.exp(-r * T) - S * np.exp((b - r) * T) + _blocks(S, X, T, r, b, sigma, upper=True)
-    return as_output(out)
+        out = X * np.exp(-r * Ts) - S * np.exp((b - r) * Ts) + _blocks(S, X, Ts, r, b, sig, upper=True)
+        deterministic = np.maximum(X, end) - end
+    return as_output(np.where(regular, out, np.exp(-r * T) * deterministic))
 
 
 def fixed_lookback_price(
@@ -165,24 +182,30 @@ def fixed_lookback_price(
     >>> bool(fixed_lookback_price(100.0, 100.0, 1.0, 0.05, 0.2) > black_scholes_price(100.0, 100.0, 1.0, 0.05, 0.2))
     True
     """
-    phi = option_sign(option_type)
+    phi = check_option_type(option_type)
     S, K, T, r, sigma, q, X = _inputs(S, K, T, r, sigma, q, S if S_extreme is None else S_extreme)
+    end, regular, Ts, sig = _split(S, X, T, r, q, sigma)
+    nonnegative(K=K)
     b = r - q
-    disc = np.exp(-r * T)
+    disc = np.exp(-r * Ts)
     if phi == 1:
         X = np.maximum(X, S)
-        out = disc * np.maximum(X - K, 0.0) + _blocks(S, np.maximum(K, X), T, r, b, sigma, upper=True)
+        out = disc * np.maximum(X - K, 0.0) + _blocks(S, np.maximum(K, X), Ts, r, b, sig, upper=True)
+        deterministic = np.maximum(np.maximum(X, end) - K, 0.0)
     else:
         X = np.minimum(X, S)
-        out = disc * np.maximum(K - X, 0.0) + _blocks(S, np.minimum(K, X), T, r, b, sigma, upper=False)
-    return as_output(out)
+        # K = 0 makes the put worthless; any positive level keeps the closed form finite there
+        out = disc * np.maximum(K - X, 0.0) + _blocks(S, np.where(K > 0, np.minimum(K, X), X), Ts, r, b, sig, upper=False)
+        out = np.where(K > 0, out, 0.0)
+        deterministic = np.maximum(K - np.minimum(X, end), 0.0)
+    return as_output(np.where(regular, out, np.exp(-r * T) * deterministic))
 
 
 def lookback_option_mc(
     S: float,
     T: float,
     r: float,
-    sigma: float,
+    sigma: float | None = None,
     q: float = 0.0,
     option_type: str = "call",
     K: float | None = None,
@@ -191,6 +214,8 @@ def lookback_option_mc(
     continuous: bool = True,
     rng: RNGLike = None,
     confidence: float = 0.95,
+    paths: ArrayLike | None = None,
+    discount: ArrayLike | None = None,
 ) -> MonteCarloResult:
     """Monte Carlo price of a newly written lookback, floating (``K=None``) or fixed strike.
 
@@ -200,27 +225,39 @@ def lookback_option_mc(
     (:func:`~financialkit.exotic_options.utils.numerics.bridge_extremum`), so
     the estimator is unbiased for continuous monitoring at any step size;
     with ``continuous=False`` it is the extremum over the grid dates,
-    which prices a discretely monitored lookback.
+    which prices a discretely monitored lookback. Any other model's spot
+    paths can be given as `paths`; the bridge then assumes volatility
+    `sigma` within each step.
 
     Parameters
     ----------
-    S, T, r, sigma : float
-        Spot, maturity, rate and volatility.
+    S, T, r : float
+        Spot, maturity and rate.
+    sigma : float, optional
+        Volatility of the GBM paths and of the bridge; required unless
+        `paths` are given with ``continuous=False``.
     q : float
         Continuous dividend yield.
     option_type : {"call", "put"}
     K : float, optional
         Fixed strike; ``None`` for a floating-strike lookback.
     n_steps : int
-        Time steps (monitoring dates when ``continuous=False``).
+        Time steps (monitoring dates when ``continuous=False``); ignored with `paths`.
     n_paths : int
-        Number of paths.
+        Number of paths; ignored with `paths`.
     continuous : bool
         Continuous monitoring through the bridge, or discrete.
     rng : numpy.random.Generator or int, optional
-        Generator or seed.
+        Generator or seed (for the GBM paths and the bridge samples).
     confidence : float
         Coverage of the confidence interval.
+    paths : array_like, shape (n_paths, n_steps + 1), optional
+        Risk-neutral spot paths starting at `S` on the grid :math:`t_i = iT/n`,
+        in place of the GBM ones.
+    discount : array_like, optional
+        Discount factors :math:`D(0, t_i)` for `paths`, of shape
+        ``(n_steps + 1,)`` or one row per path; only :math:`D(0, T)` is
+        used. :math:`e^{-rT}` by default.
 
     Returns
     -------
@@ -232,18 +269,21 @@ def lookback_option_mc(
     >>> bool(abs(res.estimate - floating_lookback_price(100.0, 1.0, 0.05, 0.2)) < 4 * res.std_error)
     True
     """
-    phi = option_sign(option_type)
+    phi = check_option_type(option_type)
     gen = np.random.default_rng(rng)
-    _, paths = gbm_paths(S, r - q, sigma, T, int(n_steps), int(n_paths), rng=gen)
+    spot, D = spot_paths(S, T, r - q, sigma, int(n_steps), int(n_paths), paths, discount, rng=gen)
     # the call needs the maximum for a fixed strike and the minimum for a floating one
     kind = "max" if (phi == 1) == (K is not None) else "min"
     if continuous:
-        extreme = np.exp(bridge_extremum(np.log(paths), sigma, T / int(n_steps), kind, rng=gen))
+        if sigma is None:
+            raise ValueError("continuous monitoring needs sigma for the bridge")
+        extreme = np.exp(bridge_extremum(np.log(spot), sigma, T / (spot.shape[1] - 1), kind, rng=gen))
     else:
-        extreme = paths.max(axis=1) if kind == "max" else paths.min(axis=1)
-    S_T = paths[:, -1]
+        extreme = spot.max(axis=1) if kind == "max" else spot.min(axis=1)
+    S_T = spot[:, -1]
     if K is None:
         payoff = S_T - extreme if phi == 1 else extreme - S_T
     else:
         payoff = np.maximum(phi * (extreme - K), 0.0)
-    return sample_mean(np.exp(-r * T) * payoff, confidence, "continuous lookback" if continuous else "discrete lookback")
+    disc = np.exp(-r * T) if D is None else D[:, -1]
+    return sample_mean(disc * payoff, confidence, "continuous lookback" if continuous else "discrete lookback")

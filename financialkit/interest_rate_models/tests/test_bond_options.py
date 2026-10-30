@@ -160,3 +160,20 @@ def test_validation():
         cap_floor_price(CURVE, 0.05, 0.25, 0.2, freq=4)
     with pytest.raises(ValueError):
         coupon_bond_option(HW, 2.0, [1.0, 3.0], [5.0, 105.0], 100.0)
+
+
+@pytest.mark.parametrize("K", [500.0, 1e-3])
+def test_coupon_bond_option_parity_at_extreme_strikes(K):
+    """Call - put = forward bond value - K P(0, T), even when the critical rate is far outside [-0.5, 0.5]."""
+    m = VasicekModel(0.05, 0.2, 0.05, 0.02)
+    times, flows = np.array([2.0, 3.0, 4.0]), np.array([5.0, 5.0, 105.0])
+    call = coupon_bond_option(m, 1.0, times, flows, K, "call")
+    put = coupon_bond_option(m, 1.0, times, flows, K, "put")
+    assert abs(call.critical_rate) > 0.5
+    forward = flows @ m.zero_coupon_bond(times) - K * m.zero_coupon_bond(1.0)
+    assert call.price - put.price == pytest.approx(forward, rel=1e-10, abs=1e-10)
+
+
+def test_model_cap_floor_rejects_unknown_kind():
+    with pytest.raises(ValueError, match="cap"):
+        model_cap_floor_price(VasicekModel(0.05, 0.2, 0.05, 0.02), 0.05, 2.0, kind="collar")

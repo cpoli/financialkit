@@ -36,6 +36,7 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike
 from scipy.integrate import quad, trapezoid
+from scipy.special import factorial
 from scipy.stats import norm
 
 from financialkit.integrators import RNGLike, gbm_paths
@@ -171,9 +172,13 @@ def heston_price(
 def _average_variance_moments(V0: float, xi: float, T: float) -> tuple[float, float]:
     """:math:`E[\\bar V^2]` and :math:`E[\\bar V^3]` for :math:`dV = \\xi V dW` (Hull-White 1987, eqs. 10-11)."""
     k = xi**2 * T
-    if k < 1e-4:
-        m2 = 1.0 + k / 3 + k**2 / 12 + k**3 / 60
-        m3 = 1.0 + k + 0.65 * k**2 + k**3 / 3
+    if k < 0.1:
+        # The closed forms cancel catastrophically for small k (the third
+        # central moment is O(k^2)), so sum their Taylor series instead;
+        # twelve terms leave a truncation error below 1e-17.
+        n = np.arange(12)
+        m2 = float(np.sum(2.0 * k**n / factorial(n + 2)))
+        m3 = float(np.sum((3.0 ** (n + 3) - 9.0) * k**n / (3.0 * factorial(n + 3))))
     else:
         m2 = 2 * (np.exp(k) - k - 1) / k**2
         m3 = (np.exp(3 * k) - 9 * np.exp(k) + 6 * k + 8) / (3 * k**3)

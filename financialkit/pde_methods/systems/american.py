@@ -97,7 +97,7 @@ def psor(
     x, it = psor_kernel(lower, diag, upper, rhs, obstacle, start, np.array([omega, tol, max_iter], dtype=np.float64))
     if it > max_iter:
         raise RuntimeError(f"PSOR did not converge in {max_iter} sweeps")
-    return LCPSolution(x=x, iterations=int(it), method="psor")
+    return LCPSolution(x=x, n_iter=int(it), method="psor")
 
 
 def brennan_schwartz(lower: ArrayLike, diag: ArrayLike, upper: ArrayLike, rhs: ArrayLike, obstacle: ArrayLike, exercise: str = "low") -> LCPSolution:
@@ -126,7 +126,7 @@ def brennan_schwartz(lower: ArrayLike, diag: ArrayLike, upper: ArrayLike, rhs: A
         raise ValueError(f'exercise must be "low" or "high", got {exercise!r}')
     lower, diag, upper, rhs, obstacle = _arrays(lower, diag, upper, rhs, obstacle)
     x = brennan_schwartz_kernel(lower, diag, upper, rhs, obstacle, np.array([-1.0 if exercise == "low" else 1.0]))
-    return LCPSolution(x=x, iterations=1, method="brennan_schwartz")
+    return LCPSolution(x=x, n_iter=1, method="brennan_schwartz")
 
 
 def penalty_solve(
@@ -179,5 +179,5 @@ def penalty_solve(
         change = np.max(np.abs(x_new - x) / np.maximum(1.0, np.abs(x_new)))
         x = x_new
         if np.array_equal(p_new, p) or change < tol:
-            return LCPSolution(x=x, iterations=it, method="penalty")
+            return LCPSolution(x=x, n_iter=it, method="penalty")
     raise RuntimeError(f"penalty iteration did not converge in {max_iter} iterations")

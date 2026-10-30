@@ -73,3 +73,22 @@ def test_operator_is_exact_for_quadratics_on_a_nonuniform_grid():
 def test_operator_rejects_bad_grids():
     with pytest.raises(ValueError):
         black_scholes_operator([0.0, 2.0, 1.0], 0.2, 0.05)
+
+
+def test_tridiagonal_helpers_reject_invalid_inputs():
+    from financialkit.pde_methods import interpolate_at, theta_march, uniform_grid
+
+    n = 5
+    lower, diag, upper = np.full(n, -1.0), np.full(n, 4.0), np.full(n, -1.0)
+    with pytest.raises(ValueError, match="single right-hand side"):
+        solve_tridiagonal(lower, diag, upper, np.ones((n, 2)), solver="thomas")
+    with pytest.raises(ValueError, match="outside the grid"):
+        interpolate_at(np.linspace(0.0, 1.0, n), np.zeros(n), 2.0)
+    with pytest.raises(ValueError, match="theta must be in"):
+        theta_march(np.zeros(n), lower, diag, upper, 1.0, 10, lambda tau: (0.0, 0.0), theta=1.5)
+    with pytest.raises(ValueError, match="needs an lcp solver"):
+        theta_march(np.zeros(n), lower, diag, upper, 1.0, 10, lambda tau: (0.0, 0.0), obstacle=np.zeros(n))
+    with pytest.raises(ValueError, match="s_max must exceed s_min"):
+        uniform_grid(1.0, 0.0, 10)
+    with pytest.raises(ValueError, match="alpha must be positive"):
+        tavella_randall_grid(0.0, 200.0, 10, 100.0, 0.0)

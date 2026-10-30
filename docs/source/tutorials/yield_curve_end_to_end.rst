@@ -19,7 +19,8 @@ Par rates are the coupons at which bonds of each maturity would trade at
 par. Bootstrapping solves for discount factors one maturity at a time,
 each using the ones already found:
 
-.. code-block:: python
+.. plot::
+   :context: reset
 
    import numpy as np
    import financialkit as fk
@@ -51,7 +52,8 @@ A bootstrapped curve passes through every quote, noise included. Nelson
 and Siegel's four-parameter curve (level, slope, curvature and a decay
 time) is what central banks publish instead:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    fit = fk.fixed_income.fit_nelson_siegel(maturities, curve.zero_rate(maturities))
    b0, b1, b2, tau = fit.params
@@ -68,7 +70,8 @@ Four numbers summarise the whole term structure to about a basis point.
 The par swap rate is the fixed rate that gives a swap zero value. Paying
 fixed below it is worth money:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    print(f"5-year par swap rate: {100 * fk.fixed_income.swap_rate(curve, 5.0):.4f}%")
    # 5-year par swap rate: 3.7000%
@@ -86,7 +89,8 @@ Pricing options on rates needs a model of how the curve moves. Hull and
 White made Vasicek's mean-reverting short rate fit today's curve exactly,
 by letting its long-run level drift with time:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    hw = fk.interest_rate_models.HullWhiteModel(curve, a=0.1, sigma=0.01)
    print("model bond prices:", np.round(hw.zero_coupon_bond(t), 5))
@@ -99,7 +103,8 @@ check simulates the short rate and averages discount factors along each
 path (the Feynman-Kac representation). The paths come from the shared
 SDE schemes in :mod:`financialkit.integrators`:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    mc = fk.interest_rate_models.monte_carlo_bond_prices(hw, [1.0, 2.0, 5.0, 10.0], n_steps=200, n_paths=20_000, rng=2)
    print("Monte Carlo:", np.round(mc.prices, 5))
@@ -119,7 +124,8 @@ in :mod:`financialkit.options` that the rates domain calls, using a
 lognormal forward with a quoted volatility. Hull-White prices the same
 cap from its own normal dynamics:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    black = fk.interest_rate_models.cap_floor_price(curve, 0.04, 5.0, vol=0.20)
    model = fk.interest_rate_models.model_cap_floor_price(hw, 0.04, 5.0)

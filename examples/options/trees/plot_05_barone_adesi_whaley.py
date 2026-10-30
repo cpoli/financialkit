@@ -32,9 +32,11 @@ t0 = time.perf_counter()
 tree = np.array([CRRTree(2000).price(s, K, T, r, sigma, option_type="put", american=True).price for s in spots])
 t_tree = time.perf_counter() - t0
 print(f"max |BAW - tree| = {np.max(np.abs(baw - tree)):.4f}; time {t_baw * 1e3:.1f} ms vs {t_tree * 1e3:.0f} ms")
+assert np.max(np.abs(baw - tree)) < 0.1 and t_baw < t_tree
 
 res = barone_adesi_whaley(100.0, K, T, r, sigma, option_type="put")
 print(f"at S = 100: American {res.price:.4f}, European {res.european_price:.4f}, critical price {res.critical_price:.2f}")
+assert res.price > res.european_price and res.critical_price < K
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 axes[0].plot(spots, baw - tree, "o-")
@@ -50,6 +52,9 @@ axes[0].set_title("American put, 6 months")
 maturities = np.linspace(0.02, 3.0, 40)
 put_crit = [barone_adesi_whaley(100.0, K, t, r, sigma, option_type="put").critical_price for t in maturities]
 call_crit = [barone_adesi_whaley(100.0, K, t, r, sigma, q=0.10).critical_price for t in maturities]
+# The boundaries move away from the strike as the time to expiry grows.
+assert np.all(np.diff(put_crit) < 0) and np.all(np.diff(call_crit) > 0)
+assert max(put_crit) < K < min(call_crit)
 axes[1].plot(maturities, put_crit, label="put: exercise below")
 axes[1].plot(maturities, call_crit, label="call with q = 10%: exercise above")
 axes[1].axhline(K, color="k", lw=0.5)

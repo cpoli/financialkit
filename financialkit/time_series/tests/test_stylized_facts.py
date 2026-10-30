@@ -17,7 +17,7 @@ def test_return_statistics_of_normal_sample():
     """Skewness and excess kurtosis have asymptotic standard errors sqrt(6/n) and sqrt(24/n)."""
     n = 50_000
     s = return_statistics(np.random.default_rng(0).normal(0.001, 0.02, n))
-    assert s.nobs == n
+    assert s.n_obs == n
     assert abs(s.mean - 0.001) < 4 * 0.02 / np.sqrt(n)
     assert abs(s.skewness) < 4 * np.sqrt(6 / n)
     assert abs(s.excess_kurtosis) < 4 * np.sqrt(24 / n)
@@ -27,7 +27,7 @@ def test_return_statistics_detects_fat_tails():
     """A Student t with 5 degrees of freedom has excess kurtosis 6."""
     s = return_statistics(np.random.default_rng(1).standard_t(5, 200_000))
     assert s.excess_kurtosis > 3
-    assert s.jarque_bera_pvalue < 1e-10
+    assert s.jarque_bera_p_value < 1e-10
 
 
 def test_tail_survival_is_decreasing_with_last_point_one_over_n():

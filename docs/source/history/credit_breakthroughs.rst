@@ -16,7 +16,9 @@ decades it became quantitative: statistics on accounting ratios, option
 pricing applied to the firm, Poisson processes for the timing of
 default, Markov chains for ratings, and factor models and copulas for
 whole portfolios, culminating in the formula that sets bank capital
-worldwide and the CDS conventions that still govern the market. This
+worldwide and the CDS conventions that still govern the market. After
+2008 the same tools were turned on derivatives books themselves, as
+valuation adjustments for counterparty default and funding. This
 chronology traces the ideas behind :mod:`financialkit.credit`.
 
 .. contents:: Timeline
@@ -368,6 +370,33 @@ Swaps* (Lehman Brothers, 2003).
 
 .. minigallery:: ../../examples/credit/cds/plot_01_cds_par_spread.py
 
+2003 -- Andersen, Sidenius and Basu: The Loss Recursion
+-------------------------------------------------------
+
+Leif Andersen, Jakob Sidenius and Susanta Basu priced CDO tranches on
+real pools, where every name has its own default probability,
+correlation and notional, without simulation. Given the copula's common
+factor the defaults are independent, so the conditional loss
+distribution on a grid of loss units can be built exactly by adding one
+name at a time; integrating over the factor then gives the portfolio
+loss distribution. The recursion, linear in the number of names, became
+the standard engine behind tranche pricing and its risk sensitivities.
+
+.. math::
+
+   f^{(k+1)}_l(M) = \big(1 - p_{k+1}(M)\big) f^{(k)}_l(M) + p_{k+1}(M)\, f^{(k)}_{l - u_{k+1}}(M)
+
+*Implementation:* :func:`financialkit.credit.systems.loss_recursion.asb_loss_distribution`
+on top of :func:`~financialkit.credit.utils.numerics.loss_recursion`.
+The example builds the loss distribution of a mixed 100-name pool,
+checks it against Monte Carlo and compares tranche losses with the
+homogeneous approximation.
+
+*References:* L. Andersen, J. Sidenius and S. Basu, "All Your Hedges in
+One Basket," *Risk* 16(11) (2003) 67-72.
+
+.. minigallery:: ../../examples/credit/portfolio_loss/plot_06_andersen_sidenius_basu.py
+
 2004 -- The Basel II IRB Formula
 --------------------------------
 
@@ -419,6 +448,65 @@ Default CDS Without Monte Carlo Simulation," *J. Derivatives* 12 (2004)
 
 .. minigallery:: ../../examples/credit/portfolio_loss/plot_05_tranche_expected_loss.py
 
+2004 -- Base Correlation
+------------------------
+
+Once index tranches traded, dealers quoted each one by the flat copula
+correlation that reprices it. Lorenzo McGinty, Eric Beinstein, Rishad
+Ahluwalia and Martin Watts at J.P. Morgan showed why this *compound*
+correlation was unusable for mezzanine tranches, whose spread rises and
+then falls with correlation, so that a quote can have two solutions or
+none. They quoted instead the correlation of each equity tranche
+:math:`[0, K]`, which is always unique, bootstrapped up the capital
+structure; interpolating this base correlation skew priced bespoke
+tranches until the 2008 crisis.
+
+.. math::
+
+   (D - A)\, L_{[A, D]} = D\, L_{[0, D]}(\rho_D) - A\, L_{[0, A]}(\rho_A)
+
+*Implementation:* :func:`financialkit.credit.systems.tranches.base_correlation`,
+:func:`~financialkit.credit.systems.tranches.base_correlation_spread`
+and :func:`~financialkit.credit.systems.tranches.compound_correlations`.
+The example shows a mezzanine quote with two compound correlations,
+bootstraps a skew and prices a bespoke tranche off it.
+
+*References:* L. McGinty, E. Beinstein, R. Ahluwalia and M. Watts,
+*Introducing Base Correlations* (J.P. Morgan Credit Derivatives
+Strategy, 2004).
+
+.. minigallery:: ../../examples/credit/portfolio_loss/plot_07_base_correlation.py
+
+2005 -- Brigo and Masetti: CVA from Exposure Profiles
+-----------------------------------------------------
+
+Damiano Brigo and Massimo Masetti set out the risk-neutral price of
+counterparty risk: the credit valuation adjustment is the loss given
+default times the discounted expected positive exposure, integrated
+against the counterparty's default probabilities. For an interest rate
+swap the discounted positive exposure after each payment date is a
+swaption on the remaining swap, so the CVA of a swap is a strip of
+swaptions, and for general portfolios the exposure profile is simulated.
+
+.. math::
+
+   \text{CVA} = (1 - R) \sum_i E\big[D(0, t_i) V(t_i)^+\big]\,\big[Q(t_{i-1}) - Q(t_i)\big]
+
+*Implementation:* :func:`financialkit.credit.systems.xva.unilateral_cva`
+and :func:`~financialkit.credit.systems.xva.swap_cva_swaptions`, with
+exposures from :func:`~financialkit.credit.systems.exposure.swap_exposure`:
+Longstaff-Schwartz regression on
+:class:`~financialkit.interest_rate_models.HullWhiteModel` paths fitted
+to a discount curve. The example checks the exposure against Jamshidian
+swaptions and the CVA against the swaption strip.
+
+*References:* D. Brigo and M. Masetti, "Risk Neutral Pricing of
+Counterparty Risk," in M. Pykhtin (ed.), *Counterparty Credit Risk
+Modelling* (Risk Books, 2005); G. Cesari et al., *Modelling, Pricing,
+and Hedging Counterparty Credit Exposure* (Springer, 2009).
+
+.. minigallery:: ../../examples/credit/xva/plot_01_brigo_masetti_cva.py
+
 2009 -- The ISDA Standard Model: Hazard Bootstrapping
 -----------------------------------------------------
 
@@ -439,6 +527,57 @@ both standard coupons.
 Bang* (2009).
 
 .. minigallery:: ../../examples/credit/cds/plot_02_isda_hazard_bootstrap.py
+
+2009 -- Gregory: Bilateral CVA and DVA
+--------------------------------------
+
+Unilateral CVA treats the bank as default-free, so the two sides of a
+trade never agree on its price. Jon Gregory priced both defaults: the
+bank's own default, while it owes money, is a gain, the debit valuation
+adjustment. Counting each default only if the other party has not
+defaulted first makes one side's DVA the other's CVA. Gregory also
+exposed the paradox that made DVA controversial: a bank whose credit
+worsens books a profit it can realize only by defaulting.
+
+.. math::
+
+   \text{DVA} = (1 - R_B) \sum_i E\big[D(0, t_i) V(t_i)^-\big]\, Q_C(t_i)\,\big[Q_B(t_{i-1}) - Q_B(t_i)\big]
+
+*Implementation:* :func:`financialkit.credit.systems.xva.bilateral_cva`
+(first-to-default or both defaults counted). The example prices both
+sides of one swap, shows that they agree, and shows the adjustment
+rising with the bank's own hazard rate.
+
+*References:* J. Gregory, "Being Two-Faced over Counterparty Credit
+Risk," *Risk* 22(2) (2009) 86-90.
+
+.. minigallery:: ../../examples/credit/xva/plot_02_gregory_bilateral_cva.py
+
+2011 -- Burgard and Kjaer: Funding Valuation Adjustment
+-------------------------------------------------------
+
+After 2008 banks could no longer borrow at the risk-free rate.
+Christoph Burgard and Mats Kjaer extended the Black-Scholes replication
+argument to a bank that funds its hedges at its own spread and can
+default, and derived a pricing PDE whose solution adds a funding cost
+on the positive exposure and a funding benefit on the negative one.
+When the bank funds with its own bonds the benefit is the DVA, which
+settled how the two may be booked together.
+
+.. math::
+
+   \text{FCA} = \sum_i s_b\, E\big[D(0, t_i) V(t_i)^+\big]\, Q_B(t_i) Q_C(t_i)\, \Delta t_i
+
+*Implementation:* :func:`financialkit.credit.systems.xva.funding_valuation_adjustment`
+(borrowing and lending spreads, either default ending the funding).
+The example shows the funding benefit equal to the DVA at the bank's own
+credit spread and the cost of asymmetric funding.
+
+*References:* C. Burgard and M. Kjaer, "Partial Differential Equation
+Representations of Derivatives with Bilateral Counterparty Risk and
+Funding Costs," *J. Credit Risk* 7(3) (2011) 75-93.
+
+.. minigallery:: ../../examples/credit/xva/plot_03_burgard_kjaer_fva.py
 
 See Also
 --------

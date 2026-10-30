@@ -29,6 +29,7 @@ bs = carr_madan_fft(BlackScholesModel(0.2), S, T, r)
 mid = (bs.strikes > 50) & (bs.strikes < 200)
 err = np.abs(bs.calls[mid] - black_scholes_price(S, bs.strikes[mid], T, r, 0.2))
 print(f"{mid.sum()} strikes between 50 and 200, max error against Black-Scholes {err.max():.1e}")
+assert err.max() < 1e-6
 
 heston = HestonModel(0.04, 1.5, 0.04, 0.5, -0.7)
 res = carr_madan_fft(heston, S, T, r)
@@ -52,6 +53,8 @@ ref = np.asarray(lewis_price(heston, S, K, T, r))
 alphas = np.linspace(0.1, 8.0, 40)
 errors = [np.max(np.abs(carr_madan_price(heston, S, K, T, r, alpha=a) - ref)) for a in alphas]
 ax2.semilogy(alphas, errors, marker="o", ms=3)
+assert errors[0] > 1.0  # alpha = 0.1: far too little damping
+assert max(e for a, e in zip(alphas, errors, strict=True) if 2.0 <= a <= 8.0) < 1e-7
 ax2.set_xlabel("damping alpha")
 ax2.set_ylabel("max error at K = 80, 100, 120")
 fig.tight_layout()

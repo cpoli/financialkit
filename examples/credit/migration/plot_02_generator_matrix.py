@@ -42,6 +42,7 @@ ax.legend(ncol=2)
 P1 = transition_from_generator(G, 1.0)
 years = np.arange(1, 11)
 powers = [np.linalg.matrix_power(P1, n)[3, -1] for n in years]
+assert np.allclose(powers, Pt[8 * years, 3, -1], atol=1e-12)
 ax.plot(years, powers, "kx", label="P(1)^n, BBB")
 ax.legend(ncol=2)
 
@@ -51,9 +52,12 @@ ax.legend(ncol=2)
 
 T = np.linspace(0.25, 10, 40)
 fig, ax = plt.subplots(figsize=(7, 4))
+spreads = []
 for i in range(1, 7):
     P = jlt_risky_zero(T, 0.03, G, i, recovery=0.4)
-    ax.plot(T, 1e4 * (-np.log(P) / T - 0.03), label=RATINGS[i])
+    spreads.append(1e4 * (-np.log(P) / T - 0.03))
+    ax.plot(T, spreads[-1], label=RATINGS[i])
+assert np.all(np.diff(spreads, axis=0) > 0)
 ax.set_xlabel("maturity")
 ax.set_ylabel("spread (bp)")
 ax.set_yscale("log")

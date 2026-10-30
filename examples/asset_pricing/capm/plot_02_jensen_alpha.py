@@ -31,6 +31,11 @@ panel = simulate_factor_model(T, betas, [0.006], [[0.0020]], idio_vol=0.02, alph
 res = jensen_alpha(panel.excess_returns, panel.factors[:, 0])
 print(f"mean annual alpha: {12 * res.alphas.mean():+.2%}")
 print(f"funds with alpha t > 2: {(res.alpha_t > 2).sum()} (true skilled: 5)")
+# The average alpha recovers the -0.78% a year built in, to three standard
+# errors of the cross-sectional mean, and no more unskilled funds look
+# significant than the 2.3% one-sided false-positive rate allows.
+assert abs(res.alphas.mean() - true_alpha.mean()) < 3 * res.alpha_se.mean() / np.sqrt(n_funds)
+assert (res.alpha_t[5:] > 2).sum() <= 5
 
 # %%
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))

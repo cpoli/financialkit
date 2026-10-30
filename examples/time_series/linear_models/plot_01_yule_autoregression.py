@@ -50,6 +50,9 @@ long = simulate_arma(ar=phi, n=5000, rng=1)
 fit = yule_walker(long, 2)
 print(f"Yule-Walker estimates: phi = {fit.ar.round(3)}, sigma^2 = {fit.sigma2:.3f}")
 print(f"estimated pseudo-period: {ar_cycle_period(fit.ar):.1f} years")
+assert np.allclose(fit.ar, phi, atol=0.03)
+assert abs(ar_cycle_period(fit.ar) - ar_cycle_period(phi)) < 0.5
+assert np.max(np.abs(autocorrelation(long, 30) - arma_acf(ar=phi, nlags=30))) < 0.1
 
 fig, ax = plt.subplots()
 k = np.arange(31)

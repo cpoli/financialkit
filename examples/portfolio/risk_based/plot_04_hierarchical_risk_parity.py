@@ -39,6 +39,8 @@ L = np.linalg.cholesky(cov)
 X = rng.standard_normal((120, d)) @ L.T
 S = np.cov(X, rowvar=False)
 hrp = hierarchical_risk_parity(S)
+# The reordering puts each hidden cluster in one contiguous block.
+assert np.count_nonzero(np.diff(labels[perm][hrp.order])) == k - 1
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 3.8))
 dendrogram(hrp.linkage, ax=ax1, color_threshold=0.5)
 ax1.set_title("single-linkage dendrogram")
@@ -69,4 +71,5 @@ ax.legend()
 fig.tight_layout()
 for name, v in vols.items():
     print(f"{name:>16}: mean vol {np.mean(v):.3f}, spread {np.std(v):.3f}")
+assert np.std(vols["HRP"]) < np.std(vols["minimum variance"])
 plt.show()

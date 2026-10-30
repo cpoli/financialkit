@@ -43,6 +43,7 @@ axes[0].set_xlabel("strike")
 axes[0].set_ylabel(f"call on a {S:g}y bond, expiring in {T:g}y")
 axes[0].legend()
 print(f"largest |MC - closed form| / SE: {np.max(np.abs(mc - closed) / se):.2f}")
+assert np.max(np.abs(mc - closed) / se) < 3
 
 # %%
 # One formula, four Gaussian models

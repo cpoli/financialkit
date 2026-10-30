@@ -30,6 +30,8 @@ cov = (0.3 + 0.7 * np.eye(5)) * np.outer(vol, vol)
 res = zero_beta_capm(mu, cov, zero_beta_rate=0.02)
 wz, wm = res.zero_beta_weights, res.market_weights
 print(f"E[r_z] = {res.zero_beta_rate:.4f},  cov(z, m) = {wz @ cov @ wm:.2e}")
+assert abs(wz @ cov @ wm) < 1e-12
+assert np.allclose(mu, res.zero_beta_rate + res.betas * (res.market_return - res.zero_beta_rate))
 
 # %%
 # The frontier, the market and its zero-beta portfolio

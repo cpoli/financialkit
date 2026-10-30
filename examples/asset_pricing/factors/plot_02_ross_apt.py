@@ -34,6 +34,9 @@ for n in sizes:
         print(f"n = 100: cost {w.sum():.1e}, factor exposure {np.abs(w @ B).max():.1e}, expected return {w @ mu:.4f}")
 
 fig, ax = plt.subplots(figsize=(7, 4))
+# Zero cost and no factor exposure; the Sharpe ratio grows without bound.
+assert abs(w.sum()) < 1e-10 and np.abs(w @ B).max() < 1e-10
+assert np.all(np.diff(sharpe) > 0) and sharpe[-1] > 10 * sharpe[0]
 ax.loglog(sizes, sharpe, "o-", label="arbitrage portfolio")
 ax.loglog(sizes, sharpe[0] * np.sqrt(sizes / sizes[0]), "k:", label="~ sqrt(n)")
 ax.set_xlabel("number of assets")
@@ -56,6 +59,8 @@ for n in sizes:
     mu = apt_expected_returns(B, lam, 0.03) + err
     w = apt_arbitrage_portfolio(mu, B)
     sharpe_sparse.append((w @ mu) / (idio * np.linalg.norm(w)))
+# From 100 to 3000 assets the Sharpe ratio rises by less than 10%.
+assert sharpe_sparse[-1] < 1.1 * sharpe_sparse[2]
 ax.loglog(sizes, sharpe_sparse, "s-", label="five mispriced assets")
 ax.legend()
 

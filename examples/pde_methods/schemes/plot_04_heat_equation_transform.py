@@ -14,6 +14,7 @@ diffuse, and transforms back.
 
 # %%
 import matplotlib.pyplot as plt
+import numpy as np
 
 from financialkit.options import black_scholes_price
 from financialkit.pde_methods import heat_equation_price
@@ -23,6 +24,7 @@ S, K, T, r, sigma, q = 100.0, 100.0, 1.0, 0.05, 0.25, 0.02
 res = heat_equation_price(S, K, T, r, sigma, q, n_space=400, n_time=100)
 print(f"alpha = {res.alpha:.3f}, beta = {res.beta:.3f}, tau_end = {res.tau[-1]:.4f}")
 print(f"heat equation {res.price:.5f}, Black-Scholes {black_scholes_price(S, K, T, r, sigma, q):.5f}")
+assert abs(res.price - black_scholes_price(S, K, T, r, sigma, q)) < 0.005
 
 # %%
 # The payoff diffusing in heat-equation variables, and back in prices
@@ -34,6 +36,7 @@ axes[0].set_xlim(-1.0, 1.0)
 axes[0].set_title(r"$u_\tau = u_{xx}$")
 
 near = (res.S > 50) & (res.S < 180)
+assert np.allclose(res.V[near], black_scholes_price(res.S[near], K, T, r, sigma, q), rtol=0.0, atol=0.005)
 axes[1].plot(res.S[near], black_scholes_price(res.S[near], K, T, r, sigma, q), "k", lw=1, label="Black-Scholes")
 axes[1].plot(res.S[near][::6], res.V[near][::6], "o", ms=3, label="heat equation, transformed back")
 axes[1].set_xlabel("spot S")

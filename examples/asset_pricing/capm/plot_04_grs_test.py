@@ -38,6 +38,8 @@ axes[0].plot(x, stats.f.pdf(x, N, T - N - 1), "C3", label=f"F({N}, {T - N - 1})"
 axes[0].set_xlabel("GRS statistic")
 axes[0].legend()
 print(f"rejection rate at 5% under H0: {np.mean(np.array(p_null) < 0.05):.3f}")
+# Within three binomial standard errors (3.3 points with 400 draws) of 5%.
+assert abs(np.mean(np.array(p_null) < 0.05) - 0.05) < 3 * np.sqrt(0.05 * 0.95 / 400)
 
 # %%
 # Power against mispricing
@@ -51,6 +53,7 @@ for a in alphas:
         for p in (simulate_factor_model(T, betas, [0.006], [[0.002]], alphas=a * np.linspace(-1, 1, N), rng=rng) for _ in range(100))
     ]
     power.append(np.mean(pa))
+assert power[-1] > power[0] + 0.2
 axes[1].plot(12 * alphas, power, "o-")
 axes[1].set_xlabel("largest |alpha| per year")
 axes[1].set_ylabel("rejection rate")

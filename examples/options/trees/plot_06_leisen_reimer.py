@@ -33,6 +33,7 @@ print(f"Leisen-Reimer empirical order: {-order:.2f}")
 err_crr = abs(CRRTree(51).price(S, K, T, r, sigma).price - exact)
 err_lr = abs(LeisenReimerTree(51).price(S, K, T, r, sigma).price - exact)
 print(f"error with 51 steps: CRR {err_crr:.1e}, Leisen-Reimer {err_lr:.1e}")
+assert abs(order + 2.0) < 0.2 and err_lr < 0.1 * err_crr
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 plot_tree_convergence(steps, crr, exact, ax=axes[0], label="CRR")
@@ -46,8 +47,10 @@ axes[0].legend()
 
 reference = LeisenReimerTree(2001).price(S, K, T, r, sigma, option_type="put", american=True).price
 steps = np.arange(11, 302, 10)
+american_lr = np.array([LeisenReimerTree(n).price(S, K, T, r, sigma, option_type="put", american=True).price for n in steps])
+assert np.all(np.abs(american_lr - reference) < 1.5 / steps)
 axes[1].plot(steps, [CRRTree(n).price(S, K, T, r, sigma, option_type="put", american=True).price for n in steps], label="CRR")
-axes[1].plot(steps, [LeisenReimerTree(n).price(S, K, T, r, sigma, option_type="put", american=True).price for n in steps], label="Leisen-Reimer")
+axes[1].plot(steps, american_lr, label="Leisen-Reimer")
 axes[1].axhline(reference, color="k", ls=":", label="LR, 2001 steps")
 axes[1].set_xlabel("time steps n")
 axes[1].set_ylabel("American put")

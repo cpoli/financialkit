@@ -30,7 +30,9 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike
 
-from financialkit.integrators import RNGLike, gbm_paths
+from financialkit._validation import nonnegative
+from financialkit.exotic_options.utils.numerics import spot_paths
+from financialkit.integrators import RNGLike
 from financialkit.monte_carlo import ControlVariateResult, MonteCarloResult, control_variate_estimate, sample_mean, vanilla_payoff
 from financialkit.options import black76_price
 from financialkit.options.utils.common import as_output
@@ -91,9 +93,10 @@ def geometric_asian_price(
     else:
         n = int(n_fixings)
         mean_time, var_factor = (n + 1) / (2.0 * n), (n + 1) * (2 * n + 1) / (6.0 * n**2)
+    nonnegative(S=S, T=T, sigma=sigma)
     v = sigma**2 * T * var_factor
     F = S * np.exp((r - q - 0.5 * sigma**2) * T * mean_time + 0.5 * v)
-    return black76_price(F, K, T, r, np.sqrt(v / T), option_type)
+    return black76_price(F, K, T, r, sigma * np.sqrt(var_factor), option_type)
 
 
 def arithmetic_asian_mc(
@@ -101,14 +104,16 @@ def arithmetic_asian_mc(
     K: float,
     T: float,
     r: float,
-    sigma: float,
+    sigma: float | None = None,
     q: float = 0.0,
     option_type: str = "call",
     n_fixings: int = 12,
     n_paths: int = 50_000,
-    control_variate: bool = True,
+    control_variate: bool | None = None,
     rng: RNGLike = None,
     confidence: float = 0.95,
+    paths: ArrayLike | None = None,
+    discount: ArrayLike | None = None,
 ) -> ControlVariateResult | MonteCarloResult:
     """Arithmetic-average option by Monte Carlo, with Kemna and Vorst's geometric control variate.
 
@@ -117,25 +122,37 @@ def arithmetic_asian_mc(
     paths has the known mean :func:`geometric_asian_price` and a
     correlation with the arithmetic payoff above 0.99, so
     :func:`financialkit.monte_carlo.control_variate_estimate` removes almost
-    all the variance.
+    all the variance. Any other model's spot paths can be given as
+    `paths`; the fixings are then ``paths[:, 1:]``.
 
     Parameters
     ----------
-    S, K, T, r, sigma : float
-        Spot, strike, maturity, rate and volatility.
+    S, K, T, r : float
+        Spot, strike, maturity and rate.
+    sigma : float, optional
+        GBM volatility; required unless `paths` are given, and by the control.
     q : float
         Continuous dividend yield.
     option_type : {"call", "put"}
     n_fixings : int
-        Number of equally spaced fixings :math:`t_i = iT/n`.
+        Number of equally spaced fixings :math:`t_i = iT/n`; ignored with `paths`.
     n_paths : int
-        Number of paths.
-    control_variate : bool
-        Use the geometric control; otherwise plain Monte Carlo.
+        Number of paths; ignored with `paths`.
+    control_variate : bool, optional
+        Use the geometric control; otherwise plain Monte Carlo. By default
+        it is used on GBM paths only, since its known mean is the GBM price:
+        pass ``True`` with `paths` only if they are GBM with volatility `sigma`.
     rng : numpy.random.Generator or int, optional
         Generator or seed.
     confidence : float
         Coverage of the confidence interval.
+    paths : array_like, shape (n_paths, n_fixings + 1), optional
+        Risk-neutral spot paths starting at `S` on the fixing grid, in
+        place of the GBM ones.
+    discount : array_like, optional
+        Discount factors :math:`D(0, t_i)` for `paths`, of shape
+        ``(n_fixings + 1,)`` or one row per path; only :math:`D(0, T)`
+        is used. :math:`e^{-rT}` by default.
 
     Returns
     -------
@@ -150,14 +167,18 @@ def arithmetic_asian_mc(
     >>> bool(res.std_error < res.crude_std_error / 10)
     True
     """
-    _, paths = gbm_paths(S, r - q, sigma, T, int(n_fixings), int(n_paths), rng=rng)
-    fixings = paths[:, 1:]
-    disc = np.exp(-r * T)
+    if control_variate is None:
+        control_variate = paths is None
+    spot, D = spot_paths(S, T, r - q, sigma, int(n_fixings), int(n_paths), paths, discount, rng=rng)
+    fixings = spot[:, 1:]
+    disc = np.exp(-r * T) if D is None else D[:, -1]
     y = disc * vanilla_payoff(fixings.mean(axis=1), K, option_type)
     if not control_variate:
         return sample_mean(y, confidence, "arithmetic Asian")
+    if sigma is None:
+        raise ValueError("the geometric control variate needs sigma")
     x = disc * vanilla_payoff(np.exp(np.log(fixings).mean(axis=1)), K, option_type)
-    mean_x = geometric_asian_price(S, K, T, r, sigma, q, option_type, n_fixings=int(n_fixings))
+    mean_x = geometric_asian_price(S, K, T, r, sigma, q, option_type, n_fixings=fixings.shape[1])
     res = control_variate_estimate(y, x, mean_x, confidence)
     res.method = "arithmetic Asian, geometric control"
     return res
@@ -171,15 +192,16 @@ def _continuous_average_moments(T, b, sigma):
     :math:`a \\to 0`, so the smooth integrand (written with ``expm1``) is
     integrated by 64-point Gauss-Legendre quadrature instead.
     """
-    safe_b = np.where(b == 0.0, 1.0, b)
-    m1 = np.where(b == 0.0, 1.0, np.expm1(safe_b * T) / (safe_b * T))
+    bT = np.where(b * T == 0.0, 1.0, b * T)
+    m1 = np.where(b * T == 0.0, 1.0, np.expm1(bT) / bT)
     a = b + sigma**2
     safe_a = np.where(a == 0.0, 1.0, a)
     x, w = np.polynomial.legendre.leggauss(64)
     t = 0.5 * T[..., None] * (x + 1.0)
     bb, aa, sa = (np.asarray(z)[..., None] for z in (b, a, safe_a))
     integrand = np.exp(bb * t) * np.where(aa == 0.0, t, np.expm1(sa * t) / sa)
-    m2 = 2.0 / T**2 * 0.5 * T * np.sum(w * integrand, axis=-1)
+    safe_T = np.where(T > 0, T, 1.0)
+    m2 = np.where(T > 0, np.sum(w * integrand, axis=-1) / safe_T, 1.0)
     return m1, m2
 
 
@@ -207,7 +229,7 @@ def turnbull_wakeman_price(
     (1992) exact sums :math:`M_1 = \\tfrac{S}{n}\\sum_i e^{b t_i}`,
     :math:`M_2 = \\tfrac{S^2}{n^2}\\sum_{i,j} e^{b(t_i + t_j) + \\sigma^2 \\min(t_i, t_j)}`.
     The approximation is excellent at moderate volatility and drifts as
-    :math:`\\sigma^2 T` grows.
+    :math:`\\sigma^2 T` grows. At ``T = 0`` the average is the spot.
 
     Parameters
     ----------
@@ -235,6 +257,7 @@ def turnbull_wakeman_price(
     True
     """
     S, T, r, sigma, q = (np.asarray(a, dtype=np.float64) for a in (S, T, r, sigma, q))
+    nonnegative(S=S, T=T, sigma=sigma)
     b = r - q
     if n_fixings is None:
         m1, m2 = _continuous_average_moments(T, b, sigma)
@@ -245,5 +268,6 @@ def turnbull_wakeman_price(
         # pairs j > i, whose inner sums are reverse cumulative sums -- O(n), not O(n^2).
         later = np.cumsum(np.exp(b * t)[::-1])[::-1] - np.exp(b * t)
         m2 = (np.sum(np.exp((2 * b + sigma**2) * t)) + 2.0 * np.sum(np.exp((b + sigma**2) * t) * later)) / t.size**2
-    sigma_A = np.sqrt(np.log(m2 / m1**2) / T)
+    # log(m2 / m1^2) is the variance of log A: zero at T = 0, and never negative but for rounding
+    sigma_A = np.sqrt(np.maximum(np.log(m2 / m1**2), 0.0) / np.where(T > 0, T, 1.0))
     return as_output(black76_price(S * m1, K, T, r, sigma_A, option_type))

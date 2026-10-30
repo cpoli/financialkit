@@ -37,6 +37,7 @@ axes[0].set_yticks(range(taus.size), [f"{t:g}" for t in taus])
 axes[0].set_title("instantaneous yield correlation")
 fig.colorbar(im, ax=axes[0])
 print(f"corr(1y, 30y): G2++ {model.yield_correlation(1.0, 30.0):.2f}; any one-factor model 1.00")
+assert model.yield_correlation(1.0, 30.0) < 0.9
 
 # %%
 # The same correlation from simulated yield changes
@@ -55,13 +56,16 @@ def dyield(tau):
 axes[1].scatter(1e4 * dyield(1.0), 1e4 * dyield(30.0), s=2, alpha=0.3)
 axes[1].set_xlabel("1y yield change (bp)")
 axes[1].set_ylabel("30y yield change (bp)")
-axes[1].set_title(f"sample corr {np.corrcoef(dyield(1.0), dyield(30.0))[0, 1]:.2f}")
+sample_corr = np.corrcoef(dyield(1.0), dyield(30.0))[0, 1]
+axes[1].set_title(f"sample corr {sample_corr:.2f}")
+assert abs(sample_corr - model.yield_correlation(1.0, 30.0)) < 0.05  # 4000 draws: an SE near 0.015
 
 # %%
 # The fitted model reprices the curve
 # -----------------------------------
 
 res = monte_carlo_bond_prices(model, np.arange(1.0, 11.0), n_steps=100, n_paths=8000, rng=1)
+assert np.abs(res.z_scores).max() < 3
 axes[2].plot(res.maturities, 100 * -np.log(res.exact) / res.maturities, "k-", label="initial curve")
 yield_se = 100 * res.std_errors / res.prices / res.maturities
 axes[2].errorbar(res.maturities, 100 * -np.log(res.prices) / res.maturities, yerr=1.96 * yield_se, fmt="o", ms=3, label="G2++ Monte Carlo")

@@ -17,7 +17,7 @@ from financialkit.exotic_options.systems.binaries import asset_or_nothing_price,
 from financialkit.exotic_options.systems.compound import chooser_price, compound_option_price, critical_price, forward_start_price
 from financialkit.exotic_options.systems.lookbacks import fixed_lookback_price, floating_lookback_price, lookback_option_mc
 from financialkit.exotic_options.systems.multi_asset import margrabe_price, quanto_price, stulz_price
-from financialkit.exotic_options.systems.variance_swaps import realized_variance, variance_swap_strike
+from financialkit.exotic_options.systems.variance_swaps import annualized_realized_variance, realized_variance, variance_swap_strike
 
 __all__ = [
     "BGK_BETA",
@@ -37,6 +37,7 @@ __all__ = [
     "fixed_lookback_price",
     "lookback_option_mc",
     "variance_swap_strike",
+    "annualized_realized_variance",
     "realized_variance",
     "compound_option_price",
     "critical_price",

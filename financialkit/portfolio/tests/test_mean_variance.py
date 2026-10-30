@@ -93,3 +93,15 @@ def test_two_fund_separation():
         assert res.expected_return == pytest.approx(rf + res.weights @ (MU - rf))
     with pytest.raises(ValueError):
         two_fund_allocation(MU, COV, rf, 0.0)
+
+
+def test_solve_qp_respects_inequality_constraints_and_reports_infeasibility():
+    from financialkit.portfolio.utils import solve_qp
+
+    cov = np.array([[0.04, 0.0], [0.0, 0.09]])
+    unconstrained = solve_qp(cov, np.ones((1, 2)), [1.0])
+    assert unconstrained[1] == pytest.approx(4 / 13, abs=1e-8)  # inverse variance
+    w = solve_qp(cov, np.ones((1, 2)), [1.0], A_ineq=[[0.0, 1.0]], b_ineq=[0.5])
+    np.testing.assert_allclose(w, [0.5, 0.5], atol=1e-8)
+    with pytest.raises(RuntimeError, match="quadratic program failed"):
+        solve_qp(cov, np.ones((1, 2)), [1.0], bounds=(0.0, 0.1))

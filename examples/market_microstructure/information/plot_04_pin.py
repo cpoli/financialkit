@@ -29,6 +29,7 @@ res = fit_pin(B, S)
 pin_true = true["alpha"] * true["mu"] / (true["alpha"] * true["mu"] + true["eps_b"] + true["eps_s"])
 print(f"alpha {res.alpha:.3f}, delta {res.delta:.3f}, mu {res.mu:.1f}, eps_b {res.eps_b:.1f}, eps_s {res.eps_s:.1f}")
 print(f"PIN {res.pin:.3f} ± {res.pin_se:.3f} (true {pin_true:.3f})")
+assert abs(res.pin - pin_true) < 3 * res.pin_se
 
 fig, ax = plt.subplots(figsize=(5, 5))
 ax.plot(B, S, ".", color="0.4")
@@ -51,6 +52,7 @@ pins = []
 for i, sc in enumerate(scales):
     b_, s_ = simulate_pin(250, 0.3, 0.5, 30.0 * np.sqrt(sc), 20.0 * sc, 20.0 * sc, rng=20 + i)
     pins.append(fit_pin(b_, s_))
+assert np.all(np.diff([p.pin for p in pins]) < 0)
 fig, ax = plt.subplots(figsize=(6, 3.5))
 ax.errorbar([40 * s for s in scales], [p.pin for p in pins], yerr=[2 * p.pin_se for p in pins], fmt="o-", capsize=3)
 ax.set_xscale("log")

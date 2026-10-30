@@ -25,9 +25,11 @@ from numpy.typing import ArrayLike
 from scipy.optimize import brentq
 from scipy.stats import norm
 
+from financialkit._validation import nonnegative, positive
+from financialkit._validation import option_type as check_option_type
 from financialkit.exotic_options.utils.numerics import bivariate_normal_cdf
 from financialkit.options import black_scholes_price
-from financialkit.options.utils.common import as_output, option_sign
+from financialkit.options.utils.common import as_output
 
 __all__ = ["compound_option_price", "critical_price", "forward_start_price", "chooser_price"]
 
@@ -61,7 +63,7 @@ def critical_price(K1: float, K2: float, tau: float, r: float, sigma: float, q: 
     >>> round(black_scholes_price(I, 100.0, 0.5, 0.05, 0.2), 10)
     5.0
     """
-    option_sign(underlying_type)
+    check_option_type(underlying_type, name="underlying_type")
     if underlying_type == "put" and K1 >= K2 * np.exp(-r * tau):
         raise ValueError("a put on a put needs K1 below the underlying put's maximum value K2 exp(-r tau)")
 
@@ -98,7 +100,10 @@ def compound_option_price(
 
     and the other three combinations follow by flipping signs (Haug
     2007, Sec. 4.6). They satisfy the compound put-call parity
-    ``call on V - put on V = V - K1 exp(-r T1)``.
+    ``call on V - put on V = V - K1 exp(-r T1)``. At ``T1 = 0``, or with
+    ``sigma = 0``, the compound option is worth its exercise value
+    :math:`e^{-rT_1}\\max(\\pm(V - K_1), 0)`, with :math:`V` the underlying
+    option's value at :math:`T_1` on the riskless path.
 
     Parameters
     ----------
@@ -107,7 +112,7 @@ def compound_option_price(
     K1, K2 : float
         Strikes of the compound option and of the underlying option.
     T1, T2 : float
-        Expiries of the compound option and of the underlying, ``T1 < T2``.
+        Expiries of the compound option and of the underlying, ``0 <= T1 < T2``.
     r, sigma : float
         Rate and volatility.
     q : float
@@ -129,14 +134,21 @@ def compound_option_price(
     >>> round(compound_option_price(500.0, 50.0, 520.0, 0.25, 0.5, 0.08, 0.35, q=0.03, option_type="put"), 3)
     21.196
     """
-    if not 0 < T1 < T2:
-        raise ValueError("need 0 < T1 < T2")
-    phi, w = option_sign(option_type), option_sign(underlying_type)
+    if not 0 <= T1 < T2:
+        raise ValueError("need 0 <= T1 < T2")
+    phi, w = check_option_type(option_type), check_option_type(underlying_type, name="underlying_type")
     S = np.asarray(S, dtype=np.float64)
+    nonnegative(S=S, K1=K1, sigma=sigma)
+    positive(K2=K2)
+    if T1 == 0 or sigma == 0:
+        underlying = np.asarray(black_scholes_price(S * np.exp((r - q) * T1), K2, T2 - T1, r, sigma, q, underlying_type))
+        return as_output(np.exp(-r * T1) * np.maximum(phi * (underlying - K1), 0.0))
     I = critical_price(K1, K2, T2 - T1, r, sigma, q, underlying_type)
     v1, v2 = sigma * np.sqrt(T1), sigma * np.sqrt(T2)
-    y1 = (np.log(S / I) + (r - q + 0.5 * sigma**2) * T1) / v1
-    z1 = (np.log(S / K2) + (r - q + 0.5 * sigma**2) * T2) / v2
+    with np.errstate(divide="ignore"):  # S = 0 sends y1 and z1 to -inf, which bivariate_normal_cdf handles
+        log_S = np.log(S)
+    y1 = (log_S - np.log(I) + (r - q + 0.5 * sigma**2) * T1) / v1
+    z1 = (log_S - np.log(K2) + (r - q + 0.5 * sigma**2) * T2) / v2
     y2, z2 = y1 - v1, z1 - v2
     rho = phi * np.sqrt(T1 / T2)
     out = phi * w * (
@@ -187,6 +199,7 @@ def forward_start_price(
     4.406
     """
     S, t_start, T, q = (np.asarray(a, dtype=np.float64) for a in (S, t_start, T, q))
+    nonnegative(S=S, t_start=t_start)
     return as_output(S * np.exp(-q * t_start) * np.asarray(black_scholes_price(1.0, alpha, T - t_start, r, sigma, q, option_type)))
 
 

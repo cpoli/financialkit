@@ -42,6 +42,9 @@ for name, p in (("random walk", walk), ("AR(1) returns, phi = 0.3", index)):
     res = variance_ratio(p, q=qs)
     plot_variance_ratio(res, ax=ax, label=name)
     print(f"{name}: VR = {res.ratio.round(2)}, z* = {res.z_robust.round(1)}")
+walk_res, index_res = variance_ratio(walk, q=qs), variance_ratio(index, q=qs)
+assert np.all(np.abs(walk_res.z_robust) < 1.96)
+assert np.all(index_res.z_robust > 1.96) and abs(index_res.ratio[0] - 1.3) < 0.1  # VR(2) = 1 + rho_1
 ax.set_title("Variance ratios with the 95% random-walk band")
 
 # %%
@@ -63,5 +66,7 @@ g = np.linspace(-5, 5, 200)
 ax.plot(g, np.exp(-(g**2) / 2) / np.sqrt(2 * np.pi), "k", label="N(0, 1)")
 ax.set_xlabel("statistic under the null")
 ax.legend()
-print(f"rejection rate at 5%: z {np.mean(np.abs(z) > 1.96):.2f}, z* {np.mean(np.abs(zr) > 1.96):.2f}")
+rate_z, rate_zr = np.mean(np.abs(z) > 1.96), np.mean(np.abs(zr) > 1.96)
+print(f"rejection rate at 5%: z {rate_z:.2f}, z* {rate_zr:.2f}")
+assert rate_z > 0.1 and abs(rate_zr - 0.05) < 0.04  # three binomial standard errors
 plt.show()

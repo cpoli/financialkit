@@ -70,3 +70,15 @@ def test_hull_white_smile_is_symmetric_and_atm_price_falls():
     vols = np.asarray(implied_volatility(prices, 100.0, K, 1.0, 0.0))
     assert vols[0] == pytest.approx(vols[2], abs=1e-6)
     assert vols[0] > vols[1]
+
+
+def test_hull_white_price_is_smooth_in_xi_across_the_series_switch():
+    """(price - BS) / xi^2 tends to a constant as xi -> 0. The closed-form moments lose it to
+    cancellation for small xi^2 T, so they hand over to their Taylor series below 0.1."""
+    args = (100.0, 100.0, 1.0, 0.05, 0.2)
+    bs = black_scholes_price(*args)
+    xi = np.array([0.005, 0.0099, 0.0101, 0.02])
+    ratio = np.array([(hull_white_price(*args, x) - bs) / x**2 for x in xi])
+    np.testing.assert_allclose(ratio, ratio[0], rtol=1e-3)
+    edge = np.sqrt(0.1)
+    assert hull_white_price(*args, edge * (1 - 1e-9)) == pytest.approx(hull_white_price(*args, edge * (1 + 1e-9)), rel=1e-10)

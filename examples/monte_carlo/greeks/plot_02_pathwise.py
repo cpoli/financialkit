@@ -35,6 +35,8 @@ for name in ("delta", "vega"):
         f"{name}: exact {getattr(exact, name):.4f}; pathwise {getattr(pw, name):.4f} +/- {getattr(pw, name + '_se'):.4f}; "
         f"likelihood ratio {getattr(lr, name):.4f} +/- {getattr(lr, name + '_se'):.4f}"
     )
+    assert abs(getattr(pw, name) - getattr(exact, name)) < 3 * getattr(pw, name + "_se")
+    assert getattr(pw, name + "_se") < getattr(lr, name + "_se")
 
 # %%
 # The variance advantage across strikes
@@ -46,6 +48,7 @@ for k in strikes:
     p, l = pathwise_greeks(S, k, T, r, sigma, z=z), likelihood_ratio_greeks(S, k, T, r, sigma, z=z)
     for name in ratio:
         ratio[name].append((getattr(l, name + "_se") / getattr(p, name + "_se")) ** 2)
+assert all(np.all(np.array(v) > 1) for v in ratio.values())
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 for name, v in ratio.items():
     axes[0].semilogy(strikes, v, "o-", label=name)
@@ -59,6 +62,7 @@ axes[0].legend()
 
 ns = 1000 * 4 ** np.arange(5)
 g = [pathwise_greeks(S, K, T, r, sigma, n_paths=n, rng=n) for n in ns]
+assert all(abs(x.delta - exact.delta) < 3 * x.delta_se for x in g)
 axes[1].errorbar(ns, [x.delta for x in g], yerr=[2 * x.delta_se for x in g], fmt="o", capsize=3, label="pathwise delta")
 axes[1].axhline(exact.delta, color="k", label="Black-Scholes")
 axes[1].set_xscale("log")

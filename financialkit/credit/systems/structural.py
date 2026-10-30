@@ -31,8 +31,11 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy import optimize, stats
 
+from financialkit._deprecation import renamed_parameter
 from financialkit.constants import DEFAULT_MAX_ITER, DEFAULT_RTOL, TRADING_DAYS_PER_YEAR
 from financialkit.credit.core.base import KMVResult, MertonResult
+from financialkit.credit.utils.discounting import zero_rate_to
+from financialkit.fixed_income import CurveLike
 from financialkit.options import black_scholes_price
 from financialkit.options.utils.common import as_output
 
@@ -45,7 +48,7 @@ def _d1_d2(V, D, T, r, sigma):
     return d1, d1 - sd
 
 
-def merton_model(V: float, D: float, T: float, r: float, sigma_V: float) -> MertonResult:
+def merton_model(V: float, D: float, T: float, r: CurveLike, sigma_V: float) -> MertonResult:
     """Value equity and debt in Merton's (1974) model.
 
     Parameters
@@ -56,8 +59,10 @@ def merton_model(V: float, D: float, T: float, r: float, sigma_V: float) -> Mert
         Face value of the zero-coupon debt.
     T : float
         Debt maturity in years.
-    r : float
-        Risk-free rate.
+    r : float or YieldCurve
+        Risk-free rate, or a ``fixed_income`` discount curve, whose zero
+        rate to ``T`` is used: with deterministic rates the debt, paid
+        only at ``T``, sees the curve only through :math:`P(0, T)`.
     sigma_V : float
         Asset volatility.
 
@@ -76,6 +81,7 @@ def merton_model(V: float, D: float, T: float, r: float, sigma_V: float) -> Mert
     """
     if V <= 0 or D <= 0 or T <= 0 or sigma_V <= 0:
         raise ValueError("V, D, T and sigma_V must be positive")
+    r = zero_rate_to(r, T)
     E = float(black_scholes_price(V, D, T, r, sigma_V))
     d1, d2 = _d1_d2(V, D, T, r, sigma_V)
     debt = V - E
@@ -94,7 +100,7 @@ def merton_model(V: float, D: float, T: float, r: float, sigma_V: float) -> Mert
     )
 
 
-def merton_calibrate(E: float, sigma_E: float, D: float, T: float, r: float) -> MertonResult:
+def merton_calibrate(E: float, sigma_E: float, D: float, T: float, r: CurveLike) -> MertonResult:
     """Solve for the asset value and volatility implied by equity and its volatility.
 
     Solves :math:`E = C_{BS}(V)` and :math:`\\sigma_E E = N(d_1)\\sigma_V V`
@@ -106,8 +112,12 @@ def merton_calibrate(E: float, sigma_E: float, D: float, T: float, r: float) -> 
         Market value of equity.
     sigma_E : float
         Equity volatility.
-    D, T, r : float
-        Face value and maturity of the debt, and the risk-free rate.
+    D, T : float
+        Face value and maturity of the debt.
+    r : float or YieldCurve
+        Risk-free rate, or a ``fixed_income`` discount curve, whose zero
+        rate to ``T`` is used: with deterministic rates the debt, paid
+        only at ``T``, sees the curve only through :math:`P(0, T)`.
 
     Returns
     -------
@@ -123,6 +133,7 @@ def merton_calibrate(E: float, sigma_E: float, D: float, T: float, r: float) -> 
     """
     if E <= 0 or sigma_E <= 0:
         raise ValueError("E and sigma_E must be positive")
+    r = zero_rate_to(r, T)
 
     def residuals(x):
         V, s = np.exp(x)
@@ -176,14 +187,15 @@ def kmv_default_point(short_term_debt: ArrayLike, long_term_debt: ArrayLike, wei
     return as_output(np.asarray(short_term_debt, dtype=np.float64) + weight * np.asarray(long_term_debt, dtype=np.float64))
 
 
+@renamed_parameter("rtol", "tol", "financialkit.credit.kmv_iterate")
 def kmv_iterate(
     equity: ArrayLike,
     D: ArrayLike,
-    r: float,
+    r: CurveLike,
     T: float = 1.0,
     dt: float = 1.0 / TRADING_DAYS_PER_YEAR,
     sigma0: float | None = None,
-    rtol: float = DEFAULT_RTOL,
+    tol: float = DEFAULT_RTOL,
     max_iter: int = DEFAULT_MAX_ITER,
 ) -> KMVResult:
     """Crosbie and Bohn's (2003) iterative estimate of asset values and volatility.
@@ -200,15 +212,17 @@ def kmv_iterate(
         Equity market values, one per period.
     D : array_like
         Default point(s), scalar or one per period.
-    r : float
-        Risk-free rate.
+    r : float or YieldCurve
+        Risk-free rate, or a ``fixed_income`` discount curve, whose zero
+        rate to ``T`` is used: with deterministic rates the debt, paid
+        only at ``T``, sees the curve only through :math:`P(0, T)`.
     T : float
         Horizon of the distance to default (and the option maturity).
     dt : float
         Spacing of the observations in years.
     sigma0 : float, optional
         Starting asset volatility; defaults to equity volatility times ``E / (E + D)``.
-    rtol : float
+    tol : float
         Relative change in :math:`\\sigma_V` that stops the iteration.
     max_iter : int
 
@@ -216,6 +230,7 @@ def kmv_iterate(
     -------
     KMVResult
     """
+    r = zero_rate_to(r, T)
     E = np.asarray(equity, dtype=np.float64)
     Dv = np.broadcast_to(np.asarray(D, dtype=np.float64), E.shape)
     if E.ndim != 1 or E.size < 3:
@@ -235,7 +250,7 @@ def kmv_iterate(
         log_ret = np.diff(np.log(V))
         new = float(np.std(log_ret, ddof=1) / np.sqrt(dt))
         history.append(new)
-        converged = abs(new - sigma) <= rtol * sigma
+        converged = abs(new - sigma) <= tol * sigma
         sigma = new
         if converged:
             break

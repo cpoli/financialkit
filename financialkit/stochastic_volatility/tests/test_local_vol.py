@@ -103,3 +103,12 @@ def test_local_vol_paths_fill_nan_nodes():
     bad = LocalVolSurface(np.array([80.0, 120.0]), np.array([0.0, 1.0]), np.array([[np.nan, np.nan], [0.2, 0.2]]))
     with pytest.raises(ValueError):
         local_vol_paths(bad, 100.0, 1.0, 0.0, n_steps=10, n_paths=10)
+
+
+def test_local_vol_paths_hold_the_last_maturity_flat_beyond_it():
+    """Vol 0.1 -> 0.3 linearly over [0, 0.5], then 0.3: total variance 0.0217 + 0.045 = 1/15 by T = 1."""
+    s = LocalVolSurface(np.array([50.0, 200.0]), np.array([0.0, 0.5]), np.array([[0.1, 0.1], [0.3, 0.3]]))
+    _, S = local_vol_paths(s, 100.0, 1.0, 0.03, n_steps=200, n_paths=40_000, rng=6)
+    pay = np.exp(-0.03) * np.maximum(S[:, -1] - 100.0, 0.0)
+    exact = black_scholes_price(100.0, 100.0, 1.0, 0.03, np.sqrt(1.0 / 15.0))
+    assert abs(pay.mean() - exact) < 4 * pay.std() / np.sqrt(pay.size)

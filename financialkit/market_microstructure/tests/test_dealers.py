@@ -80,3 +80,8 @@ def test_inventory_strategy_has_lower_risk_than_symmetric():
     # Cash and inventory always reconcile with the fills.
     np.testing.assert_allclose(sym.ask - sym.bid, 2 * half)
     assert inv.mid.shape == (paths, n + 1) and inv.bid.shape == (paths, n)
+
+
+def test_ho_stoll_rejects_invalid_parameters():
+    with pytest.raises(ValueError, match="beta > 0"):
+        ho_stoll_quotes(100.0, 0.0, alpha=10.0, beta=0.0, risk_aversion=0.1, sigma=0.2)

@@ -33,6 +33,8 @@ for k in range(1, 4):
     axes[1].axhline(k / 4, color="0.8", lw=0.5)
 counts = np.histogram2d(x[:, 0], x[:, 1], bins=[16, 4], range=[[0, 1], [0, 1]])[0]
 print("points per 16 x 4 cell:", np.unique(counts))
+for bins in ([8, 8], [4, 16], [16, 4]):
+    assert np.all(np.histogram2d(x[:, 0], x[:, 1], bins=bins, range=[[0, 1], [0, 1]])[0] == 1)
 
 # %%
 # Integration error in eight dimensions
@@ -48,6 +50,7 @@ errs = {
     "Halton": [abs(f(halton(n, d)).mean() - 1) for n in ns],
     "Sobol": [abs(f(sobol(n, d, rng=0)).mean() - 1) for n in ns],
 }
+assert errs["Sobol"][-1] < errs["Halton"][-1] < errs["random"][-1]
 for name, e in errs.items():
     plot_error_convergence(ns, e, ax=axes[2], label=name, rates=(1.0,) if name == "Sobol" else ())
 axes[2].set_title(f"d = {d}")

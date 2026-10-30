@@ -32,6 +32,7 @@ for option_type in ("call", "put"):
     res = european_option_mc(S, K, T, r, sigma, option_type=option_type, n_paths=200_000, rng=0)
     exact = black_scholes_price(S, K, T, r, sigma, option_type=option_type)
     print(f"{option_type}: MC {res.estimate:.4f} +/- {res.std_error:.4f}, Black-Scholes {exact:.4f}")
+    assert abs(res.estimate - exact) < 3 * res.std_error
 
 # %%
 # Prices across strikes, with 95% intervals
@@ -53,5 +54,8 @@ axes[0].legend()
 ns = 1000 * 4 ** np.arange(5)
 se = [european_option_mc(S, K, T, r, sigma, n_paths=n, rng=2).std_error for n in ns]
 plot_error_convergence(ns, se, ax=axes[1], label="standard error")
+slope = np.polyfit(np.log(ns), np.log(se), 1)[0]
+print(f"fitted rate: n^{slope:.3f}")
+assert abs(slope + 0.5) < 0.05
 fig.tight_layout()
 plt.show()

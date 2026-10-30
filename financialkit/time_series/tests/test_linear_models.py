@@ -115,3 +115,17 @@ def test_order_selection_bic_finds_true_order_and_loglik_is_nested():
     assert sel.best("bic") == (2, 0)
     ll = -0.5 * (sel.aic[:, 0] - 2 * (np.arange(6) + 2))
     assert np.all(np.diff(ll) >= -1e-8)  # nested AR models on a common sample
+
+
+def test_yule_walker_without_demeaning_uses_raw_moments():
+    """With demean=False, AR(1) is phi = sum x_t x_{t-1} / sum x_t^2 about zero, not the sample mean."""
+    x = simulate_arma(ar=[0.6], n=2000, mean=0.5, rng=13)
+    res = yule_walker(x, 1, demean=False)
+    assert res.ar[0] == pytest.approx(x[1:] @ x[:-1] / (x @ x), rel=1e-12)
+    assert res.mean == 0.0
+
+
+def test_select_arma_order_skips_orders_the_sample_cannot_support():
+    x = simulate_arma(ar=[0.5], n=8, rng=0)
+    res = select_arma_order(x, max_p=4, max_q=2)
+    assert np.isfinite(res.aic[0, 0]) and np.isnan(res.aic[4, 2])

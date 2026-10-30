@@ -35,10 +35,12 @@ from __future__ import annotations
 import numpy as np
 from scipy.optimize import brentq
 
+from financialkit._validation import one_of
 from financialkit.constants import DEFAULT_ATOL, DEFAULT_MAX_ITER
 from financialkit.fixed_income.core.base import CurveLike, as_curve, coupon_times
 from financialkit.interest_rate_models.core.base import CapFloorResult, GaussianShortRateModel, JamshidianResult
 from financialkit.options import black76_price
+from financialkit.options.utils.common import as_output
 
 __all__ = [
     "zero_coupon_bond_option",
@@ -64,13 +66,14 @@ def zero_coupon_bond_option(model: GaussianShortRateModel, T, S, K, option_type:
     :math:`\sigma_P` is the model's
     :meth:`~financialkit.interest_rate_models.core.base.GaussianShortRateModel.bond_option_volatility`
     (Jamshidian 1989 for Vasicek; the same formula holds for Ho-Lee,
-    Hull-White and G2++).
+    Hull-White and G2++). At ``T = 0`` it is the exercise value
+    :math:`\max(\pm(P(0, S) - K), 0)`.
 
     Parameters
     ----------
     model : GaussianShortRateModel
     T, S : array_like
-        Option expiry and bond maturity, ``0 < T < S``.
+        Option expiry and bond maturity, ``0 <= T < S``.
     K : array_like
         Strike per unit face.
     option_type : {"call", "put"}
@@ -92,12 +95,12 @@ def zero_coupon_bond_option(model: GaussianShortRateModel, T, S, K, option_type:
     True
     """
     T, S, K = (np.asarray(x, dtype=np.float64) for x in (T, S, K))
-    if np.any(T <= 0) or np.any(S <= T):
-        raise ValueError("need 0 < T < S")
+    if np.any(T < 0) or np.any(S <= T):
+        raise ValueError("need 0 <= T < S")
     PT = np.asarray(model.zero_coupon_bond(T), dtype=np.float64)
     PS = np.asarray(model.zero_coupon_bond(S), dtype=np.float64)
-    vol = np.asarray(model.bond_option_volatility(T, S), dtype=np.float64) / np.sqrt(T)
-    return black76_price(PS / PT, K, T, -np.log(PT) / T, vol, option_type)
+    vol = np.asarray(model.bond_option_volatility(T, S), dtype=np.float64) / np.sqrt(np.where(T > 0, T, 1.0))
+    return as_output(PT * np.asarray(black76_price(PS / PT, K, T, 0.0, vol, option_type)))
 
 
 def _critical_rate(model: GaussianShortRateModel, T: float, times: np.ndarray, flows: np.ndarray, K: float) -> float:
@@ -321,8 +324,7 @@ def cap_floor_price(curve: CurveLike, strike: float, maturity: float, vol, freq:
     >>> cap.caplets.size, round(float(cap.forwards[0]), 4), bool(np.isclose(cap.price, floor.price))
     (7, 0.07, True)
     """
-    if kind not in ("cap", "floor"):
-        raise ValueError(f'kind must be "cap" or "floor", got {kind!r}')
+    one_of("kind", kind, ("cap", "floor"))
     c = as_curve(curve)
     resets, pays = _cap_schedule(maturity, freq)
     tau = pays - resets
@@ -355,8 +357,7 @@ def model_cap_floor_price(
     -------
     CapFloorResult
     """
-    if kind not in ("cap", "floor"):
-        raise ValueError(f'kind must be "cap" or "floor", got {kind!r}')
+    one_of("kind", kind, ("cap", "floor"))
     resets, pays = _cap_schedule(maturity, freq)
     tau = pays - resets
     P_reset = np.asarray(model.zero_coupon_bond(resets), dtype=np.float64)

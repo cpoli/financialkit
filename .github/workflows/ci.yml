@@ -97,8 +97,9 @@ jobs:
       # Coverage cannot trace @njit-compiled code, so the kernel bodies in
       # integrators, monte_carlo, pde_methods and options only show as
       # covered here, where they run as plain Python. Codecov merges this
-      # report with the numba job's.
-      - run: MPLBACKEND=Agg pytest -q --cov=financialkit --cov-report=xml
+      # report with the numba job's. That also makes this the job that
+      # enforces 100% line coverage; the report lists any line that slips.
+      - run: MPLBACKEND=Agg pytest -q --cov=financialkit --cov-report=xml --cov-report=term-missing:skip-covered --cov-fail-under=100
       - name: Upload coverage to Codecov
         if: always()
         uses: codecov/codecov-action@v7

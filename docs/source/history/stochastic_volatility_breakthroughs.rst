@@ -170,8 +170,13 @@ which made Heston's the reference stochastic volatility model.
 uses the "little trap" form of the characteristic function, and
 :func:`~financialkit.stochastic_volatility.systems.heston.heston_price`
 implements the two-probability formula, which reproduces Andersen's
-reference prices. The example simulates paths and shows how the
-correlation and the volatility of variance shape the smile.
+reference prices, and
+:func:`~financialkit.stochastic_volatility.systems.calibration.fourier_calibrate`
+fits it, or any other characteristic-function model, to a smile by
+vega-weighted least squares. The first example simulates paths and shows
+how the correlation and the volatility of variance shape the smile; the
+second calibrates the model to a synthetic surface, exactly and with
+noisy quotes.
 
 *References:* S. L. Heston, "A Closed-Form Solution for Options with
 Stochastic Volatility with Applications to Bond and Currency Options,"
@@ -179,7 +184,7 @@ Stochastic Volatility with Applications to Bond and Currency Options,"
 W. Schoutens and J. Tistaert, "The Little Heston Trap," *Wilmott
 Magazine* (January 2007) 83-92.
 
-.. minigallery:: ../../examples/stochastic_volatility/heston/plot_02_heston.py
+.. minigallery:: ../../examples/stochastic_volatility/heston/plot_02_heston.py ../../examples/stochastic_volatility/heston/plot_03_heston_calibration.py
 
 1994 -- Dupire's Local Volatility
 ---------------------------------
@@ -523,3 +528,150 @@ Biased Simulation Schemes for Stochastic Volatility Models,"
 *Quantitative Finance* 10 (2010) 177-194.
 
 .. minigallery:: ../../examples/stochastic_volatility/simulation/plot_02_full_truncation.py
+
+2014 -- Gatheral and Jacquier's Arbitrage-Free SSVI Surfaces
+------------------------------------------------------------
+
+Fitting SVI one expiry at a time leaves the slices free to cross, which
+is calendar-spread arbitrage, and lets a single slice imply a negative
+density, which is butterfly arbitrage. Jim Gatheral and Antoine Jacquier
+parametrised the whole surface at once. The at-the-money total variance
+:math:`\theta_T` carries the term structure, and one skew :math:`\rho` and
+one curvature function :math:`\varphi(\theta)` shape every slice. They
+proved that the surface is free of calendar arbitrage when
+:math:`\theta\varphi(\theta)` rises, but not too fast, and free of
+butterfly arbitrage when :math:`\theta\varphi(1 + |\rho|) < 4` and
+:math:`\theta\varphi^2(1 + |\rho|) \le 4`. Simple parameter bounds, such
+as :math:`\eta(1 + |\rho|) \le 2` for a power-law :math:`\varphi`, then
+guarantee no static arbitrage, and each SSVI slice is still a raw SVI
+slice.
+
+.. math::
+
+   w(k, \theta_T) = \frac{\theta_T}{2}\left[1 + \rho\varphi(\theta_T)k
+   + \sqrt{(\varphi(\theta_T)k + \rho)^2 + 1 - \rho^2}\right], \qquad
+   \varphi(\theta) = \frac{\eta}{\theta^{\gamma}(1 + \theta)^{1-\gamma}}
+
+*Implementation:* :class:`financialkit.stochastic_volatility.systems.surface.SSVISurface`
+evaluates the surface with power-law or Heston-like curvature, checks
+Gatheral and Jacquier's conditions and converts its slices to raw SVI,
+and :func:`~financialkit.stochastic_volatility.systems.surface.ssvi_surface`
+fits it with the no-arbitrage bounds built into the parameters. The
+example fits Heston smiles at four expiries, confirms the result with
+Durrleman's function on every slice, and breaks the butterfly condition
+with a steeper curvature.
+
+*References:* J. Gatheral and A. Jacquier, "Arbitrage-Free SVI
+Volatility Surfaces," *Quantitative Finance* 14 (2014) 59-71.
+
+.. minigallery:: ../../examples/stochastic_volatility/smile/plot_04_ssvi.py
+
+2016 -- Bayer, Friz and Gatheral's Rough Bergomi
+------------------------------------------------
+
+In equity markets the at-the-money skew grows roughly like
+:math:`\tau^{-0.4}` as the maturity :math:`\tau` shrinks, while Markovian
+stochastic volatility models such as Heston give a skew that levels
+off. Christian Bayer, Peter Friz and Jim Gatheral replaced the
+variance's Brownian driver in Bergomi's forward-variance model with a
+Riemann-Liouville fractional process whose kernel
+:math:`(t - s)^{H - 1/2}` is singular for :math:`H < 1/2`. The skew then
+scales like :math:`\tau^{H - 1/2}`. With :math:`H \approx 0.07` and only
+three parameters beyond the forward variance curve, the model fitted the
+whole S&P 500 surface. They priced by simulating the Gaussian pair of
+the Volterra process and its Brownian driver exactly, by Cholesky
+factorisation of their joint covariance.
+
+.. math::
+
+   v_t = \xi_0(t)\exp\left(\eta\sqrt{2H}\int_0^t (t - s)^{H - 1/2}\,dW_s - \tfrac12\eta^2 t^{2H}\right), \qquad
+   \frac{dS_t}{S_t} = \sqrt{v_t}\,\left(\rho\,dW_t + \sqrt{1 - \rho^2}\,dW_t^{\perp}\right)
+
+*Implementation:* :class:`financialkit.stochastic_volatility.systems.rough.RoughBergomiModel`
+holds the model,
+:func:`~financialkit.stochastic_volatility.systems.rough.volterra_covariance`
+gives the joint covariance through the hypergeometric function,
+:func:`~financialkit.stochastic_volatility.systems.rough.rough_bergomi_paths`
+with ``scheme="cholesky"`` simulates it exactly, and
+:func:`~financialkit.stochastic_volatility.systems.rough.rough_bergomi_mc_price`
+prices by Monte Carlo. The example plots smiles with Bayer, Friz and
+Gatheral's parameters and fits the power law of the at-the-money skew
+against Heston's.
+
+*References:* C. Bayer, P. Friz and J. Gatheral, "Pricing Under Rough
+Volatility," *Quantitative Finance* 16 (2016) 887-904; L. Bergomi,
+"Smile Dynamics II," *Risk* 18(10) (2005) 67-73.
+
+.. minigallery:: ../../examples/stochastic_volatility/rough/plot_01_rough_bergomi.py
+
+2017 -- Bennedsen, Lunde and Pakkanen's Hybrid Scheme
+-----------------------------------------------------
+
+Exact sampling of a Volterra process costs :math:`O(n^2)` per path on
+:math:`n` steps, and the obvious Riemann sum fails near the singularity
+of the kernel: for small :math:`H` it loses much of the variance. Mikkel
+Bennedsen, Asger Lunde and Mikko Pakkanen integrated the kernel exactly
+over the last few steps, as Wiener integrals jointly Gaussian with the
+Brownian increments, and replaced it elsewhere by its value at optimally
+chosen points inside each step. The remaining sum is a discrete
+convolution, computed by FFT in :math:`O(n \log n)` per path. The
+scheme is nearly exact for every :math:`H` and became the standard way
+to simulate rough volatility models.
+
+.. math::
+
+   \tilde W_{t_i} \approx \sqrt{2H}\left[\int_{t_{i-1}}^{t_i}(t_i - s)^{\alpha}\,dW_s
+   + \sum_{k=2}^{i} (b_k\Delta)^{\alpha}\,\Delta W_{i-k}\right], \qquad
+   b_k = \left(\frac{k^{\alpha+1} - (k-1)^{\alpha+1}}{\alpha + 1}\right)^{1/\alpha}
+
+*Implementation:* :func:`financialkit.stochastic_volatility.systems.rough.volterra_paths`
+implements the hybrid scheme with :math:`\kappa = 1` and the convolution
+by :mod:`scipy.fft`, alongside exact Cholesky sampling and the Riemann
+sum, and
+:func:`~financialkit.stochastic_volatility.systems.rough.hybrid_scheme_variance`
+gives each scheme's variance from its weights. The example compares the
+variances with :math:`t^{2H}`, rough Bergomi prices across the three
+schemes, and paths for three Hurst exponents.
+
+*References:* M. Bennedsen, A. Lunde and M. S. Pakkanen, "Hybrid Scheme
+for Brownian Semistationary Processes," *Finance and Stochastics* 21
+(2017) 931-965; R. McCrickerd and M. S. Pakkanen, "Turbocharging Monte
+Carlo Pricing for the Rough Bergomi Model," *Quantitative Finance* 18
+(2018) 1877-1886.
+
+.. minigallery:: ../../examples/stochastic_volatility/rough/plot_02_hybrid_scheme.py
+
+2018 -- Gatheral, Jaisson and Rosenbaum: Volatility Is Rough
+------------------------------------------------------------
+
+Jim Gatheral, Thibault Jaisson and Mathieu Rosenbaum measured how
+increments of log-volatility, estimated from high-frequency realized
+variance, scale with the lag. For every moment :math:`q` the empirical
+moments lay on a straight line in the log lag, with slopes proportional
+to :math:`q`, the signature of fractional Brownian motion. The Hurst
+exponent was about 0.1 across equity indices and decades, far below the
+:math:`1/2` of Brownian motion. Their rough fractional stochastic
+volatility model, log-volatility as a fractional Brownian motion, also
+explained the apparent long memory of volatility and forecast it well.
+Their paper first circulated in 2014 and gave the rough volatility
+models their empirical basis.
+
+.. math::
+
+   E\left[|\log\sigma_{t+\Delta} - \log\sigma_t|^q\right] \propto \Delta^{qH}, \qquad
+   \log\sigma_t = \nu W^H_t + \text{const}, \qquad H \approx 0.1
+
+*Implementation:* :func:`financialkit.stochastic_volatility.systems.rough.volatility_roughness`
+computes the moments and fits :math:`\zeta_q = qH`,
+:func:`~financialkit.stochastic_volatility.systems.rough.fbm_paths`
+samples fractional Brownian motion exactly by Davies and Harte's
+circulant embedding, and
+:func:`financialkit.stochastic_volatility.visualizers.plot_roughness`
+draws the scaling plot. The example recovers :math:`H` from a synthetic
+RFSV log-volatility and contrasts it with Heston's log-volatility.
+
+*References:* J. Gatheral, T. Jaisson and M. Rosenbaum, "Volatility Is
+Rough," *Quantitative Finance* 18 (2018) 933-949; R. B. Davies and
+D. S. Harte, "Tests for Hurst Effect," *Biometrika* 74 (1987) 95-101.
+
+.. minigallery:: ../../examples/stochastic_volatility/rough/plot_03_volatility_is_rough.py

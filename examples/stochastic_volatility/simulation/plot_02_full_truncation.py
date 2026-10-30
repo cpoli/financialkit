@@ -29,10 +29,12 @@ exact = m.price(S, K, T, r)
 
 steps = np.array([10, 20, 40, 80])
 fig, ax = plt.subplots(figsize=(7, 4))
+biases, errors = {}, {}
 for scheme in ("full_truncation", "partial_truncation", "higham_mao"):
     res = [heston_mc_price(m, S, K, T, r, n_steps=n, n_paths=20_000, scheme=scheme, rng=3) for n in steps]
     bias = np.array([x.estimate - exact for x in res])
     se = np.array([x.std_error for x in res])
+    biases[scheme], errors[scheme] = bias, se
     print(f"{scheme:>18}: bias {np.round(bias, 2)}, standard error {np.round(se, 2)}")
     ax.errorbar(T / steps, bias, yerr=2 * se, marker="o", ms=3, capsize=2, label=scheme)
 ax.axhline(0.0, color="k", lw=0.8)
@@ -41,6 +43,11 @@ ax.set_ylim(-15, 15)
 ax.set_xlabel("time step")
 ax.set_ylabel("price bias (exact 13.0847)")
 ax.legend()
+# Full truncation's bias shrinks with the step and stays below partial truncation's;
+# Higham-Mao is the noisiest at every step.
+assert np.all(np.diff(biases["full_truncation"]) < 0)
+assert np.all(np.abs(biases["full_truncation"]) < np.abs(biases["partial_truncation"]))
+assert np.all(errors["higham_mao"] > 3 * errors["full_truncation"])
 
 # %%
 # Full truncation lets the variance go negative
@@ -51,6 +58,7 @@ ax.legend()
 
 paths = heston_paths(m, S, 2.0, r, n_steps=200, n_paths=8, scheme="full_truncation", rng=4)
 print(f"lowest simulated variance: {paths.variance.min():.4f}")
+assert paths.variance.min() < 0
 plot_heston_paths(paths)
 
 plt.show()

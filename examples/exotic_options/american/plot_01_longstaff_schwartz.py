@@ -47,11 +47,14 @@ axes[0].legend()
 # Longstaff and Schwartz's Table 1: the finite-difference value with 50
 # exercise dates is 4.478.
 
-res = longstaff_schwartz(S, K, T, r, sigma, n_exercise=50, n_paths=20_000, rng=1)
+res = longstaff_schwartz(S, K, T, r, sigma, n_steps=50, n_paths=20_000, rng=1)
 tree = CRRTree(500).price(S, K, T, r, sigma, option_type="put", american=True)
 european = black_scholes_price(S, K, T, r, sigma, option_type="put")
 print(f"Longstaff-Schwartz {res.estimate:.4f} +/- {res.std_error:.4f}; tree {tree.price:.4f}; European {european:.4f}")
 print(f"paths exercised early: {res.exercise_probability:.1%}")
+# Within four standard errors of Table 1, and worth more than the European put.
+assert abs(res.estimate - 4.478) < 4 * res.std_error
+assert res.estimate - 4 * res.std_error > european
 plot_exercise_boundary(res, ax=axes[1])
 axes[1].plot(tree.times, tree.exercise_boundary, "k", lw=1, label="CRR tree")
 axes[1].set_ylim(30, 41)

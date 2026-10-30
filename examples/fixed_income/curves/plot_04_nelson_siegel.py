@@ -40,6 +40,8 @@ true = NelsonSiegelCurve(0.048, -0.022, 0.025, 1.6)
 observed = true.zero_rate(tenors) + rng.normal(0, 0.0005, tenors.size)
 fit = fit_nelson_siegel(tenors, observed)
 print("fitted [b0, b1, b2, tau]:", fit.params.round(4), f"RMSE {1e4 * fit.rmse:.1f} bp")
+assert fit.rmse < 0.0005  # below the 5 bp noise
+assert np.abs(fit.curve.zero_rate(tenors) - true.zero_rate(tenors)).max() < 0.001
 ax = plot_yield_curve(fit.curve, label="fitted")
 ax.plot(tenors, 100 * observed, "ko", label="observed")
 ax.legend()

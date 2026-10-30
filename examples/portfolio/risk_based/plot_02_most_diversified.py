@@ -52,6 +52,8 @@ fig, axes = plt.subplots(3, 1, figsize=(7, 7), sharex=True)
 for ax, (label, p) in zip(axes, ports.items(), strict=True):
     plot_weights(p.weights, names, ax=ax).set_title(f"{label}: D = {diversification_ratio(p.weights, cov):.2f}, vol {p.volatility:.2%}")
 fig.tight_layout()
+ratios = {label: diversification_ratio(p.weights, cov) for label, p in ports.items()}
+assert ratios["most diversified"] >= max(ratios.values()) - 1e-9
 
 # %%
 # The core property
@@ -59,6 +61,8 @@ fig.tight_layout()
 
 mdp = ports["most diversified"]
 rho = (cov @ mdp.weights) / (vol * mdp.volatility)
+held = mdp.weights > 1e-6
+assert np.ptp(rho[held]) < 1e-3 and np.all(rho[~held] > rho[held].max())
 fig, ax = plt.subplots(figsize=(7, 3))
 ax.bar(names, rho, color=["C0" if w > 1e-6 else "0.7" for w in mdp.weights])
 ax.set_ylabel("correlation with the MDP")

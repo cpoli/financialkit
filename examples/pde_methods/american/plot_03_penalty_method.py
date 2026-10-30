@@ -29,6 +29,9 @@ for m in ms:
         prices[method].append(res.price)
 for m, a, b in zip(ms, prices["penalty"], prices["psor"], strict=True):
     print(f"M = {m:3d}: penalty {a:.6f}, PSOR {b:.6f}")
+assert np.allclose(prices["penalty"], prices["psor"], atol=1e-5)
+assert max(iters["penalty"]) < 3.0
+assert iters["psor"][-1] > 4 * iters["psor"][0]
 
 # %%
 # Iterations per time step as the grid is refined

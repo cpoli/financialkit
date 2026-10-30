@@ -30,6 +30,7 @@ def images(s):
 
 res = CrankNicolson(400, 200, rannacher_steps=2).price_barrier(S, K, H, T, r, sigma, q, "call", "down-and-out")
 print(f"PDE {res.price:.4f}, method of images {images(S):.4f}, vanilla {black_scholes_price(S, K, T, r, sigma, q):.4f}")
+assert abs(res.price - images(S)) < 0.002
 
 # %%
 # A node on the barrier, against a barrier between nodes
@@ -46,6 +47,8 @@ for m in ms:
     h = (400.0 - H) / m
     aligned.append(abs(cn.price_barrier(S, K, H, T, r, sigma).price - images(S)))
     between.append(abs(cn.price_barrier(S, K, H + 0.5 * h, T, r, sigma).price - images(S)))
+assert np.allclose(np.divide(between[:-1], between[1:]), 2.0, atol=0.4)  # first order
+assert np.all(np.less(aligned, np.divide(between, 20)))
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 near = res.S < 160

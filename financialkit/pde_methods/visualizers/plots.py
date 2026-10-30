@@ -10,7 +10,7 @@ from collections.abc import Sequence
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.pde_methods.core.base import ADIResult, FDResult, HeatEquationResult, VonNeumannResult
+from financialkit.pde_methods.core.base import ADIResult, FDResult, HeatEquationResult, HestonPDEResult, VonNeumannResult
 
 __all__ = [
     "plot_value_profile",
@@ -21,6 +21,7 @@ __all__ = [
     "plot_grid",
     "plot_heat_solution",
     "plot_adi_surface",
+    "plot_heston_surface",
 ]
 
 
@@ -237,4 +238,34 @@ def plot_adi_surface(result: ADIResult, ax=None, levels: int = 20, log: bool = F
         ax.set_yscale("log")
     ax.set_xlabel("S1")
     ax.set_ylabel("S2")
+    return ax
+
+
+def plot_heston_surface(result: HestonPDEResult, ax=None, levels: int = 20, s_range: tuple[float, float] | None = None, v_max: float | None = 1.0):
+    """Filled contours of a Heston value surface over spot and variance.
+
+    Parameters
+    ----------
+    result : HestonPDEResult
+    ax : matplotlib.axes.Axes, optional
+    levels : int
+    s_range : (float, float), optional
+        Spot window to show.
+    v_max : float, optional
+        Largest variance to show.
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    if ax is None:
+        _, ax = plt.subplots()
+    cs = ax.contourf(result.S, result.v, result.V.T, levels=levels, cmap="viridis")
+    plt.colorbar(cs, ax=ax, label="V")
+    if s_range is not None:
+        ax.set_xlim(*s_range)
+    if v_max is not None:
+        ax.set_ylim(0.0, v_max)
+    ax.set_xlabel("S")
+    ax.set_ylabel("variance v")
     return ax

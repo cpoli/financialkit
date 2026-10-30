@@ -63,7 +63,8 @@ docs = [
     "pydata-sphinx-theme>=0.15",
     "sphinx-autodoc-typehints>=1.25",
     "myst-parser>=2.0",
-    "sphinx-gallery>=0.15",
+    "sphinx-gallery>=0.17",
+    "joblib>=1.3",
     "sphinx-design>=0.6",
     "sphinx-sitemap>=2.6",
     "sphinxext-opengraph>=0.9",
@@ -89,6 +90,7 @@ version = { attr = "financialkit.__version__" }
 
 [tool.setuptools.package-data]
 financialkit = ["py.typed"]
+"financialkit.datasets" = ["data/*.csv", "README.md"]
 
 # include-package-data (on by default) would otherwise re-add each
 # subpackage's tests/ directory as package data of its parent.
@@ -99,6 +101,7 @@ financialkit = ["py.typed"]
 testpaths = [
     "financialkit/asset_pricing/tests",
     "financialkit/credit/tests",
+    "financialkit/datasets/tests",
     "financialkit/exotic_options/tests",
     "financialkit/fixed_income/tests",
     "financialkit/integrators/tests",
@@ -114,6 +117,9 @@ testpaths = [
     "financialkit/time_series/tests",
     "financialkit/time_value/tests",
 ]
+# Any warning fails the run; fix the cause instead of filtering it. Only
+# third-party deprecations we cannot fix belong here, each with a comment.
+filterwarnings = ["error"]
 
 [tool.ruff]
 line-length = 160

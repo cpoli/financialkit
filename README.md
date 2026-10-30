@@ -51,10 +51,12 @@ pip install financialkit           # pure numpy/scipy/matplotlib, e.g. for Pyodi
 ```
 
 Then `import financialkit as fk`. The `fast` extra adds
-[numba](https://numba.pydata.org/), which compiles the inner loops of
-`integrators`, `options`, `interest_rate_models`, `monte_carlo`,
-`pde_methods` and `stochastic_volatility`. Without it those kernels run as
-plain Python: same results, slower.
+[numba](https://numba.pydata.org/), which compiles the node-by-node loops
+of the `pde_methods` solvers (PSOR, Brennan-Schwartz, Thomas), making
+American options on a grid about 10-35x faster. Without it those kernels
+run as plain Python: same results, slower. Everything else, including the
+SDE schemes, is vectorised NumPy and runs at the same speed either way
+(see the docs' [Benchmarks](https://cpoli.github.io/financialkit/benchmarks.html) page).
 
 For development: `pip install -e ".[dev]"` (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
@@ -93,13 +95,13 @@ linked below.
 
   ![Compounding toward e, an NPV profile with two IRRs, and a mortgage amortization schedule](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_time_value.png)
 
-- [`financialkit.fixed_income`](https://cpoli.github.io/financialkit/api/gallery/fixed_income/) -- bond prices, yields to maturity and STRIPS; Macaulay, modified, Fisher-Weil, effective and key rate durations and convexity; Redington immunization and the Fong-Vasicek bound; hand-written curve bootstrapping, McCulloch splines, and Nelson-Siegel and Svensson fits (`scipy.optimize.least_squares`); principal components of yield changes; and interest rate and currency swaps.
+- [`financialkit.fixed_income`](https://cpoli.github.io/financialkit/api/gallery/fixed_income/) -- bond prices, yields to maturity and STRIPS; Macaulay, modified, Fisher-Weil, effective and key rate durations and convexity; Redington immunization and the Fong-Vasicek bound; hand-written curve bootstrapping, McCulloch splines, and Nelson-Siegel and Svensson fits (`scipy.optimize.least_squares`); principal components of yield changes; interest rate and currency swaps; OIS discounting with separate forecasting curves and SOFR compounded in arrears; Treasury bond futures and the cheapest to deliver; and mortgage pass-throughs under the PSA prepayment benchmark.
 
   ![The price-yield curve of a bond, a Nelson-Siegel zero curve, and yield-curve principal components](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_fixed_income.png)
 
 ### Derivatives
 
-- [`financialkit.options`](https://cpoli.github.io/financialkit/api/gallery/options/) -- Bachelier, Black-Scholes-Merton, Black-76 and Garman-Kohlhagen prices that broadcast over strikes and maturities; put-call parity and no-arbitrage bounds; analytic Greeks checked against finite differences, and delta hedging; implied volatility (`brentq`, after a bounds check), the smile and the Breeden-Litzenberger density; hand-written CRR, Rendleman-Bartter, Leisen-Reimer and trinomial trees with American exercise; and the Barone-Adesi-Whaley approximation.
+- [`financialkit.options`](https://cpoli.github.io/financialkit/api/gallery/options/) -- Bachelier, Black-Scholes-Merton, Black-76 and Garman-Kohlhagen prices that broadcast over strikes and maturities; put-call parity and no-arbitrage bounds; analytic Greeks checked against finite differences, and delta hedging; implied volatility (a vectorized safeguarded Newton solver, after a bounds check), the smile and the Breeden-Litzenberger density; hand-written CRR, Rendleman-Bartter, Leisen-Reimer and trinomial trees with American exercise; and the Barone-Adesi-Whaley approximation.
 
   ![Black-Scholes call values, the Greeks of a call, and implied volatility smiles](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_options.png)
 
@@ -107,7 +109,7 @@ linked below.
 
   ![GBM paths knocked out by a double barrier, Merton's down-and-out call, and the Longstaff-Schwartz exercise boundary](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_exotic_options.png)
 
-- [`financialkit.stochastic_volatility`](https://cpoli.github.io/financialkit/api/gallery/stochastic_volatility/) -- CEV and Dupire local volatility; Hull-White and Heston stochastic volatility; Merton, Kou and Bates jumps and variance gamma; Fourier pricing by Carr-Madan FFT (`scipy.fft`), Lewis and COS; SABR, SVI and Lee's moment formula; and Heston simulation by full-truncation Euler and Andersen's QE scheme.
+- [`financialkit.stochastic_volatility`](https://cpoli.github.io/financialkit/api/gallery/stochastic_volatility/) -- CEV and Dupire local volatility; Hull-White and Heston stochastic volatility; Merton, Kou and Bates jumps and variance gamma; Fourier pricing by Carr-Madan FFT (`scipy.fft`), Lewis and COS; SABR, SVI, arbitrage-free SSVI and Lee's moment formula; Heston simulation by full-truncation Euler and Andersen's QE scheme; and rough volatility: rough Bergomi by Cholesky or the hybrid scheme, and the roughness of volatility.
 
   ![Heston volatility paths, Heston smiles by vol of vol, and Dupire local volatility](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_stochastic_volatility.png)
 
@@ -127,7 +129,7 @@ linked below.
 
   ![Vasicek yield curves, mean-reverting short-rate paths, and a Black-Derman-Toy tree](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_interest_rate_models.png)
 
-- [`financialkit.credit`](https://cpoli.github.io/financialkit/api/gallery/credit/) -- Altman's Z-score; Merton, Black-Cox and Leland structural models and the KMV distance to default; hazard rates and survival curves; CDS pricing, upfronts and ISDA-style hazard bootstrapping; CreditMetrics migrations and generator matrices (`scipy.linalg.expm`); Vasicek's large pool and the Basel IRB formula; CreditRisk+ by Panjer recursion; Li's Gaussian copula; and CDO tranches.
+- [`financialkit.credit`](https://cpoli.github.io/financialkit/api/gallery/credit/) -- Altman's Z-score; Merton, Black-Cox and Leland structural models and the KMV distance to default; hazard rates and survival curves; CDS pricing, upfronts and ISDA-style hazard bootstrapping; CreditMetrics migrations and generator matrices (`scipy.linalg.expm`); Vasicek's large pool and the Basel IRB formula; CreditRisk+ by Panjer recursion; Li's Gaussian copula; CDO tranches, the Andersen-Sidenius-Basu recursion and base correlation; and CVA, DVA and FVA from exposure profiles simulated by regression on Hull-White paths.
 
   ![A survival curve bootstrapped from CDS spreads, a CreditRisk+ loss distribution, and a rating transition matrix](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_credit.png)
 
@@ -137,13 +139,13 @@ linked below.
 
   ![Risk-parity weights, the most diversified portfolio, and CPPI wealth paths](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_portfolio.png)
 
-- [`financialkit.asset_pricing`](https://cpoli.github.io/financialkit/api/gallery/asset_pricing/) -- the dividend discount and Gordon growth models; Modigliani-Miller, WACC and Shiller's variance bound; the CAPM, the security market line, Jensen's alpha, the zero-beta CAPM and the GRS test; Fama-MacBeth and time-series factor regressions (`numpy.linalg.lstsq`) on synthetic Fama-French and Carhart factors; the APT; Lucas's tree, the consumption CAPM and the Mehra-Prescott equity premium puzzle; and state prices and the Hansen-Jagannathan bound.
+- [`financialkit.asset_pricing`](https://cpoli.github.io/financialkit/api/gallery/asset_pricing/) -- the dividend discount and Gordon growth models; Modigliani-Miller, WACC and Shiller's variance bound; the CAPM, the security market line, Jensen's alpha, the zero-beta CAPM and the GRS test; Fama-MacBeth and time-series factor regressions (`numpy.linalg.lstsq`) on synthetic Fama-French three- and five-factor and Carhart factors, with multiple-testing hurdles for the factor zoo; the APT; Hansen's GMM and the Hansen-Singleton Euler equation; Lucas's tree, the consumption CAPM, the Mehra-Prescott equity premium puzzle, Campbell-Cochrane habit and Bansal-Yaron long-run risk; the Campbell-Shiller log-linear present value; and state prices and the Hansen-Jagannathan bound.
 
   ![The security market line, the Hansen-Jagannathan bound, and Shiller's excess volatility](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_asset_pricing.png)
 
 ### Risk & Markets
 
-- [`financialkit.risk`](https://cpoli.github.io/financialkit/api/gallery/risk/) -- historical, parametric, Cornish-Fisher, Monte Carlo, hybrid and filtered historical VaR; expected shortfall, coherence checks and Euler allocation; extreme value theory by block maxima and peaks over threshold (`scipy.stats.genextreme`/`genpareto`); Kupiec, Christoffersen and Basel traffic-light backtests; Gaussian and t copulas and tail dependence; safety first; and drawdowns.
+- [`financialkit.risk`](https://cpoli.github.io/financialkit/api/gallery/risk/) -- historical, parametric, Cornish-Fisher, Monte Carlo, hybrid and filtered historical VaR; Rouvinez's exact delta-gamma VaR and liquidity-adjusted VaR; expected shortfall, coherence checks, Euler allocation and the FRTB liquidity-horizon cascade; extreme value theory by block maxima and peaks over threshold (`scipy.stats.genextreme`/`genpareto`); Kupiec, Christoffersen and Basel traffic-light VaR backtests and Acerbi-Szekely ES backtests; Gaussian and t copulas and tail dependence; safety first; and drawdowns.
 
   ![Monte Carlo VaR of a straddle book, a VaR backtest, and a t copula](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_risk.png)
 
@@ -151,7 +153,7 @@ linked below.
 
   ![Power-law tails of returns, GARCH conditional volatility, and the autocorrelation of squared returns](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_time_series.png)
 
-- [`financialkit.market_microstructure`](https://cpoli.github.io/financialkit/api/gallery/market_microstructure/) -- quoted, effective and realized spreads; the Roll and Corwin-Schultz estimators; Lee-Ready and bulk-volume trade classification; Garman, Ho-Stoll and Avellaneda-Stoikov dealers; Kyle and Glosten-Milgrom; Hasbrouck's VAR; PIN and VPIN; square-root impact; Bertsimas-Lo and Almgren-Chriss optimal execution; and Amihud illiquidity.
+- [`financialkit.market_microstructure`](https://cpoli.github.io/financialkit/api/gallery/market_microstructure/) -- quoted, effective and realized spreads; the Roll and Corwin-Schultz estimators; Lee-Ready and bulk-volume trade classification; Garman, Ho-Stoll and Avellaneda-Stoikov dealers; Kyle and Glosten-Milgrom; Hasbrouck's VAR; PIN and VPIN; square-root impact; Bertsimas-Lo and Almgren-Chriss optimal execution and Obizhaeva-Wang transient impact; Amihud illiquidity; and Hawkes order flow, the Cont-Stoikov-Talreja order book and order-flow imbalance.
 
   ![Almgren-Chriss liquidation trajectories, Glosten-Milgrom quotes, and Avellaneda-Stoikov market making](https://raw.githubusercontent.com/cpoli/financialkit/main/docs/source/_static/images/readme_market_microstructure.png)
 
@@ -212,23 +214,10 @@ NUMBA_DISABLE_JIT=1 MPLBACKEND=Agg pytest -q --cov=financialkit --cov-append --c
 Coverage cannot trace `@njit`-compiled code, so the kernel bodies are only
 covered by the second run, where they execute as plain Python. CI does the
 same: the numba and no-numba jobs both upload to Codecov, which merges them.
-Combined: 868 tests, 99% line coverage overall (98% excluding the test
-files themselves). Per-subpackage coverage, excluding tests:
-
-| Subpackage | Coverage | | Subpackage | Coverage |
-|:--|--:|---|:--|--:|
-| `time_value` | 99% | | `time_series` | 99% |
-| `fixed_income` | 96% | | `risk` | 98% |
-| `options` | 99% | | `portfolio` | 98% |
-| `interest_rate_models` | 97% | | `asset_pricing` | 99% |
-| `monte_carlo` | 100% | | `credit` | 98% |
-| `exotic_options` | 99% | | `market_microstructure` | 99% |
-| `pde_methods` | 99% | | `integrators` | 100% |
-| `stochastic_volatility` | 99% | | `constants` | 100% |
-
-`visualizers/` modules are smoke-tested only (correct return type and
-shape) rather than covered line by line, per the testing convention in
-[CLAUDE.md](CLAUDE.md).
+The no-numba run alone reaches every line, so CI's no-numba job runs with
+`--cov-fail-under=100` and fails if any line goes untested. The one
+exclusion is the `HAS_NUMBA = True` branch of `financialkit/_jit.py`, which
+only runs when numba is installed.
 
 ## Docs
 

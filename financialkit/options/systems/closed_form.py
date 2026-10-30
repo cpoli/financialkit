@@ -23,13 +23,18 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy.stats import norm
 
-from financialkit.options.utils.common import as_output, option_sign
+from financialkit._validation import nonnegative
+from financialkit._validation import option_type as check_option_type
+from financialkit.options.utils.common import as_output
 
 __all__ = ["bachelier_price", "black_scholes_price", "black76_price", "garman_kohlhagen_price"]
 
 
 def _black_undiscounted(F: np.ndarray, K: np.ndarray, sigma: np.ndarray, T: np.ndarray, sign: int) -> np.ndarray:
     """Black's formula without discounting; intrinsic forward value where ``sigma sqrt(T) = 0``."""
+    if np.any(F < 0) or np.any(K < 0):
+        raise ValueError("Black's formula needs a non-negative forward and strike; use bachelier_price for negative ones")
+    nonnegative(T=T, sigma=sigma)
     v = sigma * np.sqrt(T)
     with np.errstate(divide="ignore", invalid="ignore"):
         d1 = (np.log(F / K) + 0.5 * v**2) / v
@@ -45,6 +50,10 @@ def black76_price(F: ArrayLike, K: ArrayLike, T: ArrayLike, r: ArrayLike, sigma:
 
     This is the single Black-76 implementation in financialkit: caps,
     floors and swaptions in :mod:`financialkit.interest_rate_models` call it.
+    At ``T = 0`` or ``sigma = 0`` it returns the discounted intrinsic value
+    :math:`e^{-rT}\max(\pm(F - K), 0)`; at ``K = 0`` the call is the
+    discounted forward. A negative forward or strike (possible for rates)
+    raises :class:`ValueError`, since the lognormal model excludes it.
 
     Parameters
     ----------
@@ -67,7 +76,7 @@ def black76_price(F: ArrayLike, K: ArrayLike, T: ArrayLike, r: ArrayLike, sigma:
     1.12
     """
     F, K, T, r, sigma = (np.asarray(a, dtype=np.float64) for a in (F, K, T, r, sigma))
-    return as_output(np.exp(-r * T) * _black_undiscounted(F, K, sigma, T, option_sign(option_type)))
+    return as_output(np.exp(-r * T) * _black_undiscounted(F, K, sigma, T, check_option_type(option_type)))
 
 
 def black_scholes_price(
@@ -81,7 +90,9 @@ def black_scholes_price(
     with :math:`d_{1,2} = [\ln(S/K) + (r - q \pm \sigma^2/2) T] / (\sigma\sqrt{T})`.
     Black and Scholes (1973) derived it for ``q = 0``; Merton (1973) added
     the continuous dividend yield. At ``T = 0`` or ``sigma = 0`` it returns
-    the discounted intrinsic value of the forward.
+    the discounted intrinsic value of the forward, and at ``S = 0`` the
+    limit of a worthless stock. A negative ``S``, ``K``, ``T`` or ``sigma``
+    raises :class:`ValueError`.
 
     Parameters
     ----------
@@ -106,6 +117,7 @@ def black_scholes_price(
     0.81
     """
     S, T, r, q = (np.asarray(a, dtype=np.float64) for a in (S, T, r, q))
+    nonnegative(S=S, T=T)
     return black76_price(S * np.exp((r - q) * T), K, T, r, sigma, option_type)
 
 
@@ -160,7 +172,8 @@ def bachelier_price(
 
     and the put follows from parity. At the money,
     :math:`c = e^{-rT}\sigma_N\sqrt{T/(2\pi)}`. Bachelier's own setting is
-    ``r = q = 0``.
+    ``r = q = 0``. Negative spots and strikes are valid in this model; at
+    ``T = 0`` or ``sigma_n = 0`` the price is the discounted intrinsic value.
 
     Parameters
     ----------
@@ -183,8 +196,9 @@ def bachelier_price(
     >>> bool(np.isclose(price, 20.0 / np.sqrt(2 * np.pi)))
     True
     """
-    sign = option_sign(option_type)
+    sign = check_option_type(option_type)
     S, K, T, r, sigma_n, q = (np.asarray(a, dtype=np.float64) for a in (S, K, T, r, sigma_n, q))
+    nonnegative(T=T, sigma_n=sigma_n)
     F = S * np.exp((r - q) * T)
     v = sigma_n * np.sqrt(T)
     with np.errstate(divide="ignore", invalid="ignore"):

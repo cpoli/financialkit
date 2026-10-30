@@ -38,6 +38,9 @@ plot_price_profile(
     S, {"vanilla call": call, "down-and-out call": knock_out, "image term": np.where(alive, call - knock_out, np.nan)}, ax=axes[0], markers=(H, K)
 )
 axes[0].set_title(f"barrier H = {H:g}")
+# The knock-out never exceeds the call and is worthless at the barrier.
+assert np.all(knock_out[alive] <= call[alive])
+assert abs(merton_down_and_out_call(H, K, H, T, r, sigma)) < 1e-12
 
 # %%
 # Lower barriers cost less
@@ -49,6 +52,7 @@ for H in (60.0, 75.0, 90.0, 95.0):
     ratio = np.where(S > H, merton_down_and_out_call(S, K, H, T, r, sigma) / call, 0.0)
     axes[1].plot(S, ratio, label=f"H = {H:g}")
     res = barrier_option_mc(110.0, K, H, T, r, sigma, n_steps=25, n_paths=20_000, rng=0)
+    assert abs(res.estimate - merton_down_and_out_call(110.0, K, H, T, r, sigma)) < 4 * res.std_error
     axes[1].errorbar(
         110.0,
         res.estimate / black_scholes_price(110.0, K, T, r, sigma),

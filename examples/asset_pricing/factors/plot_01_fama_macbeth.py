@@ -35,6 +35,7 @@ fm = fama_macbeth(panel.excess_returns, factors=panel.factors)
 # return, which itself differs from the 0.6% premium by sampling error.
 realised = panel.factors.mean()
 print(f"market premium: {fm.premia[1]:.5f} (se {fm.std_errors[1]:.5f}); realised factor mean {realised:.5f}")
+assert abs(fm.premia[1] - realised) < 2 * fm.std_errors[1]
 
 fig, ax = plt.subplots(figsize=(8, 3.5))
 plot_fama_macbeth(fm, index=1, ax=ax, true_value=realised)
@@ -55,6 +56,8 @@ s = ts.residuals.std(axis=0)
 fm3 = fama_macbeth(panel.excess_returns, betas=np.column_stack([b, b**2, s]))
 for name, g, t in zip(["gamma_0", "beta", "beta^2", "resid. sd"], fm3.premia, fm3.t_values, strict=True):
     print(f"{name:>9}: {g:+.5f}  (t = {t:+.2f})")
+# Neither beta squared nor residual risk is priced at the 5% level.
+assert np.all(np.abs(fm3.t_values[2:]) < 1.96)
 
 # %%
 # Average returns against beta

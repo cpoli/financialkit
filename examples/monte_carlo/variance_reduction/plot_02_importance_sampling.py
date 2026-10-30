@@ -47,6 +47,8 @@ for K in strikes:
     rel["crude"].append(crude.std_error / exact)
     rel["importance sampling"].append(imp.std_error / exact)
     print(f"K = {K}: exact {exact:.5f}, crude {crude.estimate:.5f} +/- {crude.std_error:.5f}, IS {imp.estimate:.5f} +/- {imp.std_error:.5f}")
+    assert abs(imp.estimate - exact) < 3 * imp.std_error
+assert rel["importance sampling"][-1] < rel["crude"][-1] / 10
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 for label, v in rel.items():
@@ -64,6 +66,7 @@ axes[0].legend()
 K = 150.0
 shifts = np.linspace(0.0, 5.0, 21)
 se = [importance_sampling_normal(call(K), n, shift=s, rng=1).std_error for s in shifts]
+assert abs(shifts[np.argmin(se)] - strike_shift(K)) < 0.75
 axes[1].semilogy(shifts, se, "o-")
 axes[1].axvline(strike_shift(K), color="k", ls=":", label="shift to strike")
 axes[1].set_xlabel(r"mean shift $\theta$")

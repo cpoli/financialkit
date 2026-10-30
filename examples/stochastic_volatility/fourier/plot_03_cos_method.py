@@ -26,14 +26,21 @@ cases = {
 }
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+errors = {}
 for name, (m, K, T, r) in cases.items():
     ref = lewis_price(m, 100.0, K, T, r)
     err = [abs(cos_price(m, 100.0, K, T, r, N=n) - ref) for n in N]
     ax1.semilogy(N, np.maximum(err, 1e-16), marker="o", ms=3, label=name)
+    errors[name] = err
 ax1.set_xscale("log", base=2)
 ax1.set_xlabel("cosine terms N")
 ax1.set_ylabel("|COS - reference|")
 ax1.legend()
+# Exponential convergence: Black-Scholes is at machine precision by N = 64.
+assert errors["Black-Scholes"][3] < 1e-12
+assert max(e[-1] for e in errors.values()) < 1e-7
+# The kinked short-dated density converges far more slowly.
+assert errors["VG, T = 0.1"][4] > 100 * errors["VG, T = 1"][4]
 
 # %%
 # Recovering the density
@@ -43,6 +50,7 @@ x = np.linspace(-0.6, 0.4, 400)
 vg = VarianceGammaModel(0.12, 0.2, -0.14)
 for n in (16, 64, 512):
     ax2.plot(x, cos_density(vg, x, 0.5, N=n), label=f"N = {n}")
+assert np.max(np.abs(cos_density(vg, x, 0.5, N=512) - vg.pdf(x, 0.5))) < 1e-4
 ax2.plot(x, vg.pdf(x, 0.5), "k--", lw=1, label="exact (Bessel)")
 ax2.set_xlabel("log return")
 ax2.set_title("variance gamma density, T = 0.5")

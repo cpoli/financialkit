@@ -30,6 +30,7 @@ for name, res in (("1y/20y zeros", straddle), ("6.5y/8y zeros", inside)):
         f"D {res.duration_assets:.3f} vs {res.duration_liabilities:.3f}, "
         f"C {res.convexity_assets:.1f} vs {res.convexity_liabilities:.1f}, Redington: {res.redington_satisfied}"
     )
+assert straddle.redington_satisfied and not inside.redington_satisfied
 
 # %%
 # Surplus under parallel shifts
@@ -37,6 +38,8 @@ for name, res in (("1y/20y zeros", straddle), ("6.5y/8y zeros", inside)):
 
 fig, ax = plt.subplots()
 shifts = np.linspace(-0.03, 0.03, 61)
+assert np.all(straddle.surplus(shifts) > -1e-9)  # a minimum at today's rates
+assert np.all(inside.surplus(shifts) < 1e-9) and inside.surplus(shifts).min() < -1.0  # a maximum
 plot_surplus(straddle, shifts, ax=ax)
 plot_surplus(inside, shifts, ax=ax)
 ax.legend(["assets straddle liabilities", "_", "assets inside liabilities"])

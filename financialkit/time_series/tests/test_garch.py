@@ -85,7 +85,7 @@ def test_garch_fit_recovers_parameters_within_standard_errors():
     true = GARCH(omega=2e-6, alpha=0.08, beta=0.9, mu=3e-4)
     r = true.simulate(5000, rng=8).returns
     fit = GARCH.fit(r)
-    assert fit.converged and fit.nobs == 5000 and fit.n_params == 4
+    assert fit.converged and fit.n_obs == 5000 and fit.n_params == 4
     for name, value in true.params.items():
         assert abs(fit.params[name] - value) < 4 * fit.std_errors[name], name
     assert fit.loglik >= true.loglikelihood(r)
@@ -118,7 +118,7 @@ def test_arch_lm_size_and_power():
     reject = [arch_lm_test(rng.standard_normal(500), lags=5).rejects() for _ in range(400)]
     assert abs(np.mean(reject) - 0.05) < 4 * np.sqrt(0.05 * 0.95 / 400)
     res = arch_lm_test(ARCH(0.5, 0.5).simulate(2000, rng=14).returns, lags=1)
-    assert res.df == 1 and res.pvalue < 1e-6
+    assert res.df == 1 and res.p_value < 1e-6
 
 
 def test_simulate_path_properties_and_repr():
@@ -128,3 +128,31 @@ def test_simulate_path_properties_and_repr():
     assert repr(EWMA(0.94)) == "EWMA(lam=0.94)"
     z = GARCH(0.05, 0.1, 0.85).standardized_residuals(path.returns)
     assert z.shape == (100,)
+
+
+def test_garch_half_life_halves_the_forecast_gap():
+    p = 0.5 ** (1 / 10)
+    m = GARCH(omega=1e-6, alpha=0.1, beta=p - 0.1)
+    assert m.half_life == pytest.approx(10.0)
+    r = m.simulate(500, rng=10).returns
+    gap = m.forecast(r, 11) - m.unconditional_variance
+    assert gap[10] == pytest.approx(0.5 * gap[0], rel=1e-12)
+
+
+def test_egarch_explosive_parameters_give_infinite_variance_and_no_likelihood():
+    """|beta| >= 1 has no unconditional variance; a log-variance past 700 is clipped to inf so fitting can reject it."""
+    assert EGARCH(omega=-0.2, alpha=0.15, gamma=-0.08, beta=1.0).unconditional_variance == np.inf
+    wild = EGARCH(omega=800.0, alpha=0.1, gamma=0.0, beta=0.5)
+    r = np.random.default_rng(11).normal(0.0, 0.01, 50)
+    assert np.all(np.isinf(wild.variance(r)[1:]))
+    assert wild.loglikelihood(r) == -np.inf
+
+
+def test_fit_reports_nan_standard_errors_for_a_singular_hessian(monkeypatch):
+    from financialkit.time_series.utils import numerics
+
+    r = GARCH(omega=2e-6, alpha=0.08, beta=0.9).simulate(1000, rng=12).returns
+    monkeypatch.setattr(numerics, "numerical_hessian", lambda f, x: np.zeros((x.size, x.size)))
+    fit = GARCH.fit(r)
+    assert fit.converged
+    assert all(np.isnan(se) for se in fit.std_errors.values())

@@ -27,7 +27,9 @@ K = np.linspace(70, 130, 7)
 for sigma in (0.1, 0.3, 0.8):
     c = black_scholes_price(S, K, T, r, sigma, q)
     p = black_scholes_price(S, K, T, r, sigma, q, option_type="put")
-    print(f"sigma = {sigma:.1f}: max |c - p - (S e^-qT - K e^-rT)| = {np.max(np.abs(parity_residual(c, p, S, K, T, r, q))):.1e}")
+    residual = np.max(np.abs(parity_residual(c, p, S, K, T, r, q)))
+    print(f"sigma = {sigma:.1f}: max |c - p - (S e^-qT - K e^-rT)| = {residual:.1e}")
+    assert residual < 1e-12
 
 # %%
 # Exploiting a mispriced put
@@ -43,6 +45,7 @@ p_fair = put_call_parity(c, S, 100.0, T, r, q)
 p_quoted = p_fair - 0.40
 profit = c - p_quoted - S * np.exp(-q * T) + 100.0 * np.exp(-r * T)
 print(f"fair put {p_fair:.4f}, quoted {p_quoted:.4f}, locked-in profit {profit:.4f}")
+assert np.isclose(profit, 0.40)
 
 S_T = np.linspace(50, 150, 201)
 legs = {
@@ -54,6 +57,7 @@ legs = {
 fig, ax = plt.subplots(figsize=(7, 4))
 for name, value in legs.items():
     ax.plot(S_T, value, lw=1, label=name)
+assert np.allclose(sum(legs.values()), 0.0)
 ax.plot(S_T, sum(legs.values()), "k", lw=2.5, label="total: zero in every state")
 ax.set_xlabel("stock price at expiry")
 ax.set_ylabel("value at expiry")

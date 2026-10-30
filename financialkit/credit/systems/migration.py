@@ -32,8 +32,11 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy import linalg, stats
 
+from financialkit._deprecation import renamed_parameter
 from financialkit.credit.core.base import CreditMetricsResult
+from financialkit.credit.utils.discounting import discount_factors
 from financialkit.credit.utils.matrices import check_transition_matrix
+from financialkit.fixed_income import CurveLike
 from financialkit.integrators import RNGLike
 
 __all__ = [
@@ -140,7 +143,8 @@ def joint_migration_probabilities(row1: ArrayLike, row2: ArrayLike, rho: float) 
     return np.clip(F[:-1, :-1] - F[1:, :-1] - F[:-1, 1:] + F[1:, 1:], 0.0, None)
 
 
-def simulate_migrations(P: ArrayLike, ratings: ArrayLike, rho: float, n_sims: int, rng: RNGLike = None) -> np.ndarray:
+@renamed_parameter("n_sims", "n_paths", "financialkit.credit.simulate_migrations")
+def simulate_migrations(P: ArrayLike, ratings: ArrayLike, rho: float, n_paths: int, rng: RNGLike = None) -> np.ndarray:
     """Simulate end-of-year ratings with one-factor Gaussian asset correlation.
 
     Asset returns are :math:`Z_i = \\sqrt\\rho\\, M + \\sqrt{1 - \\rho}\\,\\varepsilon_i`.
@@ -153,18 +157,18 @@ def simulate_migrations(P: ArrayLike, ratings: ArrayLike, rho: float, n_sims: in
         Current rating index of each obligor.
     rho : float
         Pairwise asset correlation.
-    n_sims : int
+    n_paths : int
     rng : numpy.random.Generator, int or None
 
     Returns
     -------
-    ndarray of int, shape (n_sims, m)
+    ndarray of int, shape (n_paths, m)
     """
     P = check_transition_matrix(P, atol=1e-3)
     ratings = np.asarray(ratings, dtype=np.intp)
     rng = np.random.default_rng(rng)
-    M = rng.standard_normal((n_sims, 1))
-    Z = np.sqrt(rho) * M + np.sqrt(1.0 - rho) * rng.standard_normal((n_sims, ratings.size))
+    M = rng.standard_normal((n_paths, 1))
+    Z = np.sqrt(rho) * M + np.sqrt(1.0 - rho) * rng.standard_normal((n_paths, ratings.size))
     out = np.empty(Z.shape, dtype=np.intp)
     for j, g in enumerate(ratings):
         t = migration_thresholds(P[g])
@@ -172,7 +176,8 @@ def simulate_migrations(P: ArrayLike, ratings: ArrayLike, rho: float, n_sims: in
     return out
 
 
-def creditmetrics_portfolio(P: ArrayLike, ratings: ArrayLike, values: ArrayLike, rho: float, n_sims: int, rng: RNGLike = None) -> CreditMetricsResult:
+@renamed_parameter("n_sims", "n_paths", "financialkit.credit.creditmetrics_portfolio")
+def creditmetrics_portfolio(P: ArrayLike, ratings: ArrayLike, values: ArrayLike, rho: float, n_paths: int, rng: RNGLike = None) -> CreditMetricsResult:
     """Monte Carlo CreditMetrics value distribution of a bond portfolio.
 
     Parameters
@@ -184,7 +189,7 @@ def creditmetrics_portfolio(P: ArrayLike, ratings: ArrayLike, values: ArrayLike,
         Value of each bond in each end-of-year rating.
     rho : float
         Asset correlation.
-    n_sims : int
+    n_paths : int
     rng : numpy.random.Generator, int or None
 
     Returns
@@ -194,9 +199,9 @@ def creditmetrics_portfolio(P: ArrayLike, ratings: ArrayLike, values: ArrayLike,
     """
     ratings = np.asarray(ratings, dtype=np.intp)
     V = np.broadcast_to(np.asarray(values, dtype=np.float64), (ratings.size, np.shape(P)[0]))
-    new = simulate_migrations(P, ratings, rho, n_sims, rng)
+    new = simulate_migrations(P, ratings, rho, n_paths, rng)
     total = V[np.arange(ratings.size), new].sum(axis=1)
-    return CreditMetricsResult(values=total, probabilities=np.full(n_sims, 1.0 / n_sims))
+    return CreditMetricsResult(values=total, probabilities=np.full(n_paths, 1.0 / n_paths))
 
 
 def generator_from_transition(P: ArrayLike, t: float = 1.0) -> np.ndarray:
@@ -305,21 +310,21 @@ def regularize_generator(Q: ArrayLike, method: str = "diagonal") -> np.ndarray:
     return Q
 
 
-def jlt_risky_zero(T: ArrayLike, r: float, Q: ArrayLike, rating: int, recovery: float = 0.4, premia: ArrayLike | None = None) -> np.ndarray | float:
+def jlt_risky_zero(T: ArrayLike, r: CurveLike, Q: ArrayLike, rating: int, recovery: float = 0.4, premia: ArrayLike | None = None) -> np.ndarray | float:
     """Jarrow-Lando-Turnbull zero-coupon bond of an issuer with a given rating.
 
     Under the pricing measure the generator is :math:`\\tilde Q = U Q`
     with :math:`U = \\operatorname{diag}(\\mu)` the risk premia (``premia``,
     ones if omitted). With recovery of treasury :math:`\\delta`,
 
-    .. math:: P^d(0, T) = e^{-rT}\\,[\\delta + (1 - \\delta)(1 - \\tilde P_{i,D}(T))].
+    .. math:: P^d(0, T) = P(0, T)\\,[\\delta + (1 - \\delta)(1 - \\tilde P_{i,D}(T))].
 
     Parameters
     ----------
     T : array_like
         Maturities.
-    r : float
-        Flat risk-free rate.
+    r : float or YieldCurve
+        Continuously compounded risk-free rate, or a ``fixed_income`` discount curve.
     Q : array_like, shape (k, k)
         Generator with default as the last, absorbing state.
     rating : int
@@ -337,5 +342,5 @@ def jlt_risky_zero(T: ArrayLike, r: float, Q: ArrayLike, rating: int, recovery: 
         Q = np.asarray(premia, dtype=np.float64)[:, None] * Q
     Ts = np.atleast_1d(np.asarray(T, dtype=np.float64))
     pd = np.array([linalg.expm(Q * t)[rating, -1] for t in Ts])
-    out = np.exp(-r * Ts) * (recovery + (1.0 - recovery) * (1.0 - pd))
+    out = discount_factors(r, Ts) * (recovery + (1.0 - recovery) * (1.0 - pd))
     return float(out[0]) if np.ndim(T) == 0 else out

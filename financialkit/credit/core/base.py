@@ -34,6 +34,10 @@ __all__ = [
     "CreditMetricsResult",
     "LossDistribution",
     "TrancheResult",
+    "BaseCorrelationResult",
+    "ExposureProfile",
+    "BilateralCVAResult",
+    "FVAResult",
 ]
 
 
@@ -286,3 +290,108 @@ class TrancheResult:
 
     rpv01: float
     """Premium-leg value per unit spread, per unit tranche notional."""
+
+
+@dataclass
+class BaseCorrelationResult:
+    """A base correlation skew bootstrapped from tranche quotes (McGinty et al. 2004)."""
+
+    detachments: np.ndarray
+    """ndarray, shape (k,): Detachment points of the quoted tranches, increasing; each attaches at the previous one."""
+
+    base_correlations: np.ndarray
+    """ndarray, shape (k,): Flat copula correlation of the equity tranche ``[0, detachments[i]]``."""
+
+    spreads: np.ndarray
+    """ndarray, shape (k,): Quoted running spreads the skew reprices."""
+
+    def correlation(self, K: ArrayLike) -> np.ndarray | float:
+        """Base correlation at detachment `K`, linear between quotes and flat outside them."""
+        return as_output(np.interp(np.asarray(K, dtype=np.float64), self.detachments, self.base_correlations))
+
+
+@dataclass
+class ExposureProfile:
+    """Simulated mark-to-market paths of a portfolio and the exposures read from them.
+
+    The exposure to the counterparty is the positive part of the value,
+    :math:`V^+`, and the counterparty's exposure to us is :math:`V^-`.
+    :attr:`epe` and :attr:`ene` are discounted to time 0 on each path,
+    which is what CVA, DVA and FVA integrate.
+    """
+
+    times: np.ndarray
+    """ndarray, shape (m,): Exposure dates, starting at 0."""
+
+    values: np.ndarray
+    """ndarray, shape (n_paths, m): Mark-to-market :math:`V(t_i)` on each path, after any payment at :math:`t_i`."""
+
+    discount: np.ndarray
+    """ndarray, shape (n_paths, m): Pathwise discount factors :math:`D(0, t_i) = e^{-\\int_0^{t_i} r\\,ds}`."""
+
+    method: str
+    """How the values were obtained: ``"regression"`` or ``"exact"``."""
+
+    @property
+    def epe(self) -> np.ndarray:
+        """ndarray: Discounted expected positive exposure :math:`E[D(0, t) V(t)^+]`."""
+        return np.mean(self.discount * np.maximum(self.values, 0.0), axis=0)
+
+    @property
+    def ene(self) -> np.ndarray:
+        """ndarray: Discounted expected negative exposure :math:`E[D(0, t) V(t)^-]`, a positive number."""
+        return np.mean(self.discount * np.maximum(-self.values, 0.0), axis=0)
+
+    @property
+    def epe_std_error(self) -> np.ndarray:
+        """ndarray: Monte Carlo standard error of :attr:`epe`."""
+        return np.std(self.discount * np.maximum(self.values, 0.0), axis=0, ddof=1) / np.sqrt(self.values.shape[0])
+
+    @property
+    def ene_std_error(self) -> np.ndarray:
+        """ndarray: Monte Carlo standard error of :attr:`ene`."""
+        return np.std(self.discount * np.maximum(-self.values, 0.0), axis=0, ddof=1) / np.sqrt(self.values.shape[0])
+
+    @property
+    def expected_exposure(self) -> np.ndarray:
+        """ndarray: Undiscounted expected exposure :math:`E[V(t)^+]`."""
+        return np.mean(np.maximum(self.values, 0.0), axis=0)
+
+    def pfe(self, level: float = 0.95) -> np.ndarray:
+        """Potential future exposure: the `level` quantile of :math:`V(t)^+` at each date."""
+        return np.quantile(np.maximum(self.values, 0.0), level, axis=0)
+
+
+@dataclass
+class BilateralCVAResult:
+    """Credit and debit valuation adjustments of a bilateral netting set (Gregory 2009)."""
+
+    cva: float
+    """Expected loss from the counterparty's default, a positive number."""
+
+    dva: float
+    """Expected gain from our own default, a positive number."""
+
+    first_to_default: bool
+    """Whether a default counts only if the other party has not defaulted first."""
+
+    @property
+    def bva(self) -> float:
+        """float: The bilateral adjustment ``dva - cva``, added to the risk-free value."""
+        return self.dva - self.cva
+
+
+@dataclass
+class FVAResult:
+    """Funding cost and benefit adjustments (Burgard and Kjaer 2011)."""
+
+    fca: float
+    """Funding cost of the positive exposure, a positive number."""
+
+    fba: float
+    """Funding benefit of the negative exposure, a positive number."""
+
+    @property
+    def fva(self) -> float:
+        """float: Net funding adjustment ``fca - fba``, subtracted from the risk-free value."""
+        return self.fca - self.fba

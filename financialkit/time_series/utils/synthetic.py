@@ -5,6 +5,7 @@ from __future__ import annotations
 import numpy as np
 from scipy.signal import lfilter
 
+from financialkit._deprecation import renamed_parameter
 from financialkit.constants import TRADING_DAYS_PER_YEAR
 from financialkit.integrators import gbm_paths
 from financialkit.time_series.core.base import OHLC
@@ -89,8 +90,9 @@ def simulate_cointegrated_pair(
     return intercept + beta * x + u, x
 
 
-def simulate_dickey_fuller(n_obs: int, n_sims: int, regression: str = "c", rng: np.random.Generator | int | None = None) -> np.ndarray:
-    """Dickey-Fuller t-statistics of `n_sims` driftless Gaussian random walks.
+@renamed_parameter("n_sims", "n_paths", "financialkit.time_series.simulate_dickey_fuller")
+def simulate_dickey_fuller(n_obs: int, n_paths: int, regression: str = "c", rng: np.random.Generator | int | None = None) -> np.ndarray:
+    """Dickey-Fuller t-statistics of `n_paths` driftless Gaussian random walks.
 
     Regresses :math:`\\Delta y_t` on :math:`y_{t-1}` (plus a constant for
     ``"c"``, and a trend for ``"ct"``) for all walks at once, which traces
@@ -98,10 +100,10 @@ def simulate_dickey_fuller(n_obs: int, n_sims: int, regression: str = "c", rng: 
 
     Returns
     -------
-    ndarray, shape (n_sims,)
+    ndarray, shape (n_paths,)
     """
     rng = np.random.default_rng(rng)
-    y = np.cumsum(rng.standard_normal((n_sims, n_obs + 1)), axis=1)
+    y = np.cumsum(rng.standard_normal((n_paths, n_obs + 1)), axis=1)
     dy = np.diff(y, axis=1)
     ylag = y[:, :-1]
     t = np.arange(n_obs, dtype=np.float64)

@@ -1,4 +1,4 @@
-"""Growth-optimal and dynamic strategies: Kelly (1956), Merton (1969) and CPPI (1987).
+"""Growth-optimal and dynamic strategies: Kelly (1956), Merton (1969), CPPI (1987) and Garleanu-Pedersen (2013).
 
 Kelly showed that a gambler who bets the fraction
 :math:`f^* = p/a - q/b` of wealth on a favourable bet maximizes the
@@ -9,7 +9,10 @@ aversion :math:`\\gamma`: hold the constant fraction
 Kelly's rule at :math:`\\gamma = 1`. Black and Jones's constant
 proportion portfolio insurance instead holds a multiple :math:`m` of the
 cushion above a floor, so the floor is protected under continuous
-trading while upside is kept.
+trading while upside is kept. Garleanu and Pedersen added predictable
+returns and quadratic transaction costs to the mean-variance problem:
+the optimal position moves a constant fraction of the way towards an
+aim portfolio that weights slow signals more than fast ones.
 
 References: J. L. Kelly, Jr., "A New Interpretation of Information
 Rate," *Bell System Tech. J.* 35 (1956) 917-926; R. C. Merton,
@@ -17,7 +20,9 @@ Rate," *Bell System Tech. J.* 35 (1956) 917-926; R. C. Merton,
 Case," *Rev. Econ. Stat.* 51 (1969) 247-257; F. Black and R. Jones,
 "Simplifying Portfolio Insurance," *J. Portfolio Mgmt.* 14 (1987) 48-51;
 F. Black and A. Perold, "Theory of Constant Proportion Portfolio
-Insurance," *J. Econ. Dyn. Control* 16 (1992) 403-426.
+Insurance," *J. Econ. Dyn. Control* 16 (1992) 403-426; N. Garleanu and
+L. H. Pedersen, "Dynamic Trading with Predictable Returns and Transaction
+Costs," *J. Finance* 68 (2013) 2309-2340.
 """
 
 from __future__ import annotations
@@ -26,7 +31,7 @@ import numpy as np
 from numpy.typing import ArrayLike
 
 from financialkit.integrators import gbm_paths
-from financialkit.portfolio.core.base import CPPIResult
+from financialkit.portfolio.core.base import CPPIResult, DynamicTradingPolicy
 from financialkit.portfolio.systems.mean_variance import two_fund_allocation
 
 __all__ = [
@@ -40,6 +45,7 @@ __all__ = [
     "merton_wealth_paths",
     "cppi",
     "cppi_continuous",
+    "garleanu_pedersen",
 ]
 
 
@@ -374,3 +380,77 @@ def cppi_continuous(
     F = floor * w0 * np.exp(r * t)
     C = (1.0 - floor) * w0 * (S / S[:, :1]) ** multiplier * np.exp((1.0 - multiplier) * (r + 0.5 * multiplier * sigma**2) * t)
     return F + C
+
+
+def garleanu_pedersen(B: ArrayLike, cov: ArrayLike, Phi: ArrayLike, gamma: float, lam: float, rho: float = 0.0) -> DynamicTradingPolicy:
+    """Garleanu and Pedersen's optimal trading policy with predictable returns and transaction costs.
+
+    Excess returns are predicted by factors that mean-revert,
+    :math:`r_{t+1} = Bf_t + u_{t+1}` with :math:`\\mathrm{Var}(u) = \\Sigma`
+    and :math:`\\Delta f_{t+1} = -\\Phi f_t + \\varepsilon_{t+1}`, and trading
+    :math:`\\Delta x_t` costs :math:`\\tfrac12\\Delta x_t'\\Lambda\\Delta x_t` with
+    :math:`\\Lambda = \\lambda\\Sigma`. Maximizing the discounted sum of
+    mean-variance utility net of costs gives (Garleanu and Pedersen 2013,
+    Propositions 2 and 4)
+
+    .. math::
+
+       x_t = \\left(1 - \\frac{a}{\\lambda}\\right)x_{t-1} + \\frac{a}{\\lambda}\\,
+       (\\gamma\\Sigma)^{-1}B\\left(I + \\frac{a}{\\gamma}\\Phi\\right)^{-1}f_t,
+       \\qquad a = \\frac{-(\\gamma\\bar\\rho + \\lambda\\rho)
+       + \\sqrt{(\\gamma\\bar\\rho + \\lambda\\rho)^2 + 4\\gamma\\lambda\\bar\\rho^2}}{2\\bar\\rho},
+
+    with :math:`\\bar\\rho = 1 - \\rho`: trade partially towards an aim
+    portfolio that discounts each signal by its speed of decay.
+
+    Parameters
+    ----------
+    B : array_like, shape (d, k)
+        Loadings of next period's excess returns on the predictors.
+    cov : array_like, shape (d, d)
+        Covariance :math:`\\Sigma` of the return innovations.
+    Phi : array_like, shape (k,) or (k, k)
+        Mean-reversion speeds of the predictors per period (a vector is a
+        diagonal matrix); a half-life of :math:`h` periods is
+        :math:`\\phi = 1 - 2^{-1/h}`.
+    gamma : float
+        Risk aversion.
+    lam : float
+        Transaction cost per unit of traded variance.
+    rho : float
+        Discount rate per period, in :math:`[0, 1)`.
+
+    Returns
+    -------
+    DynamicTradingPolicy
+
+    Examples
+    --------
+    >>> p = garleanu_pedersen([[1.0]], [[1.0]], [0.5], gamma=1.0, lam=2.0)
+    >>> p.trade_rate, np.round(p.aim_loadings, 4)
+    (0.5, array([[0.6667]]))
+    """
+    if gamma <= 0 or lam <= 0:
+        raise ValueError(f"gamma and lam must be positive, got {gamma} and {lam}")
+    if not 0.0 <= rho < 1.0:
+        raise ValueError(f"rho must be in [0, 1), got {rho}")
+    Bm = np.atleast_2d(np.asarray(B, dtype=np.float64))
+    C = np.atleast_2d(np.asarray(cov, dtype=np.float64))
+    P = np.asarray(Phi, dtype=np.float64)
+    P = np.diag(np.atleast_1d(P)) if P.ndim < 2 else P
+    d, k = Bm.shape
+    if C.shape != (d, d) or P.shape != (k, k):
+        raise ValueError(f"cov must have shape ({d}, {d}) and Phi ({k},) or ({k}, {k}), got {C.shape} and {P.shape}")
+    rb = 1.0 - rho
+    c = gamma * rb + lam * rho
+    # The root above, rationalized so that it does not cancel when lam is small.
+    a = 2.0 * gamma * lam * rb / (c + np.sqrt(c**2 + 4.0 * gamma * lam * rb**2))
+    markowitz = np.linalg.solve(gamma * C, Bm)
+    return DynamicTradingPolicy(
+        trade_rate=float(a / lam),
+        aim_loadings=markowitz @ np.linalg.inv(np.eye(k) + a / gamma * P),
+        markowitz_loadings=markowitz,
+        gamma=float(gamma),
+        lam=float(lam),
+        rho=float(rho),
+    )

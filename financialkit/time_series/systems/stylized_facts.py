@@ -65,19 +65,19 @@ def return_statistics(returns) -> ReturnStatistics:
     >>> import numpy as np
     >>> rng = np.random.default_rng(0)
     >>> s = return_statistics(rng.standard_t(3, 20_000))
-    >>> bool(s.excess_kurtosis > 3), bool(s.jarque_bera_pvalue < 1e-6)
+    >>> bool(s.excess_kurtosis > 3), bool(s.jarque_bera_p_value < 1e-6)
     (True, True)
     """
     r = np.asarray(returns, dtype=np.float64)
     jb = stats.jarque_bera(r)
     return ReturnStatistics(
-        nobs=r.size,
+        n_obs=r.size,
         mean=float(r.mean()),
         std=float(r.std(ddof=1)),
         skewness=float(stats.skew(r)),
         excess_kurtosis=float(stats.kurtosis(r)),
         jarque_bera=float(jb.statistic),
-        jarque_bera_pvalue=float(jb.pvalue),
+        jarque_bera_p_value=float(jb.pvalue),
     )
 
 

@@ -13,43 +13,55 @@ book-to-market),
    r^e_{it} = \alpha_i + b_i\,MKT_t + s_i\,SMB_t + h_i\,HML_t + \varepsilon_{it},
 
 and found that the alphas of 25 size-value portfolios nearly vanish.
-Here a synthetic market has stocks whose size and value characteristics
-drive hidden factor loadings.
+Here are their test assets and factors, from French's data library: the
+25 value-weighted portfolios and the factors, monthly from July 1963.
+French builds SMB and HML from stock-level sorts as
+:func:`~financialkit.asset_pricing.sort_portfolios` and
+:func:`~financialkit.asset_pricing.long_short_factor` do.
 """
 
 # %%
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.asset_pricing import grs_test, long_short_factor, sort_portfolios, time_series_regression
+from financialkit.asset_pricing import grs_test, time_series_regression
 from financialkit.asset_pricing.visualizers import plot_alphas
+from financialkit.datasets import load_fama_french_25, load_fama_french_factors
 
-rng = np.random.default_rng(1993)
-T, N = 360, 600
-size = rng.standard_normal(N)  # log market cap, standardized
-value = rng.standard_normal(N)  # book-to-market, standardized
-loadings = np.column_stack([rng.uniform(0.8, 1.2, N), -0.6 * size + 0.2 * rng.standard_normal(N), 0.6 * value + 0.2 * rng.standard_normal(N)])
-f_true = rng.multivariate_normal([0.006, 0.0025, 0.003], np.diag([0.045, 0.03, 0.03]) ** 2, T)
-R = f_true @ loadings.T + 0.08 * rng.standard_normal((T, N))
 
-mkt = R.mean(axis=1)
-smb = long_short_factor(-size, R)
-hml = long_short_factor(value, R)
-print(f"mean monthly SMB {smb.mean():.4f}, HML {hml.mean():.4f}")
+def regressions(start: str, end: str):
+    """CAPM and three-factor regressions of the 25 portfolios over a window."""
+    ports = load_fama_french_25().window(start, end)
+    f = load_fama_french_factors().window(start, end)
+    assert np.array_equal(ports.dates, f.dates)
+    excess = ports.returns - f.risk_free[:, None]
+    ff3 = np.column_stack([f.mkt_rf, f.smb, f.hml])
+    return time_series_regression(excess, f.mkt_rf), time_series_regression(excess, ff3), grs_test(excess, f.mkt_rf), grs_test(excess, ff3)
+
 
 # %%
-# 25 size-value portfolios
-# ------------------------
+# Fama and French's own sample, 1963-1991
+# ---------------------------------------
+# GRS rejects the CAPM, but not the three-factor model at 5%.
 
-size_q = np.digitize(size, np.quantile(size, [0.2, 0.4, 0.6, 0.8]))
-ports = np.column_stack([sort_portfolios(np.where(size_q == q, value, np.nan), R, 5) for q in range(5)])
-
-capm = time_series_regression(ports, mkt)
-ff3 = time_series_regression(ports, np.column_stack([mkt, smb, hml]))
-g1 = grs_test(ports, mkt)
-g3 = grs_test(ports, np.column_stack([mkt, smb, hml]))
+capm, ff3, g1, g3 = regressions("1963-07", "1991-12")
 print(f"CAPM: GRS = {g1.statistic:.2f}, p = {g1.p_value:.3g}")
 print(f"FF3:  GRS = {g3.statistic:.2f}, p = {g3.p_value:.3g}")
+assert g1.p_value < 0.01 and g3.p_value > 0.05
+
+# %%
+# The full sample
+# ---------------
+# Three more decades of data reject both models: the small-growth corner
+# (``me1_bm1``) loses about 6% a year against either. Still, the
+# three-factor alphas are on average less than half the CAPM's.
+
+capm, ff3, g1, g3 = regressions("1963-07", "2026-12")
+print(f"CAPM: GRS = {g1.statistic:.2f}, p = {g1.p_value:.2g}, mean |alpha| {12 * np.abs(capm.alphas).mean():.2%} a year")
+print(f"FF3:  GRS = {g3.statistic:.2f}, p = {g3.p_value:.2g}, mean |alpha| {12 * np.abs(ff3.alphas).mean():.2%} a year")
+print(f"small growth alpha: CAPM {12 * capm.alphas[0]:.1%}, FF3 {12 * ff3.alphas[0]:.1%} a year")
+assert np.abs(ff3.alphas).mean() < 0.5 * np.abs(capm.alphas).mean()
+assert capm.alphas[0] < 0 and ff3.alphas[0] < 0
 
 fig, ax = plt.subplots(figsize=(10, 4))
 plot_alphas(capm, ax=ax, label="CAPM", offset=-0.2, width=0.4)

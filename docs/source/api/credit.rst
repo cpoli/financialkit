@@ -17,7 +17,15 @@ matrices (``scipy.linalg.expm`` and ``logm``) and the Israel-Rosenthal-Wei
 regularization; Vasicek's large homogeneous portfolio, CreditRisk+ by
 Panjer's recursion, Li's Gaussian copula (through
 :func:`financialkit.risk.gaussian_copula_sample`), the Basel II IRB
-formula and Hull-White tranche pricing.
+formula, Hull-White tranche pricing, the Andersen-Sidenius-Basu loss
+recursion and base correlation; and counterparty risk: swap exposure
+profiles by Longstaff-Schwartz regression on
+:class:`financialkit.interest_rate_models.HullWhiteModel` paths,
+Brigo-Masetti CVA (with the swaption-strip closed form through
+:func:`financialkit.interest_rate_models.jamshidian_swaption`), Gregory's
+bilateral CVA and DVA, and Burgard-Kjaer funding adjustments. Every function that discounts
+takes the riskless rate ``r`` as a number or as any
+:class:`financialkit.fixed_income.YieldCurve`, such as a bootstrapped one.
 
 .. automodule:: financialkit.credit
    :members:

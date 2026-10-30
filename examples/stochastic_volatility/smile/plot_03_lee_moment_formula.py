@@ -35,6 +35,10 @@ for eta1, eta2 in ((3.0, 2.0), (6.0, 4.0)):
     line = ax2.plot(k, left, label=f"left wing, eta2 = {eta2:g}")[0]
     ax2.axhline(lee_wing_slope(q), color=line.get_color(), ls="--", lw=1)
     print(f"eta1 = {eta1:g}, eta2 = {eta2:g}: critical moments p = {p:g}, q = {q:g}; Lee slopes {lee_wing_slope(p):.4f}, {lee_wing_slope(q):.4f}")
+    assert (p, q) == (eta1 - 1, eta2)
+    # Each wing closes in on its bound: nearer at |k| = 6 than at |k| = 2.75, and within 0.1.
+    for ratio, bound in ((right, lee_wing_slope(p)), (left, lee_wing_slope(q))):
+        assert abs(ratio[-1] - bound) < min(0.1, abs(ratio[10] - bound))
 for ax in (ax1, ax2):
     ax.set_xlabel("|log-moneyness| |k|")
     ax.set_ylabel("w(k) / |k|")
@@ -47,7 +51,11 @@ fig.tight_layout()
 # Variance gamma
 # --------------
 
-p, q = VarianceGammaModel(0.2, 0.5, -0.2).critical_moments()
+sigma, nu, theta = 0.2, 0.5, -0.2
+p, q = VarianceGammaModel(sigma, nu, theta).critical_moments()
 print(f"variance gamma: p = {p:.3f}, q = {q:.3f}, wing slopes {lee_wing_slope(p):.4f} (right), {lee_wing_slope(q):.4f} (left)")
+# The moment generating function blows up at the roots of 1 - theta nu u - sigma^2 nu u^2 / 2.
+u_minus, u_plus = np.sort(np.roots([-0.5 * sigma**2 * nu, -theta * nu, 1.0]))
+assert np.isclose(p, u_plus - 1) and np.isclose(q, -u_minus)
 
 plt.show()

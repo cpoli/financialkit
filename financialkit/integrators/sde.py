@@ -11,13 +11,11 @@ Callbacks follow the ``f(x, t, params) -> ndarray`` convention shared with
 mathematicskit's ODE integrators, with one difference: ``x`` is the whole
 batch of paths, shape ``(n_paths, d)``, and the callback returns an array
 of that shape. A step is therefore a handful of vectorised array
-operations, which keeps the pure-NumPy fallback (no Numba) fast. With
-Numba installed, callbacks must be module-level ``@njit`` functions (use
-:func:`financialkit.integrators.njit`) so the compiled kernel can call
-them; ``params`` is a ``float64`` array so one compiled callback serves
-every parameter value.
-
-The kernels are not cached to disk; see :mod:`financialkit.integrators`.
+operations, so the time loop runs in plain Python and NumPy does the
+work: the kernels are not compiled with Numba, which measured no faster
+on them (see the docs' Benchmarks page). Any callable works as a
+callback, including closures, bound methods and existing ``@njit``
+dispatchers; ``params`` is passed through as a ``float64`` array.
 """
 
 from __future__ import annotations
@@ -28,7 +26,6 @@ from typing import Optional
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
 
-from financialkit._jit import njit
 from financialkit.integrators.brownian import RNGLike, _check_grid, brownian_increments
 
 __all__ = ["SDEFunc", "euler_maruyama", "milstein"]
@@ -38,7 +35,6 @@ __all__ = ["SDEFunc", "euler_maruyama", "milstein"]
 SDEFunc = Callable[[NDArray[np.float64], float, NDArray[np.float64]], NDArray[np.float64]]
 
 
-@njit
 def _euler_maruyama_kernel(drift, diffusion, x0, t0, dt, dW, params):
     n_steps = dW.shape[0]
     out = np.empty((n_steps + 1,) + x0.shape)
@@ -51,7 +47,6 @@ def _euler_maruyama_kernel(drift, diffusion, x0, t0, dt, dW, params):
     return out
 
 
-@njit
 def _milstein_kernel(drift, diffusion, diffusion_dx, x0, t0, dt, dW, params):
     n_steps = dW.shape[0]
     out = np.empty((n_steps + 1,) + x0.shape)
@@ -157,12 +152,10 @@ def euler_maruyama(
     Geometric Brownian motion ``dS = mu S dt + sigma S dW``:
 
     >>> import numpy as np
-    >>> from financialkit.integrators import euler_maruyama, njit
-    >>> @njit
-    ... def drift(x, t, p):
+    >>> from financialkit.integrators import euler_maruyama
+    >>> def drift(x, t, p):
     ...     return p[0] * x
-    >>> @njit
-    ... def diffusion(x, t, p):
+    >>> def diffusion(x, t, p):
     ...     return p[1] * x
     >>> times, paths = euler_maruyama(drift, diffusion, 100.0, T=1.0, n_steps=50, n_paths=20_000, params=[0.05, 0.2], rng=0)
     >>> paths.shape

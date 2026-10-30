@@ -19,7 +19,8 @@ Implied volatility is the volatility that makes Black-Scholes reproduce a
 price. Run a Black-Scholes price back through it and the input comes
 back, at every strike:
 
-.. code-block:: python
+.. plot::
+   :context: reset
 
    import numpy as np
    import financialkit as fk
@@ -39,7 +40,8 @@ markets show, means volatility rises when the stock falls. Price options
 under Heston by Fourier inversion, then ask what volatility Black-Scholes
 would need:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    heston = fk.stochastic_volatility.HestonModel(v0=0.04, kappa=2.0, theta=0.04, xi=0.6, rho=-0.7)
    prices = fk.stochastic_volatility.heston_price(heston, S, K, T, r)
@@ -58,7 +60,8 @@ so the skew carries a smile. Before trusting a Fourier price,
 check it independently: simulate Heston paths with Andersen's QE scheme
 and price the at-the-money call by Monte Carlo:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    mc = fk.stochastic_volatility.heston_mc_price(heston, S, 100.0, T, r, n_steps=100, n_paths=40_000, rng=5)
    print(f"Fourier: {prices[6]:.4f}, Monte Carlo: {mc.estimate:.4f} +/- {mc.std_error:.4f}")
@@ -71,7 +74,8 @@ Breeden and Litzenberger showed that the second derivative of call prices
 in the strike is the discounted risk-neutral density. Differencing a fine
 strip of Heston prices recovers it:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    from scipy.integrate import trapezoid
 
@@ -100,7 +104,8 @@ Stochastic volatility is not the only explanation. Merton added
 occasional jumps to the stock, and downward jumps also fatten the left
 tail:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    merton = fk.stochastic_volatility.MertonJumpModel(sigma=0.15, lam=0.5, mu_j=-0.1, delta=0.1)
    print(np.round(100 * merton.implied_vol(S, K[::3], T, r), 2))
@@ -118,7 +123,8 @@ Desks rarely quote a full model. They fit a smile parametrization, and
 Hagan's SABR formula is the standard in rates and FX. Calibrating it to
 the Heston smile above:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    forward = S * np.exp(r * T)
    sabr = fk.stochastic_volatility.sabr_calibrate(forward, K, T, smile.vols, beta=0.5)

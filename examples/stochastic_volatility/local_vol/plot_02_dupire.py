@@ -33,7 +33,9 @@ lv = dupire_local_vol(K, T, C, r)
 true = cev_local_vol(K, sigma, beta)
 # The first maturity row uses one-sided differences in T, which are least accurate in the wings.
 inner = (K > 60) & (K < 160)
-print("max |Dupire - CEV| for 60 < K < 160, T > 0.25:", f"{np.nanmax(np.abs(lv.vol[1:, inner] - true[inner])):.1e}")
+err = np.nanmax(np.abs(lv.vol[1:, inner] - true[inner]))
+print("max |Dupire - CEV| for 60 < K < 160, T > 0.25:", f"{err:.1e}")
+assert err < 5e-3
 
 fig, ax = plt.subplots(figsize=(7, 4))
 plot_local_vol(lv, maturities=[0.5, 1.0, 1.5], ax=ax)
@@ -49,5 +51,6 @@ t, paths = local_vol_paths(lv, S, 1.0, r, n_steps=100, n_paths=20_000, rng=1)
 for k in (80.0, 100.0, 120.0):
     pay = np.exp(-r) * np.maximum(paths[:, -1] - k, 0.0)
     print(f"K = {k:5.0f}: CEV {cev_price(S, k, 1.0, r, sigma, beta):.4f}, local-vol MC {pay.mean():.4f} +/- {2 * pay.std() / np.sqrt(pay.size):.4f}")
+    assert abs(cev_price(S, k, 1.0, r, sigma, beta) - pay.mean()) < 3 * pay.std() / np.sqrt(pay.size)
 
 plt.show()

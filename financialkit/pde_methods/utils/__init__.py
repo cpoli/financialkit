@@ -7,6 +7,7 @@ from financialkit.pde_methods.utils.operators import (
     solve_tridiagonal,
     tridiagonal_matrix,
 )
+from financialkit.pde_methods.utils.splitting import ADI_SCHEMES, adi_march, default_adi_theta, difference_matrices
 from financialkit.pde_methods.utils.stepping import theta_march
 
 __all__ = [
@@ -16,4 +17,8 @@ __all__ = [
     "discounted_intrinsic",
     "interpolate_at",
     "theta_march",
+    "ADI_SCHEMES",
+    "adi_march",
+    "default_adi_theta",
+    "difference_matrices",
 ]

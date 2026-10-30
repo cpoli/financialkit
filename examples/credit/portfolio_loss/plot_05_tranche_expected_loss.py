@@ -30,20 +30,26 @@ ax.set_title("125 names, 5 years, copula correlation 0.25")
 
 rhos = np.linspace(0.02, 0.9, 15)
 fig, ax = plt.subplots(figsize=(7, 4))
+spreads = []
 for a, d in tranches:
     s = [tranche_spread(a, d, curve, rho, 5.0, 0.03).par_spread for rho in rhos]
+    spreads.append(s)
     ax.semilogy(rhos, 1e4 * np.array(s), label=f"{100 * a:g}-{100 * d:g}%")
 ax.set_xlabel("copula correlation")
 ax.set_ylabel("par spread (bp, large pool)")
 ax.legend()
+assert np.all(np.diff(spreads[0]) < 0) and np.all(np.diff(spreads[-1]) > 0)
 
 # %%
 # Finite pool versus the large-pool limit
 # ---------------------------------------
 
 p = float(curve.default_probability(5.0))
+els = []
 for n in (25, 125, 1000, None):
     el = expected_tranche_loss(0.03, 0.07, p, 0.25, n_names=n)
+    els.append(el)
     print(f"{'LHP' if n is None else n:>5}: expected 3-7% tranche loss at 5y = {el:.4f}")
+assert np.all(np.diff(els) < 0) and abs(els[2] - els[3]) < 0.002
 
 plt.show()

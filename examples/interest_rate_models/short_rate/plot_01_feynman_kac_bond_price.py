@@ -47,6 +47,7 @@ axes[1].set_title("discount factors along paths")
 res = monte_carlo_bond_prices(model, np.arange(1.0, 11.0), n_steps=200, n_paths=10_000, rng=1)
 for T, p, se, ex in zip(res.maturities[::3], res.prices[::3], res.std_errors[::3], res.exact[::3], strict=True):
     print(f"T = {T:4.1f}: Monte Carlo {p:.5f} +/- {se:.5f}, closed form {ex:.5f}")
+assert np.abs(res.z_scores).max() < 3  # Monte Carlo agrees with the closed form within 3 standard errors
 plot_bond_monte_carlo(res, ax=axes[2])
 axes[2].set_title("Feynman-Kac vs closed form")
 fig.tight_layout()
@@ -57,6 +58,7 @@ fig.tight_layout()
 
 n = np.array([250, 1000, 4000, 16000])
 se = [monte_carlo_bond_prices(model, [5.0], n_steps=50, n_paths=k, rng=2).std_errors[0] for k in n]
+assert np.allclose(se * np.sqrt(n), se[0] * np.sqrt(n[0]), rtol=0.1)  # SE * sqrt(n) constant within 10%
 fig, ax = plt.subplots(figsize=(5, 4))
 ax.loglog(n, se, "o-", label="standard error")
 ax.loglog(n, se[0] * np.sqrt(n[0] / n), "k:", label=r"$1/\sqrt{n}$")

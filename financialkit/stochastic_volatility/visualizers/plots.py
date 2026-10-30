@@ -1,5 +1,6 @@
 """Plotting helpers for financialkit.stochastic_volatility: smiles, local
-volatility surfaces, Heston paths and return densities.
+volatility surfaces, Heston paths, return densities, calibrated smiles and
+the scaling of log-volatility increments.
 """
 
 from __future__ import annotations
@@ -7,9 +8,9 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.stochastic_volatility.core.base import HestonPaths, LocalVolSurface
+from financialkit.stochastic_volatility.core.base import FourierCalibration, HestonPaths, LocalVolSurface, RoughnessEstimate
 
-__all__ = ["plot_smile", "plot_local_vol", "plot_heston_paths", "plot_density"]
+__all__ = ["plot_smile", "plot_local_vol", "plot_heston_paths", "plot_density", "plot_calibration", "plot_roughness"]
 
 
 def plot_smile(strikes, vols, forward: float | None = None, ax=None, label: str = "implied vol", **kwargs):
@@ -122,5 +123,60 @@ def plot_density(x, density, ax=None, label: str = "density", log: bool = False,
         ax.set_yscale("log")
     ax.set_xlabel("log return")
     ax.set_ylabel("density")
+    ax.legend()
+    return ax
+
+
+def plot_calibration(fit: FourierCalibration, ax=None):
+    """Market implied volatilities (markers) and the fitted model's (lines), one colour per maturity.
+
+    Parameters
+    ----------
+    fit : FourierCalibration
+    ax : matplotlib.axes.Axes, optional
+        Axes to draw on; a new figure is created if omitted.
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    if ax is None:
+        _, ax = plt.subplots()
+    for t in np.unique(fit.maturities):
+        idx = fit.maturities == t
+        order = np.argsort(fit.strikes[idx])
+        K = fit.strikes[idx][order]
+        (line,) = ax.plot(K, fit.model_vols[idx][order], label=f"T = {t:g}")
+        ax.plot(K, fit.market_vols[idx][order], "o", color=line.get_color(), ms=4)
+    ax.set_xlabel("strike K")
+    ax.set_ylabel("implied volatility")
+    ax.set_title(f"{fit.model.name} fit, RMSE {fit.rmse:.2f} vol points")
+    ax.legend()
+    return ax
+
+
+def plot_roughness(est: RoughnessEstimate, ax=None):
+    """:math:`\\log m(q, \\Delta)` against :math:`\\log \\Delta`, one line per moment, with the fitted slopes.
+
+    Parameters
+    ----------
+    est : RoughnessEstimate
+    ax : matplotlib.axes.Axes, optional
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    if ax is None:
+        _, ax = plt.subplots()
+    x = np.log(est.lags)
+    for q, m, z in zip(est.q, est.moments, est.zeta, strict=True):
+        y = np.log(m)
+        line = ax.plot(x, y, "o", ms=3)[0]
+        c = np.mean(y - z * x)
+        ax.plot(x, c + z * x, color=line.get_color(), label=f"q = {q:g}: slope {z:.3f}")
+    ax.set_xlabel("log lag")
+    ax.set_ylabel("log m(q, lag)")
+    ax.set_title(f"H = {est.H:.3f}")
     ax.legend()
     return ax

@@ -2,6 +2,7 @@
 
 from financialkit.monte_carlo.core.base import (
     ControlVariateResult,
+    LMMGreeks,
     MLMCResult,
     MonteCarloGreeks,
     MonteCarloResult,
@@ -13,5 +14,6 @@ __all__ = [
     "StratifiedResult",
     "ControlVariateResult",
     "MonteCarloGreeks",
+    "LMMGreeks",
     "MLMCResult",
 ]

@@ -22,7 +22,9 @@ the object of study. The changes are nearly uncorrelated, which is the
 efficient-markets hypothesis in statistical form, and much of the history
 is a sequence of ever sharper tests of that claim. Yet the changes are not
 independent: their size clusters, their tails are fat, and volatility
-responds more to falls than to rises. Two Nobel prizes, Engle's and
+responds more to falls than to rises. Many series move together, through
+shared trends, feedback and correlations that change over time, and some
+switch between regimes. Two Nobel prizes, Engle's and
 Granger's in 2003, went to modelling these features. This chronology
 traces the ideas behind :mod:`financialkit.time_series`.
 
@@ -123,6 +125,49 @@ I: Prices," *Journal of the Royal Statistical Society A* 116(1) (1953)
 11-34.
 
 .. minigallery:: ../../examples/time_series/efficiency/plot_01_kendall_autocorrelation.py
+
+1960 -- Kalman Filter and the State-Space Model
+-----------------------------------------------
+
+Rudolf Kalman wrote a linear dynamic system as a hidden state that evolves
+by :math:`x_t = F x_{t-1} + w_t` and is measured with noise as
+:math:`y_t = H x_t + v_t`. His recursion updates the Gaussian mean and
+covariance of the state with each measurement, weighting the surprise by a
+*gain* that balances state noise against measurement noise, and it needs
+no stored history. It guided the Apollo spacecraft before it reached
+economics. The same pass gives the exact likelihood as a product of
+independent one-step prediction errors (Schweppe 1965), which made the
+state-space form the general way to estimate time-series models: ARMA,
+unobserved components, time-varying betas and term-structure factors.
+Muth's (1960) random walk plus noise, an efficient price seen through
+microstructure noise, is the simplest case. Its steady-state filter is an
+exponentially weighted moving average.
+
+.. math::
+
+   \hat x_{t|t} = \hat x_{t|t-1} + K_t\bigl(y_t - H\hat x_{t|t-1}\bigr), \qquad
+   K_t = P_{t|t-1}H'\bigl(HP_{t|t-1}H' + R\bigr)^{-1}
+
+*Implementation:* :func:`financialkit.time_series.systems.state_space.kalman_filter`
+returns a :class:`~financialkit.time_series.core.base.KalmanResult` with
+the prediction-error log-likelihood, missing-value handling and the
+Rauch-Tung-Striebel :meth:`~financialkit.time_series.core.base.KalmanResult.smooth`;
+:func:`~financialkit.time_series.systems.state_space.fit_local_level`
+estimates the local-level model by maximum likelihood
+(:func:`scipy.optimize.minimize`), and
+:func:`~financialkit.time_series.systems.state_space.local_level_steady_state_gain`
+solves its Riccati equation.
+
+*References:* R. E. Kalman, "A New Approach to Linear Filtering and
+Prediction Problems," *Journal of Basic Engineering* 82(1) (1960) 35-45;
+J. F. Muth, "Optimal Properties of Exponentially Weighted Forecasts,"
+*Journal of the American Statistical Association* 55(290) (1960) 299-306;
+H. E. Rauch, F. Tung and C. T. Striebel, "Maximum Likelihood Estimates of
+Linear Dynamic Systems," *AIAA Journal* 3(8) (1965) 1445-1450; J. Durbin
+and S. J. Koopman, *Time Series Analysis by State Space Methods*, 2nd ed.
+(Oxford, 2012).
+
+.. minigallery:: ../../examples/time_series/state_space/plot_01_kalman_filter.py
 
 1963 -- Mandelbrot: Fat Tails
 -----------------------------
@@ -370,6 +415,40 @@ Variance of the Rate of Return," *Journal of Business* 53(1) (1980)
 
 .. minigallery:: ../../examples/time_series/volatility/plot_01_parkinson_range.py
 
+1980 -- Sims's Vector Autoregression
+------------------------------------
+
+The large macroeconometric models of the 1970s identified their equations
+by excluding variables and treating others as exogenous, restrictions that
+Christopher Sims called "incredible". He proposed instead to regress every
+variable on lags of all of them and to let the data speak. The fitted VAR
+is summarized by its *impulse responses* to orthogonalized shocks, built
+from a Cholesky factor of the residual covariance so that the ordering of
+the variables fixes which shocks can move which variables within the
+period, and by the *variance decomposition* of each forecast error into
+the shares due to each shock. VARs became the standard tool for monetary
+policy analysis, and Sims shared the 2011 Nobel prize.
+
+.. math::
+
+   y_t = c + \sum_{i=1}^{p}A_i\,y_{t-i} + u_t, \qquad
+   \frac{\partial y_{t+s}}{\partial \varepsilon_t'} = \Phi_s P, \quad PP' = \Sigma
+
+*Implementation:* :func:`financialkit.time_series.systems.vector_autoregression.fit_var`
+(equation-by-equation least squares by :func:`numpy.linalg.lstsq`) returns a
+:class:`~financialkit.time_series.core.base.VectorAutoregressionResult` with
+:meth:`~financialkit.time_series.core.base.VectorAutoregressionResult.impulse_response`,
+:meth:`~financialkit.time_series.core.base.VectorAutoregressionResult.fevd`,
+:meth:`~financialkit.time_series.core.base.VectorAutoregressionResult.forecast`, the
+companion-matrix stability check and AIC/BIC;
+:func:`~financialkit.time_series.systems.vector_autoregression.simulate_var`.
+
+*References:* C. A. Sims, "Macroeconomics and Reality," *Econometrica*
+48(1) (1980) 1-48; H. Lütkepohl, *New Introduction to Multiple Time Series
+Analysis* (Springer, 2005), Chs. 2-3.
+
+.. minigallery:: ../../examples/time_series/linear_models/plot_04_sims_var.py
+
 1982 -- Engle's ARCH
 --------------------
 
@@ -488,6 +567,80 @@ Ch. 2.
 
 .. minigallery:: ../../examples/time_series/efficiency/plot_04_lo_mackinlay.py
 
+1988 -- Johansen Cointegration Test
+-----------------------------------
+
+The Engle-Granger test finds at most one cointegrating relation, and which
+one depends on the variable put on the left of the regression. Søren
+Johansen estimated the whole cointegrating space by maximum likelihood. In
+the error-correction form of a VAR, the matrix :math:`\Pi = \alpha\beta'`
+on the lagged levels has rank equal to the number of cointegrating
+relations. After partialling out the short-run dynamics, the likelihood is
+maximized by a generalized eigenproblem whose eigenvalues are squared
+canonical correlations between the changes and the lagged levels. The
+trace and maximum-eigenvalue statistics test the rank one step at a time.
+Their nonstandard distributions depend only on the number of
+nonstationary directions and the deterministic terms.
+
+.. math::
+
+   \Delta y_t = \mu + \alpha\beta' y_{t-1} + \sum_{i=1}^{l}\Gamma_i\,\Delta y_{t-i} + u_t, \qquad
+   \lambda_{\text{trace}}(r) = -T\sum_{i=r+1}^{k}\ln(1 - \hat\lambda_i)
+
+*Implementation:* :func:`financialkit.time_series.systems.unit_roots.johansen_test`
+(the eigenproblem by :func:`scipy.linalg.eigh`) returns a
+:class:`~financialkit.time_series.core.base.JohansenResult` with both
+statistics, MacKinnon-Haug-Michelis critical values for two to five
+series, :meth:`~financialkit.time_series.core.base.JohansenResult.rank`
+and the normalized
+:meth:`~financialkit.time_series.core.base.JohansenResult.cointegrating_vectors`.
+
+*References:* S. Johansen, "Statistical Analysis of Cointegration
+Vectors," *Journal of Economic Dynamics and Control* 12(2-3) (1988)
+231-254; S. Johansen, "Estimation and Hypothesis Testing of Cointegration
+Vectors in Gaussian Vector Autoregressive Models," *Econometrica* 59(6)
+(1991) 1551-1580; J. G. MacKinnon, A. A. Haug and L. Michelis, "Numerical
+Distribution Functions of Likelihood Ratio Tests for Cointegration,"
+*Journal of Applied Econometrics* 14(5) (1999) 563-577.
+
+.. minigallery:: ../../examples/time_series/unit_roots/plot_03_johansen.py
+
+1989 -- Hamilton's Regime-Switching Model
+-----------------------------------------
+
+Recessions are not just small expansions: the economy seems to move
+between distinct states. James Hamilton let the mean growth rate of U.S.
+GNP switch between two values according to a hidden Markov chain, and gave
+the nonlinear filter that turns each observation into updated
+probabilities of the states, together with the likelihood. The estimated
+recession probabilities matched the NBER's dating of business cycles
+without using it. Kim (1994) added the smoother, and Hamilton (1990) the
+EM algorithm. With switching means and variances, the model separates calm
+bull markets from turbulent bear markets in returns, and its regimes
+became a standard ingredient of asset allocation and term-structure
+models.
+
+.. math::
+
+   \xi_{t|t} = \frac{(P'\xi_{t-1|t-1}) \odot \eta_t}{\mathbf 1'\bigl[(P'\xi_{t-1|t-1}) \odot \eta_t\bigr]},
+   \qquad \eta_{t,j} = \phi\bigl(x_t;\,\mu_j, \sigma_j^2\bigr)
+
+*Implementation:* :func:`financialkit.time_series.systems.regime_switching.hamilton_filter`,
+:func:`~financialkit.time_series.systems.regime_switching.kim_smoother` and
+the EM fit :func:`~financialkit.time_series.systems.regime_switching.fit_markov_switching`,
+returning a :class:`~financialkit.time_series.core.base.RegimeSwitchingResult`
+with expected durations and ergodic probabilities;
+:func:`~financialkit.time_series.systems.regime_switching.simulate_markov_switching`.
+
+*References:* J. D. Hamilton, "A New Approach to the Economic Analysis of
+Nonstationary Time Series and the Business Cycle," *Econometrica* 57(2)
+(1989) 357-384; J. D. Hamilton, "Analysis of Time Series Subject to
+Changes in Regime," *Journal of Econometrics* 45(1-2) (1990) 39-70; C.-J.
+Kim, "Dynamic Linear Models with Markov-Switching," *Journal of
+Econometrics* 60(1-2) (1994) 1-22.
+
+.. minigallery:: ../../examples/time_series/state_space/plot_02_hamilton_regime_switching.py
+
 1991 -- Nelson's EGARCH
 -----------------------
 
@@ -516,6 +669,39 @@ Statistical Association, Business and Economic Statistics Section*
 (1976) 177-181.
 
 .. minigallery:: ../../examples/time_series/volatility/plot_04_nelson_egarch.py
+
+1992 -- KPSS Stationarity Test
+------------------------------
+
+Dickey-Fuller tests keep the unit root unless the evidence against it is
+strong, and they have little power against persistent stationary
+alternatives, so "cannot reject a unit root" is often all they say. Denis
+Kwiatkowski, Peter Phillips, Peter Schmidt and Yongcheol Shin reversed the
+null hypothesis. They write a series as a deterministic trend, a random
+walk and stationary noise, and derive the Lagrange-multiplier test that
+the random walk's variance is zero. The statistic is the scaled sum of
+squared partial sums of the residuals, which stays bounded for a
+stationary series and explodes under a unit root. Run together, the two
+tests can say "stationary", "unit root" or "the data cannot tell".
+
+.. math::
+
+   \eta = \frac{1}{T^2\hat\sigma^2_\infty}\sum_{t=1}^{T}S_t^2, \qquad
+   S_t = \sum_{s=1}^{t}\hat e_s
+
+*Implementation:* :func:`financialkit.time_series.systems.unit_roots.kpss_test`
+(level or trend stationarity, with a Bartlett-window long-run variance)
+returns a :class:`~financialkit.time_series.core.base.StationarityResult`
+with the paper's critical values and an interpolated p-value.
+
+*References:* D. Kwiatkowski, P. C. B. Phillips, P. Schmidt and Y. Shin,
+"Testing the Null Hypothesis of Stationarity against the Alternative of a
+Unit Root," *Journal of Econometrics* 54(1-3) (1992) 159-178; W. K. Newey
+and K. D. West, "A Simple, Positive Semi-Definite, Heteroskedasticity and
+Autocorrelation Consistent Covariance Matrix," *Econometrica* 55(3) (1987)
+703-708.
+
+.. minigallery:: ../../examples/time_series/unit_roots/plot_04_kpss.py
 
 1993 -- Glosten-Jagannathan-Runkle
 ----------------------------------
@@ -600,6 +786,82 @@ Zarnowitz, "The Evaluation of Economic Forecasts," in *Economic Forecasts
 and Expectations* (New York: NBER, 1969), 3-46.
 
 .. minigallery:: ../../examples/time_series/volatility/plot_07_realized_volatility.py
+
+2002 -- Engle's Dynamic Conditional Correlation
+-----------------------------------------------
+
+Diversification fails when it is needed most, because correlations rise
+in crises. Multivariate GARCH models could capture this, but with a free
+covariance matrix their parameters grow with the fourth power of the
+number of assets, and positive definiteness is hard to guarantee. Robert
+Engle split the problem in two. Each asset gets its own univariate GARCH,
+and the correlation matrix of the standardized returns follows a scalar
+GARCH-like recursion with two parameters, its intercept fixed at the
+sample correlation. The two-step estimate scales to hundreds of assets,
+and DCC became the workhorse for time-varying correlations in risk
+management and portfolio construction.
+
+.. math::
+
+   Q_t = (1 - a - b)\bar Q + a\,z_{t-1}z_{t-1}' + b\,Q_{t-1}, \qquad
+   R_t = \operatorname{diag}(Q_t)^{-1/2}\,Q_t\,\operatorname{diag}(Q_t)^{-1/2}
+
+*Implementation:* :func:`financialkit.time_series.systems.dcc.fit_dcc`
+(GARCH fits per series, then the correlation likelihood by
+:func:`scipy.optimize.minimize`) returns a
+:class:`~financialkit.time_series.core.base.DCCFit` with the conditional
+correlations and covariances;
+:func:`~financialkit.time_series.systems.dcc.dcc_correlations` (the
+recursion by :func:`scipy.signal.lfilter`),
+:func:`~financialkit.time_series.systems.dcc.dcc_loglikelihood` and
+:func:`~financialkit.time_series.systems.dcc.simulate_dcc`.
+
+*References:* R. Engle, "Dynamic Conditional Correlation: A Simple Class
+of Multivariate Generalized Autoregressive Conditional Heteroskedasticity
+Models," *Journal of Business & Economic Statistics* 20(3) (2002)
+339-350; T. Bollerslev, "Modelling the Coherence in Short-Run Nominal
+Exchange Rates: A Multivariate Generalized ARCH Model," *Review of
+Economics and Statistics* 72(3) (1990) 498-505.
+
+.. minigallery:: ../../examples/time_series/volatility/plot_09_engle_dcc.py
+
+2009 -- Corsi's HAR Model of Realized Volatility
+------------------------------------------------
+
+Realized variance turned volatility into an observed series, and that
+series has long memory: its autocorrelations decay slowly, almost
+hyperbolically, far beyond what a GARCH or a short autoregression
+produces. Fractionally integrated models fit it but are awkward to
+estimate. Fulvio Corsi used the heterogeneous market hypothesis of Müller
+and coauthors (1997), in which traders with daily, weekly and monthly
+horizons each react to volatility at their own scale. He regressed
+tomorrow's realized variance on its averages over the last day, week and
+month. The model is an AR(22) with step-shaped weights and only four
+coefficients, it is fitted by least squares, and it reproduces the
+apparent long memory. It became the benchmark that new volatility
+forecasts must beat.
+
+.. math::
+
+   RV_{t+1} = \beta_0 + \beta_d\,RV_t + \beta_w\,\tfrac15\sum_{j=0}^{4}RV_{t-j}
+   + \beta_m\,\tfrac1{22}\sum_{j=0}^{21}RV_{t-j} + e_{t+1}
+
+*Implementation:* :func:`financialkit.time_series.systems.realized.fit_har`
+returns a :class:`~financialkit.time_series.core.base.HARResult` with
+in- and out-of-sample
+:meth:`~financialkit.time_series.core.base.HARResult.predict` and
+:meth:`~financialkit.time_series.core.base.HARResult.forecast`;
+:func:`~financialkit.time_series.systems.realized.har_regressors` builds
+the averages for any set of horizons.
+
+*References:* F. Corsi, "A Simple Approximate Long-Memory Model of
+Realized Volatility," *Journal of Financial Econometrics* 7(2) (2009)
+174-196; U. A. Müller, M. M. Dacorogna, R. D. Davé, R. B. Olsen, O. V.
+Pictet and J. E. von Weizsäcker, "Volatilities of Different Time
+Resolutions -- Analyzing the Dynamics of Market Components," *Journal of
+Empirical Finance* 4(2-3) (1997) 213-239.
+
+.. minigallery:: ../../examples/time_series/volatility/plot_08_corsi_har.py
 
 See Also
 --------

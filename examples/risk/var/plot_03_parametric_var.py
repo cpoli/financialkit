@@ -34,6 +34,7 @@ stand_alone = [parametric_var(0.0, wi * si, 0.99, horizon=10) for wi, si in zip(
 total = delta_normal_var(w, cov, 0.99, horizon=10)
 print(f"ten-day 99% VaR: Microsoft {stand_alone[0]:,.0f}, AT&T {stand_alone[1]:,.0f}")
 print(f"portfolio {total:,.0f}; diversification benefit {sum(stand_alone) - total:,.0f}")
+assert np.isclose(total, np.sqrt(sum(v**2 for v in stand_alone) + 2 * 0.3 * stand_alone[0] * stand_alone[1]))
 
 # %%
 # Diversification and the square-root-of-time rule
@@ -42,6 +43,9 @@ print(f"portfolio {total:,.0f}; diversification benefit {sum(stand_alone) - tota
 rho = np.linspace(-1, 1, 81)
 var_rho = [delta_normal_var(w, np.array([[1.0, c], [c, 1.0]]) * np.outer(vols, vols), 0.99, 10) for c in rho]
 h = np.arange(1, 31)
+assert np.isclose(var_rho[-1], sum(stand_alone)) and np.isclose(var_rho[0], stand_alone[0] - stand_alone[1])
+assert np.all(np.diff(var_rho) > 0)
+assert np.allclose([delta_normal_var(w, cov, 0.99, k) for k in h], delta_normal_var(w, cov, 0.99, 1) * np.sqrt(h))
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 axes[0].plot(rho, np.array(var_rho) / 1e6)
 axes[0].axhline(sum(stand_alone) / 1e6, color="k", ls="--", lw=1, label="sum of stand-alone VaRs")

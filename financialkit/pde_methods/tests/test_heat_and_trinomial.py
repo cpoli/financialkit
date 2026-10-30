@@ -68,3 +68,10 @@ def test_value_at_spot_ignores_the_boundaries():
     parity = 100.0 - 100.0 * np.exp(-0.05)
     assert a.price - b.price == pytest.approx(parity, abs=5e-3)
     assert a.S[100] == pytest.approx(100.0)
+
+
+def test_heat_and_log_explicit_reject_non_positive_inputs():
+    with pytest.raises(ValueError, match="must all be positive"):
+        heat_equation_price(100.0, 100.0, 0.0, 0.05, 0.2)
+    with pytest.raises(ValueError, match="must all be positive"):
+        log_explicit_price(100.0, 100.0, 1.0, 0.05, -0.2)

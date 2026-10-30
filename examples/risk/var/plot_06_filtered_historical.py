@@ -64,12 +64,15 @@ sigma = np.sqrt(np.r_[model.variance(r), model.forecast(r, 1)])
 
 window = 500
 days = np.arange(est, n)
+p_uc, p_cc = {}, {}
 fhs = np.array([filtered_historical_var(r[t - window : t], sigma[t - window : t], sigma[t], 0.99).var for t in days])
 hs = np.array([historical_var(r[t - window : t], 0.99).var for t in days])
 for name, v in [("historical", hs), ("filtered historical", fhs)]:
     hits = var_exceptions(r[est:], v)
     uc, cc = kupiec_test(hits), christoffersen_test(hits)
     print(f"{name:20s}: {uc.n_exceptions} exceptions (expected {uc.expected:.0f}), Kupiec p = {uc.p_value:.3f}, conditional coverage p = {cc.p_value:.3f}")
+    p_uc[name], p_cc[name] = uc.p_value, cc.p_value
+assert min(p_uc.values()) > 0.05 and p_cc["historical"] < 0.05 < p_cc["filtered historical"]
 
 fig, ax = plt.subplots(figsize=(8, 3.8))
 ax.plot(days, r[est:], color="0.75", lw=0.6)

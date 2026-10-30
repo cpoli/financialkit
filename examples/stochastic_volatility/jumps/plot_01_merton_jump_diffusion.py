@@ -29,6 +29,7 @@ m = MertonJumpModel(sigma=0.15, lam=0.5, mu_j=-0.15, delta=0.1)
 x = m.sample_terminal(1.0, 200_000, rng=0)
 pay = np.exp(-r) * np.maximum(S * np.exp(r) * np.exp(x) - 100.0, 0.0)
 print(f"Merton series {merton_jump_price(S, 100.0, 1.0, r, m):.4f}, Monte Carlo {pay.mean():.4f} +/- {2 * pay.std() / np.sqrt(pay.size):.4f}")
+assert abs(merton_jump_price(S, 100.0, 1.0, r, m) - pay.mean()) < 3 * pay.std() / np.sqrt(pay.size)
 
 # %%
 # Fat tails
@@ -36,7 +37,9 @@ print(f"Merton series {merton_jump_price(S, 100.0, 1.0, r, m):.4f}, Monte Carlo 
 
 grid = np.linspace(-1.0, 0.6, 400)
 dens = cos_density(m, grid, 1.0)
-c1, c2, _ = m.cumulants(1.0)
+c1, c2, c4 = m.cumulants(1.0)
+assert c4 > 0  # positive excess kurtosis
+assert dens[0] > 10 * norm.pdf(grid[0], c1, np.sqrt(c2))  # the left tail at -100% log return
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
 plot_density(grid, dens, ax=ax1, label="Merton", log=True)
 ax1.plot(grid, norm.pdf(grid, c1, np.sqrt(c2)), "k--", lw=1, label="normal, same mean and variance")
@@ -47,10 +50,14 @@ ax1.legend()
 # Smiles flatten with maturity
 # ----------------------------
 
+skews = []
 for T in (0.1, 0.5, 2.0):
     F = S * np.exp(r * T)
     K = F * np.exp(np.linspace(-0.35, 0.25, 25) * np.sqrt(T))
-    plot_smile(K, m.implied_vol(S, K, T, r), forward=F, ax=ax2, label=f"T = {T}")
+    iv = m.implied_vol(S, K, T, r)
+    skews.append(iv[0] - iv[17])
+    plot_smile(K, iv, forward=F, ax=ax2, label=f"T = {T}")
+assert skews[0] > 3 * skews[2] and np.all(np.diff(skews) < 0)
 fig.tight_layout()
 
 plt.show()

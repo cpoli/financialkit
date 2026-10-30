@@ -6,12 +6,15 @@ from financialkit.portfolio.core.base import (
     CovarianceResult,
     CPPIResult,
     CVaRResult,
+    DynamicTradingPolicy,
+    FactorRiskResult,
     FrontierConstants,
     FrontierResult,
     HRPResult,
     OutOfSampleResult,
     PortfolioResult,
     ResampledFrontierResult,
+    RobustPortfolioResult,
 )
 
 __all__ = [
@@ -19,11 +22,14 @@ __all__ = [
     "FrontierResult",
     "FrontierConstants",
     "CovarianceResult",
+    "FactorRiskResult",
     "BlackLittermanResult",
+    "RobustPortfolioResult",
     "ResampledFrontierResult",
     "CVaRResult",
     "HRPResult",
     "CPPIResult",
     "ActiveManagementResult",
     "OutOfSampleResult",
+    "DynamicTradingPolicy",
 ]

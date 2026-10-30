@@ -43,6 +43,7 @@ for g in (0.01, 0.1, 0.5):
     inv = simulate_market_making(AvellanedaStoikov(g, sigma, k, T), s0, sigma, T, n_steps, A, k, n_paths=1000, rng=6)
     half = float(np.mean(inv.ask - inv.bid)) / 2
     sym = simulate_market_making(SymmetricQuotes(half), s0, sigma, T, n_steps, A, k, n_paths=1000, rng=6)
+    assert inv.pnl.std() < 0.75 * sym.pnl.std() and inv.inventory[:, -1].std() < sym.inventory[:, -1].std()
     for name, r in [("inventory", inv), ("symmetric", sym)]:
         q = r.inventory[:, -1]
         print(f"{g:6.2f} {name:>10s} {2 * half:7.2f} {r.pnl.mean():7.2f} {r.pnl.std():6.2f} {q.mean():6.2f} {q.std():6.2f}")

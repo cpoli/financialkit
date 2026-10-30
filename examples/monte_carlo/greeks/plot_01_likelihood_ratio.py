@@ -53,5 +53,9 @@ axes[3].set_title("digital call delta")
 axes[3].legend()
 g = lr[6]
 print(f"ATM: delta {g.delta:.4f} +/- {g.delta_se:.4f} (BS {bs.delta[6]:.4f}), gamma {g.gamma:.5f} +/- {g.gamma_se:.5f} (BS {bs.gamma[6]:.5f})")
+for name in ("delta", "vega", "gamma"):
+    assert np.all(np.abs([getattr(x, name) for x in lr] - getattr(bs, name)) < 4 * np.array([getattr(x, name + "_se") for x in lr]))
+digital_delta = np.exp(-r * T) * norm.pdf(d2) / (spots * sigma * np.sqrt(T))
+assert np.all(np.abs([x.delta for x in dig] - digital_delta) < 4 * np.array([x.delta_se for x in dig]))
 fig.tight_layout()
 plt.show()

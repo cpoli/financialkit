@@ -38,6 +38,8 @@ plot_cppi(res, n_paths=40)
 # hugs Black and Perold's closed form :math:`F_T + C_0 (S_T/S_0)^m e^{(1-m)(r + m\sigma^2/2)T}`.
 
 exact = cppi_continuous(S, times, sigma, floor=0.8, multiplier=4.0, r=r)
+assert np.all(exact[:, -1] > res.floor[-1])
+assert np.median(np.abs(res.wealth[:, -1] / exact[:, -1] - 1)) < 0.01
 fig, ax = plt.subplots(figsize=(7, 4))
 x = S[:, -1] / S[:, 0]
 ax.plot(x, res.wealth[:, -1], ".", ms=4, label="daily CPPI")
@@ -54,9 +56,13 @@ fig.tight_layout()
 # ---------------------------------------------------------------
 
 fig, ax = plt.subplots(figsize=(7, 3.5))
+breaches = []
 for step, label in [(1, "daily"), (5, "weekly"), (21, "monthly")]:
     breach = [cppi(S[:, ::step], times[::step], 0.8, m, r).breached.mean() for m in [2, 4, 6, 8, 10]]
+    breaches.append(breach)
     ax.plot([2, 4, 6, 8, 10], breach, "o-", label=label)
+breaches = np.array(breaches)
+assert np.all(np.diff(breaches, axis=0) >= 0) and np.all(np.diff(breaches, axis=1) >= 0) and breaches[-1, -1] > 0
 ax.set_xlabel("multiplier m")
 ax.set_ylabel("fraction of paths breaching the floor")
 ax.legend()

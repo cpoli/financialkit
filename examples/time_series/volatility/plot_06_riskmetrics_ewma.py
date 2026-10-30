@@ -65,6 +65,14 @@ ax.set_xlabel("day")
 ax.set_ylabel("volatility (% a year)")
 ax.legend()
 
+
+def tracking_error(v):
+    return np.mean(np.abs(np.sqrt(v[sl]) - np.sqrt(true_var[sl])))
+
+
+print(f"mean |error| in daily vol: EWMA {tracking_error(ewma):.2e}, window {tracking_error(window):.2e}")
+assert tracking_error(ewma) < 0.75 * tracking_error(window)
+
 # %%
 # Estimating lambda
 # -----------------
@@ -73,5 +81,7 @@ ax.legend()
 # fixed 0.94 for every series, trading a little fit for simplicity and
 # comparability across a whole portfolio.
 
-print(f"maximum-likelihood lambda: {EWMA.fit(r).params['lam']:.3f}")
+lam_hat = EWMA.fit(r).params["lam"]
+print(f"maximum-likelihood lambda: {lam_hat:.3f}")
+assert 0.8 < lam_hat < 1
 plt.show()

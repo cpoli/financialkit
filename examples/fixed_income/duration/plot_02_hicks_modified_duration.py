@@ -31,6 +31,7 @@ for m in (1, 2, 4, 12, None):
     d_mod = modified_duration(cf, y0, m)
     ratio = 1.0 if m is None else 1 + y0 / m
     print(f"m={str(m):>4}: D_mac={d_mac:.4f}  D_mod={d_mod:.4f}  D_mac/(1+y/m)={d_mac / ratio:.4f}")
+    assert abs(d_mod - d_mac / ratio) < 1e-12
 
 # %%
 # Modified duration is the slope of log-price against yield
@@ -40,6 +41,9 @@ y = np.linspace(0.0, 0.10, 200)
 log_p = np.log(price_from_yield(cf, y, 2))
 d_mod = modified_duration(cf, y0, 2)
 p0 = np.log(price_from_yield(cf, y0, 2))
+h = 1e-5
+slope = (np.log(price_from_yield(cf, y0 + h, 2)) - np.log(price_from_yield(cf, y0 - h, 2))) / (2 * h)
+assert abs(slope + d_mod) < 1e-6 * d_mod
 fig, ax = plt.subplots()
 ax.plot(100 * y, log_p, label="log price")
 ax.plot(100 * y, p0 - d_mod * (y - y0), ls="--", label=f"slope $-D_{{mod}}$ = {-d_mod:.2f}")

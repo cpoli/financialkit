@@ -28,6 +28,7 @@ K = np.linspace(65, 135, 29)
 
 flat = implied_vol_smile(black_scholes_price(S, K, T, r, 0.2), K, S, T, r)
 print("Black-Scholes prices, implied vol range:", np.round([flat.vols.min(), flat.vols.max()], 6))
+assert np.allclose(flat.vols, 0.2, atol=1e-6)
 
 # %%
 # Smile: uncertain volatility
@@ -35,6 +36,9 @@ print("Black-Scholes prices, implied vol range:", np.round([flat.vols.min(), fla
 
 smile_prices = 0.5 * black_scholes_price(S, K, T, r, 0.12) + 0.5 * black_scholes_price(S, K, T, r, 0.32)
 smile = implied_vol_smile(smile_prices, K, S, T, r)
+# Lowest near the money, rising into both wings.
+assert abs(K[np.argmin(smile.vols)] - S) <= 5.0
+assert min(smile.vols[0], smile.vols[-1]) > smile.vols.min() + 0.04
 
 # %%
 # Skew: a small chance of a crash
@@ -47,6 +51,8 @@ p_crash, drop = 0.10, 0.25
 up = (1 - p_crash * (1 - drop)) / (1 - p_crash)
 skew_prices = p_crash * black_scholes_price(S * (1 - drop), K, T, r, 0.3) + (1 - p_crash) * black_scholes_price(S * up, K, T, r, 0.15)
 skew = implied_vol_smile(skew_prices, K, S, T, r)
+# Implied volatility falls with the strike.
+assert np.all(np.diff(skew.vols) < 0)
 
 fig, ax = plt.subplots(figsize=(7, 4))
 plot_smile(flat, ax=ax, label="Black-Scholes: flat", moneyness=True)

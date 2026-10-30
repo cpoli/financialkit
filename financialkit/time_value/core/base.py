@@ -15,15 +15,18 @@ Rate conventions used throughout the domain:
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import numpy as np
+
+from financialkit.time_value.utils.dates import as_dates
 
 __all__ = [
     "CompoundingTable",
     "NPVProfile",
     "AmortizationSchedule",
     "SinkingFundSchedule",
+    "Schedule",
     "MultipleIRRWarning",
 ]
 
@@ -108,6 +111,102 @@ class SinkingFundSchedule:
 
     balance: np.ndarray
     """ndarray, shape (n,): Fund balance after each deposit (ends at the target)."""
+
+
+@dataclass
+class Schedule:
+    """Coupon or payment dates from a start date to an end date.
+
+    Built by :func:`financialkit.time_value.coupon_schedule`. The
+    unadjusted dates are the roll dates, which bonds accrue on; the
+    adjusted dates are moved to business days, which is when payments are
+    made and what swaps accrue on.
+    """
+
+    unadjusted: np.ndarray
+    """ndarray of datetime64[D], shape (n + 1,): Start, the roll dates and the end."""
+
+    dates: np.ndarray
+    """ndarray of datetime64[D], shape (n + 1,): `unadjusted` after the business-day convention."""
+
+    quasi_dates: np.ndarray
+    """ndarray of datetime64[D]: The regular roll dates, extended past both
+    ends, that a stub is measured against (SIA's quasi-coupon dates)."""
+
+    freq: int
+    """int: Regular periods per year."""
+
+    stub: str = "short front"
+    """str: Where the irregular period goes and whether it is short or long."""
+
+    end_of_month: bool = False
+    """bool: Whether the end-of-month rule was applied."""
+
+    convention: str = "unadjusted"
+    """str: The business-day convention behind `dates`."""
+
+    holidays: np.ndarray = field(default_factory=lambda: np.array([], dtype="datetime64[D]"))
+    """ndarray of datetime64[D]: Holidays on top of Saturdays and Sundays."""
+
+    @property
+    def n_periods(self) -> int:
+        """int: Number of accrual periods."""
+        return len(self.unadjusted) - 1
+
+    def periods_between(self, start, end, day_count=None):
+        """Coupon periods from `start` to `end`, counting a stub as a fraction of its quasi-coupon period.
+
+        Each quasi-coupon period counts as one, and a partial period counts
+        its share of the period's days. This is how SIA prices and accrues
+        odd coupons (Mayle, *Standard Securities Calculation Methods*, 3rd
+        ed., 1993), and divided by `freq` it is the ICMA actual/actual year
+        fraction (ISDA, *EMU and Market Conventions*, 1998, Sec. 3).
+
+        Parameters
+        ----------
+        start, end : date-like or array-like of date-likes
+            Dates within one quasi-coupon period of the schedule.
+        day_count : DayCount, str or None
+            How days are counted; ``None`` counts actual days.
+
+        Returns
+        -------
+        float or ndarray
+        """
+        from financialkit.time_value.systems.day_counts import day_count as count
+
+        q = self.quasi_dates
+        days = (lambda a, b: (as_dates(b) - as_dates(a)).astype(np.int64)) if day_count is None else (lambda a, b: count(a, b, day_count))
+
+        def position(x):
+            x = as_dates(x)
+            if np.any(x < q[0]) or np.any(x > q[-1]):
+                raise ValueError("date is outside the schedule's quasi-coupon dates")
+            j = np.clip(np.searchsorted(q, x, side="right") - 1, 0, len(q) - 2)
+            return j + np.asarray(days(q[j], x)) / np.asarray(days(q[j], q[j + 1]))
+
+        return _finalize(position(end) - position(start))
+
+    def accrual_fractions(self, day_count=None, adjusted: bool = True) -> np.ndarray:
+        """Year fraction of each accrual period.
+
+        Parameters
+        ----------
+        day_count : DayCount, str or None
+            ``None`` is ICMA actual/actual: :meth:`periods_between` over `freq`.
+        adjusted : bool
+            Accrue between the adjusted dates (swaps) or the unadjusted ones (bonds).
+
+        Returns
+        -------
+        ndarray, shape (n,)
+        """
+        from financialkit.time_value.systems.day_counts import year_fraction
+
+        d = self.dates if adjusted else self.unadjusted
+        if day_count is None:
+            return np.asarray(self.periods_between(d[:-1], d[1:]), dtype=np.float64) / self.freq
+        return np.asarray(year_fraction(d[:-1], d[1:], day_count), dtype=np.float64)
 
 
 class MultipleIRRWarning(UserWarning):

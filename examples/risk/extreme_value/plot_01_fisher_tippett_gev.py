@@ -42,12 +42,15 @@ parents = {
     "normal: Gumbel": rng.standard_normal(n_months * days),
     "uniform: Weibull": rng.uniform(-1, 1, n_months * days),
 }
+xi = {}
 fig, axes = plt.subplots(1, 3, figsize=(12, 3.8))
 for ax, (name, losses) in zip(axes, parents.items(), strict=True):
     fit = fit_gev(-losses, days)
     plot_gev_fit(fit, ax=ax)
     ax.set_title(name)
     print(f"{name:24s} xi = {fit.xi:+.3f}")
+    xi[name.split(":")[0]] = fit.xi
+assert 0.1 < xi["Student-t(3)"] < 1 / 3 and abs(xi["normal"]) < 0.2 and abs(xi["uniform"] + 1) < 0.1
 fig.tight_layout()
 
 # %%
@@ -63,6 +66,7 @@ fit = fit_gev(returns, days)
 k = np.geomspace(2, 1200, 50)
 mu, sd = returns.mean(), returns.std()
 normal_level = -(mu + sd * stats.norm.ppf(1 / (k * days)))
+assert np.all(np.diff(gev_return_level(fit, k)) > 0) and gev_return_level(fit, k[-1]) > 1.5 * normal_level[-1]
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.semilogx(k, gev_return_level(fit, k), label=f"GEV fit, xi = {fit.xi:.2f}")

@@ -55,6 +55,9 @@ print(f"xi = {fit.xi:.3f} (true 1/nu = {1 / nu:.3f}), beta = {fit.beta:.4f}, {fi
 print(" alpha     POT VaR   hist VaR  true VaR    POT ES")
 for a in (0.99, 0.995, 0.999, 0.9999):
     print(f"{a:6.4f}  {pot_var(fit, a):9.4f}  {historical_var(pnl, a).var:9.4f}  {truth.ppf(a):8.4f}  {pot_es(fit, a):8.4f}")
+    # 250 exceedances pin the tail to within 15%, even at 1-in-10,000
+    assert abs(pot_var(fit, a) / truth.ppf(a) - 1) < 0.15 and pot_es(fit, a) > pot_var(fit, a)
+assert 0 < fit.xi < 0.5
 plot_pot_tail(fit)
 
 plt.show()

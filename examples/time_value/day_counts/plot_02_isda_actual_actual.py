@@ -24,6 +24,7 @@ from financialkit.time_value import year_fraction
 
 for dc in DayCount:
     print(f"{dc.value:13s} {year_fraction('2003-11-01', '2004-05-01', dc):.5f}")
+assert np.isclose(year_fraction("2003-11-01", "2004-05-01", DayCount.ACT_ACT_ISDA), 61 / 365 + 121 / 366)
 
 # %%
 # Six-month periods through a leap year
@@ -33,8 +34,11 @@ for dc in DayCount:
 starts = np.arange(np.datetime64("2023-01-01"), np.datetime64("2025-01-01"), 7)
 ends = (starts.astype("datetime64[M]") + 6).astype("datetime64[D]") + (starts - starts.astype("datetime64[M]").astype("datetime64[D]"))
 fig, ax = plt.subplots(figsize=(8, 4.5))
-for dc in DayCount:
-    ax.plot(starts, year_fraction(starts, ends, dc), label=dc.value)
+fractions = np.array([year_fraction(starts, ends, dc) for dc in DayCount])
+for dc, f in zip(DayCount, fractions, strict=True):
+    ax.plot(starts, f, label=dc.value)
+assert np.all(year_fraction(starts, ends, DayCount.ACT_360) > 0.5)
+assert np.all(np.ptp(fractions, axis=0) > 0)
 ax.axhline(0.5, color="k", lw=0.8, ls=":")
 ax.set_ylabel("year fraction of a six-month period")
 ax.set_title("The day-count zoo")

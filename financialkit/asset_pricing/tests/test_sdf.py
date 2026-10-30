@@ -77,3 +77,11 @@ def test_hj_minimum_variance_sdf_prices_the_returns():
     b = hansen_jagannathan_bound(mu, C, [v])
     assert m.std() == pytest.approx(b.sdf_stds[0], rel=0.01)
     assert b.admits(v, b.sdf_stds[0] * 1.01) and not b.admits(v, b.sdf_stds[0] * 0.99)
+
+
+def test_law_of_one_price_violation_has_no_state_prices():
+    """Two identical payoffs at different prices: X'q = p has no solution, so the market is not arbitrage-free."""
+    market = FiniteStateMarket([[1.0, 1.0], [1.0, 1.0]], [0.90, 0.95])
+    assert not market.is_arbitrage_free()
+    with pytest.raises(ValueError, match="one entry per payoff column"):
+        FiniteStateMarket([[1.0, 2.0], [1.0, 0.5]], [0.95])

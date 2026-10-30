@@ -35,7 +35,12 @@ print(f"Black-Scholes at sigma0: {bs:.4f}")
 print("   xi   series   mixing MC  (+/- 2 se)")
 for xi in (0.2, 0.4, 0.8, 1.2):
     mc = hull_white_mixing_mc(S, 100.0, T, r, sigma0, xi, n_paths=20_000, rng=0)
-    print(f"{xi:5.1f} {hull_white_price(S, 100.0, T, r, sigma0, xi):8.4f}   {mc.estimate:8.4f}   {2 * mc.std_error:.4f}")
+    series = hull_white_price(S, 100.0, T, r, sigma0, xi)
+    print(f"{xi:5.1f} {series:8.4f}   {mc.estimate:8.4f}   {2 * mc.std_error:.4f}")
+    assert mc.estimate < bs
+    if xi <= 0.4:
+        assert abs(series - mc.estimate) < 3 * mc.std_error
+assert abs(series - mc.estimate) > 10 * mc.std_error  # xi^2 T = 1.44: the series has broken down
 
 # %%
 # The symmetric smile
@@ -47,6 +52,8 @@ fig, ax = plt.subplots(figsize=(7, 4))
 for xi in (0.2, 0.3, 0.4):
     vols = implied_volatility(hull_white_price(S, K, T, r, sigma0, xi), S, K, T, r)
     plot_smile(K, vols, forward=F, ax=ax, label=f"xi = {xi}")
+    assert np.allclose(vols, vols[::-1], atol=1e-8)
+    assert vols[8] < sigma0
 ax.axhline(sigma0, color="k", lw=0.8, ls="--")
 
 plt.show()

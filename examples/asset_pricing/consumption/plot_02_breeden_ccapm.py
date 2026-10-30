@@ -33,6 +33,9 @@ b_hat = estimate_beta(R, dc)
 slope, intercept = np.polyfit(b_hat, R.mean(axis=0), 1)
 print(f"price of consumption risk: {slope:.5f} (true gamma sigma_c^2 = {gamma * sigma_c**2:.5f})")
 print(f"implied gamma: {slope / sigma_c**2:.1f}")
+# Betas estimated from 400 noisy quarters bias the slope down a little:
+# the cross-section recovers gamma = 30 to within 25%.
+assert abs(slope / sigma_c**2 / gamma - 1) < 0.25
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(b_hat, R.mean(axis=0), "o", label="assets")

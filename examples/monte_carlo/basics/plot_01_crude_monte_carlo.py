@@ -32,6 +32,7 @@ u = rng.random((2000, 2))
 inside = np.sum(u**2, axis=1) < 1
 res = monte_carlo_integrate(lambda x: 4.0 * (np.sum(x**2, axis=1) < 1), 2000, dim=2, rng=0)
 print(f"pi ~ {res.estimate:.4f} +/- {res.std_error:.4f}, 95% CI ({res.ci[0]:.4f}, {res.ci[1]:.4f})")
+assert abs(res.estimate - np.pi) < 3 * res.std_error
 
 fig, axes = plt.subplots(1, 3, figsize=(14, 4))
 axes[0].scatter(*u[inside].T, s=2, color="C0")
@@ -49,6 +50,7 @@ ns = np.array([1_000, 4_000, 16_000, 64_000, 256_000])
 for d, exact in [(2, np.pi), (6, np.pi**3 / 6)]:
     errs = [abs(monte_carlo_integrate(lambda x: 2.0**d * (np.sum((2 * x - 1) ** 2, axis=1) < 1), n, dim=d, rng=n).estimate - exact) / exact for n in ns]
     plot_error_convergence(ns, errs, ax=axes[1], label=f"ball volume, d = {d}", rates=(0.5,) if d == 2 else ())
+    assert errs[-1] < 0.01
 axes[1].set_ylabel("relative error")
 
 # %%
@@ -57,5 +59,8 @@ axes[1].set_ylabel("relative error")
 
 runs = [monte_carlo_integrate(lambda x: 4.0 * (np.sum(x**2, axis=1) < 1), 1000, dim=2, rng=s) for s in range(60)]
 plot_confidence_intervals(runs, exact=np.pi, ax=axes[2])
+coverage = np.mean([run.ci[0] < np.pi < run.ci[1] for run in runs])
+print(f"coverage of 60 intervals: {coverage:.2f}")
+assert 0.85 < coverage
 fig.tight_layout()
 plt.show()

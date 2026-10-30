@@ -20,7 +20,9 @@ from financialkit.exotic_options import floating_lookback_price, lookback_option
 from financialkit.options import black_scholes_price
 
 S, T, r, sigma = 100.0, 1.0, 0.05, 0.25
-print(f"Haug (2007), 4.15.1: {floating_lookback_price(120.0, 0.5, 0.10, 0.30, q=0.06, S_extreme=100.0):.4f}")
+haug = floating_lookback_price(120.0, 0.5, 0.10, 0.30, q=0.06, S_extreme=100.0)
+print(f"Haug (2007), 4.15.1: {haug:.4f}")
+assert abs(haug - 25.3533) < 1e-4
 
 # %%
 # Lookback against at-the-money vanilla options
@@ -44,6 +46,10 @@ exact = floating_lookback_price(S, T, r, sigma)
 for continuous, label in ((False, "minimum over the grid"), (True, "bridge-sampled minimum")):
     res = [lookback_option_mc(S, T, r, sigma, n_steps=int(m), n_paths=20_000, continuous=continuous, rng=int(m)) for m in steps]
     axes[1].errorbar(steps, [x.estimate for x in res], yerr=[2 * x.std_error for x in res], fmt="o-", capsize=3, label=label)
+    z = np.array([(x.estimate - exact) / x.std_error for x in res])
+    # The bridge is unbiased at every step count; the grid minimum is too
+    # high, so the grid underprices by more than four standard errors.
+    assert np.all(np.abs(z) < 4) if continuous else np.all(z < -4)
 axes[1].axhline(exact, color="k", lw=1, label="closed form")
 axes[1].set_xscale("log", base=2)
 axes[1].set_xlabel("time steps")

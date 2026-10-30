@@ -76,3 +76,18 @@ def test_duffie_singleton_cir_against_monte_carlo():
     x = np.exp(-r * T - (1 - R) * integral)
     # Trapezoid bias is O(dt^2) on a smooth integrand, negligible next to the standard error.
     assert abs(x.mean() - exact) < 4 * x.std(ddof=1) / np.sqrt(n) + 1e-5
+
+
+def test_hazard_curve_default_density_is_hazard_times_survival():
+    """f(t) = -dQ/dt; checked by central differences away from the knots."""
+    curve = HazardCurve([1.0, 3.0, 5.0], [0.01, 0.03, 0.05])
+    t, h = np.array([0.5, 2.0, 4.0, 7.0]), 1e-6
+    numeric = (np.asarray(curve.survival(t - h)) - np.asarray(curve.survival(t + h))) / (2 * h)
+    np.testing.assert_allclose(curve.default_density(t), numeric, rtol=1e-8)
+
+
+def test_hazard_curve_repr_round_trips_and_validates():
+    curve = HazardCurve([1.0, 3.0], [0.01, 0.03])
+    assert eval(repr(curve), {"HazardCurve": HazardCurve}).survival(2.0) == curve.survival(2.0)
+    with pytest.raises(ValueError, match="same length"):
+        HazardCurve([1.0, 3.0], [0.01])

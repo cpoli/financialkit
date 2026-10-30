@@ -32,7 +32,9 @@ from financialkit.options import implied_volatility
 # semiannual swap, curve flat at 6% continuously compounded, 20%
 # volatility, principal 100.
 
-print(f"payer swaption: {black_swaption_price(0.06, 5.0, 3.0, 0.062, 0.2, 2, notional=100.0):.2f} (Hull: 2.07)")
+hull = black_swaption_price(0.06, 5.0, 3.0, 0.062, 0.2, 2, notional=100.0)
+print(f"payer swaption: {hull:.2f} (Hull: 2.07)")
+assert abs(hull - 2.07) < 0.005  # Hull's figure to the cent he prints
 
 # %%
 # Payer, receiver and parity
@@ -53,6 +55,7 @@ axes[0].set_xlabel("fixed rate (%)")
 axes[0].set_ylabel("price per unit notional")
 axes[0].legend()
 print(f"max parity error: {np.max(np.abs(payer - receiver - A * (S - K))):.1e}")
+assert np.max(np.abs(payer - receiver - A * (S - K))) < 1e-12
 
 # %%
 # The Black volatilities a Hull-White model quotes
@@ -68,6 +71,7 @@ for tenor_ in (2.0, 5.0, 10.0):
     Ks = S_ + np.linspace(-0.02, 0.02, 9)
     prices = np.array([jamshidian_swaption(hw, expiry, tenor_, k).price for k in Ks])
     vols = implied_volatility(prices / A_, S_, Ks, expiry, 0.0, 0.0)
+    assert np.all(np.diff(vols) < 0)  # a downward-sloping smile
     axes[1].plot(100 * (Ks - S_), 100 * vols, "o-", ms=3, label=f"3y x {tenor_:g}y")
 axes[1].set_xlabel("strike - forward swap rate (%)")
 axes[1].set_ylabel("Black swaption volatility (%)")

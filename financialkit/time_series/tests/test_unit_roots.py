@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from financialkit.time_series import adf_test, engle_granger, mackinnon_critical_values, simulate_arma
+from financialkit.time_series import adf_test, engle_granger, johansen_test, kpss_test, mackinnon_critical_values, simulate_arma
 from financialkit.time_series.utils import simulate_cointegrated_pair, simulate_dickey_fuller
 
 
@@ -73,4 +73,86 @@ def test_engle_granger_finds_cointegration_and_rejects_spurious_regression():
     a, b = np.cumsum(rng.standard_normal(2000)), np.cumsum(rng.standard_normal(2000))
     spurious = engle_granger(a, b)
     assert not spurious.rejects("5%")
-    assert spurious.critical_values == mackinnon_critical_values(spurious.adf.nobs, "c", n_vars=2)
+    assert spurious.critical_values == mackinnon_critical_values(spurious.adf.n_obs, "c", n_vars=2)
+
+
+def test_kpss_statistic_matches_the_formula_and_table():
+    """With no lags the long-run variance is the residual variance; critical values from KPSS (1992), Table 1."""
+    y = np.random.default_rng(6).standard_normal(200)
+    res = kpss_test(y, lags=0)
+    e = y - y.mean()
+    assert res.statistic == pytest.approx(np.sum(np.cumsum(e) ** 2) / (200**2 * np.mean(e**2)), rel=1e-12)
+    assert res.critical_values == {"10%": 0.347, "5%": 0.463, "2.5%": 0.574, "1%": 0.739}
+    assert kpss_test(y, "ct").critical_values["5%"] == 0.146
+    assert res.lags == 0 and kpss_test(y).lags == int(12 * 2**0.25)
+    with pytest.raises(ValueError):
+        kpss_test(y, "n")
+
+
+def test_kpss_pvalue_interpolates_and_clips():
+    res = kpss_test(np.random.default_rng(7).standard_normal(100))
+    for stat, p in ((0.463, 0.05), (0.01, 0.10), (5.0, 0.01)):
+        res.statistic = stat
+        assert res.p_value == pytest.approx(p)
+
+
+@pytest.mark.parametrize("regression", ["c", "ct"])
+def test_kpss_size_under_stationarity(regression):
+    rng = np.random.default_rng(8)
+    n_sims = 2000
+    trend = np.arange(300.0) * 0.01 if regression == "ct" else 0.0
+    hits = [kpss_test(trend + rng.standard_normal(300), regression, lags=4).rejects("5%") for _ in range(n_sims)]
+    assert abs(np.mean(hits) - 0.05) < 4 * np.sqrt(0.05 * 0.95 / n_sims)
+
+
+def test_kpss_rejects_random_walks_and_needs_the_trend_term():
+    rng = np.random.default_rng(9)
+    assert kpss_test(np.cumsum(rng.standard_normal(1000))).rejects("1%")
+    trend_stationary = 0.05 * np.arange(1000) + rng.standard_normal(1000)
+    assert kpss_test(trend_stationary, "c").rejects("1%")
+    assert not kpss_test(trend_stationary, "ct").rejects("5%")
+
+
+@pytest.mark.parametrize(("regression", "drift"), [("n", 0.0), ("c", 0.2)])
+def test_johansen_size_on_independent_random_walks(regression, drift):
+    """Under rank 0, the trace and maximum-eigenvalue tests reject at about their nominal 5%
+    (MacKinnon-Haug-Michelis 1999 asymptotic values; T = 500)."""
+    rng = np.random.default_rng(10)
+    n_sims = 2000
+    trace, maxev = [], []
+    for _ in range(n_sims):
+        res = johansen_test(np.cumsum(drift + rng.standard_normal((500, 2)), axis=0), lags=0, regression=regression)
+        trace.append(res.trace[0] > res.trace_critical_values["5%"][0])
+        maxev.append(res.max_eigen[0] > res.max_eigen_critical_values["5%"][0])
+    se = np.sqrt(0.05 * 0.95 / n_sims)
+    assert abs(np.mean(trace) - 0.05) < 4 * se
+    assert abs(np.mean(maxev) - 0.05) < 4 * se
+
+
+def test_johansen_finds_the_rank_and_the_cointegrating_vector():
+    rng = np.random.default_rng(11)
+    T = 2000
+    w = np.cumsum(0.1 + rng.standard_normal((T, 2)), axis=0)
+    u = simulate_arma(ar=[0.5], n=T, rng=12)
+    y = np.column_stack([w[:, 0], w[:, 1], 0.5 * w[:, 0] - 1.5 * w[:, 1] + u])
+    res = johansen_test(y, lags=1)
+    assert res.rank("5%") == 1 and res.rank("5%", test="max_eigen") == 1
+    v = res.cointegrating_vectors(1)[:, 0]
+    np.testing.assert_allclose(v, [1.0, -3.0, -2.0], atol=0.05)  # (0.5, -1.5, -1) scaled to a leading 1
+    np.testing.assert_allclose(res.trace, np.cumsum(res.max_eigen[::-1])[::-1])
+    assert np.all(np.diff(res.eigenvalues) <= 0) and res.n_obs == T - 2
+    # Critical values grow with the number of nonstationary directions.
+    assert np.all(np.diff(res.trace_critical_values["5%"]) < 0)
+    # Two independent stationary series have full rank.
+    assert johansen_test(rng.standard_normal((500, 2)), lags=0).rank() == 2
+
+
+def test_johansen_input_checks():
+    with pytest.raises(ValueError):
+        johansen_test(np.zeros((100, 1)))
+    with pytest.raises(ValueError):
+        johansen_test(np.zeros((100, 6)))
+    with pytest.raises(ValueError):
+        johansen_test(np.random.default_rng(0).standard_normal((100, 2)), regression="ct")
+    with pytest.raises(ValueError):
+        johansen_test(np.random.default_rng(0).standard_normal((8, 2)), lags=3)

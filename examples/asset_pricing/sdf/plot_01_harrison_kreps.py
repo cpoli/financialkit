@@ -26,6 +26,10 @@ mkt = FiniteStateMarket(np.column_stack([[R, R], up_down]), [1.0, S0], probabili
 print("complete:", mkt.is_complete, " arbitrage free:", mkt.is_arbitrage_free())
 print("state prices:", mkt.state_prices().round(4), " risk-neutral:", mkt.risk_neutral_probabilities().round(4))
 print("SDF:", mkt.sdf().round(4))
+# The binomial risk-neutral up probability (R S0 - d) / (u - d), and p = E[m x].
+assert mkt.is_complete and mkt.is_arbitrage_free()
+assert np.isclose(mkt.risk_neutral_probabilities()[0], (R * S0 - up_down[1]) / (up_down[0] - up_down[1]))
+assert np.allclose(mkt.payoffs.T @ (mkt.probabilities * mkt.sdf()), mkt.prices)
 
 # %%
 # An arbitrage when the stock is mispriced
@@ -36,6 +40,8 @@ theta = bad.arbitrage_portfolio()
 theta = theta / theta[1]  # per share bought
 print(f"stock at 80: arbitrage free? {bad.is_arbitrage_free()}")
 print(f"buy 1 share, hold {theta[0]:+.1f} bonds: cost {bad.prices @ theta:+.2f}, payoffs {(bad.payoffs @ theta).round(2)}")
+assert not bad.is_arbitrage_free()
+assert bad.prices @ theta <= 1e-12 and np.all(bad.payoffs @ theta >= -1e-12) and np.any(bad.payoffs @ theta > 1e-12)
 
 # %%
 # Incompleteness: a trinomial market
@@ -50,6 +56,7 @@ tri = FiniteStateMarket(np.column_stack([np.full(3, R), states]), [1.0, S0])
 strikes = np.linspace(85, 125, 41)
 bounds = np.array([tri.price_bounds(np.maximum(states - K, 0)) for K in strikes])
 binom = np.array([mkt.state_prices() @ np.maximum(up_down - K, 0) for K in strikes])
+assert np.all(bounds[:, 0] <= binom + 1e-12) and np.all(binom <= bounds[:, 1] + 1e-12)
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.fill_between(strikes, bounds[:, 0], bounds[:, 1], color="C0", alpha=0.3, label="trinomial: arbitrage-free range")

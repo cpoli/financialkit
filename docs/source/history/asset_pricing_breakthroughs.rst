@@ -21,8 +21,11 @@ moved to multifactor models built from the data itself. In parallel,
 economists rebuilt the theory from the investor's consumption and the
 absence of arbitrage, arriving at one equation, :math:`p = E[m x]`,
 whose discount factor :math:`m` every model specifies differently, and
-at puzzles that no simple specification of :math:`m` resolves. This
-chronology traces the ideas behind :mod:`financialkit.asset_pricing`.
+at puzzles that no simple specification of :math:`m` resolves. Hansen's
+GMM made every such model testable, habits and long-run risks
+rebuilt the discount factor, and the factor zoo raised the bar for
+calling a new factor real. This chronology traces the ideas behind
+:mod:`financialkit.asset_pricing`.
 
 .. contents:: Timeline
    :local:
@@ -353,6 +356,72 @@ Justified by Subsequent Changes in Dividends?" *Am. Econ. Rev.* 71
 
 .. minigallery:: ../../examples/asset_pricing/valuation/plot_04_shiller_excess_volatility.py
 
+1982 -- Hansen's Generalized Method of Moments
+----------------------------------------------
+
+Lars Peter Hansen showed how to estimate a model from nothing more than
+the moment conditions it implies. Choose the parameters to make the
+sample means of the pricing errors as small as possible in a quadratic
+metric, and the estimates are consistent and asymptotically normal under
+stationarity alone, with no distribution assumed for returns or
+consumption. With more moments than parameters, the minimised objective
+is a :math:`\chi^2` test of the model. OLS, instrumental variables and
+maximum likelihood are special cases. GMM became the estimator of
+empirical asset pricing, and it was cited in Hansen's 2013 Nobel prize.
+
+.. math::
+
+   \hat\theta = \arg\min_\theta\, g_T(\theta)' W g_T(\theta), \qquad
+   J = T\, g_T(\hat\theta)' \hat S^{-1} g_T(\hat\theta) \sim \chi^2_{q-p}
+
+*Implementation:* :func:`financialkit.asset_pricing.systems.gmm.gmm`
+minimises the objective with ``scipy.optimize.least_squares`` using
+identity, two-step or iterated efficient weighting. It returns sandwich
+standard errors and Hansen's J test in a
+:class:`~financialkit.asset_pricing.core.base.GMMResult`, with the
+long-run covariance from
+:func:`~financialkit.asset_pricing.utils.hac.newey_west`. The example
+estimates a linear discount factor from ten portfolios and checks the
+J test's size and power.
+
+*References:* L. P. Hansen, "Large Sample Properties of Generalized
+Method of Moments Estimators," *Econometrica* 50 (1982) 1029-1054;
+W. K. Newey and K. D. West, *Econometrica* 55 (1987) 703-708.
+
+.. minigallery:: ../../examples/asset_pricing/sdf/plot_03_hansen_gmm.py
+
+1982 -- Hansen-Singleton: the Euler Equation Estimated
+------------------------------------------------------
+
+Lars Peter Hansen and Kenneth Singleton applied GMM to the
+consumption-based model without solving it. The Euler equation
+says that the pricing error :math:`\beta G^{-\gamma} R - 1` cannot be
+forecast by anything the investor knows. Interacting it with lagged
+instruments gives enough moment conditions to estimate time preference
+and risk aversion from the first-order condition alone. On US
+consumption and returns, the estimates of risk aversion were small and
+imprecise, and the overidentifying restrictions were rejected once
+several assets were used. These were the first formal signs of the
+puzzles that Mehra and Prescott would make vivid.
+
+.. math::
+
+   E_t\left[\beta \left(\frac{C_{t+1}}{C_t}\right)^{-\gamma} R_{i,t+1} - 1\right] = 0
+   \;\Rightarrow\; E\left[\left(\beta G_{t+1}^{-\gamma} R_{i,t+1} - 1\right) z_t\right] = 0
+
+*Implementation:* :func:`financialkit.asset_pricing.systems.consumption.hansen_singleton`
+builds the moment conditions for any assets and instruments and
+estimates them with :func:`~financialkit.asset_pricing.systems.gmm.gmm`.
+The example recovers the parameters of a simulated Lucas tree and shows
+the ridge along which :math:`\beta` and :math:`\gamma` trade off. It
+then shows the extreme estimates that an unexplained 6% premium forces.
+
+*References:* L. P. Hansen and K. J. Singleton, "Generalized
+Instrumental Variables Estimation of Nonlinear Rational Expectations
+Models," *Econometrica* 50 (1982) 1269-1286.
+
+.. minigallery:: ../../examples/asset_pricing/consumption/plot_04_hansen_singleton.py
+
 1985 -- Mehra and Prescott's Equity Premium Puzzle
 --------------------------------------------------
 
@@ -379,6 +448,41 @@ admissible region of riskless rates and premia against the data.
 Puzzle," *J. Monet. Econ.* 15 (1985) 145-161.
 
 .. minigallery:: ../../examples/asset_pricing/consumption/plot_03_equity_premium_puzzle.py
+
+1988 -- Campbell-Shiller Log-Linear Present Value
+-------------------------------------------------
+
+John Campbell and Robert Shiller linearised the log stock return
+around the average dividend-price ratio. Iterated forward, the
+approximation turns the present-value relation into an identity that
+holds in every model: the log dividend-price ratio equals the
+discounted sum of future returns minus future dividend growth. A
+dividend yield that moves must therefore forecast returns, dividend
+growth, or both. The identity became the standard tool for decomposing
+price movements into news about cash flows and news about discount
+rates. Cochrane (2008) used it to show that in US data almost all of
+the variation is in expected returns.
+
+.. math::
+
+   r_{t+1} \approx k + dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}, \qquad
+   dp_t \approx \text{const} + \sum_{j \ge 1} \rho^{j-1}\left(r_{t+j} - \Delta d_{t+j}\right)
+
+*Implementation:* :func:`financialkit.asset_pricing.systems.valuation.log_linear_return`,
+:func:`~financialkit.asset_pricing.systems.valuation.campbell_shiller_rho`
+and :func:`~financialkit.asset_pricing.systems.valuation.campbell_shiller_decomposition`,
+which returns the long-run return and dividend-growth coefficients in a
+:class:`~financialkit.asset_pricing.core.base.PresentValueDecomposition`.
+The example measures the linearisation error on exact returns and
+splits the variance of the dividend-price ratio in two simulated
+economies.
+
+*References:* J. Y. Campbell and R. J. Shiller, "The Dividend-Price
+Ratio and Expectations of Future Dividends and Discount Factors,"
+*Rev. Financ. Stud.* 1 (1988) 195-228; J. H. Cochrane, "The Dog That
+Did Not Bark," *Rev. Financ. Stud.* 21 (2008) 1533-1575.
+
+.. minigallery:: ../../examples/asset_pricing/valuation/plot_05_campbell_shiller.py
 
 1989 -- The Gibbons-Ross-Shanken Test
 -------------------------------------
@@ -486,6 +590,129 @@ Performance," *J. Finance* 52 (1997) 57-82; N. Jegadeesh and S. Titman,
 *J. Finance* 48 (1993) 65-91.
 
 .. minigallery:: ../../examples/asset_pricing/factors/plot_04_carhart_momentum.py
+
+1999 -- Campbell-Cochrane Habit Formation
+-----------------------------------------
+
+John Campbell and John Cochrane kept i.i.d. consumption growth and
+power utility, but applied the utility to consumption above a slowly
+moving external habit. As consumption falls toward the habit in a
+recession, the investor's effective risk aversion :math:`\gamma / S_t`
+soars, prices fall and expected returns rise. The habit's sensitivity
+to consumption shocks was chosen to hold the riskless rate constant.
+With a curvature of only two, the model matched the equity premium, the
+volatility of stock returns and the predictability of returns by the
+dividend yield.
+
+.. math::
+
+   s_{t+1} = (1-\phi)\bar s + \phi s_t + \lambda(s_t)(\Delta c_{t+1} - g), \qquad
+   m_{t+1} = \beta \left(\frac{S_{t+1} C_{t+1}}{S_t C_t}\right)^{-\gamma}
+
+*Implementation:* :class:`financialkit.asset_pricing.systems.consumption.CampbellCochrane`
+solves the price-consumption ratio on a grid in the surplus ratio as one
+linear system, using Gauss-Hermite quadrature, and simulates the economy
+monthly. The example shows procyclical prices and countercyclical
+Sharpe ratios, and compares the premium with Lucas's tree at the same
+risk aversion.
+
+*References:* J. Y. Campbell and J. H. Cochrane, "By Force of Habit: A
+Consumption-Based Explanation of Aggregate Stock Market Behavior,"
+*J. Polit. Econ.* 107 (1999) 205-251.
+
+.. minigallery:: ../../examples/asset_pricing/consumption/plot_05_campbell_cochrane_habit.py
+
+2004 -- Bansal-Yaron Long-Run Risk
+----------------------------------
+
+Ravi Bansal and Amir Yaron added to consumption growth a small but very
+persistent predictable component, invisible in a century of data, and
+slowly varying volatility. With Epstein-Zin preferences and an
+elasticity of intertemporal substitution above one, the investor
+dreads news about long-run growth. Dividends are a levered claim on
+that news, so stocks earn a large premium while the riskless rate
+stays low and stable. Long-run risk became, with habits and rare
+disasters, one of the three main resolutions of the equity premium
+puzzle.
+
+.. math::
+
+   g_{t+1} = \mu + x_t + \sigma_t\eta_{t+1}, \quad x_{t+1} = \rho x_t + \varphi_e\sigma_t e_{t+1}, \qquad
+   E_t[r_{m,t+1} - r_{f,t}] = \beta_{m,e}\lambda_e\sigma_t^2 + \beta_{m,w}\lambda_w\sigma_w^2 - \tfrac12\mathrm{Var}_t(r_{m,t+1})
+
+*Implementation:* :class:`financialkit.asset_pricing.systems.consumption.BansalYaron`
+solves the log-linear price-consumption and price-dividend ratios as
+fixed points in the Campbell-Shiller constants, and simulates the
+economy. The example splits the premium into its long-run and
+volatility parts and shows why it collapses when :math:`\psi < 1`.
+
+*References:* R. Bansal and A. Yaron, "Risks for the Long Run: A
+Potential Resolution of Asset Pricing Puzzles," *J. Finance* 59 (2004)
+1481-1509.
+
+.. minigallery:: ../../examples/asset_pricing/consumption/plot_06_bansal_yaron.py
+
+2015 -- The Fama-French Five Factors
+------------------------------------
+
+Robert Novy-Marx (2013) and others had shown that profitable firms and
+firms that invest little earn more than the three factors predict.
+Eugene Fama and Kenneth French motivated both effects with the dividend
+discount model. At a given price-to-book ratio, higher expected
+profitability or lower investment means a higher expected return. They
+added RMW (robust minus weak profitability) and CMA (conservative minus
+aggressive investment), built like HML from 2 x 3 sorts on size. The
+five factors priced the profitability and investment anomalies, and
+HML turned out to be redundant: its average return was explained by
+its exposure to the other four, mainly CMA.
+
+.. math::
+
+   r^e_{it} = \alpha_i + b_i\,MKT_t + s_i\,SMB_t + h_i\,HML_t + r_i\,RMW_t + c_i\,CMA_t + \varepsilon_{it}
+
+*Implementation:* :func:`financialkit.asset_pricing.systems.factors.fama_french_five`
+builds the factors from
+:func:`~financialkit.asset_pricing.utils.sorts.two_by_three_portfolios`.
+The example prices profitability and investment deciles with three and
+five factors, using GRS tests, and shows that HML is spanned by the
+other four.
+
+*References:* E. F. Fama and K. R. French, "A Five-Factor Asset Pricing
+Model," *J. Financ. Econ.* 116 (2015) 1-22; R. Novy-Marx, *J. Financ.
+Econ.* 108 (2013) 1-28.
+
+.. minigallery:: ../../examples/asset_pricing/factors/plot_05_fama_french_five.py
+
+2016 -- Harvey-Liu-Zhu: the Factor Zoo and Multiple Testing
+-----------------------------------------------------------
+
+Campbell Harvey, Yan Liu and Heng Zhu catalogued 316 factors published
+as explaining the cross-section of returns, nearly all with a
+t-statistic above two. When hundreds of hypotheses are tested, many
+will pass a 5% test by chance. Controlling the family-wise error rate
+(Bonferroni, Holm) or the false discovery rate (Benjamini, Hochberg and
+Yekutieli) raises the bar. They concluded that a newly proposed factor
+should clear a t-statistic of about 3.0, and that many published
+factors were likely false discoveries.
+
+.. math::
+
+   p^{\text{Bonf}}_i = \min(M p_i, 1), \qquad
+   p^{\text{BHY}}_{(i)} = \min_{k \ge i} \min\!\left(\frac{M c(M)}{k}\, p_{(k)}, 1\right), \quad c(M) = \sum_{j=1}^M \frac1j
+
+*Implementation:* :func:`financialkit.asset_pricing.systems.factors.adjusted_p_values`
+(Bonferroni, Holm, Benjamini-Hochberg and Benjamini-Yekutieli) and
+:func:`~financialkit.asset_pricing.systems.factors.t_hurdle`. The
+example sets a zoo of 316 factors, 30 of them real, against each
+correction, and traces the Bonferroni hurdle as the number of factors
+grows.
+
+*References:* C. R. Harvey, Y. Liu and H. Zhu, "... and the
+Cross-Section of Expected Returns," *Rev. Financ. Stud.* 29 (2016)
+5-68; Y. Benjamini and D. Yekutieli, *Ann. Statist.* 29 (2001)
+1165-1188.
+
+.. minigallery:: ../../examples/asset_pricing/factors/plot_06_harvey_liu_zhu.py
 
 See Also
 --------

@@ -13,7 +13,9 @@ model instance serves every spot, rate and strike.
 
 Everything with more structure returns a small dataclass that the
 visualizers plot: a Carr-Madan strike grid, a Dupire local-volatility
-surface, simulated Heston paths, and SABR and SVI fits.
+surface, simulated Heston and rough Bergomi paths, SABR and SVI fits, a
+characteristic-function model calibrated to a smile, and a roughness
+estimate of log-volatility.
 """
 
 from __future__ import annotations
@@ -24,6 +26,8 @@ from dataclasses import dataclass
 import numpy as np
 from numpy.typing import ArrayLike
 
+from financialkit._deprecation import deprecated_field
+
 __all__ = [
     "CharacteristicFunctionModel",
     "FFTResult",
@@ -31,6 +35,9 @@ __all__ = [
     "HestonPaths",
     "SABRFit",
     "SVIFit",
+    "FourierCalibration",
+    "RoughBergomiPaths",
+    "RoughnessEstimate",
 ]
 
 
@@ -296,3 +303,77 @@ class SVIFit:
         w = np.asarray(self.total_variance(k))
         out = np.sqrt(w / self.T)
         return float(out) if out.ndim == 0 else out
+
+
+@dataclass
+class FourierCalibration:
+    """A characteristic-function model fitted to option quotes across strikes and maturities."""
+
+    model: CharacteristicFunctionModel
+    """The fitted model, ready to price."""
+
+    params: dict[str, float]
+    """The fitted parameters by constructor name (fixed ones included)."""
+
+    strikes: np.ndarray
+    """ndarray, shape (n,): Strikes of the quotes."""
+
+    maturities: np.ndarray
+    """ndarray, shape (n,): Maturity of each quote."""
+
+    market_vols: np.ndarray
+    """ndarray, shape (n,): Black-Scholes implied volatilities of the quotes."""
+
+    model_vols: np.ndarray
+    """ndarray, shape (n,): Black-Scholes implied volatilities of the fitted model."""
+
+    residuals: np.ndarray
+    """ndarray, shape (n,): Vega-weighted price errors (model minus market over
+    vega) at the solution, approximately implied-volatility errors in decimals."""
+
+    rmse: float
+    """Root-mean-square implied volatility error in vol points (1 point = 0.01)."""
+
+    converged: bool
+    """Whether :func:`scipy.optimize.least_squares` reported convergence."""
+    success = deprecated_field("converged")
+
+    nfev: int
+    """Number of residual evaluations."""
+
+
+@dataclass
+class RoughBergomiPaths:
+    """Simulated spot and variance paths under the rough Bergomi model."""
+
+    times: np.ndarray
+    """ndarray, shape (n_steps + 1,): The time grid."""
+
+    spot: np.ndarray
+    """ndarray, shape (n_paths, n_steps + 1): Spot paths."""
+
+    variance: np.ndarray
+    """ndarray, shape (n_paths, n_steps + 1): Instantaneous variance paths."""
+
+    scheme: str
+    """The Volterra scheme: ``"hybrid"``, ``"cholesky"`` or ``"riemann"``."""
+
+
+@dataclass
+class RoughnessEstimate:
+    """Scaling of log-volatility increments, :math:`m(q, \\Delta) \\propto \\Delta^{\\zeta_q}`."""
+
+    lags: np.ndarray
+    """ndarray, shape (n_lags,): Lags :math:`\\Delta`, in observations."""
+
+    q: np.ndarray
+    """ndarray, shape (n_q,): Moments."""
+
+    moments: np.ndarray
+    """ndarray, shape (n_q, n_lags): Empirical :math:`m(q, \\Delta) = \\overline{|x_{t+\\Delta} - x_t|^q}`."""
+
+    zeta: np.ndarray
+    """ndarray, shape (n_q,): Fitted log-log slopes :math:`\\zeta_q`."""
+
+    H: float
+    """Hurst exponent: the slope of :math:`\\zeta_q` against :math:`q` through the origin."""

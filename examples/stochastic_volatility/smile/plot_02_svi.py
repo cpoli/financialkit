@@ -35,7 +35,9 @@ for T in (0.5, 1.0, 2.0):
     line = ax1.plot(k, iv, "o", ms=3)[0]
     kk = np.linspace(-1.0, 0.8, 200)
     plot_smile(S * np.exp(kk), fit.implied_vol(kk), forward=S, ax=ax1, label=f"SVI, T = {T}", color=line.get_color())
-    ax2.plot(kk, durrleman_g(kk, fit.a, fit.b, fit.rho, fit.m, fit.sigma), label=f"T = {T}")
+    g = durrleman_g(kk, fit.a, fit.b, fit.rho, fit.m, fit.sigma)
+    ax2.plot(kk, g, label=f"T = {T}")
+    assert rms < 15e-4 and np.all(g > 0)
 ax2.axhline(0.0, color="k", lw=0.8)
 ax2.set_xlabel("log-moneyness k")
 ax2.set_ylabel("Durrleman g(k)")

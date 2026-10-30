@@ -29,6 +29,8 @@ fig, axes = plt.subplots(1, 3, figsize=(14, 4))
 for r0, shape in ((0.01, "normal"), (0.0555, "humped"), (0.09, "inverted")):
     m = VasicekModel(r0, 0.25, 0.06, 0.02)
     plot_model_yields(m, t_max=30, ax=axes[0], label=f"r0 = {100 * r0:.2f}% ({shape})")
+    dy = np.diff(m.yields(np.linspace(0.1, 30, 300)))
+    assert {"normal": np.all(dy > 0), "inverted": np.all(dy < 0), "humped": dy[0] > 0 > dy[-1]}[shape]
 axes[0].axhline(100 * m.long_yield, color="k", ls=":", lw=1)
 axes[0].set_title("Vasicek yield curves")
 
@@ -47,6 +49,7 @@ axes[1].legend()
 # -------------------------------
 
 res = monte_carlo_bond_prices(model, np.arange(1.0, 21.0), n_steps=200, n_paths=8000, rng=1)
+assert np.abs(res.z_scores).max() < 3
 axes[2].errorbar(res.maturities, res.z_scores, yerr=1, fmt="o", ms=3)
 axes[2].axhspan(-2, 2, color="0.9")
 axes[2].set_xlabel("maturity (years)")

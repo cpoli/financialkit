@@ -29,6 +29,7 @@ rf = 0.002
 for lev in [0.5, 1.0, 2.0]:
     levered = rf + lev * (r - rf)
     print(f"leverage {lev:g}: mean {12 * levered.mean():.1%}, annual Sharpe {sharpe_ratio(levered, rf, 12):.3f}")
+    assert np.isclose(sharpe_ratio(levered, rf, 12), sharpe_ratio(r, rf, 12))
 
 # %%
 # Sampling distribution of the estimate
@@ -50,6 +51,8 @@ ax.set_xlabel("estimated annual Sharpe ratio")
 ax.legend()
 fig.tight_layout()
 print(f"P(estimate < 0) = {np.mean(est < 0):.1%}")
+# Lo's standard error matches the spread of the 4000 estimates to within 5%.
+assert abs(est.std() / se - 1) < 0.05 and abs(est.mean() - true_sr) < 3 * se / np.sqrt(est.size) + 0.02
 
 # %%
 # Years needed to tell a Sharpe ratio from zero

@@ -15,7 +15,7 @@ depend on the rest of the portfolio.
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.credit import basel_correlation, basel_irb_capital, basel_risk_weight, one_factor_loss_distribution
+from financialkit.credit import basel_correlation, basel_irb_capital, basel_risk_weight, one_factor_loss_distribution, vasicek_quantile
 
 pd = np.geomspace(3e-4, 0.3, 200)
 fig, ax = plt.subplots(1, 2, figsize=(12, 4))
@@ -28,6 +28,8 @@ ax[0].legend()
 ax[1].set_xlabel("PD")
 ax[1].set_ylabel("asset correlation (%)")
 print("illustrative corporate risk weights:", {f"{p:.2%}": f"{100 * basel_risk_weight(p):.2f}%" for p in (0.0003, 0.001, 0.01, 0.05, 0.2)})
+for p, published in ((0.0003, 14.44), (0.001, 29.65), (0.01, 92.32), (0.2, 238.23)):
+    assert abs(100 * basel_risk_weight(p) - published) < 0.005
 
 # %%
 # Capital is the gap between the 99.9% quantile and the expected loss
@@ -45,5 +47,8 @@ ax.set_xlabel("portfolio loss rate")
 ax.set_ylabel("cumulative probability")
 ax.set_title(f"K at M = 1: {basel_irb_capital(p, lgd, maturity=1.0):.2%} of exposure")
 ax.legend()
+K = basel_irb_capital(p, lgd, maturity=1.0)
+assert np.isclose(K, lgd * (vasicek_quantile(0.999, p, R) - p))
+assert abs((dist.quantile(0.999) - dist.mean) / K - 1) < 0.05
 
 plt.show()

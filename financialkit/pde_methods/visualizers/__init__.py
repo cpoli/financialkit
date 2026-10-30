@@ -7,6 +7,7 @@ from financialkit.pde_methods.visualizers.plots import (
     plot_grid,
     plot_grid_convergence,
     plot_heat_solution,
+    plot_heston_surface,
     plot_value_profile,
     plot_value_surface,
 )
@@ -20,4 +21,5 @@ __all__ = [
     "plot_grid",
     "plot_heat_solution",
     "plot_adi_surface",
+    "plot_heston_surface",
 ]

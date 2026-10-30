@@ -36,6 +36,7 @@ for name, affine, closed in (
     err = np.abs(affine.zero_coupon_bond(T) / closed.zero_coupon_bond(T) - 1)
     axes[0].semilogy(T, np.maximum(err, 1e-16), label=name)
     print(f"{name}: largest relative error {err.max():.1e}")
+    assert err.max() < 1e-9
 axes[0].set_xlabel("maturity (years)")
 axes[0].set_ylabel("|Riccati / closed form - 1|")
 axes[0].legend()
@@ -79,5 +80,6 @@ fig.tight_layout()
 res = monte_carlo_bond_prices(model, [1.0, 3.0, 5.0], n_steps=100, n_paths=8000, rng=0)
 for t, p, se, ex in zip(res.maturities, res.prices, res.std_errors, res.exact, strict=True):
     print(f"T = {t:.0f}: Riccati {ex:.5f}, Monte Carlo {p:.5f} +/- {se:.5f}")
+assert np.abs(res.z_scores).max() < 3
 
 plt.show()

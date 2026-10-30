@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 
-__all__ = ["as_dates", "date_parts", "is_leap_year", "days_in_year", "is_end_of_february"]
+__all__ = ["as_dates", "date_parts", "is_leap_year", "days_in_year", "is_end_of_february", "is_end_of_month", "add_months"]
 
 
 def as_dates(x) -> np.ndarray:
@@ -94,3 +94,55 @@ def is_end_of_february(d) -> np.ndarray:
     """
     year, month, day = date_parts(d)
     return (month == 2) & (day == np.where(is_leap_year(year), 29, 28))
+
+
+def is_end_of_month(d) -> np.ndarray:
+    """Whether each date is the last day of its month.
+
+    Parameters
+    ----------
+    d : date-like or array-like of date-likes
+
+    Returns
+    -------
+    ndarray of bool
+
+    Examples
+    --------
+    >>> is_end_of_month(["2024-02-28", "2024-02-29", "2023-02-28"]).tolist()
+    [False, True, True]
+    """
+    d = as_dates(d)
+    return (d + np.timedelta64(1, "D")).astype("datetime64[M]") != d.astype("datetime64[M]")
+
+
+def add_months(d, n, end_of_month: bool = False) -> np.ndarray:
+    """Shift dates by whole months, clamping the day to the target month's length.
+
+    Parameters
+    ----------
+    d : date-like or array-like of date-likes
+    n : int or array-like of int
+        Months to add; negative moves back.
+    end_of_month : bool
+        If true, a date on the last day of its month lands on the last day
+        of the target month (the end-of-month rule of the 2006 ISDA
+        Definitions, Sec. 4.13).
+
+    Returns
+    -------
+    ndarray of datetime64[D]
+
+    Examples
+    --------
+    >>> add_months("2023-08-31", [-6, 6]).tolist()
+    [datetime.date(2023, 2, 28), datetime.date(2024, 2, 29)]
+    >>> add_months("2023-02-28", 3), add_months("2023-02-28", 3, end_of_month=True)
+    (np.datetime64('2023-05-28'), np.datetime64('2023-05-31'))
+    """
+    d = as_dates(d)
+    first = (d.astype("datetime64[M]") + np.asarray(n, dtype=np.int64).astype("timedelta64[M]")).astype("datetime64[D]")
+    length = ((first.astype("datetime64[M]") + np.timedelta64(1, "M")).astype("datetime64[D]") - first).astype(np.int64)
+    day = date_parts(d)[2]
+    day = np.where(end_of_month & is_end_of_month(d), length, np.minimum(day, length))
+    return first + (day - 1).astype("timedelta64[D]")

@@ -8,10 +8,11 @@ from financialkit.fixed_income import (
     CashFlows,
     FlatCurve,
     ZeroCurve,
-    accrued_interest,
+    bond_accrued_interest,
     bond_cash_flows,
     bond_price,
     clean_price,
+    coupon_times,
     price_from_yield,
     strips_curve,
     strips_decomposition,
@@ -50,8 +51,8 @@ def test_price_from_yield_broadcasts():
 def test_short_first_period_and_accrued_interest():
     cf = bond_cash_flows(100.0, 0.08, 1.375, freq=2)
     np.testing.assert_allclose(cf.times, [0.375, 0.875, 1.375])
-    assert accrued_interest(100.0, 0.08, 1.375) == pytest.approx(1.0)
-    assert accrued_interest(100.0, 0.08, 1.5) == pytest.approx(0.0, abs=1e-12)
+    assert bond_accrued_interest(100.0, 0.08, 1.375) == pytest.approx(1.0)
+    assert bond_accrued_interest(100.0, 0.08, 1.5) == pytest.approx(0.0, abs=1e-12)
 
 
 def test_clean_price_is_continuous_across_coupon_date():
@@ -93,3 +94,30 @@ def test_invalid_inputs_raise():
         yield_to_maturity(-1.0, bond_cash_flows(100.0, 0.05, 2.0))
     with pytest.raises(ValueError):
         strips_value(bond_cash_flows(100.0, 0.05, 2.0), [99.0])
+
+
+def test_yield_to_maturity_expands_its_bracket_for_extreme_prices():
+    """A 2-year zero worth 1000 or 1 per 100 face needs yields far outside the initial [-1, 1] bracket."""
+    zero = CashFlows([2.0], [100.0])
+    assert yield_to_maturity(1000.0, zero) == pytest.approx(-np.log(10.0) / 2, abs=1e-10)
+    assert yield_to_maturity(1.0, zero) == pytest.approx(np.log(100.0) / 2, abs=1e-10)
+
+
+def test_yield_to_maturity_rejects_prices_no_yield_can_reach():
+    """A cash flow due now is worth its face at every yield, so any other price has no yield."""
+    due_now = CashFlows([0.0], [100.0])
+    with pytest.raises(ValueError, match="above any attainable"):
+        yield_to_maturity(150.0, due_now)
+    with pytest.raises(ValueError, match="below any attainable"):
+        yield_to_maturity(50.0, due_now)
+    with pytest.raises(ValueError, match="nonnegative cash flows"):
+        yield_to_maturity(100.0, CashFlows([1.0, 2.0], [110.0, -5.0]))
+
+
+def test_coupon_times_and_cash_flows_reject_invalid_inputs():
+    with pytest.raises(ValueError, match="maturity must be positive"):
+        coupon_times(0.0, 2)
+    with pytest.raises(ValueError, match="freq must be a positive integer"):
+        coupon_times(1.0, 0)
+    with pytest.raises(ValueError, match="same shape"):
+        CashFlows([1.0, 2.0], [5.0])

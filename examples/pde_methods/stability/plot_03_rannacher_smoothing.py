@@ -33,6 +33,8 @@ h = plain.S[1] - plain.S[0]
 s = plain.S[1:-1]
 near = (s > 75) & (s < 125)
 exact = black_scholes_greeks(s[near], K, T, r, sigma).gamma
+gamma_error = {name: np.abs(np.diff(res.V, 2)[near] / h**2 - exact).max() for name, res in (("plain", plain), ("smooth", smooth))}
+assert gamma_error["plain"] > 0.01 and gamma_error["smooth"] < 0.001
 fig, axes = plt.subplots(1, 2, figsize=(11, 4), sharey=True)
 for ax, res, title in ((axes[0], plain, "Crank-Nicolson"), (axes[1], smooth, "Crank-Nicolson + Rannacher")):
     ax.plot(s[near], np.diff(res.V, 2)[near] / h**2, ".-", ms=3, label="grid gamma")

@@ -18,7 +18,8 @@ that some traders know more than others, which turned the order flow
 itself into information and the spread into insurance against it. The
 same ideas produced estimators of spreads and of informed trading that
 need nothing but prices or trade counts, and, once trading became
-electronic and algorithmic, models of how to execute a large order and
+electronic and algorithmic, models of how orders cluster, how the book
+itself evolves and moves the price, how to execute a large order and
 how to make markets by machine. This chronology traces the ideas behind
 :mod:`financialkit.market_microstructure`.
 
@@ -55,6 +56,43 @@ Economics* 82 (1968) 33-53; R. D. Huang and H. R. Stoll, "Dealer versus
 Auction Markets," *J. Financial Economics* 41 (1996) 313-357.
 
 .. minigallery:: ../../examples/market_microstructure/spreads/plot_01_demsetz_spreads.py
+
+1971 -- Hawkes: Self-Exciting Order Flow
+----------------------------------------
+
+Alan Hawkes, a statistician, wrote down a point process in which every
+event raises the probability of more: the intensity jumps by
+:math:`\alpha` at each event and decays back at rate :math:`\beta`. Each
+event triggers :math:`n = \alpha/\beta` others on average, so the process
+is a cascade of immigrants and their descendants, stationary when
+:math:`n < 1`. Seismologists used it first, for aftershocks. When
+markets became electronic it turned out to fit order arrivals just as
+well, with branching ratios often close to one: most orders are
+reactions to earlier orders rather than to news.
+
+.. math::
+
+   \lambda(t) = \mu + \sum_{t_i < t} \alpha e^{-\beta(t - t_i)}, \qquad E[\lambda] = \frac{\mu}{1 - \alpha/\beta}
+
+*Implementation:* :func:`financialkit.market_microstructure.systems.order_flow.simulate_hawkes`
+(by the Hawkes-Oakes cluster representation),
+:func:`~financialkit.market_microstructure.systems.order_flow.hawkes_intensity`,
+:func:`~financialkit.market_microstructure.systems.order_flow.hawkes_loglik`
+(Ozaki's recursion),
+:func:`~financialkit.market_microstructure.systems.order_flow.fit_hawkes`
+and :func:`~financialkit.market_microstructure.systems.order_flow.hawkes_compensator`.
+The example fits a simulated order stream by maximum likelihood and
+uses Ogata's residual test to tell it apart from a Poisson stream.
+
+*References:* A. G. Hawkes, "Spectra of Some Self-Exciting and Mutually
+Exciting Point Processes," *Biometrika* 58 (1971) 83-90; T. Ozaki,
+"Maximum Likelihood Estimation of Hawkes' Self-Exciting Point
+Processes," *Annals of the Institute of Statistical Mathematics* 31
+(1979) 145-155; E. Bacry, I. Mastromatteo and J.-F. Muzy, "Hawkes
+Processes in Finance," *Market Microstructure and Liquidity* 1 (2015)
+1550005.
+
+.. minigallery:: ../../examples/market_microstructure/order_flow/plot_01_hawkes.py
 
 1976 -- Garman's Order-Flow Dealer
 ----------------------------------
@@ -399,6 +437,35 @@ a Limit Order Book," *Quantitative Finance* 8 (2008) 217-224.
 
 .. minigallery:: ../../examples/market_microstructure/dealers/plot_03_avellaneda_stoikov.py
 
+2010 -- Cont, Stoikov and Talreja: A Markov Order Book
+------------------------------------------------------
+
+Rama Cont, Sasha Stoikov and Rishi Talreja modelled the whole limit
+order book as a continuous-time Markov chain. Limit orders arrive at
+each distance from the opposite best quote at a rate that decays as a
+power law, market orders at a constant rate, and resting orders are
+cancelled at a rate that depends on their distance. The model is simple
+enough to estimate from order counts and rich enough to answer
+practical questions: the book's average shape, and the probability that
+the next price move is up, given the queues at the best bid and ask,
+which follows from a race between two birth-death processes.
+
+.. math::
+
+   \lambda(i) = \frac{k}{i^{a}}, \qquad P(\text{mid moves up} \mid q^B = a, q^A = b) = P\left(\tau^A_b < \tau^B_a\right)
+
+*Implementation:* :func:`financialkit.market_microstructure.systems.order_flow.simulate_cst`
+simulates the book event by event, and
+:func:`~financialkit.market_microstructure.systems.order_flow.cst_mid_up_probability`
+solves the backward equation of the race as a sparse linear system
+(the paper uses Laplace transforms). The example compares the
+simulated book's shape and price moves with both.
+
+*References:* R. Cont, S. Stoikov and R. Talreja, "A Stochastic Model
+for Order Book Dynamics," *Operations Research* 58 (2010) 549-563.
+
+.. minigallery:: ../../examples/market_microstructure/order_flow/plot_02_cont_stoikov_talreja.py
+
 2012 -- Corwin and Schultz: Spreads from Highs and Lows
 -------------------------------------------------------
 
@@ -450,6 +517,64 @@ Studies* 25 (2012) 1457-1493; T. G. Andersen and O. Bondarenko, "VPIN
 and the Flash Crash," *J. Financial Markets* 17 (2014) 1-46.
 
 .. minigallery:: ../../examples/market_microstructure/information/plot_05_vpin.py
+
+2013 -- Obizhaeva and Wang: Transient Impact
+--------------------------------------------
+
+Anna Obizhaeva and Jiang Wang derived execution costs from the supply
+and demand in the book instead of assuming an impact function. A
+purchase eats into the sell side and displaces the ask; new orders then
+refill the book at a finite rate, its resilience, so most impact is
+transient. The optimal purchase is a block at the start, steady buying
+at the rate the book refills, and an equal block at the end. Its cost
+depends on the resilience, which models without a book cannot see, and
+the idea led to the propagator models of transient impact.
+
+.. math::
+
+   x_0 = x_T = \frac{X}{\rho T + 2}, \qquad \dot x_t = \frac{\rho X}{\rho T + 2}, \qquad
+   C = \frac{\kappa X^2}{\rho T + 2} + \frac{\lambda X^2}{2}
+
+*Implementation:* :func:`financialkit.market_microstructure.systems.execution.obizhaeva_wang`
+gives the exact discrete-time schedule, and
+:func:`~financialkit.market_microstructure.systems.execution.transient_impact_cost`
+costs any schedule. The example follows the ask's displacement through
+the optimal and TWAP schedules and traces the cost against resilience.
+
+*References:* A. A. Obizhaeva and J. Wang, "Optimal Trading Strategy
+and Supply/Demand Dynamics," *J. Financial Markets* 16 (2013) 1-32; J.
+Gatheral, "No-Dynamic-Arbitrage and Market Impact," *Quantitative
+Finance* 10 (2010) 749-759.
+
+.. minigallery:: ../../examples/market_microstructure/execution/plot_04_obizhaeva_wang.py
+
+2014 -- Cont, Kukanov and Stoikov: Order-Flow Imbalance
+-------------------------------------------------------
+
+Rama Cont, Arseniy Kukanov and Sasha Stoikov asked which events in the
+book actually move prices. Trades had been the usual answer, but limit
+orders and cancellations at the best quotes change supply and demand
+just as much. Their order-flow imbalance adds what arrives at the best
+bid and subtracts what arrives at the best ask. Over ten-second
+intervals in 50 US stocks, price changes were linear in it, with
+:math:`R^2` around 65% against far less for the imbalance of trades
+alone, and with a slope inversely proportional to the depth of the
+book.
+
+.. math::
+
+   \Delta P_k = \beta\,\mathrm{OFI}_k + \varepsilon_k, \qquad \beta \approx \frac{c}{\text{depth}}
+
+*Implementation:* :func:`financialkit.market_microstructure.systems.order_flow.order_flow_imbalance`
+and :func:`~financialkit.market_microstructure.systems.order_flow.fit_ofi_impact`,
+by :func:`financialkit.time_series.utils.ols`. The example regresses
+the price changes of a simulated Cont-Stoikov-Talreja book on its OFI
+and its trade imbalance, and deepens the book.
+
+*References:* R. Cont, A. Kukanov and S. Stoikov, "The Price Impact of
+Order Book Events," *J. Financial Econometrics* 12 (2014) 47-88.
+
+.. minigallery:: ../../examples/market_microstructure/order_flow/plot_03_order_flow_imbalance.py
 
 See Also
 --------

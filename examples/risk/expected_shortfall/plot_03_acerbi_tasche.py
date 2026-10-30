@@ -33,6 +33,7 @@ from financialkit.risk import expected_shortfall, historical_var, parametric_es,
 
 x = -np.arange(1.0, 101.0)
 print(f"VaR {historical_var(x, 0.975).var}, Acerbi-Tasche ES {expected_shortfall(x, 0.975)}, naive tail mean {-np.mean(np.sort(x)[:3]):.1f}")
+assert np.isclose(expected_shortfall(x, 0.975), (100 + 99 + 0.5 * 98) / 2.5)
 
 # %%
 # Convergence to the closed form
@@ -53,6 +54,8 @@ for name, draw, exact in [
     est = np.array([[expected_shortfall(draw(k), 0.975) for _ in range(20)] for k in sizes])
     line = ax.errorbar(sizes, est.mean(axis=1), yerr=est.std(axis=1), fmt="o-", ms=3, capsize=2, label=f"{name} sample ES")
     ax.axhline(exact, color=line[0].get_color(), ls="--", lw=1)
+    # at 100,000 draws the mean of 20 estimates lies within 3 standard errors of the closed form
+    assert abs(est[-1].mean() - exact) < 3 * est[-1].std() / np.sqrt(20)
 ax.set_xscale("log")
 ax.set_xlabel("sample size")
 ax.set_ylabel("97.5% expected shortfall")
@@ -60,6 +63,8 @@ ax.legend()
 fig.tight_layout()
 
 for name, kw in [("normal", {}), ("t(4)", {"distribution": "t", "df": nu})]:
-    print(f"{name:7s} 97.5% ES {parametric_es(0.0, 1.0, 0.975, **kw):.3f} vs 99% VaR {parametric_var(0.0, 1.0, 0.99, **kw):.3f}")
+    es, var = parametric_es(0.0, 1.0, 0.975, **kw), parametric_var(0.0, 1.0, 0.99, **kw)
+    print(f"{name:7s} 97.5% ES {es:.3f} vs 99% VaR {var:.3f}")
+    assert abs(es / var - 1) < 0.01 if name == "normal" else es / var > 1.05
 
 plt.show()

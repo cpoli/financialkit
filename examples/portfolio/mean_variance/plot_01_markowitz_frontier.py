@@ -45,6 +45,7 @@ gmv = min_variance_portfolio(cov, mu, long_only=True)
 ax.plot(gmv.volatility, gmv.expected_return, "D", color="C2", label="minimum variance")
 ax.legend(fontsize=8)
 print(f"minimum-variance portfolio: {gmv.volatility:.2%} volatility, below the safest asset's {vol.min():.0%}")
+assert gmv.volatility < vol.min()
 
 # %%
 # The composition along the long-only frontier
@@ -55,6 +56,9 @@ print(f"minimum-variance portfolio: {gmv.volatility:.2%} volatility, below the s
 # negative correlation with bonds lowers risk.
 
 fr = efficient_frontier(mu, cov, 40, long_only=True)
+# No random portfolio beats the frontier, which ends all in emerging markets.
+assert np.all(np.sqrt(np.einsum("ij,jk,ik->i", W, cov, W)) >= np.interp(W @ mu, fr.returns, fr.volatilities) - 1e-6)
+assert np.isclose(fr.weights[-1, 4], 1.0, atol=1e-4) and fr.weights[0, 0] > 0.8 and fr.weights[0, 2:4].sum() > 0.05
 ax = plot_weights(fr.weights, labels=names, x=fr.volatilities)
 ax.set_xlabel("volatility")
 plt.tight_layout()

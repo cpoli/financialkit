@@ -9,8 +9,11 @@ factors and McCulloch's spline discount function
 (:func:`numpy.linalg.lstsq`), Nelson-Siegel and Svensson fits
 (:func:`scipy.optimize.least_squares`) and the principal components of
 curve moves (:func:`numpy.linalg.eigh`); Redington immunization and the
-Fong-Vasicek :math:`M^2` bound; and interest-rate and currency swaps
-valued as pairs of bonds.
+Fong-Vasicek :math:`M^2` bound; interest-rate and currency swaps
+valued as pairs of bonds, and overnight rates such as SOFR compounded in
+arrears; OIS discounting with a separate forecasting curve; Treasury
+bond futures (conversion factors and the cheapest to deliver); and
+mortgage pass-through cash flows under the PSA prepayment benchmark.
 
 Every curve is a :class:`YieldCurve` of continuously compounded zero
 rates, and every function that takes a curve also accepts a flat rate.
@@ -22,12 +25,16 @@ from financialkit import __version__
 from financialkit.fixed_income.core.base import (
     BondRisk,
     CashFlows,
+    CompoundedRate,
     CurveFitResult,
     CurveLike,
     CurvePCAResult,
+    DeliveryBasis,
     FlatCurve,
     ImmunizationResult,
     KeyRateDurationResult,
+    MBSCashFlows,
+    MultiCurve,
     ShiftedCurve,
     SwapValuation,
     YieldCurve,
@@ -37,6 +44,7 @@ from financialkit.fixed_income.core.base import (
 )
 from financialkit.fixed_income.systems.bonds import (
     accrued_interest,
+    bond_accrued_interest,
     bond_cash_flows,
     bond_price,
     clean_price,
@@ -71,13 +79,25 @@ from financialkit.fixed_income.systems.duration import (
     macaulay_duration,
     modified_duration,
 )
+from financialkit.fixed_income.systems.futures import cheapest_to_deliver, conversion_factor, treasury_futures_price
 from financialkit.fixed_income.systems.immunization import fong_vasicek_bound, horizon_value, linear_forward_shock, m_squared, redington_immunize
-from financialkit.fixed_income.systems.swaps import currency_swap_value, interest_rate_swap_value, swap_annuity, swap_rate
+from financialkit.fixed_income.systems.mbs import mbs_cash_flows, psa_cpr, single_monthly_mortality
+from financialkit.fixed_income.systems.multi_curve import bootstrap_forecast_curve, bootstrap_multi_curve
+from financialkit.fixed_income.systems.swaps import (
+    compounded_in_arrears,
+    currency_swap_value,
+    interest_rate_swap_value,
+    overnight_forwards,
+    swap_annuity,
+    swap_rate,
+)
 from financialkit.fixed_income.utils.rates import yield_discount_derivatives
 from financialkit.fixed_income.utils.synthetic import simulate_yield_changes
 from financialkit.fixed_income.visualizers.plots import (
     plot_cash_flows,
+    plot_discounted_cash_flows,
     plot_key_rate_durations,
+    plot_mbs_cash_flows,
     plot_pca_loadings,
     plot_price_yield,
     plot_surplus,
@@ -100,10 +120,15 @@ __all__ = [
     "KeyRateDurationResult",
     "ImmunizationResult",
     "SwapValuation",
+    "MultiCurve",
+    "CompoundedRate",
+    "DeliveryBasis",
+    "MBSCashFlows",
     "bond_cash_flows",
     "price_from_yield",
     "bond_price",
     "yield_to_maturity",
+    "bond_accrued_interest",
     "accrued_interest",
     "clean_price",
     "zero_coupon_bond_price",
@@ -139,12 +164,24 @@ __all__ = [
     "swap_rate",
     "interest_rate_swap_value",
     "currency_swap_value",
+    "compounded_in_arrears",
+    "overnight_forwards",
+    "bootstrap_forecast_curve",
+    "bootstrap_multi_curve",
+    "conversion_factor",
+    "cheapest_to_deliver",
+    "treasury_futures_price",
+    "psa_cpr",
+    "single_monthly_mortality",
+    "mbs_cash_flows",
     "yield_discount_derivatives",
     "simulate_yield_changes",
     "plot_yield_curve",
     "plot_price_yield",
+    "plot_discounted_cash_flows",
     "plot_cash_flows",
     "plot_key_rate_durations",
     "plot_pca_loadings",
     "plot_surplus",
+    "plot_mbs_cash_flows",
 ]

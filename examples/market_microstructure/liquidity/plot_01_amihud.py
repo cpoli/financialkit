@@ -39,6 +39,7 @@ for i in range(n_stocks):
 
 rho = stats.spearmanr(lam, amihud).statistic
 print(f"rank correlation between Amihud's ratio and the true lambda: {rho:.2f}")
+assert rho > 0.9
 
 fig, ax = plt.subplots(figsize=(6, 4.5))
 ax.loglog(lam, amihud, "o", color="C0", label="Amihud ratio (per $1M)")

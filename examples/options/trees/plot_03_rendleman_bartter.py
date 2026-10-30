@@ -29,6 +29,10 @@ S, K, T, r, sigma = 100.0, 100.0, 1.0, 0.08, 0.3
 for tree in (CRRTree(10), RendlemanBartterTree(10)):
     u, d, p, _ = tree._parameters(S, K, T, r, sigma, 0.0, 10)
     print(f"{tree.method:>17}: u = {u:.4f}, d = {d:.4f}, p = {p:.4f}, centre after 10 steps = {S * u**5 * d**5:.2f}")
+    if isinstance(tree, RendlemanBartterTree):
+        assert abs(p - 0.5) < 0.01 and S * u**5 * d**5 > S * 1.03
+    else:
+        assert np.isclose(S * u**5 * d**5, S)
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 for ax, tree in zip(axes, (CRRTree(6), RendlemanBartterTree(6)), strict=True):
@@ -51,6 +55,7 @@ steps = np.arange(10, 400, 3)
 fig, ax = plt.subplots(figsize=(7, 4))
 for tree in (CRRTree, RendlemanBartterTree):
     prices = [tree(n).price(S, K, T, r, sigma).price for n in steps]
+    assert np.all(np.abs(np.array(prices) - exact) < 4.0 / steps)
     plot_tree_convergence(steps, prices, exact, ax=ax, label=tree.method)
 ax.loglog(steps, 2.0 / steps, "k:", label="2/n")
 ax.legend()

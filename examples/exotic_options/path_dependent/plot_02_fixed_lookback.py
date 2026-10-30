@@ -33,6 +33,7 @@ for k in (80.0, 100.0, 120.0):
     for option_type in ("call", "put"):
         res = lookback_option_mc(S, T, r, sigma, option_type=option_type, K=k, n_steps=10, n_paths=10_000, rng=int(k))
         axes[0].errorbar(k, res.estimate, yerr=2 * res.std_error, fmt="k.", capsize=3)
+        assert abs(res.estimate - fixed_lookback_price(S, k, T, r, sigma, option_type=option_type)) < 4 * res.std_error
 axes[0].set_xlabel("strike K")
 axes[0].set_ylabel("value")
 axes[0].legend()
@@ -45,6 +46,12 @@ axes[0].legend()
 # strike.
 
 Smax = np.linspace(100.0, 140.0, 100)
+# Below the strike the maximum so far does not matter; above it the value
+# rises with it and never falls below what is locked in.
+seasoned = fixed_lookback_price(S, 105.0, 0.5, r, sigma, S_extreme=Smax)
+assert np.ptp(seasoned[Smax <= 105.0]) < 1e-10
+assert np.all(np.diff(seasoned[Smax >= 105.0]) > 0)
+assert np.all(seasoned >= np.exp(-r * 0.5) * np.maximum(Smax - 105.0, 0.0))
 axes[1].plot(Smax, fixed_lookback_price(S, 105.0, 0.5, r, sigma, S_extreme=Smax), label="seasoned call on the maximum")
 axes[1].plot(Smax, np.exp(-r * 0.5) * np.maximum(Smax - 105.0, 0.0), "--", label=r"locked in $e^{-r\tau}(S_{\max} - K)^+$")
 axes[1].axvline(105.0, color="0.5", lw=1)

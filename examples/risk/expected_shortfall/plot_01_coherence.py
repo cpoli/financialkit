@@ -38,6 +38,7 @@ for measure in (ValueAtRisk(0.95), ExpectedShortfall(0.95)):
         f"    subadditive {res.subadditivity}, monotone {res.monotonicity}, homogeneous {res.positive_homogeneity}, "
         f"translation invariant {res.translation_invariance}: coherent = {res.coherent}"
     )
+    assert res.coherent == res.subadditivity == isinstance(measure, ExpectedShortfall)
 
 # %%
 # Merging gets punished, at some levels only
@@ -52,6 +53,8 @@ benefit = {
     m: [(lambda r: r.rho_x + r.rho_y - r.rho_sum)(check_coherence(cls(a), A, B)) for a in levels]
     for m, cls in [("VaR", ValueAtRisk), ("ES", ExpectedShortfall)]
 }
+punished = levels[np.array(benefit["VaR"]) < 0]
+assert 0.92 < punished.min() and punished.max() < 0.96 and min(benefit["ES"]) >= -1e-9
 fig, ax = plt.subplots(figsize=(7, 3.8))
 for m, b in benefit.items():
     ax.plot(levels, b, label=m)

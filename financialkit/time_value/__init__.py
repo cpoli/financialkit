@@ -9,14 +9,17 @@ root of the NPV polynomial (:func:`numpy.roots`) with a warning when
 there are several, and Baldwin's modified IRR; level-payment
 amortization schedules and the Truth-in-Lending APR; day counts, year
 fractions and accrued interest for every
-:class:`~financialkit.constants.DayCount` convention.
+:class:`~financialkit.constants.DayCount` convention; coupon schedules
+with short or long stubs and the end-of-month rule, business-day
+adjustments on a weekend calendar plus user-supplied holidays
+(:func:`numpy.busday_offset`) and settlement lags.
 
 The year-fraction functions here are the package's single
 implementation; later domains import them rather than redefining them.
 """
 
 from financialkit import __version__
-from financialkit.time_value.core.base import AmortizationSchedule, CompoundingTable, MultipleIRRWarning, NPVProfile, SinkingFundSchedule
+from financialkit.time_value.core.base import AmortizationSchedule, CompoundingTable, MultipleIRRWarning, NPVProfile, Schedule, SinkingFundSchedule
 from financialkit.time_value.systems.amortization import amortization_schedule, annual_percentage_rate, loan_payment
 from financialkit.time_value.systems.annuities import (
     annuity_factor,
@@ -42,8 +45,9 @@ from financialkit.time_value.systems.compounding import (
 from financialkit.time_value.systems.day_counts import accrued_interest, day_count, year_fraction
 from financialkit.time_value.systems.irr import irr, irr_all, mirr, npv_profile
 from financialkit.time_value.systems.present_value import fisher_nominal_rate, fisher_real_rate, npv, present_value
+from financialkit.time_value.systems.schedules import BUSINESS_DAY_CONVENTIONS, STUBS, adjust_date, coupon_schedule, is_business_day, settlement_date
 from financialkit.time_value.utils.cash_flows import sign_changes
-from financialkit.time_value.utils.dates import days_in_year, is_leap_year
+from financialkit.time_value.utils.dates import add_months, days_in_year, is_end_of_month, is_leap_year
 from financialkit.time_value.visualizers.plots import plot_amortization, plot_cash_flows, plot_compounding_growth, plot_npv_profile
 
 __all__ = [
@@ -52,6 +56,7 @@ __all__ = [
     "NPVProfile",
     "AmortizationSchedule",
     "SinkingFundSchedule",
+    "Schedule",
     "MultipleIRRWarning",
     "future_value",
     "discount_factor",
@@ -84,9 +89,17 @@ __all__ = [
     "day_count",
     "year_fraction",
     "accrued_interest",
+    "BUSINESS_DAY_CONVENTIONS",
+    "STUBS",
+    "is_business_day",
+    "adjust_date",
+    "settlement_date",
+    "coupon_schedule",
     "sign_changes",
     "is_leap_year",
     "days_in_year",
+    "is_end_of_month",
+    "add_months",
     "plot_cash_flows",
     "plot_compounding_growth",
     "plot_npv_profile",

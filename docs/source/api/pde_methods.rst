@@ -14,8 +14,10 @@ options as linear complementarity problems solved by projected SOR, the
 Brennan-Schwartz algorithm or the penalty method; von Neumann
 amplification factors, the explicit log-spot scheme as a trinomial
 tree, the transformation to the heat equation and Richardson
-extrapolation; and the Peaceman-Rachford ADI scheme for two-asset
-options.
+extrapolation; the Peaceman-Rachford and Craig-Sneyd ADI schemes for
+two-asset options; and the Heston PDE on in 't Hout and Foulon's
+non-uniform grids, stepped by the Douglas, Craig-Sneyd, modified
+Craig-Sneyd or Hundsdorfer-Verwer splitting.
 
 .. automodule:: financialkit.pde_methods
    :members:

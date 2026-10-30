@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from financialkit.exotic_options import realized_variance, variance_swap_strike
+from financialkit.exotic_options import annualized_realized_variance, variance_swap_strike
 from financialkit.integrators import gbm_paths
 from financialkit.options import black_scholes_price
 
@@ -35,7 +35,7 @@ def test_realized_variance_of_gbm():
     """E[sum of squared log returns] / T = sigma^2 + (r - sigma^2/2)^2 T / n."""
     sigma, r, T, n = 0.3, 0.05, 1.0, 252
     _, paths = gbm_paths(100.0, r, sigma, T, n, 4000, rng=0)
-    rv = realized_variance(paths, T)
+    rv = annualized_realized_variance(paths, T)
     expected = sigma**2 + (r - 0.5 * sigma**2) ** 2 * T / n
     assert abs(rv.mean() - expected) < 4 * rv.std() / np.sqrt(rv.size)
 

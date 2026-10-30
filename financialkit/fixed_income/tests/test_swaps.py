@@ -7,8 +7,10 @@ from financialkit.fixed_income import (
     FlatCurve,
     ZeroCurve,
     bond_cash_flows,
+    compounded_in_arrears,
     currency_swap_value,
     interest_rate_swap_value,
+    overnight_forwards,
     swap_annuity,
     swap_rate,
 )
@@ -60,3 +62,58 @@ def test_currency_swap_with_equal_curves_and_rates_is_principal_conversion():
     assert flipped.value < 0
     assert flipped.pay_leg == pytest.approx(1.2 * bond_cash_flows(100.0, 0.04, 5.0, 1).present_value(0.01))
     assert np.isfinite(flipped.receive_leg)
+
+
+DAYS = np.arange("2024-01-01", "2024-07-01", dtype="datetime64[D]")
+BUSINESS = DAYS[np.is_busday(DAYS)]
+
+
+def test_compounded_in_arrears_constant_rate():
+    r = compounded_in_arrears(BUSINESS, np.full(BUSINESS.size, 0.05), "2024-01-02", "2024-04-02")
+    expected = (np.prod(1 + 0.05 * r.weights / 360) - 1) * 360 / 91
+    assert r.rate == pytest.approx(expected, rel=1e-14)
+    assert r.weights.sum() == 91 and r.accrual == pytest.approx(91 / 360)
+    assert r.cumulative[-1] == pytest.approx(r.rate, rel=1e-14)
+    assert r.rate > 0.05  # compounding
+
+
+def test_compounded_rate_of_curve_forwards_is_simple_forward():
+    """ARRC/ISDA: the expected compounded coupon is the OIS forward, so a SOFR leg is worth P(t0) - P(tn)."""
+    curve = ZeroCurve([0.25, 1.0, 2.0], [0.050, 0.046, 0.042])
+    holidays = ["2024-01-15", "2024-02-19"]
+    dates, rates = overnight_forwards(curve, "2024-04-02", "2024-07-02", valuation_date="2024-01-02", holidays=holidays)
+    r = compounded_in_arrears(dates, rates, "2024-04-02", "2024-07-02", holidays=holidays)
+    P = curve.discount(np.array([91, 182]) / 365)
+    assert r.rate == pytest.approx((P[0] / P[1] - 1) / r.accrual, rel=1e-12)
+
+
+def test_arrc_conventions():
+    rng = np.random.default_rng(0)
+    fixings = 0.053 + 0.0005 * rng.standard_normal(BUSINESS.size)
+    base = compounded_in_arrears(BUSINESS, fixings, "2024-02-01", "2024-05-01")
+    look = compounded_in_arrears(BUSINESS, fixings, "2024-02-01", "2024-05-01", lookback=2)
+    shift = compounded_in_arrears(BUSINESS, fixings, "2024-02-01", "2024-05-01", lookback=2, observation_shift=True)
+    lock = compounded_in_arrears(BUSINESS, fixings, "2024-02-01", "2024-05-01", lockout=2)
+    assert look.weights.tolist() == base.weights.tolist()
+    assert look.fixing_dates[0] == np.datetime64("2024-01-30")
+    assert shift.dates[0] == np.datetime64("2024-01-30") and shift.weights.sum() == (np.datetime64("2024-04-29") - np.datetime64("2024-01-30")).astype(int)
+    assert lock.rates[-1] == lock.rates[-2] == lock.rates[-3]
+    assert lock.fixing_dates[-1] == base.dates[-3]
+    for other in (look, shift, lock):
+        assert abs(other.rate - base.rate) < 5e-4  # conventions move the coupon by basis points
+    assert compounded_in_arrears(BUSINESS, fixings, "2024-02-01", "2024-05-01", lookback=0, lockout=0).rate == base.rate
+
+
+def test_compounded_in_arrears_validation():
+    with pytest.raises(ValueError, match="business days"):
+        compounded_in_arrears(BUSINESS, np.zeros(BUSINESS.size), "2024-01-06", "2024-02-01")
+    with pytest.raises(ValueError, match="no fixing"):
+        compounded_in_arrears(BUSINESS[5:], np.zeros(BUSINESS.size - 5), "2024-01-02", "2024-02-01")
+    with pytest.raises(ValueError):
+        compounded_in_arrears(BUSINESS, np.zeros(BUSINESS.size), "2024-01-02", "2024-01-03", lockout=1)
+    with pytest.raises(ValueError):
+        compounded_in_arrears(BUSINESS, np.zeros(3), "2024-01-02", "2024-02-01")
+    with pytest.raises(ValueError):
+        compounded_in_arrears(BUSINESS, np.zeros(BUSINESS.size), "2024-02-01", "2024-01-02")
+    with pytest.raises(ValueError):
+        compounded_in_arrears(BUSINESS, np.zeros(BUSINESS.size), "2024-01-02", "2024-02-01", lookback=-1)

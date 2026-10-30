@@ -1,11 +1,16 @@
-"""Covariance estimators for portfolio construction: Sharpe (1963) and Ledoit-Wolf (2004).
+"""Covariance estimators for portfolio construction: Sharpe (1963), Rosenberg (1974) and Ledoit-Wolf (2004).
 
 The sample covariance of :math:`d` assets has :math:`d(d+1)/2` free
 parameters, so with a few years of data it is noisy, ill-conditioned and
 singular once :math:`d` exceeds the number of observations; optimizers
 then exploit its errors. Sharpe's single-index model imposes structure,
 :math:`\\Sigma = \\sigma_m^2 \\beta\\beta' + \\mathrm{diag}(\\sigma_\\varepsilon^2)`,
-with only :math:`3d + 1` parameters. Ledoit and Wolf instead shrink the
+with only :math:`3d + 1` parameters. Rosenberg's fundamental factor
+model, the basis of Barra's risk models, replaces the single index by
+:math:`k` factors whose exposures are observed characteristics (industry
+membership, size, value, ...), estimates the factor returns by a
+cross-sectional regression in every period, and models
+:math:`\\Sigma = XFX' + \\mathrm{diag}(s^2)`. Ledoit and Wolf instead shrink the
 sample matrix towards a structured target with the intensity that
 minimizes the expected Frobenius loss, estimated from the data:
 towards a scaled identity (Ledoit and Wolf 2004a) or towards the
@@ -13,7 +18,10 @@ constant-correlation matrix (Ledoit and Wolf 2004b). The shrinkage
 estimators are hand-written, since no allowed dependency provides them.
 
 References: W. F. Sharpe, "A Simplified Model for Portfolio Analysis,"
-*Management Sci.* 9 (1963) 277-293; O. Ledoit and M. Wolf, "A
+*Management Sci.* 9 (1963) 277-293; B. Rosenberg, "Extra-Market
+Components of Covariance in Security Returns," *J. Financial Quant.
+Anal.* 9 (1974) 263-274; R. C. Grinold and R. N. Kahn, *Active Portfolio
+Management*, 2nd ed., McGraw-Hill (2000), Ch. 3; O. Ledoit and M. Wolf, "A
 Well-Conditioned Estimator for Large-Dimensional Covariance Matrices,"
 *J. Multivariate Anal.* 88 (2004) 365-411; O. Ledoit and M. Wolf,
 "Honey, I Shrunk the Sample Covariance Matrix," *J. Portfolio Mgmt.* 30
@@ -22,12 +30,14 @@ Well-Conditioned Estimator for Large-Dimensional Covariance Matrices,"
 
 from __future__ import annotations
 
+from typing import Optional
+
 import numpy as np
 from numpy.typing import ArrayLike
 
-from financialkit.portfolio.core.base import CovarianceResult
+from financialkit.portfolio.core.base import CovarianceResult, FactorRiskResult
 
-__all__ = ["sample_covariance", "single_index_covariance", "ledoit_wolf"]
+__all__ = ["sample_covariance", "single_index_covariance", "fundamental_factor_covariance", "ledoit_wolf"]
 
 
 def _returns(returns: ArrayLike) -> np.ndarray:
@@ -100,6 +110,64 @@ def single_index_covariance(returns: ArrayLike, market: ArrayLike) -> Covariance
     systematic = np.var(m, ddof=1) * np.outer(beta, beta)
     resid_var = (resid**2).sum(axis=0) / (n - 2)
     return CovarianceResult(cov=systematic + np.diag(resid_var), method="single_index", n_params=3 * d + 1, target=systematic, betas=beta)
+
+
+def fundamental_factor_covariance(returns: ArrayLike, exposures: ArrayLike, weights: Optional[ArrayLike] = None) -> FactorRiskResult:
+    """Rosenberg's fundamental factor covariance, :math:`XFX' + \\mathrm{diag}(s^2)`.
+
+    In each period the cross-section of returns is regressed on the
+    known exposures, :math:`r_t = X_t f_t + u_t`, by weighted least
+    squares, which estimates that period's factor returns :math:`f_t`.
+    :math:`F` is the sample covariance of the :math:`f_t`, and
+    :math:`s_i^2` the variance of asset :math:`i`'s residuals over time.
+    The forecast uses the latest exposures.
+
+    Parameters
+    ----------
+    returns : array_like, shape (n, d)
+    exposures : array_like, shape (d, k) or (n, d, k)
+        Factor exposures, fixed or one matrix per period. Industry
+        membership is a 0/1 column per industry; style exposures are
+        usually standardized across assets.
+    weights : array_like, shape (d,), optional
+        Regression weights, for instance the square root of market
+        capitalisation as in Barra's models. Equal by default.
+
+    Returns
+    -------
+    FactorRiskResult
+
+    Examples
+    --------
+    Returns driven exactly by two factors have no specific risk.
+
+    >>> import numpy as np
+    >>> X = np.array([[1.0, 0.5], [1.0, -0.5], [1.0, 1.0], [1.0, 0.0]])
+    >>> f = np.random.default_rng(0).standard_normal((50, 2))
+    >>> res = fundamental_factor_covariance(f @ X.T, X)
+    >>> bool(np.allclose(res.factor_returns, f)), bool(np.allclose(res.specific_var, 0.0))
+    (True, True)
+    """
+    R = _returns(returns)
+    n, d = R.shape
+    Xs = np.asarray(exposures, dtype=np.float64)
+    if Xs.ndim == 2:
+        Xs = np.broadcast_to(Xs, (n, *Xs.shape))
+    if Xs.ndim != 3 or Xs.shape[:2] != (n, d):
+        raise ValueError(f"exposures must have shape ({d}, k) or ({n}, {d}, k), got {np.shape(exposures)}")
+    k = Xs.shape[2]
+    if k >= d:
+        raise ValueError(f"need more assets than factors, got {d} assets and {k} factors")
+    w = np.ones(d) if weights is None else np.asarray(weights, dtype=np.float64)
+    if w.shape != (d,) or np.any(w <= 0):
+        raise ValueError(f"weights must be {d} positive numbers")
+    XtW = np.swapaxes(Xs, 1, 2) * w
+    f = np.linalg.solve(XtW @ Xs, (XtW @ R[:, :, None]))[:, :, 0]
+    resid = R - np.einsum("tik,tk->ti", Xs, f)
+    F = np.atleast_2d(np.cov(f, rowvar=False))
+    spec = np.var(resid, axis=0, ddof=1)
+    X = Xs[-1]
+    return FactorRiskResult(cov=X @ F @ X.T + np.diag(spec), exposures=np.array(X), factor_returns=f, factor_cov=F, specific_var=spec, residuals=resid)
 
 
 def ledoit_wolf(returns: ArrayLike, target: str = "identity") -> CovarianceResult:

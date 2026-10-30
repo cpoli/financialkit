@@ -62,11 +62,14 @@ axes[1].set_title("one path of f(t, T), t = 0, 1, ..., 9")
 
 wrong = simulate_hjm(curve, sigma, a, horizon=10.0, n_steps=50, n_paths=3000, drift_condition=False, rng=0)
 exact = curve.discount(res.times)
+z_10y = {}
 for r, name in ((res, "HJM drift"), (wrong, "zero drift")):
     p, se = r.bond_prices()
     axes[2].fill_between(res.times, 1e4 * (p - exact - 2 * se), 1e4 * (p - exact + 2 * se), alpha=0.3)
     axes[2].plot(res.times, 1e4 * (p - exact), label=name)
-    print(f"{name}: 10y bond off by {1e4 * (p[-1] - exact[-1]):+.1f} bp of face ({(p[-1] - exact[-1]) / se[-1]:+.1f} standard errors)")
+    z_10y[name] = (p[-1] - exact[-1]) / se[-1]
+    print(f"{name}: 10y bond off by {1e4 * (p[-1] - exact[-1]):+.1f} bp of face ({z_10y[name]:+.1f} standard errors)")
+assert abs(z_10y["HJM drift"]) < 2 and z_10y["zero drift"] > 4  # only the drift condition reprices the curve
 axes[2].axhline(0, color="k", lw=0.5)
 axes[2].set_xlabel("maturity T (years)")
 axes[2].set_ylabel("Monte Carlo - market price (bp of face)")

@@ -19,11 +19,15 @@ Financial Engineering* (Springer, 2004), Section 8.6.
 from __future__ import annotations
 
 import numpy as np
+from numpy.typing import ArrayLike
 
+from financialkit._deprecation import renamed_parameter
+from financialkit._validation import one_of
+from financialkit._validation import option_type as check_option_type
 from financialkit.exotic_options.core.base import LongstaffSchwartzResult
-from financialkit.integrators import RNGLike, antithetic_increments, brownian_increments, gbm_paths
+from financialkit.exotic_options.utils.numerics import spot_paths
+from financialkit.integrators import RNGLike, antithetic_increments, brownian_increments
 from financialkit.monte_carlo import vanilla_payoff
-from financialkit.options.utils.common import option_sign
 
 __all__ = ["longstaff_schwartz", "regression_basis"]
 
@@ -51,62 +55,76 @@ def regression_basis(x: np.ndarray, degree: int = 3, basis: str = "laguerre") ->
     >>> regression_basis([0.0, 1.0], degree=2).round(4).tolist()
     [[1.0, 1.0, 1.0], [1.0, 0.6065, 0.0]]
     """
+    one_of("basis", basis, ("laguerre", "monomial"))
     x = np.asarray(x, dtype=np.float64)
     if basis == "laguerre":
         cols = np.exp(-0.5 * x)[:, None] * np.polynomial.laguerre.lagvander(x, int(degree) - 1)
-    elif basis == "monomial":
-        cols = np.polynomial.polynomial.polyvander(x, int(degree))[:, 1:]
     else:
-        raise ValueError(f"basis must be 'laguerre' or 'monomial', got {basis!r}")
+        cols = np.polynomial.polynomial.polyvander(x, int(degree))[:, 1:]
     return np.column_stack([np.ones_like(x), cols])
 
 
+@renamed_parameter("n_exercise", "n_steps", "financialkit.exotic_options.longstaff_schwartz")
 def longstaff_schwartz(
     S: float,
     K: float,
     T: float,
     r: float,
-    sigma: float,
+    sigma: float | None = None,
     q: float = 0.0,
     option_type: str = "put",
-    n_exercise: int = 50,
+    n_steps: int = 50,
     n_paths: int = 50_000,
     degree: int = 3,
     basis: str = "laguerre",
     antithetic: bool = True,
     rng: RNGLike = None,
     confidence: float = 0.95,
+    paths: ArrayLike | None = None,
+    discount: ArrayLike | None = None,
 ) -> LongstaffSchwartzResult:
     """American (Bermudan) option value by least-squares Monte Carlo (Longstaff-Schwartz 2001).
 
-    Exercise is allowed on `n_exercise` equally spaced dates up to
+    Exercise is allowed on `n_steps` equally spaced dates up to
     :math:`T`. At each date :math:`t_i`, working backward, the discounted
     future cash flow :math:`Y` of each in-the-money path is regressed on
     :func:`regression_basis` of :math:`S_{t_i}/K`, and the path is exercised
     where the payoff exceeds the fitted :math:`E[Y \\mid S_{t_i}]`. The paths
     come from :func:`financialkit.integrators.gbm_paths`, optionally with
-    antithetic increments.
+    antithetic increments, or from `paths`, which prices the option under
+    any model (Heston, local volatility, jumps). The regression sees only
+    the spot, so under a multi-factor model the policy, and hence the
+    price, is a lower bound.
 
     Parameters
     ----------
-    S, K, T, r, sigma : float
-        Spot, strike, maturity, rate and volatility.
+    S, K, T, r : float
+        Spot, strike, maturity and rate.
+    sigma : float, optional
+        GBM volatility; required unless `paths` are given.
     q : float
         Continuous dividend yield.
     option_type : {"call", "put"}
-    n_exercise : int
-        Number of exercise dates (time steps).
+    n_steps : int
+        Number of exercise dates (time steps); ignored with `paths`.
     n_paths : int
-        Number of paths (rounded up to even with `antithetic`).
+        Number of paths (rounded up to even with `antithetic`); ignored with `paths`.
     degree : int
         Number of non-constant regressors.
     basis : {"laguerre", "monomial"}
     antithetic : bool
         Simulate antithetic pairs; the standard error then uses pair means.
+        Ignored with `paths`, whose standard error treats them as independent.
     rng : numpy.random.Generator or int, optional
         Generator or seed.
     confidence : float
         Coverage of the confidence interval.
+    paths : array_like, shape (n_paths, n_steps + 1), optional
+        Risk-neutral spot paths starting at `S` on the grid :math:`t_i = iT/n`,
+        in place of the GBM ones.
+    discount : array_like, optional
+        Discount factors :math:`D(0, t_i)` for `paths`, of shape
+        ``(n_steps + 1,)`` or one row per path; :math:`e^{-r t_i}` by default.
 
     Returns
     -------
@@ -122,38 +140,43 @@ def longstaff_schwartz(
     >>> bool(abs(res.estimate - 4.478) < 4 * res.std_error + 0.02)
     True
     """
-    phi = option_sign(option_type)
-    n, m = int(n_exercise), int(n_paths)
-    if antithetic:
+    phi = check_option_type(option_type)
+    n, m = int(n_steps), int(n_paths)
+    dW = None
+    if paths is not None:
+        antithetic = False
+    elif antithetic:
         m += m % 2
         dW = antithetic_increments(T, n, m, rng=rng)
     else:
         dW = brownian_increments(T, n, m, rng=rng)
-    times, paths = gbm_paths(S, r - q, sigma, T, n, m, dW=dW)
-    dt = T / n
-    growth = np.exp(-r * dt)
-    cash = vanilla_payoff(paths[:, -1], K, option_type)
+    spot, D = spot_paths(S, T, r - q, sigma, n, m, paths, discount, dW=dW)
+    m, n = spot.shape[0], spot.shape[1] - 1
+    times = np.linspace(0.0, T, n + 1)
+    # one-step discount factors D(t_i, t_{i+1}); a single column broadcasts over the paths
+    growth = np.full((1, n), np.exp(-r * T / n)) if D is None else D[:, 1:] / D[:, :-1]
+    cash = vanilla_payoff(spot[:, -1], K, option_type)
     boundary = np.full(n + 1, np.nan)
     if cash.any():
         boundary[-1] = K
     exercised_early = np.zeros(m, dtype=bool)
     for i in range(n - 1, 0, -1):
-        cash *= growth
-        exercise_value = vanilla_payoff(paths[:, i], K, option_type)
+        cash *= growth[:, i]
+        exercise_value = vanilla_payoff(spot[:, i], K, option_type)
         itm = np.nonzero(exercise_value > 0)[0]
         if itm.size <= degree + 1:
             continue
-        X = regression_basis(paths[itm, i] / K, degree, basis)
+        X = regression_basis(spot[itm, i] / K, degree, basis)
         coef, *_ = np.linalg.lstsq(X, cash[itm], rcond=None)
         exercise = exercise_value[itm] > X @ coef
         idx = itm[exercise]
         cash[idx] = exercise_value[idx]
         exercised_early[idx] = True
-        grid = np.linspace(paths[itm, i].min(), paths[itm, i].max(), 256)
+        grid = np.linspace(spot[itm, i].min(), spot[itm, i].max(), 256)
         policy = vanilla_payoff(grid, K, option_type) > regression_basis(grid / K, degree, basis) @ coef
         if policy.any():
             boundary[i] = grid[policy].max() if phi == -1 else grid[policy].min()
-    cash *= growth
+    cash *= growth[:, 0]
     samples = 0.5 * (cash[: m // 2] + cash[m // 2 :]) if antithetic else cash
     estimate = float(cash.mean())
     se = float(samples.std(ddof=1) / np.sqrt(samples.size))

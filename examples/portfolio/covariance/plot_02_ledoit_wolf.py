@@ -38,6 +38,7 @@ ax.set_ylabel("eigenvalue")
 ax.legend()
 fig.tight_layout()
 print(f"condition numbers: sample {S.condition_number:.0f}, shrunk {lw.condition_number:.0f}")
+assert lw.condition_number < S.condition_number / 10
 
 # %%
 # Shrinkage intensity and out-of-sample risk
@@ -58,6 +59,10 @@ for n in ns:
     rows.append(np.mean(r, axis=0))
 rows = np.array(rows)
 best = min_variance_portfolio(true).volatility
+# Both shrinkage targets beat the sample matrix, by a margin that shrinks as data accumulate.
+assert np.all(rows[:, 1:3] < rows[:, :1]) and rows[-1, 0] - rows[-1, 2] < (rows[0, 0] - rows[0, 2]) / 10
+# The constant-correlation target is the true structure here, so the estimated intensity stays near one.
+assert np.all(rows[:, 3] > 0.95)
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9, 3.5))
 for k, label in enumerate(["sample", "LW identity", "LW constant correlation"]):
     ax1.plot(ns, rows[:, k] / best, "o-", label=label)

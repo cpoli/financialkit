@@ -97,3 +97,8 @@ def test_bridge_beats_plain_sobol_in_high_dimension():
     assert se["bridge"] < se["sobol"] < se["pseudo"]
     with pytest.raises(ValueError):
         gbm_path_estimate(asian, 100.0, 1.0, 0.05, 0.2, 4, 16, "halton")
+
+
+def test_randomized_qmc_rejects_unknown_sequence():
+    with pytest.raises(ValueError, match="kind must be one of"):
+        randomized_qmc_estimate(lambda u: u[:, 0], 16, dim=1, sequence="faure")

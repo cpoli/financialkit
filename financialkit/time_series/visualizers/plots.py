@@ -119,7 +119,7 @@ def plot_variance_ratio(result: VarianceRatioResult, ax=None, label: str = ""):
         _, ax = plt.subplots()
     q = result.q.astype(np.float64)
     ax.plot(q, result.ratio, "o-", label=label or None)
-    se = np.sqrt(2 * (2 * q - 1) * (q - 1) / (3 * q * result.nobs))
+    se = np.sqrt(2 * (2 * q - 1) * (q - 1) / (3 * q * result.n_obs))
     ax.fill_between(q, 1 - 1.96 * se, 1 + 1.96 * se, color="0.85", zorder=0)
     ax.axhline(1, color="k", lw=0.8)
     ax.set_xscale("log", base=2)

@@ -27,6 +27,8 @@ divs = 1.0 * 1.12 ** np.arange(1, 6)
 value = dividend_discount_value(divs, r, terminal_growth=0.03)
 explicit = dividend_discount_value(divs, r)
 print(f"value = {value:.2f}, of which explicit dividends {explicit:.2f} ({explicit / value:.0%})")
+# The terminal value is Gordon's D_6 / (r - g), discounted five years.
+assert np.isclose(value - explicit, divs[-1] * 1.03 / (r - 0.03) / (1 + r) ** 5)
 
 # %%
 # Where the value comes from
@@ -39,6 +41,8 @@ print(f"value = {value:.2f}, of which explicit dividends {explicit:.2f} ({explic
 years = np.arange(1, 151)
 path = np.concatenate([divs, divs[-1] * 1.03 ** np.arange(1, years.size - divs.size + 1)])
 partial = np.array([dividend_discount_value(path[:n], r) for n in years])
+# 150 years of dividends reach the full value to within 0.1%.
+assert abs(partial[-1] / value - 1) < 1e-3
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(years, partial, label="PV of the first n dividends")
 ax.axhline(value, color="C3", ls="--", label=f"Williams's value = {value:.2f}")

@@ -16,8 +16,9 @@ volatility :meth:`~GaussianShortRateModel.bond_option_volatility` is
 model specific.
 
 Results with structure are small dataclasses, never bare tuples, so the
-visualizers have a stable interface: Monte Carlo bond prices, a binomial
-short-rate lattice, a cap or floor strip, Jamshidian's decomposition and
+visualizers have a stable interface: Monte Carlo bond prices, binomial
+and trinomial short-rate lattices, a callable bond, a mortgage
+pass-through, a cap or floor strip, Jamshidian's decomposition and
 an HJM forward-curve simulation.
 """
 
@@ -29,6 +30,8 @@ from dataclasses import dataclass, field
 import numpy as np
 from scipy.integrate import cumulative_trapezoid
 
+from financialkit._deprecation import deprecated_field
+from financialkit._validation import option_type as check_option_type
 from financialkit.fixed_income.core.base import YieldCurve
 from financialkit.integrators import RNGLike
 
@@ -38,8 +41,12 @@ __all__ = [
     "ModelCurve",
     "BondMonteCarloResult",
     "RateTree",
+    "TrinomialRateTree",
+    "CallableBondResult",
+    "MBSResult",
     "CapFloorResult",
     "JamshidianResult",
+    "ShortRateCalibration",
     "HJMResult",
 ]
 
@@ -248,7 +255,7 @@ class RateTree:
         -------
         float
         """
-        sign = {"call": 1.0, "put": -1.0}[option_type]
+        sign = check_option_type(option_type)
         m = self._step_index(expiry)
         n = self._step_index(maturity)
         if m >= n:
@@ -264,6 +271,140 @@ class RateTree:
             if american:
                 value = np.maximum(value, sign * (bonds[i] - K))
         return float(value[0])
+
+
+@dataclass
+class TrinomialRateTree:
+    """Hull and White's (1994) trinomial short-rate tree.
+
+    The rate over ``[t_i, t_{i+1}]`` at node ``j`` is
+    ``alpha[i] + j * dx``, for ``|j| <= min(i, j_max)``. Node ``j`` branches
+    to ``centers[j] - 1``, ``centers[j]`` and ``centers[j] + 1`` with
+    ``probabilities[j]`` (down, middle, up); the branching turns inward
+    at ``|j| = j_max``. Arrays over nodes are indexed by ``j + width``, and
+    nodes outside a step's range carry values that are never used.
+    """
+
+    times: np.ndarray
+    """ndarray, shape (n + 1,): Node dates ``0, dt, ..., n dt``."""
+
+    alpha: np.ndarray
+    """ndarray, shape (n,): Shift of each step, fitted to the initial curve."""
+
+    dx: float
+    """float: Rate spacing between neighbouring nodes."""
+
+    dt: float
+    """float: Step length in years."""
+
+    j_max: int
+    """int: Node level at which the branching turns inward."""
+
+    probabilities: np.ndarray
+    """ndarray, shape (2 width + 1, 3): Down, middle and up probabilities of each node."""
+
+    centers: np.ndarray
+    """ndarray of int, shape (2 width + 1,): Middle child of each node, as a level ``j``."""
+
+    arrow_debreu: np.ndarray
+    """ndarray, shape (n + 1, 2 width + 1): Price at time 0 of 1 paid at node ``(i, j)``."""
+
+    @property
+    def n_steps(self) -> int:
+        """int: Number of steps."""
+        return self.alpha.size
+
+    @property
+    def width(self) -> int:
+        """int: Highest node level in the tree, ``min(j_max, n_steps)``."""
+        return (self.centers.size - 1) // 2
+
+    @property
+    def levels(self) -> np.ndarray:
+        """ndarray of int, shape (2 width + 1,): Node levels ``-width .. width``."""
+        return np.arange(-self.width, self.width + 1)
+
+    @property
+    def rates(self) -> np.ndarray:
+        """ndarray, shape (n, 2 width + 1): Node rates, ``nan`` outside each step's range."""
+        j = self.levels
+        r = self.alpha[:, None] + j * self.dx
+        reach = np.minimum(np.arange(self.n_steps), self.width)[:, None]
+        return np.where(np.abs(j) <= reach, r, np.nan)
+
+    def step_index(self, T: float) -> int:
+        """Step at node date ``T``; raises ``ValueError`` if ``T`` is not one."""
+        k = T / self.dt
+        i = int(round(k))
+        if abs(k - i) > 1e-9 or not 0 <= i <= self.n_steps:
+            raise ValueError(f"T = {T} is not a node date of the tree")
+        return i
+
+    def rollback(self, values: np.ndarray, i: int, spread: float = 0.0) -> np.ndarray:
+        """Discount node values at step ``i + 1`` back to step ``i``, at node rate plus `spread`."""
+        children = self.centers + self.width
+        expected = (
+            self.probabilities[:, 0] * values[children - 1] + self.probabilities[:, 1] * values[children] + self.probabilities[:, 2] * values[children + 1]
+        )
+        return np.exp(-(self.alpha[i] + self.levels * self.dx + spread) * self.dt) * expected
+
+    def zero_coupon_bond(self, T: float, spread: float = 0.0) -> float:
+        """Time-0 price of a unit zero-coupon bond maturing at node date ``T``."""
+        values = np.ones(self.centers.size)
+        for i in range(self.step_index(T) - 1, -1, -1):
+            values = self.rollback(values, i, spread)
+        return float(values[self.width])
+
+
+@dataclass
+class CallableBondResult:
+    """A callable bond valued by backward induction on a short-rate tree."""
+
+    price: float
+    """float: Value of the callable bond."""
+
+    straight_price: float
+    """float: Value of the same bond without the call."""
+
+    call_times: np.ndarray
+    """ndarray, shape (m,): Dates on which the issuer may call."""
+
+    call_boundary: np.ndarray
+    """ndarray, shape (m,): Highest node rate at which the issuer calls on each date (``nan`` if never)."""
+
+    spread: float = 0.0
+    """float: Spread added to every node rate when discounting (the OAS)."""
+
+    @property
+    def option_value(self) -> float:
+        """float: Value of the issuer's call, ``straight_price - price``."""
+        return self.straight_price - self.price
+
+
+@dataclass
+class MBSResult:
+    """A mortgage pass-through valued by Monte Carlo over short-rate paths."""
+
+    price: float
+    """float: Monte Carlo value."""
+
+    std_error: float
+    """float: Standard error of :attr:`price`."""
+
+    times: np.ndarray
+    """ndarray, shape (n,): Payment dates (monthly)."""
+
+    expected_cash_flows: np.ndarray
+    """ndarray, shape (n,): Average cash flow to the investor on each date."""
+
+    expected_cpr: np.ndarray
+    """ndarray, shape (n,): Average conditional prepayment rate (annualised) in each month."""
+
+    expected_balance: np.ndarray
+    """ndarray, shape (n + 1,): Average outstanding principal, starting at the face value."""
+
+    n_paths: int = 0
+    """int: Number of simulated paths."""
 
 
 @dataclass
@@ -313,6 +454,48 @@ class JamshidianResult:
 
     components: np.ndarray
     """ndarray, shape (n,): ``cash_flows[i]`` times the zero-bond option struck at ``strikes[i]``."""
+
+
+@dataclass
+class ShortRateCalibration:
+    """A Gaussian short-rate model fitted to Black cap or swaption volatilities."""
+
+    model: GaussianShortRateModel
+    """GaussianShortRateModel: The fitted model, on the input curve."""
+
+    params: dict[str, float]
+    """dict: Fitted parameters by name, e.g. ``{"a": ..., "sigma": ...}``."""
+
+    kind: str
+    """str: ``"cap"`` or ``"swaption"``."""
+
+    expiries: np.ndarray
+    """ndarray, shape (n,): Cap maturities, or swaption expiries."""
+
+    tenors: np.ndarray
+    """ndarray, shape (n,): Swaption tenors (zero for caps)."""
+
+    strikes: np.ndarray
+    """ndarray, shape (n,): Strikes (at the money unless given)."""
+
+    market_vols: np.ndarray
+    """ndarray, shape (n,): Black volatilities fitted to."""
+
+    model_vols: np.ndarray
+    """ndarray, shape (n,): Black volatilities implied by the fitted model's prices."""
+
+    market_prices: np.ndarray
+    """ndarray, shape (n,): Black prices at :attr:`market_vols`."""
+
+    model_prices: np.ndarray
+    """ndarray, shape (n,): The fitted model's prices."""
+
+    rmse: float
+    """float: Root-mean-square of ``model_vols - market_vols`` (decimal volatility)."""
+
+    converged: bool = True
+    """bool: Whether :func:`scipy.optimize.least_squares` reported convergence."""
+    success = deprecated_field("converged")
 
 
 @dataclass

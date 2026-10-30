@@ -40,6 +40,8 @@ rf = 0.02
 t = tangency_portfolio(mu, cov, rf)
 ax = plot_frontier(efficient_frontier(mu, cov, 60, max_return=0.12), labels=names, rf=rf)
 print(f"tangency portfolio: mean {t.expected_return:.2%}, volatility {t.volatility:.2%}, Sharpe {t.sharpe_ratio(rf):.3f}")
+fr = efficient_frontier(mu, cov, 60, max_return=0.12)
+assert np.all((fr.returns - rf) / fr.volatilities <= t.sharpe_ratio(rf) + 1e-9)
 
 # %%
 # Three investors, one risky portfolio
@@ -53,6 +55,7 @@ for i, gamma in enumerate([4.0, 8.0, 16.0]):
     res = two_fund_allocation(mu, cov, rf, gamma)
     ax.bar(np.arange(6) + 0.27 * (i - 1), np.append(res.weights, 1 - res.weights.sum()), width=0.27, label=f"gamma = {gamma:g}")
     print(f"gamma = {gamma:g}: risky mix {np.round(res.weights / res.weights.sum(), 3)}, cash {1 - res.weights.sum():+.2f}")
+    assert np.allclose(res.weights / res.weights.sum(), t.weights)
 ax.set_xticks(range(6), names + ["cash"])
 ax.axhline(0, color="0.3", lw=0.8)
 ax.set_ylabel("weight")

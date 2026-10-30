@@ -2,13 +2,16 @@
 
 from financialkit.interest_rate_models.core.base import (
     BondMonteCarloResult,
+    CallableBondResult,
     CapFloorResult,
     GaussianShortRateModel,
     HJMResult,
     JamshidianResult,
+    MBSResult,
     ModelCurve,
     RateTree,
     ShortRateModel,
+    TrinomialRateTree,
 )
 
 __all__ = [
@@ -17,6 +20,9 @@ __all__ = [
     "ModelCurve",
     "BondMonteCarloResult",
     "RateTree",
+    "TrinomialRateTree",
+    "CallableBondResult",
+    "MBSResult",
     "CapFloorResult",
     "JamshidianResult",
     "HJMResult",

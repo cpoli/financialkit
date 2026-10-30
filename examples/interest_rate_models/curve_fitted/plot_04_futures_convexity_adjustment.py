@@ -31,7 +31,9 @@ curve = NelsonSiegelCurve(0.05, -0.02, 0.01, 2.0)
 #
 # Hull (Example 6.4): sigma = 1.2%, an 8-year contract on 3-month rates.
 
-print(f"Ho-Lee adjustment: {1e4 * futures_convexity_adjustment(8.0, 8.25, 0.012):.1f} bp (Hull: 47.5 bp)")
+hull = 1e4 * futures_convexity_adjustment(8.0, 8.25, 0.012)
+print(f"Ho-Lee adjustment: {hull:.1f} bp (Hull: 47.5 bp)")
+assert abs(hull - 47.5) < 0.05  # Hull's figure to the digit he prints
 
 # %%
 # The adjustment grows with the square of maturity
@@ -60,6 +62,8 @@ for name, model, a in (("Ho-Lee", HoLeeModel(curve, 0.012), 0.0), ("Hull-White",
         R = -np.log(model.zero_coupon_bond(t + 0.25, t=t, state=r[:, -1])) / 0.25
         gap.append(R.mean() - curve.forward_rate(t, t + 0.25))
         err.append(R.std() / np.sqrt(R.size))
+    z = (np.array(gap) - futures_convexity_adjustment(expiries, expiries + 0.25, 0.012, a)) / np.array(err)
+    assert np.abs(z).max() < 3  # the simulated gap matches the closed form within 3 standard errors
     axes[1].errorbar(expiries, 1e4 * np.array(gap), yerr=1.96e4 * np.array(err), fmt="o", capsize=3, label=f"{name} Monte Carlo")
     axes[1].plot(t1, 1e4 * futures_convexity_adjustment(t1, t1 + 0.25, 0.012, a), lw=1)
 axes[1].set_xlabel("futures expiry t1 (years)")

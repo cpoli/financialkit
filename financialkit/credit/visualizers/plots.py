@@ -1,6 +1,6 @@
 """Plotting helpers for financialkit.credit: survival curves, loss
-distributions, transition matrices, CreditMetrics value distributions
-and tranche expected losses.
+distributions, transition matrices, CreditMetrics value distributions,
+tranche expected losses and counterparty exposure profiles.
 """
 
 from __future__ import annotations
@@ -8,9 +8,9 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.credit.core.base import CreditMetricsResult, LossDistribution, SurvivalCurve
+from financialkit.credit.core.base import CreditMetricsResult, ExposureProfile, LossDistribution, SurvivalCurve
 
-__all__ = ["plot_survival", "plot_loss_distribution", "plot_transition_matrix", "plot_value_distribution", "plot_tranche_losses"]
+__all__ = ["plot_survival", "plot_loss_distribution", "plot_transition_matrix", "plot_value_distribution", "plot_tranche_losses", "plot_exposure_profile"]
 
 
 def plot_survival(curve: SurvivalCurve, T: float = 10.0, ax=None, label: str | None = None, hazard: bool = True):
@@ -165,5 +165,40 @@ def plot_tranche_losses(results, ax=None):
         ax.plot(res.times, res.expected_loss, marker=".", label=f"{100 * res.attachment:g}-{100 * res.detachment:g}%: {1e4 * res.par_spread:.0f} bp")
     ax.set_xlabel("years")
     ax.set_ylabel("expected tranche loss")
+    ax.legend()
+    return ax
+
+
+def plot_exposure_profile(profile: ExposureProfile, ax=None, pfe_level: float | None = 0.95, n_paths: int = 0, label: str | None = None):
+    """Discounted expected positive and negative exposure against time.
+
+    Parameters
+    ----------
+    profile : ExposureProfile
+    ax : matplotlib.axes.Axes, optional
+    pfe_level : float or None
+        Also draw the potential future exposure at this level (undiscounted).
+    n_paths : int
+        Number of mark-to-market paths to draw in the background.
+    label : str, optional
+        Suffix for the legend entries.
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    if ax is None:
+        _, ax = plt.subplots()
+    t = profile.times
+    suffix = f" ({label})" if label else ""
+    for path in profile.values[:n_paths]:
+        ax.plot(t, path, color="0.85", lw=0.6, zorder=0)
+    ax.plot(t, profile.epe, lw=2, label="EPE, discounted" + suffix)
+    ax.plot(t, -profile.ene, lw=2, label="-ENE, discounted" + suffix)
+    if pfe_level is not None:
+        ax.plot(t, profile.pfe(pfe_level), ls="--", label=f"PFE {100 * pfe_level:g}%" + suffix)
+    ax.axhline(0.0, color="k", lw=0.5)
+    ax.set_xlabel("years")
+    ax.set_ylabel("exposure")
     ax.legend()
     return ax

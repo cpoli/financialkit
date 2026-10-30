@@ -3,7 +3,8 @@
 Fama and French (1993) and Carhart (1997) build their factors from the
 cross-section of stocks: each period, sort on a characteristic known at
 the start of the period (size, book-to-market, past return), and hold
-the top group long and the bottom group short. The same sorts give the
+the top group long and the bottom group short. Fama and French build
+each factor from independent 2 x 3 sorts on size and the characteristic. The same sorts give the
 test portfolios that a factor model must price.
 """
 
@@ -12,7 +13,7 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike
 
-__all__ = ["as_panel", "sort_portfolios", "long_short_factor", "momentum_signal"]
+__all__ = ["as_panel", "sort_portfolios", "long_short_factor", "momentum_signal", "two_by_three_portfolios"]
 
 
 def as_panel(x: ArrayLike) -> np.ndarray:
@@ -140,4 +141,48 @@ def momentum_signal(returns: ArrayLike, lookback: int = 12, skip: int = 1) -> np
     out = np.full(R.shape, np.nan)
     t = np.arange(lookback, R.shape[0])
     out[t] = np.expm1(logw[t - skip] - logw[t - lookback])
+    return out
+
+
+def two_by_three_portfolios(size: ArrayLike, signal: ArrayLike, returns: ArrayLike) -> np.ndarray:
+    """Equal-weighted returns of Fama and French's six size and characteristic portfolios.
+
+    Each period, assets split at the median ``size`` into small and big,
+    and independently at the 30th and 70th percentiles of ``signal`` into
+    low, middle and high.
+
+    Parameters
+    ----------
+    size : array_like, shape (T, n) or (n,)
+        Market capitalisation (or its log) at the start of each period.
+    signal : array_like, shape (T, n) or (n,)
+        Second characteristic, such as book-to-market.
+    returns : array_like, shape (T, n)
+
+    Returns
+    -------
+    ndarray, shape (T, 2, 3)
+        ``[:, 0]`` small and ``[:, 1]`` big; ``[..., 0]`` low, ``[..., 2]`` high.
+        ``nan`` where a portfolio is empty.
+
+    Examples
+    --------
+    >>> six = two_by_three_portfolios([1, 2, 3, 4, 5, 6], [1, 3, 6, 2, 4, 5], [[0.1, 0.3, 0.6, 0.2, 0.4, 0.5]])
+    >>> six[0].round(12).tolist()
+    [[0.1, 0.3, 0.6], [0.2, 0.4, 0.5]]
+    """
+    R = np.atleast_2d(np.asarray(returns, dtype=np.float64))
+    Z = np.broadcast_to(np.asarray(size, dtype=np.float64), R.shape)
+    S = np.broadcast_to(np.asarray(signal, dtype=np.float64), R.shape)
+    ok = np.isfinite(Z) & np.isfinite(S) & np.isfinite(R)
+    with np.errstate(invalid="ignore"):
+        big = Z > np.nanmedian(np.where(ok, Z, np.nan), axis=1, keepdims=True)
+        lo, hi = np.nanquantile(np.where(ok, S, np.nan), [0.3, 0.7], axis=1, keepdims=True)
+    terciles = [S <= lo, (S > lo) & (S <= hi), S > hi]
+    out = np.full((R.shape[0], 2, 3), np.nan)
+    for i, row in enumerate([~big, big]):
+        for j, col in enumerate(terciles):
+            mask = ok & row & col
+            cnt = mask.sum(axis=1)
+            out[:, i, j] = np.where(cnt > 0, np.where(mask, R, 0.0).sum(axis=1) / np.maximum(cnt, 1), np.nan)
     return out

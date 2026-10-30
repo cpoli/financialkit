@@ -40,6 +40,8 @@ axes[1].plot(t, 100 * true.zero_rate(t), "k", lw=3, alpha=0.3, label="true")
 for degree in (2, 3):
     res = fit_mcculloch_spline(bonds, prices, knots=knots, degree=degree)
     print(f"degree {degree}: price RMSE {res.rmse:.4f}")
+    assert res.rmse < 0.1  # within twice the 0.05 price noise
+    assert np.abs(res.curve.discount(t) - true.discount(t)).max() < 1e-3
     axes[0].plot(t, res.curve.discount(t), label=f"degree {degree}")
     axes[1].plot(t, 100 * res.curve.zero_rate(t), label=f"degree {degree}")
 for k in knots:

@@ -40,6 +40,8 @@ w_mkt = np.array([0.016, 0.022, 0.052, 0.055, 0.116, 0.124, 0.615])
 
 pi = implied_equilibrium_returns(cov, w_mkt, delta=2.5)
 print("equilibrium returns (%):", np.round(100 * pi, 1))
+# He and Litterman's Table 2, to the printed 0.1%.
+assert np.allclose(100 * pi, [3.9, 6.9, 8.4, 9.0, 4.3, 6.8, 7.6], atol=0.05)
 
 # %%
 # One relative view
@@ -62,6 +64,10 @@ ax2.legend()
 fig.tight_layout()
 print("posterior returns (%):", np.round(100 * res.posterior_returns, 1))
 print("optimal weights (%):  ", np.round(100 * res.weights, 1))
+# Only the countries in the view move away from w_mkt / (1 + tau).
+untouched = [0, 1, 4, 6]
+assert np.allclose(res.weights[untouched], w_mkt[untouched] / 1.05)
+assert res.weights[3] > w_mkt[3] and np.all(res.weights[[2, 5]] < w_mkt[[2, 5]] / 1.05)
 
 # %%
 # Confidence in the view
@@ -74,6 +80,7 @@ print("optimal weights (%):  ", np.round(100 * res.weights, 1))
 scales = np.logspace(-3, 3, 40)
 base = (P @ (0.05 * cov) @ P.T)[0, 0]
 germany = [black_litterman(cov, w_mkt, P, [0.05], omega=[[s * base]]).weights[3] for s in scales]
+assert np.all(np.diff(germany) < 0) and np.isclose(germany[-1], w_mkt[3] / 1.05, atol=1e-3)
 fig, ax = plt.subplots(figsize=(7, 3.5))
 ax.semilogx(scales, 100 * np.array(germany))
 ax.axhline(100 * w_mkt[3] / 1.05, color="0.4", ls=":", label="market weight / (1 + tau)")

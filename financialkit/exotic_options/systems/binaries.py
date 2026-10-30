@@ -19,6 +19,11 @@ References: M. Rubinstein and E. Reiner, "Unscrambling the Binary Code,"
 *Risk* 4(9) (1991) 75-83; E. G. Haug, *The Complete Guide to Option
 Pricing Formulas*, 2nd ed. (McGraw-Hill, 2007), Sections 4.19.1-4.19.3;
 Hull, *Options, Futures, and Other Derivatives*, 10th ed., Section 26.10.
+
+At ``T = 0`` or ``sigma = 0`` each price is its limit, with
+:math:`N(d_{1,2})` the probability of exercise, 1 or 0, and 1/2 exactly at
+the money (see :func:`~financialkit.options.black_d1_d2`). Negative
+``S``, ``K``, ``T`` or ``sigma`` raise :class:`ValueError`.
 """
 
 from __future__ import annotations
@@ -27,14 +32,18 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy.stats import norm
 
+from financialkit._validation import nonnegative, positive
+from financialkit._validation import option_type as check_option_type
+from financialkit.exotic_options.utils.numerics import deterministic_hit_time
 from financialkit.options import black_d1_d2
-from financialkit.options.utils.common import as_output, option_sign
+from financialkit.options.utils.common import as_output
 
 __all__ = ["cash_or_nothing_price", "asset_or_nothing_price", "gap_option_price", "one_touch_price"]
 
 
 def _d1_d2(S: ArrayLike, K: ArrayLike, T: ArrayLike, r: ArrayLike, sigma: ArrayLike, q: ArrayLike) -> tuple[np.ndarray, ...]:
     S, K, T, r, sigma, q = (np.asarray(a, dtype=np.float64) for a in (S, K, T, r, sigma, q))
+    nonnegative(S=S, K=K, T=T, sigma=sigma)
     return S, K, T, r, q, *black_d1_d2(S * np.exp((r - q) * T), K, sigma, T)
 
 
@@ -67,7 +76,7 @@ def cash_or_nothing_price(
     >>> round(cash_or_nothing_price(100.0, 80.0, 0.75, 0.06, 0.35, q=0.06, option_type="put", cash=10.0), 3)
     2.671
     """
-    phi = option_sign(option_type)
+    phi = check_option_type(option_type)
     _, _, T, r, _, _, d2 = _d1_d2(S, K, T, r, sigma, q)
     return as_output(np.asarray(cash, dtype=np.float64) * np.exp(-r * T) * norm.cdf(phi * d2))
 
@@ -99,7 +108,7 @@ def asset_or_nothing_price(
     >>> round(asset_or_nothing_price(70.0, 65.0, 0.5, 0.07, 0.27, q=0.05, option_type="put"), 4)
     20.2069
     """
-    phi = option_sign(option_type)
+    phi = check_option_type(option_type)
     S, _, T, _, q, d1, _ = _d1_d2(S, K, T, r, sigma, q)
     return as_output(S * np.exp(-q * T) * norm.cdf(phi * d1))
 
@@ -109,10 +118,12 @@ def gap_option_price(
 ) -> np.ndarray | float:
     """Gap option: pays :math:`S_T - K_2` if :math:`S_T > K_1` (call), :math:`K_2 - S_T` if :math:`S_T < K_1` (put).
 
-    It is an asset-or-nothing option minus :math:`K_2` cash-or-nothing
-    options, both triggered at :math:`K_1`:
+    The call is an asset-or-nothing call minus :math:`K_2` cash-or-nothing
+    calls, and the put :math:`K_2` cash-or-nothing puts minus an
+    asset-or-nothing put, all triggered at :math:`K_1`:
 
-    .. math:: c = S e^{-qT} N(d_1) - K_2 e^{-rT} N(d_2), \\quad d_{1,2} \\text{ at } K_1.
+    .. math:: c = S e^{-qT} N(d_1) - K_2 e^{-rT} N(d_2), \\quad
+              p = K_2 e^{-rT} N(-d_2) - S e^{-qT} N(-d_1), \\quad d_{1,2} \\text{ at } K_1.
 
     Parameters
     ----------
@@ -138,8 +149,13 @@ def gap_option_price(
     >>> round(gap_option_price(50.0, 50.0, 57.0, 0.5, 0.09, 0.20), 4)
     -0.0053
     """
+    phi = check_option_type(option_type)
     return as_output(
-        np.asarray(asset_or_nothing_price(S, K1, T, r, sigma, q, option_type)) - np.asarray(cash_or_nothing_price(S, K1, T, r, sigma, q, option_type, cash=K2))
+        phi
+        * (
+            np.asarray(asset_or_nothing_price(S, K1, T, r, sigma, q, option_type))
+            - np.asarray(cash_or_nothing_price(S, K1, T, r, sigma, q, option_type, cash=K2))
+        )
     )
 
 
@@ -157,7 +173,9 @@ def one_touch_price(S: ArrayLike, H: ArrayLike, T: ArrayLike, r: ArrayLike, sigm
 
     the rebate term of a knock-out barrier option (Reiner and Rubinstein
     1991). As :math:`T \\to \\infty` it tends to the perpetual value
-    :math:`X (H/S)^{\\mu + \\eta\\lambda}`.
+    :math:`X (H/S)^{\\mu + \\eta\\lambda}`. With ``sigma = 0``, at ``T = 0``
+    or at ``S = 0`` the path :math:`S e^{bt}` is known, and the price is
+    `cash` discounted from the date it reaches :math:`H`, or 0 if it never does.
 
     Parameters
     ----------
@@ -180,12 +198,19 @@ def one_touch_price(S: ArrayLike, H: ArrayLike, T: ArrayLike, r: ArrayLike, sigm
     1.0
     """
     S, H, T, r, sigma, q, X = np.broadcast_arrays(*(np.asarray(a, dtype=np.float64) for a in (S, H, T, r, sigma, q, cash)))
-    eta = np.where(H < S, 1.0, -1.0)
+    nonnegative(S=S, T=T, sigma=sigma)
+    positive(H=H)
+    is_down = H < S
+    eta = np.where(is_down, 1.0, -1.0)
     v = sigma * np.sqrt(T)
-    mu = (r - q - 0.5 * sigma**2) / sigma**2
-    lam = np.sqrt(mu**2 + 2.0 * r / sigma**2)
-    hs = H / S
-    with np.errstate(divide="ignore", invalid="ignore"):
-        z = np.log(hs) / v + lam * v
-        value = X * (hs ** (mu + lam) * norm.cdf(eta * z) + hs ** (mu - lam) * norm.cdf(eta * z - 2.0 * eta * lam * v))
-    return as_output(np.where(H == S, X, value))
+    regular = (v > 0) & (S > 0)
+    Ss, sig, TT = np.where(regular, S, H), np.where(regular, sigma, 1.0), np.where(regular, T, 1.0)
+    vv = sig * np.sqrt(TT)
+    mu = (r - q - 0.5 * sig**2) / sig**2
+    lam = np.sqrt(mu**2 + 2.0 * r / sig**2)
+    hs = H / Ss
+    z = np.log(hs) / vv + lam * vv
+    value = X * (hs ** (mu + lam) * norm.cdf(eta * z) + hs ** (mu - lam) * norm.cdf(eta * z - 2.0 * eta * lam * vv))
+    hit, t_hit = deterministic_hit_time(S, H, T, r - q, is_down)
+    deterministic = np.where(hit, X * np.exp(-r * t_hit), 0.0)
+    return as_output(np.where(H == S, X, np.where(regular, value, deterministic)))

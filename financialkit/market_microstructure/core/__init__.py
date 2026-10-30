@@ -5,11 +5,14 @@ from financialkit.market_microstructure.core.base import (
     ExecutionResult,
     GarmanResult,
     GlostenMilgromResult,
+    HawkesResult,
     KyleResult,
     MarketMakingResult,
+    OrderBookResult,
     PINResult,
     QuotingStrategy,
     TradeImpactResult,
+    TransientImpactResult,
     VPINResult,
 )
 
@@ -23,5 +26,8 @@ __all__ = [
     "TradeImpactResult",
     "PINResult",
     "VPINResult",
+    "HawkesResult",
+    "OrderBookResult",
+    "TransientImpactResult",
     "QuotingStrategy",
 ]

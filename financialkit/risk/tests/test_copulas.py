@@ -60,3 +60,9 @@ def test_empirical_tail_dependence_matches_closed_form_far_out():
     assert abs(est - lam) < 4 * se + 0.05 and abs(upper - lam) < 4 * se + 0.05
     g = gaussian_copula_sample(R, n, 4)
     assert empirical_tail_dependence(g[:, 0], g[:, 1], q) < est - 4 * se
+
+
+def test_empirical_tail_dependence_rejects_unknown_tail():
+    u = np.random.default_rng(0).random(100)
+    with pytest.raises(ValueError, match="tail must be"):
+        empirical_tail_dependence(u, u, tail="middle")

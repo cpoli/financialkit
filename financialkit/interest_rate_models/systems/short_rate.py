@@ -31,6 +31,7 @@ from __future__ import annotations
 import numpy as np
 from scipy.stats import ncx2
 
+from financialkit._validation import nonnegative, one_of, positive
 from financialkit.integrators import RNGLike, euler_maruyama, ou_paths
 from financialkit.interest_rate_models.core.base import BondMonteCarloResult, GaussianShortRateModel, ShortRateModel
 from financialkit.interest_rate_models.utils.numerics import cir_diffusion, cir_drift, path_discount_factors
@@ -81,8 +82,7 @@ def monte_carlo_bond_prices(model: ShortRateModel, maturities, n_steps: int = 20
     True
     """
     maturities = np.atleast_1d(np.asarray(maturities, dtype=np.float64))
-    if np.any(maturities <= 0):
-        raise ValueError("maturities must be positive")
+    positive(maturities=maturities)
     T = float(maturities.max())
     times, rates = model.simulate(T, n_steps, n_paths, rng=rng)
     disc = path_discount_factors(times, rates)
@@ -158,8 +158,7 @@ class MertonShortRateModel(GaussianShortRateModel):
     """
 
     def __init__(self, r0: float, mu: float, sigma: float):
-        if sigma < 0:
-            raise ValueError("sigma must be non-negative")
+        nonnegative(sigma=sigma)
         self.r0, self.mu, self.sigma = float(r0), float(mu), float(sigma)
 
     def zero_coupon_bond(self, T, t: float = 0.0, state=None):
@@ -207,10 +206,8 @@ class VasicekModel(GaussianShortRateModel):
     """
 
     def __init__(self, r0: float, kappa: float, theta: float, sigma: float):
-        if kappa <= 0:
-            raise ValueError("kappa must be positive")
-        if sigma < 0:
-            raise ValueError("sigma must be non-negative")
+        positive(kappa=kappa)
+        nonnegative(sigma=sigma)
         self.r0, self.kappa, self.theta, self.sigma = float(r0), float(kappa), float(theta), float(sigma)
 
     @property
@@ -269,10 +266,8 @@ class CIRModel(ShortRateModel):
     """
 
     def __init__(self, r0: float, kappa: float, theta: float, sigma: float):
-        if kappa <= 0 or theta <= 0 or sigma <= 0:
-            raise ValueError("kappa, theta and sigma must be positive")
-        if r0 < 0:
-            raise ValueError("r0 must be non-negative")
+        positive(kappa=kappa, theta=theta, sigma=sigma)
+        nonnegative(r0=r0)
         self.r0, self.kappa, self.theta, self.sigma = float(r0), float(kappa), float(theta), float(sigma)
 
     @property
@@ -317,12 +312,11 @@ class CIRModel(ShortRateModel):
         times : ndarray, shape (n_steps + 1,)
         rates : ndarray, shape (n_paths, n_steps + 1)
         """
+        one_of("method", method, ("exact", "euler"))
         rng = np.random.default_rng(rng)
         if method == "euler":
             times, x = euler_maruyama(cir_drift, cir_diffusion, self.r0, T, n_steps, n_paths, params=[self.kappa, self.theta, self.sigma], rng=rng)
             return times, np.maximum(x, 0.0)
-        if method != "exact":
-            raise ValueError(f'method must be "exact" or "euler", got {method!r}')
         times = np.linspace(0.0, T, n_steps + 1)
         dt = T / n_steps
         c = self.sigma**2 * -np.expm1(-self.kappa * dt) / (4 * self.kappa)

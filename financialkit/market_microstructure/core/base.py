@@ -29,6 +29,9 @@ __all__ = [
     "TradeImpactResult",
     "PINResult",
     "VPINResult",
+    "HawkesResult",
+    "OrderBookResult",
+    "TransientImpactResult",
     "QuotingStrategy",
 ]
 
@@ -264,6 +267,97 @@ class VPINResult:
     def imbalance(self) -> np.ndarray:
         """ndarray, shape (n_buckets,): :math:`|V^B - V^S| / V` for each bucket."""
         return np.abs(self.buy_volume - self.sell_volume) / (self.buy_volume + self.sell_volume)
+
+
+@dataclass
+class HawkesResult:
+    """A Hawkes process with exponential kernel fitted by maximum likelihood.
+
+    The intensity is :math:`\\lambda(t) = \\mu + \\sum_{t_i < t} \\alpha e^{-\\beta (t - t_i)}`.
+    """
+
+    mu: float
+    """Baseline (immigrant) intensity."""
+
+    alpha: float
+    """Jump in the intensity after each event."""
+
+    beta: float
+    """Decay rate of the excitation."""
+
+    loglik: float
+    """Maximised log-likelihood."""
+
+    @property
+    def branching_ratio(self) -> float:
+        """:math:`n = \\alpha / \\beta`: expected number of events each event triggers directly."""
+        return self.alpha / self.beta
+
+    @property
+    def mean_intensity(self) -> float:
+        """Stationary event rate :math:`\\mu / (1 - n)`, ``inf`` when :math:`n \\ge 1`."""
+        n = self.branching_ratio
+        return self.mu / (1.0 - n) if n < 1 else float("inf")
+
+
+@dataclass
+class OrderBookResult:
+    """A simulated Cont-Stoikov-Talreja limit order book, recorded after every event.
+
+    Prices are in ticks. Event codes: 0 limit buy, 1 limit sell, 2 market
+    buy, 3 market sell, 4 cancelled buy, 5 cancelled sell.
+    """
+
+    times: np.ndarray
+    """ndarray, shape (n_events + 1,): Event times, starting at 0."""
+
+    events: np.ndarray
+    """ndarray of int, shape (n_events,): Code of each event."""
+
+    best_bid: np.ndarray
+    """ndarray of int, shape (n_events + 1,): Best bid; ``-1`` when the bid side is empty."""
+
+    best_ask: np.ndarray
+    """ndarray of int, shape (n_events + 1,): Best ask; ``n_ticks`` when the ask side is empty."""
+
+    bid_size: np.ndarray
+    """ndarray of int, shape (n_events + 1,): Orders queued at the best bid."""
+
+    ask_size: np.ndarray
+    """ndarray of int, shape (n_events + 1,): Orders queued at the best ask."""
+
+    mean_depth: np.ndarray
+    """ndarray, shape (n_levels,): Time-averaged orders at ``i = 1..n_levels`` ticks from the opposite best quote, both sides pooled."""
+
+    @property
+    def mid(self) -> np.ndarray:
+        """ndarray, shape (n_events + 1,): Mid price in ticks."""
+        return 0.5 * (self.best_bid + self.best_ask)
+
+    @property
+    def spread(self) -> np.ndarray:
+        """ndarray of int, shape (n_events + 1,): Bid-ask spread in ticks."""
+        return self.best_ask - self.best_bid
+
+
+@dataclass
+class TransientImpactResult:
+    """Obizhaeva and Wang's (2013) optimal schedule in a book that recovers exponentially."""
+
+    times: np.ndarray
+    """ndarray, shape (N + 1,): Trading dates :math:`t_0 = 0, \\dots, t_N = T`."""
+
+    trades: np.ndarray
+    """ndarray, shape (N + 1,): Shares bought at each date, summing to `X`."""
+
+    deviation_before: np.ndarray
+    """ndarray, shape (N + 1,): Displacement :math:`D_n^-` of the ask from its steady state just before each trade."""
+
+    deviation_after: np.ndarray
+    """ndarray, shape (N + 1,): Displacement :math:`D_n^+ = D_n^- + \\kappa x_n` just after each trade."""
+
+    expected_cost: float
+    """Cost above the pre-trade ask, :math:`\\sum_n x_n (D_n^- + \\kappa x_n / 2) + \\lambda X^2 / 2`."""
 
 
 class QuotingStrategy(ABC):

@@ -17,7 +17,7 @@ at-the-money local volatility.
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.integrators import euler_maruyama, njit
+from financialkit.integrators import euler_maruyama
 from financialkit.options import implied_volatility
 from financialkit.stochastic_volatility import cev_local_vol, cev_price
 from financialkit.stochastic_volatility.visualizers import plot_smile
@@ -29,12 +29,10 @@ S, T, r = 100.0, 1.0, 0.03
 # ------------------------------
 
 
-@njit
 def drift(x, t, p):
     return p[0] * x
 
 
-@njit
 def diffusion(x, t, p):
     return p[1] * np.maximum(x, 0.0) ** p[2]
 
@@ -45,6 +43,7 @@ _, paths = euler_maruyama(drift, diffusion, S, T, 100, 20_000, params=[r, sigma,
 for K in (80.0, 100.0, 120.0):
     pay = np.exp(-r * T) * np.maximum(paths[:, -1] - K, 0.0)
     print(f"K = {K:5.0f}: Schroder {cev_price(S, K, T, r, sigma, beta):.4f}, Euler MC {pay.mean():.4f} +/- {2 * pay.std() / np.sqrt(pay.size):.4f}")
+    assert abs(cev_price(S, K, T, r, sigma, beta) - pay.mean()) < 3 * pay.std() / np.sqrt(pay.size)
 
 # %%
 # The skew
@@ -58,6 +57,7 @@ for beta in (0.0001, 0.5, 0.8, 1.5):
     ax1.plot(grid, cev_local_vol(grid, sigma, beta), label=f"beta = {beta:g}")
     vols = implied_volatility(cev_price(S, K, T, r, sigma, beta), S, K, T, r)
     plot_smile(K, vols, ax=ax2, label=f"beta = {beta:g}")
+    assert np.all(np.diff(vols) < 0) if beta < 1 else vols[-1] > vols[0]
 ax1.set_xlabel("spot S")
 ax1.set_ylabel("local volatility")
 ax1.legend()

@@ -4,14 +4,18 @@ import numpy as np
 import pytest
 
 from financialkit.asset_pricing import (
+    adjusted_p_values,
     apt_arbitrage_portfolio,
     apt_expected_returns,
+    fama_french_five,
     fama_macbeth,
     long_short_factor,
     momentum_signal,
     simulate_factor_model,
     sort_portfolios,
+    t_hurdle,
     time_series_regression,
+    two_by_three_portfolios,
 )
 from financialkit.constants import DEFAULT_ATOL
 
@@ -80,3 +84,42 @@ def test_momentum_signal_window():
     sig = momentum_signal(R, lookback=12, skip=1)
     assert np.isnan(sig[:12]).all()
     np.testing.assert_allclose(sig[20], np.prod(1 + R[8:19], axis=0) - 1)
+
+
+def test_two_by_three_portfolios_and_fama_french_five():
+    rng = np.random.default_rng(0)
+    R = rng.standard_normal((24, 60))
+    size, bm, op, inv = rng.standard_normal((4, 60))
+    six = two_by_three_portfolios(size, bm, R)
+    big = size > np.median(size)
+    lo, hi = np.quantile(bm, [0.3, 0.7])
+    np.testing.assert_allclose(six[:, 1, 2], R[:, big & (bm > hi)].mean(axis=1))
+    np.testing.assert_allclose(six[:, 0, 0], R[:, ~big & (bm <= lo)].mean(axis=1))
+    F = fama_french_five(R, R.mean(axis=1), size, bm, op, inv)
+    assert F.shape == (24, 5)
+    np.testing.assert_allclose(F[:, 2], six[:, :, 2].mean(axis=1) - six[:, :, 0].mean(axis=1))
+    # CMA is long low investment: the reverse of a high-minus-low sort on investment.
+    inv_six = two_by_three_portfolios(size, inv, R)
+    np.testing.assert_allclose(F[:, 4], inv_six[:, :, 0].mean(axis=1) - inv_six[:, :, 2].mean(axis=1))
+
+
+def test_adjusted_p_values():
+    p = np.array([0.001, 0.008, 0.039, 0.041, 0.042, 0.06, 0.074, 0.205, 0.212, 0.216])
+    np.testing.assert_allclose(adjusted_p_values(p, "bonferroni"), np.minimum(10 * p, 1.0))
+    holm = adjusted_p_values(p, "holm")
+    assert holm[0] == pytest.approx(0.01) and holm[1] == pytest.approx(0.072)
+    bh = adjusted_p_values(p, "bh")
+    assert bh[0] == pytest.approx(0.01) and bh[1] == pytest.approx(0.04)
+    c = np.sum(1 / np.arange(1, 11))
+    np.testing.assert_allclose(adjusted_p_values(p, "bhy"), np.minimum(bh * c, 1.0))
+    np.testing.assert_allclose(adjusted_p_values(p[::-1], "holm"), holm[::-1])
+    with pytest.raises(ValueError, match="method"):
+        adjusted_p_values(p, "sidak")
+
+
+def test_t_hurdle():
+    """Bonferroni with 316 tests: 3.78 (Harvey, Liu and Zhu 2016, Table 1, 2012)."""
+    assert t_hurdle(np.zeros(316), method="bonferroni") == pytest.approx(3.78, abs=0.005)
+    assert t_hurdle(np.zeros(10), method="holm") == np.inf
+    t = np.array([5.0, 4.0, 0.5, -3.5, 0.1])
+    assert t_hurdle(t, 0.05, "holm") == 3.5

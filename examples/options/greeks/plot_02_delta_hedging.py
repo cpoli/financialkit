@@ -32,10 +32,14 @@ for n in counts:
     res = delta_hedge(S0, K, T, r, sigma, n_rebalance=n, n_paths=4000, mu=0.12, rng=1)
     stds.append(res.pnl.std())
     print(f"n = {n:3d}: mean P&L {res.pnl.mean():+.3f}, std {res.pnl.std():.3f}  (premium {res.option_price:.3f})")
+    assert abs(res.pnl.mean()) < 3 * res.pnl.std() / np.sqrt(res.pnl.size)
     if n in (16, 256):
         plot_hedge_pnl(res, ax=axes[0])
 axes[0].set_title("terminal P&L of the hedged short call")
 
+slope = np.polyfit(np.log(counts), np.log(stds), 1)[0]
+print(f"std falls like n^{slope:.2f}")
+assert abs(slope + 0.5) < 0.05
 axes[1].loglog(counts, stds, "o-", label="std of hedged P&L")
 axes[1].loglog(counts, stds[0] * np.sqrt(counts[0] / np.array(counts)), "k:", label=r"$\propto 1/\sqrt{n}$")
 axes[1].set_xlabel("rebalances n")

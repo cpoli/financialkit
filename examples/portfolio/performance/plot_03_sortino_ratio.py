@@ -56,4 +56,8 @@ ax.legend()
 fig.tight_layout()
 r = funds["symmetric"]
 print(f"symmetric fund: downside deviation about the mean / volatility = {downside_deviation(r, r.mean()) / r.std():.3f} (1/sqrt 2 = 0.707)")
+assert abs(downside_deviation(r, r.mean()) / r.std() - 1 / np.sqrt(2)) < 0.05
+# Relative to its Sharpe ratio, Sortino penalizes the crash-prone fund and rewards the right-skewed one.
+boost = {name: sortino_ratio(f, 0, 12) / sharpe_ratio(f, 0, 12) for name, f in funds.items()}
+assert boost["short volatility"] < boost["symmetric"] < boost["trend following"]
 plt.show()

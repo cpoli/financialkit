@@ -22,6 +22,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 
 import numpy as np
+from scipy import stats
 
 __all__ = [
     "CAPMEquilibrium",
@@ -33,6 +34,8 @@ __all__ = [
     "ConsumptionMoments",
     "EconomyPath",
     "HJBound",
+    "GMMResult",
+    "PresentValueDecomposition",
     "ConsumptionEconomy",
 ]
 
@@ -256,15 +259,92 @@ class HJBound:
         return bool(sdf_std >= np.interp(sdf_mean, self.sdf_means, self.sdf_stds))
 
 
+@dataclass
+class GMMResult:
+    """Hansen's generalized method of moments: estimates, their covariance and the test of overidentifying restrictions."""
+
+    params: np.ndarray
+    """ndarray, shape (p,): Parameter estimates."""
+
+    cov: np.ndarray
+    """ndarray, shape (p, p): Asymptotic covariance of the estimates, already divided by ``n_obs``."""
+
+    j_stat: float
+    """Hansen's J statistic, :math:`\\chi^2_{q-p}` when the moment conditions hold."""
+
+    df: int
+    """Number of overidentifying restrictions, ``q - p``."""
+
+    moments: np.ndarray
+    """ndarray, shape (q,): Sample means of the moment conditions at the estimates."""
+
+    weighting: np.ndarray
+    """ndarray, shape (q, q): Weighting matrix of the last step."""
+
+    n_obs: int
+    """Number of observations."""
+
+    @property
+    def std_errors(self) -> np.ndarray:
+        """ndarray: Square roots of the diagonal of ``cov``."""
+        return np.sqrt(np.diag(self.cov))
+
+    @property
+    def t_values(self) -> np.ndarray:
+        """ndarray: Estimates divided by their standard errors."""
+        return self.params / self.std_errors
+
+    @property
+    def j_pvalue(self) -> float:
+        """float: p-value of the J test, ``nan`` when the model is exactly identified."""
+        return float(stats.chi2.sf(self.j_stat, self.df)) if self.df > 0 else float("nan")
+
+
+@dataclass
+class PresentValueDecomposition:
+    """Campbell and Shiller's split of dividend-price variation into expected returns and expected dividend growth."""
+
+    rho: float
+    """Linearisation constant :math:`\\rho = 1 / (1 + e^{\\overline{dp}})`."""
+
+    b_r: float
+    """Slope of next period's log return on the log dividend-price ratio."""
+
+    b_d: float
+    """Slope of next period's log dividend growth on the log dividend-price ratio."""
+
+    phi: float
+    """Autoregressive coefficient of the log dividend-price ratio."""
+
+    @property
+    def long_run_return(self) -> float:
+        """float: :math:`b_r / (1 - \\rho\\phi)`, the share of :math:`\\mathrm{Var}(dp)` due to expected returns."""
+        return self.b_r / (1.0 - self.rho * self.phi)
+
+    @property
+    def long_run_dividend(self) -> float:
+        """float: :math:`b_d / (1 - \\rho\\phi)`, minus the share due to expected dividend growth."""
+        return self.b_d / (1.0 - self.rho * self.phi)
+
+    @property
+    def identity_error(self) -> float:
+        """float: :math:`b_r - b_d - (1 - \\rho\\phi)`, zero when the log-linear identity holds exactly."""
+        return self.b_r - self.b_d - (1.0 - self.rho * self.phi)
+
+
 class ConsumptionEconomy(ABC):
-    """An endowment economy with a CRRA representative agent who eats the dividend of a Lucas tree.
+    """An endowment economy whose representative agent eats the dividend of a Lucas tree.
+
+    The agent has power utility, over consumption itself (Lucas,
+    Mehra-Prescott), over consumption above a habit (Campbell-Cochrane)
+    or inside Epstein-Zin recursive preferences (Bansal-Yaron).
 
     Parameters
     ----------
     beta : float
-        Time-discount factor in ``(0, 1]``.
+        Time-discount factor per period, in ``(0, 1]``.
     gamma : float
-        Relative risk aversion, positive.
+        Curvature of the period utility (relative risk aversion), positive.
     """
 
     def __init__(self, beta: float, gamma: float):

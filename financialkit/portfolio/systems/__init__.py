@@ -3,11 +3,12 @@ insured strategies, covariance estimation, Bayesian and resampled
 optimization, risk-based allocation and performance measurement.
 """
 
-from financialkit.portfolio.systems.bayesian import black_litterman, implied_equilibrium_returns, resampled_frontier
-from financialkit.portfolio.systems.covariance import ledoit_wolf, sample_covariance, single_index_covariance
+from financialkit.portfolio.systems.bayesian import black_litterman, implied_equilibrium_returns, resampled_frontier, robust_portfolio
+from financialkit.portfolio.systems.covariance import fundamental_factor_covariance, ledoit_wolf, sample_covariance, single_index_covariance
 from financialkit.portfolio.systems.growth import (
     cppi,
     cppi_continuous,
+    garleanu_pedersen,
     kelly_fraction,
     kelly_growth_rate,
     kelly_portfolio,
@@ -63,12 +64,15 @@ __all__ = [
     "merton_wealth_paths",
     "cppi",
     "cppi_continuous",
+    "garleanu_pedersen",
     "sample_covariance",
     "single_index_covariance",
+    "fundamental_factor_covariance",
     "ledoit_wolf",
     "implied_equilibrium_returns",
     "black_litterman",
     "resampled_frontier",
+    "robust_portfolio",
     "cvar_optimization",
     "diversification_ratio",
     "most_diversified_portfolio",

@@ -32,6 +32,7 @@ K = np.linspace(30, 220, 381)
 res = breeden_litzenberger_density(K, black_scholes_price(S, K, T, r, sigma), T, r)
 exact = lognorm.pdf(res.strikes, s=sigma * np.sqrt(T), scale=S * np.exp((r - 0.5 * sigma**2) * T))
 print(f"max error against the lognormal: {np.max(np.abs(res.density - exact)):.1e}")
+assert np.max(np.abs(res.density - exact)) < 1e-5
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 plot_density(res, ax=axes[0])
@@ -53,6 +54,11 @@ res_mix = breeden_litzenberger_density(K, mix, T, r)
 plot_density(res_mix, ax=axes[1], label="two-regime prices")
 axes[1].axvline(F, color="k", lw=0.5)
 print(f"total probability: {trapezoid(res_mix.density, res_mix.strikes):.4f}")
+d = res_mix.density
+modes = res_mix.strikes[1:-1][(d[1:-1] > d[:-2]) & (d[1:-1] > d[2:]) & (d[1:-1] > 1e-3 * d.max())]
+print("modes near", modes)
+assert abs(trapezoid(d, res_mix.strikes) - 1.0) < 1e-3
+assert modes.size == 2 and modes[0] < F < modes[1]
 fig.tight_layout()
 
 plt.show()

@@ -23,6 +23,8 @@ r, h, R = 0.03, 0.03, 0.4
 fig, ax = plt.subplots(figsize=(7, 4))
 for conv, name in (("rmv", "recovery of market value"), ("rt", "recovery of treasury"), ("rfv", "recovery of face value")):
     P = risky_zero_coupon(T, r, h, R, conv)
+    if conv == "rmv":
+        assert np.allclose(-np.log(P) / T - r, h * (1 - R))
     ax.plot(T, 1e4 * (-np.log(P) / T - r), label=name)
 ax.axhline(1e4 * h * (1 - R), color="0.5", ls=":", label="lambda (1 - R)")
 ax.set_xlabel("maturity")
@@ -45,6 +47,7 @@ dt = times[1] - times[0]
 cum = np.concatenate([np.zeros((lam.shape[0], 1)), np.cumsum(0.5 * (lam[:, 1:] + lam[:, :-1]) * dt, axis=1)], axis=1)
 idx = np.searchsorted(times, mats - 1e-12)
 mc = np.exp(-r * mats - (1 - R) * cum[:, idx])
+assert np.all(np.abs(mc.mean(axis=0) - closed) < 4 * mc.std(axis=0) / np.sqrt(mc.shape[0]))
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(mats, closed, "o-", label="CIR closed form")

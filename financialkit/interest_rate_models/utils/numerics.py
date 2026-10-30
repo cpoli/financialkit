@@ -2,16 +2,13 @@
 :mod:`financialkit.integrators`, and pathwise discounting.
 
 The drift and diffusion callbacks follow the integrators' ``f(x, t,
-params)`` convention and are ``@njit`` dispatchers, so the compiled
-Euler kernel can call them; every model parameter travels in ``params``.
+params)`` convention; every model parameter travels in ``params``.
 """
 
 from __future__ import annotations
 
 import numpy as np
 from scipy.integrate import cumulative_trapezoid
-
-from financialkit._jit import njit
 
 __all__ = [
     "path_discount_factors",
@@ -52,19 +49,16 @@ def path_discount_factors(times, rates) -> np.ndarray:
     return np.exp(-cumulative_trapezoid(rates, np.asarray(times, dtype=np.float64), axis=1, initial=0.0))
 
 
-@njit
 def cir_drift(x, t, p):
     """``kappa (theta - x)`` with ``p = [kappa, theta, sigma]``; full truncation uses ``max(x, 0)``."""
     return p[0] * (p[1] - np.maximum(x, 0.0))
 
 
-@njit
 def cir_diffusion(x, t, p):
     """``sigma sqrt(max(x, 0))`` with ``p = [kappa, theta, sigma]``."""
     return p[2] * np.sqrt(np.maximum(x, 0.0))
 
 
-@njit
 def affine_drift(x, t, p):
     """``K0 + K1 x`` for each path; ``p = [d, K0, K1^T (row-major), sigma, alpha, beta^T]``."""
     d = int(p[0])
@@ -73,7 +67,6 @@ def affine_drift(x, t, p):
     return K0 + x @ K1T
 
 
-@njit
 def affine_diffusion(x, t, p):
     """``sigma_k sqrt(alpha_k + beta_k . x)`` for each factor ``k``."""
     d = int(p[0])
@@ -84,7 +77,6 @@ def affine_diffusion(x, t, p):
     return sigma * np.sqrt(np.maximum(alpha + x @ betaT, 0.0))
 
 
-@njit
 def g2_drift(x, t, p):
     """``(-a x, -b y)`` with ``p = [a, b, sigma, eta]``."""
     out = np.empty_like(x)
@@ -93,7 +85,6 @@ def g2_drift(x, t, p):
     return out
 
 
-@njit
 def g2_diffusion(x, t, p):
     """``(sigma, eta)`` with ``p = [a, b, sigma, eta]``."""
     out = np.empty_like(x)
@@ -102,13 +93,11 @@ def g2_diffusion(x, t, p):
     return out
 
 
-@njit
 def _hjm_vol(t, p):
     tau = np.maximum(p[3:] - t, 0.0)
     return tau, p[0] * np.exp(-p[1] * tau)
 
 
-@njit
 def hjm_drift_callback(x, t, p):
     r"""HJM drift :math:`\sigma(t,T)\int_t^T \sigma(t,u)\,du` for :math:`\sigma(t,T) = \sigma e^{-a(T-t)}`.
 
@@ -123,7 +112,6 @@ def hjm_drift_callback(x, t, p):
     return x * 0.0 + p[2] * s * integral
 
 
-@njit
 def hjm_diffusion_callback(x, t, p):
     r""":math:`\sigma(t, T_j) = \sigma e^{-a(T_j - t)}` for every maturity on the grid."""
     tau, s = _hjm_vol(t, p)

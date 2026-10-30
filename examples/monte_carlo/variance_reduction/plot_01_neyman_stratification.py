@@ -44,6 +44,8 @@ prop = stratified_estimate(call, n, n_strata=20, allocation="proportional", rng=
 ney = stratified_estimate(call, n, n_strata=20, allocation="neyman", rng=2)
 for res in (crude, prop, ney):
     print(f"{res.method:24s} {res.estimate:.4f} +/- {res.std_error:.4f}  variance reduction x{res.variance_ratio(crude):.1f}")
+    assert abs(res.estimate - exact) < 3 * res.std_error
+assert ney.std_error < prop.std_error < crude.std_error
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 plot_estimator_comparison([crude, prop, ney], exact=exact, ax=axes[0])
@@ -55,5 +57,6 @@ plot_estimator_comparison([crude, prop, ney], exact=exact, ax=axes[0])
 # only the two-sample floor.
 
 plot_allocation(ney, ax=axes[1])
+assert np.argmax(ney.allocation) == len(ney.allocation) - 1 and ney.allocation[0] == ney.allocation.min()
 fig.tight_layout()
 plt.show()

@@ -35,10 +35,10 @@ class LongstaffSchwartzResult(MonteCarloResult):
     """
 
     times: np.ndarray = field(default_factory=lambda: np.empty(0))
-    """ndarray, shape (n_exercise + 1,): The exercise dates, starting at 0."""
+    """ndarray, shape (n_steps + 1,): The exercise dates, starting at 0."""
 
     exercise_boundary: np.ndarray = field(default_factory=lambda: np.empty(0))
-    """ndarray, shape (n_exercise + 1,): For a put, the highest price in
+    """ndarray, shape (n_steps + 1,): For a put, the highest price in
     the simulated in-the-money range at which the fitted policy exercises
     on each date (for a call, the lowest); ``nan`` where it never does,
     and the strike at expiry."""

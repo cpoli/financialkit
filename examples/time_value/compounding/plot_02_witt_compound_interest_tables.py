@@ -12,6 +12,7 @@ uses it to price an annuity.
 
 # %%
 import matplotlib.pyplot as plt
+import numpy as np
 
 from financialkit.time_value import annuity_present_value, compound_interest_table
 
@@ -23,6 +24,7 @@ table = compound_interest_table(0.10, 10)
 print(" year   amount of 1   PV of 1   annuity PV   annuity FV")
 for k, a, v, an, sn in zip(table.periods, table.amount, table.discount, table.annuity_present, table.annuity_future, strict=True):
     print(f"{k:5d} {a:13.5f} {v:9.5f} {an:12.5f} {sn:12.5f}")
+    assert np.isclose(a * v, 1.0) and np.isclose(sn, a * an)
 
 # %%
 # Using the table
@@ -31,6 +33,7 @@ for k, a, v, an, sn in zip(table.periods, table.amount, table.discount, table.an
 
 print(f"from the table: 50 x {table.annuity_present[6]:.5f} = {50 * table.annuity_present[6]:.2f}")
 print(f"direct:         {annuity_present_value(50.0, 0.10, 7):.2f}")
+assert np.isclose(50 * table.annuity_present[6], annuity_present_value(50.0, 0.10, 7))
 
 # %%
 # The four columns

@@ -147,5 +147,28 @@ def test_correlation_moves_risk_from_equity_to_senior():
     hi = [tranche_spread(a, d, c, 0.5, 5.0, 0.03).par_spread for a, d in ((0.0, 0.03), (0.07, 0.10))]
     assert hi[0] < lo[0] and hi[1] > lo[1]
     # A [0, 100%] tranche with zero rates is close to the index spread lambda (1 - R).
-    whole = tranche_spread(0.0, 1.0, c, 0.3, 5.0, 0.0, frequency=12)
+    whole = tranche_spread(0.0, 1.0, c, 0.3, 5.0, 0.0, freq=12)
     assert whole.par_spread == pytest.approx(0.006, rel=0.01)
+
+
+def test_copula_default_times_take_one_curve_per_name():
+    """With a list of curves, each name's default time keeps its own marginal (Li 2000)."""
+    curves = [HazardCurve([10.0], [0.02]), HazardCurve([10.0], [0.10])]
+    n = 20_000
+    times = copula_default_times(curves, 0.3, n, rng=3)
+    for j, curve in enumerate(curves):
+        p = float(curve.default_probability(5.0))
+        assert abs(np.mean(times[:, j] <= 5.0) - p) < 4 * np.sqrt(p * (1 - p) / n)
+
+
+def test_expected_tranche_loss_without_correlation_is_deterministic():
+    """With rho = 0 the large-pool loss is exactly (1 - R) p, and small rho converges to it."""
+    p, recovery = 0.05, 0.4
+    exact = float(tranche_loss((1 - recovery) * p, 0.0, 0.03))
+    assert expected_tranche_loss(0.0, 0.03, p, 0.0, recovery) == exact
+    assert expected_tranche_loss(0.0, 0.03, p, 1e-8, recovery) == pytest.approx(exact, rel=1e-3)
+
+
+def test_creditrisk_plus_rejects_mismatched_inputs():
+    with pytest.raises(ValueError, match="same shape"):
+        creditrisk_plus([1.0, 2.0], [0.01])

@@ -17,7 +17,8 @@ neutron-diffusion calculations at Los Alamos became the standard tool
 for pricing path-dependent and multi-asset derivatives. Seventy years of
 work have gone into making the square root hurt less: variance
 reduction from survey statistics and operations research, quasi-random
-points from number theory, Greeks without finite differences, and a
+points from number theory, Greeks without finite differences (and,
+by adjoints, all of them for the price of one), and a
 multilevel decomposition borrowed from multigrid solvers. This
 chronology traces the ideas behind :mod:`financialkit.monte_carlo`.
 
@@ -510,6 +511,44 @@ Carlo Integration," *Journal of Computational Physics* 122 (1995)
 218-230; Glasserman (2004), Section 5.5.
 
 .. minigallery:: ../../examples/monte_carlo/quasi_monte_carlo/plot_06_brownian_bridge.py
+
+2006 -- Giles-Glasserman: Adjoint Greeks
+----------------------------------------
+
+Pathwise Greeks need one tangent per input, carried forward through
+every time step, so the deltas of a rates book to an 80-point forward
+curve cost about 80 simulations' worth of work. Michael Giles and Paul
+Glasserman's "Smoking Adjoints" in *Risk* imported the reverse mode of
+automatic differentiation, long used in aerodynamic design: store the
+path, then sweep one adjoint vector from the payoff back to time zero.
+Because the payoff is a scalar, the transposed chain rule gives its
+derivative to every input at once. In the LIBOR market model each
+backward step is two cumulative sums, and the full gradient cost a small
+multiple of the price alone. Within a few years adjoint algorithmic
+differentiation was how banks computed risk on large books.
+
+.. math::
+
+   \bar L(n) = \left(\frac{\partial L(n+1)}{\partial L(n)}\right)^{\!\top} \bar L(n+1),
+   \qquad \frac{\partial V}{\partial L(0)} = \bar L(0)
+
+*Implementation:* :func:`financialkit.monte_carlo.systems.adjoint.lmm_swaption_greeks`
+simulates their one-factor LIBOR market model by Euler steps in log
+rates under the spot measure and returns the price of a payer-swaption
+book with its delta and vega to every forward rate in an
+:class:`~financialkit.monte_carlo.core.base.LMMGreeks`, by the adjoint
+or, for comparison, by forward-mode tangents. The example uses their
+test case of 80 quarterly rates and 15 swaptions, checks the deltas
+against bump-and-reprice, and times both modes as the number of rates
+grows.
+
+*References:* M. Giles and P. Glasserman, "Smoking Adjoints: Fast Monte
+Carlo Greeks," *Risk* 19 (January 2006) 88-92; P. Glasserman, *Monte
+Carlo Methods in Financial Engineering* (Springer, 2004), Sections 3.7
+and 7.2; L. Capriotti and M. Giles, "Algorithmic Differentiation:
+Adjoint Greeks Made Easy," *Risk* 25 (September 2012) 92-98.
+
+.. minigallery:: ../../examples/monte_carlo/greeks/plot_03_adjoint_greeks.py
 
 2008 -- Giles Multilevel Monte Carlo
 ------------------------------------

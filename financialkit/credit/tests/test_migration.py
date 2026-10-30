@@ -5,6 +5,7 @@ import pytest
 
 from financialkit.credit import (
     RATINGS,
+    check_transition_matrix,
     creditmetrics_bbb_values,
     creditmetrics_bond,
     creditmetrics_matrix,
@@ -96,3 +97,14 @@ def test_generator_semigroup_and_jlt():
     doubled = jlt_risky_zero(T, 0.03, G, 3, 0.4, premia=np.full(8, 2.0))
     assert doubled < prices[3]
     assert len(RATINGS) == 8
+
+
+def test_migration_inputs_are_validated():
+    with pytest.raises(ValueError, match="same shape"):
+        creditmetrics_bond([0.5, 0.5], [100.0, 90.0, 0.0])
+    with pytest.raises(ValueError, match="positive diagonal"):
+        generator_from_transition([[0.0, 1.0], [1.0, 0.0]])
+    with pytest.raises(ValueError, match="square"):
+        check_transition_matrix(np.ones((2, 3)) / 3)
+    with pytest.raises(ValueError, match="rows summing to one"):
+        check_transition_matrix([[0.9, 0.2], [0.0, 1.0]])

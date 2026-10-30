@@ -39,15 +39,17 @@ __all__ = [
 ]
 
 
-def black_scholes_operator(S: ArrayLike, sigma: float, r: float, q: float = 0.0) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+def black_scholes_operator(S: ArrayLike, sigma: ArrayLike, r: float, q: float = 0.0) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Tridiagonal coefficients of the Black-Scholes operator at the interior nodes.
 
     Parameters
     ----------
     S : array_like, shape (M + 1,)
         Strictly increasing spot grid, boundaries included.
-    sigma, r, q : float
-        Volatility, risk-free rate and dividend yield.
+    sigma : float or array_like, shape (M - 1,)
+        Volatility, or a local volatility at each interior node.
+    r, q : float
+        Risk-free rate and dividend yield.
 
     Returns
     -------
@@ -70,7 +72,7 @@ def black_scholes_operator(S: ArrayLike, sigma: float, r: float, q: float = 0.0)
         raise ValueError("S must be a strictly increasing grid of at least three nodes")
     hm, hp = np.diff(S)[:-1], np.diff(S)[1:]
     s = S[1:-1]
-    diffusion, drift = 0.5 * sigma**2 * s**2, (r - q) * s
+    diffusion, drift = 0.5 * np.asarray(sigma, dtype=np.float64) ** 2 * s**2, (r - q) * s
     denom = hm * hp * (hm + hp)
     lower = (2.0 * diffusion * hp - drift * hp**2) / denom
     upper = (2.0 * diffusion * hm + drift * hm**2) / denom

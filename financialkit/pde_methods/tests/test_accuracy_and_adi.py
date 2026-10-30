@@ -56,3 +56,8 @@ def test_adi_validation():
     with pytest.raises(ValueError):
         PeacemanRachfordADI().price(100.0, 100.0, 1.0, 0.05, 0.2, 0.2, 1.5, lambda a, b: a)
     assert PeacemanRachfordADI(51, 51).n1 == 52
+
+
+def test_adi_rejects_non_positive_inputs():
+    with pytest.raises(ValueError, match="must all be positive"):
+        PeacemanRachfordADI(n1=10, n2=10, n_time=5).price(100.0, 100.0, 1.0, 0.05, 0.2, 0.0, 0.5, lambda a, b: np.maximum(a - b, 0.0))

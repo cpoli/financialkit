@@ -33,10 +33,14 @@ ax.legend()
 
 rho = 0.12
 fig, ax = plt.subplots(figsize=(7, 4))
+ks = []
 for n in (50, 500, 5000):
     frac = np.sort(simulate_one_factor_defaults(p, rho, n, 20000, rng=0) / n)
+    assert abs(frac.mean() - p) < 4 * frac.std() / np.sqrt(frac.size)
+    ks.append(np.max(np.abs(np.arange(1, frac.size + 1) / frac.size - vasicek_cdf(frac, p, rho))))
     ax.step(frac, np.arange(1, frac.size + 1) / frac.size, where="post", label=f"{n} loans (simulated)")
 ax.plot(x, vasicek_cdf(x, p, rho), "k", lw=2, label="Vasicek limit")
+assert np.all(np.diff(ks) < 0) and ks[-1] < 0.02
 ax.set_xlim(0, 0.08)
 ax.set_xlabel("portfolio default rate")
 ax.set_ylabel("cumulative probability")

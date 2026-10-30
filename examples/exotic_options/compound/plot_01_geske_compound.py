@@ -21,7 +21,10 @@ from financialkit.options import black_scholes_price
 
 K1, K2, T1, T2, r, sigma = 5.0, 100.0, 0.25, 1.0, 0.05, 0.3
 S = np.linspace(60.0, 150.0, 200)
-print(f"Haug (2007), 4.6, put on call: {compound_option_price(500.0, 50.0, 520.0, 0.25, 0.5, 0.08, 0.35, q=0.03, option_type='put'):.4f}")
+put_on_call = compound_option_price(500.0, 50.0, 520.0, 0.25, 0.5, 0.08, 0.35, q=0.03, option_type="put")
+print(f"Haug (2007), 4.6, put on call: {put_on_call:.4f}")
+# Haug's 21.1965 uses an approximate bivariate normal, good to a few 1e-4 here.
+assert abs(put_on_call - 21.1965) < 5e-4
 
 # %%
 # The four compound options
@@ -47,6 +50,7 @@ axes[0].legend()
 
 cc = compound_option_price(S, K1, K2, T1, T2, r, sigma)
 pc = compound_option_price(S, K1, K2, T1, T2, r, sigma, option_type="put")
+assert np.allclose(cc - pc, black_scholes_price(S, K2, T2, r, sigma) - K1 * np.exp(-r * T1), rtol=1e-8, atol=1e-8)
 axes[1].plot(S, cc - pc, lw=3, label="call on call - put on call")
 axes[1].plot(S, black_scholes_price(S, K2, T2, r, sigma) - K1 * np.exp(-r * T1), "k--", label=r"$c(S) - K_1 e^{-rT_1}$")
 axes[1].set_xlabel("spot S")

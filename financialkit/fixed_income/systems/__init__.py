@@ -1,7 +1,8 @@
-"""Concrete fixed-income models: bonds, duration, curves, immunization and swaps."""
+"""Concrete fixed-income models: bonds, duration, curves, immunization, swaps, OIS multi-curve, futures and MBS."""
 
 from financialkit.fixed_income.systems.bonds import (
     accrued_interest,
+    bond_accrued_interest,
     bond_cash_flows,
     bond_price,
     clean_price,
@@ -36,14 +37,25 @@ from financialkit.fixed_income.systems.duration import (
     macaulay_duration,
     modified_duration,
 )
+from financialkit.fixed_income.systems.futures import cheapest_to_deliver, conversion_factor, treasury_futures_price
 from financialkit.fixed_income.systems.immunization import fong_vasicek_bound, horizon_value, linear_forward_shock, m_squared, redington_immunize
-from financialkit.fixed_income.systems.swaps import currency_swap_value, interest_rate_swap_value, swap_annuity, swap_rate
+from financialkit.fixed_income.systems.mbs import mbs_cash_flows, psa_cpr, single_monthly_mortality
+from financialkit.fixed_income.systems.multi_curve import bootstrap_forecast_curve, bootstrap_multi_curve
+from financialkit.fixed_income.systems.swaps import (
+    compounded_in_arrears,
+    currency_swap_value,
+    interest_rate_swap_value,
+    overnight_forwards,
+    swap_annuity,
+    swap_rate,
+)
 
 __all__ = [
     "bond_cash_flows",
     "price_from_yield",
     "bond_price",
     "yield_to_maturity",
+    "bond_accrued_interest",
     "accrued_interest",
     "clean_price",
     "zero_coupon_bond_price",
@@ -79,4 +91,14 @@ __all__ = [
     "swap_rate",
     "interest_rate_swap_value",
     "currency_swap_value",
+    "compounded_in_arrears",
+    "overnight_forwards",
+    "bootstrap_forecast_curve",
+    "bootstrap_multi_curve",
+    "conversion_factor",
+    "cheapest_to_deliver",
+    "treasury_futures_price",
+    "psa_cpr",
+    "single_monthly_mortality",
+    "mbs_cash_flows",
 ]

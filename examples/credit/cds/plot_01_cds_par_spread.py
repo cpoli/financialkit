@@ -17,7 +17,7 @@ import numpy as np
 
 from financialkit.credit import HazardCurve, cds_legs, cds_par_spread
 
-res = cds_legs(HazardCurve.flat(0.02), 5.0, 0.05, 0.4, frequency=1, steps_per_year=1)
+res = cds_legs(HazardCurve.flat(0.02), 5.0, 0.05, 0.4, freq=1, steps_per_year=1)
 print("Hull's annual setting (hazard 2%, R = 40%, r = 5%):")
 print(f"  premium annuity {res.rpv01 - res.accrued_on_default:.4f}, accrual {res.accrued_on_default:.4f}, protection {res.protection_leg:.4f}")
 print(f"  par spread {1e4 * res.par_spread:.1f} bp  vs  credit triangle {1e4 * 0.02 * 0.6:.0f} bp")
@@ -31,7 +31,8 @@ print(f"  par spread {1e4 * res.par_spread:.1f} bp  vs  credit triangle {1e4 * 0
 freqs = [1, 2, 4, 12, 52]
 fig, ax = plt.subplots(figsize=(7, 4))
 for h in (0.01, 0.03, 0.06):
-    s = [cds_par_spread(HazardCurve.flat(h), 5.0, 0.05, 0.4, frequency=f, steps_per_year=max(f, 12)) for f in freqs]
+    s = [cds_par_spread(HazardCurve.flat(h), 5.0, 0.05, 0.4, freq=f, steps_per_year=max(f, 12)) for f in freqs]
+    assert np.all(np.diff(s) < 0) and abs(s[-1] / (h * 0.6) - 1) < 1e-3
     ax.semilogx(freqs, 1e4 * np.array(s) / (1e4 * h * 0.6), "o-", label=f"hazard {h:.0%}")
 ax.axhline(1.0, color="k", ls=":")
 ax.set_xlabel("premium payments per year")

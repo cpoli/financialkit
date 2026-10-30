@@ -15,8 +15,10 @@ history of fixed-income analysis is the story of measuring that
 dependence more and more precisely. It began with a single number (the
 duration) and a single rate (the yield). It then moved to a whole curve
 of rates that can be estimated, bootstrapped and fitted, to portfolios
-built so that rate changes cannot hurt them, and to swaps that trade one
-stream of payments for another. This chronology traces the ideas behind
+built so that rate changes cannot hurt them, and to futures, mortgage
+securities and swaps. After 2008 it moved again, to separate curves for
+discounting and forecasting and to overnight rates compounded in
+arrears. This chronology traces the ideas behind
 :mod:`financialkit.fixed_income`.
 
 .. contents:: Timeline
@@ -182,7 +184,7 @@ value of a basis point as everyday trading arithmetic.
 *Implementation:* :func:`financialkit.fixed_income.systems.bonds.yield_to_maturity`
 inverts :func:`~financialkit.fixed_income.systems.bonds.price_from_yield`
 with :func:`scipy.optimize.brentq`;
-:func:`~financialkit.fixed_income.systems.bonds.accrued_interest` and
+:func:`~financialkit.fixed_income.systems.bonds.bond_accrued_interest` and
 :func:`~financialkit.fixed_income.systems.bonds.clean_price` separate the
 quoted price from the full one.
 
@@ -215,6 +217,39 @@ the Term Structure of Interest Rates," Journal of Finance 31(4) (1976),
 ed. (Pearson, 2015), Sec. 4.5.
 
 .. minigallery:: ../../examples/fixed_income/curves/plot_03_bootstrapping.py
+
+1977 -- Treasury Bond Futures: Conversion Factor and Cheapest to Deliver
+------------------------------------------------------------------------
+
+In August 1977 the Chicago Board of Trade listed a futures contract on
+long Treasury bonds. It became the most heavily traded interest-rate
+contract of the next two decades. The short may deliver any bond with
+at least 15 years to run. To put different coupons and maturities on a
+common footing, the exchange pays the futures price times a *conversion
+factor*: the bond's price per 1 of face at a notional yield (8% at
+first, 6% since 2000), with the maturity rounded down to whole quarters.
+The factors equalise the bonds only at the notional yield. At any other
+yield one bond is *cheapest to deliver*, the one that minimises its
+quoted price less the futures price times its factor. The futures price
+tracks that bond's forward price. Above the notional yield the
+cheapest bond is a long-duration one, and below it a short-duration
+one, so the short holds an option to switch.
+
+.. math::
+
+   \text{cost}_i = P_i - F \cdot CF_i, \qquad
+   CF = \sum_{k=1}^{n} \frac{c/2}{1.03^k} + \frac{1}{1.03^n}
+
+*Implementation:* :func:`financialkit.fixed_income.systems.futures.conversion_factor`,
+:func:`~financialkit.fixed_income.systems.futures.cheapest_to_deliver`,
+which returns a :class:`~financialkit.fixed_income.core.base.DeliveryBasis`,
+and :func:`~financialkit.fixed_income.systems.futures.treasury_futures_price`.
+
+*References:* J. C. Hull, *Options, Futures, and Other Derivatives*, 9th
+ed. (Pearson, 2015), Sec. 6.2; G. Burghardt, T. Belton, M. Lane and
+J. Papa, *The Treasury Bond Basis*, 3rd ed. (McGraw-Hill, 2005).
+
+.. minigallery:: ../../examples/fixed_income/futures/plot_01_cheapest_to_deliver.py
 
 1981 -- The IBM-World Bank Swap
 -------------------------------
@@ -314,6 +349,40 @@ directly.
 
 .. minigallery:: ../../examples/fixed_income/bonds/plot_02_strips_zero_coupon.py
 
+1985 -- The PSA Prepayment Benchmark and MBS Cash Flows
+-------------------------------------------------------
+
+A mortgage pass-through hands investors the payments on a pool of home
+loans, and homeowners can repay early, when they move or when rates
+fall. The investors' cash flows therefore depend on how fast the pool
+prepays. In 1985 the Public Securities Association adopted a benchmark
+for quoting that speed. At 100 PSA the conditional prepayment rate
+(CPR) starts at 0.2% a year and rises by 0.2% a month to 6% at month 30,
+then stays flat. Speeds are quoted as multiples of the ramp, such as
+200 PSA. Each month's CPR becomes a single monthly mortality, the share
+of the balance prepaid on top of the scheduled amortization. Faster
+prepayment shortens the weighted average life. It lowers the price of a
+pool trading above par and raises the price of one trading below.
+
+.. math::
+
+   CPR(m) = 0.06\,\min\!\left(\frac{m}{30}, 1\right)\frac{\text{PSA}}{100}, \qquad
+   SMM = 1 - (1 - CPR)^{1/12}
+
+*Implementation:* :func:`financialkit.fixed_income.systems.mbs.psa_cpr`,
+:func:`~financialkit.fixed_income.systems.mbs.single_monthly_mortality`
+and :func:`~financialkit.fixed_income.systems.mbs.mbs_cash_flows`, which
+returns an :class:`~financialkit.fixed_income.core.base.MBSCashFlows`
+(interest, scheduled principal, prepayment and the weighted average
+life).
+
+*References:* F. J. Fabozzi, *Bond Markets, Analysis, and Strategies*,
+9th ed. (Pearson, 2015), the chapter on agency mortgage pass-through
+securities; F. J. Fabozzi (ed.), *The Handbook of Mortgage-Backed
+Securities*, 7th ed. (Oxford University Press, 2016).
+
+.. minigallery:: ../../examples/fixed_income/mbs/plot_01_psa_prepayment.py
+
 1987 -- Nelson-Siegel
 ---------------------
 
@@ -395,6 +464,70 @@ and :func:`~financialkit.fixed_income.systems.curves.fit_svensson`.
 Interest Rates: Sweden 1992-1994," NBER Working Paper 4871 (1994).
 
 .. minigallery:: ../../examples/fixed_income/curves/plot_06_svensson.py
+
+2010 -- Piterbarg: OIS Discounting with Separate Forecasting Curves
+-------------------------------------------------------------------
+
+Until 2007 one LIBOR curve both projected floating coupons and
+discounted every cash flow. In the crisis the spread between LIBOR and
+the overnight indexed swap (OIS) rate rose from a few basis points to
+hundreds, and the single curve broke down. Vladimir Piterbarg showed
+that a derivative under a collateral agreement earns the rate paid on
+the collateral, so its cash flows are discounted on the OIS curve.
+LIBOR coupons are projected from a separate forecasting curve, solved
+so that every par swap, discounted on OIS, is worth zero. Par swaps
+price the same either way, but off-market swaps do not, and dealers
+moved their collateralized books to OIS discounting around 2010.
+
+.. math::
+
+   \sum_j \alpha_j K P_{OIS}(t_j) = \sum_i \tau_i F_i P_{OIS}(t_i), \qquad
+   F_i = \frac{1}{\tau_i}\left(\frac{P_f(t_{i-1})}{P_f(t_i)} - 1\right)
+
+*Implementation:* :func:`financialkit.fixed_income.systems.multi_curve.bootstrap_multi_curve`
+strips the OIS curve with
+:func:`~financialkit.fixed_income.systems.curves.bootstrap_par_curve` and
+the forecasting curve with
+:func:`~financialkit.fixed_income.systems.multi_curve.bootstrap_forecast_curve`,
+and returns a :class:`~financialkit.fixed_income.core.base.MultiCurve`.
+
+*References:* V. Piterbarg, "Funding beyond Discounting: Collateral
+Agreements and Derivatives Pricing," Risk 23(2) (2010), 97-102;
+M. Bianchetti, "Two Curves, One Price," Risk 23(8) (2010), 66-72.
+
+.. minigallery:: ../../examples/fixed_income/curves/plot_07_ois_multi_curve.py
+
+2018 -- SOFR: Compounding in Arrears
+------------------------------------
+
+After the LIBOR manipulation scandals, the Alternative Reference Rates
+Committee chose the Secured Overnight Financing Rate, a volume-weighted
+median of overnight Treasury repo rates, to replace US dollar LIBOR. The
+New York Fed first published it on 3 April 2018. SOFR is an overnight
+rate, so a term coupon compounds each business day's fixing over the
+period and is known only at its end. A LIBOR coupon, by contrast, was
+fixed at the start of its period. The ARRC conventions let the payer
+know the amount a few days before it is due. A *lookback* uses the
+fixings of a few business days earlier, an *observation shift* also
+weights them by the earlier period's days, and a *lockout* freezes the
+last few fixings. Compounding the overnight forwards of a curve gives
+the curve's simple forward rate over the period, so a SOFR leg is worth
+:math:`P(t_0) - P(t_n)`, as an OIS leg is.
+
+.. math::
+
+   R = \left[\prod_i \left(1 + \frac{r_i n_i}{360}\right) - 1\right]\frac{360}{N}
+
+*Implementation:* :func:`financialkit.fixed_income.systems.swaps.compounded_in_arrears`,
+which returns a :class:`~financialkit.fixed_income.core.base.CompoundedRate`,
+and :func:`~financialkit.fixed_income.systems.swaps.overnight_forwards`.
+
+*References:* Alternative Reference Rates Committee, *A User's Guide to
+SOFR* (April 2019) and *SOFR Floating Rate Notes Conventions Matrix*
+(2019); Federal Reserve Bank of New York, *Statement Regarding the
+Publication of the Secured Overnight Financing Rate* (2018).
+
+.. minigallery:: ../../examples/fixed_income/swaps/plot_03_sofr_compounded_in_arrears.py
 
 See Also
 --------

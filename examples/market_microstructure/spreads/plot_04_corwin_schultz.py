@@ -43,6 +43,7 @@ roll = [roll_spread(np.log(close[i : i + 21])) for i in range(0, 252, 21)]
 print("Corwin-Schultz:", np.round(cs, 4))
 print(f"year, unclipped: {corwin_schultz_spread(high, low, clip=False).mean():.4f}")
 print("Roll (closes): ", np.round(roll, 4))
+assert abs(corwin_schultz_spread(high, low, clip=False).mean() - 0.01) < 0.002
 
 # %%
 # Many stocks, true against estimated
@@ -54,6 +55,8 @@ for s in true:
     h, l, c = daily_bars(63, s, 0.02, rng)
     est_cs.append(corwin_schultz_spread(h, l).mean())
     est_roll.append(roll_spread(np.log(c)))
+rmse_cs, rmse_roll = np.sqrt(np.mean((np.array(est_cs) - true) ** 2)), np.sqrt(np.nanmean((np.array(est_roll) - true) ** 2))
+assert rmse_cs < rmse_roll
 fig, ax = plt.subplots(figsize=(5.5, 5))
 ax.plot(true, est_cs, "o", color="C0", label="Corwin-Schultz")
 ax.plot(true, est_roll, "x", color="C1", label=f"Roll ({np.isnan(est_roll).mean():.0%} undefined)")

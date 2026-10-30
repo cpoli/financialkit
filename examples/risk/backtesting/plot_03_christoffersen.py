@@ -36,10 +36,13 @@ path = model.simulate(n, rng=0)
 r, sig2 = path.returns, path.variance
 static = parametric_var(0.0, np.sqrt(model.unconditional_variance), 0.99)
 dynamic = parametric_var(0.0, np.sqrt(sig2), 0.99)
+p_ind = {}
 for name, var in [("constant VaR", static), ("GARCH VaR", dynamic)]:
     hits = var_exceptions(r, var)
     uc, ind, cc = kupiec_test(hits), christoffersen_independence(hits), christoffersen_test(hits)
     print(f"{name:12s}: {uc.n_exceptions} hits; p(uc) = {uc.p_value:.3f}, p(ind) = {ind.p_value:.4f}, p(cc) = {cc.p_value:.4f}")
+    p_ind[name] = ind.p_value
+assert p_ind["constant VaR"] < 0.05 < p_ind["GARCH VaR"]
 
 fig, axes = plt.subplots(2, 1, figsize=(8, 6), sharex=True)
 plot_backtest(r, np.full(n, static), ax=axes[0])
@@ -61,10 +64,14 @@ fig.tight_layout()
 paths = [model.simulate(n, rng=seed) for seed in range(1, 301)]
 R = np.array([p.returns for p in paths])
 S2 = np.array([p.variance for p in paths])
+ind_rate = {}
 for name, V in [("constant VaR", np.full_like(R, static)), ("GARCH VaR", parametric_var(0.0, np.sqrt(S2), 0.99))]:
     H = var_exceptions(R, V)
     uc = np.mean([kupiec_test(h).reject() for h in H])
     ind = np.mean([christoffersen_independence(h).reject() for h in H])
     print(f"{name:12s}: Kupiec rejects {uc:.0%}, independence rejects {ind:.0%} of 300 paths")
+    ind_rate[name] = ind
+# well above the 5% size for the constant VaR, at or below it for the conditional one
+assert ind_rate["constant VaR"] > 0.5 and ind_rate["GARCH VaR"] < 0.1
 
 plt.show()

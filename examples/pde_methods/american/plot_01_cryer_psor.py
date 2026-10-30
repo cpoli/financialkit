@@ -24,8 +24,12 @@ from financialkit.pde_methods.visualizers import plot_exercise_boundary
 S, K, T, r, sigma = 50.0, 50.0, 5 / 12, 0.10, 0.40
 res = CrankNicolson(200, 100, rannacher_steps=2, american_method="psor").price(S, K, T, r, sigma, option_type="put", american=True)
 tree = CRRTree(2000).price(S, K, T, r, sigma, option_type="put", american=True).price
-print(f"PSOR {res.price:.4f}, CRR tree {tree:.4f}, European {black_scholes_price(S, K, T, r, sigma, option_type='put'):.4f}")
+european = black_scholes_price(S, K, T, r, sigma, option_type="put")
+print(f"PSOR {res.price:.4f}, CRR tree {tree:.4f}, European {european:.4f}")
 print(f"{res.lcp_iterations} PSOR sweeps over 100 time steps")
+assert abs(res.price - tree) < 0.01
+assert res.price > european + 0.1
+assert np.all(res.V >= np.maximum(K - res.S, 0.0) - 1e-12)
 
 # %%
 # The option and its early-exercise boundary
@@ -48,6 +52,7 @@ sweeps = [
     CrankNicolson(100, 50, rannacher_steps=2, american_method="psor", omega=w).price(S, K, T, r, sigma, option_type="put", american=True).lcp_iterations
     for w in omegas
 ]
+assert min(sweeps) < 0.8 * sweeps[0]  # over-relaxation beats Gauss-Seidel (omega = 1)
 axes[2].plot(omegas, sweeps, "o-")
 axes[2].set_xlabel(r"relaxation $\omega$")
 axes[2].set_ylabel("total sweeps (M = 100, N = 50)")

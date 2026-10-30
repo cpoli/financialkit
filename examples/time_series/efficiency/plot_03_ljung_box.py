@@ -42,7 +42,9 @@ ax.plot(grid, stats.chi2.pdf(grid, h), "k", label=r"$\chi^2_{10}$")
 ax.set_xlabel("Q")
 ax.legend()
 crit = stats.chi2.ppf(0.95, h)
-print(f"rejection rate at 5%: Box-Pierce {np.mean(qbp > crit):.3f}, Ljung-Box {np.mean(qlb > crit):.3f}")
+rate_bp, rate_lb = np.mean(qbp > crit), np.mean(qlb > crit)
+print(f"rejection rate at 5%: Box-Pierce {rate_bp:.3f}, Ljung-Box {rate_lb:.3f}")
+assert rate_bp < 0.05 and abs(rate_lb - 0.05) < 0.02
 
 # %%
 # Returns versus squared returns
@@ -56,5 +58,6 @@ print(f"rejection rate at 5%: Box-Pierce {np.mean(qbp > crit):.3f}, Ljung-Box {n
 r = GARCH(omega=0.02, alpha=0.1, beta=0.88).simulate(2000, rng=2).returns
 for name, series in (("returns", r), ("squared returns", r**2)):
     res = ljung_box(series, 20)
-    print(f"{name:16s} Q(20) = {res.statistic:8.1f}, p = {res.pvalue:.3g}")
+    print(f"{name:16s} Q(20) = {res.statistic:8.1f}, p = {res.p_value:.3g}")
+assert ljung_box(r, 20).p_value > 0.05 and ljung_box(r**2, 20).p_value < 1e-10
 plt.show()

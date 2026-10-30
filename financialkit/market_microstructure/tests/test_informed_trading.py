@@ -52,3 +52,22 @@ def test_vpin_extremes_and_straddling():
     np.testing.assert_allclose(flat.vpin[1:], 0.0, atol=DEFAULT_ATOL)
     with pytest.raises(ValueError):
         vpin([0.0], [1.0], bucket_volume=10.0)
+
+
+def test_fit_pin_reports_nan_standard_error_for_a_singular_hessian(monkeypatch):
+    """A flat likelihood has no curvature to invert; the PIN estimate survives and its standard error is NaN."""
+    from financialkit.market_microstructure.systems import informed_trading
+
+    B, S = simulate_pin(200, alpha=0.4, delta=0.5, mu=50.0, eps_b=40.0, eps_s=40.0, rng=1)
+    monkeypatch.setattr(informed_trading, "numerical_hessian", lambda f, x: np.zeros((x.size, x.size)))
+    res = fit_pin(B, S)
+    assert 0.0 < res.pin < 1.0
+    assert np.isnan(res.pin_se)
+
+
+def test_vpin_rejects_invalid_volumes():
+    dp = np.array([0.1, -0.2, 0.05])
+    with pytest.raises(ValueError, match="non-negative"):
+        vpin(dp, [10.0, -5.0, 10.0], bucket_volume=5.0)
+    with pytest.raises(ValueError, match="less than one bucket"):
+        vpin(dp, [1.0, 1.0, 1.0], bucket_volume=10.0)

@@ -20,6 +20,7 @@ from financialkit.credit import leland_model, leland_optimal_coupon
 r, sigma, tau, alpha = 0.06, 0.20, 0.35, 0.50
 C_star, best = leland_optimal_coupon(100.0, r, sigma, tau, alpha)
 print(f"optimal coupon {C_star:.2f}: leverage {best.leverage:.1%}, spread {1e4 * best.credit_spread:.0f} bp, V_B = {best.default_barrier:.1f}")
+assert abs(best.leverage - 0.75) < 0.005 and abs(best.credit_spread - 0.0075) < 1e-4
 
 # %%
 # Equity is an option that shareholders exercise by defaulting
@@ -29,6 +30,8 @@ V = np.linspace(30, 160, 300)
 fig, ax = plt.subplots(figsize=(7, 4))
 for VB, ls in ((best.default_barrier, "-"), (0.8 * best.default_barrier, "--"), (1.2 * best.default_barrier, ":")):
     E = [leland_model(v, C_star, r, sigma, tau, alpha, VB).equity if v > VB else 0.0 for v in V]
+    slope = leland_model(VB * (1 + 1e-4), C_star, r, sigma, tau, alpha, VB).equity / (VB * 1e-4)
+    assert abs(slope) < 1e-3 if VB == best.default_barrier else abs(slope) > 0.1
     ax.plot(V, E, ls=ls, label=f"default at V_B = {VB:.1f}")
 ax.axhline(0, color="0.5", lw=0.8)
 ax.set_xlabel("asset value V")
@@ -43,6 +46,7 @@ ax.legend()
 
 coupons = np.linspace(0.2, 14, 120)
 res = [leland_model(100.0, c, r, sigma, tau, alpha) for c in coupons]
+assert max(x.firm_value for x in res) <= best.firm_value
 fig, ax = plt.subplots(1, 2, figsize=(11, 4))
 ax[0].plot(coupons, [x.firm_value for x in res], label="firm value")
 ax[0].plot(coupons, [x.debt for x in res], label="debt")

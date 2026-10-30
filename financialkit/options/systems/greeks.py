@@ -21,8 +21,10 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy.stats import norm
 
+from financialkit._validation import nonnegative
+from financialkit._validation import option_type as check_option_type
 from financialkit.options.core.base import Greeks
-from financialkit.options.utils.common import as_output, option_sign
+from financialkit.options.utils.common import as_output, black_d1_d2
 
 __all__ = ["black_scholes_greeks"]
 
@@ -44,11 +46,18 @@ def black_scholes_greeks(S: ArrayLike, K: ArrayLike, T: ArrayLike, r: ArrayLike,
         \text{vanna} = -e^{-qT} n(d_1) \frac{d_2}{\sigma}, \quad
         \text{volga} = \mathcal{V} \frac{d_1 d_2}{\sigma}.
 
+    At ``T = 0`` or ``sigma = 0`` each Greek is its limit: the option is
+    worth :math:`e^{-rT}\max(\pm(F - K), 0)`, so away from the money delta
+    is :math:`\phi e^{-qT}` or 0 and gamma, vega, vanna and volga vanish.
+    Exactly at the money the payoff has a kink: delta is the midpoint
+    :math:`\phi e^{-qT}/2`, gamma is :math:`+\infty`, and at ``T = 0``
+    theta is :math:`-\infty`. ``S = 0`` and ``K = 0`` are handled the same
+    way; negative ``S``, ``K``, ``T`` or ``sigma`` raise :class:`ValueError`.
+
     Parameters
     ----------
     S, K, T, r, sigma : array_like
-        Spot, strike, maturity (years, positive), risk-free rate and
-        volatility (positive).
+        Spot, strike, maturity (years), risk-free rate and volatility.
     q : array_like
         Continuous dividend yield.
     option_type : {"call", "put"}
@@ -67,22 +76,32 @@ def black_scholes_greeks(S: ArrayLike, K: ArrayLike, T: ArrayLike, r: ArrayLike,
     >>> round(g.delta, 3), round(g.gamma, 3), round(g.vega, 1), round(g.theta, 2), round(g.rho, 2)
     (0.522, 0.066, 12.1, -4.31, 8.91)
     """
-    phi = option_sign(option_type)
-    S, K, T, r, sigma, q = (np.asarray(a, dtype=np.float64) for a in (S, K, T, r, sigma, q))
+    phi = check_option_type(option_type)
+    S, K, T, r, sigma, q = np.broadcast_arrays(*(np.asarray(a, dtype=np.float64) for a in (S, K, T, r, sigma, q)))
+    nonnegative(S=S, K=K, T=T, sigma=sigma)
     sqrtT = np.sqrt(T)
-    d1 = (np.log(S / K) + (r - q + 0.5 * sigma**2) * T) / (sigma * sqrtT)
-    d2 = d1 - sigma * sqrtT
+    v = sigma * sqrtT
+    d1, d2 = black_d1_d2(S * np.exp((r - q) * T), K, sigma, T)
     dq, dr = np.exp(-q * T), np.exp(-r * T)
     nd1 = norm.pdf(d1)
     Nd1, Nd2 = norm.cdf(phi * d1), norm.cdf(phi * d2)
     vega = S * dq * nd1 * sqrtT
+    # Terms with n(d1) vanish wherever d1 is infinite. Where sigma sqrt(T) = 0
+    # they are only non-zero at the money (d1 = 0), and take their limits.
+    live, regular = nd1 > 0, v > 0
+    with np.errstate(divide="ignore"):
+        gamma = np.where(live, dq * nd1 / np.where(live, S * v, 1.0), 0.0)
+        decay = np.where(live & (sigma > 0), -S * dq * nd1 * sigma / np.where(live & (sigma > 0), 2 * sqrtT, 1.0), 0.0)
+    safe_sigma = np.where(regular, sigma, 1.0)
+    vanna = np.where(regular, -dq * nd1 * np.where(live, d2, 0.0) / safe_sigma, np.where(live, 0.5 * dq * nd1 * sqrtT, 0.0))
+    volga = np.where(regular & live, vega * np.where(live, d1 * d2, 0.0) / safe_sigma, 0.0)
     return Greeks(
         delta=as_output(phi * dq * Nd1),
-        gamma=as_output(dq * nd1 / (S * sigma * sqrtT)),
+        gamma=as_output(gamma),
         vega=as_output(vega),
-        theta=as_output(-S * dq * nd1 * sigma / (2 * sqrtT) - phi * r * K * dr * Nd2 + phi * q * S * dq * Nd1),
+        theta=as_output(decay - phi * r * K * dr * Nd2 + phi * q * S * dq * Nd1),
         rho=as_output(phi * K * T * dr * Nd2),
         epsilon=as_output(-phi * S * T * dq * Nd1),
-        vanna=as_output(-dq * nd1 * d2 / sigma),
-        volga=as_output(vega * d1 * d2 / sigma),
+        vanna=as_output(vanna),
+        volga=as_output(volga),
     )

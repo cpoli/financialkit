@@ -26,7 +26,11 @@ ages = [3, 20, 40, 60, 70]
 k = np.arange(1, 78)
 for age in ages:
     p = de_witt_survival(age, k, base_hazard=0.015)
-    print(f"age {age:2d}: life annuity worth {life_annuity_value(1.0, 0.04, p):5.2f} years' purchase")
+    value = life_annuity_value(1.0, 0.04, p)
+    print(f"age {age:2d}: life annuity worth {value:5.2f} years' purchase")
+    assert value < annuity_factor(0.04, 10_000)
+    if age <= 40:
+        assert value > 14.0  # sold too cheaply to young buyers
 print(f"perpetual annuity-certain at 4%: {annuity_factor(0.04, 10_000):.2f}")
 
 # %%
@@ -45,6 +49,7 @@ axes[0].legend()
 buy_ages = np.arange(3, 79)
 values = [life_annuity_value(1.0, 0.04, de_witt_survival(a, k, base_hazard=0.015)) for a in buy_ages]
 axes[1].plot(buy_ages, values)
+assert np.all(np.diff(values) < 0)
 axes[1].axhline(14.0, color="gray", ls="--", label="price charged: 14 years' purchase")
 axes[1].set_xlabel("age of annuitant")
 axes[1].set_ylabel("value of 1 a year for life")

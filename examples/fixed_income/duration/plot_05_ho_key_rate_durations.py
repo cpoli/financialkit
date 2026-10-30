@@ -25,7 +25,9 @@ curve = NelsonSiegelCurve(0.045, -0.02, 0.01, 2.0)
 
 t = np.linspace(0, 35, 400)
 fig, ax = plt.subplots()
-for k, w in zip(keys, key_rate_weights(t, keys), strict=True):
+weights = key_rate_weights(t, keys)
+assert np.allclose(weights.sum(axis=0), 1.0)  # the shocks add up to a parallel shift
+for k, w in zip(keys, weights, strict=True):
     ax.plot(t, w, label=f"{k:g}y")
 ax.set_xlabel("maturity (years)")
 ax.set_ylabel("shock weight")
@@ -39,8 +41,13 @@ bullet = bond_cash_flows(100.0, 0.045, 10.0)
 target = bullet.scaled(1.0)
 barbell = redington_immunize(target, [bond_cash_flows(1.0, 0.04, 2.0), bond_cash_flows(1.0, 0.05, 30.0)], curve).portfolio
 fig, axes = plt.subplots(1, 2, figsize=(10, 4), sharey=True)
+totals, profiles = {}, {}
 for ax, (name, cf) in zip(axes, (("bullet 10y", bullet), ("2y/30y barbell", barbell)), strict=True):
     res = key_rate_durations(cf, curve, keys)
+    assert abs(res.durations.sum() - res.parallel_duration) < 1e-5
+    totals[name], profiles[name] = res.durations.sum(), res.durations
     plot_key_rate_durations(res, ax=ax)
     ax.set_title(f"{name}: sum {res.durations.sum():.2f}")
+assert abs(totals["bullet 10y"] - totals["2y/30y barbell"]) < 1e-4  # same duration
+assert abs(profiles["bullet 10y"][-1]) < 1e-12 and profiles["2y/30y barbell"][-1] > 1.0  # different profiles
 plt.show()

@@ -50,15 +50,20 @@ ax2.set_title("squared returns")
 fig.tight_layout()
 print(f"lag-1 autocorrelation: returns {autocorrelation(r, 1)[1]:+.2f}, squared returns {autocorrelation(r**2, 1)[1]:+.2f}")
 print(f"excess kurtosis {return_statistics(r).excess_kurtosis:.1f}, from normal innovations")
+assert abs(autocorrelation(r, 1)[1]) < 0.1 < autocorrelation(r**2, 1)[1]
+assert return_statistics(r).excess_kurtosis > 0.5
 
 # %%
 # The LM test and maximum likelihood
 # ----------------------------------
 
 lm = arch_lm_test(r, lags=4)
-print(f"ARCH-LM(4) = {lm.statistic:.1f}, p = {lm.pvalue:.2g}")
+print(f"ARCH-LM(4) = {lm.statistic:.1f}, p = {lm.p_value:.2g}")
 lm0 = arch_lm_test(np.random.default_rng(0).standard_normal(4000), lags=4)
-print(f"on i.i.d. normals: ARCH-LM(4) = {lm0.statistic:.1f}, p = {lm0.pvalue:.2f}")
+print(f"on i.i.d. normals: ARCH-LM(4) = {lm0.statistic:.1f}, p = {lm0.p_value:.2f}")
 fit = ARCH.fit(r)
 print("MLE:", {k: f"{v:.3f} +/- {fit.std_errors[k]:.3f}" for k, v in fit.params.items()})
+assert lm.p_value < 1e-10 and lm0.p_value > 0.01
+for k in ("omega", "alpha"):
+    assert abs(fit.params[k] - model.params[k]) < 3 * fit.std_errors[k]
 plt.show()

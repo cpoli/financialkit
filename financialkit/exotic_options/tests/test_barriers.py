@@ -124,3 +124,10 @@ def test_bgk_correction_prices_discrete_monitoring(barrier_type, H):
     # o(1/sqrt(m)) correction error: allow one cent beyond the sampling noise.
     assert abs(res.estimate - corrected) < 4 * res.std_error + 0.01
     assert abs(res.estimate - continuous) > 10 * res.std_error
+
+
+def test_double_barrier_rejects_invalid_inputs():
+    with pytest.raises(ValueError, match="knock"):
+        double_barrier_price(100.0, 100.0, 80.0, 120.0, 1.0, 0.05, 0.3, knock="sideways")
+    with pytest.raises(ValueError, match="L < U"):
+        double_barrier_price(100.0, 100.0, 120.0, 80.0, 1.0, 0.05, 0.3)

@@ -3,12 +3,14 @@
 Value at risk by historical simulation, normal and Student-t closed
 forms, RiskMetrics delta-normal, the Cornish-Fisher expansion, full
 revaluation Monte Carlo (through :mod:`financialkit.integrators`),
-Boudoukh-Richardson-Whitelaw age weighting and filtered historical
-simulation; Roy's safety-first criterion; Acerbi-Tasche expected
-shortfall, the coherence axioms and Euler risk allocation; block maxima
-and peaks over threshold (:data:`scipy.stats.genextreme`,
-:data:`scipy.stats.genpareto`); Kupiec and Christoffersen backtests and
-the Basel traffic light; Gaussian and t copulas with tail dependence;
+Boudoukh-Richardson-Whitelaw age weighting, filtered historical
+simulation, Rouvinez's exact delta-gamma VaR and
+Bangia-Diebold-Schuermann-Stroughair liquidity-adjusted VaR; Roy's
+safety-first criterion; Acerbi-Tasche expected shortfall, the coherence
+axioms, Euler risk allocation and the FRTB's liquidity-horizon ES;
+block maxima and peaks over threshold (:data:`scipy.stats.genextreme`,
+:data:`scipy.stats.genpareto`); Kupiec and Christoffersen backtests,
+the Basel traffic light and Acerbi-Szekely ES backtests; Gaussian and t copulas with tail dependence;
 drawdowns and the Calmar ratio. Profits and losses go in with losses
 negative, and every risk figure comes out as a positive loss.
 """
@@ -19,6 +21,8 @@ from financialkit.risk.core.base import (
     BacktestResult,
     CoherenceResult,
     DrawdownResult,
+    ESBacktestResult,
+    FRTBResult,
     GEVResult,
     GPDResult,
     RiskMeasure,
@@ -26,7 +30,15 @@ from financialkit.risk.core.base import (
     VaRResult,
 )
 from financialkit.risk.systems.allocation import euler_allocation, scenario_es_allocation
-from financialkit.risk.systems.backtesting import basel_traffic_light, christoffersen_independence, christoffersen_test, kupiec_test
+from financialkit.risk.systems.backtesting import (
+    acerbi_szekely_test,
+    acerbi_szekely_z1,
+    acerbi_szekely_z2,
+    basel_traffic_light,
+    christoffersen_independence,
+    christoffersen_test,
+    kupiec_test,
+)
 from financialkit.risk.systems.coherence import ExpectedShortfall, ValueAtRisk, check_coherence
 from financialkit.risk.systems.copulas import (
     apply_marginals,
@@ -36,9 +48,12 @@ from financialkit.risk.systems.copulas import (
     t_copula_sample,
     t_tail_dependence,
 )
+from financialkit.risk.systems.delta_gamma import delta_gamma_cdf, delta_gamma_cumulants, delta_gamma_var
 from financialkit.risk.systems.drawdowns import calmar_ratio, drawdowns
 from financialkit.risk.systems.expected_shortfall import expected_shortfall, parametric_es
 from financialkit.risk.systems.extreme_value import block_maxima, fit_gev, fit_pot, gev_return_level, mean_excess, pot_es, pot_var
+from financialkit.risk.systems.frtb import LIQUIDITY_HORIZONS, frtb_es_cascade, frtb_expected_shortfall
+from financialkit.risk.systems.liquidity import exogenous_liquidity_cost, liquidity_adjusted_var
 from financialkit.risk.systems.safety_first import safety_first_portfolio, safety_first_ratio, shortfall_probability
 from financialkit.risk.systems.var import (
     cornish_fisher_var,
@@ -51,16 +66,28 @@ from financialkit.risk.systems.var import (
     rolling_historical_var,
 )
 from financialkit.risk.utils.tail import pseudo_observations, var_exceptions, weighted_tail
+from financialkit.risk.visualizers.plots import (
+    plot_allocation,
+    plot_backtest,
+    plot_copula,
+    plot_drawdowns,
+    plot_frtb_cascade,
+    plot_gev_fit,
+    plot_pot_tail,
+    plot_var,
+)
 
 __all__ = [
     "__version__",
     "VaRResult",
     "BacktestResult",
+    "ESBacktestResult",
     "TrafficLightResult",
     "GEVResult",
     "GPDResult",
     "CoherenceResult",
     "AllocationResult",
+    "FRTBResult",
     "DrawdownResult",
     "RiskMeasure",
     "historical_var",
@@ -71,11 +98,19 @@ __all__ = [
     "monte_carlo_var",
     "hybrid_var",
     "filtered_historical_var",
+    "delta_gamma_cumulants",
+    "delta_gamma_cdf",
+    "delta_gamma_var",
+    "exogenous_liquidity_cost",
+    "liquidity_adjusted_var",
     "safety_first_ratio",
     "shortfall_probability",
     "safety_first_portfolio",
     "expected_shortfall",
     "parametric_es",
+    "LIQUIDITY_HORIZONS",
+    "frtb_es_cascade",
+    "frtb_expected_shortfall",
     "ValueAtRisk",
     "ExpectedShortfall",
     "check_coherence",
@@ -92,6 +127,9 @@ __all__ = [
     "christoffersen_independence",
     "christoffersen_test",
     "basel_traffic_light",
+    "acerbi_szekely_z1",
+    "acerbi_szekely_z2",
+    "acerbi_szekely_test",
     "gaussian_copula_sample",
     "t_copula_sample",
     "apply_marginals",
@@ -103,4 +141,12 @@ __all__ = [
     "weighted_tail",
     "var_exceptions",
     "pseudo_observations",
+    "plot_var",
+    "plot_backtest",
+    "plot_gev_fit",
+    "plot_pot_tail",
+    "plot_copula",
+    "plot_allocation",
+    "plot_drawdowns",
+    "plot_frtb_cascade",
 ]

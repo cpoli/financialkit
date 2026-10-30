@@ -32,6 +32,7 @@ eq = capm_equilibrium(mu, cov, risk_free=0.03)
 print("market weights:", eq.market_weights.round(3))
 print("betas:         ", eq.betas.round(3))
 print("SML errors:    ", np.abs(eq.sml_errors).max())
+assert np.abs(eq.sml_errors).max() < 1e-12
 
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 plot_sml(eq, ax=axes[0], labels=names)
@@ -53,5 +54,7 @@ rng = np.random.default_rng(1964)
 R = rng.multivariate_normal(mu / 12, cov / 12, size=60)
 b_hat = estimate_beta(R, R @ eq.market_weights)
 print("estimated betas:", np.round(b_hat, 2))
+# Sixty months pin each beta down to within about 0.2.
+assert np.abs(b_hat - eq.betas).max() < 0.2
 
 plt.show()

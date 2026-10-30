@@ -47,6 +47,9 @@ axes[1].legend(fontsize=8, loc="upper left", bbox_to_anchor=(1, 1))
 fig.tight_layout()
 for label, w in ports.items():
     print(f"{label:>16}: vol {np.sqrt(w @ cov @ w):.2%}")
+assert np.allclose(euler_allocation(ports["risk parity"], cov, measure="volatility").shares, 0.25, atol=1e-4)
+port_vol = {label: np.sqrt(w @ cov @ w) for label, w in ports.items()}
+assert port_vol["minimum variance"] < port_vol["risk parity"] < port_vol["1/N"]
 
 # %%
 # Risk budgets
@@ -58,6 +61,7 @@ for label, w in ports.items():
 budgets = np.array([0.4, 0.2, 0.3, 0.1])
 w = risk_parity(cov, budgets).weights
 print("weights:", np.round(w, 3), " risk shares:", np.round(euler_allocation(w, cov, measure="volatility").shares, 3))
+assert np.allclose(euler_allocation(w, cov, measure="volatility").shares, budgets, atol=1e-4)
 
 # %%
 # Risk parity and correlation

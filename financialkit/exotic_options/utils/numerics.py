@@ -21,11 +21,16 @@ from numpy.typing import ArrayLike
 from scipy.special import owens_t
 from scipy.stats import norm
 
+from financialkit._validation import in_interval, one_of
+from financialkit.integrators import RNGLike, gbm_paths
+
 __all__ = [
     "bivariate_normal_cdf",
     "parse_barrier_type",
     "barrier_crossing_probability",
     "bridge_extremum",
+    "deterministic_hit_time",
+    "spot_paths",
 ]
 
 _BARRIER_TYPES = ("down-and-out", "down-and-in", "up-and-out", "up-and-in")
@@ -43,6 +48,8 @@ def bivariate_normal_cdf(h: ArrayLike, k: ArrayLike, rho: ArrayLike) -> np.ndarr
     with :math:`\\beta = 0` when :math:`h` and :math:`k` have the same sign
     and :math:`\\tfrac12` otherwise (Owen 1956). It broadcasts over its
     inputs, which the compound and rainbow option formulas rely on.
+    Infinite limits are exact: :math:`M(\\infty, k; \\rho) = N(k)` and
+    :math:`M(-\\infty, k; \\rho) = 0`.
 
     Parameters
     ----------
@@ -62,8 +69,10 @@ def bivariate_normal_cdf(h: ArrayLike, k: ArrayLike, rho: ArrayLike) -> np.ndarr
     True
     """
     h, k, rho = np.broadcast_arrays(*(np.asarray(a, dtype=np.float64) for a in (h, k, rho)))
-    if np.any(np.abs(rho) >= 1.0):
-        raise ValueError("bivariate_normal_cdf needs |rho| < 1")
+    in_interval(-1.0, 1.0, rho=rho)
+    h_inf, k_inf = np.isinf(h), np.isinf(k)
+    limit = np.where((h == -np.inf) | (k == -np.inf), 0.0, np.where(h_inf, norm.cdf(k), norm.cdf(h)))
+    h, k = np.where(h_inf, 1.0, h), np.where(k_inf, 1.0, k)
     # Owen's formula is singular at h = 0 or k = 0; the distribution is
     # continuous there, so evaluate an ulp-sized step to the right.
     h = np.where(h == 0.0, 1e-15, h)
@@ -71,7 +80,7 @@ def bivariate_normal_cdf(h: ArrayLike, k: ArrayLike, rho: ArrayLike) -> np.ndarr
     s = np.sqrt(1.0 - rho**2)
     beta = np.where((h > 0) == (k > 0), 0.0, 0.5)
     out = 0.5 * norm.cdf(h) + 0.5 * norm.cdf(k) - owens_t(h, (k - rho * h) / (h * s)) - owens_t(k, (h - rho * k) / (k * s)) - beta
-    out = np.clip(out, 0.0, 1.0)
+    out = np.where(h_inf | k_inf, limit, np.clip(out, 0.0, 1.0))
     return float(out) if out.ndim == 0 else out
 
 
@@ -91,8 +100,7 @@ def parse_barrier_type(barrier_type: str) -> tuple[bool, bool]:
     >>> parse_barrier_type("up-and-in")
     (False, False)
     """
-    if barrier_type not in _BARRIER_TYPES:
-        raise ValueError(f"barrier_type must be one of {_BARRIER_TYPES}, got {barrier_type!r}")
+    one_of("barrier_type", barrier_type, _BARRIER_TYPES)
     return barrier_type.startswith("down"), barrier_type.endswith("out")
 
 
@@ -166,10 +174,118 @@ def bridge_extremum(log_paths: ArrayLike, sigma: float, dt: float, kind: str = "
         The log of each path's running maximum (or minimum) over the whole interval.
     """
     x = np.asarray(log_paths, dtype=np.float64)
-    if kind not in ("max", "min"):
-        raise ValueError(f"kind must be 'max' or 'min', got {kind!r}")
+    one_of("kind", kind, ("max", "min"))
     sign = 1.0 if kind == "max" else -1.0
     x0, x1 = sign * x[:, :-1], sign * x[:, 1:]
     u = 1.0 - np.random.default_rng(rng).random(x0.shape)
     m = 0.5 * (x0 + x1 + np.sqrt((x1 - x0) ** 2 - 2.0 * sigma**2 * dt * np.log(u)))
     return sign * m.max(axis=1)
+
+
+def deterministic_hit_time(S: ArrayLike, H: ArrayLike, T: ArrayLike, b: ArrayLike, is_down: ArrayLike) -> tuple[np.ndarray, np.ndarray]:
+    """Whether, and when, the riskless path :math:`S e^{bt}` reaches the barrier :math:`H` by :math:`T`.
+
+    With zero volatility, or at :math:`T = 0`, a path-dependent payoff is
+    the payoff of this one path. It is monotone, so it reaches a barrier
+    below the spot (``is_down``) only if :math:`S e^{bT} \\le H`, and then at
+    :math:`t^* = \\ln(H/S)/b`; a spot of zero stays at zero.
+
+    Parameters
+    ----------
+    S, H, T : array_like
+        Spot (already on the live side of the barrier), barrier and maturity.
+    b : array_like
+        Cost of carry :math:`r - q`.
+    is_down : array_like of bool
+        Whether the barrier is below the spot.
+
+    Returns
+    -------
+    hit : ndarray of bool
+    t_hit : ndarray
+        The hitting time where ``hit``, else `T`.
+
+    Examples
+    --------
+    >>> hit, t = deterministic_hit_time(100.0, 90.0, 2.0, -0.1, True)
+    >>> bool(hit), round(float(t), 4)
+    (True, 1.0536)
+    """
+    S, H, T, b, is_down = np.broadcast_arrays(*(np.asarray(a, dtype=np.float64) for a in (S, H, T, b)), np.asarray(is_down, dtype=bool))
+    fwd = S * np.exp(b * T)
+    hit = np.where(is_down, fwd <= H, fwd >= H) & (S > 0)
+    t_hit = np.where(hit, np.log(np.where(hit, H / np.where(hit, S, 1.0), 2.0)) / np.where(hit & (b != 0), b, 1.0), T)
+    return hit, t_hit
+
+
+def spot_paths(
+    S: float,
+    T: float,
+    mu: float,
+    sigma: float | None,
+    n_steps: int,
+    n_paths: int,
+    paths: ArrayLike | None = None,
+    discount: ArrayLike | None = None,
+    rng: RNGLike = None,
+    dW: ArrayLike | None = None,
+) -> tuple[np.ndarray, np.ndarray | None]:
+    """The spot paths a Monte Carlo pricer runs on, and their discount factors.
+
+    Without `paths` this is :func:`financialkit.integrators.gbm_paths` with
+    drift `mu`, and the pricer discounts at its constant rate. With `paths`
+    the simulation is skipped, so a pricer can run on any model's paths
+    (Heston, local volatility, jumps); `paths` must start at `S` and sit on
+    the equally spaced grid :math:`t_i = iT/n`.
+
+    Parameters
+    ----------
+    S, T, mu : float
+        Spot, maturity and risk-neutral drift :math:`r - q`.
+    sigma : float or None
+        GBM volatility; needed only without `paths`.
+    n_steps, n_paths : int
+        GBM grid and path count; ignored with `paths`.
+    paths : array_like, shape (n_paths, n_steps + 1), optional
+        Spot paths, including the spot at :math:`t = 0`.
+    discount : array_like, optional
+        Discount factors :math:`D(0, t_i)` broadcastable to the shape of
+        `paths`: shape ``(n_steps + 1,)`` for a term structure, or one row
+        per path for stochastic rates. Needs `paths`.
+    rng : numpy.random.Generator or int, optional
+        Generator or seed for the GBM paths.
+    dW : array_like, optional
+        Brownian increments for the GBM paths.
+
+    Returns
+    -------
+    paths : ndarray, shape (n_paths, n_steps + 1)
+    discount : ndarray or None
+        `discount` broadcast to the shape of `paths`, or ``None`` when not given.
+
+    Examples
+    --------
+    >>> paths, D = spot_paths(100.0, 1.0, 0.05, None, 2, 1, paths=[[100.0, 104.0, 98.0]], discount=[1.0, 0.98, 0.95])
+    >>> paths.shape, D.shape
+    ((1, 3), (1, 3))
+    """
+    if paths is None:
+        if discount is not None:
+            raise ValueError("discount needs paths; without them the pricer discounts at r")
+        if sigma is None:
+            raise ValueError("sigma is required unless paths are given")
+        return gbm_paths(S, mu, sigma, T, int(n_steps), int(n_paths), rng=rng, dW=dW)[1], None
+    P = np.asarray(paths, dtype=np.float64)
+    if P.ndim != 2 or P.shape[1] < 2:
+        raise ValueError(f"paths must have shape (n_paths, n_steps + 1) with n_steps >= 1, got {P.shape}")
+    if not np.allclose(P[:, 0], S):
+        raise ValueError("paths must start at the spot S")
+    if discount is None:
+        return P, None
+    try:
+        D = np.broadcast_to(np.asarray(discount, dtype=np.float64), P.shape)
+    except ValueError:
+        raise ValueError(f"discount of shape {np.shape(discount)} does not broadcast to paths of shape {P.shape}") from None
+    if np.any(D <= 0) or not np.allclose(D[:, 0], 1.0):
+        raise ValueError("discount factors must be positive and start at D(0, 0) = 1")
+    return P, D

@@ -24,6 +24,7 @@ from financialkit.monte_carlo.visualizers import plot_error_convergence, plot_po
 
 print("base 2:", van_der_corput(8).tolist())
 print("base 3:", np.round(van_der_corput(8, base=3), 4).tolist())
+assert np.allclose(van_der_corput(7), [1 / 2, 1 / 4, 3 / 4, 1 / 8, 5 / 8, 3 / 8, 7 / 8])
 
 fig, axes = plt.subplots(1, 4, figsize=(17, 4))
 x = van_der_corput(16)
@@ -56,6 +57,8 @@ ns = 2 ** np.arange(6, 15)
 fig, ax = plt.subplots(figsize=(6, 4))
 mc = [abs(f(np.random.default_rng(n).random((n, 3))).mean() - 1) for n in ns]
 ha = [abs(f(halton(n, 3)).mean() - 1) for n in ns]
+print(f"N = {ns[-1]}: random error {mc[-1]:.1e}, Halton error {ha[-1]:.1e}")
+assert ha[-1] < mc[-1] / 10
 plot_error_convergence(ns, mc, ax=ax, label="random", rates=(0.5,))
 plot_error_convergence(ns, ha, ax=ax, label="Halton", rates=(1.0,))
 ax.set_title("d = 3")

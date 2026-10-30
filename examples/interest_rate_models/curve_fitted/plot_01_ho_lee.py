@@ -62,6 +62,7 @@ axes[2].set_xlabel("maturity (years)")
 axes[2].set_ylabel("zero yield (%)")
 axes[2].legend()
 print(f"largest |z| across 20 maturities: {np.abs(res.z_scores).max():.2f}")
+assert np.abs(res.z_scores).max() < 3  # every market bond repriced within 3 standard errors
 fig.tight_layout()
 
 plt.show()

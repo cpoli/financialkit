@@ -23,7 +23,9 @@ r, R = 0.03, 0.4
 
 curve = bootstrap_hazard_curve(maturities, spreads, r, R)
 for T, s, h in zip(maturities, spreads, curve.hazards, strict=True):
-    print(f"{T:4.1f}y  quote {1e4 * s:5.0f} bp  hazard {h:.4%}  reprices to {1e4 * cds_par_spread(curve, T, r, R):7.2f} bp")
+    repriced = cds_par_spread(curve, T, r, R)
+    print(f"{T:4.1f}y  quote {1e4 * s:5.0f} bp  hazard {h:.4%}  reprices to {1e4 * repriced:7.2f} bp")
+    assert abs(repriced - s) < 1e-10
 
 # %%
 # The curve
@@ -44,6 +46,8 @@ ax.legend(loc="lower left")
 up100 = [cds_upfront(curve, T, 0.01, r, R) for T in maturities]
 up500 = [cds_upfront(curve, T, 0.05, r, R) for T in maturities]
 conv = [upfront_to_spread(u, 0.01, T, r, R) for u, T in zip(up100, maturities, strict=True)]
+assert np.all(np.sign(up100) == np.sign(spreads - 0.01))
+assert np.allclose(conv, spreads, rtol=0.01)
 fig, ax = plt.subplots(1, 2, figsize=(11, 4))
 ax[0].bar(maturities - 0.15, 100 * np.array(up100), 0.3, label="coupon 100 bp")
 ax[0].bar(maturities + 0.15, 100 * np.array(up500), 0.3, label="coupon 500 bp")

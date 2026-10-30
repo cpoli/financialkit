@@ -41,6 +41,7 @@ extensions = [
     "sphinx_autodoc_typehints",
     "myst_parser",
     "sphinx_gallery.gen_gallery",
+    "matplotlib.sphinxext.plot_directive",
     "sphinx_design",
     "jupyterlite_sphinx",
     "sphinx_sitemap",
@@ -89,12 +90,12 @@ SUBPACKAGES = [
     {
         "name": "fixed_income",
         "category": "Foundations",
-        "blurb": "Bond prices and yields, STRIPS, Macaulay, modified, Fisher-Weil and key rate durations, convexity, bootstrapped, spline, Nelson-Siegel and Svensson curves, immunization, and swaps.",
+        "blurb": "Bond prices and yields, STRIPS, Macaulay, modified, Fisher-Weil and key rate durations, convexity, bootstrapped, spline, Nelson-Siegel and Svensson curves, immunization, swaps, OIS multi-curve and SOFR compounding, Treasury futures, and MBS prepayment.",
     },
     {
         "name": "options",
         "category": "Derivatives",
-        "blurb": "Bachelier, Black-Scholes-Merton, Black-76 and Garman-Kohlhagen, parity and bounds, the Greeks and delta hedging, implied volatility and the smile, and binomial and trinomial trees.",
+        "blurb": "Bachelier, Black-Scholes-Merton, Black-76 and Garman-Kohlhagen, discrete cash dividends, parity and bounds, the Greeks and delta hedging, implied volatility by Newton and Jäckel, the smile and vanna-volga, binomial and trinomial trees, and Barone-Adesi-Whaley and Bjerksund-Stensland.",
     },
     {
         "name": "exotic_options",
@@ -104,12 +105,12 @@ SUBPACKAGES = [
     {
         "name": "stochastic_volatility",
         "category": "Derivatives",
-        "blurb": "Cox's CEV and Dupire local volatility, Hull-White and Heston stochastic volatility, Merton, variance gamma, Kou and Bates jumps, Carr-Madan FFT, Lewis and COS pricing, SABR, SVI and Lee's moment formula, and full-truncation and QE simulation.",
+        "blurb": "Cox's CEV and Dupire local volatility, Hull-White and Heston stochastic volatility, Merton, variance gamma, Kou and Bates jumps, Carr-Madan FFT, Lewis and COS pricing, SABR, SVI, SSVI and Lee's moment formula, full-truncation and QE simulation, and rough Bergomi with the hybrid scheme.",
     },
     {
         "name": "monte_carlo",
         "category": "Numerical Methods",
-        "blurb": "Crude Monte Carlo with error bars, stratification, importance sampling, antithetic, control and moment-matched variates, Latin hypercubes, Halton and Sobol QMC, likelihood-ratio and pathwise Greeks, and multilevel Monte Carlo.",
+        "blurb": "Crude Monte Carlo with error bars, stratification, importance sampling, antithetic, control and moment-matched variates, Latin hypercubes, Halton and Sobol QMC, likelihood-ratio, pathwise and adjoint Greeks, and multilevel Monte Carlo.",
     },
     {
         "name": "pde_methods",
@@ -119,17 +120,17 @@ SUBPACKAGES = [
     {
         "name": "interest_rate_models",
         "category": "Rates & Credit",
-        "blurb": "Merton, Vasicek, CIR and affine short rates, Ho-Lee, Hull-White, G2++ and Black-Derman-Toy fitted to the curve, Jamshidian bond options and swaptions, Black caps and swaptions, and HJM.",
+        "blurb": "Merton, Vasicek, CIR and affine short rates, Ho-Lee, Hull-White, G2++ and Black-Derman-Toy fitted to the curve, Jamshidian bond options and swaptions, Black caps and swaptions, HJM, Hull-White trees for callable bonds and OAS, Richard-Roll MBS prepayment, and the Lyashenko-Mercurio forward market model.",
     },
     {
         "name": "credit",
         "category": "Rates & Credit",
-        "blurb": "Altman's Z-score, Merton, Black-Cox and Leland structural models and the KMV distance to default, hazard curves and recovery conventions, CDS pricing and bootstrapping, CreditMetrics and generator matrices, Vasicek's large pool, CreditRisk+, Li's copula, the Basel IRB formula and CDO tranches.",
+        "blurb": "Altman's Z-score, Merton, Black-Cox and Leland structural models and the KMV distance to default, hazard curves and recovery conventions, CDS pricing and bootstrapping, CreditMetrics and generator matrices, Vasicek's large pool, CreditRisk+, Li's copula, the Basel IRB formula, CDO tranches, the ASB recursion and base correlation, and CVA, DVA and FVA from Hull-White exposure profiles.",
     },
     {
         "name": "asset_pricing",
         "category": "Portfolios & Asset Pricing",
-        "blurb": "Williams's dividend discount model, Gordon growth, Modigliani-Miller and Shiller's variance bound, the CAPM, Jensen's alpha, the zero-beta CAPM and the GRS test, Fama-MacBeth, the APT, Fama-French and Carhart factors, Lucas's tree, the consumption CAPM and the equity premium puzzle, state prices and the Hansen-Jagannathan bound.",
+        "blurb": "Williams's dividend discount model, Gordon growth, Modigliani-Miller and Shiller's variance bound, the CAPM, Jensen's alpha, the zero-beta CAPM and the GRS test, Fama-MacBeth, the APT, Fama-French three- and five-factor models, Carhart momentum and the factor zoo's multiple-testing hurdles, Lucas's tree, the consumption CAPM, Hansen-Singleton GMM, the equity premium puzzle, Campbell-Cochrane habit and Bansal-Yaron long-run risk, Campbell-Shiller present values, state prices and the Hansen-Jagannathan bound.",
     },
     {
         "name": "portfolio",
@@ -139,17 +140,17 @@ SUBPACKAGES = [
     {
         "name": "risk",
         "category": "Risk & Markets",
-        "blurb": "Historical, parametric, Cornish-Fisher, Monte Carlo, hybrid and filtered VaR, safety first, expected shortfall and coherence, Euler allocation, extreme value theory, VaR backtests, copulas and tail dependence, and drawdowns.",
+        "blurb": "Historical, parametric, Cornish-Fisher, Monte Carlo, hybrid, filtered, delta-gamma and liquidity-adjusted VaR, safety first, expected shortfall and coherence, Euler allocation, the FRTB cascade, extreme value theory, VaR and ES backtests, copulas and tail dependence, and drawdowns.",
     },
     {
         "name": "time_series",
         "category": "Risk & Markets",
-        "blurb": "Fat tails and the Hill index, random-walk tests (runs, Ljung-Box, variance ratios), Yule-Walker and ARMA with AIC, Dickey-Fuller and Engle-Granger, the Hurst exponent, ARCH, GARCH, EGARCH, GJR and EWMA, and range and realized volatility.",
+        "blurb": "Fat tails and the Hill index, random-walk tests (runs, Ljung-Box, variance ratios), Yule-Walker, ARMA with AIC and VARs, Dickey-Fuller, KPSS, Engle-Granger and Johansen, the Hurst exponent, the Kalman filter, Hamilton regime switching, ARCH, GARCH, EGARCH, GJR, EWMA and DCC, and range, realized and HAR volatility.",
     },
     {
         "name": "market_microstructure",
         "category": "Risk & Markets",
-        "blurb": "Quoted, effective and realized spreads, the Roll and Corwin-Schultz estimators, Lee-Ready classification, Garman, Ho-Stoll and Avellaneda-Stoikov dealers, Kyle and Glosten-Milgrom, Hasbrouck's VAR, PIN and VPIN, square-root impact, Bertsimas-Lo and Almgren-Chriss execution, and Amihud illiquidity.",
+        "blurb": "Quoted, effective and realized spreads, the Roll and Corwin-Schultz estimators, Lee-Ready classification, Garman, Ho-Stoll and Avellaneda-Stoikov dealers, Kyle and Glosten-Milgrom, Hasbrouck's VAR, PIN and VPIN, square-root impact, Bertsimas-Lo, Almgren-Chriss and Obizhaeva-Wang execution, Amihud illiquidity, Hawkes order flow, the Cont-Stoikov-Talreja order book and order-flow imbalance.",
     },
 ]
 
@@ -221,7 +222,20 @@ sphinx_gallery_conf = {
         "use_jupyter_lab": True,
         "notebook_modification_function": _jupyterlite_install_cell,
     },
+    # Run the examples in one worker process per core; FINANCIALKIT_GALLERY_JOBS=1
+    # runs them one at a time in the Sphinx process instead.
+    "parallel": int(os.environ.get("FINANCIALKIT_GALLERY_JOBS", os.cpu_count() or 1)),
 }
+
+# The tutorials are `.. plot::` blocks: the build runs them, shows their
+# source and embeds any figure. Each page shares one namespace through
+# `:context:`. financialkit/tests/test_course_material.py runs the same
+# blocks and checks the output written under each print.
+plot_include_source = True
+plot_html_show_source_link = False
+plot_html_show_formats = False
+plot_formats = [("png", 110)]
+plot_pre_code = ""
 
 # The quickstart notebook also ships in the JupyterLite site, so the "Try it
 # online" badge opens on it; sphinx-gallery appends its own notebooks to this
@@ -232,6 +246,13 @@ jupyterlite_contents = ["../../notebooks/quickstart.ipynb"]
 # classes; autolinking to a single target for them isn't meaningful, so
 # treat those as non-fatal rather than broken links.
 suppress_warnings = ["ref.python", "config.cache"]
+
+# `make linkcheck` (weekly, .github/workflows/linkcheck.yml). The JupyterLite
+# site under lite/ only exists in the html build. GitHub renders heading
+# anchors with JavaScript, so its #anchors always look missing. Add a
+# publisher here if it starts answering the checker with 403 or 429.
+linkcheck_ignore = [r"^lite/"]
+linkcheck_anchors_ignore_for_url = [r"https://github\.com/"]
 
 html_theme = "pydata_sphinx_theme"
 
@@ -275,6 +296,12 @@ html_theme_options = {
             "name": "PyPI",
             "url": "https://pypi.org/project/financialkit/",
             "icon": "fa-brands fa-python",
+            "type": "fontawesome",
+        },
+        {
+            "name": "Charles Poli",
+            "url": "https://cpoli.github.io/",
+            "icon": "fa-solid fa-user",
             "type": "fontawesome",
         },
     ],

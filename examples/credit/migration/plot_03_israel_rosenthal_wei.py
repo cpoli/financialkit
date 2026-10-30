@@ -22,6 +22,7 @@ P = creditmetrics_matrix()
 L = generator_from_transition(P)
 off = L - np.diag(np.diag(L))
 print(f"log(P) is a valid generator: {is_valid_generator(L)}; {np.sum(off < 0)} negative off-diagonal entries, most negative {off.min():.2e}")
+assert not is_valid_generator(L)
 ax = plot_transition_matrix(L, labels=RATINGS, fmt="{:.2f}")
 ax.set_title("log(P) in % per year: negative intensities in red")
 
@@ -36,6 +37,7 @@ for ax, method in zip(axes, ("diagonal", "weighted"), strict=True):
     plot_transition_matrix(err, labels=RATINGS, ax=ax, fmt="{:.2f}", scale=1e4)
     ax.set_title(f"{method}: exp(G) - P in bp (max {1e4 * np.abs(err).max():.1f})")
     print(f"{method:8s}: valid {is_valid_generator(G)}, max |exp(G) - P| = {np.abs(err).max():.2e}")
+    assert is_valid_generator(G) and np.abs(err).max() < 5e-4
 fig.tight_layout()
 
 plt.show()

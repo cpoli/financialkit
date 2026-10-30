@@ -38,7 +38,13 @@ b = np.linspace(0.0, 0.7, 100)
 fig, ax = plt.subplots(figsize=(7, 4))
 for roe in (0.06, 0.09, 0.12):
     gb = sustainable_growth(roe, 1 - b)
-    ax.plot(b, gordon_growth_price(1 - b, r, gb), label=f"ROE = {roe:.0%}")
+    price = gordon_growth_price(1 - b, r, gb)
+    # Retention adds value only when ROE beats r: at ROE = r the price stays at E / r.
+    if roe == r:
+        assert np.allclose(price, 1 / r)
+    else:
+        assert np.all(np.sign(np.diff(price)) == np.sign(roe - r))
+    ax.plot(b, price, label=f"ROE = {roe:.0%}")
 ax.set_xlabel("retention ratio b")
 ax.set_ylabel("price")
 ax.legend()
@@ -49,5 +55,6 @@ fig.tight_layout()
 # --------------------------
 
 print(f"price 40, next dividend 2, growth 4%: r = {implied_cost_of_equity(40.0, 2.0, 0.04):.2%}")
+assert np.isclose(implied_cost_of_equity(40.0, 2.0, 0.04), 2.0 / 40.0 + 0.04)
 
 plt.show()

@@ -60,6 +60,9 @@ ax.legend()
 
 print(f"mean annualized vol: close-to-close {100 * np.sqrt(ann * cc.mean()):.1f}%, Parkinson {100 * np.sqrt(ann * pk.mean()):.1f}%")
 print(f"relative efficiency Var(cc) / Var(Parkinson) = {cc.var() / pk.var():.1f} (theory 5.2)")
+assert abs(np.sqrt(ann * cc.mean()) - sigma) < 0.01
+assert abs(np.sqrt(ann * pk.mean()) - sigma) < 0.015  # a little low: discrete sampling, below
+assert 4.0 < cc.var() / pk.var() < 6.5
 plt.show()
 
 # %%

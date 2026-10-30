@@ -38,3 +38,10 @@ def test_fees_raise_apr_and_effective_rate_exceeds_apr():
     assert effective_annual_rate(apr, 12) > apr
     with pytest.raises(ValueError):
         annual_percentage_rate(1000.0, 10.0, 12)
+
+
+def test_apr_beyond_one_hundred_percent_per_period_round_trips():
+    """Payments of 150% of the loan each period need a periodic rate above 1, outside the initial bracket."""
+    apr = annual_percentage_rate(1000.0, 1500.0, 12)
+    assert apr / 12 > 1.0
+    assert loan_payment(1000.0, apr, 12) == pytest.approx(1500.0, rel=DEFAULT_RTOL)

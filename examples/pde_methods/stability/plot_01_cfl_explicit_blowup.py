@@ -29,6 +29,9 @@ below = ExplicitScheme(M, int(np.ceil(T / (0.97 * limit))), s_max=400.0).price(S
 above = ExplicitScheme(M, int(np.floor(T / (1.3 * limit))), s_max=400.0).price(S, K, T, r, sigma)
 print(f"dt below the limit: price {below.price:.4f} (Black-Scholes {black_scholes_price(S, K, T, r, sigma):.4f})")
 print(f"dt above the limit: max |V| on the grid {np.abs(above.V).max():.2e}")
+assert below.stability.stable and not above.stability.stable
+assert abs(below.price - black_scholes_price(S, K, T, r, sigma)) < 0.05
+assert np.abs(above.V).max() > 1e10
 
 # %%
 # Bounded below the limit, exploding above it
@@ -53,6 +56,7 @@ plt.show()
 
 Ms = np.array([25, 50, 100, 200, 400])
 limits = [explicit_stability(np.linspace(0.0, 400.0, m + 1), 1.0, sigma, r).limit for m in Ms]
+assert abs(np.polyfit(np.log(Ms), np.log(limits), 1)[0] + 2.0) < 0.15
 fig, ax = plt.subplots(figsize=(6, 4))
 ax.loglog(Ms, limits, "o-", label="eigenvalue limit")
 ax.loglog(Ms, limits[0] * (Ms / Ms[0]) ** -2.0, ":", color="0.4", label="$M^{-2}$")

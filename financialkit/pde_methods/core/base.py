@@ -9,7 +9,8 @@ The theta-schemes share the :class:`FiniteDifferencePricer` ABC so that
 they are interchangeable in convergence studies, just as the options
 lattices share :class:`~financialkit.options.core.base.LatticePricer`.
 
-The remaining dataclasses hold a two-factor ADI solve, one solve of a
+The remaining dataclasses hold a two-factor ADI solve, a Heston PDE
+solve, one solve of a
 linear complementarity problem, a stability check, a von Neumann
 amplification factor and a Richardson extrapolation.
 """
@@ -21,11 +22,14 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
+from financialkit._deprecation import deprecated_field
+
 __all__ = [
     "FDResult",
     "HeatEquationResult",
     "TrinomialProbabilities",
     "ADIResult",
+    "HestonPDEResult",
     "LCPSolution",
     "StabilityResult",
     "VonNeumannResult",
@@ -165,6 +169,32 @@ class ADIResult:
 
 
 @dataclass
+class HestonPDEResult:
+    """Output of a finite-difference solve of the Heston PDE."""
+
+    price: float
+    """Option value at the spot and initial variance ``(S, v0)``."""
+
+    delta: float
+    """:math:`\\partial V / \\partial S` at ``(S, v0)``, from a bicubic spline."""
+
+    S: np.ndarray
+    """ndarray, shape (m1 + 1,): Spot grid, from 0 to ``S_max``."""
+
+    v: np.ndarray
+    """ndarray, shape (m2 + 1,): Variance grid, from 0 to ``v_max``."""
+
+    V: np.ndarray
+    """ndarray, shape (m1 + 1, m2 + 1): Values today, ``V[i, j]`` at ``(S[i], v[j])``."""
+
+    n_time: int
+    """Number of time steps."""
+
+    method: str
+    """Splitting scheme used."""
+
+
+@dataclass
 class LCPSolution:
     """Solution of one linear complementarity problem
     :math:`Ax \\ge b,\\ x \\ge g,\\ (Ax - b)^\\top (x - g) = 0`."""
@@ -172,8 +202,9 @@ class LCPSolution:
     x: np.ndarray
     """ndarray, shape (m,): The solution."""
 
-    iterations: int
+    n_iter: int
     """Iterations used (1 for a direct method)."""
+    iterations = deprecated_field("n_iter")
 
     method: str
     """``"psor"``, ``"brennan_schwartz"`` or ``"penalty"``."""

@@ -22,6 +22,7 @@ from __future__ import annotations
 import numpy as np
 from scipy import fft, stats
 
+from financialkit._deprecation import renamed_parameter
 from financialkit.time_series.core.base import TestResult, VarianceRatioResult
 
 __all__ = ["autocovariance", "autocorrelation", "bartlett_band", "runs_test", "box_pierce", "ljung_box", "variance_ratio"]
@@ -61,7 +62,8 @@ def autocorrelation(x, nlags: int = 20) -> np.ndarray:
     return g / g[0]
 
 
-def bartlett_band(nobs: int, level: float = 0.95) -> float:
+@renamed_parameter("nobs", "n_obs", "financialkit.time_series.bartlett_band")
+def bartlett_band(n_obs: int, level: float = 0.95) -> float:
     """Half-width :math:`z_{1-\\alpha/2}/\\sqrt n` of the band that white-noise autocorrelations stay within.
 
     Examples
@@ -69,7 +71,7 @@ def bartlett_band(nobs: int, level: float = 0.95) -> float:
     >>> round(bartlett_band(400), 4)
     0.098
     """
-    return float(stats.norm.ppf(0.5 + level / 2) / np.sqrt(nobs))
+    return float(stats.norm.ppf(0.5 + level / 2) / np.sqrt(n_obs))
 
 
 def runs_test(x) -> TestResult:
@@ -115,7 +117,7 @@ def runs_test(x) -> TestResult:
     diff = runs - m
     diff = diff - np.sign(diff) * min(0.5, abs(diff))
     z = diff / np.sqrt(var)
-    return TestResult(name="runs", statistic=float(z), pvalue=float(2 * stats.norm.sf(abs(z))), nobs=N)
+    return TestResult(name="runs", statistic=float(z), p_value=float(2 * stats.norm.sf(abs(z))), n_obs=N)
 
 
 def _portmanteau(x, lags: int, fitted_params: int, ljung: bool) -> TestResult:
@@ -127,7 +129,7 @@ def _portmanteau(x, lags: int, fitted_params: int, ljung: bool) -> TestResult:
     df = lags - fitted_params
     if df <= 0:
         raise ValueError("lags must exceed the number of fitted ARMA parameters")
-    return TestResult(name="Ljung-Box" if ljung else "Box-Pierce", statistic=float(Q), pvalue=float(stats.chi2.sf(Q, df)), df=df, nobs=n)
+    return TestResult(name="Ljung-Box" if ljung else "Box-Pierce", statistic=float(Q), p_value=float(stats.chi2.sf(Q, df)), df=df, n_obs=n)
 
 
 def box_pierce(x, lags: int = 10, fitted_params: int = 0) -> TestResult:
@@ -227,4 +229,4 @@ def variance_ratio(log_prices, q=(2, 4, 8, 16)) -> VarianceRatioResult:
         ratio[i] = vr
         z[i] = (vr - 1) / np.sqrt(2 * (2 * qq - 1) * (qq - 1) / (3 * qq * T))
         z_rob[i] = (vr - 1) / np.sqrt(theta / T)
-    return VarianceRatioResult(q=qs, ratio=ratio, z=z, z_robust=z_rob, nobs=T)
+    return VarianceRatioResult(q=qs, ratio=ratio, z=z, z_robust=z_rob, n_obs=T)

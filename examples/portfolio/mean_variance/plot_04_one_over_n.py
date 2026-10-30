@@ -55,6 +55,7 @@ results = [
 plot_out_of_sample(results)
 for res in results:
     print(f"{res.name:>24}: Sharpe {res.sharpe:.3f}, turnover {res.turnover:.2f}")
+assert results[0].sharpe > results[1].sharpe
 
 # %%
 # How long a window does optimization need?
@@ -73,6 +74,8 @@ for T in windows:
         w = sample_mean_variance(X)
         vals.append(w @ mu / np.sqrt(w @ cov @ w))
     sr_est.append(np.mean(vals))
+sr_ew = ew @ mu / np.sqrt(ew @ cov @ ew)
+assert sr_est[1] < sr_ew < sr_est[-1] < true_t.sharpe_ratio()
 fig, ax = plt.subplots(figsize=(7, 3.5))
 ax.semilogx(windows, sr_est, "o-", label="sample mean-variance")
 ax.axhline(true_t.sharpe_ratio(), color="C2", ls="--", label="true tangency")

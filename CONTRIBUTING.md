@@ -101,6 +101,71 @@ top-level `tests/` directory. A new system/model needs:
   loops) may be marked
   `@pytest.mark.skipif(not HAS_NUMBA, reason=...)`.
 
+## Public API conventions
+
+These rules come from the review of every `__all__` before 1.0
+(ROADMAP C10, 2026-10-27). New code follows them; existing names that
+broke them were renamed, with the old spelling kept as a deprecated
+alias (see the next section and `CHANGELOG.md`).
+
+**Functions or classes.** Both forms stay, each for its own job:
+
+- A model with parameters that several operations share is a class,
+  usually a frozen dataclass: `HestonModel`, `VasicekModel`, `GARCH`,
+  `LucasTree`. Its methods are the operations every instance has
+  (`characteristic_function`, `simulate`, `bond_price`, `variance`).
+- A pricer, estimator or test is a function. A pricer that works on a
+  model takes the model as an argument (`heston_price(model, ...)`,
+  `cos_price(model, ...)`), so one method serves every model with the
+  right interface. `heston_price` and `HestonModel` are therefore not
+  rival spellings.
+- A fit returns a result dataclass. It is a `fit` classmethod when the
+  model is a class (`GARCH.fit`), and a `fit_<model>` function when the
+  model exists only as its result (`fit_arma`, `fit_var`, `fit_hawkes`).
+- Results are dataclasses, never bare tuples.
+
+**Parameter names.** One spelling for each meaning:
+
+| Meaning | Name | Not |
+|---|---|---|
+| Simulated paths, scenarios or replications of a random draw | `n_paths` | `n_sims` |
+| Time steps of a path, tree or exercise grid | `n_steps` | `n_exercise` |
+| The two axes of a finite-difference grid | `n_space`, `n_time` | |
+| Sample size | `n_obs` | `nobs` |
+| Stopping tolerance of an iterative solver | `tol` | `rtol` |
+| Iteration cap | `max_iter` | |
+| Tolerance of an equality check (not a solver) | `atol` | |
+| Payments or coupons per year | `freq` | `frequency` |
+| Coverage of a confidence interval | `confidence` | `ci_level` |
+| Random source (`Generator`, seed or `None`) | `rng` | `seed`, `random_state` |
+
+- `tol` documents whether it is absolute or relative.
+- `n_iter` is a fixed iteration count (`normalised_implied_volatility`);
+  `max_iter` caps a loop that stops at `tol`.
+- `n_replications` (repeats of a whole estimator, to measure its error)
+  and `n_samples` (draws in one estimate) are distinct from `n_paths`.
+- `nlags` is the highest lag a function returns (`autocorrelation`);
+  `lags` is the lag order of a model or test (`adf_test`, `newey_west`).
+- A PDE grid keeps `n_space` and `n_time` rather than `n_steps`, because
+  it has two axes.
+
+**Result fields.** The same quantity has the same name in every result:
+
+| Quantity | Field |
+|---|---|
+| p-value | `p_value` (`<test>_p_value` when there are several) |
+| Sample size | `n_obs` |
+| Iterations a solver used | `n_iter` |
+| Whether an optimizer converged | `converged` |
+| Standard error of the result's own estimate | `std_error` (`std_errors` for an array) |
+| Standard error of a named quantity | `<name>_se` (`price_se`, `alpha_se`) |
+| Monte Carlo point estimate | `estimate` |
+| Log-likelihood | `loglik` |
+
+**Visualizers.** Every domain re-exports its `visualizers` from the
+domain package, so `fk.<domain>.plot_*` always works and appears in the
+API reference. `fk.<domain>.visualizers.plot_*` also keeps working.
+
 ## API stability and deprecation policy
 
 financialkit is in **beta** (`Development Status :: 4 - Beta`) and
@@ -119,6 +184,12 @@ path contains a leading underscore (for example
   deprecation period: for at least one minor release it keeps working
   and emits a `DeprecationWarning` that names its replacement, and the
   change is listed under "Deprecated" in `CHANGELOG.md`.
+  `financialkit._deprecation` has one helper for each kind of rename:
+  `deprecated_alias` for a function, `renamed_parameter` for a keyword
+  (the parameter keeps its position, so positional calls never break)
+  and `deprecated_field` for a result field, which keeps the old name
+  readable. Results are built by financialkit, so a renamed field's old
+  name is not accepted when constructing the dataclass yourself.
 - **Numerical results** may change within tolerance in any release when
   an algorithm is made more accurate or robust. Changes beyond round-off
   are noted in the changelog.

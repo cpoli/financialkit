@@ -5,6 +5,8 @@ from financialkit.risk.core.base import (
     BacktestResult,
     CoherenceResult,
     DrawdownResult,
+    ESBacktestResult,
+    FRTBResult,
     GEVResult,
     GPDResult,
     RiskMeasure,
@@ -15,11 +17,13 @@ from financialkit.risk.core.base import (
 __all__ = [
     "VaRResult",
     "BacktestResult",
+    "ESBacktestResult",
     "TrafficLightResult",
     "GEVResult",
     "GPDResult",
     "CoherenceResult",
     "AllocationResult",
+    "FRTBResult",
     "DrawdownResult",
     "RiskMeasure",
 ]

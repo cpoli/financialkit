@@ -28,7 +28,9 @@ S_T = S0 + sigma_n * np.sqrt(T) * rng.standard_normal(200_000)
 for K in (90.0, 100.0, 110.0):
     payoff = np.maximum(S_T - K, 0.0)
     mc, se = payoff.mean(), payoff.std() / np.sqrt(payoff.size)
-    print(f"K = {K:5.1f}: Bachelier {bachelier_price(S0, K, T, 0.0, sigma_n):.4f}, Monte Carlo {mc:.4f} +/- {1.96 * se:.4f}")
+    exact = bachelier_price(S0, K, T, 0.0, sigma_n)
+    print(f"K = {K:5.1f}: Bachelier {exact:.4f}, Monte Carlo {mc:.4f} +/- {1.96 * se:.4f}")
+    assert abs(mc - exact) < 3 * se
 
 # %%
 # The square-root-of-time law, and the comparison with Black-Scholes
@@ -39,6 +41,7 @@ for K in (90.0, 100.0, 110.0):
 # far tail of the normal, which lognormal Black-Scholes never does.
 
 maturities = np.linspace(0.01, 4.0, 100)
+assert np.allclose(bachelier_price(S0, S0, maturities, 0.0, sigma_n), sigma_n * np.sqrt(maturities / (2 * np.pi)))
 K = np.linspace(40, 160, 121)
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 axes[0].plot(maturities, bachelier_price(S0, S0, maturities, 0.0, sigma_n), label="Bachelier ATM")

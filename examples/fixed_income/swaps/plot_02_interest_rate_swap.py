@@ -22,6 +22,7 @@ from financialkit.fixed_income import NelsonSiegelCurve, ZeroCurve, interest_rat
 curve = ZeroCurve([0.25, 0.75, 1.25], [0.10, 0.105, 0.11])
 v = interest_rate_swap_value(curve, 100.0, 0.08, 1.25, pay_fixed=False, floating_rate=0.102)
 print(f"fixed bond {v.receive_leg:.3f}, floating note {v.pay_leg:.3f}, swap to fixed receiver {v.value:.3f} ($m)")
+assert np.allclose([v.receive_leg, v.pay_leg, v.value], [98.238, 102.505, -4.267], atol=5e-4)
 
 # %%
 # The par swap curve
@@ -29,6 +30,7 @@ print(f"fixed bond {v.receive_leg:.3f}, floating note {v.pay_leg:.3f}, swap to f
 
 ns = NelsonSiegelCurve(0.045, -0.025, 0.01, 2.0)
 T = np.arange(1, 31, dtype=float)
+assert max(abs(interest_rate_swap_value(ns, 100.0, swap_rate(ns, t), t).value) for t in T) < 1e-10  # par swaps are worth zero
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 axes[0].plot(T, 100 * swap_rate(ns, T), "o-", ms=3, label="par swap rate")
 axes[0].plot(T, 100 * ns.zero_rate(T), label="zero rate")
@@ -42,7 +44,9 @@ axes[0].legend()
 
 K = swap_rate(ns, 10.0)
 shifts = np.linspace(-0.02, 0.02, 41)
-axes[1].plot(1e4 * shifts, [interest_rate_swap_value(ns.shifted(s), 100.0, K, 10.0).value for s in shifts])
+payer = np.array([interest_rate_swap_value(ns.shifted(s), 100.0, K, 10.0).value for s in shifts])
+assert np.all(np.diff(payer) > 0)  # the fixed payer gains when rates rise
+axes[1].plot(1e4 * shifts, payer)
 axes[1].axhline(0.0, color="0.6", lw=0.8)
 axes[1].set_xlabel("parallel shift (bp)")
 axes[1].set_ylabel("value to fixed payer per 100")

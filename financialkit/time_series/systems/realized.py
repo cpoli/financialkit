@@ -13,7 +13,12 @@ Business 53(1) (1980), 61-65; T. G. Andersen and T. Bollerslev,
 "Answering the Skeptics: Yes, Standard Volatility Models Do Provide
 Accurate Forecasts," International Economic Review 39(4) (1998), 885-905;
 J. Mincer and V. Zarnowitz, in *Economic Forecasts and Expectations*
-(NBER, 1969), 3-46.
+(NBER, 1969), 3-46. Corsi (2009) modelled realized variance as a cascade
+of daily, weekly and monthly averages, an autoregression with only four
+coefficients that reproduces the slowly decaying memory of volatility:
+F. Corsi, "A Simple Approximate Long-Memory Model of Realized Volatility,"
+Journal of Financial Econometrics 7(2) (2009), 174-196; U. A. Müller et
+al., Journal of Empirical Finance 4(2-3) (1997), 213-239.
 """
 
 from __future__ import annotations
@@ -22,9 +27,10 @@ import math
 
 import numpy as np
 
+from financialkit.time_series.core.base import HARResult
 from financialkit.time_series.utils.numerics import OLSResult, ols
 
-__all__ = ["close_to_close_variance", "parkinson_variance", "realized_variance", "mincer_zarnowitz"]
+__all__ = ["close_to_close_variance", "parkinson_variance", "realized_variance", "mincer_zarnowitz", "har_regressors", "fit_har"]
 
 _PARKINSON = 1.0 / (4.0 * math.log(2.0))
 
@@ -68,6 +74,9 @@ def realized_variance(intraday_returns, axis: int = -1) -> np.ndarray:
 
     As the sampling interval shrinks, :math:`RV_t` converges to the
     integrated variance :math:`\\int_{t-1}^{t}\\sigma_s^2\\,ds` of the day.
+    It takes *returns* and is not annualized; for the annualized variance of
+    a *price* path that a variance swap pays, use
+    :func:`financialkit.exotic_options.annualized_realized_variance`.
 
     Examples
     --------
@@ -96,3 +105,65 @@ def mincer_zarnowitz(proxy, forecast) -> OLSResult:
     y = np.asarray(proxy, dtype=np.float64)
     f = np.asarray(forecast, dtype=np.float64)
     return ols(y, np.column_stack([np.ones_like(f), f]))
+
+
+def har_regressors(rv, horizons: tuple[int, ...] = (1, 5, 22)) -> np.ndarray:
+    """Trailing means :math:`RV^{(h)}_t = \\frac1h\\sum_{j=0}^{h-1} RV_{t-j}` for each horizon `h`.
+
+    Row ``i`` is date ``t = max(horizons) - 1 + i``.
+
+    Returns
+    -------
+    ndarray, shape (n - max(horizons) + 1, len(horizons))
+
+    Examples
+    --------
+    >>> har_regressors([1.0, 2.0, 3.0, 4.0], horizons=(1, 2)).tolist()
+    [[2.0, 1.5], [3.0, 2.5], [4.0, 3.5]]
+    """
+    x = np.asarray(rv, dtype=np.float64)
+    H = max(horizons)
+    if x.size <= H:
+        raise ValueError("series shorter than the longest horizon")
+    c = np.r_[0.0, np.cumsum(x)]
+    t = np.arange(H, x.size + 1)  # one past each date
+    return np.column_stack([(c[t] - c[t - h]) / h for h in horizons])
+
+
+def fit_har(rv, horizons: tuple[int, ...] = (1, 5, 22)) -> HARResult:
+    """Corsi's (2009) HAR-RV model fitted by least squares.
+
+    .. math:: RV_{t+1} = \\beta_0 + \\beta_d RV_t + \\beta_w RV^{(5)}_t + \\beta_m RV^{(22)}_t + e_{t+1}
+
+    Traders acting on daily, weekly and monthly horizons (Müller et al.'s
+    heterogeneous market hypothesis) each react to volatility at their own
+    scale; the sum of three such components is an AR(22) with step-like
+    weights that mimics long memory with four parameters.
+
+    Parameters
+    ----------
+    rv : array_like, shape (n,)
+        Realized variances (or their logs, or square roots).
+    horizons : tuple of int
+        Averaging windows.
+
+    Returns
+    -------
+    HARResult
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> rng = np.random.default_rng(0)
+    >>> rv = np.empty(5000)
+    >>> rv[:22] = 1.0
+    >>> for t in range(22, 5000):
+    ...     rv[t] = 0.1 + 0.4 * rv[t - 1] + 0.3 * rv[t - 5 : t].mean() + 0.2 * rv[t - 22 : t].mean() + 0.1 * rng.standard_normal()
+    >>> fit_har(rv).coef.round(1).tolist()
+    [0.1, 0.4, 0.3, 0.2]
+    """
+    x = np.asarray(rv, dtype=np.float64)
+    hz = tuple(int(h) for h in horizons)
+    X = har_regressors(x, hz)[:-1]
+    res = ols(x[max(hz) :], np.column_stack([np.ones(X.shape[0]), X]))
+    return HARResult(coef=res.coef, horizons=hz, ols=res, data=x)

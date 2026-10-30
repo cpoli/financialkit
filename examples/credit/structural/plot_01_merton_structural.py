@@ -20,6 +20,7 @@ from financialkit.credit import merton_calibrate, merton_model
 m = merton_calibrate(E=3.0, sigma_E=0.80, D=10.0, T=1.0, r=0.05)
 print(f"assets V = {m.asset_value:.2f}, sigma_V = {m.asset_volatility:.4f}")
 print(f"debt = {m.debt:.2f}, PD = {m.default_probability:.1%}, spread = {1e4 * m.credit_spread:.0f} bp, recovery = {m.recovery_rate:.1%}")
+assert abs(m.asset_value - 12.40) < 0.005 and abs(m.asset_volatility - 0.2123) < 5e-5 and abs(m.default_probability - 0.127) < 5e-4
 
 # %%
 # Payoffs at maturity
@@ -45,6 +46,12 @@ T = np.linspace(0.05, 10, 120)
 fig, ax = plt.subplots(figsize=(7, 4))
 for lev in (0.5, 0.7, 0.9, 1.1):
     s = [merton_model(100.0, 100 * lev * np.exp(0.05 * t), t, 0.05, 0.25).credit_spread for t in T]
+    if lev < 0.8:
+        assert s[0] < 1e-8
+    elif lev < 1:
+        assert 0 < np.argmax(s) < T.size - 1
+    else:
+        assert np.all(np.diff(s) < 0)
     ax.plot(T, 1e4 * np.array(s), label=f"quasi-leverage {lev:.1f}")
 ax.set_xlabel("maturity (years)")
 ax.set_ylabel("credit spread (bp)")

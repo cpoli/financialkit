@@ -17,6 +17,12 @@ __all__ = ["plot_cash_flows", "plot_compounding_growth", "plot_npv_profile", "pl
 def plot_cash_flows(cash_flows, times=None, ax=None, title: str = "Cash flows"):
     """Bar timeline of a cash-flow stream, inflows up and outflows down.
 
+    Takes plain arrays of amounts and times. To plot a
+    :class:`~financialkit.fixed_income.core.base.CashFlows` stream with its
+    present values under a curve, use
+    :func:`financialkit.fixed_income.plot_discounted_cash_flows`, which
+    draws its bars with this function.
+
     Parameters
     ----------
     cash_flows : array-like, shape (n,)

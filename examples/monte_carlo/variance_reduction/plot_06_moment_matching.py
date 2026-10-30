@@ -36,6 +36,7 @@ z = np.random.default_rng(0).standard_normal(500)
 w = moment_match(z)
 print(f"raw:     mean {z.mean():+.4f}, std {z.std():.4f}")
 print(f"matched: mean {w.mean():+.4f}, std {w.std():.4f}")
+assert np.isclose(w.mean(), 0.0, atol=1e-12) and np.isclose(w.std(), 1.0)
 
 # %%
 # Twenty replications of 2000 draws each
@@ -46,6 +47,7 @@ gen = np.random.default_rng(1)
 crude = sample_mean([call(gen.standard_normal(n)).mean() for _ in range(reps)], method="crude", n_evaluations=n * reps)
 matched = moment_matching_estimate(call, n, n_replications=reps, rng=2)
 print(f"crude {crude.estimate:.4f} +/- {crude.std_error:.4f}; matched {matched.estimate:.4f} +/- {matched.std_error:.4f}; exact {exact:.4f}")
+assert abs(matched.estimate - exact) < 3 * matched.std_error and matched.std_error < crude.std_error
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 plot_estimator_comparison([crude, matched], exact=exact, ax=axes[0])
@@ -60,6 +62,7 @@ for k in ns:
     g = np.random.default_rng(int(k))
     c = sample_mean([call(g.standard_normal(k)).mean() for _ in range(reps)], n_evaluations=k * reps)
     ratio.append(moment_matching_estimate(call, int(k), n_replications=reps, rng=int(k) + 1).variance_ratio(c))
+assert min(ratio) > 1 and ratio[0] > ratio[-1]
 axes[1].semilogx(ns, ratio, "o-")
 axes[1].set_xlabel("draws per replication")
 axes[1].set_ylabel("variance reduction factor")

@@ -3,16 +3,13 @@ coefficients, Simpson weights for the FFT, and SDE callbacks for
 :mod:`financialkit.integrators`.
 
 The drift and diffusion callbacks follow the integrators' ``f(x, t,
-params)`` convention and are ``@njit`` dispatchers, so the compiled Euler
-kernel can call them; every model parameter travels in ``params``.
+params)`` convention; every model parameter travels in ``params``.
 """
 
 from __future__ import annotations
 
 import numpy as np
 from numpy.typing import ArrayLike
-
-from financialkit._jit import njit
 
 __all__ = [
     "cos_chi",
@@ -123,7 +120,6 @@ def put_call_from_put(puts: ArrayLike, S: float, K: ArrayLike, T: float, r: floa
     return puts + S * np.exp(-q * T) - np.asarray(K, dtype=np.float64) * np.exp(-r * T)
 
 
-@njit
 def _heston_parts(x, p):
     v = x[:, 1]
     vp = np.maximum(v, 0.0)
@@ -139,7 +135,6 @@ def _heston_parts(x, p):
     return vd, vs
 
 
-@njit
 def heston_drift(x, t, p):
     """Drift of ``(ln S, v)`` under Heston; ``p = [r - q, kappa, theta, xi, scheme]``.
 
@@ -154,7 +149,6 @@ def heston_drift(x, t, p):
     return out
 
 
-@njit
 def heston_diffusion(x, t, p):
     """Diffusion :math:`(\\sqrt{v}, \\xi\\sqrt{v})` of ``(ln S, v)``, with ``v`` treated as in :func:`heston_drift`."""
     vd, vs = _heston_parts(x, p)
@@ -186,7 +180,6 @@ def local_vol_params(mu: float, strikes: ArrayLike, maturities: ArrayLike, vol: 
     return np.concatenate([[mu, K.size, T.size], K, T, V.ravel()])
 
 
-@njit
 def _local_vol(x, t, p):
     nK = int(p[1])
     nT = int(p[2])
@@ -203,7 +196,6 @@ def _local_vol(x, t, p):
     return (1.0 - w) * np.interp(S, Ks, V[j - 1]) + w * np.interp(S, Ks, V[j])
 
 
-@njit
 def local_vol_drift(x, t, p):
     """Drift :math:`r - q - \\tfrac12\\sigma(S, t)^2` of :math:`\\ln S`; ``p`` from :func:`local_vol_params`."""
     s = _local_vol(x, t, p)
@@ -212,7 +204,6 @@ def local_vol_drift(x, t, p):
     return out
 
 
-@njit
 def local_vol_diffusion(x, t, p):
     """Diffusion :math:`\\sigma(S, t)` of :math:`\\ln S`, bilinear in the grid and flat outside it."""
     out = np.empty_like(x)

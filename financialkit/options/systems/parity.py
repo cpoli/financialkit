@@ -19,7 +19,8 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike
 
-from financialkit.options.utils.common import as_output, option_sign
+from financialkit._validation import option_type as check_option_type
+from financialkit.options.utils.common import as_output
 
 __all__ = ["put_call_parity", "parity_residual", "no_arbitrage_bounds"]
 
@@ -55,7 +56,7 @@ def put_call_parity(
     >>> round(put_call_parity(4.7594, 42.0, 40.0, 0.5, 0.10), 2)
     0.81
     """
-    return as_output(np.asarray(price, dtype=np.float64) - option_sign(option_type) * _pv_forward(S, K, T, r, q))
+    return as_output(np.asarray(price, dtype=np.float64) - check_option_type(option_type) * _pv_forward(S, K, T, r, q))
 
 
 def parity_residual(call: ArrayLike, put: ArrayLike, S: ArrayLike, K: ArrayLike, T: ArrayLike, r: ArrayLike, q: ArrayLike = 0.0) -> np.ndarray | float:
@@ -100,7 +101,7 @@ def no_arbitrage_bounds(
     >>> round(lo, 4), hi
     (14.3894, 100.0)
     """
-    sign = option_sign(option_type)
+    sign = check_option_type(option_type)
     S, K, T, r, q = (np.asarray(a, dtype=np.float64) for a in (S, K, T, r, q))
     lower = np.maximum(sign * _pv_forward(S, K, T, r, q), 0.0)
     upper = S * np.exp(-q * T) if sign == 1 else K * np.exp(-r * T)

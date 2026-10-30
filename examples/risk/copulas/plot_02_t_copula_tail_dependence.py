@@ -49,6 +49,10 @@ fig, ax = plt.subplots(figsize=(7, 4))
 ax.semilogx(q, empirical_tail_dependence(*g.T, q), "o-", ms=3, label="Gaussian")
 ax.semilogx(q, empirical_tail_dependence(*t.T, q), "o-", ms=3, label="t, nu = 4")
 ax.axhline(t_tail_dependence(0.5, 4), color="C1", ls="--", label="t copula lambda")
+# at q = 0.002 each estimate rests on about 200 points, a standard error near 0.03
+lam = t_tail_dependence(0.5, 4)
+assert empirical_tail_dependence(*g.T, q[0]) < lam / 2
+assert abs(empirical_tail_dependence(*t.T, q[0]) - lam) < 0.1
 ax.set_xlabel("tail level q")
 ax.set_ylabel("P(U2 < q | U1 < q)")
 ax.legend()
@@ -62,6 +66,8 @@ rho = np.linspace(-0.9, 0.99, 100)
 fig, ax = plt.subplots(figsize=(7, 4))
 for nu in (2, 4, 10, 30):
     ax.plot(rho, t_tail_dependence(rho, nu), label=f"nu = {nu}")
+    assert np.all(t_tail_dependence(rho, nu) > 0)
+assert np.all(t_tail_dependence(rho, np.inf) == 0)
 ax.plot(rho, t_tail_dependence(rho, np.inf), "k--", label="Gaussian")
 ax.set_xlabel("correlation rho")
 ax.set_ylabel("tail dependence lambda")

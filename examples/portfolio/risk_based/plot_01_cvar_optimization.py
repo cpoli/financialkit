@@ -49,6 +49,9 @@ for label, w in [("min variance", mv.weights), ("min CVaR", cv.weights)]:
     pnl = R @ w
     print(f"{label:>12}: vol {pnl.std():.4f}, 95% ES {expected_shortfall(pnl, 0.95):.4f}")
 print(f"LP: CVaR {cv.cvar:.4f}, VaR (zeta) {cv.var:.4f}")
+assert (R @ mv.weights).std() < (R @ cv.weights).std()
+assert expected_shortfall(R @ cv.weights, 0.95) < expected_shortfall(R @ mv.weights, 0.95)
+assert np.isclose(cv.cvar, expected_shortfall(R @ cv.weights, 0.95), rtol=1e-2) and cv.weights[2] < mv.weights[2]
 
 # %%
 # The mean-CVaR frontier
@@ -56,8 +59,11 @@ print(f"LP: CVaR {cv.cvar:.4f}, VaR (zeta) {cv.var:.4f}")
 
 targets = np.linspace(R.mean(axis=0).min() + 1e-4, R.mean(axis=0).max() - 1e-4, 15)
 fig, ax = plt.subplots(figsize=(7, 3.5))
+curves = []
 for a in [0.9, 0.95, 0.99]:
-    ax.plot([cvar_optimization(R, a, t).cvar for t in targets], targets, "o-", ms=3, label=f"alpha = {a}")
+    curves.append([cvar_optimization(R, a, t).cvar for t in targets])
+    ax.plot(curves[-1], targets, "o-", ms=3, label=f"alpha = {a}")
+assert np.all(np.diff(curves, axis=0) > 0)
 ax.set_xlabel("CVaR (monthly loss)")
 ax.set_ylabel("expected return")
 ax.legend()

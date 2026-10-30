@@ -13,7 +13,9 @@ Families with more structure extend it: a stratified estimate carries its
 allocation and the per-stratum statistics, a control-variate estimate its
 regression coefficients, a multilevel estimate its level-by-level means,
 variances and sample sizes. Monte Carlo Greeks are a separate
-:class:`MonteCarloGreeks` container with a standard error per Greek.
+:class:`MonteCarloGreeks` container with a standard error per Greek, and
+the vectors of LIBOR-market-model deltas and vegas from the adjoint
+method are an :class:`LMMGreeks`.
 These are dataclasses, never bare tuples, so the visualizers have a
 stable interface.
 """
@@ -30,6 +32,7 @@ __all__ = [
     "StratifiedResult",
     "ControlVariateResult",
     "MonteCarloGreeks",
+    "LMMGreeks",
     "MLMCResult",
 ]
 
@@ -150,6 +153,40 @@ class MonteCarloGreeks:
 
     method: str = ""
     """str: ``"likelihood_ratio"`` or ``"pathwise"``."""
+
+
+@dataclass
+class LMMGreeks:
+    """A LIBOR-market-model portfolio's price with its delta and vega to every forward rate (Giles-Glasserman 2006).
+
+    Pathwise sensitivities to the whole initial forward curve and to every
+    forward-rate volatility, each with a standard error, from one
+    simulation.
+    """
+
+    price: float
+    """float: Mean numeraire-discounted payoff."""
+
+    price_se: float
+    """float: Standard error of :attr:`price`."""
+
+    delta: np.ndarray
+    """ndarray, shape (N,): :math:`\\partial V / \\partial L_i(0)` for every forward rate."""
+
+    delta_se: np.ndarray
+    """ndarray, shape (N,): Standard errors of :attr:`delta`."""
+
+    vega: np.ndarray
+    """ndarray, shape (N,): :math:`\\partial V / \\partial \\sigma_i`, per unit of volatility."""
+
+    vega_se: np.ndarray
+    """ndarray, shape (N,): Standard errors of :attr:`vega`."""
+
+    n_paths: int
+    """int: Number of simulated paths."""
+
+    method: str = "adjoint"
+    """str: ``"adjoint"`` or ``"forward"``, the mode the derivatives were propagated in."""
 
 
 @dataclass

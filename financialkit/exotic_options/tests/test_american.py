@@ -12,7 +12,7 @@ def test_longstaff_schwartz_table_1(S, T, fd):
     """Longstaff and Schwartz (2001), Table 1 (K = 40, r = 6%, sigma = 20%, 50 exercise dates a year):
     finite-difference values. The regression policy is slightly suboptimal and fitted in-sample,
     so allow two cents of bias beyond the sampling noise."""
-    res = longstaff_schwartz(S, 40.0, T, 0.06, 0.2, n_exercise=int(50 * T), n_paths=40_000, rng=31)
+    res = longstaff_schwartz(S, 40.0, T, 0.06, 0.2, n_steps=int(50 * T), n_paths=40_000, rng=31)
     assert abs(res.estimate - fd) < 4 * res.std_error + 0.02
 
 
@@ -51,3 +51,11 @@ def test_regression_basis():
     np.testing.assert_allclose(regression_basis(np.array([2.0]), 2, "monomial"), [[1.0, 2.0, 4.0]])
     with pytest.raises(ValueError):
         regression_basis(np.array([1.0]), basis="chebyshev")
+
+
+def test_longstaff_schwartz_without_antithetics_skips_dates_with_too_few_itm_paths():
+    """A deep out-of-the-money put has almost no in-the-money paths to regress on, so it is never exercised."""
+    res = longstaff_schwartz(200.0, 100.0, 0.5, 0.05, 0.2, n_steps=10, n_paths=2_000, antithetic=False, rng=36)
+    assert res.n_samples == 2_000
+    assert res.exercise_probability == 0.0
+    assert res.estimate == pytest.approx(black_scholes_price(200.0, 100.0, 0.5, 0.05, 0.2, option_type="put"), abs=1e-5)

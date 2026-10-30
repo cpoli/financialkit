@@ -33,6 +33,8 @@ with warnings.catch_warnings(record=True) as caught:
     warnings.simplefilter("always")
     irr(pump)
 print("irr() warned:", any(issubclass(w.category, MultipleIRRWarning) for w in caught))
+assert sign_changes(pump) == 2 and np.allclose(irr_all(pump), [0.25, 4.0])
+assert any(issubclass(w.category, MultipleIRRWarning) for w in caught)
 
 # %%
 # The NPV profile is a hump

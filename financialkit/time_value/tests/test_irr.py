@@ -69,3 +69,11 @@ def test_npv_profile_crosses_zero_at_irrs():
     assert profile.npv.shape == (101,)
     for r in profile.irrs:
         assert abs(npv(r, [-1600.0, 10_000.0, -10_000.0])) < 1e-6
+
+
+def test_irr_all_needs_two_cash_flows():
+    """A single nonzero flow, after trailing zeros are dropped, has no rate that zeroes its NPV."""
+    assert irr_all([5.0]).size == 0
+    assert irr_all([-100.0, 0.0]).size == 0
+    with pytest.raises(ValueError, match="non-empty"):
+        irr_all([])

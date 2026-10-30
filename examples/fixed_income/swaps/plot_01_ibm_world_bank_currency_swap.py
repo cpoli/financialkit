@@ -24,6 +24,7 @@ usd_rate, chf_rate = np.log(1.15), np.log(1.06)
 spot = 0.5  # USD per CHF at inception
 v = currency_swap_value(usd_rate, chf_rate, spot, 100.0, 200.0, 0.15, 0.06, 5.0)
 print(f"CHF leg {v.receive_leg:.3f} $m, USD leg {v.pay_leg:.3f} $m, value {v.value:.1e} $m (zero at inception)")
+assert abs(v.value) < 1e-10
 
 # %%
 # Value against the exchange rate
@@ -33,6 +34,7 @@ print(f"CHF leg {v.receive_leg:.3f} $m, USD leg {v.pay_leg:.3f} $m, value {v.val
 
 spots = np.linspace(0.35, 0.65, 61)
 values = [currency_swap_value(usd_rate, chf_rate, s, 100.0, 200.0, 0.15, 0.06, 5.0).value for s in spots]
+assert np.all(np.diff(values) > 0)  # a stronger franc helps the franc receiver
 fig, ax = plt.subplots()
 ax.plot(spots, values)
 ax.axhline(0.0, color="0.6", lw=0.8)

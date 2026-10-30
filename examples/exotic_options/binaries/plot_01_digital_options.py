@@ -33,6 +33,7 @@ axes[0].plot(S, asset, label="asset-or-nothing call")
 axes[0].plot(S, cash, label=f"{K:g} cash-or-nothing calls")
 axes[0].plot(S, asset - cash, lw=3, label="difference")
 axes[0].plot(S, black_scholes_price(S, K, T, r, sigma), "k--", label="Black-Scholes call")
+assert np.allclose(asset - cash, black_scholes_price(S, K, T, r, sigma), rtol=1e-10, atol=1e-10)
 axes[0].set_xlabel("spot S")
 axes[0].legend()
 
@@ -54,7 +55,12 @@ axes[1].legend()
 # pays 1 the first time the price reaches 120 and is worth roughly twice
 # the digital that pays at expiry if S_T > 120 (the reflection principle).
 
-print(f"gap call: {gap_option_price(50.0, 50.0, 57.0, 0.5, 0.09, 0.20):.4f}")
+gap = gap_option_price(50.0, 50.0, 57.0, 0.5, 0.09, 0.20)
+print(f"gap call: {gap:.4f}")
+assert abs(gap - -0.0053) < 1e-4
+# With drift the one-touch is a little under twice the digital: within 5%.
+touch_ratio = one_touch_price(S[S < 120], 120.0, T, r, sigma) / (2 * cash_or_nothing_price(S[S < 120], 120.0, T, r, sigma))
+assert np.all((0.95 < touch_ratio) & (touch_ratio < 1.0))
 axes[2].plot(S[S < 120], one_touch_price(S[S < 120], 120.0, T, r, sigma), label="one-touch at 120")
 axes[2].plot(S, cash_or_nothing_price(S, 120.0, T, r, sigma), label="digital call, K = 120")
 axes[2].plot(S[S < 120], 2 * cash_or_nothing_price(S[S < 120], 120.0, T, r, sigma), ":", label="twice the digital")

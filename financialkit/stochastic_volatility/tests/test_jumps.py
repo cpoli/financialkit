@@ -90,3 +90,10 @@ def test_kou_rejects_bad_parameters():
         KouModel(0.1, 1.0, 0.5, 0.9, 5.0)
     with pytest.raises(ValueError):
         KouModel(0.1, 1.0, 1.5, 3.0, 5.0)
+
+
+def test_jump_models_reject_invalid_parameters():
+    with pytest.raises(ValueError, match="non-negative"):
+        MertonJumpModel(0.2, -1.0, 0.0, 0.1)
+    with pytest.raises(ValueError, match="sigma and nu must be positive"):
+        VarianceGammaModel(0.2, 0.0)

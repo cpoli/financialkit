@@ -472,7 +472,7 @@ the CBOE's VIX index in 2003.
 discretises the strip as in the VIX calculation and returns a
 :class:`~financialkit.exotic_options.core.base.VarianceSwapResult` with
 each option's weight, and
-:func:`~financialkit.exotic_options.systems.variance_swaps.realized_variance`
+:func:`~financialkit.exotic_options.systems.variance_swaps.annualized_realized_variance`
 computes the floating leg. The example shows the strip under a skew,
 which lifts the fair strike above the at-the-money volatility, and
 compares realized variance under Black-Scholes with the strike.
@@ -504,17 +504,19 @@ Bermudan products by simulation.
 *Implementation:* :func:`financialkit.exotic_options.systems.american.longstaff_schwartz`
 hand-writes the backward regression with weighted Laguerre or monomial
 regressors (:func:`~financialkit.exotic_options.systems.american.regression_basis`)
-on paths from :func:`financialkit.integrators.gbm_paths`, and returns a
+on paths from :func:`financialkit.integrators.gbm_paths`, or on any
+model's paths passed as ``paths=``, and returns a
 :class:`~financialkit.exotic_options.core.base.LongstaffSchwartzResult`
-with the exercise boundary. The example shows one regression step and
-compares the price and boundary with a binomial tree.
+with the exercise boundary. The first example shows one regression step
+and compares the price and boundary with a binomial tree; the second
+prices an American put on Heston paths.
 
 *References:* F. A. Longstaff and E. S. Schwartz, "Valuing American
 Options by Simulation: A Simple Least-Squares Approach," *Review of
 Financial Studies* 14 (2001) 113-147; P. Glasserman, *Monte Carlo
 Methods in Financial Engineering* (Springer, 2004), Section 8.6.
 
-.. minigallery:: ../../examples/exotic_options/american/plot_01_longstaff_schwartz.py
+.. minigallery:: ../../examples/exotic_options/american/plot_01_longstaff_schwartz.py ../../examples/exotic_options/american/plot_02_longstaff_schwartz_heston.py
 
 See Also
 --------

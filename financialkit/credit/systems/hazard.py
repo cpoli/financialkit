@@ -25,6 +25,8 @@ import numpy as np
 from numpy.typing import ArrayLike
 
 from financialkit.credit.core.base import SurvivalCurve
+from financialkit.credit.utils.discounting import discount_factors
+from financialkit.fixed_income import YieldCurve
 from financialkit.options.utils.common import as_output
 
 __all__ = ["HazardCurve", "jarrow_turnbull_zero", "hazard_from_spread", "spread_from_hazard"]
@@ -98,17 +100,17 @@ class HazardCurve(SurvivalCurve):
         return f"HazardCurve(knots={self.knots.tolist()!r}, hazards={self.hazards.tolist()!r})"
 
 
-def jarrow_turnbull_zero(T: ArrayLike, r: ArrayLike, curve: SurvivalCurve, recovery: float = 0.0) -> np.ndarray | float:
+def jarrow_turnbull_zero(T: ArrayLike, r: ArrayLike | YieldCurve, curve: SurvivalCurve, recovery: float = 0.0) -> np.ndarray | float:
     """Defaultable zero-coupon bond under recovery of treasury.
 
-    .. math:: P^d(0, T) = e^{-rT}\\,[\\delta + (1 - \\delta) Q(T)]
+    .. math:: P^d(0, T) = P(0, T)\\,[\\delta + (1 - \\delta) Q(T)]
 
     Parameters
     ----------
     T : array_like
         Maturities.
-    r : array_like
-        Flat risk-free rate.
+    r : array_like or YieldCurve
+        Continuously compounded risk-free rate, or a ``fixed_income`` discount curve.
     curve : SurvivalCurve
         Risk-neutral survival curve.
     recovery : float
@@ -123,9 +125,9 @@ def jarrow_turnbull_zero(T: ArrayLike, r: ArrayLike, curve: SurvivalCurve, recov
     >>> round(jarrow_turnbull_zero(5.0, 0.05, HazardCurve.flat(0.02), 0.4), 6)
     0.734333
     """
-    T, r = np.asarray(T, dtype=np.float64), np.asarray(r, dtype=np.float64)
+    T = np.asarray(T, dtype=np.float64)
     Q = np.asarray(curve.survival(T), dtype=np.float64)
-    return as_output(np.exp(-r * T) * (recovery + (1.0 - recovery) * Q))
+    return as_output(discount_factors(r, T) * (recovery + (1.0 - recovery) * Q))
 
 
 def hazard_from_spread(spread: ArrayLike, recovery: float = 0.4) -> np.ndarray | float:

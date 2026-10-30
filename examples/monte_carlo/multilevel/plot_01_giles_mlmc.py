@@ -37,6 +37,8 @@ exact = black_scholes_price(S, K, T, r, sigma)
 res = multilevel_monte_carlo(S, K, T, r, sigma, eps=0.02, rng=0)
 print(f"MLMC {res.estimate:.4f} +/- {res.std_error:.4f} (target RMSE {res.target_rmse}), Black-Scholes {exact:.4f}")
 print("samples per level:", res.level_samples.tolist())
+assert abs(res.estimate - exact) < 2 * res.target_rmse
+assert np.all(np.diff(res.level_variances[1:]) < 0) and np.all(np.diff(res.level_samples) < 0)
 fig, axes = plt.subplots(1, 3, figsize=(16, 4))
 plot_mlmc(res, axes=axes[:2])
 
@@ -48,6 +50,9 @@ plot_mlmc(res, axes=axes[:2])
 
 eps = np.array([0.2, 0.1, 0.05, 0.03, 0.02])
 runs = [multilevel_monte_carlo(S, K, T, r, sigma, eps=e, rng=i) for i, e in enumerate(eps)]
+speedup = np.array([x.standard_mc_cost / x.cost for x in runs])
+print("standard MC cost / MLMC cost:", np.round(speedup, 1).tolist())
+assert speedup[-1] > 3 * speedup[0]
 axes[2].loglog(eps, eps**2 * np.array([x.cost for x in runs]), "o-", label="multilevel")
 axes[2].loglog(eps, eps**2 * np.array([x.standard_mc_cost for x in runs]), "s-", label="standard MC")
 axes[2].set_xlabel(r"target RMSE $\varepsilon$")

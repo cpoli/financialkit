@@ -24,6 +24,8 @@ print(f"call S = 100, K = 98, T = 0.5, r = 5%: {m.price(100.0, 98.0, 0.5, 0.05):
 x = m.sample_terminal(0.5, 200_000, rng=0)
 pay = np.exp(-0.025) * np.maximum(100 * np.exp(0.025) * np.exp(x) - 98.0, 0.0)
 print(f"Monte Carlo: {pay.mean():.4f} +/- {2 * pay.std() / np.sqrt(pay.size):.4f}")
+assert abs(m.price(100.0, 98.0, 0.5, 0.05) - 9.14732) < 5e-6
+assert abs(pay.mean() - m.price(100.0, 98.0, 0.5, 0.05)) < 3 * pay.std() / np.sqrt(pay.size)
 
 # %%
 # Exponential against Gaussian jump tails
@@ -39,8 +41,11 @@ var = 2 * p / e1**2 + 2 * (1 - p) / e2**2 - mean**2
 merton = MertonJumpModel(0.16, 1.0, mean, np.sqrt(var))
 grid = np.linspace(-2.5, 1.5, 400)
 fig, ax = plt.subplots(figsize=(7, 4))
-plot_density(grid, np.maximum(cos_density(m, grid, 1.0, N=1024), 1e-12), ax=ax, label="Kou", log=True)
-plot_density(grid, np.maximum(cos_density(merton, grid, 1.0, N=1024), 1e-12), ax=ax, label="Merton, matched jumps", log=True)
+kou_density = cos_density(m, grid, 1.0, N=1024)
+merton_density = cos_density(merton, grid, 1.0, N=1024)
+plot_density(grid, np.maximum(kou_density, 1e-12), ax=ax, label="Kou", log=True)
+plot_density(grid, np.maximum(merton_density, 1e-12), ax=ax, label="Merton, matched jumps", log=True)
+assert kou_density[0] > 10 * merton_density[0]  # a log return of -250%
 ax.set_ylim(1e-8, 5)
 
 plt.show()

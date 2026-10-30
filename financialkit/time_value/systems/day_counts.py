@@ -112,6 +112,11 @@ def year_fraction(start, end, convention=DayCount.ACT_365F):
 def accrued_interest(face, coupon_rate, last_coupon, settlement, convention=DayCount.THIRTY_360_US):
     """Coupon interest accrued from the last coupon date to settlement.
 
+    This is the calendar version: the accrual period runs between two dates
+    and is measured with a day-count `convention`. For a bond described by
+    its time to maturity in years and a regular coupon frequency, use
+    :func:`financialkit.fixed_income.bond_accrued_interest`.
+
     Parameters
     ----------
     face : float or array-like

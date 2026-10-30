@@ -59,6 +59,7 @@ ax.legend()
 for name, z in (("survivors", z_good), ("failed", z_bad)):
     zones = altman_zone(z)
     print(f"{name:9s}: " + ", ".join(f"{k} {np.mean(zones == k):.0%}" for k in ("distress", "grey", "safe")))
+assert np.mean(altman_zone(z_good) == "safe") > 0.95 and np.mean(altman_zone(z_bad) == "distress") > 0.8
 
 # %%
 # Re-estimating the discriminant
@@ -70,5 +71,6 @@ for name, z in (("survivors", z_good), ("failed", z_bad)):
 w, cutoff = linear_discriminant(altman_ratios(*good), altman_ratios(*bad))
 print("Altman weights (normalised):", np.round(ALTMAN_COEFFICIENTS / np.linalg.norm(ALTMAN_COEFFICIENTS), 2))
 print("Fisher weights (normalised):", np.round(w / np.linalg.norm(w), 2))
+assert w @ ALTMAN_COEFFICIENTS / (np.linalg.norm(w) * np.linalg.norm(ALTMAN_COEFFICIENTS)) > 0.95
 
 plt.show()

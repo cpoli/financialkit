@@ -16,7 +16,8 @@ the formula, and each fails, or converges, in its own characteristic way.
 The option: a nine-month call struck at 105 on a stock trading at 100,
 with a 4% rate and 25% volatility.
 
-.. code-block:: python
+.. plot::
+   :context: reset
 
    import numpy as np
    import financialkit as fk
@@ -35,7 +36,8 @@ step counts, because the strike falls at a different place relative to the
 tree's terminal nodes. The Leisen-Reimer tree centres its nodes on the
 strike and removes most of the oscillation:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    for n in (100, 101, 1000):
        err = fk.options.CRRTree(n).price(S, K, T, r, sigma).price - exact
@@ -54,7 +56,8 @@ Monte Carlo never returns *the* price, only an estimate with a standard
 error that shrinks like :math:`1/\sqrt{n}`. The honest check is whether
 the confidence interval covers the exact value:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    mc = fk.monte_carlo.european_option_mc(S, K, T, r, sigma, n_paths=400_000, rng=2024)
    print(f"Monte Carlo: {mc.estimate:.4f} +/- {mc.std_error:.4f}")
@@ -78,7 +81,8 @@ oscillations that the payoff's kink would otherwise cause, and the scheme
 is then second order: doubling the grid in both directions cuts the error
 by about four.
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    for n in (100, 200, 400):
        pde = fk.pde_methods.CrankNicolson(n, n // 2, rannacher_steps=2).price(S, K, T, r, sigma)
@@ -95,7 +99,8 @@ price, which is why they extend to Heston, variance gamma and other models
 with no closed-form price. Under Black-Scholes they reproduce the formula
 almost exactly, and one FFT prices a whole strip of strikes:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    model = fk.stochastic_volatility.BlackScholesModel(sigma)
    cm = fk.stochastic_volatility.carr_madan_price(model, S, K, T, r)
@@ -147,13 +152,14 @@ by projected SOR at each time step, and Longstaff-Schwartz by regressing
 continuation values across simulated paths. The Barone-Adesi-Whaley
 formula is a fast analytic approximation:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    tree = fk.options.CRRTree(2000).price(S, K, T, r, sigma, option_type="put", american=True).price
    psor = fk.pde_methods.CrankNicolson(400, 200, rannacher_steps=2, american_method="psor").price(
        S, K, T, r, sigma, option_type="put", american=True
    ).price
-   lsm = fk.exotic_options.longstaff_schwartz(S, K, T, r, sigma, n_exercise=50, n_paths=100_000, rng=7)
+   lsm = fk.exotic_options.longstaff_schwartz(S, K, T, r, sigma, n_steps=50, n_paths=100_000, rng=7)
    baw = fk.options.barone_adesi_whaley(S, K, T, r, sigma, option_type="put").price
    european = fk.options.black_scholes_price(S, K, T, r, sigma, option_type="put")
    print(f"CRR tree, 2000 steps: {tree:.4f}")

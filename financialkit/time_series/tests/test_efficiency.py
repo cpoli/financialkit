@@ -58,7 +58,7 @@ def test_runs_test_size_and_power():
     trending = lfilter([1.0], [1.0, -0.5], rng.standard_normal(500))
     res = runs_test(trending)
     assert res.statistic < 0 and res.rejects(0.001)
-    assert runs_test(np.r_[np.zeros(5), np.ones(5), -np.ones(5)]).nobs == 15
+    assert runs_test(np.r_[np.zeros(5), np.ones(5), -np.ones(5)]).n_obs == 15
     with pytest.raises(ValueError):
         runs_test(np.ones(10))
 
@@ -121,6 +121,11 @@ def test_variance_ratio_size_and_heteroskedasticity_robustness():
 def test_variance_ratio_validation_and_pvalues():
     p = np.cumsum(np.random.default_rng(8).standard_normal(101))
     res = variance_ratio(p, q=[2, 5])
-    assert res.pvalue.shape == (2,) and np.all((res.pvalue_robust > 0) & (res.pvalue_robust <= 1))
+    assert res.p_value.shape == (2,) and np.all((res.p_value_robust > 0) & (res.p_value_robust <= 1))
     with pytest.raises(ValueError):
         variance_ratio(p, q=1)
+
+
+def test_runs_test_needs_three_observations():
+    with pytest.raises(ValueError, match="at least three"):
+        runs_test([1.0, -1.0])

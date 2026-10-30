@@ -14,7 +14,6 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy.stats import qmc
 
-from financialkit._jit import njit
 from financialkit.integrators import gbm_paths
 from financialkit.monte_carlo.core.base import MonteCarloResult
 
@@ -107,13 +106,11 @@ def vanilla_payoff(S_T: ArrayLike, K: float, option_type: str = "call", digital:
     return np.maximum(S_T - K, 0.0) if option_type == "call" else np.maximum(K - S_T, 0.0)
 
 
-@njit
 def gbm_drift(x, t, p):
     """``(r - q) x`` with ``p = [r - q, sigma]``."""
     return p[0] * x
 
 
-@njit
 def gbm_diffusion(x, t, p):
     """``sigma x`` with ``p = [r - q, sigma]``."""
     return p[1] * x

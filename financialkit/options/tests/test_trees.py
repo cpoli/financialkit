@@ -84,3 +84,11 @@ def test_invalid_inputs_raise():
         CRRTree(10).price(100.0, 100.0, -1.0, 0.05, 0.2)
     with pytest.raises(ValueError):
         TrinomialTree(10, stretch=0.9)
+
+
+def test_trees_reject_parameters_without_valid_probabilities():
+    """A drift that outruns sigma sqrt(dt) leaves CRR's p above one; a stretch near one makes Boyle's middle branch negative."""
+    with pytest.raises(ValueError, match="outside"):
+        CRRTree(2).price(100.0, 100.0, 1.0, 0.5, 0.05)
+    with pytest.raises(ValueError, match="negative branch probability"):
+        TrinomialTree(4, stretch=1.01).price(100.0, 100.0, 1.0, 0.5, 0.1)

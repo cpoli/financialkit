@@ -31,6 +31,8 @@ print(f"observed order {res.observed_order:.3f}")
 for m, p in zip(ms, prices, strict=True):
     print(f"M = N = {m:3d}: {p:.6f} (error {p - exact:+.2e})")
 print(f"extrapolated:  {res.extrapolated:.6f} (error {res.extrapolated - exact:+.2e})")
+assert abs(res.observed_order - 2.0) < 0.1
+assert abs(res.extrapolated - exact) < abs(prices[-1] - exact) / 10
 
 # %%
 # The extrapolated sequence converges much faster

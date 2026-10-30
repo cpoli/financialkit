@@ -37,6 +37,8 @@ sigma = rng.uniform(0.01, 0.03, n)
 impact = square_root_impact(participation, 1.0, sigma, Y=0.8) * np.exp(0.5 * rng.standard_normal(n))
 fit = fit_impact_law(participation, impact / sigma)
 print(f"exponent {fit.coef[1]:.3f} ± {fit.std_errors[1]:.3f}, Y = {np.exp(fit.coef[0]):.2f}")
+assert abs(fit.coef[1] - 0.5) < 4 * fit.std_errors[1]
+assert abs(fit.coef[0] - np.log(0.8)) < 4 * fit.std_errors[0]
 
 bins = np.logspace(-4, -0.7, 12)
 idx = np.digitize(participation, bins)
@@ -59,5 +61,6 @@ fig.tight_layout()
 
 for pct in (0.1, 1, 5, 10, 25):
     print(f"{pct:5.1f}% of daily volume: {1e4 * square_root_impact(pct / 100, 1.0, 0.02):6.1f} bp")
+assert np.isclose(square_root_impact(0.02, 1.0, 0.02) / square_root_impact(0.01, 1.0, 0.02), np.sqrt(2))
 
 plt.show()

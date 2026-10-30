@@ -84,6 +84,25 @@ def test_milstein_with_constant_diffusion_equals_euler_maruyama():
     np.testing.assert_allclose(mil, em, rtol=DEFAULT_RTOL, atol=DEFAULT_ATOL)
 
 
+def test_any_callable_is_a_callback():
+    """The kernels are plain Python, so bound methods and lambdas work and match ``@njit`` callbacks."""
+
+    class Drift:
+        def __init__(self, mu):
+            self.mu = mu
+
+        def __call__(self, x, t, p):
+            return self.mu * x
+
+        def method(self, x, t, p):
+            return self.mu * x
+
+    _, expected = euler_maruyama(_linear, _scaled, 100.0, T=1.0, n_steps=20, n_paths=50, params=[0.05, 0.2], rng=0)
+    for drift in (Drift(0.05), Drift(0.05).method):
+        _, paths = euler_maruyama(drift, lambda x, t, p: p[1] * x, 100.0, T=1.0, n_steps=20, n_paths=50, params=[0.05, 0.2], rng=0)
+        np.testing.assert_allclose(paths, expected, rtol=DEFAULT_RTOL, atol=DEFAULT_ATOL)
+
+
 def test_schemes_track_exact_gbm_on_shared_increments():
     """On a fine grid both schemes stay pathwise close to the exact solution
     driven by the same Brownian motion, Milstein much closer than Euler."""

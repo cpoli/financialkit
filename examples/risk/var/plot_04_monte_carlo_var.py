@@ -45,6 +45,8 @@ delta = -100.0 * (g.delta + gp.delta) * S0
 print(f"position delta (in $ per unit log return): {delta:,.1f}")
 print(f"delta-normal 99% ten-day VaR: {delta_normal_var([delta], cov, 0.99, h):,.1f}")
 print(f"Monte Carlo VaR {res.var:,.1f}  (95% CI {res.ci[0]:,.1f} to {res.ci[1]:,.1f}),  ES {res.es:,.1f}")
+assert abs(delta) < 1e-9 and delta_normal_var([delta], cov, 0.99, h) < 1e-9
+assert res.ci[0] > 100 and res.ci[0] <= res.var <= res.ci[1] < res.es
 plot_var(res)
 
 # %%

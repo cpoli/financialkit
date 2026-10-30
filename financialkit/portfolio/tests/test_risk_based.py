@@ -82,3 +82,24 @@ def test_hrp():
     diag = np.diag([0.01, 0.04, 0.09, 0.02, 0.05])
     ivp = 1 / np.diag(diag)
     np.testing.assert_allclose(hierarchical_risk_parity(diag).weights, ivp / ivp.sum(), rtol=DEFAULT_RTOL)
+
+
+def test_cvar_optimization_reports_an_infeasible_target():
+    X = np.random.default_rng(0).normal(0.01, 0.05, (200, 3))
+    with pytest.raises(RuntimeError, match="infeasible"):
+        cvar_optimization(X, 0.95, target_return=1.0)
+
+
+def test_risk_parity_raises_when_newton_runs_out_of_iterations(monkeypatch):
+    from financialkit.portfolio.systems import risk_based
+
+    monkeypatch.setattr(risk_based, "DEFAULT_MAX_ITER", 1)
+    with pytest.raises(RuntimeError, match="did not converge"):
+        risk_parity(np.array([[0.04, 0.018, 0.0], [0.018, 0.09, 0.01], [0.0, 0.01, 0.25]]))
+
+
+def test_portfolio_inputs_must_have_matching_shapes():
+    with pytest.raises(ValueError, match="square"):
+        min_variance_portfolio(np.ones((2, 3)))
+    with pytest.raises(ValueError, match="mu must have shape"):
+        inverse_volatility_portfolio(np.eye(3), mu=[0.1, 0.2])

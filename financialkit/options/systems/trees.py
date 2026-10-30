@@ -39,15 +39,12 @@ from abc import abstractmethod
 
 import numpy as np
 
+from financialkit._validation import option_type as check_option_type
+from financialkit._validation import positive
 from financialkit.options.core.base import LatticePricer, TreeResult
-from financialkit.options.utils.common import black_d1_d2, option_sign
+from financialkit.options.utils.common import black_d1_d2
 
 __all__ = ["BinomialTree", "CRRTree", "RendlemanBartterTree", "LeisenReimerTree", "TrinomialTree"]
-
-
-def _check_inputs(S: float, K: float, T: float, sigma: float) -> None:
-    if not (S > 0 and K > 0 and T > 0 and sigma > 0):
-        raise ValueError("S, K, T and sigma must all be positive")
 
 
 def _backward_induction(
@@ -141,8 +138,8 @@ class BinomialTree(LatticePricer):
         -------
         TreeResult
         """
-        sign = option_sign(option_type)
-        _check_inputs(S, K, T, sigma)
+        sign = check_option_type(option_type)
+        positive(S=S, K=K, T=T, sigma=sigma)
         u, d, p, n = self._parameters(S, K, T, r, sigma, q, self.n_steps)
         if not 0.0 < p < 1.0:
             raise ValueError(f"risk-neutral probability {p:.4g} outside (0, 1); increase n_steps")
@@ -321,8 +318,8 @@ class TrinomialTree(LatticePricer):
         -------
         TreeResult
         """
-        sign = option_sign(option_type)
-        _check_inputs(S, K, T, sigma)
+        sign = check_option_type(option_type)
+        positive(S=S, K=K, T=T, sigma=sigma)
         u, pu, pm, pd = self.probabilities(T, r, sigma, q)
         if min(pu, pm, pd) < 0:
             raise ValueError("negative branch probability; increase n_steps or the stretch")

@@ -38,6 +38,7 @@ axes[0].axvline(0, color="k", lw=0.5)
 axes[0].set_xlabel("r(10) (%)")
 axes[0].legend()
 print(f"P(r(10) < 0): Vasicek {np.mean(r_vas[:, -1] < 0):.2%}, CIR {np.mean(r_cir[:, -1] < 0):.2%}")
+assert np.all(r_cir >= 0) and np.mean(r_vas[:, -1] < 0) > 0.005
 
 # %%
 # Yield curves
@@ -56,6 +57,7 @@ axes[1].set_title("CIR yield curves")
 # --------------------------------------------------
 
 res = monte_carlo_bond_prices(cir, np.arange(1.0, 11.0), n_steps=100, n_paths=10_000, rng=1)
+assert np.abs(res.z_scores).max() < 3
 axes[2].plot(res.maturities, res.z_scores, "o-", label="exact sampling")
 times, r = cir.simulate(10.0, 100, 10_000, rng=1, method="euler")
 D = path_discount_factors(times, r)[:, 10::10]

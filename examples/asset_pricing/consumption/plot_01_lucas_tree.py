@@ -26,6 +26,12 @@ from financialkit.asset_pricing import LucasTree
 tree = LucasTree(beta=0.97, gamma=2.0, mu=0.02, sigma=0.036)
 m = tree.moments()
 print(f"P/D = {m.price_dividend:.1f},  R_f = {m.risk_free - 1:.2%},  E[R_e] = {m.equity_return - 1:.2%},  premium = {m.equity_premium:.2%}")
+# The log premium is gamma sigma^2, and simulated returns satisfy the
+# Euler equation E[m R_e] = 1 to within three standard errors.
+assert np.isclose(np.log(m.equity_return / m.risk_free), tree.gamma * tree.sigma**2)
+sim = tree.simulate(200_000, rng=0)
+euler = sim.sdf * sim.equity_return
+assert abs(euler.mean() - 1) < 3 * euler.std() / np.sqrt(euler.size)
 
 path = tree.simulate(100, rng=1978)
 D = np.cumprod(np.concatenate([[1.0], path.growth]))
@@ -48,6 +54,8 @@ fig.tight_layout()
 
 gammas = np.linspace(0.5, 10, 60)
 ms = [LucasTree(0.97, g, 0.02, 0.036).moments() for g in gammas]
+assert np.all(np.diff([x.risk_free for x in ms]) > 0)
+assert np.allclose([np.log(x.equity_return / x.risk_free) for x in ms], gammas * 0.036**2)
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 axes[0].plot(gammas, [x.price_dividend for x in ms])
 axes[0].set_xlabel("risk aversion gamma")

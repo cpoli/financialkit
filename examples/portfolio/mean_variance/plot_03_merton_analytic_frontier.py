@@ -40,6 +40,7 @@ ax.plot(fc.volatility(m), m, lw=2, label="Merton's hyperbola")
 targets = np.linspace(-0.02, 0.18, 9)
 numeric = [np.sqrt(w @ cov @ w) for w in (solve_qp(cov, np.vstack([np.ones(4), mu]), [1.0, t], bounds=(-10.0, 10.0)) for t in targets)]
 ax.plot(numeric, targets, "o", color="C3", label="SLSQP")
+assert np.allclose(numeric, fc.volatility(targets), rtol=1e-4)
 s = np.linspace(0, fc.volatility(0.2), 2)
 for sign in (1, -1):
     ax.plot(s, fc.gmv_return + sign * fc.asymptote_slope() * s, ":", color="0.4")
@@ -60,4 +61,5 @@ fig.tight_layout()
 w1, w2 = efficient_portfolio(mu, cov, 0.05).weights, efficient_portfolio(mu, cov, 0.10).weights
 w3 = efficient_portfolio(mu, cov, 0.15).weights
 print("w(15%) = 2 w(10%) - w(5%):", np.allclose(w3, 2 * w2 - w1))
+assert np.allclose(w3, 2 * w2 - w1)
 plt.show()

@@ -1,5 +1,6 @@
-"""Concrete time-series models: stylized facts, efficiency tests, ARMA, unit roots, long memory and volatility."""
+"""Concrete time-series models: returns, efficiency, ARMA and VAR, unit roots, cointegration, long memory, state space, regimes and volatility."""
 
+from financialkit.time_series.systems.dcc import dcc_correlations, dcc_loglikelihood, fit_dcc, simulate_dcc
 from financialkit.time_series.systems.efficiency import autocorrelation, autocovariance, bartlett_band, box_pierce, ljung_box, runs_test, variance_ratio
 from financialkit.time_series.systems.garch import ARCH, EGARCH, EWMA, GARCH, GJRGARCH, arch_lm_test
 from financialkit.time_series.systems.linear_models import (
@@ -13,9 +14,12 @@ from financialkit.time_series.systems.linear_models import (
     yule_walker,
 )
 from financialkit.time_series.systems.long_memory import anis_lloyd_expected_rs, fgn_autocovariance, hurst_exponent, rescaled_range, simulate_fgn
-from financialkit.time_series.systems.realized import close_to_close_variance, mincer_zarnowitz, parkinson_variance, realized_variance
+from financialkit.time_series.systems.realized import close_to_close_variance, fit_har, har_regressors, mincer_zarnowitz, parkinson_variance, realized_variance
+from financialkit.time_series.systems.regime_switching import fit_markov_switching, hamilton_filter, kim_smoother, simulate_markov_switching
+from financialkit.time_series.systems.state_space import LocalLevelFit, fit_local_level, kalman_filter, local_level_steady_state_gain
 from financialkit.time_series.systems.stylized_facts import hill_estimator, log_returns, return_statistics, simple_returns, tail_survival
-from financialkit.time_series.systems.unit_roots import adf_test, engle_granger, mackinnon_critical_values
+from financialkit.time_series.systems.unit_roots import adf_test, engle_granger, johansen_test, kpss_test, mackinnon_critical_values
+from financialkit.time_series.systems.vector_autoregression import fit_var, simulate_var
 
 __all__ = [
     "log_returns",
@@ -56,4 +60,22 @@ __all__ = [
     "parkinson_variance",
     "realized_variance",
     "mincer_zarnowitz",
+    "kpss_test",
+    "johansen_test",
+    "har_regressors",
+    "fit_har",
+    "kalman_filter",
+    "LocalLevelFit",
+    "local_level_steady_state_gain",
+    "fit_local_level",
+    "simulate_var",
+    "fit_var",
+    "hamilton_filter",
+    "kim_smoother",
+    "simulate_markov_switching",
+    "fit_markov_switching",
+    "dcc_correlations",
+    "dcc_loglikelihood",
+    "fit_dcc",
+    "simulate_dcc",
 ]

@@ -19,7 +19,9 @@ from financialkit.options import black_scholes_price, implied_volatility, no_arb
 # Hull's example (Section 15.11)
 # ------------------------------
 
-print(f"implied vol of a 1.875 call (S = 21, K = 20, r = 10%, 3 months): {implied_volatility(1.875, 21.0, 20.0, 0.25, 0.10):.4f}")
+hull_iv = implied_volatility(1.875, 21.0, 20.0, 0.25, 0.10)
+print(f"implied vol of a 1.875 call (S = 21, K = 20, r = 10%, 3 months): {hull_iv:.4f}")
+assert np.isclose(black_scholes_price(21.0, 20.0, 0.25, 0.10, hull_iv), 1.875)
 
 # %%
 # The price is monotone in volatility, so the inverse is unique
@@ -32,6 +34,7 @@ lo, hi = no_arbitrage_bounds(S, K, T, r)
 target = 4.0
 iv = implied_volatility(target, S, K, T, r)
 print(f"a {target} call has implied volatility {iv:.4f}")
+assert np.isclose(black_scholes_price(S, K, T, r, iv), target) and np.all(np.diff(prices) > 0)
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(sigmas, prices, label="Black-Scholes price")
@@ -53,5 +56,7 @@ try:
     implied_volatility(0.5 * lo, S, 80.0, T, r)
 except ValueError as err:
     print("ValueError:", err)
+else:
+    raise AssertionError("a price below Merton's lower bound must have no implied volatility")
 
 plt.show()

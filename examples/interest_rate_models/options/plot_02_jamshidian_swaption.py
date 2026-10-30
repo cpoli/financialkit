@@ -48,6 +48,9 @@ P = hw.zero_coupon_bond(sched[None, :], t=expiry, state=r[:, -1:])
 K = S + np.linspace(-0.015, 0.015, 7)
 closed = [jamshidian_swaption(hw, expiry, tenor, k, notional=100.0).price for k in K]
 pay = 100 * D[:, None] * np.maximum(1 - (0.5 * K[None, :] * P.sum(axis=1)[:, None] + P[:, -1:]), 0.0)
+z = (pay.mean(0) - closed) / (pay.std(0) / np.sqrt(D.size))
+print(f"largest |MC - Jamshidian| / SE: {np.abs(z).max():.2f}")
+assert np.abs(z).max() < 3
 axes[1].plot(100 * K, closed, "k-", label="Jamshidian")
 axes[1].errorbar(100 * K, pay.mean(0), yerr=1.96 * pay.std(0) / np.sqrt(D.size), fmt="o", ms=3, capsize=2, label="Monte Carlo")
 axes[1].set_xlabel("fixed rate (%)")

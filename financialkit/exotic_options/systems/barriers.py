@@ -31,11 +31,13 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy.stats import norm
 
-from financialkit.exotic_options.utils.numerics import barrier_crossing_probability, parse_barrier_type
-from financialkit.integrators import RNGLike, gbm_paths
+from financialkit._validation import nonnegative, one_of, positive
+from financialkit._validation import option_type as check_option_type
+from financialkit.exotic_options.utils.numerics import barrier_crossing_probability, deterministic_hit_time, parse_barrier_type, spot_paths
+from financialkit.integrators import RNGLike
 from financialkit.monte_carlo import MonteCarloResult, sample_mean, vanilla_payoff
 from financialkit.options import black_scholes_price
-from financialkit.options.utils.common import as_output, option_sign
+from financialkit.options.utils.common import as_output
 
 __all__ = [
     "BGK_BETA",
@@ -54,6 +56,20 @@ def _arrays(*args: ArrayLike) -> list[np.ndarray]:
     return list(np.broadcast_arrays(*(np.asarray(a, dtype=np.float64) for a in args)))
 
 
+def _check(S: np.ndarray, K: np.ndarray, T: np.ndarray, sigma: np.ndarray, **barriers: np.ndarray) -> None:
+    nonnegative(S=S, K=K, T=T, sigma=sigma)
+    positive(**barriers)
+
+
+def _deterministic_barrier(S, K, H, T, r, q, phi: int, is_down: bool, is_out: bool, R) -> np.ndarray:
+    """Single-barrier price on the riskless path :math:`S e^{bt}` (``sigma = 0``, ``T = 0`` or ``S = 0``), spot live."""
+    hit, t_hit = deterministic_hit_time(S, H, T, r - q, is_down)
+    vanilla = np.exp(-r * T) * np.maximum(phi * (S * np.exp((r - q) * T) - K), 0.0)
+    if is_out:
+        return np.where(hit, R * np.exp(-r * t_hit), vanilla)
+    return np.where(hit, vanilla, R * np.exp(-r * T))
+
+
 def merton_down_and_out_call(S: ArrayLike, K: ArrayLike, H: ArrayLike, T: ArrayLike, r: ArrayLike, sigma: ArrayLike, q: ArrayLike = 0.0) -> np.ndarray | float:
     """Merton's (1973) down-and-out call with the barrier at or below the strike.
 
@@ -65,7 +81,8 @@ def merton_down_and_out_call(S: ArrayLike, K: ArrayLike, H: ArrayLike, T: ArrayL
               \\qquad b = r - q,
 
     with :math:`c` the Black-Scholes-Merton call. It is zero once
-    :math:`S \\le H`.
+    :math:`S \\le H`. With ``sigma = 0`` or ``T = 0`` it is the payoff of
+    the riskless path :math:`S e^{bt}`.
 
     Parameters
     ----------
@@ -87,12 +104,16 @@ def merton_down_and_out_call(S: ArrayLike, K: ArrayLike, H: ArrayLike, T: ArrayL
     True
     """
     S, K, H, T, r, sigma, q = _arrays(S, K, H, T, r, sigma, q)
+    _check(S, K, T, sigma, H=H)
     if np.any(H > K):
         raise ValueError("merton_down_and_out_call needs H <= K; use barrier_price for H > K")
     alive = S > H
-    Ss = np.where(alive, S, H)
-    image = (H / Ss) ** (2.0 * (r - q) / sigma**2 - 1.0) * black_scholes_price(H**2 / Ss, K, T, r, sigma, q)
-    return as_output(np.where(alive, black_scholes_price(Ss, K, T, r, sigma, q) - image, 0.0))
+    regular = alive & (sigma * np.sqrt(T) > 0)
+    Ss, sig = np.where(regular, S, H), np.where(regular, sigma, 1.0)
+    image = (H / Ss) ** (2.0 * (r - q) / sig**2 - 1.0) * black_scholes_price(H**2 / Ss, K, T, r, sig, q)
+    live = black_scholes_price(Ss, K, T, r, sig, q) - image
+    deterministic = _deterministic_barrier(S, K, H, T, r, q, 1, True, True, 0.0)
+    return as_output(np.where(alive, np.where(regular, live, deterministic), 0.0))
 
 
 def barrier_price(
@@ -123,7 +144,10 @@ def barrier_price(
     In-out parity holds when the rebate is zero:
     ``knock-in + knock-out = vanilla``. If the spot is already through
     the barrier, a knock-out is worth its rebate and a knock-in the
-    vanilla option.
+    vanilla option. With ``sigma = 0``, at ``T = 0`` or at ``S = 0`` the
+    path :math:`S e^{bt}` is known: a knock-out pays the vanilla payoff, or
+    its rebate on the date the path reaches the barrier, and a knock-in the
+    vanilla payoff or its rebate at expiry.
 
     Parameters
     ----------
@@ -149,19 +173,26 @@ def barrier_price(
     >>> round(barrier_price(100.0, 90.0, 95.0, 0.5, 0.08, 0.25, q=0.04, barrier_type="down-and-out", rebate=3.0), 4)
     9.0246
     """
-    phi = option_sign(option_type)
+    phi = check_option_type(option_type)
     is_down, is_out = parse_barrier_type(barrier_type)
     eta = 1.0 if is_down else -1.0
     S, K, H, T, r, sigma, q, R = _arrays(S, K, H, T, r, sigma, q, rebate)
+    _check(S, K, T, sigma, H=H)
     knocked = S <= H if is_down else S >= H
-    Ss = np.where(knocked, H * (1.0 + 1e-9 * eta), S)  # any live spot; the result is overwritten below
+    regular = ~knocked & (sigma * np.sqrt(T) > 0) & (S > 0)
+    deterministic = _deterministic_barrier(S, K, H, T, r, q, phi, is_down, is_out, R)
+    dead = R if is_out else np.asarray(black_scholes_price(S, K, T, r, sigma, q, option_type))
+    # Any live spot, volatility and maturity where the closed form does not apply; overwritten below.
+    Ss = np.where(regular, S, H * (1.0 + 1e-9 * eta))
+    sigma, T = np.where(regular, sigma, 1.0), np.where(regular, T, 1.0)
     b = r - q
     v = sigma * np.sqrt(T)
     mu = (b - 0.5 * sigma**2) / sigma**2
     lam = np.sqrt(mu**2 + 2.0 * r / sigma**2)
-    x1 = np.log(Ss / K) / v + (1.0 + mu) * v
+    with np.errstate(divide="ignore"):  # K = 0 sends x1 and y1 to +inf, which the formula handles
+        x1 = np.log(Ss / K) / v + (1.0 + mu) * v
+        y1 = np.log(H**2 / (Ss * K)) / v + (1.0 + mu) * v
     x2 = np.log(Ss / H) / v + (1.0 + mu) * v
-    y1 = np.log(H**2 / (Ss * K)) / v + (1.0 + mu) * v
     y2 = np.log(H / Ss) / v + (1.0 + mu) * v
     z = np.log(H / Ss) / v + lam * v
     fS, fK, hs = Ss * np.exp((b - r) * T), K * np.exp(-r * T), H / Ss
@@ -186,8 +217,7 @@ def barrier_price(
     }
     above, below = table[(phi, is_down, is_out)]
     live = np.where(high, above, below)
-    dead = R if is_out else np.asarray(black_scholes_price(S, K, T, r, sigma, q, option_type))
-    return as_output(np.where(knocked, dead, live))
+    return as_output(np.where(knocked, dead, np.where(regular, live, deterministic)))
 
 
 def double_barrier_price(
@@ -214,7 +244,9 @@ def double_barrier_price(
 
     with :math:`\\mu = 2b/\\sigma^2 + 1`. The terms decay like
     :math:`e^{-2n^2 \\ln^2(U/L)/\\sigma^2 T}`, so a handful suffice. The
-    knock-in is the vanilla option minus the knock-out.
+    knock-in is the vanilla option minus the knock-out. With ``sigma = 0``
+    or ``T = 0`` the knock-out pays the vanilla payoff of the path
+    :math:`S e^{bt}` if that path stays between the barriers.
 
     Parameters
     ----------
@@ -239,14 +271,19 @@ def double_barrier_price(
     >>> bool(abs(double_barrier_price(100.0, 100.0, 20.0, 500.0, 0.5, 0.05, 0.2) - black_scholes_price(100.0, 100.0, 0.5, 0.05, 0.2)) < 1e-8)
     True
     """
-    if knock not in ("out", "in"):
-        raise ValueError(f"knock must be 'out' or 'in', got {knock!r}")
-    phi = option_sign(option_type)
+    one_of("knock", knock, ("out", "in"))
+    phi = check_option_type(option_type)
     S, K, L, U, T, r, sigma, q = _arrays(S, K, L, U, T, r, sigma, q)
+    _check(S, K, T, sigma, L=L)
     if np.any(L >= U):
         raise ValueError("need L < U")
     alive = (S > L) & (S < U)
+    vanilla = np.asarray(black_scholes_price(S, K, T, r, sigma, q, option_type))
+    fwd = S * np.exp((r - q) * T)
+    deterministic = np.where((fwd > L) & (fwd < U), np.exp(-r * T) * np.maximum(phi * (fwd - K), 0.0), 0.0)
+    regular = sigma * np.sqrt(T) > 0
     Ss = np.where(alive, S, np.sqrt(L * U))
+    sigma, T = np.where(regular, sigma, 1.0), np.where(regular, T, 1.0)
     b = r - q
     v = sigma * np.sqrt(T)
     mu = 2.0 * b / sigma**2 + 1.0
@@ -254,6 +291,8 @@ def double_barrier_price(
     drift = (b + 0.5 * sigma**2) * T
     lo, hi = (K, U) if phi == 1 else (L, K)  # the payoff is non-zero for lo < S_T < hi
     lo, hi = np.maximum(lo, L), np.minimum(hi, U)
+    nonempty = lo < hi
+    hi = np.where(nonempty, hi, 2.0 * lo)  # an empty payoff range (a put struck at or below L) is worth 0
 
     def d(num):
         return (np.log(num) + drift) / v
@@ -266,9 +305,9 @@ def double_barrier_price(
     asset = np.sum(UL**mu * (N(d1) - N(d2)) - refl**mu * (N(d3) - N(d4)), axis=0)
     cash = np.sum(UL ** (mu - 2) * (N(d1 - v) - N(d2 - v)) - refl ** (mu - 2) * (N(d3 - v) - N(d4 - v)), axis=0)
     out = phi * (Ss * np.exp((b - r) * T) * asset - K * np.exp(-r * T) * cash)
-    out = np.where(alive & (lo < hi), np.maximum(out, 0.0), 0.0)
+    out = np.where(alive & nonempty, np.where(regular, np.maximum(out, 0.0), deterministic), 0.0)
     if knock == "in":
-        out = np.asarray(black_scholes_price(S, K, T, r, sigma, q, option_type)) - out
+        out = vanilla - out
     return as_output(out)
 
 
@@ -326,6 +365,7 @@ def discrete_barrier_price(
     """
     is_down, _ = parse_barrier_type(barrier_type)
     H, T, sigma = (np.asarray(a, dtype=np.float64) for a in (H, T, sigma))
+    nonnegative(T=T, sigma=sigma)
     shift = np.exp((-1.0 if is_down else 1.0) * BGK_BETA * sigma * np.sqrt(T / int(n_monitor)))
     return barrier_price(S, K, H * shift, T, r, sigma, q, option_type, barrier_type, rebate)
 
@@ -336,7 +376,7 @@ def barrier_option_mc(
     H: float,
     T: float,
     r: float,
-    sigma: float,
+    sigma: float | None = None,
     q: float = 0.0,
     option_type: str = "call",
     barrier_type: str = "down-and-out",
@@ -345,6 +385,8 @@ def barrier_option_mc(
     continuous: bool = True,
     rng: RNGLike = None,
     confidence: float = 0.95,
+    paths: ArrayLike | None = None,
+    discount: ArrayLike | None = None,
 ) -> MonteCarloResult:
     """Monte Carlo price of a single-barrier option without rebate.
 
@@ -355,26 +397,37 @@ def barrier_option_mc(
     :math:`p_i` (:func:`~financialkit.exotic_options.utils.numerics.barrier_crossing_probability`)
     weights the payoff by the survival probability :math:`\\prod_i (1 - p_i)`,
     which prices continuous monitoring without discretisation bias
-    (Glasserman 2004, Sec. 6.4).
+    (Glasserman 2004, Sec. 6.4). Any other model's spot paths can be given
+    as `paths`; the bridge then assumes volatility `sigma` within each step.
 
     Parameters
     ----------
-    S, K, H, T, r, sigma : float
-        Spot, strike, barrier, maturity, rate and volatility.
+    S, K, H, T, r : float
+        Spot, strike, barrier, maturity and rate.
+    sigma : float, optional
+        Volatility of the GBM paths and of the bridge; required unless
+        `paths` are given with ``continuous=False``.
     q : float
         Continuous dividend yield.
     option_type : {"call", "put"}
     barrier_type : {"down-and-out", "down-and-in", "up-and-out", "up-and-in"}
     n_steps : int
-        Time steps (monitoring dates when ``continuous=False``).
+        Time steps (monitoring dates when ``continuous=False``); ignored with `paths`.
     n_paths : int
-        Number of paths.
+        Number of paths; ignored with `paths`.
     continuous : bool
         Continuous monitoring through the bridge correction, or discrete.
     rng : numpy.random.Generator or int, optional
         Generator or seed.
     confidence : float
         Coverage of the confidence interval.
+    paths : array_like, shape (n_paths, n_steps + 1), optional
+        Risk-neutral spot paths starting at `S` on the grid :math:`t_i = iT/n`,
+        in place of the GBM ones.
+    discount : array_like, optional
+        Discount factors :math:`D(0, t_i)` for `paths`, of shape
+        ``(n_steps + 1,)`` or one row per path; only :math:`D(0, T)` is
+        used. :math:`e^{-rT}` by default.
 
     Returns
     -------
@@ -387,14 +440,17 @@ def barrier_option_mc(
     True
     """
     is_down, is_out = parse_barrier_type(barrier_type)
-    dt = T / int(n_steps)
-    _, paths = gbm_paths(S, r - q, sigma, T, int(n_steps), int(n_paths), rng=rng)
+    spot, D = spot_paths(S, T, r - q, sigma, int(n_steps), int(n_paths), paths, discount, rng=rng)
+    dt = T / (spot.shape[1] - 1)
     if continuous:
-        p = barrier_crossing_probability(np.log(paths[:, :-1]), np.log(paths[:, 1:]), float(np.log(H)), sigma, dt)
+        if sigma is None:
+            raise ValueError("continuous monitoring needs sigma for the bridge")
+        p = barrier_crossing_probability(np.log(spot[:, :-1]), np.log(spot[:, 1:]), float(np.log(H)), sigma, dt)
         survive = np.prod(1.0 - p, axis=1)
     else:
-        monitored = paths[:, 1:]
+        monitored = spot[:, 1:]
         survive = np.all(monitored > H if is_down else monitored < H, axis=1).astype(np.float64)
     weight = survive if is_out else 1.0 - survive
-    payoff = np.exp(-r * T) * vanilla_payoff(paths[:, -1], K, option_type) * weight
+    disc = np.exp(-r * T) if D is None else D[:, -1]
+    payoff = disc * vanilla_payoff(spot[:, -1], K, option_type) * weight
     return sample_mean(payoff, confidence, "continuous barrier" if continuous else "discrete barrier")

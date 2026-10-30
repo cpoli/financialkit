@@ -44,6 +44,8 @@ for name, x in [
     ("price impact", price_impact(bid, ask, later, side)),
 ]:
     print(f"{name:13s} {x.mean():.4f}")
+assert np.allclose(quoted_spread(bid, ask), 2 * half)
+assert np.allclose(effective_spread(price, bid, ask, side), realized_spread(price, later, side) + price_impact(bid, ask, later, side))
 
 plot_quotes(price[:40], bid[:40], ask[:40], side=side[:40])
 
@@ -57,7 +59,8 @@ plot_quotes(price[:40], bid[:40], ask[:40], side=side[:40])
 
 trades_per_day = 10 ** rng.uniform(1, 4, 150)
 rel_spread = 0.02 * trades_per_day**-0.4 * np.exp(0.25 * rng.standard_normal(150))
-slope, intercept = np.polyfit(np.log(trades_per_day), np.log(rel_spread), 1)
+(slope, intercept), cov = np.polyfit(np.log(trades_per_day), np.log(rel_spread), 1, cov=True)
+assert abs(slope + 0.4) < 4 * np.sqrt(cov[0, 0])
 fig, ax = plt.subplots(figsize=(6, 4))
 ax.loglog(trades_per_day, 1e4 * rel_spread, ".", color="0.5")
 grid = np.logspace(1, 4, 50)

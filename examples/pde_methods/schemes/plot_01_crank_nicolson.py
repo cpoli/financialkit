@@ -27,6 +27,7 @@ exact = black_scholes_price(S, K, T, r, sigma)
 
 res = CrankNicolson(200, 100, rannacher_steps=2).price(S, K, T, r, sigma)
 print(f"Crank-Nicolson {res.price:.5f}, Black-Scholes {exact:.5f}")
+assert abs(res.price - exact) < 0.02
 
 # %%
 # The value surface, from the payoff at expiry back to today
@@ -42,6 +43,8 @@ axes[0].set_title("call value V(S, t)")
 
 ns = np.array([25, 50, 100, 200, 400])
 errors = [abs(CrankNicolson(n, n, rannacher_steps=2, s_max=400.0).price(S, K, T, r, sigma).price - exact) for n in ns]
+# below n = 100 the strike's position between nodes still dominates the error
+assert np.allclose(np.divide(errors[2:-1], errors[3:]), 4.0, atol=0.5)
 plot_grid_convergence(ns, errors, ax=axes[1], label="Crank-Nicolson, M = N = n", rates=(2.0,))
 axes[1].set_title("error against grid size")
 fig.tight_layout()

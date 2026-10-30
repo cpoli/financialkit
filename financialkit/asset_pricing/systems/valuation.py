@@ -1,5 +1,6 @@
 """Equity valuation: Williams's dividend discount model, Gordon growth,
-Modigliani-Miller and Shiller's variance bound.
+Modigliani-Miller, Shiller's variance bound and Campbell and Shiller's
+log-linear present value.
 
 Williams (1938) defined a share's investment value as the present value
 of all its future dividends. Gordon (1959) summed the series when
@@ -10,6 +11,10 @@ financed, so leverage only shifts risk and return between debt and
 equity. Shiller (1981) turned the dividend discount model into a test:
 if prices are rational forecasts of discounted dividends, they cannot
 be more volatile than the discounted dividends actually paid.
+Campbell and Shiller (1988) linearised the log return around the mean
+dividend-price ratio, which turns the present-value identity into a
+statement about forecasts: a high dividend-price ratio must forecast
+high returns, low dividend growth, or both.
 
 Rates in this module are effective per-period rates, as in the
 original papers, rather than continuously compounded ones.
@@ -22,7 +27,10 @@ Capital: A Correction," *Am. Econ. Rev.* 53 (1963) 433-443;
 M. J. Gordon, "Dividends, Earnings, and Stock Prices," *Rev. Econ.
 Statist.* 41 (1959) 99-105; R. J. Shiller, "Do Stock Prices Move Too
 Much to be Justified by Subsequent Changes in Dividends?" *Am. Econ.
-Rev.* 71 (1981) 421-436.
+Rev.* 71 (1981) 421-436; J. Y. Campbell and R. J. Shiller, "The
+Dividend-Price Ratio and Expectations of Future Dividends and Discount
+Factors," *Rev. Financ. Stud.* 1 (1988) 195-228; J. H. Cochrane, "The
+Dog That Did Not Bark," *Rev. Financ. Stud.* 21 (2008) 1533-1575.
 """
 
 from __future__ import annotations
@@ -32,7 +40,7 @@ from typing import Optional
 import numpy as np
 from numpy.typing import ArrayLike
 
-from financialkit.asset_pricing.core.base import ExcessVolatilityResult
+from financialkit.asset_pricing.core.base import ExcessVolatilityResult, PresentValueDecomposition
 from financialkit.time_value import perpetuity_present_value
 
 __all__ = [
@@ -46,6 +54,9 @@ __all__ = [
     "ex_post_rational_price",
     "ar1_dividend_price",
     "variance_bound",
+    "campbell_shiller_rho",
+    "log_linear_return",
+    "campbell_shiller_decomposition",
 ]
 
 
@@ -329,3 +340,97 @@ def variance_bound(price: ArrayLike, dividends: ArrayLike, rate: float, terminal
     term = float(P.mean()) if terminal_price is None else float(terminal_price)
     p_star = ex_post_rational_price(dividends, rate, term)
     return ExcessVolatilityResult(price=P, rational_price=p_star, std_price=float(P.std()), std_rational=float(p_star.std()))
+
+
+def campbell_shiller_rho(mean_log_dp: float) -> float:
+    """The linearisation constant :math:`\\rho = 1 / (1 + e^{\\overline{dp}})`.
+
+    Parameters
+    ----------
+    mean_log_dp : float
+        Mean log dividend-price ratio :math:`\\overline{d - p}`.
+
+    Returns
+    -------
+    float
+        Slightly below one: about 0.96 for a 4% dividend yield.
+
+    Examples
+    --------
+    >>> round(campbell_shiller_rho(np.log(0.04)), 6)
+    0.961538
+    """
+    return float(1.0 / (1.0 + np.exp(mean_log_dp)))
+
+
+def log_linear_return(log_dp: ArrayLike, log_dp_next: ArrayLike, log_div_growth: ArrayLike, rho: float) -> np.ndarray | float:
+    """Campbell and Shiller's approximate log return :math:`k + dp_t - \\rho\\, dp_{t+1} + \\Delta d_{t+1}`.
+
+    The exact log return is
+    :math:`r_{t+1} = \\Delta d_{t+1} + \\log(1 + e^{-dp_{t+1}}) + dp_t`; a
+    first-order expansion of the middle term around the mean
+    :math:`\\overline{dp}` gives the linear form, with
+    :math:`k = \\log(1 + e^{-\\overline{dp}}) + \\rho\\,\\overline{dp}`.
+
+    Parameters
+    ----------
+    log_dp, log_dp_next : array_like
+        Log dividend-price ratio at the start and the end of the period.
+    log_div_growth : array_like
+        Log dividend growth over the period.
+    rho : float
+        From :func:`campbell_shiller_rho`.
+
+    Returns
+    -------
+    float or ndarray
+
+    Examples
+    --------
+    At the mean, the approximation is exact:
+
+    >>> dp = np.log(0.04)
+    >>> rho = campbell_shiller_rho(dp)
+    >>> exact = 0.02 + np.log1p(np.exp(-dp)) + dp
+    >>> bool(np.isclose(log_linear_return(dp, dp, 0.02, rho), exact))
+    True
+    """
+    dp_bar = float(np.log(1.0 / rho - 1.0))
+    k = float(np.log1p(np.exp(-dp_bar))) + rho * dp_bar
+    dp = np.asarray(log_dp, dtype=np.float64)
+    out = k + dp - rho * np.asarray(log_dp_next, dtype=np.float64) + np.asarray(log_div_growth, dtype=np.float64)
+    return _out(out)
+
+
+def campbell_shiller_decomposition(log_returns: ArrayLike, log_div_growth: ArrayLike, log_dp: ArrayLike) -> PresentValueDecomposition:
+    """Split the variance of the dividend-price ratio into return and dividend-growth news.
+
+    Iterating the linear return forward gives
+    :math:`dp_t \\approx \\text{const} + \\sum_j \\rho^{j-1}(r_{t+j} - \\Delta d_{t+j})`,
+    so :math:`dp_t` can vary only if it forecasts returns or dividend
+    growth. With the first-order VAR of Cochrane (2008), the long-run
+    regression coefficients of the two sums on :math:`dp_t` are
+    :math:`b_r / (1 - \\rho\\phi)` and :math:`b_d / (1 - \\rho\\phi)`, and
+    their difference is one.
+
+    Parameters
+    ----------
+    log_returns, log_div_growth : array_like, shape (T,)
+        Log return and log dividend growth over the period that ends at
+        each date.
+    log_dp : array_like, shape (T,)
+        Log dividend-price ratio at each date.
+
+    Returns
+    -------
+    PresentValueDecomposition
+        One-period slopes of :math:`r_{t+1}`, :math:`\\Delta d_{t+1}` and
+        :math:`dp_{t+1}` on :math:`dp_t`, by OLS with a constant.
+    """
+    r = np.asarray(log_returns, dtype=np.float64)
+    dd = np.asarray(log_div_growth, dtype=np.float64)
+    dp = np.asarray(log_dp, dtype=np.float64)
+    X = np.column_stack([np.ones(dp.size - 1), dp[:-1]])
+    coef, *_ = np.linalg.lstsq(X, np.column_stack([r[1:], dd[1:], dp[1:]]), rcond=None)
+    b_r, b_d, phi = coef[1]
+    return PresentValueDecomposition(rho=campbell_shiller_rho(float(dp.mean())), b_r=float(b_r), b_d=float(b_d), phi=float(phi))

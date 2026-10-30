@@ -20,7 +20,7 @@ volatility rises, produces the equity skew; the volatility of variance
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.stochastic_volatility import HestonModel, heston_paths, heston_price
+from financialkit.stochastic_volatility import HestonModel, heston_paths, heston_price, lewis_price
 from financialkit.stochastic_volatility.visualizers import plot_heston_paths, plot_smile
 
 S, T, r = 100.0, 1.0, 0.02
@@ -29,6 +29,8 @@ base = dict(v0=0.04, kappa=1.5, theta=0.04, xi=0.5)
 m = HestonModel(rho=-0.7, **base)
 print("Feller condition 2 kappa theta >= xi^2:", m.feller_satisfied)
 print(f"at-the-money call by Heston's two probabilities: {heston_price(m, S, 100.0, T, r):.4f}")
+assert not m.feller_satisfied
+assert abs(heston_price(m, S, 100.0, T, r) - lewis_price(m, S, 100.0, T, r)) < 1e-8
 
 plot_heston_paths(heston_paths(m, S, T, r, n_steps=250, n_paths=10, rng=0))
 
@@ -39,10 +41,17 @@ plot_heston_paths(heston_paths(m, S, T, r, n_steps=250, n_paths=10, rng=0))
 K = np.linspace(70, 135, 27)
 F = S * np.exp(r * T)
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4), sharey=True)
+skews, curvatures = [], []
 for rho in (-0.7, 0.0, 0.7):
-    plot_smile(K, HestonModel(rho=rho, **base).implied_vol(S, K, T, r), forward=F, ax=ax1, label=f"rho = {rho}")
+    iv = HestonModel(rho=rho, **base).implied_vol(S, K, T, r)
+    skews.append(iv[-1] - iv[0])
+    plot_smile(K, iv, forward=F, ax=ax1, label=f"rho = {rho}")
 for xi in (0.2, 0.5, 0.9):
-    plot_smile(K, HestonModel(0.04, 1.5, 0.04, xi, 0.0).implied_vol(S, K, T, r), forward=F, ax=ax2, label=f"xi = {xi}, rho = 0")
+    iv = HestonModel(0.04, 1.5, 0.04, xi, 0.0).implied_vol(S, K, T, r)
+    curvatures.append(iv[0] + iv[-1] - 2 * iv[13])
+    plot_smile(K, iv, forward=F, ax=ax2, label=f"xi = {xi}, rho = 0")
+assert skews[0] < -0.1 and skews[2] > 0.1 and np.all(np.diff(skews) > 0)
+assert np.all(np.diff(curvatures) > 0.02)
 fig.tight_layout()
 
 plt.show()

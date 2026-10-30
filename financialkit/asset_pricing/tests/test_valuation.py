@@ -5,12 +5,15 @@ import pytest
 
 from financialkit.asset_pricing import (
     ar1_dividend_price,
+    campbell_shiller_decomposition,
+    campbell_shiller_rho,
     dividend_discount_value,
     ex_post_rational_price,
     gordon_growth_price,
     implied_cost_of_equity,
     levered_cost_of_equity,
     levered_firm_value,
+    log_linear_return,
     sustainable_growth,
     variance_bound,
     wacc,
@@ -87,3 +90,31 @@ def test_rational_price_respects_the_variance_bound():
     assert not good.violated
     bad = variance_bound(D / r, D, r, terminal_price=Dbar / r)
     assert bad.violated and bad.ratio > 1.5
+
+
+def test_campbell_shiller_rho_and_linear_return():
+    rho = campbell_shiller_rho(np.log(0.04))
+    assert rho == pytest.approx(1 / 1.04)
+    dp = np.log(0.04) + np.array([-0.2, 0.0, 0.2])
+    exact = 0.02 + np.log1p(np.exp(-dp)) + np.log(0.04)
+    approx = log_linear_return(np.log(0.04), dp, 0.02, rho)
+    # Exact at the mean; the error is second order in the deviation.
+    assert approx[1] == pytest.approx(exact[1])
+    err = np.abs(approx - exact)
+    assert err[1] < 1e-12 and 0 < err[0] < 0.01 and 0 < err[2] < 0.01
+
+
+def test_campbell_shiller_decomposition_identity():
+    """With unpredictable dividends, long-run return coefficient 1 and dividend coefficient 0 (Cochrane 2008)."""
+    rng = np.random.default_rng(0)
+    T, phi, m = 20_000, 0.9, np.log(0.04)
+    dp = np.empty(T)
+    dp[0] = m
+    for t in range(1, T):
+        dp[t] = m + phi * (dp[t - 1] - m) + 0.05 * rng.standard_normal()
+    dd = 0.02 + 0.1 * rng.standard_normal(T)
+    r = np.r_[np.nan, dd[1:] + np.log1p(np.exp(-dp[1:])) + dp[:-1]]
+    pv = campbell_shiller_decomposition(r, dd, dp)
+    assert abs(pv.identity_error) < 0.01
+    assert pv.long_run_return == pytest.approx(1.0, abs=0.1)
+    assert abs(pv.long_run_dividend) < 0.1

@@ -44,4 +44,7 @@ axes[1].set_ylabel("relative error (%)")
 fig.tight_layout()
 for s, t, m in zip(sigmas, tw, mc, strict=True):
     print(f"sigma = {s:.1f}: TW {t:.4f}, MC {m.estimate:.4f} +/- {m.std_error:.4f}")
+# Within 2% everywhere, but the overpricing grows with volatility.
+assert np.all(np.abs(rel) < 0.02)
+assert np.all(np.diff(rel) > 0)
 plt.show()

@@ -1,0 +1,28 @@
+name: Link check
+
+# The docs link to the Python, NumPy and SciPy references, GitHub, Colab and
+# outside projects. Their availability changes independently of the code, so
+# this runs weekly rather than on every push.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  linkcheck:
+    name: Sphinx linkcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[docs]"
+      # plot_gallery=0 skips executing the examples; docs.yml already runs them.
+      - run: cd docs && make linkcheck SPHINXOPTS="-E --keep-going -D plot_gallery=0"
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkcheck-output
+          path: docs/build/linkcheck/output.*

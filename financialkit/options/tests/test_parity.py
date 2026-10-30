@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 
 from financialkit.constants import DEFAULT_ATOL
-from financialkit.options import black_scholes_price, no_arbitrage_bounds, parity_residual, put_call_parity
+from financialkit.options import black_scholes_price, forward_price, no_arbitrage_bounds, parity_residual, put_call_parity
 
 
 def test_black_scholes_prices_satisfy_parity():
@@ -35,3 +35,12 @@ def test_bounds_are_attained_in_the_volatility_limits():
     lo, hi = no_arbitrage_bounds(100.0, 90.0, 1.0, 0.05)
     assert black_scholes_price(100.0, 90.0, 1.0, 0.05, 1e-6) == pytest.approx(lo)
     assert black_scholes_price(100.0, 90.0, 1.0, 0.05, 20.0) == pytest.approx(hi, rel=1e-6)
+
+
+def test_forward_price_is_cost_of_carry_and_the_parity_forward():
+    """F = S e^{(r - q) T}, and C - P = e^{-rT} (F - K)."""
+    S, K, T, r, q = 100.0, np.array([80.0, 100.0, 120.0]), 2.0, 0.05, 0.02
+    F = forward_price(S, T, r, q)
+    assert F == pytest.approx(S * np.exp((r - q) * T), rel=1e-15)
+    gap = black_scholes_price(S, K, T, r, 0.25, q) - black_scholes_price(S, K, T, r, 0.25, q, "put")
+    np.testing.assert_allclose(gap, np.exp(-r * T) * (F - K), atol=DEFAULT_ATOL)

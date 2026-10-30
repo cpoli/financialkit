@@ -13,6 +13,7 @@ VaR is run on a market whose volatility doubles halfway through.
 # %%
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy import stats
 
 from financialkit.risk import basel_traffic_light, rolling_historical_var, var_exceptions
 from financialkit.risk.visualizers import plot_backtest
@@ -24,6 +25,8 @@ from financialkit.risk.visualizers import plot_backtest
 for k in range(12):
     res = basel_traffic_light(k)
     print(f"{k:2d} exceptions: {res.zone:6s} P(X <= k) = {res.cumulative_probability:.4f}  multiplier {res.multiplier:.2f}")
+    assert res.zone == ("green" if k <= 4 else "yellow" if k <= 9 else "red")
+    assert np.isclose(res.cumulative_probability, stats.binom.cdf(k, 250, 0.01))
 
 # %%
 # A one-year window behind a volatility jump
@@ -40,6 +43,8 @@ plot_backtest(test, var)
 
 counts = np.array([hits[t - 250 : t].sum() for t in range(250, hits.size + 1)])
 zones = [basel_traffic_light(int(c)).zone for c in counts]
+# windows that end before the jump stay green; after it the bank goes red
+assert counts[:251].max() <= 4 and "red" in zones
 fig, ax = plt.subplots(figsize=(8, 3))
 colors = {"green": "C2", "yellow": "C1", "red": "C3"}
 ax.scatter(np.arange(counts.size) + 250, counts, c=[colors[z] for z in zones], s=4)

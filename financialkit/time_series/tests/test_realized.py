@@ -1,4 +1,4 @@
-"""Tests for Parkinson's range estimator, realized variance and the Mincer-Zarnowitz regression."""
+"""Tests for Parkinson's range estimator, realized variance, the Mincer-Zarnowitz regression and the HAR model."""
 
 import math
 
@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 
 from financialkit.constants import TRADING_DAYS_PER_YEAR
-from financialkit.time_series import GARCH, close_to_close_variance, mincer_zarnowitz, parkinson_variance, realized_variance
+from financialkit.time_series import GARCH, close_to_close_variance, fit_har, har_regressors, mincer_zarnowitz, ols, parkinson_variance, realized_variance
 from financialkit.time_series.utils import simulate_intraday_returns, simulate_ohlc
 
 
@@ -52,3 +52,32 @@ def test_mincer_zarnowitz_r_squared_rv_beats_squared_returns():
     mz_rv = mincer_zarnowitz(realized_variance(intraday), v)
     assert mz_r2.r_squared < 0.45 < 0.9 < mz_rv.r_squared
     assert mz_rv.coef[1] == pytest.approx(1.0, abs=4 * mz_rv.std_errors[1])
+
+
+def test_har_regressors_are_trailing_means():
+    x = np.random.default_rng(10).random(40)
+    X = har_regressors(x)
+    for i, t in enumerate(range(21, 40)):
+        np.testing.assert_allclose(X[i], [x[t], x[t - 4 : t + 1].mean(), x[t - 21 : t + 1].mean()], rtol=1e-12)
+    with pytest.raises(ValueError):
+        har_regressors(x[:22])
+
+
+def test_har_fit_predict_and_forecast_are_one_regression():
+    rng = np.random.default_rng(11)
+    n = 6000
+    rv = np.empty(n)
+    rv[:22] = 1.0
+    true = np.array([0.1, 0.35, 0.3, 0.25])
+    for t in range(22, n):
+        rv[t] = true[0] + true[1] * rv[t - 1] + true[2] * rv[t - 5 : t].mean() + true[3] * rv[t - 22 : t].mean() + 0.1 * rng.standard_normal()
+    res = fit_har(rv)
+    X = har_regressors(rv)
+    direct = ols(rv[22:], np.column_stack([np.ones(n - 22), X[:-1]]))
+    np.testing.assert_allclose(res.coef, direct.coef, rtol=1e-12)
+    assert np.all(np.abs(res.coef - true) < 4 * res.ols.std_errors)
+    pred = res.predict(rv)
+    assert np.all(np.isnan(pred[:22]))
+    np.testing.assert_allclose(pred[22:], rv[22:] - direct.residuals, rtol=1e-10)
+    assert res.forecast() == pytest.approx(res.coef[0] + X[-1] @ res.coef[1:])
+    assert fit_har(rv, horizons=(1, 10)).coef.size == 3

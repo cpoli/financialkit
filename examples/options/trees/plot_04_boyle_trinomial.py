@@ -29,6 +29,9 @@ dt = T / 50
 print(f"p_u = {pu:.4f}, p_m = {pm:.4f}, p_d = {pd:.4f}")
 print(f"mean: {pu * u + pm + pd / u:.8f} vs e^(r dt) = {np.exp(r * dt):.8f}")
 print(f"second moment: {pu * u**2 + pm + pd / u**2:.8f} vs {np.exp((2 * r + sigma**2) * dt):.8f}")
+assert np.isclose(pu + pm + pd, 1.0) and min(pu, pm, pd) > 0
+assert np.isclose(pu * u + pm + pd / u, np.exp(r * dt), rtol=1e-12)
+assert np.isclose(pu * u**2 + pm + pd / u**2, np.exp((2 * r + sigma**2) * dt), rtol=1e-12)
 
 # %%
 # Trinomial vs binomial convergence
@@ -37,8 +40,12 @@ print(f"second moment: {pu * u**2 + pm + pd / u**2:.8f} vs {np.exp((2 * r + sigm
 exact = black_scholes_price(S, K, T, r, sigma)
 steps = np.arange(10, 300, 5)
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
-plot_tree_convergence(steps, [CRRTree(n).price(S, K, T, r, sigma).price for n in steps], exact, ax=axes[0], label="CRR binomial")
-plot_tree_convergence(steps, [TrinomialTree(n).price(S, K, T, r, sigma).price for n in steps], exact, ax=axes[0], label="Boyle trinomial")
+crr = np.array([CRRTree(n).price(S, K, T, r, sigma).price for n in steps])
+tri = np.array([TrinomialTree(n).price(S, K, T, r, sigma).price for n in steps])
+print(f"median error: CRR {np.median(np.abs(crr - exact)):.1e}, trinomial {np.median(np.abs(tri - exact)):.1e}")
+assert np.median(np.abs(tri - exact)) < 0.2 * np.median(np.abs(crr - exact))
+plot_tree_convergence(steps, crr, exact, ax=axes[0], label="CRR binomial")
+plot_tree_convergence(steps, tri, exact, ax=axes[0], label="Boyle trinomial")
 axes[0].set_title("European call")
 
 # %%

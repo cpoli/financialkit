@@ -45,6 +45,7 @@ ax.set_xlabel("true beta")
 ax.set_ylabel("estimated beta")
 fig.tight_layout()
 print(f"parameters: sample {sample_covariance(X).n_params}, single index {si.n_params}")
+assert (sample_covariance(X).n_params, si.n_params) == (d * (d + 1) // 2, 3 * d + 1)
 
 # %%
 # Estimation error against the length of history
@@ -60,6 +61,7 @@ for T in months:
         esi.append(np.linalg.norm(single_index_covariance(X, m).cov - true))
     err_s.append(np.mean(es))
     err_si.append(np.mean(esi))
+assert np.all(np.array(err_si) < np.array(err_s))
 fig, ax = plt.subplots(figsize=(7, 3.5))
 ax.loglog(months, err_s, "o-", label="sample covariance")
 ax.loglog(months, err_si, "s-", label="single-index model")

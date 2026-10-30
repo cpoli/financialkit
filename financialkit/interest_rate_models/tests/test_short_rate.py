@@ -109,3 +109,27 @@ def test_validation():
         CIRModel(0.03, 0.5, 0.05, 0.1).simulate(1.0, 10, 10, method="milstein")
     with pytest.raises(ValueError):
         monte_carlo_bond_prices(VasicekModel(0.03, 0.5, 0.05, 0.01), [0.0, 1.0])
+
+
+def test_short_rate_model_reprs_round_trip():
+    namespace = {"MertonShortRateModel": MertonShortRateModel, "VasicekModel": VasicekModel, "CIRModel": CIRModel}
+    for model in (MertonShortRateModel(0.03, 0.001, 0.01), VasicekModel(0.03, 0.4, 0.05, 0.015), CIRModel(0.03, 0.4, 0.05, 0.12)):
+        rebuilt = eval(repr(model), namespace)
+        assert rebuilt.zero_coupon_bond(5.0) == model.zero_coupon_bond(5.0)
+    curve = VasicekModel(0.03, 0.4, 0.05, 0.015).curve()
+    assert repr(curve).startswith("ModelCurve(VasicekModel(")
+
+
+def test_merton_bond_option_volatility_is_ho_lee():
+    """Merton's arithmetic Brownian rate is Ho-Lee on a curve it fits exactly: both give sigma (S - T) sqrt(T)."""
+    T, S = np.array([0.5, 1.0, 2.0]), np.array([1.0, 5.0, 10.0])
+    np.testing.assert_allclose(MertonShortRateModel(0.03, 0.0, 0.01).bond_option_volatility(T, S), 0.01 * (S - T) * np.sqrt(T), rtol=1e-15)
+
+
+def test_short_rate_models_reject_invalid_parameters():
+    with pytest.raises(ValueError, match="sigma must be non-negative"):
+        MertonShortRateModel(0.03, 0.0, -0.01)
+    with pytest.raises(ValueError, match="sigma must be non-negative"):
+        VasicekModel(0.03, 0.4, 0.05, -0.01)
+    with pytest.raises(ValueError, match="theta must be positive, got 0"):
+        CIRModel(0.03, 0.4, 0.0, 0.1)

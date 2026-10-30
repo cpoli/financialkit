@@ -57,6 +57,9 @@ hw = HullWhiteModel(curve, 0.3, 0.012)
 res = monte_carlo_bond_prices(hw, [1.0, 5.0, 10.0, 20.0], n_steps=200, n_paths=8000, rng=1)
 for T, z in zip(res.maturities, res.z_scores, strict=True):
     print(f"T = {T:4.0f}: market P = {curve.discount(T):.5f}, Monte Carlo z = {z:+.2f}")
-print("P(5, 10) at r(5) = 3%, 5%, 7%:", np.round(hw.zero_coupon_bond(10.0, t=5.0, state=np.array([0.03, 0.05, 0.07])), 5))
+P_later = hw.zero_coupon_bond(10.0, t=5.0, state=np.array([0.03, 0.05, 0.07]))
+print("P(5, 10) at r(5) = 3%, 5%, 7%:", np.round(P_later, 5))
+assert np.abs(res.z_scores).max() < 3  # the market curve is repriced within 3 standard errors
+assert np.all(np.diff(P_later) < 0)  # higher rates, cheaper bonds
 
 plt.show()

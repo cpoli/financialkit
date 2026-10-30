@@ -14,6 +14,9 @@ zero, and choosing that point to maximise equity (smooth pasting,
 
 The coupon that maximises firm value :math:`v` trades the tax shield
 against expected bankruptcy costs and fixes the optimal leverage.
+The model is stationary (perpetual debt, time-independent claims), so
+the riskless rate is a single flat ``r`` by construction; unlike the
+other credit pricers it takes no yield curve.
 
 References: H. E. Leland, "Corporate Debt Value, Bond Covenants, and
 Optimal Capital Structure," *J. Finance* 49 (1994) 1213-1252.

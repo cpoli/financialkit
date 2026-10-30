@@ -26,6 +26,7 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy import stats
 
+from financialkit._deprecation import renamed_parameter
 from financialkit.credit.core.base import LossDistribution
 from financialkit.credit.utils.numerics import normal_factor_quadrature
 from financialkit.integrators import RNGLike
@@ -127,7 +128,8 @@ def vasicek_quantile(alpha: ArrayLike, p: ArrayLike, rho: ArrayLike) -> np.ndarr
     return as_output(stats.norm.cdf((stats.norm.ppf(p) + np.sqrt(rho) * stats.norm.ppf(a)) / np.sqrt(1.0 - rho)))
 
 
-def simulate_one_factor_defaults(p: ArrayLike, rho: float, n_obligors: int, n_sims: int, rng: RNGLike = None) -> np.ndarray:
+@renamed_parameter("n_sims", "n_paths", "financialkit.credit.simulate_one_factor_defaults")
+def simulate_one_factor_defaults(p: ArrayLike, rho: float, n_obligors: int, n_paths: int, rng: RNGLike = None) -> np.ndarray:
     """Number of defaults per scenario in a homogeneous one-factor portfolio.
 
     Draws the factor, then the conditionally independent defaults as a
@@ -139,15 +141,15 @@ def simulate_one_factor_defaults(p: ArrayLike, rho: float, n_obligors: int, n_si
         Default probability (scalar for a homogeneous pool).
     rho : float
         Asset correlation.
-    n_obligors, n_sims : int
+    n_obligors, n_paths : int
     rng : numpy.random.Generator, int or None
 
     Returns
     -------
-    ndarray of int, shape (n_sims,)
+    ndarray of int, shape (n_paths,)
     """
     rng = np.random.default_rng(rng)
-    pM = np.asarray(conditional_default_probability(p, rho, rng.standard_normal(n_sims)))
+    pM = np.asarray(conditional_default_probability(p, rho, rng.standard_normal(n_paths)))
     return rng.binomial(n_obligors, pM)
 
 
@@ -173,6 +175,8 @@ def one_factor_loss_distribution(p: float, rho: float, n_obligors: int, lgd: flo
     """
     x, w = normal_factor_quadrature(n_nodes)
     pM = np.asarray(conditional_default_probability(p, rho, x))
+    # scipy's binomial overflows for p near the smallest normal double; below 1e-300 it is a point mass at 0
+    pM[pM < 1e-300] = 0.0
     k = np.arange(n_obligors + 1)
     pmf = w @ stats.binom.pmf(k[None, :], n_obligors, pM[:, None])
     return LossDistribution(losses=lgd * k / n_obligors, pmf=pmf, method="one_factor_binomial")

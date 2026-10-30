@@ -23,8 +23,11 @@ from financialkit.options.visualizers import plot_exercise_boundary
 
 res = CRRTree(5).price(50.0, 50.0, 5 / 12, 0.10, 0.40, option_type="put", american=True)
 print(f"American put on a five-step tree: {res.price:.2f} (Hull: 4.49)")
+assert abs(res.price - 4.49) < 0.005
 for n in (30, 50, 100, 500):
-    print(f"  {n:3d} steps: {CRRTree(n).price(50.0, 50.0, 5 / 12, 0.10, 0.40, option_type='put', american=True).price:.3f}")
+    price = CRRTree(n).price(50.0, 50.0, 5 / 12, 0.10, 0.40, option_type="put", american=True).price
+    print(f"  {n:3d} steps: {price:.3f}")
+assert abs(price - 4.28) < 0.005  # Hull's converged value
 
 # %%
 # The early-exercise premium and boundary
@@ -34,6 +37,9 @@ K, T, r, sigma = 100.0, 1.0, 0.08, 0.25
 spots = np.linspace(60, 140, 41)
 american = [CRRTree(200).price(s, K, T, r, sigma, option_type="put", american=True).price for s in spots]
 european = black_scholes_price(spots, K, T, r, sigma, option_type="put")
+assert np.all(american >= european) and np.all(american >= np.maximum(K - spots, 0) - 1e-12)
+boundary = CRRTree(400).price(100.0, K, T, r, sigma, option_type="put", american=True)
+assert np.nanmax(boundary.exercise_boundary) <= K
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 axes[0].plot(spots, american, label="American (CRR, 200 steps)")
@@ -42,7 +48,7 @@ axes[0].plot(spots, np.maximum(K - spots, 0), "k:", label="exercise value")
 axes[0].set_xlabel("spot S")
 axes[0].set_ylabel("put value")
 axes[0].legend()
-plot_exercise_boundary(CRRTree(400).price(100.0, K, T, r, sigma, option_type="put", american=True), ax=axes[1])
+plot_exercise_boundary(boundary, ax=axes[1])
 axes[1].axhline(K, color="k", lw=0.5)
 axes[1].set_title("exercise when the stock is below the boundary")
 fig.tight_layout()

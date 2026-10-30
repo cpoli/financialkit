@@ -123,3 +123,23 @@ def test_validation():
         black_derman_toy_tree(CURVE, 0.2, 5.0, 0)
     with pytest.raises(ValueError):
         futures_convexity_adjustment(2.0, 1.0, 0.01)
+
+
+def test_curve_fitted_models_return_and_repr_their_curve():
+    curve = FlatCurve(0.03)
+    namespace = {"FlatCurve": FlatCurve, "HoLeeModel": HoLeeModel, "HullWhiteModel": HullWhiteModel}
+    for model in (HoLeeModel(curve, 0.01), HullWhiteModel(curve, 0.1, 0.01)):
+        assert model.curve() is curve
+        assert eval(repr(model), namespace).zero_coupon_bond(4.0) == pytest.approx(model.zero_coupon_bond(4.0), rel=1e-15)
+
+
+@pytest.mark.parametrize(("curve", "sigma"), [(FlatCurve(1e-7), 0.2), (FlatCurve(0.05), 3.0), (FlatCurve(0.05), 8.0)])
+def test_black_derman_toy_reprices_extreme_curves(curve, sigma):
+    """Near-zero rates and volatilities that push the median rate e^-18 below the forward stay inside the bracket."""
+    tree = black_derman_toy_tree(curve, sigma, 5.0, 20)
+    assert tree.zero_coupon_bond(5.0) == pytest.approx(curve.discount(5.0), rel=DEFAULT_RTOL)
+
+
+def test_black_derman_toy_rejects_non_positive_forwards():
+    with pytest.raises(ValueError, match="positive forward rates"):
+        black_derman_toy_tree(ZeroCurve([1.0, 5.0], [0.03, 0.0]), 0.2, 5.0, 10)

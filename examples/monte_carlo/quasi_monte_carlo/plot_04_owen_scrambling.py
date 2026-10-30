@@ -39,5 +39,8 @@ plot_error_convergence(ns, [r.std_error * 4 for r in rqmc], ax=axes[2], label="s
 plot_error_convergence(ns, [m.std_error for m in mc], ax=axes[2], label="Monte Carlo (SE)", rates=(0.5,))
 res = rqmc[-1]
 print(f"N = {ns[-1]} x 16 scramblings: {res.estimate:.8f} +/- {res.std_error:.1e}, exact 1")
+slope = np.polyfit(np.log(ns), np.log([r.std_error for r in rqmc]), 1)[0]
+print(f"fitted RMSE rate: N^{slope:.2f}")
+assert abs(res.estimate - 1) < 4 * res.std_error and slope < -1.3
 fig.tight_layout()
 plt.show()

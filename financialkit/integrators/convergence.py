@@ -135,12 +135,10 @@ def strong_convergence(
     Examples
     --------
     >>> import numpy as np
-    >>> from financialkit.integrators import njit, strong_convergence
-    >>> @njit
-    ... def drift(x, t, p):
+    >>> from financialkit.integrators import strong_convergence
+    >>> def drift(x, t, p):
     ...     return p[0] * x
-    >>> @njit
-    ... def diffusion(x, t, p):
+    >>> def diffusion(x, t, p):
     ...     return p[1] * x
     >>> exact = lambda W: np.exp((1.0 - 0.5 * 0.5**2) + 0.5 * W)
     >>> res = strong_convergence(drift, diffusion, 1.0, 1.0, exact, params=[1.0, 0.5], rng=0)

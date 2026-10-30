@@ -22,9 +22,11 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike
 
+from financialkit._validation import nonnegative, one_of, positive
+from financialkit._validation import option_type as check_option_type
 from financialkit.exotic_options.utils.numerics import bivariate_normal_cdf
 from financialkit.options import black76_price, black_scholes_price
-from financialkit.options.utils.common import as_output, option_sign
+from financialkit.options.utils.common import as_output
 
 __all__ = ["margrabe_price", "stulz_price", "quanto_price"]
 
@@ -77,6 +79,7 @@ def margrabe_price(
     True
     """
     S1, S2, T, q1, q2 = (np.asarray(a, dtype=np.float64) for a in (S1, S2, T, q1, q2))
+    nonnegative(S1=S1, S2=S2)
     return black_scholes_price(S1 * np.exp(-q1 * T), S2 * np.exp(-q2 * T), T, 0.0, _spread_vol(sigma1, sigma2, rho))
 
 
@@ -110,7 +113,10 @@ def stulz_price(
     and the puts follow from parity with the zero-strike call, which is a
     Margrabe exchange option. Since
     :math:`\\max + \\min = S_1 + S_2`, the calls on the maximum and the
-    minimum add up to the two vanilla calls.
+    minimum add up to the two vanilla calls. At ``T = 0``, or with both
+    volatilities zero, the price is the discounted payoff on the forwards;
+    with only one of them zero, or a zero ratio volatility, it raises
+    :class:`ValueError`.
 
     Parameters
     ----------
@@ -138,15 +144,23 @@ def stulz_price(
     >>> bool(abs(total - vanilla) < 1e-10)
     True
     """
-    phi = option_sign(option_type)
-    if kind not in ("max", "min"):
-        raise ValueError(f"kind must be 'max' or 'min', got {kind!r}")
+    phi = check_option_type(option_type)
+    one_of("kind", kind, ("max", "min"))
     S1, S2, K, T, r, s1, s2, rho, q1, q2 = np.broadcast_arrays(*(np.asarray(a, dtype=np.float64) for a in (S1, S2, K, T, r, sigma1, sigma2, rho, q1, q2)))
+    nonnegative(K=K, T=T, sigma1=s1, sigma2=s2)
+    positive(S1=S1, S2=S2)
     s = _spread_vol(s1, s2, rho)
+    riskless = (T == 0) | ((s1 == 0) & (s2 == 0))
+    if np.any(~riskless & ((s1 == 0) | (s2 == 0) | (s == 0))):
+        raise ValueError("stulz_price needs positive sigma1, sigma2 and ratio volatility, unless both volatilities are zero or T = 0")
+    F1, F2 = S1 * np.exp((r - q1) * T), S2 * np.exp((r - q2) * T)
+    extreme = np.maximum(F1, F2) if kind == "max" else np.minimum(F1, F2)
+    deterministic = np.exp(-r * T) * np.maximum(phi * (extreme - K), 0.0)
+    T, s1, s2, s = (np.where(riskless, 1.0, x) for x in (T, s1, s2, s))
     rho1, rho2 = (s1 - rho * s2) / s, (s2 - rho * s1) / s
     sqT = np.sqrt(T)
     d = (np.log(S1 / S2) + (q2 - q1 + 0.5 * s**2) * T) / (s * sqT)
-    with np.errstate(divide="ignore"):
+    with np.errstate(divide="ignore"):  # K = 0 sends y1 and y2 to +inf, which bivariate_normal_cdf handles
         y1 = (np.log(S1 / K) + (r - q1 + 0.5 * s1**2) * T) / (s1 * sqT)
         y2 = (np.log(S2 / K) + (r - q2 + 0.5 * s2**2) * T) / (s2 * sqT)
     A1, A2, disc = S1 * np.exp(-q1 * T), S2 * np.exp(-q2 * T), K * np.exp(-r * T)
@@ -156,10 +170,10 @@ def stulz_price(
     else:
         call = A1 * M(y1, d, rho1) + A2 * M(y2, -d + s * sqT, rho2) - disc * (1.0 - M(-y1 + s1 * sqT, -y2 + s2 * sqT, rho))
     if phi == 1:
-        return as_output(call)
+        return as_output(np.where(riskless, deterministic, call))
     exchange = np.asarray(margrabe_price(S1, S2, T, s1, s2, rho, q1, q2))
     zero_strike = A1 - exchange if kind == "min" else A2 + exchange
-    return as_output(disc - zero_strike + call)
+    return as_output(np.where(riskless, deterministic, disc - zero_strike + call))
 
 
 def quanto_price(
@@ -220,5 +234,6 @@ def quanto_price(
     True
     """
     S, T, r_f, sigma_S, sigma_X, rho, q = (np.asarray(a, dtype=np.float64) for a in (S, T, r_f, sigma_S, sigma_X, rho, q))
+    nonnegative(S=S)
     F = S * np.exp((r_f - q - rho * sigma_S * sigma_X) * T)
     return as_output(np.asarray(fixed_rate, dtype=np.float64) * np.asarray(black76_price(F, K, T, r_d, sigma_S, option_type)))

@@ -30,6 +30,7 @@ g = black_scholes_greeks(*args)
 fd = finite_difference_greeks(black_scholes_price, *args)
 for name in ("delta", "gamma", "vega", "theta", "rho", "epsilon", "vanna", "volga"):
     print(f"{name:>7}: analytic {getattr(g, name):+10.5f}   finite difference {getattr(fd, name):+10.5f}")
+    assert np.isclose(getattr(g, name), getattr(fd, name), rtol=1e-4)
 
 # %%
 # The PDE holds across spot
@@ -40,6 +41,7 @@ K, T, r, q, sigma = 100.0, 0.5, 0.05, 0.0, 0.25
 g = black_scholes_greeks(S, K, T, r, sigma, q)
 residual = g.theta + 0.5 * sigma**2 * S**2 * g.gamma + r * S * g.delta - r * black_scholes_price(S, K, T, r, sigma)
 print(f"max PDE residual: {np.max(np.abs(residual)):.1e}")
+assert np.max(np.abs(residual)) < 1e-10
 
 # %%
 # The Greeks of a call against spot

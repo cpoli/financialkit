@@ -52,7 +52,7 @@ def _step(V, lower, diag, upper, dt, theta, b_new, obstacle, lcp, solver):
             new = solve_tridiagonal(lo, di, up, rhs, solver)
         else:
             sol = lcp(lo, di, up, rhs, obstacle[1:-1], np.maximum(u, obstacle[1:-1]))
-            new, iterations = sol.x, sol.iterations
+            new, iterations = sol.x, sol.n_iter
     out[1:-1] = new
     return out, iterations
 

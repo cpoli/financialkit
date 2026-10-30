@@ -12,7 +12,8 @@ hypercube sampling, regression control variates and moment matching;
 quasi-Monte Carlo with van der Corput, Halton and Sobol points
 (:mod:`scipy.stats.qmc`), exact and :math:`L^2` star discrepancies, the
 Koksma-Hlawka bound, Owen-scrambled randomized QMC and Brownian-bridge
-path construction; likelihood-ratio and pathwise Greeks; and Giles's
+path construction; likelihood-ratio and pathwise Greeks, and adjoint
+deltas and vegas of a swaption book in the LIBOR market model; and Giles's
 adaptive multilevel Monte Carlo.
 
 .. automodule:: financialkit.monte_carlo

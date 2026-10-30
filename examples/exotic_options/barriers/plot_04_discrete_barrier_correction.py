@@ -39,4 +39,8 @@ ax.set_ylabel("down-and-out call")
 ax.legend()
 for m, res, c in zip(monitors, mc, corrected, strict=True):
     print(f"m = {m:4d}: MC {res.estimate:.4f} +/- {res.std_error:.4f}, BGK {c:.4f}, continuous {continuous:.4f}")
+    # The shifted barrier matches discrete monitoring within four standard
+    # errors, and discrete monitoring is worth more than continuous.
+    assert abs(res.estimate - c) < 4 * res.std_error
+    assert c > continuous
 plt.show()

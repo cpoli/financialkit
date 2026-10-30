@@ -32,6 +32,8 @@ ax.legend(loc="lower left")
 # whose histogram is the default density :math:`\lambda(t) Q(t)`.
 
 tau = curve.sample_default_times(100_000, rng=0)
+q10 = float(curve.default_probability(10.0))
+assert abs((tau < 10).mean() - q10) < 4 * np.sqrt(q10 * (1 - q10) / tau.size)
 t = np.linspace(0, 10, 400)
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.hist(tau[tau < 10], bins=80, density=True, weights=np.full((tau < 10).sum(), (tau < 10).mean()), color="0.7", label="simulated")
@@ -46,11 +48,14 @@ ax.legend()
 T = np.linspace(0.25, 10, 40)
 r, delta = 0.04, 0.4
 P = jarrow_turnbull_zero(T, r, curve, delta)
+assert np.allclose(P, np.exp(-r * T) * (delta + (1 - delta) * np.asarray(curve.survival(T))))
 spread = -np.log(P) / T - r
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(T, 1e4 * spread, label="zero-coupon spread")
 avg_hazard = np.asarray(curve.cumulative_hazard(T)) / T
-ax.plot(T, 1e4 * np.asarray(spread_from_hazard(avg_hazard, delta)), "--", label="credit triangle, average hazard x (1 - R)")
+triangle = np.asarray(spread_from_hazard(avg_hazard, delta))
+assert np.all(np.abs(spread / triangle - 1) < 0.05)
+ax.plot(T, 1e4 * triangle, "--", label="credit triangle, average hazard x (1 - R)")
 ax.set_xlabel("maturity")
 ax.set_ylabel("bp")
 ax.legend()

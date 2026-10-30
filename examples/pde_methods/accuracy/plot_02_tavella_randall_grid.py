@@ -34,9 +34,13 @@ axes[0].set_title("node spacing, 60 intervals")
 # ------------------------------------------
 
 ms = np.array([20, 40, 80, 160])
+errors = {}
 for grid, kw in (("uniform", {}), ("tavella_randall", {"concentration": 0.15})):
     err = [abs(CrankNicolson(m, 400, rannacher_steps=2, s_max=400.0, grid=grid, **kw).price(S, K, T, r, sigma).price - exact) for m in ms]
+    errors[grid] = np.array(err)
     axes[1].loglog(ms, err, "o-", label=grid)
+assert np.all(errors["tavella_randall"] < errors["uniform"])
+assert errors["tavella_randall"][1] < errors["uniform"][3]  # 40 clustered nodes beat 160 uniform ones
 axes[1].set_xlabel("spot intervals M")
 axes[1].set_ylabel("absolute error")
 axes[1].legend()

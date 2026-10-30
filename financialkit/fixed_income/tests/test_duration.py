@@ -16,6 +16,7 @@ from financialkit.fixed_income import (
     macaulay_duration,
     modified_duration,
     price_from_yield,
+    yield_discount_derivatives,
 )
 
 
@@ -81,3 +82,10 @@ def test_key_rate_durations_sum_to_parallel_and_locate_cash_flows():
     coupon = key_rate_durations(bond_cash_flows(100.0, 0.06, 10.0), curve, [1.0, 2.0, 5.0, 10.0, 30.0])
     assert coupon.durations.sum() == pytest.approx(coupon.parallel_duration, rel=1e-7)
     assert coupon.durations[-1] == pytest.approx(0.0, abs=1e-10)
+
+
+def test_key_rate_weights_and_yield_derivatives_reject_invalid_inputs():
+    with pytest.raises(ValueError, match="strictly increasing"):
+        key_rate_weights([1.0], [5.0, 2.0])
+    with pytest.raises(ValueError, match="compounding"):
+        yield_discount_derivatives(0.05, 2.0, compounding=0)

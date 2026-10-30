@@ -25,6 +25,7 @@ from financialkit.options import garman_kohlhagen_price
 
 price = garman_kohlhagen_price(1.56, 1.60, 0.5, 0.06, 0.08, 0.12)
 print(f"six-month call, S = 1.56, K = 1.60, r_d = 6%, r_f = 8%: {price:.4f} (Haug: 0.0291)")
+assert abs(price - 0.0291) < 5e-5
 
 # %%
 # Foreign-domestic symmetry
@@ -38,6 +39,7 @@ S, K, T, rd, rf, sigma = 1.56, 1.60, 0.5, 0.06, 0.08, 0.12
 call = garman_kohlhagen_price(S, K, T, rd, rf, sigma)
 put_inverse = garman_kohlhagen_price(1 / S, 1 / K, T, rf, rd, sigma, "put")
 print(f"call {call:.6f} = S K x inverse put {S * K * put_inverse:.6f}")
+assert np.isclose(call, S * K * put_inverse, rtol=1e-12)
 
 # %%
 # The interest-rate differential shifts the forward

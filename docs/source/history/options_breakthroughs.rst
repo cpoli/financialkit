@@ -16,9 +16,10 @@ century and in London and Paris long before anyone could say what one
 was worth. The answer came in stages: a model of random prices in 1900,
 model-free relations in the late 1960s, the Black-Scholes replication
 argument in 1973, then the trees, approximations and inversions that
-turned one formula into a trading tool, and finally the smile that
-showed where the formula fails. This chronology traces the ideas behind
-:mod:`financialkit.options`.
+turned one formula into a trading tool, the smile that showed where the
+formula fails, and the cash dividends, FX quotes, machine-precision
+inversion and negative prices that practice demanded since. This
+chronology traces the ideas behind :mod:`financialkit.options`.
 
 .. contents:: Timeline
    :local:
@@ -156,7 +157,9 @@ practice the hedge is rebalanced discretely, and Boyle and Emanuel
 
 *Implementation:* :func:`financialkit.options.systems.greeks.black_scholes_greeks`
 returns all first-order Greeks plus vanna and volga, tested against
-:func:`~financialkit.options.utils.common.finite_difference_greeks`.
+:func:`~financialkit.options.utils.common.finite_difference_greeks`,
+which is built on :func:`~financialkit.options.utils.common.bump_greek`,
+the Greek in any named input of any pricer.
 :func:`financialkit.options.systems.hedging.delta_hedge` simulates a
 short option hedged at a chosen frequency. The examples check the
 Greeks and the PDE, then measure the hedging error.
@@ -432,6 +435,37 @@ Compute the Implied Standard Deviation," *Financial Analysts Journal*
 
 .. minigallery:: ../../examples/options/implied_vol/plot_04_brenner_subrahmanyam.py
 
+1993 -- The Bjerksund-Stensland American Approximation
+------------------------------------------------------
+
+Petter Bjerksund and Gunnar Stensland took a different route to the
+American option. Instead of approximating the optimal policy's value,
+they valued a simple policy exactly: exercise the first time the spot
+touches a flat trigger. With a flat barrier, the option is a portfolio
+of knock-out claims with closed forms. The trigger is placed between
+the exercise boundary just before expiry and the perpetual boundary,
+by a rule fitted to typical maturities. A feasible but suboptimal
+policy can only be worth less than the optimal one, so the price is a
+lower bound. It needs no root search, and for years it was the default
+American pricer in trading systems.
+
+.. math::
+
+   C = \alpha S^\beta - \alpha\phi(S, T, \beta, I, I) + \phi(S, T, 1, I, I)
+       - \phi(S, T, 1, K, I) - K\phi(S, T, 0, I, I) + K\phi(S, T, 0, K, I)
+
+*Implementation:* :func:`financialkit.options.systems.american.bjerksund_stensland`
+prices calls and, through the put-call transformation, puts, and returns
+the trigger. The example reproduces Haug's worked value, shows the
+price staying below a fine tree, and sets the flat trigger against the
+tree's exercise boundary.
+
+*References:* P. Bjerksund and G. Stensland, "Closed-Form Approximation
+of American Options," *Scandinavian Journal of Management* 9 (1993)
+S87-S99.
+
+.. minigallery:: ../../examples/options/trees/plot_07_bjerksund_stensland.py
+
 1996 -- The Leisen-Reimer Tree
 ------------------------------
 
@@ -460,3 +494,131 @@ Valuation -- Examining and Improving Convergence," *Applied Mathematical
 Finance* 3 (1996) 319-346.
 
 .. minigallery:: ../../examples/options/trees/plot_06_leisen_reimer.py
+
+2003 -- Haug-Haug-Lewis: Discrete Cash Dividends
+------------------------------------------------
+
+Stocks pay fixed cash amounts on known dates, not a continuous yield.
+The textbook fixes treat the dividends' present value as riskless and
+subtract it from the spot (the escrowed model) or add it to the
+strike, which changes the volatility of what is being modelled. The
+errors are largest for dividends just before expiry, and trees with
+cash dividends no longer recombine. Espen Haug, Jørgen Haug and Alan
+Lewis went back to the definition. Just after a dividend, the option is
+a plain European option on the reduced stock, so its value today is a
+one-dimensional integral of the Black-Scholes price over the stock's
+distribution just before the dividend, and several dividends nest the
+integrals.
+
+.. math::
+
+   c_0 = e^{-r t_D}\int_0^\infty c_{BS}\big(\max(S - D, 0), K, T - t_D\big)\,
+         f_{S_{t_D}}(S)\, dS
+
+*Implementation:* :func:`financialkit.options.systems.dividends.discrete_dividend_price`
+evaluates the nested integrals by Gauss-Legendre quadrature split at the
+kinks of the integrand. The example checks it against a simulation and
+against a dividend at expiry, then shows the escrowed model's error
+growing as the dividend date approaches expiry.
+
+*References:* E. G. Haug, J. Haug and A. Lewis, "Back to Basics: a New
+Approach to the Discrete Dividend Problem," *Wilmott Magazine*
+(September 2003).
+
+.. minigallery:: ../../examples/options/closed_form/plot_08_discrete_dividends.py
+
+2007 -- Castagna-Mercurio: the Vanna-Volga FX Smile
+---------------------------------------------------
+
+Currency option brokers quote three volatilities per expiry: at the
+money, the 25-delta risk reversal and the 25-delta butterfly. FX
+traders priced every other strike by a hedging rule of thumb. The
+option is worth its Black-Scholes value at the at-the-money volatility,
+plus the market cost of the three quoted options that hedge its vega,
+vanna and volga. Antonio Castagna and Fabio Mercurio wrote the hedge
+weights in closed form, proved that the rule reproduces the three
+quotes, and derived approximations of the implied smile. The
+second-order one is accurate far into the wings.
+
+.. math::
+
+   C(K) = C_{BS}(K, \sigma_{ATM}) + \sum_{i=1}^{3} \frac{\mathcal V(K)}{\mathcal V(K_i)}
+          \prod_{j \ne i}\frac{\ln(K_j/K)}{\ln(K_j/K_i)}
+          \big[C_{\text{mkt}}(K_i) - C_{BS}(K_i, \sigma_{ATM})\big]
+
+*Implementation:* :func:`financialkit.options.systems.vanna_volga.vanna_volga_price`
+and :func:`~financialkit.options.systems.vanna_volga.vanna_volga_smile`,
+with the pillar strikes from
+:func:`~financialkit.options.systems.vanna_volga.fx_pillar_strikes`. The
+example builds a smile from broker quotes, rebuilds the price from the
+vega-vanna-volga hedge, and compares the two approximations.
+
+*References:* A. Castagna and F. Mercurio, "The Vanna-Volga Method for
+Implied Volatilities," *Risk* 20(1) (2007) 106-111.
+
+.. minigallery:: ../../examples/options/implied_vol/plot_06_vanna_volga.py
+
+2015 -- Jäckel's "Let's Be Rational"
+------------------------------------
+
+Inverting Black's formula looks easy until the prices run to
+:math:`10^{-80}` or come within rounding of their bounds. Then Newton's
+method diverges, and bracketing solvers need a tolerance and dozens of
+iterations. Peter Jäckel first normalised the problem to one price
+function of two variables, log-moneyness and total volatility, and
+evaluated it to full relative precision in every regime. He then
+interpolated its inverse with rational cubics on four branches split at
+the inflection point, and finished with Householder's third-order
+method on a transformed objective for each branch. Two iterations reach
+machine precision for every input. Open-source and commercial pricing
+libraries have since adopted it.
+
+.. math::
+
+   b(x, s) = e^{x/2} N\!\left(\frac{x}{s} + \frac{s}{2}\right)
+           - e^{-x/2} N\!\left(\frac{x}{s} - \frac{s}{2}\right), \qquad
+   x = \ln\frac{F}{K}, \quad s = \sigma\sqrt{T}
+
+*Implementation:* :mod:`financialkit.options.systems.lets_be_rational`
+(:func:`~financialkit.options.systems.lets_be_rational.normalised_black_call`
+and :func:`~financialkit.options.systems.lets_be_rational.normalised_implied_volatility`),
+used by ``implied_volatility(..., method="jaeckel")`` and vectorised
+over the whole array. The example draws the four branches, measures the
+error after zero, one and two iterations, and compares the result with
+the Newton solver.
+
+*References:* P. Jäckel, "Let's Be Rational," *Wilmott* 2015(75)
+40-53.
+
+.. minigallery:: ../../examples/options/implied_vol/plot_05_jaeckel_lets_be_rational.py
+
+2020 -- Negative Oil Futures: Bachelier Returns to the Exchange
+---------------------------------------------------------------
+
+On 20 April 2020 the expiring May contract for West Texas Intermediate
+crude oil settled at -37.63 dollars a barrel. With storage at Cushing,
+Oklahoma, nearly full, holders paid others to take delivery. Black's
+model, which assumes a lognormal futures price, has no value for an
+option on a negative price. CME Clearing had announced that from
+22 April it would value its crude oil options with Bachelier's normal
+model. So 120 years after the thesis, the first option-pricing model
+was back in production, quoted in normal volatility, which is
+measured in dollars rather than percent.
+
+.. math::
+
+   c = e^{-rT}\left[(F - K) N(d) + \sigma_N\sqrt{T}\, n(d)\right], \qquad
+   d = \frac{F - K}{\sigma_N\sqrt{T}}, \quad F, K \in \mathbb{R}
+
+*Implementation:* :func:`financialkit.options.systems.implied_vol.bachelier_implied_volatility`
+inverts :func:`~financialkit.options.systems.closed_form.bachelier_price`
+for any sign of the futures price and strike. The example prices options
+around a futures price of -37.63, recovers the normal volatility, and
+shows a flat normal volatility as a lognormal skew.
+
+*References:* CME Group, "Switch to Bachelier Options Pricing Model --
+Effective April 22, 2020," CME Clearing Advisory (April 2020);
+L. Bachelier, *Annales scientifiques de l'École Normale Supérieure* 17
+(1900) 21-86.
+
+.. minigallery:: ../../examples/options/closed_form/plot_07_bachelier_negative_prices.py

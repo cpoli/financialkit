@@ -48,6 +48,10 @@ plot_acf(changes, 30, ax=ax2)
 ax2.set_title("...but the changes are uncorrelated")
 fig.tight_layout()
 
+band = bartlett_band(changes.size)
 rho = autocorrelation(changes, 30)[1:]
-print(f"band: +/-{bartlett_band(changes.size):.3f}; lags outside it: {np.sum(np.abs(rho) > bartlett_band(changes.size))} of 30")
+outside = np.sum(np.abs(rho) > band)
+print(f"band: +/-{band:.3f}; lags outside it: {outside} of 30")
+assert outside <= 4  # 1.5 expected by chance
+assert autocorrelation(log_price, 1)[1] > 0.95
 plt.show()

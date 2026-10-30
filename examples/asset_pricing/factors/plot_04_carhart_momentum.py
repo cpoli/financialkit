@@ -38,6 +38,7 @@ smb = long_short_factor(-size, R)[keep]
 hml = long_short_factor(value, R)[keep]
 umd = long_short_factor(mom, R)[keep]
 print(f"mean monthly UMD: {umd.mean():.4f} (t = {umd.mean() / umd.std() * np.sqrt(umd.size):.1f})")
+assert umd.mean() / umd.std() * np.sqrt(umd.size) > 2
 
 # %%
 # Momentum deciles under three and four factors
@@ -46,6 +47,10 @@ print(f"mean monthly UMD: {umd.mean():.4f} (t = {umd.mean() / umd.std() * np.sqr
 deciles = sort_portfolios(mom, R, 10)[keep]
 ff3 = time_series_regression(deciles, np.column_stack([mkt, smb, hml]))
 c4 = time_series_regression(deciles, np.column_stack([mkt, smb, hml, umd]))
+# Three factors leave significant alphas on the extreme deciles; with UMD
+# the average absolute alpha falls by more than two thirds.
+assert ff3.alpha_t[0] < -2 and ff3.alpha_t[-1] > 2
+assert np.abs(c4.alphas).mean() < np.abs(ff3.alphas).mean() / 3
 fig, ax = plt.subplots(figsize=(9, 4))
 plot_alphas(ff3, ax=ax, label="Fama-French 3", offset=-0.2, width=0.4)
 plot_alphas(c4, ax=ax, label="Carhart 4", offset=0.2, width=0.4)

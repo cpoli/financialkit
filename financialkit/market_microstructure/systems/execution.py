@@ -1,4 +1,4 @@
-"""Optimal execution: the square-root impact law, Bertsimas-Lo and Almgren-Chriss.
+"""Optimal execution: the square-root impact law, Bertsimas-Lo, Almgren-Chriss and Obizhaeva-Wang.
 
 Trading a large order moves the price against the trader. Practitioners
 found that the impact of a whole order grows like the square root of its
@@ -9,14 +9,19 @@ risk-neutral trader should split the order evenly (TWAP), and a
 predictive signal tilts the schedule. Robert Almgren and Neil Chriss
 (2000) added temporary impact and risk aversion: the efficient
 trajectories trade off expected cost against its variance and are
-hyperbolic sines, from TWAP to immediate liquidation.
+hyperbolic sines, from TWAP to immediate liquidation. Anna Obizhaeva
+and Jiang Wang (2013) derived impact from the order book itself: a trade
+eats into the book, which then refills at a finite rate, so the impact
+is transient and the optimal schedule mixes blocks with steady trading.
 
 References: T. F. Loeb, "Trading Cost: The Critical Link between
 Investment Information and Results," *Financial Analysts J.* 39 (1983)
 39-44; N. Torre, *BARRA Market Impact Model Handbook* (BARRA, 1997); D.
 Bertsimas and A. W. Lo, "Optimal Control of Execution Costs," *J.
 Financial Markets* 1 (1998) 1-50; R. Almgren and N. Chriss, "Optimal
-Execution of Portfolio Transactions," *J. Risk* 3 (2000) 5-39.
+Execution of Portfolio Transactions," *J. Risk* 3 (2000) 5-39; A. A.
+Obizhaeva and J. Wang, "Optimal Trading Strategy and Supply/Demand
+Dynamics," *J. Financial Markets* 16 (2013) 1-32.
 """
 
 from __future__ import annotations
@@ -24,10 +29,10 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike
 
-from financialkit.market_microstructure.core.base import BertsimasLoResult, ExecutionResult
+from financialkit.market_microstructure.core.base import BertsimasLoResult, ExecutionResult, TransientImpactResult
 from financialkit.time_series.utils.numerics import OLSResult, ols
 
-__all__ = ["square_root_impact", "fit_impact_law", "bertsimas_lo", "almgren_chriss", "execution_cost"]
+__all__ = ["square_root_impact", "fit_impact_law", "bertsimas_lo", "almgren_chriss", "execution_cost", "obizhaeva_wang", "transient_impact_cost"]
 
 
 def square_root_impact(quantity: ArrayLike, daily_volume: ArrayLike, sigma: ArrayLike, Y: float = 1.0) -> np.ndarray:
@@ -261,3 +266,113 @@ def almgren_chriss(
     x = X * (1.0 - t / T) if kappa * T < 1e-10 else X * np.sinh(kappa * (T - t)) / np.sinh(kappa * T)
     E, V = execution_cost(x, T, sigma, eta, gamma, epsilon)
     return ExecutionResult(times=t, holdings=x, trades=-np.diff(x), expected_cost=E, variance=V)
+
+
+def _book_deviations(trades: np.ndarray, T: float, kappa: float, rho: float) -> tuple[np.ndarray, np.ndarray]:
+    N = trades.size - 1
+    if N == 0:
+        return np.zeros(1), kappa * trades
+    k = np.arange(N + 1)
+    lag = np.subtract.outer(k, k)
+    decay = np.where(lag > 0, np.exp(-rho * (T / N) * np.maximum(lag, 0)), 0.0)
+    before = kappa * (decay @ trades)
+    return before, before + kappa * trades
+
+
+def transient_impact_cost(trades: ArrayLike, T: float, kappa: float, rho: float, lam: float = 0.0) -> float:
+    """Cost of any schedule of block purchases in the Obizhaeva-Wang book.
+
+    A purchase of :math:`x_n` shares at :math:`t_n = nT/N` walks up a book of
+    density :math:`1/\\kappa`, raising the ask's displacement from :math:`D_n^-`
+    to :math:`D_n^+ = D_n^- + \\kappa x_n`, which then decays at rate :math:`\\rho`:
+    :math:`D_{n+1}^- = e^{-\\rho T/N} D_n^+`. A fraction :math:`\\lambda` of
+    impact is permanent and costs :math:`\\lambda X^2/2` whatever the schedule, so
+
+    .. math::
+
+       C = \\sum_{n=0}^N x_n\\left(D_n^- + \\tfrac12\\kappa x_n\\right) + \\tfrac12\\lambda X^2,
+
+    measured above the ask before trading.
+
+    Parameters
+    ----------
+    trades : array_like, shape (N + 1,)
+        Shares bought at the evenly spaced dates :math:`t_0 = 0, \\dots, t_N = T`.
+    T : float
+        Horizon.
+    kappa : float
+        Transient impact per share, the inverse of the book's density.
+    rho : float
+        Resilience: the rate at which the book refills.
+    lam : float
+        Permanent impact per share.
+
+    Returns
+    -------
+    float
+
+    Examples
+    --------
+    A single block pays half the impact it causes; the same block split in
+    two, with time for the book to refill in between, pays less.
+
+    >>> transient_impact_cost([100.0], T=1.0, kappa=0.01, rho=2.0)
+    50.0
+    >>> round(transient_impact_cost([50.0, 50.0], T=1.0, kappa=0.01, rho=2.0), 6)
+    28.383382
+    """
+    x = np.asarray(trades, dtype=np.float64)
+    if x.ndim != 1 or x.size == 0:
+        raise ValueError("trades must be a non-empty 1-D array")
+    before, _ = _book_deviations(x, T, kappa, rho)
+    return float(x @ (before + 0.5 * kappa * x) + 0.5 * lam * x.sum() ** 2)
+
+
+def obizhaeva_wang(X: float, T: float, n_steps: int, kappa: float, rho: float, lam: float = 0.0) -> TransientImpactResult:
+    """Obizhaeva and Wang's optimal purchase of `X` shares at ``n_steps + 1`` dates.
+
+    Minimising :func:`transient_impact_cost` is a quadratic programme whose
+    matrix :math:`a^{|n - m|}`, :math:`a = e^{-\\rho T/N}`, has a tridiagonal
+    inverse, so the solution is explicit: equal blocks at the two ends and
+    smaller equal trades in between,
+
+    .. math::
+
+       x_0 = x_N = \\frac{X}{2 + (N - 1)(1 - a)}, \\qquad x_n = (1 - a)\\,x_0 \\quad (0 < n < N),
+
+    which keep the book's displacement constant between the blocks. As
+    :math:`N \\to \\infty` this tends to blocks of :math:`X / (\\rho T + 2)`
+    with trading at the rate :math:`\\rho X / (\\rho T + 2)` in between, and
+    the cost to :math:`\\kappa X^2 / (\\rho T + 2) + \\lambda X^2 / 2`.
+
+    Parameters
+    ----------
+    X : float
+        Shares to buy (negative to sell).
+    T : float
+        Horizon.
+    n_steps : int
+        Number of intervals :math:`N \\ge 1` between the trading dates.
+    kappa, rho, lam : float
+        Transient impact per share, resilience and permanent impact per share.
+
+    Returns
+    -------
+    TransientImpactResult
+
+    Examples
+    --------
+    >>> res = obizhaeva_wang(100.0, 1.0, 1, kappa=0.01, rho=2.0)
+    >>> res.trades.tolist(), round(res.expected_cost, 6)
+    ([50.0, 50.0], 28.383382)
+    """
+    N = int(n_steps)
+    if N < 1 or T <= 0 or kappa <= 0 or rho < 0:
+        raise ValueError("need n_steps >= 1, T > 0, kappa > 0 and rho >= 0")
+    a = np.exp(-rho * T / N)
+    trades = np.full(N + 1, (1.0 - a) * X)
+    trades[[0, -1]] = X
+    trades /= 2.0 + (N - 1) * (1.0 - a)
+    before, after = _book_deviations(trades, T, kappa, rho)
+    cost = kappa * X**2 * (1.0 + a) / (2.0 * (2.0 + (N - 1) * (1.0 - a))) + 0.5 * lam * X**2
+    return TransientImpactResult(times=np.linspace(0.0, T, N + 1), trades=trades, deviation_before=before, deviation_after=after, expected_cost=float(cost))

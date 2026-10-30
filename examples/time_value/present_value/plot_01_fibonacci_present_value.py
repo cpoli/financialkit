@@ -38,8 +38,12 @@ for name, (cf, t) in schedules.items():
 
 rates = np.linspace(0.0, 0.25, 101)
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
+pvs = {}
 for name, (cf, t) in schedules.items():
-    axes[1].plot(100 * rates, present_value(cf, t, rates, compounding=1), label=name)
+    pvs[name] = present_value(cf, t, rates, compounding=1)
+    axes[1].plot(100 * rates, pvs[name], label=name)
+best = [max(pvs, key=lambda k: pvs[k][i]) for i in (0, -1)]
+assert best == ["level, 5 years", "front-loaded"]
 axes[1].axhline(100.0, color="k", ls="--", lw=0.8, label="amount lent")
 axes[1].set_xlabel("rate per year (%)")
 axes[1].set_ylabel("present value")

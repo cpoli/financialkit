@@ -4,7 +4,7 @@ import matplotlib.axes
 import numpy as np
 import pytest
 
-from financialkit.pde_methods import CrankNicolson, PeacemanRachfordADI, heat_equation_price, tavella_randall_grid, von_neumann_amplification
+from financialkit.pde_methods import CrankNicolson, HestonADI, PeacemanRachfordADI, heat_equation_price, tavella_randall_grid, von_neumann_amplification
 from financialkit.pde_methods.visualizers import (
     plot_adi_surface,
     plot_amplification,
@@ -12,6 +12,7 @@ from financialkit.pde_methods.visualizers import (
     plot_grid,
     plot_grid_convergence,
     plot_heat_solution,
+    plot_heston_surface,
     plot_value_profile,
     plot_value_surface,
 )
@@ -33,3 +34,9 @@ def test_plots():
     assert isinstance(plot_heat_solution(heat_equation_price(100.0, 100.0, 1.0, 0.05, 0.2, n_space=50, n_time=10)), matplotlib.axes.Axes)
     adi = PeacemanRachfordADI(20, 20, 5).price(100.0, 100.0, 1.0, 0.05, 0.2, 0.3, 0.5, lambda a, b: np.maximum(a - b, 0.0))
     assert isinstance(plot_adi_surface(adi, log=True), matplotlib.axes.Axes)
+
+
+def test_plot_heston_surface():
+    res = HestonADI(20, 10, 5).price(100.0, 100.0, 1.0, 0.0, 0.04, 1.5, 0.04, 0.3, -0.5)
+    assert isinstance(plot_heston_surface(res, s_range=(50, 150)), matplotlib.axes.Axes)
+    assert isinstance(plot_heston_surface(res, v_max=None), matplotlib.axes.Axes)

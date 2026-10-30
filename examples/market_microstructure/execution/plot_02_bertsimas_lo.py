@@ -27,6 +27,8 @@ gamma, rho, sigma_eta = 0.05, 0.8, 1.0
 
 plain = bertsimas_lo(S, T, theta)
 print(f"trades {plain.trades[:3]} ..., excess cost {plain.expected_cost:.0f} = theta S^2 (T + 1) / (2T)")
+assert np.allclose(plain.trades, S / T)
+assert np.isclose(plain.expected_cost, theta * S**2 * (T + 1) / (2 * T))
 
 # %%
 # A signal tilts the schedule
@@ -34,6 +36,9 @@ print(f"trades {plain.trades[:3]} ..., excess cost {plain.expected_cost:.0f} = t
 #
 # With a positive signal prices are expected to rise, so the trader buys
 # early; with a negative one it waits.
+
+early, late = bertsimas_lo(S, T, theta, gamma, rho, sigma_eta, x0=3.0).trades, bertsimas_lo(S, T, theta, gamma, rho, sigma_eta, x0=-3.0).trades
+assert early[0] > S / T > late[0] and np.isclose(early.sum(), S) and np.isclose(late.sum(), S)
 
 fig, ax = plt.subplots(figsize=(7, 3.5))
 k = np.arange(T)
@@ -65,6 +70,7 @@ for j in range(n_paths):
         out[j] = P @ trades
 saving = cost_twap - cost_opt
 print(f"average saving over TWAP {saving.mean():.0f} ± {saving.std() / np.sqrt(n_paths):.0f} (TWAP excess cost {plain.expected_cost:.0f})")
+assert saving.mean() > 4 * saving.std() / np.sqrt(n_paths)
 
 fig, ax = plt.subplots(figsize=(6, 3.5))
 ax.hist(saving, bins=50, color="C0")

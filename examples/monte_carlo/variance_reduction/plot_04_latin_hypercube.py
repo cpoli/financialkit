@@ -26,7 +26,9 @@ from financialkit.monte_carlo.visualizers import plot_point_set
 
 fig, axes = plt.subplots(1, 3, figsize=(14, 4))
 plot_point_set(np.random.default_rng(0).random((10, 2)), ax=axes[0], grid=10, title="10 random points")
-plot_point_set(qmc_engine("lhs", 2, rng=0).random(10), ax=axes[1], grid=10, title="10-point Latin hypercube")
+design = qmc_engine("lhs", 2, rng=0).random(10)
+assert all(np.array_equal(np.sort(np.floor(10 * design[:, j])), np.arange(10)) for j in range(2))
+plot_point_set(design, ax=axes[1], grid=10, title="10-point Latin hypercube")
 
 # %%
 # A basket of five lognormal assets
@@ -44,6 +46,8 @@ for name, f in [("basket mean", basket), ("basket call", call)]:
     print(f"{name}: crude {crude.estimate:.5f} +/- {crude.std_error:.5f}, LHS {lhs.estimate:.5f} +/- {lhs.std_error:.5f}")
     labels.append(name)
     ratios.append(lhs.variance_ratio(crude))
+    assert abs(lhs.estimate - crude.estimate) < 3 * np.hypot(lhs.std_error, crude.std_error)
+assert ratios[0] > ratios[1] > 1
 axes[2].bar(labels, ratios)
 axes[2].set_yscale("log")
 axes[2].set_ylabel("variance reduction factor")

@@ -41,6 +41,7 @@ for a in shapes:
 print(" skew   kurt   exact  normal      CF")
 for r in rows:
     print(" ".join(f"{v:6.3f}" for v in r))
+    assert abs(r[4] - r[2]) < abs(r[3] - r[2]) / 10  # CF removes over 90% of the normal's error
 
 # %%
 # From sample moments
@@ -55,8 +56,11 @@ x = 0.01 * (4.0 - stats.gamma(4.0).rvs(2000, random_state=rng)) / 2.0
 m, s = x.mean(), x.std()
 S, K = stats.skew(x), stats.kurtosis(x)
 levels = np.linspace(0.9, 0.995, 30)
+hist = np.array([historical_var(x, a).var for a in levels])
+assert np.all(parametric_var(m, s, levels) < hist)
+assert np.mean(np.abs(cornish_fisher_var(m, s, S, K, levels) - hist)) < np.mean(np.abs(parametric_var(m, s, levels) - hist)) / 2
 fig, ax = plt.subplots(figsize=(7, 4))
-ax.plot(levels, [historical_var(x, a).var for a in levels], "k.", label="historical")
+ax.plot(levels, hist, "k.", label="historical")
 ax.plot(levels, parametric_var(m, s, levels), label="normal")
 ax.plot(levels, cornish_fisher_var(m, s, S, K, levels), label=f"Cornish-Fisher (S = {S:.2f}, K = {K:.2f})")
 ax.set_xlabel("confidence level")

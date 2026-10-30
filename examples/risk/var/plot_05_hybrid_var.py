@@ -29,6 +29,8 @@ window = 250
 days = np.arange(window, pnl.size)
 hs = [historical_var(pnl[t - window : t], 0.99).var for t in days]
 bw = [hybrid_var(pnl[t - window : t], 0.99, lam=0.98).var for t in days]
+true = 2.326 * vol[days]
+assert np.mean(np.abs(np.array(bw) - true)) < 0.8 * np.mean(np.abs(np.array(hs) - true))
 fig, ax = plt.subplots(figsize=(8, 3.8))
 ax.plot(np.arange(pnl.size), pnl, color="0.75", lw=0.6)
 ax.plot(days, -np.array(hs), label="historical (equal weights)")
@@ -49,6 +51,7 @@ fig.tight_layout()
 t = 520
 res = hybrid_var(pnl[t - window : t], 0.99, 0.98)
 print(f"weight on last 20 days: {res.weights[-20:].sum():.2f}  (equal weighting: {20 / window:.2f})")
+assert np.isclose(res.weights.sum(), 1.0) and np.isclose(res.weights[-20:].sum(), (1 - 0.98**20) / (1 - 0.98**window))
 plot_var(res)
 
 plt.show()

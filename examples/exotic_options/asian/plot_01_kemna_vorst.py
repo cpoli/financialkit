@@ -39,6 +39,11 @@ res = arithmetic_asian_mc(S, 100.0, T, r, sigma, n_fixings=n, n_paths=20_000, rn
 print(f"geometric (closed form) {geometric_asian_price(S, 100.0, T, r, sigma, n_fixings=n):.4f}")
 print(f"arithmetic: crude {res.crude_estimate:.4f} +/- {res.crude_std_error:.4f}, controlled {res.estimate:.4f} +/- {res.std_error:.4f}")
 print(f"R^2 = {res.r_squared:.5f}: variance reduced {1 / (1 - res.r_squared):.0f} times")
+# The control agrees with the crude estimate, cuts the variance at least
+# 100-fold, and the geometric price stays below the arithmetic one.
+assert abs(res.estimate - res.crude_estimate) < 4 * res.crude_std_error
+assert res.r_squared > 0.99
+assert geometric_asian_price(S, 100.0, T, r, sigma, n_fixings=n) < res.estimate
 
 # %%
 # Averaging lowers the price
@@ -49,6 +54,11 @@ axes[1].plot(K, black_scholes_price(S, K, T, r, sigma), "k--", label="vanilla ca
 axes[1].plot(K, geometric_asian_price(S, K, T, r, sigma), label="geometric, continuous")
 arith = [arithmetic_asian_mc(S, k, T, r, sigma, n_fixings=n, n_paths=5_000, rng=2) for k in K]
 axes[1].errorbar(K, [a.estimate for a in arith], yerr=[2 * a.std_error for a in arith], fmt="o", ms=4, label=f"arithmetic, {n} fixings (MC)")
+# At every strike the arithmetic Asian lies between the geometric Asian
+# with the same fixings and the vanilla call.
+arith_est = np.array([a.estimate for a in arith])
+assert np.all(geometric_asian_price(S, K, T, r, sigma, n_fixings=n) < arith_est)
+assert np.all(arith_est < black_scholes_price(S, K, T, r, sigma))
 axes[1].set_xlabel("strike K")
 axes[1].set_ylabel("value")
 axes[1].legend()

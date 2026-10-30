@@ -26,16 +26,15 @@ and passed to the kernels as arrays, so results are identical with and
 without Numba. Every domain simulates paths through this module rather
 than reimplementing it.
 
-The scheme kernels are compiled per process and deliberately not cached
-to disk (no ``cache=True``). Each one takes the callbacks themselves as
-arguments, so a cache entry is keyed on those callbacks' dispatchers, and
-Numba cannot re-save an index holding keys whose dispatchers belonged to
-an earlier process (``ReferenceError: underlying object has vanished``).
+The scheme kernels are plain Python: each step is vectorised over paths,
+so compiling the time loop with Numba measured no faster, and callbacks
+can be any callable.
 
-:func:`njit` is re-exported here for writing those callbacks: it is
-:func:`numba.njit` when Numba is installed (``pip install
-financialkit[fast]``) and a no-op decorator otherwise, with
-:data:`HAS_NUMBA` reporting which.
+:func:`njit` is still re-exported here, for backward compatibility and
+for user code that compiles its own loops: it is :func:`numba.njit` when
+Numba is installed (``pip install financialkit[fast]``) and a no-op
+decorator otherwise, with :data:`HAS_NUMBA` reporting which. Callbacks
+decorated with it keep working.
 """
 
 from financialkit._jit import HAS_NUMBA, njit

@@ -32,8 +32,11 @@ for r in (0.02, 0.06, 0.08, 0.12, 0.24):
 r = np.linspace(0.01, 0.30, 300)
 exact = doubling_time(r, compounding=1)
 fig, ax = plt.subplots(figsize=(7, 4.5))
+at_8 = {}
 for c in (69.3, 70.0, 72.0):
     ax.plot(100 * r, 100 * (rule_of_72(r, numerator=c) / exact - 1), label=f"rule of {c:g}")
+    at_8[c] = abs(rule_of_72(0.08, numerator=c) / doubling_time(0.08, compounding=1) - 1)
+assert min(at_8, key=at_8.get) == 72.0 and at_8[72.0] < 1e-3
 ax.axhline(0.0, color="k", lw=0.8)
 ax.set_xlabel("annual rate (%)")
 ax.set_ylabel("error vs exact doubling time (%)")

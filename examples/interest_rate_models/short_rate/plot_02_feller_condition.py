@@ -30,6 +30,7 @@ from financialkit.interest_rate_models import CIRModel, feller_condition
 # process itself, not a discretisation artefact.
 
 models = {"Feller holds (ratio 4)": CIRModel(0.04, 2.0, 0.04, 0.2), "Feller fails (ratio 0.32)": CIRModel(0.04, 1.0, 0.04, 0.5)}
+near_zero = {}
 fig, axes = plt.subplots(1, 3, figsize=(14, 4))
 for ax, (name, m) in zip(axes[:2], models.items(), strict=True):
     times, r = m.simulate(5.0, 500, 2000, rng=0)
@@ -37,8 +38,10 @@ for ax, (name, m) in zip(axes[:2], models.items(), strict=True):
     ax.set_title(name)
     ax.set_xlabel("t (years)")
     ax.set_ylabel("short rate (%)")
-    near_zero = np.mean(r.min(axis=1) < 1e-5)
-    print(f"{name}: {100 * near_zero:.1f}% of paths come within 0.001% of zero")
+    near_zero[name] = np.mean(r.min(axis=1) < 1e-5)
+    print(f"{name}: {100 * near_zero[name]:.1f}% of paths come within 0.001% of zero")
+holds, fails = near_zero.values()
+assert holds == 0 and fails > 0.5
 
 # %%
 # The stationary density

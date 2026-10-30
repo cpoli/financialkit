@@ -7,13 +7,15 @@ The full API reference for every subpackage: every public class and function.
 
 The SDE integrators shared by every subpackage (Euler-Maruyama, Milstein,
 exact GBM and OU paths, and the Brownian increment generators) are
-documented in :doc:`integrators`.
+documented in :doc:`integrators`, and the bundled real datasets in
+:doc:`datasets`.
 
 .. toctree::
    :maxdepth: 1
    :hidden:
 
    integrators
+   datasets
    time_value
    fixed_income
    options

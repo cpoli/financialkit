@@ -31,6 +31,8 @@ res = ImplicitScheme(400, 10).price(S, K, T, r, sigma, option_type="put")
 limit = explicit_stability(res.S, 1.0, sigma, r).limit
 print(f"explicit limit {limit:.2e}, implicit step {T / 10:.2e}")
 print(f"implicit put with 10 steps {res.price:.4f}, Black-Scholes {exact:.4f}")
+assert T / 10 > 400 * limit
+assert abs(res.price - exact) < 0.15
 
 # %%
 # First order in time, against Crank-Nicolson's second
@@ -39,6 +41,8 @@ print(f"implicit put with 10 steps {res.price:.4f}, Black-Scholes {exact:.4f}")
 ns = np.array([10, 20, 40, 80, 160])
 imp = [abs(ImplicitScheme(800, n, s_max=400.0).price(S, K, T, r, sigma, option_type="put").price - exact) for n in ns]
 cn = [abs(CrankNicolson(800, n, rannacher_steps=2, s_max=400.0).price(S, K, T, r, sigma, option_type="put").price - exact) for n in ns]
+assert np.allclose(np.divide(imp[:-1], imp[1:]), 2.0, atol=0.2)
+assert np.all(np.less(cn, imp))
 fig, ax = plt.subplots(figsize=(6, 4))
 plot_grid_convergence(ns, imp, ax=ax, label="Laasonen (implicit)", rates=(1.0,))
 ax.loglog(ns, cn, "s-", label="Crank-Nicolson")

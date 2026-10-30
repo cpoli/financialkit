@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from scipy.stats import kstest
 
-from financialkit.monte_carlo import MonteCarloResult, box_muller, box_muller_normals, european_option_mc, monte_carlo_integrate, sample_mean
+from financialkit.monte_carlo import MonteCarloResult, box_muller, box_muller_normals, european_option_mc, monte_carlo_integrate, sample_mean, vanilla_payoff
 from financialkit.options import black_scholes_price
 
 
@@ -63,3 +63,8 @@ def test_european_with_dividends_and_given_normals():
     res = european_option_mc(100.0, 95.0, 1.0, 0.03, 0.25, q=0.02, z=z)
     assert res.n_samples == z.size
     assert abs(res.estimate - exact) < 4 * res.std_error
+
+
+def test_vanilla_payoff_rejects_unknown_option_type():
+    with pytest.raises(ValueError, match="option_type"):
+        vanilla_payoff(np.array([90.0, 110.0]), 100.0, "straddle")

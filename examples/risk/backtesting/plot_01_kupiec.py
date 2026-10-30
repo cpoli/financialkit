@@ -27,6 +27,7 @@ from financialkit.risk import kupiec_test, parametric_var, var_exceptions
 for n in (250, 500, 1000):
     accepted = [x for x in range(60) if not kupiec_test(np.arange(n) < x, 0.99).reject()]
     print(f"n = {n:4d}: a 99% VaR passes with {accepted[0]} to {accepted[-1]} exceptions (expected {n // 100})")
+    assert accepted == list(range(accepted[0], accepted[-1] + 1)) and accepted[0] <= n // 100 <= accepted[-1]
 
 # %%
 # Testing a model that underestimates volatility
@@ -47,6 +48,7 @@ for n in (250, 1000):
 pnl = 0.012 * rng.standard_normal(1000)
 res = kupiec_test(var_exceptions(pnl, var))
 print(f"one sample: {res.n_exceptions} exceptions vs {res.expected:.0f} expected, LR = {res.statistic:.2f}, p = {res.p_value:.4f}")
+assert 0.3 < power[250] < 0.7 and power[1000] > 0.9 and res.reject()
 
 x = np.arange(0, 25)
 fig, ax = plt.subplots(figsize=(7, 3.5))

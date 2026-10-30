@@ -34,6 +34,7 @@ breadths = np.array([4, 16, 64, 256, 1024])
 fig, ax = plt.subplots(figsize=(7, 4))
 for k, ic in enumerate([0.02, 0.05, 0.1]):
     sims = [simulate_active_management(ic, int(b), 400, rng=k * 10 + i) for i, b in enumerate(breadths)]
+    assert all(abs(s.ir - ic * np.sqrt(b / (1 + ic**2))) < 3 * s.ir_se for s, b in zip(sims, breadths, strict=True))
     ax.errorbar(breadths, [s.ir for s in sims], yerr=[2 * s.ir_se for s in sims], fmt="o", color=f"C{k}", capsize=3)
     bb = np.logspace(0.5, 3.1, 100)
     ax.plot(bb, fundamental_law(ic, bb), color=f"C{k}", label=f"IC = {ic}")
@@ -50,4 +51,5 @@ fig.tight_layout()
 for ic, br in [(0.5, 4), (0.1, 100), (0.05, 400), (0.02, 2500)]:
     res = simulate_active_management(ic, br, 2000, rng=1)
     print(f"IC {ic:<4} x sqrt({br:>4}) = {fundamental_law(ic, br):.2f}; simulated IR {res.ir:.2f} +/- {res.ir_se:.2f}")
+    assert np.isclose(fundamental_law(ic, br), 1.0) and abs(res.ir - 1.0) < 3 * res.ir_se + 0.12
 plt.show()

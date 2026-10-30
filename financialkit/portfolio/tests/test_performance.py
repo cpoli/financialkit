@@ -70,3 +70,9 @@ def test_out_of_sample_and_equal_weight():
     assert res.sharpe == pytest.approx(sharpe_ratio(res.returns))
     with pytest.raises(ValueError):
         out_of_sample_returns(R, lambda past: equal_weight(4), 60)
+
+
+def test_out_of_sample_mean_is_the_mean_realized_return():
+    R = np.random.default_rng(4).normal(0.01, 0.05, (60, 4))
+    res = out_of_sample_returns(R, lambda past: equal_weight(4), 24)
+    assert res.mean == pytest.approx(R[24:].mean())

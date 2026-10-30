@@ -34,6 +34,7 @@ bond = (cu - delta * S * u) * np.exp(-r)
 p = (np.exp(r) - d) / (u - d)
 print(f"replicate with {delta:.2f} shares and {bond:.3f} in bonds: price {delta * S + bond:.4f}")
 print(f"risk-neutral expectation with p = {p:.4f}: {np.exp(-r) * (p * cu + (1 - p) * cd):.4f}")
+assert np.isclose(delta * S + bond, np.exp(-r) * (p * cu + (1 - p) * cd))
 
 # %%
 # Convergence to Black-Scholes
@@ -44,6 +45,8 @@ exact = black_scholes_price(S, K, T, r, sigma)
 steps = np.arange(5, 301, 1)
 prices = np.array([CRRTree(n).price(S, K, T, r, sigma).price for n in steps])
 print(f"Black-Scholes {exact:.5f}; CRR with 300 steps {prices[-1]:.5f}")
+# The error stays under 2/n at every step count.
+assert np.all(np.abs(prices - exact) < 2.0 / steps)
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 axes[0].plot(steps, prices, lw=1, label="CRR tree")

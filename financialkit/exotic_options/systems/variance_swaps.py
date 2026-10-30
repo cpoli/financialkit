@@ -11,8 +11,8 @@ plus a dynamic delta hedge:
 
 * :func:`variance_swap_strike` -- the fair variance from quoted option
   prices on a strike grid, discretised as in the CBOE's VIX calculation.
-* :func:`realized_variance` -- the annualized sum of squared log returns
-  that the swap pays against the strike.
+* :func:`annualized_realized_variance` -- the annualized sum of squared
+  log returns of a price path, which the swap pays against the strike.
 
 References: K. Demeterfi, E. Derman, M. Kamal and J. Zou, "A Guide to
 Volatility and Variance Swaps," *J. Derivatives* 6(4) (1999) 9-32; Cboe,
@@ -25,9 +25,10 @@ from __future__ import annotations
 import numpy as np
 from numpy.typing import ArrayLike
 
+from financialkit._deprecation import deprecated_alias
 from financialkit.exotic_options.core.base import VarianceSwapResult
 
-__all__ = ["variance_swap_strike", "realized_variance"]
+__all__ = ["variance_swap_strike", "annualized_realized_variance", "realized_variance"]
 
 
 def variance_swap_strike(strikes: ArrayLike, call_prices: ArrayLike, put_prices: ArrayLike, S: float, T: float, r: float, q: float = 0.0) -> VarianceSwapResult:
@@ -88,8 +89,15 @@ def variance_swap_strike(strikes: ArrayLike, call_prices: ArrayLike, put_prices:
     return VarianceSwapResult(fair, K, w, Q, float(F), K0, float(T))
 
 
-def realized_variance(paths: ArrayLike, T: float) -> np.ndarray:
+def annualized_realized_variance(paths: ArrayLike, T: float) -> np.ndarray:
     """Annualized realized variance :math:`\\frac{1}{T}\\sum_i \\ln^2(S_{t_{i+1}}/S_{t_i})` of each path.
+
+    This is the floating leg of a variance swap: it takes *prices* and
+    divides by the period length `T`. For the unannualized realized
+    variance of Andersen and Bollerslev, a sum of squared *returns*, use
+    :func:`financialkit.time_series.realized_variance`. This function was
+    ``exotic_options.realized_variance`` in 0.1.0; that name remains as a
+    deprecated alias.
 
     Parameters
     ----------
@@ -106,8 +114,11 @@ def realized_variance(paths: ArrayLike, T: float) -> np.ndarray:
     Examples
     --------
     >>> import numpy as np
-    >>> round(float(realized_variance(100.0 * np.exp([0.0, 0.1, 0.0]), 0.5)), 10)
+    >>> round(float(annualized_realized_variance(100.0 * np.exp([0.0, 0.1, 0.0]), 0.5)), 10)
     0.04
     """
     x = np.log(np.asarray(paths, dtype=np.float64))
     return np.sum(np.diff(x, axis=-1) ** 2, axis=-1) / T
+
+
+realized_variance = deprecated_alias(annualized_realized_variance, "realized_variance", "financialkit.exotic_options.annualized_realized_variance")

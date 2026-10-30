@@ -44,6 +44,7 @@ r = np.diff(quote)
 res = hasbrouck_var(r, x[1:], lags=10, horizon=25)
 print(f"immediate impact {res.impulse[0]:.4f}, permanent impact {res.permanent_impact:.4f} (true {lam})")
 print(f"share of efficient-price variance due to trades {res.trade_share:.2f}")
+assert abs(res.permanent_impact - lam) < 0.1 * lam and res.impulse[0] > 1.5 * res.permanent_impact
 ax = plot_impulse_response(res)
 ax.axhline(lam, color="k", lw=0.8, ls=":", label="true information content")
 ax.legend(fontsize="small")

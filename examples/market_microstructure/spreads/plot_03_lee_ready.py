@@ -48,13 +48,15 @@ results["tick test"] = tick_test(price)
 
 for name, est in results.items():
     print(f"{name:17s} correct {np.mean(est == side):.1%}")
+accuracy = {name: np.mean(est == side) for name, est in results.items()}
+assert accuracy["Lee-Ready, 5s"] == max(accuracy.values()) and accuracy["quote rule, 5s"] > accuracy["quote rule, 0s"] + 0.3
 
 # %%
 # Accuracy by rule
 # ----------------
 
 fig, ax = plt.subplots(figsize=(7, 3.5))
-ax.barh(list(results), [np.mean(e == side) for e in results.values()], color=["C0", "C2", "C0", "C2", "C1"])
+ax.barh(list(accuracy), list(accuracy.values()), color=["C0", "C2", "C0", "C2", "C1"])
 ax.set_xlim(0.4, 1.0)
 ax.set_xlabel("fraction of trades correctly signed")
 fig.tight_layout()

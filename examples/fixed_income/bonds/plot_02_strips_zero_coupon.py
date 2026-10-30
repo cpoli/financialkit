@@ -28,6 +28,7 @@ quotes = 100.0 * curve.discount(bond.times)
 
 value = strips_value(bond, quotes)
 print(f"{len(strips)} strips; replication cost {value:.4f}")
+assert abs(value - bond.present_value(curve)) < 1e-10
 for market in (value - 0.25, value + 0.25):
     edge = value - market
     trade = "buy the bond, strip it, sell the strips" if edge > 0 else "buy the strips, reconstitute, sell the bond"
@@ -45,5 +46,8 @@ ax.axhline(100 * ytm, color="k", ls="--", label=f"bond yield to maturity {100 * 
 ax.set_xlabel("strip maturity (years)")
 ax.set_ylabel("continuously compounded yield (%)")
 ax.legend()
-print("max strip-curve error vs the curve:", np.abs(implied.rates - curve.zero_rate(bond.times)).max())
+strip_error = np.abs(implied.rates - curve.zero_rate(bond.times)).max()
+print("max strip-curve error vs the curve:", strip_error)
+assert strip_error < 1e-12
+assert implied.rates.min() < ytm < implied.rates.max()  # one yield is a blend of the strip yields
 plt.show()

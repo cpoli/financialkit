@@ -15,8 +15,9 @@ and its variance, and within two decades Tobin, Sharpe and Merton had
 turned that problem into a theory with closed-form answers. The answers
 proved fragile in practice, because they depend on expected returns and
 covariances that are hard to estimate, and much of the later history is
-about robustness: growth-optimal and insured strategies, shrinkage,
-Bayesian priors, resampling, and allocations that need no expected
+about robustness: factor risk models, growth-optimal and insured
+strategies, shrinkage, Bayesian priors, resampling, worst-case
+optimization, trading costs, and allocations that need no expected
 returns at all. This chronology traces the ideas behind
 :mod:`financialkit.portfolio`.
 
@@ -221,6 +222,39 @@ Portfolio Frontier," *J. Financial Quant. Anal.* 7 (1972) 1851-1872.
 
 .. minigallery:: ../../examples/portfolio/mean_variance/plot_03_merton_analytic_frontier.py
 
+1974 -- Rosenberg's Fundamental Factor Risk Model
+-------------------------------------------------
+
+Sharpe's single index explains why stocks move together through the
+market alone, but banks also move with banks and small firms with small
+firms. Barr Rosenberg, at Berkeley, let observable characteristics
+(industry membership, size, value, leverage) define each company's
+exposures to a set of common factors, and estimated the factors' returns
+each period by a cross-sectional regression of stock returns on those
+exposures. The covariance matrix follows from a small factor covariance
+and a diagonal of specific variances. His firm, Barra, made the model
+the industry's standard risk tool, and its language of factor and
+specific risk.
+
+.. math::
+
+   r_t = X_t f_t + u_t, \qquad \Sigma = XFX' + \operatorname{diag}(s_1^2, \dots, s_d^2)
+
+*Implementation:* :func:`financialkit.portfolio.systems.covariance.fundamental_factor_covariance`,
+by weighted least squares in every period, returning a
+:class:`~financialkit.portfolio.core.base.FactorRiskResult` with the
+factor returns and a factor/specific risk decomposition. The example
+recovers the factor returns, decomposes three portfolios' risk and shows
+that minimum-variance portfolios built on the model forecast their own
+risk where the sample covariance's understate it more than fivefold.
+
+*References:* B. Rosenberg, "Extra-Market Components of Covariance in
+Security Returns," *J. Financial Quant. Anal.* 9 (1974) 263-274;
+R. C. Grinold and R. N. Kahn, *Active Portfolio Management*, 2nd ed.,
+McGraw-Hill (2000), Ch. 3.
+
+.. minigallery:: ../../examples/portfolio/covariance/plot_03_rosenberg_factor_model.py
+
 1987 -- Black and Jones's Constant Proportion Portfolio Insurance
 -----------------------------------------------------------------
 
@@ -381,6 +415,37 @@ Conditional Value-at-Risk," *J. Risk* 2 (2000) 21-41.
 
 .. minigallery:: ../../examples/portfolio/risk_based/plot_01_cvar_optimization.py
 
+2003 -- Goldfarb and Iyengar's Robust Portfolio Selection
+---------------------------------------------------------
+
+Donald Goldfarb and Garud Iyengar, at Columbia, brought robust
+optimization to portfolio choice. Instead of plugging point estimates
+into the optimizer, they let the expected returns and the factor
+loadings range over the confidence regions of the regressions that
+estimate them, and optimized the worst case. For boxes around the means
+and ellipsoids around the loadings the worst case is explicit and the
+problem stays a second-order cone program, as easy as the classical
+one: estimation error becomes a charge on the size of each position.
+
+.. math::
+
+   \max_{\mathbf 1'w = 1}\; w'\hat\mu - \gamma_\mu'|w|
+   - \frac{\gamma}{2}\left[\left(\|F^{1/2}\hat B'w\| + \rho'|w|\right)^2 + w'Dw\right]
+
+*Implementation:* :func:`financialkit.portfolio.systems.bayesian.robust_portfolio`,
+solved by :func:`scipy.optimize.minimize` (SLSQP) with the weights split
+into long and short parts, returning a
+:class:`~financialkit.portfolio.core.base.RobustPortfolioResult` with the
+worst-case moments; the tests construct the worst-case inputs and check
+that they attain them. The example sizes the uncertainty sets from
+regression standard errors and compares the true utility of robust and
+nominal portfolios over repeated estimation.
+
+*References:* D. Goldfarb and G. Iyengar, "Robust Portfolio Selection
+Problems," *Math. Oper. Res.* 28 (2003) 1-38.
+
+.. minigallery:: ../../examples/portfolio/bayesian/plot_03_robust_optimization.py
+
 2004 -- Ledoit and Wolf's Shrinkage
 -----------------------------------
 
@@ -489,6 +554,37 @@ Portfolio Mgmt.* 36 (2010) 60-70; F. Spinu, "An Algorithm for Computing
 Risk Parity Weights," SSRN 2297383 (2013).
 
 .. minigallery:: ../../examples/portfolio/risk_based/plot_03_risk_parity.py
+
+2013 -- Gârleanu and Pedersen: Dynamic Trading with Transaction Costs
+---------------------------------------------------------------------
+
+Nicolae Gârleanu and Lasse Pedersen solved the multi-period
+mean-variance problem with predictable returns and quadratic trading
+costs in closed form. When costs are proportional to risk, the optimal
+position moves a constant fraction of the way towards an *aim
+portfolio*, itself a blend of today's and tomorrow's Markowitz
+portfolios that weights each return predictor by how slowly it decays.
+Fast signals, which are gone before a slowly built position can profit
+from them, count for less. The rule gave quantitative managers a
+principled way to trade alpha against costs.
+
+.. math::
+
+   x_t = \left(1 - \frac{a}{\lambda}\right)x_{t-1} + \frac{a}{\lambda}\,
+   (\gamma\Sigma)^{-1}B\left(I + \frac{a}{\gamma}\Phi\right)^{-1}f_t
+
+*Implementation:* :func:`financialkit.portfolio.systems.growth.garleanu_pedersen`,
+returning a :class:`~financialkit.portfolio.core.base.DynamicTradingPolicy`
+that gives the aim, Markowitz and optimal positions along a path of
+predictors; the tests check it against value iteration on the Bellman
+equation. The example trades a fast and a slow signal and shows that the
+rule beats trading any fixed fraction of the way to Markowitz.
+
+*References:* N. Gârleanu and L. H. Pedersen, "Dynamic Trading with
+Predictable Returns and Transaction Costs," *J. Finance* 68 (2013)
+2309-2340, Propositions 2 and 4.
+
+.. minigallery:: ../../examples/portfolio/growth/plot_04_garleanu_pedersen.py
 
 2016 -- Lopez de Prado's Hierarchical Risk Parity
 -------------------------------------------------

@@ -24,11 +24,13 @@ from numpy.typing import ArrayLike
 __all__ = [
     "VaRResult",
     "BacktestResult",
+    "ESBacktestResult",
     "TrafficLightResult",
     "GEVResult",
     "GPDResult",
     "CoherenceResult",
     "AllocationResult",
+    "FRTBResult",
     "DrawdownResult",
     "RiskMeasure",
 ]
@@ -72,6 +74,33 @@ class BacktestResult:
 
     df: int
     """Degrees of freedom of the chi-squared reference distribution."""
+
+    n_exceptions: int
+    """Number of days the loss exceeded the VaR."""
+
+    n_obs: int
+    """Number of days tested."""
+
+    expected: float
+    """Expected number of exceptions, ``n_obs * (1 - alpha)``."""
+
+    def reject(self, level: float = 0.05) -> bool:
+        """Whether the model is rejected at significance ``level``."""
+        return bool(self.p_value < level)
+
+
+@dataclass
+class ESBacktestResult:
+    """An Acerbi-Szekely backtest of expected-shortfall forecasts."""
+
+    statistic: float
+    """Observed test statistic; zero is its expectation under a correct model, negative values mean risk was underestimated."""
+
+    p_value: float
+    """Fraction of statistics simulated under the model at or below the observed one (``nan`` without simulations)."""
+
+    test: str
+    """``"z1"`` (size of the exceptions given their number) or ``"z2"`` (number and size jointly)."""
 
     n_exceptions: int
     """Number of days the loss exceeded the VaR."""
@@ -195,6 +224,26 @@ class AllocationResult:
     def shares(self) -> np.ndarray:
         """ndarray: Contributions as fractions of the total."""
         return self.contributions / self.total
+
+
+@dataclass
+class FRTBResult:
+    """The FRTB liquidity-horizon cascade of ten-day expected shortfalls."""
+
+    es: float
+    """Liquidity-adjusted ES, the root sum of squares of ``scaled``."""
+
+    es_by_horizon: np.ndarray
+    """ndarray, shape (5,): Ten-day ES with only the factors of horizon at least ``horizons[j]`` shocked."""
+
+    horizons: np.ndarray
+    """ndarray, shape (5,): The liquidity horizons in days, 10, 20, 40, 60 and 120."""
+
+    scaled: np.ndarray
+    """ndarray, shape (5,): ``es_by_horizon[j] * sqrt((horizons[j] - horizons[j - 1]) / 10)``, the horizon before the first taken as 0."""
+
+    alpha: float
+    """Confidence level, 0.975 in the standard."""
 
 
 @dataclass

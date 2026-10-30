@@ -16,8 +16,9 @@ reservoirs applies to it. The schemes behind
 engineers between 1911 and 1955; finance adopted them in the 1970s, when
 Schwartz and Brennan priced warrants and American puts on a grid, and
 adapted them in the decades since to kinks in payoffs, knock-out
-barriers and early exercise. This chronology follows that path from
-stability and accuracy theory to the solvers in the code.
+barriers, early exercise, correlated factors and stochastic volatility.
+This chronology follows that path from stability and accuracy theory to
+the solvers in the code.
 
 .. contents:: Timeline
    :local:
@@ -411,6 +412,44 @@ Rannacher Time-Marching," *Journal of Computational Finance* 9 (2006)
 
 .. minigallery:: ../../examples/pde_methods/stability/plot_03_rannacher_smoothing.py
 
+1988 -- Craig-Sneyd ADI with Mixed Derivatives
+-----------------------------------------------
+
+Peaceman and Rachford's splitting has no place for a mixed derivative,
+and correlated factors always bring one. Taken explicitly, it keeps
+every sweep tridiagonal but drops the scheme to first order in time.
+Ian Craig and Alfred Sneyd, applied mathematicians at St Andrews, kept
+the Douglas scheme's one-direction implicit sweeps and added a
+corrector: re-evaluate the mixed term at the new time level from the
+predicted solution, then sweep again. With :math:`\theta = 1/2` the
+scheme is second order whatever the correlation and still costs only
+tridiagonal solves, and it became the starting point for the ADI
+schemes used on multi-factor option PDEs.
+
+.. math::
+
+   \tilde Y_0 = Y_0 + \tfrac12\Delta\tau\bigl(F_0(\tau_n, Y_2) - F_0(\tau_{n-1}, U^{n-1})\bigr), \qquad
+   \tilde Y_j = \tilde Y_{j-1} + \theta\Delta\tau\bigl(F_j(\tau_n, \tilde Y_j) - F_j(\tau_{n-1}, U^{n-1})\bigr)
+
+*Implementation:* :func:`financialkit.pde_methods.utils.splitting.adi_march`
+steps the affine split :math:`F = F_0 + F_1 + F_2` by the Douglas,
+Craig-Sneyd, modified Craig-Sneyd or Hundsdorfer-Verwer scheme, and
+:class:`financialkit.pde_methods.systems.adi.CraigSneydADI` uses it to
+price a two-asset payoff on the Peaceman-Rachford grid, returning an
+:class:`~financialkit.pde_methods.core.base.ADIResult`. The example
+prices Margrabe's exchange option and measures first order for Douglas
+and Peaceman-Rachford with an explicit mixed term against second order
+for Craig-Sneyd.
+
+*References:* I. J. D. Craig and A. D. Sneyd, "An Alternating-Direction
+Implicit Scheme for Parabolic Equations with Mixed Derivatives,"
+*Computers & Mathematics with Applications* 16 (1988) 341-350; J. Douglas
+and H. H. Rachford, "On the Numerical Solution of Heat Conduction
+Problems in Two and Three Space Variables," *Transactions of the American
+Mathematical Society* 82 (1956) 421-439.
+
+.. minigallery:: ../../examples/pde_methods/multi_factor/plot_02_craig_sneyd.py
+
 2000 -- Tavella-Randall Non-Uniform Grids
 -----------------------------------------
 
@@ -492,6 +531,47 @@ Valuing American Options Using a Penalty Method," *SIAM Journal on
 Scientific Computing* 23 (2002) 2095-2122.
 
 .. minigallery:: ../../examples/pde_methods/american/plot_03_penalty_method.py
+
+2010 -- In 't Hout-Foulon: the Heston PDE by ADI
+-------------------------------------------------
+
+Heston's model has a semi-closed formula for vanillas, but barriers,
+American exercise and local-stochastic volatility need its PDE, and that
+PDE is hard. Its mixed derivative is large when the spot and variance are
+strongly correlated, its coefficients vanish at zero variance, and
+Feller's condition often fails. Karel in 't Hout and Sven Foulon, at
+the University of Antwerp, discretised it on non-uniform grids, uniform
+around the strike and clustered at zero variance, with an upwind
+difference where the variance drifts down. They compared four ADI
+splittings on six parameter sets. The modified Craig-Sneyd scheme with
+:math:`\theta = 1/3` and the Hundsdorfer-Verwer scheme were stable and
+second order throughout, and their paper became the reference recipe
+for two-factor option PDEs.
+
+.. math::
+
+   u_\tau = \tfrac12 v s^2 u_{ss} + \rho\xi v s\, u_{sv} + \tfrac12 \xi^2 v\, u_{vv}
+   + (r - q) s\, u_s + \kappa(\theta - v) u_v - r u
+
+*Implementation:* :class:`financialkit.pde_methods.systems.heston_adi.HestonADI`
+builds the three operators on
+:func:`~financialkit.pde_methods.systems.heston_adi.heston_spot_grid` and
+:func:`~financialkit.pde_methods.systems.heston_adi.heston_variance_grid`,
+with a Neumann condition at the largest spot and the degenerate PDE at
+:math:`v = 0`. It steps them by any of the four schemes and returns a
+:class:`~financialkit.pde_methods.core.base.HestonPDEResult`. The example
+checks the price against Heston's formula and compares the time-step
+convergence of the four schemes.
+
+*References:* K. J. in 't Hout and S. Foulon, "ADI Finite Difference
+Schemes for Option Pricing in the Heston Model with Correlation,"
+*International Journal of Numerical Analysis and Modeling* 7 (2010)
+303-320; K. J. in 't Hout and B. D. Welfert, "Unconditional Stability of
+Second-Order ADI Schemes Applied to Multi-Dimensional Diffusion
+Equations with Mixed Derivative Terms," *Applied Numerical Mathematics*
+59 (2009) 677-692.
+
+.. minigallery:: ../../examples/pde_methods/multi_factor/plot_03_heston_adi.py
 
 See Also
 --------

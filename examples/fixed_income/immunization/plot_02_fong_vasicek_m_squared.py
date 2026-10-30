@@ -42,10 +42,14 @@ portfolios = {
 
 slopes = np.linspace(-0.004, 0.004, 41)
 fig, ax = plt.subplots()
+m2s, worst = [], []
 for name, port in portfolios.items():
     m2 = m_squared(port, H, curve)
     base = horizon_value(port, curve, H)
     change = np.array([horizon_value(port, curve.shifted(linear_forward_shock(0.0, b, H)), H) / base - 1 for b in slopes])
+    assert np.all(change >= fong_vasicek_bound(m2, np.abs(slopes)) - 1e-12)
+    m2s.append(m2)
+    worst.append(change.min())
     (line,) = ax.plot(1e4 * slopes, 100 * change, label=f"{name}, $M^2$ = {m2:.1f}")
     ax.plot(1e4 * slopes[slopes > 0], 100 * fong_vasicek_bound(m2, slopes[slopes > 0]), ls=":", color=line.get_color())
 ax.axhline(0.0, color="0.6", lw=0.8)
@@ -53,4 +57,5 @@ ax.set_xlabel("forward-curve slope change $b$ (bp per year)")
 ax.set_ylabel("change in horizon value (%)")
 ax.set_title("Dotted: Fong-Vasicek bound $-K M^2/2$")
 ax.legend()
+assert m2s == sorted(m2s) and worst == sorted(worst, reverse=True)  # smallest M^2, least exposed
 plt.show()

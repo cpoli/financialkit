@@ -39,6 +39,8 @@ cov = corr * np.outer(vol, vol)
 # 40 resamples of ten years of annual-scale data, 12 ranks each.
 
 res = resampled_frontier(mu, cov, n_obs=10, n_resamples=40, n_points=12, rng=0)
+# Resampling spreads the weight: the largest holding is smaller on average.
+assert res.weights.max(axis=1).mean() < res.frontier.weights.max(axis=1).mean()
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 3.8), sharey=True)
 plot_weights(res.frontier.weights, x=np.arange(12), ax=ax1)
 ax1.get_legend().remove()
@@ -63,6 +65,7 @@ for s in range(res.sample_weights.shape[0]):
     ax.plot(np.sqrt(np.einsum("ij,jk,ik->i", W, cov, W)), W @ mu, color="0.8", lw=0.7)
 ax.plot(res.frontier.volatilities, res.frontier.returns, lw=2, label="true frontier")
 ax.plot(res.volatilities, res.returns, "o-", color="C3", label="resampled frontier")
+assert np.all(res.volatilities >= np.interp(res.returns, res.frontier.returns, res.frontier.volatilities) - 1e-6)
 ax.set_xlabel("volatility")
 ax.set_ylabel("expected return")
 ax.legend()

@@ -10,7 +10,10 @@ real rate; annuities, perpetuities, life annuities and sinking funds; the
 internal rate of return (``scipy.optimize.brentq``), every root of the
 NPV polynomial (``numpy.roots``) and the modified IRR; amortization
 schedules and the Truth-in-Lending APR; day counts, year fractions and
-accrued interest for every ``DayCount`` convention.
+accrued interest for every ``DayCount`` convention; coupon schedules with
+short or long stubs and the end-of-month rule, business-day adjustments
+on a weekend calendar plus user-supplied holidays (``numpy.busday_offset``)
+and settlement lags.
 
 .. automodule:: financialkit.time_value
    :members:

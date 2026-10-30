@@ -114,3 +114,16 @@ def test_leland_optimal_capital_structure():
     assert res.credit_spread == pytest.approx(0.0075, abs=0.0002)
     for dc in (-0.1, 0.1):
         assert leland_model(100.0, C + dc, 0.06, 0.2).firm_value < res.firm_value
+
+
+def test_structural_models_reject_invalid_inputs():
+    with pytest.raises(ValueError, match="V, D, T and sigma_V"):
+        merton_model(100.0, 0.0, 1.0, 0.05, 0.2)
+    with pytest.raises(ValueError, match="E and sigma_E"):
+        merton_calibrate(3.0, 0.0, 10.0, 1.0, 0.05)
+    with pytest.raises(ValueError, match="at least three"):
+        kmv_iterate([3.0, 3.1], 10.0, 0.05)
+    with pytest.raises(ValueError, match="V, r and sigma"):
+        leland_model(-1.0, 5.0, 0.06, 0.2)
+    with pytest.raises(ValueError, match="start above the barrier"):
+        first_passage_crossing_probability([[50.0, 60.0]], 55.0, 0.2, 0.01)

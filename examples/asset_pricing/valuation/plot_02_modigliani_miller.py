@@ -29,6 +29,9 @@ de = L / (1 - L)
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 for t, ls in [(0.0, "-"), (0.3, "--")]:
     rE = levered_cost_of_equity(rA, rD, de, t)
+    if t == 0.0:
+        # Without tax the cost of equity rises exactly enough to hold the WACC at r_A.
+        assert np.allclose(wacc(rE, rD, L, t), rA)
     axes[0].plot(L, rE, "C3", ls=ls, label=f"r_E, t = {t:.0%}")
     axes[0].plot(L, wacc(rE, rD, L, t), "C0", ls=ls, label=f"WACC, t = {t:.0%}")
 axes[0].axhline(rD, color="0.5", lw=1, label="r_D")
@@ -44,6 +47,7 @@ axes[0].legend(fontsize=8)
 VU = 100.0
 D = np.linspace(0, 80, 50)
 for t in (0.0, 0.2, 0.35):
+    assert np.allclose(levered_firm_value(VU, D, t), VU + t * D)
     axes[1].plot(D, levered_firm_value(VU, D, t), label=f"t = {t:.0%}")
 axes[1].set_xlabel("debt D")
 axes[1].set_ylabel("firm value V_L")

@@ -40,4 +40,5 @@ ax.set_ylabel("price")
 ax.legend()
 slope = (actual[21] - actual[19]) / (shifts[21] - shifts[19]) / P
 print(f"-dP/ds / P by finite difference: {-slope:.4f}")
+assert abs(-slope - d_fw) < 1e-4 * d_fw  # even with 10 bp steps
 plt.show()

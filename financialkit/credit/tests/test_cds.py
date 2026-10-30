@@ -16,7 +16,7 @@ def test_hull_annual_cds_by_hand():
     pay = np.sum(Q * np.exp(-r * t))
     acc = np.sum(0.5 * dQ * np.exp(-r * (t - 0.5)))
     prot = (1 - R) * np.sum(dQ * np.exp(-r * (t - 0.5)))
-    res = cds_legs(HazardCurve.flat(lam), 5.0, r, R, frequency=1, steps_per_year=1)
+    res = cds_legs(HazardCurve.flat(lam), 5.0, r, R, freq=1, steps_per_year=1)
     assert res.rpv01 == pytest.approx(pay + acc, rel=1e-12)
     assert res.accrued_on_default == pytest.approx(acc, rel=1e-12)
     assert res.protection_leg == pytest.approx(prot, rel=1e-12)
@@ -27,13 +27,13 @@ def test_hull_annual_cds_by_hand():
 def test_credit_triangle_is_continuous_limit():
     lam, R, r = 0.03, 0.35, 0.04
     # With frequent premium and a fine default grid, s -> lambda (1 - R); the error is
-    # O((lambda + r) / frequency), about 6e-5 relative here.
-    s = cds_par_spread(HazardCurve.flat(lam), 7.0, r, R, frequency=360, steps_per_year=360)
+    # O((lambda + r) / freq), about 6e-5 relative here.
+    s = cds_par_spread(HazardCurve.flat(lam), 7.0, r, R, freq=360, steps_per_year=360)
     assert s == pytest.approx(lam * (1 - R), rel=2e-4)
 
 
 def test_payment_schedule_stub_and_short_maturity():
-    res = cds_legs(HazardCurve.flat(0.01), 1.1, 0.02, frequency=4)
+    res = cds_legs(HazardCurve.flat(0.01), 1.1, 0.02, freq=4)
     np.testing.assert_allclose(res.payment_times, [0.1, 0.35, 0.6, 0.85, 1.1])
     with pytest.raises(ValueError):
         cds_legs(HazardCurve.flat(0.01), 0.0, 0.02)
@@ -63,3 +63,8 @@ def test_bootstrap_reprices_quotes():
 def test_bootstrap_rejects_inverted_arbitrage():
     with pytest.raises(ValueError):
         bootstrap_hazard_curve([1.0, 5.0], [0.05, 0.001], 0.03)
+
+
+def test_bootstrap_hazard_curve_rejects_mismatched_quotes():
+    with pytest.raises(ValueError, match="same length"):
+        bootstrap_hazard_curve([1.0, 3.0, 5.0], [0.01, 0.012], r=0.03)

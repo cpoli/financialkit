@@ -7,11 +7,15 @@ and Ljung-Box, Lo-MacKinlay variance ratios); Yule-Walker autoregressions
 (:func:`scipy.linalg.solve_toeplitz`), partial autocorrelations, ARMA
 simulation (:func:`scipy.signal.lfilter`) and conditional maximum
 likelihood (:func:`scipy.optimize.least_squares`) with AIC/BIC order
-selection; the augmented Dickey-Fuller and Engle-Granger tests with
-MacKinnon's critical values; Hurst's rescaled range and fractional Gaussian
-noise; and ARCH, GARCH, EGARCH, GJR-GARCH and RiskMetrics EWMA volatility
-models fitted by maximum likelihood (:func:`scipy.optimize.minimize`),
-Engle's ARCH-LM test, Parkinson's range estimator and realized variance.
+selection; Sims's vector autoregressions with impulse responses and
+variance decompositions; the augmented Dickey-Fuller, KPSS, Engle-Granger
+and Johansen tests; Hurst's rescaled range and fractional Gaussian noise;
+Kalman's filter and smoother with the local-level model; Hamilton's
+Markov-switching model by EM; ARCH, GARCH, EGARCH, GJR-GARCH and
+RiskMetrics EWMA volatility models fitted by maximum likelihood
+(:func:`scipy.optimize.minimize`), Engle's ARCH-LM test and DCC-GARCH
+correlations; and Parkinson's range estimator, realized variance and
+Corsi's HAR model.
 
 Returns are decimals per period and variances are per period; annualize
 with :data:`financialkit.constants.TRADING_DAYS_PER_YEAR`.
@@ -22,16 +26,29 @@ from financialkit.time_series.core.base import (
     OHLC,
     ARMAResult,
     CointegrationResult,
+    DCCFit,
+    HARResult,
     HurstResult,
+    JohansenResult,
+    KalmanResult,
     OrderSelectionResult,
+    RegimeSwitchingResult,
     ReturnStatistics,
+    StationarityResult,
     TailIndexResult,
     TestResult,
     UnitRootResult,
     VarianceRatioResult,
+    VectorAutoregressionResult,
     VolatilityFit,
     VolatilityModel,
     VolatilityPath,
+)
+from financialkit.time_series.systems.dcc import (
+    dcc_correlations,
+    dcc_loglikelihood,
+    fit_dcc,
+    simulate_dcc,
 )
 from financialkit.time_series.systems.efficiency import (
     autocorrelation,
@@ -69,9 +86,23 @@ from financialkit.time_series.systems.long_memory import (
 )
 from financialkit.time_series.systems.realized import (
     close_to_close_variance,
+    fit_har,
+    har_regressors,
     mincer_zarnowitz,
     parkinson_variance,
     realized_variance,
+)
+from financialkit.time_series.systems.regime_switching import (
+    fit_markov_switching,
+    hamilton_filter,
+    kim_smoother,
+    simulate_markov_switching,
+)
+from financialkit.time_series.systems.state_space import (
+    LocalLevelFit,
+    fit_local_level,
+    kalman_filter,
+    local_level_steady_state_gain,
 )
 from financialkit.time_series.systems.stylized_facts import (
     hill_estimator,
@@ -83,7 +114,13 @@ from financialkit.time_series.systems.stylized_facts import (
 from financialkit.time_series.systems.unit_roots import (
     adf_test,
     engle_granger,
+    johansen_test,
+    kpss_test,
     mackinnon_critical_values,
+)
+from financialkit.time_series.systems.vector_autoregression import (
+    fit_var,
+    simulate_var,
 )
 from financialkit.time_series.utils.numerics import (
     OLSResult,
@@ -122,6 +159,13 @@ __all__ = [
     "VolatilityPath",
     "VolatilityFit",
     "VolatilityModel",
+    "KalmanResult",
+    "VectorAutoregressionResult",
+    "JohansenResult",
+    "StationarityResult",
+    "RegimeSwitchingResult",
+    "DCCFit",
+    "HARResult",
     "log_returns",
     "simple_returns",
     "return_statistics",
@@ -160,6 +204,24 @@ __all__ = [
     "parkinson_variance",
     "realized_variance",
     "mincer_zarnowitz",
+    "kpss_test",
+    "johansen_test",
+    "har_regressors",
+    "fit_har",
+    "kalman_filter",
+    "LocalLevelFit",
+    "local_level_steady_state_gain",
+    "fit_local_level",
+    "simulate_var",
+    "fit_var",
+    "hamilton_filter",
+    "kim_smoother",
+    "simulate_markov_switching",
+    "fit_markov_switching",
+    "dcc_correlations",
+    "dcc_loglikelihood",
+    "fit_dcc",
+    "simulate_dcc",
     "OLSResult",
     "ols",
     "lag_matrix",

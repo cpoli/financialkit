@@ -39,6 +39,8 @@ for ax, (name, m) in zip(axes, models.items(), strict=True):
     ax.set_title(name)
     ax.legend()
     print(f"{name}: Lewis {lewis_price(m, S, K, T, r):.8f}, Heston's formula {heston_price(m, S, K, T, r):.8f}")
+    assert abs(lewis_price(m, S, K, T, r) - heston_price(m, S, K, T, r)) < 1e-7
+    assert np.all(np.abs(lewis[u > 1]) <= 1.0 / u[u > 1] ** 2)
 fig.tight_layout()
 
 plt.show()

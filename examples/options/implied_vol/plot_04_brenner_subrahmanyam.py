@@ -25,7 +25,10 @@ from financialkit.options import black_scholes_price, brenner_subrahmanyam_vol, 
 S, r, T = 100.0, 0.03, 0.5
 F = S * np.exp(r * T)
 c = black_scholes_price(S, F, T, r, 0.25)
-print(f"ATM-forward call {c:.4f}: approximation {brenner_subrahmanyam_vol(c, S, T, r):.5f}, exact {implied_volatility(c, S, F, T, r):.5f}")
+approx, exact = brenner_subrahmanyam_vol(c, S, T, r), implied_volatility(c, S, F, T, r)
+print(f"ATM-forward call {c:.4f}: approximation {approx:.5f}, exact {exact:.5f}")
+assert np.isclose(exact, 0.25)
+assert abs((approx / exact - 1) + 0.25**2 * T / 24) < 1e-4
 
 # %%
 # Accuracy across volatility and maturity
@@ -36,6 +39,8 @@ fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 for T in (0.1, 0.5, 2.0):
     F = S * np.exp(r * T)
     approx = brenner_subrahmanyam_vol(black_scholes_price(S, F, T, r, sigmas), S, T, r)
+    # The -sigma^2 T / 24 rule captures the error to within a tenth of itself.
+    assert np.all(np.abs((approx / sigmas - 1) + sigmas**2 * T / 24) <= 0.1 * sigmas**2 * T / 24)
     axes[0].plot(sigmas, 100 * (approx / sigmas - 1), label=f"T = {T}")
     axes[0].plot(sigmas, -100 * sigmas**2 * T / 24, "k:", lw=1)
 axes[0].set_xlabel("true volatility")
@@ -50,6 +55,7 @@ axes[0].legend()
 K = np.linspace(80, 120, 41)
 T, sigma = 0.5, 0.25
 prices = black_scholes_price(S, K, T, r, sigma)
+assert abs(brenner_subrahmanyam_vol(prices[0], S, T, r) - sigma) > 0.1
 axes[1].plot(K / (S * np.exp(r * T)), brenner_subrahmanyam_vol(prices, S, T, r), label="Brenner-Subrahmanyam")
 axes[1].axhline(sigma, color="k", ls=":", label="true volatility")
 axes[1].set_xlabel("moneyness K / F")

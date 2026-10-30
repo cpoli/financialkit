@@ -24,6 +24,7 @@ from financialkit.time_value import equivalent_rate, future_value, plot_compound
 for m in (1, 2, 4, 12, 52, 365, 8760):
     print(f"m = {m:5d}: {future_value(1.0, 1.0, 1.0, m):.6f}")
 print(f"continuous: {future_value(1.0, 1.0, 1.0):.6f}  (e = {np.e:.6f})")
+assert np.isclose(future_value(1.0, 1.0, 1.0), np.e)
 
 # %%
 # Equivalent rates
@@ -32,6 +33,7 @@ print(f"continuous: {future_value(1.0, 1.0, 1.0):.6f}  (e = {np.e:.6f})")
 # interest is ln 2.
 
 print(f"100% annual = {equivalent_rate(1.0, 1, None):.4%} continuous")
+assert np.isclose(equivalent_rate(1.0, 1, None), np.log(2.0))
 
 # %%
 # Growth paths and the limit
@@ -40,7 +42,9 @@ print(f"100% annual = {equivalent_rate(1.0, 1, None):.4%} continuous")
 m = np.unique(np.logspace(0, 4, 60).astype(int))
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 plot_compounding_growth(1.0, 1.0, compoundings=(1, 2, 4, 12, None), ax=axes[0])
-axes[1].semilogx(m, [future_value(1.0, 1.0, 1.0, int(k)) for k in m], "o", ms=3, label="(1 + 1/m)^m")
+growth = np.array([future_value(1.0, 1.0, 1.0, int(k)) for k in m])
+axes[1].semilogx(m, growth, "o", ms=3, label="(1 + 1/m)^m")
+assert np.all(np.diff(growth) > 0) and np.all(growth < np.e) and 2.5 < growth[-1] < 3.0
 axes[1].axhline(np.e, color="k", ls="--", label="e")
 axes[1].set_xlabel("compounding periods per year, m")
 axes[1].set_ylabel("value after one year")

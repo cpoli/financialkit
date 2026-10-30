@@ -28,6 +28,7 @@ zeros = np.array([0.03, 0.04, 0.046, 0.05, 0.053])
 fwd = forward_rates(tenors, zeros)
 for T, r, f in zip(tenors, zeros, fwd, strict=True):
     print(f"year {T:.0f}: zero {100 * r:.2f}%  forward for year {T:.0f} {100 * f:.2f}%")
+assert np.allclose(fwd, [0.03, 0.05, 0.058, 0.062, 0.065])
 
 # %%
 # Forwards above a rising curve, below a falling one
@@ -38,6 +39,7 @@ t = np.arange(1, 11, dtype=float)
 shapes = {"rising": 0.02 + 0.03 * (1 - np.exp(-t / 3)), "inverted": 0.05 - 0.02 * (1 - np.exp(-t / 2))}
 for ax, (name, r) in zip(axes, shapes.items(), strict=True):
     f = forward_rates(t, r)
+    assert np.all(f >= r - 1e-12) if name == "rising" else np.all(f <= r + 1e-12)
     ax.step(np.r_[0, t], 100 * np.r_[f, f[-1]], where="post", label="one-year forwards")
     ax.plot(t, 100 * r, "o-", label="zero rates")
     ax.set_title(name)
@@ -51,5 +53,7 @@ axes[0].legend()
 
 curve = ZeroCurve(t, shapes["rising"])
 f = forward_rates(t, shapes["rising"])
-print("max |average of forwards - zero rate| =", np.abs(np.cumsum(f) / t - curve.zero_rate(t)).max())
+average_error = np.abs(np.cumsum(f) / t - curve.zero_rate(t)).max()
+print("max |average of forwards - zero rate| =", average_error)
+assert average_error < 1e-12
 plt.show()

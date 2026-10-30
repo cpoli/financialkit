@@ -38,7 +38,9 @@ axes[0].set_title("BDT tree, 10 steps, 20% rate volatility")
 tree = black_derman_toy_tree(curve, 0.2, 10.0, 200)
 T = tree.times[1:]
 model_P = np.array([tree.zero_coupon_bond(t) for t in T[::10]])
-print(f"largest repricing error over 20 bonds: {np.max(np.abs(model_P / curve.discount(T[::10]) - 1)):.1e}")
+repricing_error = np.max(np.abs(model_P / curve.discount(T[::10]) - 1))
+print(f"largest repricing error over 20 bonds: {repricing_error:.1e}")
+assert repricing_error < 1e-10  # the forward induction fits the curve to rounding
 axes[1].plot(T, 100 * curve.zero_rate(T), "k-", label="market zero curve")
 axes[1].plot(T[::10], 100 * -np.log(model_P) / T[::10], "o", ms=4, label="BDT tree")
 median = np.array([np.exp(np.mean(np.log(tree.rates[i, : i + 1]))) for i in range(tree.n_steps)])  # the U_i
@@ -57,6 +59,7 @@ axes[1].legend()
 K = np.linspace(0.6, 0.8, 9)
 euro = [tree.bond_option(3.0, 10.0, k, "put") for k in K]
 amer = [tree.bond_option(3.0, 10.0, k, "put", american=True) for k in K]
+assert np.all(np.array(amer) >= np.array(euro)) and np.any(np.array(amer) > np.array(euro) + 1e-4)
 axes[2].plot(K, euro, "o-", label="European put")
 axes[2].plot(K, amer, "s-", label="American put")
 axes[2].set_xlabel("strike (per unit face)")

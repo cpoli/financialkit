@@ -40,6 +40,8 @@ fig, ax = plt.subplots(figsize=(7, 4.5))
 plot_hj_bound(bound, models, ax=ax)
 for name, m in models.items():
     print(f"{name:>16}: E[m] = {m.sdf_mean:.3f}, sigma(m) = {m.sdf_vol:.3f}, admissible: {bound.admits(m.sdf_mean, m.sdf_vol)}")
+# Only gamma = 25 enters the admissible region.
+assert [bound.admits(m.sdf_mean, m.sdf_vol) for m in models.values()] == [False] * 5 + [True]
 ax.set_ylim(0, 1.2)
 fig.tight_layout()
 

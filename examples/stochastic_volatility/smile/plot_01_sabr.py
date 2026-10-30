@@ -33,6 +33,8 @@ market = sabr_implied_vol(F, K, T, alpha, beta, -0.3, 0.4) + rng.normal(0, 5e-4,
 fit = sabr_calibrate(F, K, T, market, beta=beta)
 print(f"true alpha = {alpha}, rho = -0.3, nu = 0.4")
 print(f"fit  alpha = {fit.alpha:.4f}, rho = {fit.rho:.3f}, nu = {fit.nu:.3f}, rms error = {fit.rmse * 1e4:.1f} bp of vol")
+assert abs(fit.alpha - alpha) < 1e-3 and abs(fit.rho + 0.3) < 0.05 and abs(fit.nu - 0.4) < 0.05
+assert fit.rmse < 1e-3  # the noise is 5 bp
 
 fig, axes = plt.subplots(1, 3, figsize=(12, 3.8))
 axes[0].plot(K, market, "o", ms=3, label="market")
@@ -42,10 +44,17 @@ plot_smile(K, fit.implied_vol(K), ax=axes[0], label="SABR fit")
 # Correlation and vol of vol
 # --------------------------
 
+skews, curvatures = [], []
 for rho in (-0.6, 0.0, 0.6):
-    plot_smile(K, sabr_implied_vol(F, K, T, alpha, beta, rho, 0.4), ax=axes[1], label=f"rho = {rho}")
+    iv = sabr_implied_vol(F, K, T, alpha, beta, rho, 0.4)
+    skews.append(iv[-1] - iv[0])
+    plot_smile(K, iv, ax=axes[1], label=f"rho = {rho}")
 for nu in (0.1, 0.4, 0.8):
-    plot_smile(K, sabr_implied_vol(F, K, T, alpha, beta, 0.0, nu), ax=axes[2], label=f"nu = {nu}")
+    iv = sabr_implied_vol(F, K, T, alpha, beta, 0.0, nu)
+    curvatures.append(iv[0] + iv[-1] - 2 * iv[10])  # K[10] = F
+    plot_smile(K, iv, ax=axes[2], label=f"nu = {nu}")
+assert np.all(np.diff(skews) > 0.05)
+assert np.all(np.diff(curvatures) > 0.05)
 fig.tight_layout()
 
 plt.show()

@@ -28,11 +28,14 @@ fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 lams = [0.5, 0.9, 1.2]
 res = [von_neumann_amplification(sigma, r, lam * dx**2 / sigma**2, dx, theta=0.0) for lam in lams]
 plot_amplification(res, labels=[f"explicit, $\\lambda$ = {lam}" for lam in lams], ax=axes[0])
+assert [v.stable for v in res] == [True, True, False]
 axes[0].set_title("explicit scheme")
 
 big = 20 * dx**2 / sigma**2  # a diffusion number of 20
 res = [von_neumann_amplification(sigma, r, big, dx, theta=t) for t in (0.5, 0.75, 1.0)]
 plot_amplification(res, labels=["Crank-Nicolson", "theta = 0.75", "implicit"], ax=axes[1])
+assert all(v.stable for v in res)
+assert abs(res[0].g[-1]) > 0.8 and abs(res[2].g[-1]) < 0.1  # the highest mode, xi = pi
 axes[1].set_title(r"implicit schemes, $\lambda = 20$")
 fig.tight_layout()
 plt.show()
@@ -44,7 +47,12 @@ plt.show()
 lam = np.linspace(0.05, 3.0, 60)
 fig, ax = plt.subplots(figsize=(6, 4))
 for theta, name in ((0.0, "explicit"), (0.5, "Crank-Nicolson"), (1.0, "implicit")):
-    ax.plot(lam, [von_neumann_amplification(sigma, r, l * dx**2 / sigma**2, dx, theta=theta).max_modulus for l in lam], label=name)
+    g_max = np.array([von_neumann_amplification(sigma, r, l * dx**2 / sigma**2, dx, theta=theta).max_modulus for l in lam])
+    if theta == 0.0:
+        assert np.all(g_max[lam > 1.05] > 1.0)
+    else:
+        assert np.all(g_max <= 1.0)
+    ax.plot(lam, g_max, label=name)
 ax.axhline(1.0, color="k", lw=0.8, ls="--")
 ax.set_xlabel(r"diffusion number $\lambda = \sigma^2 \Delta t / \Delta x^2$")
 ax.set_ylabel(r"$\max_\xi |g(\xi)|$")

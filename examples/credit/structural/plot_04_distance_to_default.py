@@ -30,6 +30,7 @@ E = np.asarray(black_scholes_price(V, D, 1.0, 0.03, 0.25))
 
 res = kmv_iterate(E, D, r=0.03)
 print(f"default point {D:.0f}; converged in {res.n_iter} iterations to sigma_V = {res.asset_volatility:.3f}")
+assert abs(res.asset_volatility - 0.25) < 0.005 and np.allclose(res.asset_values, V, rtol=1e-3)
 
 # %%
 # The iteration

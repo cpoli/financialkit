@@ -36,6 +36,8 @@ p = trades(20000, 0.10, 0.02, rng)
 acf = autocorrelation(np.diff(p), 5)
 print(f"first-order autocorrelation of price changes: {acf[1]:.3f}")
 print(f"Roll estimate {roll_spread(p):.4f} against a true spread of 0.1")
+assert abs(acf[1] - (-(0.1**2) / 4) / (0.1**2 / 2 + 0.02**2)) < 4 / np.sqrt(p.size)
+assert abs(roll_spread(p) - 0.1) < 0.005
 
 fig, ax = plt.subplots(figsize=(6, 3))
 ax.bar(range(1, 6), acf[1:], color="C0")
@@ -58,6 +60,7 @@ for n, color in [(250, "C1"), (5000, "C0")]:
     est = np.array([[roll_spread(trades(n, s, 0.05, rng)) for _ in range(200)] for s in spreads])
     ax.errorbar(spreads, np.nanmean(est, axis=1), yerr=np.nanstd(est, axis=1), fmt="o-", color=color, capsize=3, label=f"{n} trades")
     print(f"{n} trades: undefined in", ", ".join(f"{np.isnan(e).mean():.0%}" for e in est))
+assert np.all(np.abs(np.nanmean(est, axis=1) - spreads) < 4 * np.nanstd(est, axis=1) / np.sqrt(est.shape[1]))  # 5000 trades
 ax.plot(spreads, spreads, "k--", label="true spread")
 ax.set_xlabel("true spread")
 ax.set_ylabel("Roll estimate (mean and sd)")

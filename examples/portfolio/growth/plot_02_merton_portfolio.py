@@ -31,6 +31,7 @@ pi = np.linspace(-0.5, 2.5, 300)
 fig, ax = plt.subplots(figsize=(7, 4))
 for gamma in [1.0, 2.0, 4.0, 8.0]:
     star = merton_fraction(mu, r, sigma, gamma)
+    assert np.all(merton_certainty_equivalent(pi, mu, r, sigma, gamma) <= merton_certainty_equivalent(star, mu, r, sigma, gamma))
     ax.plot(pi, merton_certainty_equivalent(pi, mu, r, sigma, gamma), label=f"gamma = {gamma:g}: pi* = {star:.2f}")
     ax.plot(star, merton_certainty_equivalent(star, mu, r, sigma, gamma), "ko", ms=4)
 ax.set_ylim(0.0, 0.06)
@@ -56,6 +57,8 @@ for m in mixes:
     # The same seed for every mix: common random numbers.
     _, W = merton_wealth_paths(m, mu, r, sigma, T, 1, 100_000, rng=0)
     eu.append(np.mean(W[:, -1] ** (1 - gamma)) / (1 - gamma))
+# The best simulated mix is the grid point nearest pi* = 0.39.
+assert np.isclose(mixes[np.argmax(eu)], 0.4)
 fig, ax = plt.subplots(figsize=(7, 3.5))
 ax.plot(mixes, eu, "o-", label="simulated expected CRRA utility")
 ax.axvline(merton_fraction(mu, r, sigma, gamma), color="C2", ls="--", label="Merton's fraction")

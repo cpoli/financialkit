@@ -55,12 +55,17 @@ ax.legend(loc="upper right")
 # the *true* variance, a perfect forecast, scores a low :math:`R^2` against
 # squared returns.
 
+perfect = {}
 for name, proxy in (("squared return", r**2), ("realized variance", rv)):
-    print(f"perfect forecast vs {name:17s} R^2 = {mincer_zarnowitz(proxy, daily_var).r_squared:.2f}")
+    perfect[name] = mincer_zarnowitz(proxy, daily_var).r_squared
+    print(f"perfect forecast vs {name:17s} R^2 = {perfect[name]:.2f}")
+assert perfect["squared return"] < 0.15 and perfect["realized variance"] > 0.8
 
 fig, axes = plt.subplots(1, 2, figsize=(9, 3.8), sharex=True)
+garch_r2 = {}
 for ax, (name, proxy) in zip(axes, (("squared return", r**2), ("realized variance", rv)), strict=True):
     mz = mincer_zarnowitz(proxy, forecast)
+    garch_r2[name] = mz.r_squared
     ax.scatter(1e4 * forecast, 1e4 * proxy, s=3, alpha=0.4)
     f = np.linspace(forecast.min(), forecast.max(), 2)
     ax.plot(1e4 * f, 1e4 * (mz.coef[0] + mz.coef[1] * f), "C3")
@@ -70,5 +75,6 @@ for ax, (name, proxy) in zip(axes, (("squared return", r**2), ("realized varianc
 axes[0].set_ylabel("proxy (bp$^2$)")
 axes[0].set_yscale("log")
 axes[1].set_yscale("log")
+assert garch_r2["realized variance"] > 5 * garch_r2["squared return"]
 fig.tight_layout()
 plt.show()

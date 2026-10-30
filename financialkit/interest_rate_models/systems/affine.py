@@ -28,6 +28,7 @@ from __future__ import annotations
 import numpy as np
 from scipy.integrate import solve_ivp
 
+from financialkit._validation import nonnegative
 from financialkit.integrators import RNGLike, euler_maruyama
 from financialkit.interest_rate_models.core.base import ShortRateModel
 from financialkit.interest_rate_models.utils.numerics import affine_diffusion, affine_drift
@@ -111,8 +112,7 @@ class AffineModel(ShortRateModel):
         B : ndarray, shape (m, d)
         """
         tau = np.atleast_1d(np.asarray(tau, dtype=np.float64))
-        if np.any(tau < 0):
-            raise ValueError("times to maturity must be non-negative")
+        nonnegative(tau=tau)
         order = np.argsort(tau)
         grid = tau[order]
         A = np.zeros(tau.size)

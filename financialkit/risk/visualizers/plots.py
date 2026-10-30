@@ -1,6 +1,6 @@
 """Plotting helpers for financialkit.risk: scenario distributions with VaR
 and ES, VaR backtests, extreme-value fits, copula samples, risk
-allocations and drawdowns.
+allocations, drawdowns and the FRTB liquidity-horizon cascade.
 """
 
 from __future__ import annotations
@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
 
-from financialkit.risk.core.base import AllocationResult, DrawdownResult, GEVResult, GPDResult, VaRResult
+from financialkit.risk.core.base import AllocationResult, DrawdownResult, FRTBResult, GEVResult, GPDResult, VaRResult
 from financialkit.risk.utils.tail import var_exceptions
 
-__all__ = ["plot_var", "plot_backtest", "plot_gev_fit", "plot_pot_tail", "plot_copula", "plot_allocation", "plot_drawdowns"]
+__all__ = ["plot_var", "plot_backtest", "plot_gev_fit", "plot_pot_tail", "plot_copula", "plot_allocation", "plot_drawdowns", "plot_frtb_cascade"]
 
 
 def plot_var(result: VaRResult, ax=None, bins: int = 60):
@@ -194,3 +194,28 @@ def plot_drawdowns(result: DrawdownResult, axes=None):
     axes[1].set_ylabel("drawdown")
     axes[1].set_xlabel("period")
     return np.asarray(axes)
+
+
+def plot_frtb_cascade(result: FRTBResult, ax=None):
+    """The FRTB cascade: each horizon's ten-day ES and its scaled term, with the total.
+
+    Parameters
+    ----------
+    result : FRTBResult
+    ax : matplotlib.axes.Axes, optional
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    if ax is None:
+        _, ax = plt.subplots()
+    x = np.arange(result.horizons.size)
+    ax.bar(x - 0.2, result.es_by_horizon, 0.4, color="0.7", label="ten-day ES, factors with LH $\\geq$ horizon")
+    ax.bar(x + 0.2, result.scaled, 0.4, color="C0", label="scaled by $\\sqrt{(LH_j - LH_{j-1})/10}$")
+    ax.axhline(result.es, color="k", ls="--", lw=1, label=f"liquidity-adjusted ES = {result.es:.4g}")
+    ax.set_xticks(x, [f"{h:g}d" for h in result.horizons])
+    ax.set_xlabel("liquidity horizon")
+    ax.set_ylabel(f"{100 * result.alpha:g}% expected shortfall")
+    ax.legend()
+    return ax

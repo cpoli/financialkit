@@ -27,6 +27,7 @@ from financialkit.time_series import select_arma_order, simulate_arma
 x = simulate_arma(ar=[0.6, -0.3], n=800, rng=1974)
 sel = select_arma_order(x, max_p=5, max_q=2)
 print("AIC choice:", sel.best("aic"), " BIC choice:", sel.best("bic"))
+assert sel.best("aic") == sel.best("bic") == (2, 0)
 
 fig, axes = plt.subplots(1, 2, figsize=(9, 3.5), sharey=True)
 for ax, name, grid in zip(axes, ("AIC", "BIC"), (sel.aic, sel.bic), strict=True):
@@ -54,6 +55,9 @@ for _ in range(200):
 fig, ax = plt.subplots()
 bins = np.arange(10) - 0.5
 ax.hist([picks["aic"], picks["bic"]], bins=bins, label=["AIC", "BIC"])
+overfit = {c: np.mean(np.array(p) > 2) for c, p in picks.items()}
+print(f"overfitted: AIC {overfit['aic']:.0%}, BIC {overfit['bic']:.0%}")
+assert overfit["aic"] > overfit["bic"] and np.mean(np.array(picks["bic"]) == 2) > 0.8
 ax.axvline(2, color="k", ls="--", lw=1)
 ax.set_xlabel("selected AR order (true order 2)")
 ax.set_ylabel("samples")

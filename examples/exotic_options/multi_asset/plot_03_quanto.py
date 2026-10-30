@@ -23,7 +23,9 @@ from financialkit.exotic_options import quanto_price
 from financialkit.integrators import correlated_increments
 
 S, K, T, rd, rf, sS, sX, q, Xbar, X0 = 100.0, 105.0, 0.5, 0.08, 0.05, 0.2, 0.1, 0.04, 1.5, 1.2
-print(f"Haug (2007), 5.16: {quanto_price(S, K, T, rd, rf, sS, sX, 0.3, q=q, fixed_rate=Xbar):.4f}")
+haug = quanto_price(S, K, T, rd, rf, sS, sX, 0.3, q=q, fixed_rate=Xbar)
+print(f"Haug (2007), 5.16: {haug:.4f}")
+assert abs(haug - 5.3280) < 1e-4
 rho = np.linspace(-0.9, 0.9, 50)
 
 fig, ax = plt.subplots(figsize=(8, 4.5))
@@ -35,6 +37,7 @@ for option_type in ("call", "put"):
         YT = np.exp((rf - rd - 0.5 * sX**2) * T + sX * W[:, 1]) / X0  # foreign price of one domestic unit
         y = X0 * np.exp(-rf * T) * Xbar * np.maximum((1 if option_type == "call" else -1) * (ST - K), 0.0) * YT
         ax.errorbar(c, y.mean(), yerr=2 * y.std() / np.sqrt(y.size), fmt="k.", capsize=3)
+        assert abs(y.mean() - quanto_price(S, K, T, rd, rf, sS, sX, c, q, Xbar, option_type)) < 4 * y.std() / np.sqrt(y.size)
 ax.set_xlabel(r"correlation $\rho$ between asset and exchange rate")
 ax.set_ylabel("value (domestic currency)")
 ax.legend()

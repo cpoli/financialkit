@@ -23,6 +23,7 @@ from financialkit.time_value import sinking_fund_payment, sinking_fund_schedule
 s = sinking_fund_schedule(1_000_000.0, 0.05, 30)
 print(f"annual deposit: {s.deposit:,.0f}")
 print(f"total deposited: {30 * s.deposit:,.0f}; interest earned: {s.interest.sum():,.0f}")
+assert np.isclose(s.balance[-1], 1_000_000.0) and np.isclose(30 * s.deposit + s.interest.sum(), 1_000_000.0)
 
 # %%
 # How interest does the work
@@ -38,7 +39,9 @@ axes[0].legend()
 
 n = np.arange(5, 61)
 for r in (0.03, 0.05, 0.07):
-    axes[1].plot(n, sinking_fund_payment(1_000_000.0, r, n) * n / 1e6, label=f"{r:.0%}")
+    total = sinking_fund_payment(1_000_000.0, r, n) * n / 1e6
+    axes[1].plot(n, total, label=f"{r:.0%}")
+    assert np.all(np.diff(total) < 0) and np.all(total < 1.0)
 axes[1].set_xlabel("years to repay")
 axes[1].set_ylabel("total deposits per unit of debt")
 axes[1].set_title("Longer horizons let interest pay more of the debt")

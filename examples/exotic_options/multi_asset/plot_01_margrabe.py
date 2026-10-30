@@ -33,6 +33,7 @@ for c in (-0.6, 0.0, 0.6):
     B = S2 * np.exp(-0.5 * s2**2 * T + s2 * W[:, 1])
     y = np.maximum(A - B, 0.0)  # r drops out: simulate with zero rate
     axes[0].errorbar(c, y.mean(), yerr=2 * y.std() / np.sqrt(y.size), fmt="k.", capsize=3)
+    assert abs(y.mean() - margrabe_price(S1, S2, T, s1, s2, c)) < 4 * y.std() / np.sqrt(y.size)
 axes[0].set_xlabel(r"correlation $\rho$")
 axes[0].set_ylabel("exchange option")
 axes[0].legend()
@@ -48,6 +49,7 @@ for s_1 in (0.2, 0.3, 0.4):
     c = (s_1**2 + s_2**2 - target**2) / (2 * s_1 * s_2)
     ok = np.abs(c) < 1
     axes[1].plot(s_2[ok], c[ok], label=rf"$\sigma_1$ = {s_1}")
+    assert np.allclose(margrabe_price(100.0, 100.0, 1.0, s_1, s_2[ok], c[ok]), margrabe_price(100.0, 100.0, 1.0, 0.3, 0.0, 0.0), rtol=1e-10)
 axes[1].set_xlabel(r"$\sigma_2$")
 axes[1].set_ylabel(r"$\rho$ giving a ratio volatility of 30%")
 axes[1].set_title(f"all priced at {margrabe_price(100.0, 100.0, 1.0, 0.3, 0.0, 0.0):.4f}")

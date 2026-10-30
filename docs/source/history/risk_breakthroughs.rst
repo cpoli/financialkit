@@ -269,6 +269,37 @@ for the Use of "Backtesting"* (January 1996).
 
 .. minigallery:: ../../examples/risk/backtesting/plot_02_basel_traffic_light.py
 
+1997 -- Rouvinez: Delta-Gamma VaR
+---------------------------------
+
+A second-order Taylor expansion captures the convexity of an option
+book, but its profit and loss is no longer normal, and practitioners
+fitted it by its moments, with Cornish-Fisher. Christophe Rouvinez
+observed that diagonalising the gamma in the metric of the covariance
+turns the quadratic into a sum of independent noncentral chi-squared
+terms, whose characteristic function is known in closed form. One
+Fourier inversion then gives the exact distribution of the
+approximation, and its quantile is the VaR.
+
+.. math::
+
+   \varphi(t) = e^{i\theta h t} \prod_k (1 - i\lambda_k t)^{-1/2}
+   \exp\left(-\frac{b_k^2 t^2}{2(1 - i\lambda_k t)}\right)
+
+*Implementation:* :func:`financialkit.risk.systems.delta_gamma.delta_gamma_var`
+(exact by Gil-Pelaez inversion with :func:`scipy.integrate.quad`, or
+by Cornish-Fisher), :func:`~financialkit.risk.systems.delta_gamma.delta_gamma_cdf`
+and :func:`~financialkit.risk.systems.delta_gamma.delta_gamma_cumulants`.
+The example compares delta-normal, Cornish-Fisher, exact delta-gamma
+and full-revaluation VaR for a short-option book hedged to 90% of its
+delta.
+
+*References:* C. Rouvinez, "Going Greek with VaR," *Risk* 10(2) (1997)
+57-65; J. P. Imhof, "Computing the Distribution of Quadratic Forms in
+Normal Variables," *Biometrika* 48 (1961) 419-426.
+
+.. minigallery:: ../../examples/risk/var/plot_07_delta_gamma_var.py
+
 1997 -- Pritsker: Monte Carlo VaR
 ---------------------------------
 
@@ -396,6 +427,36 @@ Futures Markets* 19 (1999) 583-602.
 
 .. minigallery:: ../../examples/risk/var/plot_06_filtered_historical.py
 
+1999 -- Bangia, Diebold, Schuermann and Stroughair: Liquidity-Adjusted VaR
+--------------------------------------------------------------------------
+
+Market VaR marks a position at the mid price, as if it could be sold
+there. Anil Bangia, Francis Diebold, Til Schuermann and John
+Stroughair added the exogenous cost of liquidation: half the relative
+bid-ask spread, taken at a stressed level, its mean plus a multiple of
+its standard deviation. In their emerging-market currencies this term
+was a large share of the total, so a market VaR understated
+risk by as much, and the understatement grows with the spread's
+volatility.
+
+.. math::
+
+   \mathrm{LVaR} = P\big(1 - e^{\mu - z_\alpha \sigma}\big) + \tfrac12 P\big(\bar S + a\, \sigma_S\big)
+
+*Implementation:* :func:`financialkit.risk.systems.liquidity.liquidity_adjusted_var`
+and :func:`~financialkit.risk.systems.liquidity.exogenous_liquidity_cost`.
+The example backtests market VaR and LVaR on liquidation losses in a
+market whose spreads widen in sell-offs, and shows the liquidity share
+growing with the spread.
+
+*References:* A. Bangia, F. X. Diebold, T. Schuermann and J. D.
+Stroughair, "Modeling Liquidity Risk, with Implications for Traditional
+Market Risk Measurement and Management," Wharton Financial Institutions
+Center working paper 99-06 (1999); "Liquidity on the Outside," *Risk*
+12(6) (1999) 68-73.
+
+.. minigallery:: ../../examples/risk/var/plot_08_liquidity_adjusted_var.py
+
 1999 -- Tasche: Euler Risk Allocation
 -------------------------------------
 
@@ -477,6 +538,65 @@ the same correlation.
 Copulas," *Int. Statist. Rev.* 73 (2005) 111-129.
 
 .. minigallery:: ../../examples/risk/copulas/plot_02_t_copula_tail_dependence.py
+
+2014 -- Acerbi and Szekely: Backtesting Expected Shortfall
+----------------------------------------------------------
+
+When Gneiting showed in 2011 that expected shortfall is not
+elicitable, many concluded that it could not be backtested, an awkward
+property for the measure regulators were about to adopt. Carlo Acerbi
+and Balazs Szekely answered with model-free statistics whose
+expectation is zero under a correct forecast and negative when risk is
+underestimated. They found that the critical values of their second
+statistic barely depend on the distribution, which allows a traffic
+light like Basel's for VaR.
+
+.. math::
+
+   Z_2 = \sum_{t=1}^T \frac{X_t I_t}{T (1 - \alpha)\, \mathrm{ES}_t} + 1
+
+*Implementation:* :func:`financialkit.risk.systems.backtesting.acerbi_szekely_z1`,
+:func:`~financialkit.risk.systems.backtesting.acerbi_szekely_z2` and
+:func:`~financialkit.risk.systems.backtesting.acerbi_szekely_test`, with
+p-values simulated under the model. The example shows that Kupiec's
+test is blind to tails that are too thin beyond a correct VaR, while
+:math:`Z_1` and :math:`Z_2` detect them.
+
+*References:* C. Acerbi and B. Szekely, "Backtesting Expected
+Shortfall," *Risk* 27(11) (2014) 76-81; T. Gneiting, "Making and
+Evaluating Point Forecasts," *J. Amer. Statist. Assoc.* 106 (2011)
+746-762.
+
+.. minigallery:: ../../examples/risk/backtesting/plot_04_acerbi_szekely.py
+
+2016 -- FRTB: 97.5% Expected Shortfall with Liquidity Horizons
+--------------------------------------------------------------
+
+After 2008 had shown that a 99% VaR ignores the tail and that ten days
+was far too short to exit many positions, the Basel Committee's
+Fundamental Review of the Trading Book replaced internal-model VaR with
+a 97.5% expected shortfall, calibrated to a period of stress. Each risk
+factor was assigned a liquidity horizon of 10, 20, 40, 60 or 120 days,
+and ten-day ES figures, with only the less liquid factors shocked, were
+cascaded in quadrature. The level was chosen so that ES and VaR agree
+for normal returns. The difference is in the fat tails.
+
+.. math::
+
+   \mathrm{ES} = \sqrt{\mathrm{ES}_T(P)^2 + \sum_{j \ge 2}
+   \left(\mathrm{ES}_T(P, j)\sqrt{\frac{LH_j - LH_{j-1}}{T}}\right)^2}
+
+*Implementation:* :func:`financialkit.risk.systems.frtb.frtb_expected_shortfall`
+revalues a book on ten-day scenarios once per horizon,
+:func:`~financialkit.risk.systems.frtb.frtb_es_cascade` combines the
+five figures, and :func:`financialkit.risk.visualizers.plot_frtb_cascade`
+draws them. The example compares 99% VaR with 97.5% ES and cascades a
+five-factor book.
+
+*References:* Basel Committee on Banking Supervision, *Minimum Capital
+Requirements for Market Risk* (January 2016), paragraphs 181-182.
+
+.. minigallery:: ../../examples/risk/expected_shortfall/plot_04_frtb_expected_shortfall.py
 
 See Also
 --------

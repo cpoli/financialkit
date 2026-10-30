@@ -47,6 +47,9 @@ axes[0].set_title("arithmetic Asian call, 64 dates")
 for s in ("pseudo", "sobol"):
     x = results[s][-1]
     print(f"{s:7s}: {x.estimate:.4f} +/- {x.std_error:.4f}")
+pseudo, qmc = results["pseudo"][-1], results["sobol"][-1]
+assert qmc.std_error < pseudo.std_error / 2
+assert abs(qmc.estimate - pseudo.estimate) < 3 * np.hypot(qmc.std_error, pseudo.std_error)
 
 # %%
 # The integrand's effective dimension is low
@@ -62,6 +65,7 @@ for i in range(d):
     zi = z.copy()
     zi[:, i] += 0.1
     sens.append(np.mean(np.abs(asian(gbm_paths(S, r, sigma, T, d, 4000, dW=np.sqrt(T / d) * zi)[1]) - base)))
+assert sens[0] > 3 * sens[-1]
 axes[1].bar(np.arange(1, d + 1), sens)
 axes[1].set_xlabel("coordinate (time step)")
 axes[1].set_ylabel("mean |payoff change|")

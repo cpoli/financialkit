@@ -52,3 +52,14 @@ def test_scalar_and_zero_maturity():
     assert m.zero_coupon_bond(np.array([0.0, 1.0]))[0] == pytest.approx(1.0)
     with pytest.raises(ValueError):
         m.riccati([-1.0])
+
+
+def test_affine_bond_prices_a_batch_of_states_row_by_row():
+    m = AffineModel([0.01, 0.02], [0.005, 0.009], [[-0.5, 0.1], [0.0, -0.3]], [0.01, 0.1], [1.0, 0.0], [[0.0, 0.0], [0.0, 1.0]], 0.005, [1.0, 1.0])
+    T = np.array([1.0, 3.0, 7.0])
+    states = np.array([[0.01, 0.02], [0.03, 0.01], [-0.01, 0.05]])
+    batch = m.zero_coupon_bond(T, state=states)
+    assert batch.shape == (3, 3)
+    for row, x in zip(batch, states, strict=True):
+        np.testing.assert_allclose(row, m.zero_coupon_bond(T, state=x), rtol=1e-14)
+    assert repr(m) == "AffineModel(n_factors=2, x0=array([0.01, 0.02]))"

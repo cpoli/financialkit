@@ -100,3 +100,18 @@ def test_scenario_es_allocation_adds_up_to_portfolio_es():
     assert res.total == pytest.approx(expected_shortfall(X.sum(axis=1), 0.99))
     assert res.shares.sum() == pytest.approx(1.0)
     assert np.argmax(res.contributions) == 2
+
+
+def test_risk_inputs_are_validated():
+    with pytest.raises(ValueError, match="alpha must lie"):
+        parametric_es(0.0, 1.0, alpha=1.0)
+    with pytest.raises(ValueError, match="df > 2"):
+        parametric_es(0.0, 1.0, distribution="t", df=2.0)
+    with pytest.raises(ValueError, match="distribution must be"):
+        parametric_es(0.0, 1.0, distribution="cauchy")
+    with pytest.raises(ValueError, match="measure must be"):
+        euler_allocation([0.5, 0.5], np.eye(2), measure="sharpe")
+    with pytest.raises(ValueError, match="n_scenarios, n_positions"):
+        scenario_es_allocation(np.zeros(10))
+    with pytest.raises(ValueError, match="same states"):
+        check_coherence(ValueAtRisk(0.95), np.zeros(3), np.zeros(4))

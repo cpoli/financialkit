@@ -3,7 +3,8 @@
 Every term structure in this domain is a :class:`YieldCurve`: a function
 from maturity (years) to a continuously compounded zero rate, from which
 discount factors, Lutz forward rates and par yields follow by the same
-formulas whatever the curve's construction. Concrete curves are an
+formulas whatever the curve's construction. A :class:`MultiCurve` pairs a
+discount curve with a separate forecasting curve for a floating index. Concrete curves are an
 interpolated :class:`ZeroCurve` (bootstrapping), a :class:`FlatCurve`, and
 the parametric and spline curves in
 :mod:`financialkit.fixed_income.systems.curves`. Bonds, swaps and
@@ -38,6 +39,10 @@ __all__ = [
     "KeyRateDurationResult",
     "ImmunizationResult",
     "SwapValuation",
+    "MultiCurve",
+    "CompoundedRate",
+    "DeliveryBasis",
+    "MBSCashFlows",
 ]
 
 
@@ -393,3 +398,161 @@ class SwapValuation:
 
     kind: str = ""
     """str: ``"pay_fixed"``, ``"receive_fixed"``, ``"receive_foreign"`` or ``"pay_foreign"``."""
+
+
+@dataclass
+class MultiCurve:
+    """A discount curve and a forecasting curve for a floating index (Piterbarg, 2010).
+
+    A collateralized trade is discounted at the collateral (OIS) rate,
+    while its floating coupons are projected from the index's own curve:
+    the forward index rate over :math:`[t_1, t_2]` is
+    :math:`(P_f(t_1)/P_f(t_2) - 1)/(t_2 - t_1)` on the forecasting curve's
+    pseudo-discount factors :math:`P_f`. With the same curve in both
+    places this is the single-curve world, where a floating leg is worth
+    par.
+    """
+
+    discount: YieldCurve
+    """YieldCurve: Discounts every cash flow (the OIS curve)."""
+
+    forecast: YieldCurve
+    """YieldCurve: Projects the floating index (LIBOR, Euribor)."""
+
+    def forecast_rate(self, t1, t2):
+        """Simply compounded forward index rate between `t1` and `t2`; broadcasts."""
+        t1 = np.asarray(t1, dtype=np.float64)
+        t2 = np.asarray(t2, dtype=np.float64)
+        if np.any(t2 <= t1):
+            raise ValueError("t2 must exceed t1")
+        return (self.forecast.discount(t1) / self.forecast.discount(t2) - 1.0) / (t2 - t1)
+
+    def float_leg(self, maturity: float, float_freq: int = 4) -> float:
+        r"""Value of the floating leg per unit notional, :math:`\sum_i \alpha_i F_i P_d(t_i)`, for a swap starting now."""
+        ends = _reset_times(maturity, float_freq)
+        starts = ends - 1.0 / float_freq
+        return float(np.sum(self.forecast_rate(starts, ends) / float_freq * self.discount.discount(ends)))
+
+    def swap_rate(self, maturity, fixed_freq: int = 2, float_freq: int = 4):
+        """Par rate of a spot-starting fixed-for-floating swap: floating leg over fixed annuity, both on the discount curve."""
+        maturity = np.atleast_1d(np.asarray(maturity, dtype=np.float64))
+        out = np.array([self.float_leg(T, float_freq) / _annuity(self.discount, T, fixed_freq) for T in maturity])
+        return out if out.size > 1 else float(out[0])
+
+    def swap_value(
+        self, notional: float, fixed_rate: float, maturity: float, fixed_freq: int = 2, float_freq: int = 4, pay_fixed: bool = True
+    ) -> SwapValuation:
+        """Value of a swap on a reset date: the floating leg projected on `forecast`, both legs discounted on `discount`."""
+        floating = float(notional * self.float_leg(maturity, float_freq))
+        fixed = float(notional * fixed_rate * _annuity(self.discount, maturity, fixed_freq))
+        if pay_fixed:
+            return SwapValuation(floating - fixed, floating, fixed, "pay_fixed")
+        return SwapValuation(fixed - floating, fixed, floating, "receive_fixed")
+
+
+def _reset_times(maturity: float, freq: int) -> np.ndarray:
+    if abs(maturity * freq - round(maturity * freq)) > 1e-9:
+        raise ValueError("maturity must be a whole number of periods (the swap is valued on a reset date)")
+    return coupon_times(maturity, freq)
+
+
+def _annuity(curve: YieldCurve, maturity: float, freq: int) -> float:
+    return float(np.sum(curve.discount(_reset_times(maturity, freq))) / freq)
+
+
+@dataclass
+class CompoundedRate:
+    """An overnight rate compounded in arrears over one interest period (SOFR, SONIA, €STR)."""
+
+    rate: float
+    """float: The annualised compounded rate, :math:`(\\prod_i (1 + r_i n_i / B) - 1) B / N`."""
+
+    accrual: float
+    """float: Interest-period year fraction :math:`N/B`; the coupon is ``notional * rate * accrual``."""
+
+    dates: np.ndarray
+    """ndarray of datetime64[D]: Business days of the period whose rates are compounded."""
+
+    fixing_dates: np.ndarray
+    """ndarray of datetime64[D]: Date of the fixing used on each of `dates` (after lookback and lockout)."""
+
+    rates: np.ndarray
+    """ndarray: The fixing applied on each of `dates`."""
+
+    weights: np.ndarray
+    """ndarray of int: Calendar days each rate applies for, :math:`n_i`."""
+
+    basis: int = 360
+    """int: Day basis :math:`B` (360 for SOFR and €STR, 365 for SONIA)."""
+
+    @property
+    def cumulative(self) -> np.ndarray:
+        """ndarray: The rate compounded up to and including each day, annualised over the days so far."""
+        growth = np.cumprod(1.0 + self.rates * self.weights / self.basis)
+        return (growth - 1.0) * self.basis / np.cumsum(self.weights)
+
+
+@dataclass
+class DeliveryBasis:
+    """The bonds that can be delivered into a Treasury futures contract, and which is cheapest."""
+
+    futures_price: float
+    """float: Quoted futures price per 100 face."""
+
+    quoted_prices: np.ndarray
+    """ndarray, shape (n,): Quoted (clean) price of each deliverable bond."""
+
+    conversion_factors: np.ndarray
+    """ndarray, shape (n,): Each bond's conversion factor."""
+
+    @property
+    def costs(self) -> np.ndarray:
+        """ndarray: Cost of delivering each bond, quoted price less futures price times conversion factor."""
+        return self.quoted_prices - self.futures_price * self.conversion_factors
+
+    @property
+    def cheapest(self) -> int:
+        """int: Index of the cheapest-to-deliver bond."""
+        return int(np.argmin(self.costs))
+
+
+@dataclass
+class MBSCashFlows:
+    """Monthly cash flows of a mortgage pass-through under a prepayment assumption."""
+
+    months: np.ndarray
+    """ndarray of int, shape (n,): Payment months 1, 2, ..."""
+
+    balance: np.ndarray
+    """ndarray, shape (n,): Pool balance at the start of each month."""
+
+    interest: np.ndarray
+    """ndarray, shape (n,): Interest passed through to investors, at the pass-through rate."""
+
+    scheduled_principal: np.ndarray
+    """ndarray, shape (n,): Principal from the level mortgage payment."""
+
+    prepayment: np.ndarray
+    """ndarray, shape (n,): Principal prepaid on top of the schedule."""
+
+    smm: np.ndarray
+    """ndarray, shape (n,): Single monthly mortality applied each month."""
+
+    @property
+    def principal(self) -> np.ndarray:
+        """ndarray: Scheduled principal plus prepayment."""
+        return self.scheduled_principal + self.prepayment
+
+    @property
+    def cash_flow(self) -> np.ndarray:
+        """ndarray: Interest plus principal paid to investors each month."""
+        return self.interest + self.principal
+
+    @property
+    def weighted_average_life(self) -> float:
+        """float: Principal-weighted average time to repayment, in years."""
+        return float(np.sum(self.months * self.principal) / np.sum(self.principal) / 12.0)
+
+    def as_cash_flows(self) -> CashFlows:
+        """CashFlows: The investor cash flows at times ``months / 12``, ready for pricing."""
+        return CashFlows(self.months / 12.0, self.cash_flow)

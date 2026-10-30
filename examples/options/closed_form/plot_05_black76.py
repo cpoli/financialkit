@@ -23,7 +23,9 @@ from financialkit.options import black76_price, black_scholes_price
 # Hull's futures put (Example 18.7)
 # ---------------------------------
 
-print(f"four-month put on futures at 20, strike 20: {black76_price(20.0, 20.0, 4 / 12, 0.09, 0.25, 'put'):.4f} (Hull: 1.12)")
+put = black76_price(20.0, 20.0, 4 / 12, 0.09, 0.25, "put")
+print(f"four-month put on futures at 20, strike 20: {put:.4f} (Hull: 1.12)")
+assert abs(put - 1.12) < 0.005
 
 # %%
 # Black-76 is Black-Scholes on the forward
@@ -35,7 +37,9 @@ print(f"four-month put on futures at 20, strike 20: {black76_price(20.0, 20.0, 4
 S, T, r, q, sigma = 100.0, 1.0, 0.05, 0.02, 0.25
 F = S * np.exp((r - q) * T)
 K = np.linspace(70, 140, 8)
-print("max difference:", np.max(np.abs(black76_price(F, K, T, r, sigma) - black_scholes_price(S, K, T, r, sigma, q))))
+difference = np.max(np.abs(black76_price(F, K, T, r, sigma) - black_scholes_price(S, K, T, r, sigma, q)))
+print("max difference:", difference)
+assert difference < 1e-12
 
 # %%
 # Calls and puts on futures across maturities

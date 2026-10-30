@@ -16,12 +16,16 @@ Each model takes a :class:`~financialkit.fixed_income.core.base.YieldCurve`
 * :func:`black_derman_toy_tree`: a recombining binomial tree of lognormal
   rates, each level's median rate solved by :func:`scipy.optimize.brentq`
   against Arrow-Debreu prices (forward induction).
+* :func:`hull_white_tree`: Hull and White's (1994) trinomial tree for the
+  same model, with its branching turned inward at :math:`|j| = j_{max}`
+  and each level's shift fitted to the curve by forward induction.
 * :func:`futures_convexity_adjustment`: the gap between a futures rate
   and the forward rate under Ho-Lee and Hull-White.
 
 References: T. S. Y. Ho and S.-B. Lee, Journal of Finance 41(5) (1986)
 1011-1029; J. Hull and A. White, Review of Financial Studies 3(4) (1990)
-573-592; F. Black, E. Derman and W. Toy, Financial Analysts Journal
+573-592; J. Hull and A. White, Journal of Derivatives 2(1) (1994) 7-16;
+F. Black, E. Derman and W. Toy, Financial Analysts Journal
 46(1) (1990) 33-39; F. Jamshidian, Journal of Fixed Income 1(1) (1991)
 62-74 (forward induction); J. C. Hull, *Options, Futures, and Other
 Derivatives*, 10th ed. (Pearson, 2018), Sec. 6.3 and Ch. 32.
@@ -32,12 +36,13 @@ from __future__ import annotations
 import numpy as np
 from scipy.optimize import brentq
 
+from financialkit._validation import nonnegative, positive
 from financialkit.constants import DEFAULT_ATOL, DEFAULT_MAX_ITER
 from financialkit.fixed_income.core.base import CurveLike, YieldCurve, as_curve
 from financialkit.integrators import RNGLike, ou_paths
-from financialkit.interest_rate_models.core.base import GaussianShortRateModel, RateTree
+from financialkit.interest_rate_models.core.base import GaussianShortRateModel, RateTree, TrinomialRateTree
 
-__all__ = ["HoLeeModel", "HullWhiteModel", "black_derman_toy_tree", "futures_convexity_adjustment"]
+__all__ = ["HoLeeModel", "HullWhiteModel", "black_derman_toy_tree", "hull_white_tree", "futures_convexity_adjustment"]
 
 
 class _CurveFittedGaussian(GaussianShortRateModel):
@@ -118,8 +123,7 @@ class HoLeeModel(_CurveFittedGaussian):
     """
 
     def __init__(self, curve: CurveLike, sigma: float):
-        if sigma < 0:
-            raise ValueError("sigma must be non-negative")
+        nonnegative(sigma=sigma)
         self.curve_ = as_curve(curve)
         self.a = 0.0
         self.sigma = float(sigma)
@@ -163,8 +167,7 @@ class HullWhiteModel(_CurveFittedGaussian):
     """
 
     def __init__(self, curve: CurveLike, a: float, sigma: float):
-        if a < 0 or sigma < 0:
-            raise ValueError("a and sigma must be non-negative")
+        nonnegative(a=a, sigma=sigma)
         self.curve_ = as_curve(curve)
         self.a = float(a)
         self.sigma = float(sigma)
@@ -235,18 +238,118 @@ def black_derman_toy_tree(curve: CurveLike, sigma, maturity: float, n_steps: int
         def mismatch(logU, q=q, spread=spread, target=P[i + 1]):
             return float(np.sum(q * np.exp(-np.exp(logU) * spread * dt))) - target
 
-        guess = np.log(max(-np.log(P[i + 1] / P[i]) / dt, 1e-6))
-        lo, hi = guess - 2.0, guess + 2.0
-        while mismatch(lo) < 0:
-            lo -= 2.0
-        while mismatch(hi) > 0:
-            hi += 2.0
-        logU = brentq(mismatch, lo, hi, xtol=DEFAULT_ATOL, maxiter=DEFAULT_MAX_ITER)
+        forward = -np.log(P[i + 1] / P[i]) / dt
+        if forward <= 0:
+            raise ValueError("the lognormal Black-Derman-Toy tree needs positive forward rates")
+        # The Arrow-Debreu prices q sum to P[i], so every node rate at or above
+        # (below) the forward makes the mismatch non-positive (non-negative);
+        # the spreads lie within exp(+-sigma sqrt(dt) i), which brackets log U.
+        width = abs(sig[i]) * np.sqrt(dt) * i + 1.0
+        logU = brentq(mismatch, np.log(forward) - width, np.log(forward) + width, xtol=DEFAULT_ATOL, maxiter=DEFAULT_MAX_ITER)
         rates[i, : i + 1] = np.exp(logU) * spread
         d = q * np.exp(-rates[i, : i + 1] * dt)
         Q[i + 1, : i + 1] += 0.5 * d
         Q[i + 1, 1 : i + 2] += 0.5 * d
     return RateTree(times=times, rates=rates, arrow_debreu=Q, dt=dt, sigma=sig)
+
+
+def hull_white_tree(curve: CurveLike, a: float, sigma: float, maturity: float, n_steps: int) -> TrinomialRateTree:
+    r"""Build Hull and White's (1994) trinomial tree for :math:`dr = (\theta(t) - a r)\,dt + \sigma\,dW`.
+
+    The rate over one step is :math:`R = x + \alpha_i`. The deviation
+    :math:`x` lives on the grid :math:`j\Delta x` with
+    :math:`\Delta x = \sigma\sqrt{3\Delta t}`, and its branch
+    probabilities match the mean :math:`jM\Delta x`, :math:`M = -a\Delta t`,
+    and variance :math:`\sigma^2\Delta t` of one step:
+
+    .. math:: p_u = \tfrac16 + \tfrac12(j^2M^2 + jM), \quad
+              p_m = \tfrac23 - j^2M^2, \quad
+              p_d = \tfrac16 + \tfrac12(j^2M^2 - jM).
+
+    At :math:`|j| = j_{max}`, the smallest integer above
+    :math:`0.184/(a\Delta t)`, the branching turns inward (to
+    :math:`j, j \mp 1, j \mp 2`) so the probabilities stay positive and
+    the tree stops widening. Each shift :math:`\alpha_i` is then fitted to
+    the bond maturing at :math:`t_{i+1}` through the Arrow-Debreu prices
+    :math:`Q_{i,j}`,
+
+    .. math:: \alpha_i = \frac{1}{\Delta t}\left[\ln \sum_j Q_{i,j} e^{-j\Delta x\Delta t} - \ln P(0, t_{i+1})\right],
+
+    so the tree reprices the curve exactly.
+
+    Parameters
+    ----------
+    curve : YieldCurve or float
+        Initial term structure.
+    a : float
+        Mean-reversion speed; ``a = 0`` gives an untruncated Ho-Lee tree
+        (``j_max = n_steps + 1``, never reached).
+    sigma : float
+        Absolute volatility of the short rate.
+    maturity : float
+        Tree horizon in years.
+    n_steps : int
+        Number of steps.
+
+    Returns
+    -------
+    TrinomialRateTree
+
+    Examples
+    --------
+    Hull, 10th ed., Sec. 32.7: three yearly steps with ``a = 0.1`` and
+    ``sigma = 0.01``. The branching turns inward at ``j_max = 2``, and the
+    first two shifts are 3.824% and 5.205%:
+
+    >>> from financialkit.fixed_income import ZeroCurve
+    >>> curve = ZeroCurve([0.5, 1.0, 1.5, 2.0, 2.5, 3.0], [0.0343, 0.03824, 0.04183, 0.04512, 0.04812, 0.05086])
+    >>> tree = hull_white_tree(curve, 0.1, 0.01, 3.0, 3)
+    >>> tree.j_max, [round(float(x), 5) for x in tree.alpha[:2]]
+    (2, [0.03824, 0.05205])
+    """
+    curve = as_curve(curve)
+    nonnegative(a=a)
+    positive(sigma=sigma, maturity=maturity)
+    if int(n_steps) != n_steps or n_steps < 1:
+        raise ValueError("n_steps must be a positive integer")
+    n = int(n_steps)
+    dt = maturity / n
+    dx = sigma * np.sqrt(3 * dt)
+    M = -a * dt
+    j_max = n + 1 if a == 0 else int(np.floor(0.184 / (a * dt))) + 1
+    width = min(j_max, n)
+    j = np.arange(-width, width + 1)
+    jM = j * M
+    up = 1 / 6 + 0.5 * (jM**2 + jM)
+    mid = 2 / 3 - jM**2
+    down = 1 / 6 + 0.5 * (jM**2 - jM)
+    centers = j.copy()
+    top, bottom = j == j_max, j == -j_max
+    # Turned inward at the edges: from j_max to j, j - 1, j - 2, and mirrored at -j_max.
+    up[top], mid[top], down[top] = 7 / 6 + 0.5 * (jM[top] ** 2 + 3 * jM[top]), -1 / 3 - jM[top] ** 2 - 2 * jM[top], 1 / 6 + 0.5 * (jM[top] ** 2 + jM[top])
+    up[bottom], mid[bottom], down[bottom] = (
+        1 / 6 + 0.5 * (jM[bottom] ** 2 - jM[bottom]),
+        -1 / 3 - jM[bottom] ** 2 + 2 * jM[bottom],
+        7 / 6 + 0.5 * (jM[bottom] ** 2 - 3 * jM[bottom]),
+    )
+    centers[top] -= 1
+    centers[bottom] += 1
+    probabilities = np.column_stack([down, mid, up])
+    if np.any(probabilities < 0):
+        raise ValueError("negative branch probabilities: a * dt is too large, use more steps")
+    # Edge nodes of an untruncated tree are never reached as parents; clipping keeps their indices in range.
+    centers = np.clip(centers, -width + 1, width - 1)
+    times = np.linspace(0.0, maturity, n + 1)
+    P = curve.discount(times)
+    alpha = np.empty(n)
+    Q = np.zeros((n + 1, j.size))
+    Q[0, width] = 1.0
+    for i in range(n):
+        alpha[i] = (np.log(np.sum(Q[i] * np.exp(-j * dx * dt))) - np.log(P[i + 1])) / dt
+        d = Q[i] * np.exp(-(alpha[i] + j * dx) * dt)
+        for k in range(3):
+            np.add.at(Q[i + 1], centers + width + k - 1, d * probabilities[:, k])
+    return TrinomialRateTree(times=times, alpha=alpha, dx=float(dx), dt=float(dt), j_max=j_max, probabilities=probabilities, centers=centers, arrow_debreu=Q)
 
 
 def futures_convexity_adjustment(t1, t2, sigma, a: float = 0.0):

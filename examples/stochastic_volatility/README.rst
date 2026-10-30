@@ -3,8 +3,8 @@ Examples
 
 This gallery walks through every public feature of
 ``financialkit.stochastic_volatility``: local volatility, stochastic
-volatility, jumps, Fourier pricing, smile parametrisations and Heston
-simulation. Each script illustrates one dated breakthrough from the
+volatility, jumps, Fourier pricing, smile parametrisations, Heston
+simulation and rough volatility. Each script illustrates one dated breakthrough from the
 :doc:`history page </history/stochastic_volatility_breakthroughs>`.
 
 See also the narrative tutorials:
@@ -23,5 +23,7 @@ Sections
   Madan-Carr-Chang variance gamma, Bates and Kou.
 - **heston** -- Hull and White's mixing formula and the Heston model.
 - **fourier** -- Carr-Madan's FFT, Lewis's single integral and the COS method.
-- **smile** -- Hagan's SABR, Gatheral's SVI and Lee's moment formula.
+- **smile** -- Hagan's SABR, Gatheral's SVI, Lee's moment formula and SSVI.
 - **simulation** -- Andersen's QE scheme and full-truncation Euler.
+- **rough** -- rough Bergomi, the hybrid scheme and the roughness of
+  volatility.

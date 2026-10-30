@@ -33,13 +33,17 @@ cases = {
 }
 
 fig, axes = plt.subplots(3, 1, figsize=(8, 5), sharex=True)
+z_by_case = {}
 for ax, (name, x) in zip(axes, cases.items(), strict=True):
     res = runs_test(x)
+    z_by_case[name] = res.statistic
     ax.bar(np.arange(60), np.sign(x[:60]), color=np.where(x[:60] > 0, "C2", "C3"), width=1.0)
     ax.set_yticks([])
-    ax.set_title(f"{name}: z = {res.statistic:+.2f}, p = {res.pvalue:.3f}", fontsize=9)
+    ax.set_title(f"{name}: z = {res.statistic:+.2f}, p = {res.p_value:.3f}", fontsize=9)
 axes[-1].set_xlabel("day (first 60 signs shown)")
 fig.tight_layout()
+z_ind, z_trend, z_rev = z_by_case.values()
+assert abs(z_ind) < 1.96 and z_trend < -1.96 and z_rev > 1.96  # too few runs, too many
 
 # %%
 # The test's size
@@ -54,5 +58,7 @@ grid = np.linspace(-4, 4, 200)
 ax.plot(grid, np.exp(-(grid**2) / 2) / np.sqrt(2 * np.pi), "k", label="N(0, 1)")
 ax.set_xlabel("runs statistic")
 ax.legend()
-print(f"rejection rate at 5%: {np.mean(np.abs(z) > 1.96):.3f}")
+rate = np.mean(np.abs(z) > 1.96)
+print(f"rejection rate at 5%: {rate:.3f}")
+assert abs(rate - 0.05) < 0.02  # three binomial standard errors
 plt.show()

@@ -17,7 +17,8 @@ right answers are known.
 Twelve years of daily returns from a GARCH(1,1) process whose long-run
 volatility is 16% a year:
 
-.. code-block:: python
+.. plot::
+   :context: reset
 
    import numpy as np
    import financialkit as fk
@@ -26,7 +27,7 @@ volatility is 16% a year:
    r = true.simulate(3000, rng=0).returns
 
    stats = fk.time_series.return_statistics(r)
-   print(f"excess kurtosis {stats.excess_kurtosis:.2f}, Jarque-Bera p-value {stats.jarque_bera_pvalue:.1e}")
+   print(f"excess kurtosis {stats.excess_kurtosis:.2f}, Jarque-Bera p-value {stats.jarque_bera_p_value:.1e}")
    # excess kurtosis 2.89, Jarque-Bera p-value 8.2e-228
    print("autocorrelation of returns, lags 1-3:        ", np.round(fk.time_series.autocorrelation(r, 3)[1:], 3))
    # autocorrelation of returns, lags 1-3:         [-0.06   0.014  0.021]
@@ -46,7 +47,8 @@ variance is a weighted sum of a long-run level, today's squared return
 and today's variance. Fitting it by maximum likelihood recovers the
 parameters:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    fit = fk.time_series.GARCH.fit(r)
    m = fit.model
@@ -70,10 +72,11 @@ Is the model adequate? If it has captured the clustering, the
 standardized residuals :math:`r_t / \sigma_t` should be white noise, in
 their levels and in their squares. The Ljung-Box test agrees:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    z = r / sigma
-   print(f"Ljung-Box p-values: residuals {fk.time_series.ljung_box(z, 10).pvalue:.2f}, squared residuals {fk.time_series.ljung_box(z**2, 10).pvalue:.2f}")
+   print(f"Ljung-Box p-values: residuals {fk.time_series.ljung_box(z, 10).p_value:.2f}, squared residuals {fk.time_series.ljung_box(z**2, 10).p_value:.2f}")
    # Ljung-Box p-values: residuals 0.47, squared residuals 0.17
 
 3. Two ways to compute value at risk
@@ -84,7 +87,8 @@ simplest method, historical simulation, takes the 1% quantile of the last
 250 days. The GARCH method scales a normal quantile by each day's
 conditional volatility:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    window = 250
    test = r[window:]
@@ -103,7 +107,8 @@ Over 2,750 days a correct 99% VaR should be exceeded about 28 times.
 Kupiec's test checks the count, and Christoffersen's adds a check that
 exceptions do not cluster:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    for name, var in (("historical", historical), ("GARCH", garch)):
        hits = fk.risk.var_exceptions(test, var)
@@ -132,7 +137,8 @@ never penalises diversification. For quantiles too extreme to estimate
 from the data directly, extreme value theory fits a generalized Pareto
 distribution to the losses beyond a high threshold:
 
-.. code-block:: python
+.. plot::
+   :context: close-figs
 
    hist = fk.risk.historical_var(r, 0.99)
    print(f"99% VaR {100 * hist.var:.2f}%, expected shortfall {100 * hist.es:.2f}%")

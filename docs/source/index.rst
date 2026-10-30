@@ -142,9 +142,11 @@ as an importable library.
      :alt: Risk-parity weights, the most diversified portfolio, and CPPI wealth paths
      :width: 100%
 
-- :mod:`financialkit.asset_pricing` -- dividend discount models, the
-  CAPM and its tests, factor models and the APT, the consumption CAPM and
-  the equity premium puzzle, and the Hansen-Jagannathan bound.
+- :mod:`financialkit.asset_pricing` -- dividend discount models and
+  Campbell-Shiller present values, the CAPM and its tests, factor models
+  from the APT to five factors and the factor zoo, GMM, the consumption
+  CAPM, the equity premium puzzle with habit and long-run-risk
+  resolutions, and the Hansen-Jagannathan bound.
 
   .. image:: _static/images/readme_asset_pricing.png
      :alt: The security market line, the Hansen-Jagannathan bound, and Shiller's excess volatility
@@ -169,7 +171,8 @@ as an importable library.
 
 - :mod:`financialkit.market_microstructure` -- spreads and their
   estimators, trade classification, dealer models, Kyle and
-  Glosten-Milgrom, PIN and VPIN, price impact, and optimal execution.
+  Glosten-Milgrom, PIN and VPIN, price impact, optimal execution,
+  Hawkes order flow and a Markov limit order book.
 
   .. image:: _static/images/readme_market_microstructure.png
      :alt: Almgren-Chriss liquidation trajectories, Glosten-Milgrom quotes, and Avellaneda-Stoikov market making
@@ -191,9 +194,12 @@ Install and try it
    pip install financialkit           # pure numpy/scipy/matplotlib, e.g. for Pyodide
 
 The ``fast`` extra adds `numba <https://numba.pydata.org/>`_, which compiles
-the inner loops of ``integrators``, ``options``, ``interest_rate_models``,
-``monte_carlo``, ``pde_methods`` and ``stochastic_volatility``. Without it,
-those kernels run as plain Python with the same results, only slower.
+the node-by-node loops of the ``pde_methods`` solvers (PSOR,
+Brennan-Schwartz, Thomas), making American options on a grid about
+10-35x faster. Without it, those kernels run as plain Python with the same
+results, only slower. Everything else, including the SDE schemes, is
+vectorised NumPy and runs at the same speed either way; the
+:doc:`benchmarks` page has the numbers.
 
 To try it without installing anything, open the
 `quickstart notebook <https://colab.research.google.com/github/cpoli/financialkit/blob/main/notebooks/quickstart.ipynb>`__
@@ -249,6 +255,13 @@ Conventionally imported as ``fk``:
    :hidden:
 
    api/index
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Performance
+   :hidden:
+
+   benchmarks
 
 .. rubric:: Related toolkits
 

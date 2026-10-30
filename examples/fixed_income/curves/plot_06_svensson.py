@@ -23,6 +23,8 @@ observed = true.zero_rate(tenors) + rng.normal(0, 0.0002, tenors.size)
 ns = fit_nelson_siegel(tenors, observed)
 sv = fit_svensson(tenors, observed)
 print(f"Nelson-Siegel RMSE {1e4 * ns.rmse:.2f} bp, Svensson RMSE {1e4 * sv.rmse:.2f} bp")
+assert sv.rmse < 0.0004  # within twice the 2 bp noise
+assert sv.rmse < ns.rmse / 2
 
 # %%
 # Zero and forward curves

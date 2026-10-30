@@ -31,6 +31,8 @@ axes = plot_drawdowns(res)
 axes[0].set_title(f"max drawdown {res.max_drawdown:.1%}, Calmar {calmar_ratio(r):.2f}")
 print(f"peak at day {res.peak_index}, trough at day {res.trough_index}, recovered at day {res.recovery_index}")
 print(f"longest time under water: {res.longest_duration} days")
+assert res.peak_index < res.trough_index
+assert np.isclose(calmar_ratio(r), (res.wealth[-1] ** (252 / n) - 1) / res.max_drawdown)
 
 # %%
 # Same moments, different order
@@ -46,6 +48,8 @@ clustered[block] = np.sort(clustered[block])
 for name, x in [("original order", r), ("clustered losses", clustered)]:
     d = drawdowns(x)
     print(f"{name:16s} mean {x.mean() * 252:.3f}, vol {x.std() * np.sqrt(252):.3f}, MDD {d.max_drawdown:.1%}, Calmar {calmar_ratio(x):.2f}")
+assert np.isclose(clustered.mean(), r.mean()) and np.isclose(clustered.std(), r.std())
+assert drawdowns(clustered).max_drawdown > 2 * res.max_drawdown and calmar_ratio(clustered) < calmar_ratio(r) / 2
 
 # %%
 # The Calmar ratio across many paths
@@ -55,6 +59,8 @@ for name, x in [("original order", r), ("clustered losses", clustered)]:
 # itself very uncertain, so a single Calmar ratio says little.
 
 calmars = np.array([calmar_ratio(mu + sigma * rng.standard_normal(n)) for _ in range(500)])
+# the same strategy looks like a loser on one path in twenty and a star on another
+assert np.percentile(calmars, 5) < 0 and np.percentile(calmars, 95) > 2
 fig, ax = plt.subplots(figsize=(7, 3.5))
 ax.hist(np.clip(calmars, -2, 6), bins=50, color="0.6")
 ax.set_xlabel("three-year Calmar ratio (same true strategy)")

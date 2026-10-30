@@ -14,6 +14,7 @@ def test_identity_njit_bare_decorator_returns_function_unchanged():
         return 2 * x
 
     assert _jit._identity_njit(f) is f
+    assert f(3) == 6
 
 
 def test_identity_njit_with_options_returns_function_unchanged():
@@ -22,3 +23,4 @@ def test_identity_njit_with_options_returns_function_unchanged():
 
     assert _jit._identity_njit(cache=True)(f) is f
     assert _jit._identity_njit(cache=False)(f) is f
+    assert f(3) == 6

@@ -424,4 +424,4 @@ def arch_lm_test(returns, lags: int = 5, demean: bool = True) -> TestResult:
     res = ols(e2[lags:], X)
     T = e2.size - lags
     stat = T * res.r_squared
-    return TestResult(name="ARCH-LM", statistic=float(stat), pvalue=float(stats.chi2.sf(stat, lags)), df=lags, nobs=T)
+    return TestResult(name="ARCH-LM", statistic=float(stat), p_value=float(stats.chi2.sf(stat, lags)), df=lags, n_obs=T)

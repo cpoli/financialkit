@@ -25,6 +25,7 @@ quick = np.array([-1000.0, 800.0, 300.0, 100.0])
 slow = np.array([-1000.0, 300.0, 300.0, 700.0])
 for r in (0.05, 0.12):
     print(f"at {r:.0%}: NPV quick = {npv(r, quick):7.2f}, NPV slow = {npv(r, slow):7.2f}")
+assert npv(0.05, slow) > npv(0.05, quick) and npv(0.12, quick) > npv(0.12, slow)
 
 # %%
 # NPV profiles and the crossover rate
@@ -33,6 +34,7 @@ for r in (0.05, 0.12):
 
 crossover = irr(slow - quick)
 print(f"crossover rate: {crossover:.4%}")
+assert 0.05 < crossover < 0.12 and np.isclose(npv(crossover, quick), npv(crossover, slow))
 
 rates = np.linspace(0.0, 0.30, 121)
 fig, ax = plt.subplots(figsize=(7, 4.5))

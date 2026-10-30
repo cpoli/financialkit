@@ -75,7 +75,7 @@ def test_cornish_fisher_reduces_to_normal_and_beats_it_on_skewed_data():
 
 def test_monte_carlo_var_of_a_linear_portfolio_matches_delta_normal():
     w = np.array([10e6, 5e6])
-    res = monte_carlo_var(lambda dX: dX @ w, HULL_COV, 0.99, n_paths=200_000, ci_level=0.9999, rng=3)
+    res = monte_carlo_var(lambda dX: dX @ w, HULL_COV, 0.99, n_paths=200_000, confidence=0.9999, rng=3)
     exact = delta_normal_var(w, HULL_COV, 0.99)
     assert res.ci[0] < exact < res.ci[1]
     assert res.ci[0] < res.var < res.ci[1]
@@ -115,3 +115,27 @@ def test_filtered_historical_scales_standardized_residuals():
 def test_alpha_is_validated():
     with pytest.raises(ValueError):
         historical_var([1.0, 2.0], 1.0)
+
+
+def test_monte_carlo_var_shifts_by_the_mean_with_common_random_numbers():
+    """VaR is translation-equivariant: adding a drift m lowers a linear book's VaR by exactly w'm h."""
+    w, m = np.array([10e6, 5e6]), np.array([0.001, -0.002])
+    base = monte_carlo_var(lambda dX: dX @ w, HULL_COV, 0.99, n_paths=5_000, horizon=10.0, rng=4)
+    drift = monte_carlo_var(lambda dX: dX @ w, HULL_COV, 0.99, mean=m, n_paths=5_000, horizon=10.0, rng=4)
+    assert drift.var == pytest.approx(base.var - w @ m * 10.0, rel=1e-12)
+
+
+def test_var_inputs_are_validated():
+    x = np.random.default_rng(0).standard_normal(20)
+    with pytest.raises(ValueError, match="window must lie"):
+        rolling_historical_var(x, window=20)
+    with pytest.raises(ValueError, match="alpha must lie"):
+        parametric_var(0.0, 1.0, alpha=0.0)
+    with pytest.raises(ValueError, match="distribution must be"):
+        parametric_var(0.0, 1.0, distribution="cauchy")
+    with pytest.raises(ValueError, match="lam must lie"):
+        hybrid_var(x, lam=1.5)
+    with pytest.raises(ValueError, match="empty"):
+        weighted_tail([], 0.99)
+    with pytest.raises(ValueError, match="weights must be non-negative"):
+        weighted_tail(x, 0.99, weights=np.ones(5))

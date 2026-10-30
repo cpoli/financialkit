@@ -33,6 +33,7 @@ sigma, eta, gamma, eps = 0.95, 2.5e-6, 2.5e-7, 0.0625
 
 lams = [0.0, 2e-7, 2e-6, 2e-5]
 results = [almgren_chriss(X, T, N, sigma, eta, lam, gamma, eps) for lam in lams]
+assert np.allclose(results[0].holdings, np.linspace(X, 0.0, N + 1))  # risk neutral: sell evenly
 ax = plot_execution(results, labels=[f"$\\lambda$ = {lam:g}" for lam in lams])
 ax.set_xlabel("days")
 for lam, r in zip(lams, results, strict=True):
@@ -43,6 +44,7 @@ for lam, r in zip(lams, results, strict=True):
 # ----------------------
 
 frontier = [almgren_chriss(X, T, N, sigma, eta, lam, gamma, eps) for lam in np.logspace(-8, -4, 60)]
+assert np.all(np.diff([r.expected_cost for r in frontier]) > 0) and np.all(np.diff([r.variance for r in frontier]) < 0)
 fig, ax = plt.subplots(figsize=(6, 4))
 ax.plot([np.sqrt(r.variance) / 1e6 for r in frontier], [r.expected_cost / 1e6 for r in frontier], "C0-")
 for lam, r in zip(lams, results, strict=True):

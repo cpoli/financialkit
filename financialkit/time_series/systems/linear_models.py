@@ -56,7 +56,7 @@ def _conditional_result(x: np.ndarray, ar, ma, mean: float, start: int, include_
     s2 = float(e @ e / n) if sigma2 is None else float(sigma2)
     ll = -0.5 * n * (math.log(2 * math.pi * s2)) - 0.5 * float(e @ e) / s2
     k = ar.size + ma.size + int(include_mean) + 1
-    return ARMAResult(ar=ar, ma=ma, mean=mean, sigma2=s2, loglik=ll, nobs=n, n_params=k, residuals=e, data=x)
+    return ARMAResult(ar=ar, ma=ma, mean=mean, sigma2=s2, loglik=ll, n_obs=n, n_params=k, residuals=e, data=x)
 
 
 def _css_residuals(x: np.ndarray, ar: np.ndarray, ma: np.ndarray, mean: float, start: int) -> np.ndarray:

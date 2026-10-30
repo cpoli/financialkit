@@ -3,8 +3,10 @@
 Markowitz's efficient frontier (closed form and long-only through
 :func:`scipy.optimize.minimize`), Merton's analytic constants, Tobin's
 tangency portfolio and two-fund separation; Kelly's criterion, Merton's
-portfolio problem and CPPI; Sharpe's single-index model and Ledoit-Wolf
-shrinkage; Black-Litterman and Michaud resampling; Rockafellar-Uryasev
+portfolio problem, CPPI and Garleanu-Pedersen trading with transaction
+costs; Sharpe's single-index model, Rosenberg's fundamental factor model
+and Ledoit-Wolf shrinkage; Black-Litterman, Michaud resampling and
+Goldfarb-Iyengar robust portfolios; Rockafellar-Uryasev
 CVaR optimization (:func:`scipy.optimize.linprog`), the most-diversified
 portfolio, risk parity and hierarchical risk parity; and the Sharpe,
 Sortino and information ratios, Grinold's fundamental law and rolling
@@ -19,18 +21,22 @@ from financialkit.portfolio.core.base import (
     CovarianceResult,
     CPPIResult,
     CVaRResult,
+    DynamicTradingPolicy,
+    FactorRiskResult,
     FrontierConstants,
     FrontierResult,
     HRPResult,
     OutOfSampleResult,
     PortfolioResult,
     ResampledFrontierResult,
+    RobustPortfolioResult,
 )
-from financialkit.portfolio.systems.bayesian import black_litterman, implied_equilibrium_returns, resampled_frontier
-from financialkit.portfolio.systems.covariance import ledoit_wolf, sample_covariance, single_index_covariance
+from financialkit.portfolio.systems.bayesian import black_litterman, implied_equilibrium_returns, resampled_frontier, robust_portfolio
+from financialkit.portfolio.systems.covariance import fundamental_factor_covariance, ledoit_wolf, sample_covariance, single_index_covariance
 from financialkit.portfolio.systems.growth import (
     cppi,
     cppi_continuous,
+    garleanu_pedersen,
     kelly_fraction,
     kelly_growth_rate,
     kelly_portfolio,
@@ -67,6 +73,12 @@ from financialkit.portfolio.systems.risk_based import (
     risk_parity,
 )
 from financialkit.portfolio.utils.optimize import portfolio_moments
+from financialkit.portfolio.visualizers.plots import (
+    plot_cppi,
+    plot_frontier,
+    plot_out_of_sample,
+    plot_weights,
+)
 
 __all__ = [
     "__version__",
@@ -74,13 +86,16 @@ __all__ = [
     "FrontierResult",
     "FrontierConstants",
     "CovarianceResult",
+    "FactorRiskResult",
     "BlackLittermanResult",
+    "RobustPortfolioResult",
     "ResampledFrontierResult",
     "CVaRResult",
     "HRPResult",
     "CPPIResult",
     "ActiveManagementResult",
     "OutOfSampleResult",
+    "DynamicTradingPolicy",
     "frontier_constants",
     "min_variance_portfolio",
     "efficient_portfolio",
@@ -99,12 +114,15 @@ __all__ = [
     "merton_wealth_paths",
     "cppi",
     "cppi_continuous",
+    "garleanu_pedersen",
     "sample_covariance",
     "single_index_covariance",
+    "fundamental_factor_covariance",
     "ledoit_wolf",
     "implied_equilibrium_returns",
     "black_litterman",
     "resampled_frontier",
+    "robust_portfolio",
     "cvar_optimization",
     "diversification_ratio",
     "most_diversified_portfolio",
@@ -119,4 +137,8 @@ __all__ = [
     "fundamental_law",
     "simulate_active_management",
     "portfolio_moments",
+    "plot_frontier",
+    "plot_weights",
+    "plot_cppi",
+    "plot_out_of_sample",
 ]

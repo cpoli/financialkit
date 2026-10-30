@@ -31,8 +31,10 @@ from financialkit.market_microstructure.visualizers import plot_garman
 
 starts = np.arange(0, 21, 2)
 sim = [simulate_garman(int(i), np.inf, 1.0, 1.0, 1.0, 1.2, n_events=1500, n_paths=800, rng=int(i)).failed.mean() for i in starts]
+exact = garman_ruin_probability(starts, 1.0, 1.2)
+assert np.all(np.abs(sim - exact) <= 4 * np.sqrt(exact * (1 - exact) / 800))
 fig, ax = plt.subplots(figsize=(6, 3.5))
-ax.plot(starts, garman_ruin_probability(starts, 1.0, 1.2), "k-", label=r"$(\lambda_a/\lambda_b)^{I_0}$")
+ax.plot(starts, exact, "k-", label=r"$(\lambda_a/\lambda_b)^{I_0}$")
 ax.plot(starts, sim, "o", color="C0", label="simulated")
 ax.set_xlabel("initial inventory $I_0$")
 ax.set_ylabel("probability of running out")
@@ -49,6 +51,7 @@ fig.tight_layout()
 
 flat = simulate_garman(10, 10.0, 1.0, 1.0, 1.0, 1.0, n_events=3000, n_paths=200, rng=0)
 wide = simulate_garman(10, 10.0, 1.2, 0.8, 1.0, 1.25, n_events=3000, n_paths=200, rng=0)
+assert flat.failed.mean() > 0.95 and wide.failed.mean() < 0.5
 fig, axes = plt.subplots(1, 2, figsize=(9, 3.5), sharey=True)
 plot_garman(flat, ax=axes[0])
 axes[0].set_title(f"a = b: {flat.failed.mean():.0%} fail")

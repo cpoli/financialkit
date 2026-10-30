@@ -23,6 +23,9 @@ from financialkit.time_value import fisher_nominal_rate, fisher_real_rate
 print(f"exact real rate:   {fisher_real_rate(0.12, 0.08):.4%}")
 print(f"approximate (i-pi): {fisher_real_rate(0.12, 0.08, exact=False):.4%}")
 print(f"nominal rate needed for a 3% real return at 8% inflation: {fisher_nominal_rate(0.03, 0.08):.4%}")
+assert np.isclose(fisher_real_rate(0.12, 0.08), 1.12 / 1.08 - 1)
+assert np.isclose(fisher_real_rate(0.12, 0.08, exact=False), 0.04)
+assert np.isclose(fisher_nominal_rate(0.03, 0.08), 1.03 * 1.08 - 1)
 
 # %%
 # The approximation breaks down as inflation rises
@@ -32,6 +35,7 @@ print(f"nominal rate needed for a 3% real return at 8% inflation: {fisher_nomina
 infl = np.linspace(0.0, 1.0, 201)
 exact = fisher_nominal_rate(0.03, infl)
 approx = 0.03 + infl
+assert np.allclose(exact - approx, 0.03 * infl)
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
 axes[0].plot(100 * infl, 100 * exact, label="exact: (1+r)(1+pi) - 1")

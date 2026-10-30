@@ -25,13 +25,16 @@ __all__ = [
     "FrontierResult",
     "FrontierConstants",
     "CovarianceResult",
+    "FactorRiskResult",
     "BlackLittermanResult",
+    "RobustPortfolioResult",
     "ResampledFrontierResult",
     "CVaRResult",
     "HRPResult",
     "CPPIResult",
     "ActiveManagementResult",
     "OutOfSampleResult",
+    "DynamicTradingPolicy",
 ]
 
 
@@ -161,6 +164,47 @@ class CovarianceResult:
 
 
 @dataclass
+class FactorRiskResult:
+    """Rosenberg's fundamental factor risk model, :math:`\\Sigma = XFX' + \\mathrm{diag}(s^2)`."""
+
+    cov: np.ndarray
+    """ndarray, shape (d, d): The model covariance, built on the latest exposures."""
+
+    exposures: np.ndarray
+    """ndarray, shape (d, k): Exposures :math:`X` of each asset to each factor, at the last period."""
+
+    factor_returns: np.ndarray
+    """ndarray, shape (n, k): Factor returns estimated by cross-sectional regression, one row per period."""
+
+    factor_cov: np.ndarray
+    """ndarray, shape (k, k): Sample covariance :math:`F` of the factor returns."""
+
+    specific_var: np.ndarray
+    """ndarray, shape (d,): Variance :math:`s^2` of each asset's specific (residual) return."""
+
+    residuals: np.ndarray
+    """ndarray, shape (n, d): Specific returns, what the factors leave unexplained."""
+
+    @property
+    def n_params(self) -> int:
+        """Number of free parameters given the exposures, :math:`k(k+1)/2 + d`."""
+        k, d = self.factor_cov.shape[0], self.specific_var.size
+        return k * (k + 1) // 2 + d
+
+    @property
+    def condition_number(self) -> float:
+        """Ratio of the largest to the smallest eigenvalue of ``cov``."""
+        ev = np.linalg.eigvalsh(self.cov)
+        return float(ev[-1] / ev[0])
+
+    def risk_decomposition(self, weights) -> tuple[float, float]:
+        """Factor and specific variance of a portfolio, :math:`w'XFX'w` and :math:`\\sum_i w_i^2 s_i^2`."""
+        w = np.asarray(weights, dtype=np.float64)
+        b = self.exposures.T @ w
+        return float(b @ self.factor_cov @ b), float(w**2 @ self.specific_var)
+
+
+@dataclass
 class BlackLittermanResult:
     """Black and Litterman's blend of market equilibrium and investor views."""
 
@@ -204,6 +248,34 @@ class ResampledFrontierResult:
 
     frontier: FrontierResult
     """The classical frontier of the true inputs, for comparison."""
+
+
+@dataclass
+class RobustPortfolioResult:
+    """Goldfarb and Iyengar's robust mean-variance portfolio and its worst-case moments."""
+
+    weights: np.ndarray
+    """ndarray, shape (d,): Optimal weights, summing to one."""
+
+    worst_case_return: float
+    """Least expected return over the uncertainty set."""
+
+    worst_case_volatility: float
+    """Largest volatility over the uncertainty set."""
+
+    nominal_return: float
+    """Expected return under the point estimates."""
+
+    nominal_volatility: float
+    """Volatility under the point estimates."""
+
+    risk_aversion: float
+    """Coefficient :math:`\\gamma` of the worst-case variance in the objective."""
+
+    @property
+    def worst_case_utility(self) -> float:
+        """The optimized objective: worst-case return minus :math:`\\tfrac{\\gamma}{2}` times worst-case variance."""
+        return self.worst_case_return - 0.5 * self.risk_aversion * self.worst_case_volatility**2
 
 
 @dataclass
@@ -323,3 +395,49 @@ class OutOfSampleResult:
     def turnover(self) -> float:
         """Average sum of absolute weight changes per rebalance."""
         return float(np.abs(np.diff(self.weights, axis=0)).sum(axis=1).mean()) if len(self.weights) > 1 else 0.0
+
+
+@dataclass
+class DynamicTradingPolicy:
+    """Garleanu and Pedersen's optimal trading rule under quadratic transaction costs.
+
+    Trade a fixed fraction of the way from the current position to the
+    aim portfolio, :math:`x_t = (1 - \\tau)x_{t-1} + \\tau\\,\\mathrm{aim}_t`,
+    where the aim :math:`A f_t` is linear in the return predictors.
+    """
+
+    trade_rate: float
+    """Fraction :math:`\\tau = a/\\lambda` of the gap to the aim closed each period."""
+
+    aim_loadings: np.ndarray
+    """ndarray, shape (d, k): :math:`A = (\\gamma\\Sigma)^{-1} B (I + a\\Phi/\\gamma)^{-1}`."""
+
+    markowitz_loadings: np.ndarray
+    """ndarray, shape (d, k): :math:`(\\gamma\\Sigma)^{-1} B`, the myopic optimum without costs."""
+
+    gamma: float
+    """Risk aversion."""
+
+    lam: float
+    """Transaction cost per unit of traded variance, :math:`\\Lambda = \\lambda\\Sigma`."""
+
+    rho: float
+    """Discount rate per period."""
+
+    def aim(self, f) -> np.ndarray:
+        """Aim portfolio for predictors ``f`` of shape (k,) or (n, k)."""
+        return np.asarray(f, dtype=np.float64) @ self.aim_loadings.T
+
+    def markowitz(self, f) -> np.ndarray:
+        """Myopic Markowitz portfolio for predictors ``f`` of shape (k,) or (n, k)."""
+        return np.asarray(f, dtype=np.float64) @ self.markowitz_loadings.T
+
+    def positions(self, f, x0=None) -> np.ndarray:
+        """Positions, shape (n, d), from following the rule along predictors ``f`` of shape (n, k), starting from ``x0`` (flat by default)."""
+        aims = self.aim(np.atleast_2d(f))
+        x = np.zeros(aims.shape[1]) if x0 is None else np.asarray(x0, dtype=np.float64)
+        out = np.empty_like(aims)
+        for t, target in enumerate(aims):
+            x = x + self.trade_rate * (target - x)
+            out[t] = x
+        return out

@@ -18,7 +18,7 @@ negative contribution: it releases capital.
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.risk import euler_allocation, expected_shortfall, scenario_es_allocation
+from financialkit.risk import euler_allocation, expected_shortfall, parametric_es, parametric_var, scenario_es_allocation
 from financialkit.risk.visualizers import plot_allocation
 
 labels = ["equities", "credit", "rates", "FX hedge"]
@@ -37,6 +37,9 @@ for ax, m in zip(axes, ("var", "es"), strict=True):
     res = euler_allocation(w, cov, 0.99, m)
     plot_allocation(res, labels, ax=ax)
     print(f"{m}: " + ", ".join(f"{lbl} {c:.3f}" for lbl, c in zip(labels, res.contributions, strict=True)) + f"; total {res.total:.3f}")
+    sigma_p = np.sqrt(w @ cov @ w)
+    assert np.isclose(res.contributions.sum(), (parametric_var if m == "var" else parametric_es)(0.0, sigma_p, 0.99))
+    assert res.contributions[3] < 0  # the hedge releases capital
 fig.tight_layout()
 
 # %%
@@ -54,5 +57,6 @@ pnl = Z * vols * w
 res = scenario_es_allocation(pnl, 0.99)
 print(f"scenario ES {res.total:.3f} (portfolio ES {expected_shortfall(pnl.sum(axis=1), 0.99):.3f})")
 print("shares: " + ", ".join(f"{lbl} {s:.0%}" for lbl, s in zip(labels, res.shares, strict=True)))
+assert np.isclose(res.total, expected_shortfall(pnl.sum(axis=1), 0.99)) and np.isclose(res.shares.sum(), 1.0)
 
 plt.show()

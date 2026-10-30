@@ -29,7 +29,7 @@ def test_lcp_solvers_agree_and_satisfy_complementarity():
     a = psor(lower, diag, upper, rhs, obstacle, omega=1.3, tol=1e-12)
     b = brennan_schwartz(lower, diag, upper, rhs, obstacle, exercise="low")
     c = penalty_solve(lower, diag, upper, rhs, obstacle)
-    assert b.iterations == 1 and a.iterations > 1 and c.iterations < 10
+    assert b.n_iter == 1 and a.n_iter > 1 and c.n_iter < 10
     np.testing.assert_allclose(a.x, b.x, atol=1e-10)
     np.testing.assert_allclose(c.x, b.x, atol=1e-7)  # penalty error O(1 / rho) with rho = 1e8
     _check_complementarity(lower, diag, upper, rhs, obstacle, b.x, 1e-10)
