@@ -505,7 +505,7 @@ def fit_ofi_impact(price_change: ArrayLike, ofi: ArrayLike) -> OLSResult:
 
     Examples
     --------
-    >>> fit_ofi_impact([0.5, -1.0, 1.5], [1.0, -2.0, 3.0]).coef.round(12).tolist()
+    >>> (fit_ofi_impact([0.5, -1.0, 1.5], [1.0, -2.0, 3.0]).coef.round(12) + 0.0).tolist()
     [0.0, 0.5]
     """
     dp = np.asarray(price_change, dtype=np.float64)

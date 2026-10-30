@@ -105,7 +105,9 @@ def test_robust_portfolio_worst_cases_are_attained():
     y = L.T @ B.T @ w
     # Each loading row moves by rho_i in the F-norm, along the portfolio's own factor exposure.
     W = np.sign(w)[:, None] * rho[:, None] * np.linalg.solve(L.T, y / np.linalg.norm(y))[None, :]
-    np.testing.assert_allclose(np.sqrt(np.einsum("ik,kl,il->i", W, F, W)), rho)
+    # Weights at round-off from zero have a platform-dependent sign (exactly 0 on some), and their row is irrelevant.
+    held = np.abs(w) > 1e-12
+    np.testing.assert_allclose(np.sqrt(np.einsum("ik,kl,il->i", W, F, W))[held], rho[held])
     Bw = B + W
     assert np.sqrt(w @ (Bw @ F @ Bw.T + np.diag(D)) @ w) == pytest.approx(res.worst_case_volatility, rel=1e-12)
 
