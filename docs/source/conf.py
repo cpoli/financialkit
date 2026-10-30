@@ -257,6 +257,16 @@ ogp_site_url = html_baseurl
 ogp_site_name = project
 ogp_image = html_baseurl + "_static/images/financialkit_logo.png"
 ogp_social_cards = {"enable": False}
+
+# Page-view counts with GoatCounter (no cookies, no personal data). One
+# site, cpoli.goatcounter.com, covers every cpoli.github.io project; the
+# URL path tells the kits apart.
+html_js_files = [
+    (
+        "https://gc.zgo.at/count.js",
+        {"async": "async", "data-goatcounter": "https://cpoli.goatcounter.com/count"},
+    ),
+]
 html_logo = "_static/images/financialkit_logo_transparent.png"
 html_theme_options = {
     "github_url": "https://github.com/cpoli/financialkit",
