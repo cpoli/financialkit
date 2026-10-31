@@ -32,10 +32,11 @@ curve = HazardCurve.flat(0.012)
 rhos = np.linspace(0.01, 0.95, 25)
 mezz = np.array([tranche_spread(0.03, 0.07, curve, rho, 5.0, 0.03).par_spread for rho in rhos])
 quote = 0.0340
-roots = compound_correlations(quote, 0.03, 0.07, curve, 5.0, 0.03)
+roots = compound_correlations(quote, 0.03, 0.07, curve, 5.0, 0.03, n_grid=10)
+none = compound_correlations(0.06, 0.03, 0.07, curve, 5.0, 0.03, n_grid=10)
 print("compound correlations of a 340 bp 3-7% quote:", np.round(roots, 3))
-print("compound correlations of a 600 bp quote:", compound_correlations(0.06, 0.03, 0.07, curve, 5.0, 0.03))
-assert roots.size == 2 and compound_correlations(0.06, 0.03, 0.07, curve, 5.0, 0.03).size == 0
+print("compound correlations of a 600 bp quote:", none)
+assert roots.size == 2 and none.size == 0
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(rhos, 1e4 * mezz, lw=2)
@@ -63,7 +64,7 @@ assert np.allclose(bc.base_correlations, skew, atol=1e-8)
 
 fig, ax = plt.subplots(figsize=(7, 4))
 ax.plot(100 * K, bc.base_correlations, "o-", lw=2, label="base correlation")
-compound = [compound_correlations(s, a, d, curve, 5.0, 0.03, n_grid=20) for a, d, s in zip(A, K, quotes, strict=True)]
+compound = [compound_correlations(s, a, d, curve, 5.0, 0.03, n_grid=10) for a, d, s in zip(A, K, quotes, strict=True)]
 for d, c in zip(K, compound, strict=True):
     ax.plot([100 * d] * c.size, c, "x", color="C3", ms=8)
 ax.plot([], [], "x", color="C3", label="compound correlation(s) of the same quote")

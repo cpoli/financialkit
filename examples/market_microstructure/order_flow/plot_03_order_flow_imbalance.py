@@ -28,9 +28,9 @@ i = np.arange(1, 11)
 theta = np.array([0.71, 0.81, 0.68, 0.56, 0.47, 0.47, 0.47, 0.47, 0.47, 0.47])
 
 
-def interval_regressions(scale, n_intervals=200, rng=0):
+def interval_regressions(scale, n_intervals=100, rng=0):
     """Price change, OFI and trade imbalance over equal intervals of a book with limit order rates scale * lambda."""
-    book = simulate_cst(scale * 1.92 / i**0.52, 0.94, theta, 20000, n_ticks=300, rng=rng)
+    book = simulate_cst(scale * 1.92 / i**0.52, 0.94, theta, 6000, n_ticks=300, rng=rng)
     e = order_flow_imbalance(book.best_bid, book.bid_size, book.best_ask, book.ask_size)
     trades = np.select([book.events == 2, book.events == 3], [1.0, -1.0], 0.0)
     dt = book.times[-1] / n_intervals
