@@ -15,7 +15,7 @@ with risk than the classical corner solutions.
 import matplotlib.pyplot as plt
 import numpy as np
 
-from financialkit.portfolio import resampled_frontier
+from financialkit.portfolio import efficient_portfolio, resampled_frontier
 from financialkit.portfolio.visualizers import plot_weights
 
 names = ["bonds", "credit", "US equity", "intl equity", "emerging"]
@@ -65,7 +65,10 @@ for s in range(res.sample_weights.shape[0]):
     ax.plot(np.sqrt(np.einsum("ij,jk,ik->i", W, cov, W)), W @ mu, color="0.8", lw=0.7)
 ax.plot(res.frontier.volatilities, res.frontier.returns, lw=2, label="true frontier")
 ax.plot(res.volatilities, res.returns, "o-", color="C3", label="resampled frontier")
-assert np.all(res.volatilities >= np.interp(res.returns, res.frontier.returns, res.frontier.volatilities) - 1e-6)
+# Each averaged portfolio is long-only, so it is at least as risky as the
+# true minimum-variance portfolio with the same expected return.
+best = np.array([efficient_portfolio(mu, cov, r, long_only=True).volatility for r in res.returns])
+assert np.all(res.volatilities >= best - 1e-6)
 ax.set_xlabel("volatility")
 ax.set_ylabel("expected return")
 ax.legend()
