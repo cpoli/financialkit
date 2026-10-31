@@ -33,7 +33,7 @@ N, m, delta = 80, 40, 0.25
 L0, sigma = np.full(N, 0.05), np.full(N, 0.2)
 book = [(k, K) for k in (4, 8, 20, 28, 40) for K in (0.045, 0.05, 0.055)]
 
-g = lmm_swaption_greeks(L0, sigma, delta, m, book, n_paths=10_000, rng=0)
+g = lmm_swaption_greeks(L0, sigma, delta, m, book, n_paths=5000, rng=0)
 print(f"book value {g.price:.5f} +/- {g.price_se:.5f}")
 
 # %%
@@ -62,7 +62,7 @@ assert np.all(g.delta[1:m] < 0) and np.all(g.delta[m : m + 4] > g.delta[m + 4])
 # reproduces the adjoint delta to the accuracy of the difference itself;
 # bumping would need 160 more simulations for the whole gradient.
 
-z = np.random.default_rng(1).standard_normal((2000, m))
+z = np.random.default_rng(1).standard_normal((1000, m))
 base = lmm_swaption_greeks(L0, sigma, delta, m, book, z=z)
 h = 1e-6
 for i in (10, 45, 70):
@@ -87,7 +87,7 @@ for n_rates in sizes:
     res = {}
     for method in times:
         t0 = time.perf_counter()
-        res[method] = lmm_swaption_greeks(np.full(n_rates, 0.05), 0.2, delta, mm, bk, n_paths=400, rng=2, method=method)
+        res[method] = lmm_swaption_greeks(np.full(n_rates, 0.05), 0.2, delta, mm, bk, n_paths=200, rng=2, method=method)
         times[method].append(time.perf_counter() - t0)
     assert np.allclose(res["forward"].delta, res["adjoint"].delta, rtol=1e-10, atol=1e-14)
 ratio = np.array(times["forward"]) / np.array(times["adjoint"])
